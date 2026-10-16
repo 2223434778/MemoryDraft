@@ -16,3 +16,11 @@ data/raw/
 *.bin
 results/raw/
 .DS_Store
+.pytest_cache/
+.test-tmp*/
+*.egg-info/
+*.sqlite*
+*.db
+*.tar.gz
+download.log
+SOURCE_MANIFEST.json

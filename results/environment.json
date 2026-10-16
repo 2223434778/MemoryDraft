@@ -1,0 +1,11 @@
+{
+  "python": "3.11.9 (main, Apr 19 2024, 16:48:06) [GCC 11.2.0]",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "torch": "2.5.1+cu124",
+  "transformers": "4.52.2",
+  "cuda_available": true,
+  "gpus": [
+    "NVIDIA RTX A6000",
+    "NVIDIA RTX A6000"
+  ]
+}

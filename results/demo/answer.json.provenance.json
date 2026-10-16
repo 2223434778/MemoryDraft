@@ -1,0 +1,82 @@
+{
+  "config": {
+    "target": {
+      "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "device": "cuda:0"
+    },
+    "draft": {
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen2.5-0.5b",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "device": "cuda:0"
+    },
+    "dtype": "float32",
+    "attention": "eager",
+    "retrieval": {
+      "kind": "semantic",
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/multilingual-minilm",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "token_budget": 1024,
+    "history_budget": 256,
+    "top_k": 8,
+    "min_match": 3
+  },
+  "tokenizer_fingerprint": "173c9cb417e389a2258f946dffe1a38c8374fd3a6eb920ccf661f4a473d373c1",
+  "target_commit": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "draft_commit": null,
+  "retriever": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/multilingual-minilm@e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "max_new_tokens": 32,
+  "block_size": 8,
+  "history_condition": "relevant",
+  "timing": "Request tokenization/retrieval/prompts/candidate setup/generation included; model and encoder load/warmup excluded. Per-phase host times overlap CUDA execution; only synchronized request latency is authoritative.",
+  "source_manifest": {
+    "files": {
+      ".gitignore": "ccb75951c7ff1a6e3397d750887b0e8e030c04504584cb74a11c132a79b64772",
+      "AGENTS.md": "2591c6f4a5be9c31a34d0bee0cb0b44441754edf1e913c34761ef022e4982870",
+      "configs/a6000-pilot.json": "54bbaffbb9c90532270e84b428b3d8602947e0fa21a8ab4a736010dcb65ea3a6",
+      "configs/a6000-semantic.json": "62238611f5f2de7c323ee8f72029d5737786548775c00dc71cc933618e2f41d3",
+      "configs/a6000-validation.json": "e0a88f6dac0c04a8ba5a507ac27a85bdb4943474055f7b6f043b3f65d12641ee",
+      "configs/local.example.json": "b84df1f6ee0b75a07ffd3c57cb2a64f0197526ab7af980ca488ca8289bee45a3",
+      "data/synthetic/h_cases.jsonl": "5bb0b0b07341390a249852dd8e1d247275174a32314524df4a305007b1cb5b06",
+      "data/synthetic/history.jsonl": "0391687ec07671776987e41be5936eeeca58864055da33c56979ceaa008a0918",
+      "data/synthetic/request.json": "9ffeb8232347f4c0eede4ffba835a11551d95f4192ec81a504d2c0841cd18393",
+      "data/synthetic/requests.jsonl": "70aa284847bf26ac05270c2589eab9389d8690569174a447e89b925c28c20a20",
+      "docs/ARCHITECTURE.md": "8c8cedcd97191d4cc545e45b051f9e14a3d25d92fb3b0a7ce4834bd112b8f2f2",
+      "docs/ARCHITECTURE_REVIEW.md": "6708059e903d0627d1817c64a4454a5accac0f36273f1033628b2c5eb27c757d",
+      "docs/BASE_SELECTION.md": "78add3d1e48e261d2453f571c9ba9dca0d522f43642b49ce40b78f967d5dc882",
+      "docs/CODEX_START.md": "7d5212e60aeeba77232cd639ae26bd5976646da8561f039f48c6f30c724914b9",
+      "docs/HISTORY_DRAFTER.md": "c78607870bcf031ac54ce93545284c83e9d6310caa7e9f48575c87dc7a351eac",
+      "docs/PROGRESS.md": "616a41a769875cc41df7f868d343b6ae2b5c709b7a1330bd34382a2a1ba08e91",
+      "memorydraft/__init__.py": "0b9f607d47206a8acaf377f8a174e1ab67e1b814e9e5bb84d423b6ce18d78644",
+      "memorydraft/__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "memorydraft/backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "memorydraft/backends/transformers.py": "fd4f8db26a5f82dea50d9278e302dd13f1dbd74cf932b329de9b8c270682209c",
+      "memorydraft/cli.py": "8901ddb6ae056a5962f7a820a6158f1e089a2219b983a0f4605460c70865612b",
+      "memorydraft/drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "memorydraft/drafters/candidates.py": "2f6c7bceed958556d44781f0f0380b8c243431d13c57c36c628aa803d034a44d",
+      "memorydraft/evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "memorydraft/evaluation/replay.py": "5e45f84dcef72282d79edba0cf8db9125f2f9780e8434fa550328f71adad458b",
+      "memorydraft/memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memorydraft/memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "memorydraft/retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "memorydraft/retrieval/pool.py": "b3f0184f4e2492f3f74ee710eddde8cff6e33b28a2a0533ab03b84d33683e066",
+      "memorydraft/routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "memorydraft/routing/policy.py": "3f4228b7a039d92bebd1513075465310d046ea3b648c1ec59dfa5394928b52b6",
+      "pyproject.toml": "a1dd84ce067833924894bb176d1d4e95814adcce951c12e8b222f180d778c71e",
+      "README.md": "61d93b84b718b1eb49a005ff4d0b3966490ed9c908f5afc4d48afbcb94a2a4a6",
+      "scripts/bundle_source.py": "d7b765a5952f544b77dfcd71a9c0115746b773ef8e79435db83f74531562a550",
+      "scripts/check_demo.py": "2f5a717447d0a388ede9eceb0f3b4b2eb62242850e1400337f0576fe62aec7bb",
+      "scripts/diagnose_precision.py": "451a7379813e1d9aff9bf860cc30aead18f435f50a7f756a9163aaa71b5db775",
+      "scripts/download_models.py": "d7f43d076c7ef218612a227f9f873b23994614fbb9953178a98c8ba59df23bf4",
+      "scripts/make_pilot.py": "5857137db76b2c59d65397f78329f532efd741a32ed941dbb1f6e53d17f39b25",
+      "scripts/run_a6000_suite.py": "c4bc9dc1a59956b3af1c0f6842a16825944bd61447fab0e49749488dd0f16238",
+      "tests/test_backend.py": "b8e64bd49903fd13ffde3373f0a0d13ad058f252d87c6c8e8168b9f494f3ef33",
+      "tests/test_evaluation.py": "579d64d04776e9a5eaf9b8df433ee1ea07dca30e86182464e9a67af78b1bc9f4",
+      "tests/test_memory_retrieval.py": "24b96b3ccd2e7b658f1a99af348cb677dc2ca0ef234c6dfa0dbda58c63905def"
+    },
+    "source_sha256": "fe0787cb7430f7652e72be47b106ddc551ff01809927124cc85e261fb0e3f9ec",
+    "base_git_commit": "2e447cc359d01521ce1b6832b4e9dc81c778c730"
+  },
+  "git_revision": null
+}

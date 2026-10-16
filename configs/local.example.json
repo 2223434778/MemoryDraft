@@ -1,0 +1,9 @@
+{
+  "target": {"model": "Qwen/Qwen2.5-1.5B-Instruct", "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306", "device": "cuda:0"},
+  "draft": {"model": "Qwen/Qwen2.5-0.5B-Instruct", "revision": "7ae557604adf67be50417f59c2c2f167def9a775", "device": "cuda:0"},
+  "dtype": "float32",
+  "attention": "eager",
+  "retrieval": {"kind": "semantic", "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"},
+  "history_budget": 256,
+  "token_budget": 1024
+}

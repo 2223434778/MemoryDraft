@@ -1,0 +1,201 @@
+{
+  "token_ids": [
+    73594,
+    12669,
+    198,
+    750,
+    4564,
+    3932,
+    262,
+    60601,
+    284,
+    220,
+    20,
+    198,
+    262,
+    9632,
+    284,
+    220,
+    18,
+    15,
+    198,
+    262,
+    470,
+    60601,
+    11,
+    9632,
+    198,
+    73594,
+    151645
+  ],
+  "text": "```python\ndef connect():\n    retries = 5\n    timeout = 30\n    return retries, timeout\n```",
+  "method": "RHD",
+  "latency_seconds": 0.8574278999585658,
+  "ttft_seconds": 0.2247595529188402,
+  "setup_seconds": 0.044873597973491997,
+  "snapshot_id": "f2313c7e72319ca530e6aab32686537f574f6846d0f6037f71ab198c89554a72",
+  "bundle_id": "6c312ddae0f22c776dc543e4b02729c974abda3f59c2bed7bcaca2e780600082",
+  "route_stats": {
+    "R": {
+      "rounds": 0,
+      "proposed": 0,
+      "accepted": 0,
+      "committed": 0,
+      "cost_per_token": null
+    },
+    "H": {
+      "rounds": 2,
+      "proposed": 16,
+      "accepted": 6,
+      "committed": 8,
+      "cost_per_token": 0.048303401552645175
+    },
+    "D": {
+      "rounds": 2,
+      "proposed": 16,
+      "accepted": 16,
+      "committed": 18,
+      "cost_per_token": 0.020126311974470606
+    },
+    "AR": {
+      "rounds": 1,
+      "proposed": 0,
+      "accepted": 0,
+      "committed": 1,
+      "cost_per_token": 0.02278023899998516
+    }
+  },
+  "rounds": [
+    {
+      "route": "H",
+      "proposed": 8,
+      "source_id": null,
+      "match_length": 0,
+      "l2_host_seconds": 1.887104008346796e-05,
+      "setup_host_seconds": 0.0005044949939474463,
+      "candidate_host_seconds": 0.15450001799035817,
+      "before_state": {
+        "context_epoch": 0,
+        "committed_output_len": 0,
+        "kv_covered_output_len": 0,
+        "cached_prefix_tokens": 0
+      },
+      "draft_prefill_or_catchup_tokens": 99,
+      "reconcile_host_seconds": 0.00017534499056637287,
+      "round_seconds": 0.17916099302237853,
+      "accepted": 5,
+      "committed": 6,
+      "after_state": {
+        "context_epoch": 0,
+        "committed_output_len": 6,
+        "kv_covered_output_len": 5,
+        "cached_prefix_tokens": 99
+      }
+    },
+    {
+      "route": "H",
+      "proposed": 8,
+      "source_id": null,
+      "match_length": 0,
+      "l2_host_seconds": 3.544101491570473e-05,
+      "setup_host_seconds": 0.0,
+      "candidate_host_seconds": 0.15780218597501516,
+      "before_state": {
+        "context_epoch": 0,
+        "committed_output_len": 6,
+        "kv_covered_output_len": 5,
+        "cached_prefix_tokens": 99
+      },
+      "draft_prefill_or_catchup_tokens": 2,
+      "reconcile_host_seconds": 0.00017611501971259713,
+      "round_seconds": 0.182675238000229,
+      "accepted": 1,
+      "committed": 2,
+      "after_state": {
+        "context_epoch": 0,
+        "committed_output_len": 8,
+        "kv_covered_output_len": 7,
+        "cached_prefix_tokens": 99
+      }
+    },
+    {
+      "route": "D",
+      "proposed": 8,
+      "source_id": null,
+      "match_length": 0,
+      "l2_host_seconds": 3.535096766427159e-05,
+      "setup_host_seconds": 0.00048119499115273356,
+      "candidate_host_seconds": 0.15893846994731575,
+      "before_state": {
+        "context_epoch": 0,
+        "committed_output_len": 0,
+        "kv_covered_output_len": 0,
+        "cached_prefix_tokens": 0
+      },
+      "draft_prefill_or_catchup_tokens": 73,
+      "reconcile_host_seconds": 1.1590018402785063e-05,
+      "round_seconds": 0.18298701697494835,
+      "accepted": 8,
+      "committed": 9,
+      "after_state": {
+        "context_epoch": 0,
+        "committed_output_len": 17,
+        "kv_covered_output_len": 15,
+        "cached_prefix_tokens": 65
+      }
+    },
+    {
+      "route": "D",
+      "proposed": 8,
+      "source_id": null,
+      "match_length": 0,
+      "l2_host_seconds": 3.508100053295493e-05,
+      "setup_host_seconds": 0.0,
+      "candidate_host_seconds": 0.152924099995289,
+      "before_state": {
+        "context_epoch": 0,
+        "committed_output_len": 17,
+        "kv_covered_output_len": 15,
+        "cached_prefix_tokens": 65
+      },
+      "draft_prefill_or_catchup_tokens": 2,
+      "reconcile_host_seconds": 6.430025678128004e-06,
+      "round_seconds": 0.17681965295923874,
+      "accepted": 8,
+      "committed": 9,
+      "after_state": {
+        "context_epoch": 0,
+        "committed_output_len": 26,
+        "kv_covered_output_len": 24,
+        "cached_prefix_tokens": 65
+      }
+    },
+    {
+      "route": "AR",
+      "proposed": 0,
+      "source_id": null,
+      "match_length": 0,
+      "l2_host_seconds": 3.4611031878739595e-05,
+      "setup_host_seconds": 0.0,
+      "candidate_host_seconds": 4.355103010311723e-05,
+      "before_state": null,
+      "draft_prefill_or_catchup_tokens": 0,
+      "reconcile_host_seconds": 6.590038537979126e-06,
+      "round_seconds": 0.02278023899998516,
+      "accepted": 0,
+      "committed": 1,
+      "after_state": null
+    }
+  ],
+  "stage_seconds": {
+    "l1_host": 0.043315580987837166,
+    "setup_host": 0.044873597973491997,
+    "index_host": 2.3850996512919664e-05,
+    "generation": 0.7467390490346588,
+    "snapshot_shared": 8.637295104563236e-05,
+    "writeback": 0.06572887999936938
+  },
+  "peak_gpu_bytes": {
+    "cuda:0": 8190342144
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "persisted": true,
+  "no_early_write": true,
+  "user_isolation": true
+}

@@ -1,0 +1,31 @@
+{
+  "config": {
+    "target": {
+      "model": "/home/a6000/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct/snapshots/989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+      "device": "cuda:0"
+    },
+    "draft": {
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen2.5-0.5b",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "device": "cuda:0"
+    },
+    "dtype": "float32",
+    "attention": "eager",
+    "retrieval": {
+      "kind": "lexical"
+    },
+    "token_budget": 1024,
+    "history_budget": 256,
+    "top_k": 8,
+    "min_match": 3
+  },
+  "tokenizer_fingerprint": "173c9cb417e389a2258f946dffe1a38c8374fd3a6eb920ccf661f4a473d373c1",
+  "target_commit": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "draft_commit": null,
+  "retriever": "lexical-cosine-diagnostic-v1",
+  "max_new_tokens": 64,
+  "block_size": 8,
+  "timing": "Request tokenization/retrieval/prompts/candidate setup/generation included; model and encoder load/warmup excluded. Per-phase host times overlap CUDA execution; only synchronized request latency is authoritative.",
+  "git_revision": null
+}

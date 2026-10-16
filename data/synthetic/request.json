@@ -1,0 +1,16 @@
+{
+  "id": "code-0",
+  "user_id": "code",
+  "order": 10,
+  "scenario": "synthetic-adapt",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a concise helpful assistant."
+    },
+    {
+      "role": "user",
+      "content": "Write def connect() returning retries=5 and timeout=30. Return Python only."
+    }
+  ]
+}

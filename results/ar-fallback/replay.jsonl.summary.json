@@ -1,0 +1,70 @@
+{
+  "AR": {
+    "requests": 13,
+    "total_seconds": 10.457873610139359,
+    "speedup_vs_ar": 1.0,
+    "all_correct": true,
+    "generated_tokens": 436,
+    "median_latency_seconds": 0.6499882219941355,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "RHD": {
+    "requests": 13,
+    "total_seconds": 13.413985032995697,
+    "speedup_vs_ar": 0.7796246666754957,
+    "all_correct": true,
+    "generated_tokens": 436,
+    "median_latency_seconds": 0.7896682630525902,
+    "routes": {
+      "R": {
+        "rounds": 2,
+        "proposed": 12,
+        "accepted": 8,
+        "committed": 10
+      },
+      "H": {
+        "rounds": 17,
+        "proposed": 136,
+        "accepted": 62,
+        "committed": 79
+      },
+      "D": {
+        "rounds": 23,
+        "proposed": 164,
+        "accepted": 72,
+        "committed": 95
+      },
+      "AR": {
+        "rounds": 252,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 252
+      }
+    }
+  }
+}
