@@ -69,17 +69,19 @@ def main(argv=None):
         return
     from memorydraft.backends.transformers import TransformersBackend
     from memorydraft.evaluation.replay import read_jsonl, replay
-    from memorydraft.retrieval.pool import LexicalEncoder, SemanticEncoder
+    from memorydraft.retrieval.pool import HybridEncoder, LexicalEncoder, SemanticEncoder
     config = json.loads(Path(args.config).read_text(encoding="utf-8"))
     if args.temperature != 0:
         parser.error("Sampling is not implemented; use --temperature 0")
     retrieval = config.get("retrieval", {"kind": "lexical"})
-    if retrieval["kind"] not in {"semantic", "lexical"}:
+    if retrieval["kind"] not in {"semantic", "hybrid", "lexical"}:
         parser.error("Unknown retrieval kind")
-    encoder = SemanticEncoder(retrieval["model"], retrieval["revision"]) if retrieval["kind"] == "semantic" else LexicalEncoder()
+    encoder = SemanticEncoder(retrieval["model"], retrieval["revision"]) if retrieval["kind"] != "lexical" else LexicalEncoder()
+    if retrieval["kind"] == "hybrid":
+        encoder = HybridEncoder(encoder)
     backend = TransformersBackend.load(config)
     options = dict(max_new_tokens=args.max_new_tokens, block_size=args.block_size, temperature=args.temperature)
-    for key in ("token_budget", "history_budget", "top_k", "min_match"):
+    for key in ("token_budget", "history_budget", "top_k", "min_match", "r_scope"):
         if key in config:
             options[key] = config[key]
     # Warm model kernels without reading any replay answers into memory.

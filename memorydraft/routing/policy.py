@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-METHODS = ("AR", "D", "R", "RD", "H", "RHD")
+METHODS = ("AR", "D", "R", "RD", "H", "RHD", "D_native", "D_adapter", "PLD")
 
 
 @dataclass

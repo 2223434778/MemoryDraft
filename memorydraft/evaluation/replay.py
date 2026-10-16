@@ -43,24 +43,24 @@ def replay(backend, store: MemoryStore, requests, methods, output, *, repeats=1,
             snapshot = store.snapshot(request["user_id"], request["order"])
             snapshot = controlled_snapshot(snapshot, backend.tokenizer, history_condition)
             snapshot_seconds = time.perf_counter() - snapshot_start
-            reference = None
+            # Separate untimed reference, so measured AR can participate in randomized order.
+            reference = backend.generate(request["messages"], snapshot, method="AR", encoder=encoder, **options).token_ids
             for repeat in range(repeats):
-                shuffled = [m for m in methods if m != "AR"]
+                shuffled = list(methods)
                 random.Random(repeat + request["order"]).shuffle(shuffled)
-                for method in ["AR", *shuffled]:
+                for method in shuffled:
                     result = backend.generate(request["messages"], snapshot, method=method, encoder=encoder, **options)
                     result.latency_seconds += snapshot_seconds
                     if result.ttft_seconds is not None:
                         result.ttft_seconds += snapshot_seconds
                     result.stage_seconds["snapshot_shared"] = snapshot_seconds
-                    if method == "AR":
-                        if reference is None:
-                            reference = result.token_ids
-                        elif reference != result.token_ids:
-                            raise RuntimeError("AR itself changed across repeats")
                     row = asdict(result)
                     row.update(request_id=request["id"], scenario=request.get("scenario", "unspecified"),
                                repeat=repeat, correct=result.token_ids == reference, history_condition=history_condition)
+                    if not row["correct"]:
+                        row["reference_token_ids"] = reference
+                        row["first_difference"] = next((i for i, (a, b) in enumerate(zip(reference, result.token_ids)) if a != b),
+                                                       min(len(reference), len(result.token_ids)))
                     stream.write(json.dumps(row, ensure_ascii=False) + "\n")
                     stream.flush()
                     results.append(row)

@@ -60,6 +60,29 @@ class SemanticEncoder:
         return (vectors[1:] @ vectors[0]).tolist()
 
 
+class HybridEncoder:
+    """BM25 + dense reciprocal-rank fusion on the already filtered snapshot."""
+
+    def __init__(self, dense):
+        self.dense = dense
+        self.name = f"bm25-rrf60+{dense.name}"
+
+    def scores(self, query, texts):
+        from rank_bm25 import BM25Okapi
+
+        def words(text):
+            return re.findall(r"[a-zA-Z_0-9]+|[\u4e00-\u9fff]", text.lower()) or ["__empty__"]
+
+        sparse = BM25Okapi([words(t) for t in texts]).get_scores(words(query))
+        dense = self.dense.scores(query, texts)
+        fused = [0.0] * len(texts)
+        for scores in (sparse, dense):
+            for rank, i in enumerate(sorted(range(len(texts)), key=lambda i: (-scores[i], i))):
+                if scores[i] > 0:
+                    fused[i] += 1 / (60 + rank + 1)
+        return fused
+
+
 def retrieve(query: str, snapshot: Snapshot, tokenizer, encoder, *, top_k: int = 8,
              token_budget: int = 2048, chunk_tokens: int = 256) -> MemoryBundle:
     if min(top_k, token_budget, chunk_tokens) <= 0:

@@ -41,6 +41,15 @@ Qwen2.5-7B head=152064，1.5B/0.5B head=151936；本版本保守拒绝该组合�
 
 BF16/SDPA 初测出现真实 greedy 分歧；`scripts/diagnose_precision.py` 在同一请求上记录 BF16 分歧及 FP32/eager 一致性。本轮有效参考配置为 `configs/a6000-validation.json`，不把 BF16 的失败运行汇总成无损加速。
 
-## 未覆盖的工程/研究边界
+## 第二轮执行补充（2026-10-16）
+
+- 主验证底座仍为锁定的 Transformers 4.52.2。增加原生 assistant D、原生上下文适配 D、prompt lookup 控制；RD/RHD 的 D 使用原生上下文，旧 D 保留为 H 的同指令对照。
+- 新版 checkpoint 的默认参数可能覆盖 GenerationConfig 的全局默认值；Qwen3 默认为采样。Target 与 S 入口现显式关闭 `use_model_defaults`，Target 另显式传入 `do_sample=False`。采样回填失败记录单独保留，不计 greedy 成功次数。
+- 上游 prompt lookup 的候选可能超过剩余输出长度，增加保留 Target 纠正/bonus token 的长度边界；保持验证规则不变。
+- R 使用 `pydivsufsort==0.0.19`（MIT）的构建/搜索，增加固定宽度 uint32 token 编码与记录边界薄适配，不自写后缀数组构建。审查的仓库 HEAD 为 `2080e85c28cefca094f9c3a7a304db018f0d3d5b`；运行依赖按发布版本锁定，不把 HEAD 当作该 wheel 的构建 commit。
+- H 混合排序复用 `rank-bm25==0.2.2`（Apache-2.0）及既有 MiniLM；审查 HEAD `47aa3ddf8dc1ebeb7ef4e65f2b4536af44594099`，同样与 wheel 发布版本分开记录。
+- 模型为 Qwen3-8B/0.6B，固定 HF revision 和 tokenizer 预检见 `results/research-audit/model_preflight.json`。权重镜像 URL、大小和 HF SHA-256 见 `configs/qwen3-download-manifest.json`；逐文件校验后才允许启动新套件。新实测报告由 `scripts/write_research_report.py` 生成。
+
+### 首轮未覆盖的边界（保留）
 
 目前是单请求机制研究适配器，不是生产推理引擎；无树融合、跨卡流水、并发或采样。语义模型需要独立下载和 optional dependency。B6/B7 需要匹配的 Target/EAGLE 组合及特征恢复适配，不能用普通 S 的 D 冒充成熟学习型 Draft。

@@ -7,11 +7,12 @@ name = "memorydraft"
 version = "0.1.0"
 description = "User-memory conditioned speculative decoding research"
 requires-python = ">=3.10"
-dependencies = ["torch>=2.5,<2.7", "transformers==4.52.2", "numpy>=1.24,<2.5", "accelerate>=0.26"]
+dependencies = ["torch>=2.5,<2.7", "transformers==4.52.2", "numpy>=1.24,<2.5", "accelerate>=0.26", "pydivsufsort==0.0.19"]
 
 [project.optional-dependencies]
 semantic = ["sentence-transformers==4.1.0"]
-test = ["pytest>=8,<9"]
+test = ["pytest>=8,<9", "rank-bm25==0.2.2"]
+research = ["pydivsufsort==0.0.19", "rank-bm25==0.2.2"]
 
 [project.scripts]
 memorydraft = "memorydraft.cli:main"

@@ -8,7 +8,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 paths = []
-for directory in ("memorydraft", "scripts", "tests", "configs", "docs", "data/synthetic"):
+for directory in ("memorydraft", "scripts", "tests", "configs", "docs", "data/synthetic", "data/research"):
     paths.extend(p for p in (root / directory).rglob("*") if p.is_file() and "__pycache__" not in p.parts)
 paths.extend(root / name for name in ("pyproject.toml", "README.md", "AGENTS.md", ".gitignore"))
 manifest = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}

@@ -9,6 +9,8 @@
 已实现基于 Transformers 4.52.2 的单请求 greedy 研究原型：独立 KV 的 H/D、R 接续复制、用户/时间快照、词法及可选语义检索、带探测/冷却/AR 退路的路由，以及冻结历史回放。
 已在 A6000 上用真实 Qwen2.5-1.5B Target + 0.5B Draft 跑通初始 13 请求、6 方法的一致性检查。首轮 H 未取得净收益；这不是已完成的论文性能结论或生产服务。成熟学习型 Draft 的 B6/B7、随机采样和并发尚未实现。
 
+第二轮已实现官方 D/PLD 对照、独立 R 索引和同前缀 H 诊断。Qwen3 默认采样回填与 PLD 长度边界已修复并有回归测试。新实验使用固定 Qwen3-8B/0.6B、非思考模板，服务器运行脚本为 `scripts/run_qwen3_pilot.py`；结果完成后由 `scripts/write_research_report.py` 生成报告。
+
 ## 阅读与执行顺序
 
 1. [Codex 启动任务](docs/CODEX_START.md)
@@ -29,7 +31,7 @@ Astra 审阅请从 [REVIEW_HANDOFF](docs/REVIEW_HANDOFF.md) 开始，里面列�
 ```bash
 python -m venv .venv
 # Linux: source .venv/bin/activate；Windows: .venv\Scripts\Activate.ps1
-python -m pip install -e ".[test,semantic]"
+python -m pip install -e ".[test,semantic,research]"
 python -m pytest -q --basetemp .test-tmp
 python -m memorydraft env --output results/environment.json
 ```
@@ -46,6 +48,14 @@ python -m memorydraft report --input results/pilot/replay.jsonl --output results
 ```
 
 服务器已有模型和环境时，使用 `.venv/bin/python` 和 `configs/a6000-validation.json`；语义模式使用 `configs/a6000-semantic.json`。语义模型可通过 `python scripts/download_models.py --embedding` 下载到项目内。下载端点可由调用者设置 `HF_ENDPOINT`，项目不会自动发送私有历史到网络。
+
+第二轮 Qwen3 元数据可用 `python scripts/download_models.py --qwen3 target --metadata-only` 和对应 `--qwen3 draft` 准备；权重按 `configs/qwen3-download-manifest.json` 由 `python scripts/download_verified_weights.py` 下载并校验。已准备资产的 A6000 项目目录中执行：
+
+```bash
+OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python scripts/run_qwen3_pilot.py
+```
+
+该脚本会保存失败现场、用开发请求选择候选长度，再冻结配置做测试；不会将测试输出写入历史。新方法名 `D_native` 是官方起草控制、`D_adapter` 是相同输入的适配控制、`D` 是 H 的同指令空历史控制，`PLD` 是补齐长度边界的上游 prompt lookup。`--r-scope shared_pool` 可保留旧级联检索消融，默认独立快照索引。
 
 `--methods AR D R RD H RHD` 对应 B0–B5。回放强制加入 AR，逐 token 检查各方法结果，遇到首个差异即保存现场并停止。每个方法共享同一历史快照，不会把测试答案写入过去历史。合成重复场景与真实长期用户分布不能混同。
 

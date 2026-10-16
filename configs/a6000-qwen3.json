@@ -1,0 +1,10 @@
+{
+  "target": {"model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-8b", "revision": "b968826d9c46dd6066d109eabc6255188de91218", "device": "cuda:0"},
+  "draft": {"model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-0.6b", "revision": "c1899de289a04d12100db370d81485cdf75e47ca", "device": "cuda:0"},
+  "dtype": "bfloat16",
+  "attention": "eager",
+  "template_options": {"enable_thinking": false},
+  "retrieval": {"kind": "semantic", "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/multilingual-minilm", "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"},
+  "history_budget": 512,
+  "r_scope": "snapshot"
+}

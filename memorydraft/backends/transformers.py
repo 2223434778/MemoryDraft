@@ -12,7 +12,7 @@ import torch
 import transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
-from memorydraft.drafters.candidates import MemoryCandidates
+from memorydraft.drafters.candidates import MemoryCandidates, RecordedCandidates
 from memorydraft.retrieval.pool import LexicalEncoder, MemoryBundle, retrieve
 from memorydraft.routing.policy import METHODS
 
@@ -54,6 +54,7 @@ class GenerationResult:
     rounds: list[dict]
     stage_seconds: dict
     peak_gpu_bytes: dict
+    target_prompt_sha256: str = ""
 
 
 class FirstTokenClock:
@@ -72,12 +73,13 @@ class FirstTokenClock:
 
 
 class TransformersBackend:
-    def __init__(self, target, draft, tokenizer, draft_tokenizer=None):
+    def __init__(self, target, draft, tokenizer, draft_tokenizer=None, *, template_options=None):
         if transformers.__version__ != PINNED_VERSION:
             raise RuntimeError(f"Candidate API is pinned to transformers=={PINNED_VERSION}")
         self.target, self.draft, self.tokenizer = target.eval(), draft.eval(), tokenizer
         self.fingerprint = check_compatibility(tokenizer, draft_tokenizer or tokenizer, target, draft)
         self.lock = threading.Lock()
+        self.template_options = dict(template_options or {})
         self.draft.generation_config.num_assistant_tokens_schedule = "constant"
         self.draft.generation_config.assistant_confidence_threshold = 0.0
 
@@ -95,7 +97,7 @@ class TransformersBackend:
                 spec["model"], revision=revision, torch_dtype=dtype, trust_remote_code=False,
                 attn_implementation=config.get("attention", "sdpa"),
             ).to(spec.get("device", "cuda:0")))
-        return cls(*models, *tokenizers)
+        return cls(*models, *tokenizers, template_options=config.get("template_options"))
 
     def synchronize(self):
         for device in {self.target.device, self.draft.device}:
@@ -114,20 +116,24 @@ class TransformersBackend:
                 messages[0]["content"] += "\n" + text
             else:
                 messages.insert(0, {"role": "system", "content": text})
-        return self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt")
+        return self.tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt",
+                                                  **self.template_options)
 
     @torch.inference_mode()
     def generate(self, messages, snapshot, *, method="RHD", max_new_tokens=128, block_size=8,
                  encoder=None, token_budget=2048, history_budget=512, top_k=8,
-                 temperature=0.0, min_match=3):
+                 temperature=0.0, min_match=3, r_scope="snapshot"):
         if method not in METHODS or temperature != 0.0:
-            raise ValueError("Only AR/D/R/RD/H/RHD with greedy temperature=0 are supported")
+            raise ValueError("Only registered methods with greedy temperature=0 are supported")
+        if r_scope not in {"snapshot", "shared_pool"}:
+            raise ValueError("Unknown R retrieval scope")
         if min(max_new_tokens, block_size, token_budget, history_budget, top_k) <= 0:
             raise ValueError("Generation and memory budgets must be positive")
         if not self.lock.acquire(blocking=False):
             raise RuntimeError("This research backend supports one request at a time")
         had_override = "_get_candidate_generator" in self.target.__dict__
         previous = self.target.__dict__.get("_get_candidate_generator")
+        upstream_factory = self.target._get_candidate_generator
         candidates = None
         try:
             self.synchronize()
@@ -138,7 +144,7 @@ class TransformersBackend:
             start = time.perf_counter()
             target_ids = self.prompt(messages).to(self.target.device)
             retrieval_start = time.perf_counter()
-            if method in {"R", "RD", "H", "RHD"}:
+            if method in {"H", "RHD"} or (r_scope == "shared_pool" and method in {"R", "RD"}):
                 bundle = retrieve(messages[-1]["content"], snapshot, self.tokenizer, encoder or LexicalEncoder(),
                                   top_k=top_k, token_budget=token_budget)
             else:
@@ -152,7 +158,17 @@ class TransformersBackend:
                 remaining -= min(remaining, len(chunk.token_ids))
                 if remaining <= 0:
                     break
-            prefixes = {} if method == "AR" else {"D": self.prompt(messages, ""), "H": self.prompt(messages, "\n---\n".join(history_parts))}
+            custom = method in {"D", "D_adapter", "H", "R", "RD", "RHD"}
+            prefixes = {} if not custom else {
+                "D": self.prompt(messages) if method in {"D_adapter", "RD", "RHD"} else self.prompt(messages, ""),
+                "H": self.prompt(messages, "\n---\n".join(history_parts)),
+            }
+            r_index = None
+            index_start = time.perf_counter()
+            if r_scope == "snapshot" and method in {"R", "RD", "RHD"}:
+                from memorydraft.retrieval.suffix import SuffixArrayIndex
+                r_index = SuffixArrayIndex(snapshot, self.tokenizer, min_match=min_match)
+            index_seconds = time.perf_counter() - index_start
             contexts = [(self.target, target_ids)] + ([(self.draft, prefixes["H"])] if prefixes else [])
             for model, ids in contexts:
                 if ids.shape[1] + max_new_tokens > model.config.max_position_embeddings:
@@ -162,39 +178,54 @@ class TransformersBackend:
             config = GenerationConfig(
                 do_sample=False, max_new_tokens=max_new_tokens, use_cache=True,
                 eos_token_id=self.target.generation_config.eos_token_id,
-                pad_token_id=self.tokenizer.pad_token_id or self.tokenizer.eos_token_id,
+                pad_token_id=self.tokenizer.pad_token_id if self.tokenizer.pad_token_id is not None else self.tokenizer.eos_token_id,
                 bos_token_id=self.tokenizer.bos_token_id,
             )
             clock = FirstTokenClock()
 
             def factory(model_self, **kwargs):
                 nonlocal candidates
+                if method in {"D_native", "PLD"}:
+                    delegate = upstream_factory(**kwargs)
+                    if method == "D_native":
+                        delegate.assistant_kwargs["use_model_defaults"] = False
+                    candidates = RecordedCandidates(delegate, "D" if method == "D_native" else "R",
+                                                     max_length=kwargs["generation_config"].max_length if method == "PLD" else None)
+                    return candidates
                 candidates = MemoryCandidates(
                     target_ids=kwargs["input_ids"], draft_model=self.draft, prefixes=prefixes,
                     generation_config=kwargs["generation_config"], bundle=bundle,
-                    method=method, block_size=block_size, min_match=min_match,
+                    method="D" if method == "D_adapter" else method, block_size=block_size, min_match=min_match,
+                    retrieval_index=r_index, dynamic_lookup=r_index is not None,
+                    special_ids=self.tokenizer.all_special_ids,
                 )
                 return candidates
 
             if method != "AR":
                 self.target._get_candidate_generator = MethodType(factory, self.target)
-            kwargs = {"assistant_model": self.draft} if method != "AR" else {}
+            self.draft.generation_config.num_assistant_tokens = block_size
+            kwargs = {"assistant_model": self.draft} if method not in {"AR", "PLD"} else {}
+            if method == "PLD":
+                kwargs.update(prompt_lookup_num_tokens=block_size, max_matching_ngram_size=3)
             output = self.target.generate(
                 target_ids, attention_mask=torch.ones_like(target_ids), generation_config=config,
-                streamer=clock, **kwargs,
+                streamer=clock, use_model_defaults=False, do_sample=False, **kwargs,
             )
             self.synchronize()
-            end = time.perf_counter()
             ids = output[0, target_ids.shape[1]:].tolist()
+            text = self.tokenizer.decode(ids, skip_special_tokens=True)
+            prompt_hash = hashlib.sha256(json.dumps(target_ids[0].tolist()).encode()).hexdigest()
+            end = time.perf_counter()
             return GenerationResult(
-                ids, self.tokenizer.decode(ids, skip_special_tokens=True), method, end - start,
+                ids, text, method, end - start,
                 clock.first - start if clock.first else None, setup_done - start,
                 snapshot.snapshot_id, bundle.bundle_id,
                 candidates.summary() if candidates else {}, candidates.events if candidates else [],
                 {"l1_host": retrieval_done - retrieval_start, "setup_host": setup_done - start,
-                 "index_host": candidates.index_seconds if candidates else 0.0,
+                 "index_host": index_seconds + (candidates.index_seconds if candidates else 0.0),
                  "generation": end - setup_done},
                 {str(device): torch.cuda.max_memory_allocated(device) for device in devices if device.type == "cuda"},
+                prompt_hash,
             )
         finally:
             if had_override:

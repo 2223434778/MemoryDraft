@@ -5,11 +5,52 @@ import time
 from dataclasses import asdict
 
 import torch
-from transformers.generation.candidate_generator import AssistedCandidateGenerator, CandidateGenerator
+from transformers.generation.candidate_generator import AssistedCandidateGenerator, CandidateGenerator, PromptLookupCandidateGenerator
 from transformers.generation.logits_process import LogitsProcessorList
 
 from memorydraft.retrieval.pool import ContinuationIndex, MemoryBundle
 from memorydraft.routing.policy import Router
+
+
+class RecordedCandidates(CandidateGenerator):
+    """Observe upstream proposals; optionally enforce the final output boundary."""
+
+    def __init__(self, delegate, route, max_length=None):
+        self.delegate, self.route = delegate, route
+        self.max_length = max_length
+        self.events = []
+        self.index_seconds = 0.0
+
+    def get_candidates(self, input_ids):
+        self.start = time.perf_counter()
+        self.old_length = input_ids.shape[1]
+        result = self.delegate.get_candidates(input_ids)
+        if self.max_length is not None:
+            # HF 4.52.2 prompt lookup can propose past the final output budget.
+            # Reserve one Target correction/bonus token, as the model drafter does.
+            candidate_ids, logits = result
+            end = max(self.old_length, self.max_length - 1)
+            candidate_ids = candidate_ids[:, :end]
+            if logits is not None:
+                logits = logits[:, :candidate_ids.shape[1] - self.old_length]
+            result = candidate_ids, logits
+        self.proposed = result[0].shape[1] - self.old_length
+        return result
+
+    def update_candidate_strategy(self, input_ids, scores, num_matches):
+        self.delegate.update_candidate_strategy(input_ids, scores, num_matches)
+        self.events.append(dict(route=self.route if self.proposed else "AR", proposed=self.proposed,
+                                accepted=int(num_matches), committed=input_ids.shape[1] - self.old_length,
+                                round_seconds=time.perf_counter() - self.start))
+
+    def summary(self):
+        result = {}
+        for e in self.events:
+            stats = result.setdefault(e["route"], dict(rounds=0, proposed=0, accepted=0, committed=0))
+            stats["rounds"] += 1
+            for key in ("proposed", "accepted", "committed"):
+                stats[key] += e[key]
+        return result
 
 
 class IndependentDraft:
@@ -30,6 +71,7 @@ class IndependentDraft:
             model_kwargs={"attention_mask": torch.ones_like(self.prefix), "use_cache": True},
             logits_processor=LogitsProcessorList(),
         )
+        self.generator.assistant_kwargs["use_model_defaults"] = False
         self.generator.num_assistant_tokens = block_size
         self.generator.assistant_confidence_threshold = 0.0
         self.generator.generation_config.assistant_confidence_threshold = 0.0
@@ -68,7 +110,8 @@ class IndependentDraft:
 
 class MemoryCandidates(CandidateGenerator):
     def __init__(self, *, target_ids, draft_model, prefixes, generation_config,
-                 bundle: MemoryBundle, method: str, block_size: int, min_match: int = 3):
+                 bundle: MemoryBundle, method: str, block_size: int, min_match: int = 3,
+                 retrieval_index=None, dynamic_lookup=False, special_ids=()):
         self.target_length = target_ids.shape[1]
         self.max_length = generation_config.max_length
         self.draft_model = draft_model
@@ -77,8 +120,14 @@ class MemoryCandidates(CandidateGenerator):
         self.block_size = block_size
         self.router = Router(method, bool(bundle.chunks))
         index_start = time.perf_counter()
-        self.index = ContinuationIndex(bundle, min_match=min_match)
+        self.index = retrieval_index if retrieval_index is not None else ContinuationIndex(bundle, min_match=min_match)
         self.index_seconds = time.perf_counter() - index_start
+        self.dynamic_lookup, self.special_ids = dynamic_lookup, set(special_ids)
+        self.lookup = PromptLookupCandidateGenerator(
+            eos_token_id=torch.tensor(list(special_ids), dtype=torch.long),
+            num_output_tokens=block_size, max_matching_ngram_size=3,
+            max_length=self.max_length,
+        ) if dynamic_lookup else None
         self.providers: dict[str, IndependentDraft] = {}
         self.events = []
         self.pending = None
@@ -88,7 +137,15 @@ class MemoryCandidates(CandidateGenerator):
         confirmed = input_ids[:, self.target_length:]
         # Leave room for Target's correction/bonus token, as upstream does.
         budget = min(self.block_size, self.max_length - input_ids.shape[1] - 1)
-        copied, source, matched = self.index.match(confirmed[0].tolist(), budget)
+        r_enabled = self.router.method in {"R", "RD", "RHD"}
+        prefix = input_ids[0].tolist() if self.dynamic_lookup else confirmed[0].tolist()
+        copied, source, matched = self.index.match(prefix, budget) if r_enabled else ([], None, 0)
+        if r_enabled and not copied and self.lookup is not None and budget > 0:
+            cpu_ids = input_ids.cpu()
+            proposed, _ = self.lookup.get_candidates(cpu_ids)
+            copied = proposed[0, input_ids.shape[1]:input_ids.shape[1] + budget].tolist()
+            if copied:
+                source = "__confirmed_context__"
         match_done = time.perf_counter()
         route = self.router.choose(bool(copied)) if budget > 0 else "AR"
         setup_seconds = 0.0
