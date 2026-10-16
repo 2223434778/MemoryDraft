@@ -2,7 +2,7 @@
 
 **长期用户记忆增强的投机解码研究项目。**
 
-请求级语义检索构建小型历史候选池，解码级前缀匹配寻找可复制片段；每轮在 R（直接复用）、H（历史辅助小模型起草）和 D（普通 Draft）之间选择，交由固定 Target 严格验证。
+围绕 R（直接复用）、H（历史辅助小模型起草）和 D（普通 Draft），交由固定 Target 严格验证。当前原型使用共享历史候选池；下一阶段分离 R/H 检索，先校准 D/R 加速基线，再验证 H 的独立接受增益。
 
 ## 当前状态
 
@@ -19,6 +19,8 @@
 开发执行模型按用户选择使用 GPT-6.1-sol。底座选择见 [BASE_SELECTION](docs/BASE_SELECTION.md)，H/KV/计时规则见 [HISTORY_DRAFTER](docs/HISTORY_DRAFTER.md)，实测表格见 [EXPERIMENTS](docs/EXPERIMENTS.md)，阶段状态见 [PROGRESS](docs/PROGRESS.md)。
 
 Astra 审阅请从 [REVIEW_HANDOFF](docs/REVIEW_HANDOFF.md) 开始，里面列出失败证据、代码入口和仍需验证的原因。
+
+用户最新要求对应 [下一阶段实验协议与上游审计](docs/NEXT_EXPERIMENT.md)。本轮已复算 R 覆盖率、检查候选模型 tokenizer 与 REST 索引兼容性；这些核查不代表新的 GPU 加速结果。
 
 ## 安装与检查
 

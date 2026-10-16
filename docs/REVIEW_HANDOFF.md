@@ -4,6 +4,8 @@
 
 这是首个可运行的 R/H/D 机制原型及负结果报告，不是六阶段研究的最终完成版。先读 [实测报告](EXPERIMENTS.md)、[底座选择](BASE_SELECTION.md)、[H 与缓存实现](HISTORY_DRAFTER.md)，再对照 [进度](PROGRESS.md) 和架构 v0.2。
 
+用户后续要求已形成 [下一阶段实验协议与上游审计](NEXT_EXPERIMENT.md)：分离 R/H 检索、补充原生 D，并用同前缀对照验证 H。本轮还核实了 R 覆盖率及 REST/Qwen 适配问题；没有新增 GPU 性能结果。
+
 代码主入口：`memorydraft/backends/transformers.py`、`memorydraft/drafters/candidates.py`、`memorydraft/routing/policy.py`；检索和时间快照位于 `retrieval/`、`memory/`，回放位于 `evaluation/replay.py`。
 
 ## 可核对的证据

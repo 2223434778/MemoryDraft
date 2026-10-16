@@ -1,0 +1,112 @@
+{
+  "source": "results/semantic/replay.jsonl",
+  "sha256": "8f1c41ddc004ebf34207a8edb0187288d4f8f149b04de862181302344bca64da",
+  "note": "Offline recount only. D/H round boundaries are not matched-prefix observations.",
+  "methods": {
+    "AR": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 9.972092517069541,
+      "speedup_vs_ar": 1.0,
+      "rounds": 0,
+      "route_rounds": {},
+      "proposed": 0,
+      "accepted": 0,
+      "acceptance_rate": null,
+      "accepted_per_round": null,
+      "r_proposal_round_fraction": null,
+      "r_accepted": 0,
+      "r_accepted_output_fraction": 0.0
+    },
+    "D": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 18.81868947093608,
+      "speedup_vs_ar": 0.5299036647833857,
+      "rounds": 114,
+      "route_rounds": {
+        "D": 114
+      },
+      "proposed": 819,
+      "accepted": 322,
+      "acceptance_rate": 0.39316239316239315,
+      "accepted_per_round": 2.824561403508772,
+      "r_proposal_round_fraction": 0.0,
+      "r_accepted": 0,
+      "r_accepted_output_fraction": 0.0
+    },
+    "H": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 19.96547673403984,
+      "speedup_vs_ar": 0.49946678708992565,
+      "rounds": 116,
+      "route_rounds": {
+        "H": 116
+      },
+      "proposed": 852,
+      "accepted": 320,
+      "acceptance_rate": 0.3755868544600939,
+      "accepted_per_round": 2.7586206896551726,
+      "r_proposal_round_fraction": 0.0,
+      "r_accepted": 0,
+      "r_accepted_output_fraction": 0.0
+    },
+    "R": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 10.25165332609322,
+      "speedup_vs_ar": 0.9727301733553435,
+      "rounds": 424,
+      "route_rounds": {
+        "AR": 420,
+        "R": 4
+      },
+      "proposed": 17,
+      "accepted": 12,
+      "acceptance_rate": 0.7058823529411765,
+      "accepted_per_round": 0.02830188679245283,
+      "r_proposal_round_fraction": 0.009433962264150943,
+      "r_accepted": 12,
+      "r_accepted_output_fraction": 0.027522935779816515
+    },
+    "RD": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 19.129512539017014,
+      "speedup_vs_ar": 0.5212936031030703,
+      "rounds": 114,
+      "route_rounds": {
+        "D": 113,
+        "R": 1
+      },
+      "proposed": 818,
+      "accepted": 322,
+      "acceptance_rate": 0.39364303178484106,
+      "accepted_per_round": 2.824561403508772,
+      "r_proposal_round_fraction": 0.008771929824561403,
+      "r_accepted": 5,
+      "r_accepted_output_fraction": 0.011467889908256881
+    },
+    "RHD": {
+      "requests": 13,
+      "output_tokens": 436,
+      "latency_seconds": 13.300341737980489,
+      "speedup_vs_ar": 0.7497621274341553,
+      "rounds": 286,
+      "route_rounds": {
+        "H": 21,
+        "D": 21,
+        "AR": 242,
+        "R": 2
+      },
+      "proposed": 328,
+      "accepted": 150,
+      "acceptance_rate": 0.4573170731707317,
+      "accepted_per_round": 0.5244755244755245,
+      "r_proposal_round_fraction": 0.006993006993006993,
+      "r_accepted": 8,
+      "r_accepted_output_fraction": 0.01834862385321101
+    }
+  }
+}
