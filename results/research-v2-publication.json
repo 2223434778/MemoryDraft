@@ -568,6 +568,190 @@
     "published_sha256": "cd276d5d6117d6aa91e4bed7069d6b72e50a2dab3cf82e5269cacc91a0f18824"
   },
   {
+    "source": "h-training/asset-stage-provenance.json",
+    "raw_bytes": 13520,
+    "raw_sha256": "e62a1f99fe2ea3ad1bf31af6b6ef2fbf9181a47bf9c4fc97db968d66ebe11be3",
+    "published": "h-training/asset-stage-provenance.json",
+    "published_bytes": 13520,
+    "published_sha256": "e62a1f99fe2ea3ad1bf31af6b6ef2fbf9181a47bf9c4fc97db968d66ebe11be3"
+  },
+  {
+    "source": "h-training/asset-stage.log",
+    "raw_bytes": 1192,
+    "raw_sha256": "9f07b0dae8670078212f5943ed82808f32180c45994ac0d4381dffbe8b128923",
+    "published": "h-training/asset-stage.log",
+    "published_bytes": 1192,
+    "published_sha256": "9f07b0dae8670078212f5943ed82808f32180c45994ac0d4381dffbe8b128923"
+  },
+  {
+    "source": "h-training/dev-k2.jsonl",
+    "raw_bytes": 228322,
+    "raw_sha256": "aca9061c478805552a0b235bf5f64b5ce580855bead1d8e802d0c30fb578723d",
+    "published": "h-training/dev-k2.jsonl.gz",
+    "published_bytes": 23961,
+    "published_sha256": "6bd6025d53c18d1755cd393ea87467f49ca176c017ec6a42b11be711189ad401"
+  },
+  {
+    "source": "h-training/dev-k4.jsonl",
+    "raw_bytes": 159991,
+    "raw_sha256": "123ee68d75377c75bec5bd1079833641b4fcdefa9721bba23f12ee80597831df",
+    "published": "h-training/dev-k4.jsonl.gz",
+    "published_bytes": 18219,
+    "published_sha256": "6bbbb277a5e97452eed27cceba8f6762419b48600485efd9d51bf3c7e0cf1596"
+  },
+  {
+    "source": "h-training/dev-labels.jsonl",
+    "raw_bytes": 7427,
+    "raw_sha256": "2e52b62e774e7c9c754f4db134eb8e781f673960ec3a8695cca5745019dd4742",
+    "published": "h-training/dev-labels.jsonl.gz",
+    "published_bytes": 1714,
+    "published_sha256": "702ac2cf0e7e3c99fe41f7166aae46405bbbc17486841b3d1486842170c9e6f7"
+  },
+  {
+    "source": "h-training/dev-prefixes.jsonl",
+    "raw_bytes": 88340,
+    "raw_sha256": "979b5aae031e46b21253440866f23c6494ba851c6a8f82ae7840ee9d21d6b6d2",
+    "published": "h-training/dev-prefixes.jsonl.gz",
+    "published_bytes": 6403,
+    "published_sha256": "88cf92b269595d6571208fb1ab933fb6a5b5a63f769a94e9d31517fc2773f901"
+  },
+  {
+    "source": "h-training/dev-requests.jsonl",
+    "raw_bytes": 4047,
+    "raw_sha256": "4a14dab15cd891dd232aa19d3660c661b75a78e2cecb6bc82ea1ca86289e63f7",
+    "published": "h-training/dev-requests.jsonl.gz",
+    "published_bytes": 765,
+    "published_sha256": "e9124ecbf8e65be885b3f4ee397196b3b32a171fffd664e76e735e7eed36aa4a"
+  },
+  {
+    "source": "h-training/dev-router.jsonl",
+    "raw_bytes": 145897,
+    "raw_sha256": "5864b89bff5c1fc3e34d6177b13a8642b4b8366f415fcecc585b7959a630ae86",
+    "published": "h-training/dev-router.jsonl.gz",
+    "published_bytes": 19926,
+    "published_sha256": "b5d641e08e2dcfd78c7cc9b552b53d4abb7a38ce5fae2ae3049b95325d98ae21"
+  },
+  {
+    "source": "h-training/dev-selection.json",
+    "raw_bytes": 9280,
+    "raw_sha256": "6d112da97c8b385944bfb23698a0a096ae06f88525b388d774fbae68dafc222b",
+    "published": "h-training/dev-selection.json",
+    "published_bytes": 9280,
+    "published_sha256": "6d112da97c8b385944bfb23698a0a096ae06f88525b388d774fbae68dafc222b"
+  },
+  {
+    "source": "h-training/history.jsonl",
+    "raw_bytes": 25261,
+    "raw_sha256": "9748512d7f4ff969ed9c544174c46e441752453859ebaba7ff3354ef51a756a9",
+    "published": "h-training/history.jsonl.gz",
+    "published_bytes": 1487,
+    "published_sha256": "8a680c97dabf8fba4b0ce1a362af52bd02522b1be2d0d260479e797764d89511"
+  },
+  {
+    "source": "h-training/past-generations.jsonl",
+    "raw_bytes": 44137,
+    "raw_sha256": "c18e1c8e7df1788ca5f66b18a9f693c4bf522b0c67eeb4c67f12056fffbacfc9",
+    "published": "h-training/past-generations.jsonl.gz",
+    "published_bytes": 3638,
+    "published_sha256": "ee08ba063183dc7d8b85c4a28bb9bbb0dbd16c104f8d57a968f8a2ac93e26360"
+  },
+  {
+    "source": "h-training/provenance.json",
+    "raw_bytes": 14283,
+    "raw_sha256": "90e182651bb49cf2dc022d7671ed5464a836496374cf7705af2f574e97ef4cfb",
+    "published": "h-training/provenance.json",
+    "published_bytes": 14283,
+    "published_sha256": "90e182651bb49cf2dc022d7671ed5464a836496374cf7705af2f574e97ef4cfb"
+  },
+  {
+    "source": "h-training/quality-summary.json",
+    "raw_bytes": 1647,
+    "raw_sha256": "e35dfc507dab7a2a2d0f28f9d66c6bad97998a9a33a6468876ac28935242d6bb",
+    "published": "h-training/quality-summary.json",
+    "published_bytes": 1647,
+    "published_sha256": "e35dfc507dab7a2a2d0f28f9d66c6bad97998a9a33a6468876ac28935242d6bb"
+  },
+  {
+    "source": "h-training/run.log",
+    "raw_bytes": 6042,
+    "raw_sha256": "593f635bf83af5692975a4ecfbace7bb7858713a03076d5bed792dde6789a87e",
+    "published": "h-training/run.log",
+    "published_bytes": 6042,
+    "published_sha256": "593f635bf83af5692975a4ecfbace7bb7858713a03076d5bed792dde6789a87e"
+  },
+  {
+    "source": "h-training/test-labels.jsonl",
+    "raw_bytes": 7574,
+    "raw_sha256": "07571afec113cb8ea099cafcbed524d59b15f88ffd0baabbf87f08285762b483",
+    "published": "h-training/test-labels.jsonl.gz",
+    "published_bytes": 1746,
+    "published_sha256": "7dcfaa8ac5d3ab5e0b0c16de6514d4d874fcf9b26842778917978f41a44797d0"
+  },
+  {
+    "source": "h-training/test-prefixes.jsonl",
+    "raw_bytes": 345358,
+    "raw_sha256": "0a9f0c461848cdb55da68b91bd973321fc2e2732488a5e31677feef05b0ea5ed",
+    "published": "h-training/test-prefixes.jsonl.gz",
+    "published_bytes": 19695,
+    "published_sha256": "cc190edcca84d89806ed45b234e156d8dbe14ad8b4eb845145e62069763f80e3"
+  },
+  {
+    "source": "h-training/test-replay.jsonl",
+    "raw_bytes": 1029949,
+    "raw_sha256": "d19f45b42b9f32fe2524b2c69fa377a0e1c67ad30169f1ed832aac8e84cd21e4",
+    "published": "h-training/test-replay.jsonl.gz",
+    "published_bytes": 104139,
+    "published_sha256": "0fb25cd0cc1327c0e3070ae02cdc767ca12e0f8881a7a7762a01990aec2d706c"
+  },
+  {
+    "source": "h-training/test-requests.jsonl",
+    "raw_bytes": 4083,
+    "raw_sha256": "b42e357dc13e585647ba2165e05878e9ca1698ecab02314f56b7d14aedccc661",
+    "published": "h-training/test-requests.jsonl.gz",
+    "published_bytes": 764,
+    "published_sha256": "f7eefe3d141160c6032a8a6372e48d0d2e8e46c304bafb8c9c0b2c175d1ea562"
+  },
+  {
+    "source": "h-training/test-summary.json",
+    "raw_bytes": 4934,
+    "raw_sha256": "a7ecbbd5df77941b684f54c7e5cd338f6ab6dc96e35132efce5ddb39a9f3c425",
+    "published": "h-training/test-summary.json",
+    "published_bytes": 4934,
+    "published_sha256": "a7ecbbd5df77941b684f54c7e5cd338f6ab6dc96e35132efce5ddb39a9f3c425"
+  },
+  {
+    "source": "h-training/tests-final.log",
+    "raw_bytes": 586,
+    "raw_sha256": "e36707d31a2077a85920d944d57c49627de4e67b3d5665373ddc63cc845427e4",
+    "published": "h-training/tests-final.log",
+    "published_bytes": 586,
+    "published_sha256": "e36707d31a2077a85920d944d57c49627de4e67b3d5665373ddc63cc845427e4"
+  },
+  {
+    "source": "h-training/train-labels.jsonl",
+    "raw_bytes": 22816,
+    "raw_sha256": "4d88dc92e3a364efd4307b83b344e4e048dde77c2a1a704f574b06cd7e5a246d",
+    "published": "h-training/train-labels.jsonl.gz",
+    "published_bytes": 3248,
+    "published_sha256": "1632e55ca1bd22e759ce310ee88d2224a56d02f161c068ec412ea58d8ed78478"
+  },
+  {
+    "source": "h-training/train-requests.jsonl",
+    "raw_bytes": 12368,
+    "raw_sha256": "1de573e3da1f2cf9c090dce057db7fa4eca95c0bd8f5571cefd56712e1588f8f",
+    "published": "h-training/train-requests.jsonl.gz",
+    "published_bytes": 1102,
+    "published_sha256": "791bfd547659c7cca7d40187d0f0cce6af686f5ee819cab1e08fb73dae77139c"
+  },
+  {
+    "source": "h-training/training-metrics.json",
+    "raw_bytes": 604,
+    "raw_sha256": "f1710bce834844c1aa4fceeacbddcdde9175f09dcd290269f2cdcde240519711",
+    "published": "h-training/training-metrics.json",
+    "published_bytes": 604,
+    "published_sha256": "f1710bce834844c1aa4fceeacbddcdde9175f09dcd290269f2cdcde240519711"
+  },
+  {
     "source": "dflash-baseline/provenance.json",
     "raw_bytes": 13162,
     "raw_sha256": "f8ea0fb3873b8da0885954e35f47d17b98c878dd8cb48a7d0267afb92c6ad4d1",

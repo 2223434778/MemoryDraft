@@ -1,0 +1,59 @@
+{
+  "trained_H_minus_D": {
+    "mean_delta": -0.009272683339374168,
+    "bootstrap95_request": [
+      -0.08426966292134831,
+      0.05645161290322581
+    ],
+    "per_request": {
+      "distill-test-00": 0.0,
+      "distill-test-01": 0.0,
+      "distill-test-02": -0.2247191011235955,
+      "distill-test-03": 0.0,
+      "distill-test-04": 0.0,
+      "distill-test-05": 0.0,
+      "distill-test-06": 0.15053763440860216,
+      "distill-test-07": 0.0
+    },
+    "weak_r_positions": 96,
+    "weak_r_mean_delta": 0.125
+  },
+  "base_H_minus_D": {
+    "mean_delta": 0.5055902748321144,
+    "bootstrap95_request": [
+      0.06837606837606838,
+      1.0210975515753462
+    ],
+    "per_request": {
+      "distill-test-00": 0.358974358974359,
+      "distill-test-01": 0.12121212121212122,
+      "distill-test-02": 1.4606741573033708,
+      "distill-test-03": 0.0,
+      "distill-test-04": 0.358974358974359,
+      "distill-test-05": 0.11764705882352941,
+      "distill-test-06": 1.8494623655913978,
+      "distill-test-07": -0.2222222222222222
+    },
+    "weak_r_positions": 96,
+    "weak_r_mean_delta": 0.3854166666666667
+  },
+  "trained_H_minus_unrelated": {
+    "mean_delta": -0.009272683339374168,
+    "bootstrap95_request": [
+      -0.08426966292134831,
+      0.05645161290322581
+    ],
+    "per_request": {
+      "distill-test-00": 0.0,
+      "distill-test-01": 0.0,
+      "distill-test-02": -0.2247191011235955,
+      "distill-test-03": 0.0,
+      "distill-test-04": 0.0,
+      "distill-test-05": 0.0,
+      "distill-test-06": 0.15053763440860216,
+      "distill-test-07": 0.0
+    },
+    "weak_r_positions": 96,
+    "weak_r_mean_delta": 0.125
+  }
+}

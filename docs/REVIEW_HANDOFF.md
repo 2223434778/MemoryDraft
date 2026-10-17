@@ -1,5 +1,17 @@
 # Astra 审阅入口
 
+## 最新：H 蒸馏与独立 DFlash 基线（2026-10-17）
+
+先读 [H_TRAINING_RESULTS](H_TRAINING_RESULTS.md) 与运行前 [H_TRAINING_PROTOCOL](H_TRAINING_PROTOCOL.md)。两个交付已跑完：官方DFlash固定快照、独立环境72次严格一致，2.213× AR；合成2.840×，公开六类别各一条1.894×。这不是完整公开24请求复现，也未集成R/记忆。许可、revision、权重/代码SHA见manifest/provenance。
+
+H使用24训练/8开发/8测试新项目，全部共享四类模板结构，非自然历史或新任务家族泛化。40条过去回答先冻结；训练只用训练项目的当前Target硬标签、相关/空/无关三条件，LoRA1,146,880参数，开发loss选择第2轮，之后才生成测试标签。原始/训练后各自D/H共用权重，原生D控制均关闭assistant阈值且候选长度恒定。
+
+417个完整前缀中，未训练H相对同指令D为+0.506 [0.068,1.021]；训练后H为−0.009 [-0.084,0.056]。测试168次全正确：训练D比原始D快1.353×；训练D/H耗时比仅1.009×、同路由off/on0.991×，两者区间跨1。H在弱Draft上的增益可被更强的空历史Draft追平；不能只宣称历史无效，也不能把蒸馏收益全算作H。
+
+开发门控为空：清单有稀疏质量增量但路由更慢，数值筛选路由更快但稀疏质量差为零。测试仍保留实际H和H-on，未用关闭H宣称研究成功。DFlash和H测试集合不同，禁止直接比较两表加速比。初期资产任务在计时前停止，冻结历史复用与正式源码来源均有记录，不混入无效计时。
+
+复算：`python scripts/write_training_report.py`，核对Target标签、配对完整性、项目隔离、实际历史快照及summary。下一步是否研究局部H或R+DFlash融合需新的协议；本轮没有根据测试追加训练或筛选样例。
+
 ## 最新：Target 历史下的在线 H 开关（2026-10-17）
 
 先读 [H_TEACHER_ROUTER_RESULTS](H_TEACHER_ROUTER_RESULTS.md)，协议 [H_TEACHER_ROUTER_PROTOCOL](H_TEACHER_ROUTER_PROTOCOL.md)。这轮补齐上一轮尚未测量的联合条件：R/H 共用已冻结 Target 过去回答，同一完整 R 索引和路由，仅改变 H 是否可用；没有重新生成历史或调节参数。

@@ -1,6 +1,6 @@
 # 项目进度
 
-## 2026-10-17 — H 蒸馏与 DFlash 基线（执行中）
+## 2026-10-17 — H 蒸馏与 DFlash 基线（完成）
 
 - 用户授权执行上一轮建议的两个交付；运行前协议 `docs/H_TRAINING_PROTOCOL.md`。先核验数据隔离/标签掩码，完成独立环境 DFlash 小检查及同权重 D/H 蒸馏，不修改 Target 或放宽验证规则。
 - A6000 GPU0/GPU1 空闲，项目盘余 410GB；原环境 torch 2.5.1、Transformers 4.52.2、PEFT 0.11.1。DFlash 使用独立环境，不更新原环境。
@@ -8,7 +8,27 @@
 - DFlash 独立基线已完成：12 请求（旧六合成+六类别公开各一条）×2方法×3重复=72 次，全部与同环境 AR 及旧 AR 严格一致。FP32/eager、Transformers4.57.3/torch2.5.1，AR=187.385s、DFlash=84.682s，2.213×，请求 bootstrap [1.713,3.263]；合成2.840×、公开1.894×，不是完整公开24请求复现。结果 `results/dflash-baseline/`；模型从 hf-mirror 传输，最终官方 SHA 核验通过。大文件直传留下的部分 tar 未用于加载。
 - H 训练前增加独立 `.venv-train`（bitsandbytes0.45.5、pydivsufsort0.0.19/rank-bm25），避开全局旧 bitsandbytes CUDA124 导入问题，不覆盖原环境。服务器四项训练小测试通过；本机完整48 passed、1 skipped（本机没有所需 PEFT，服务器已实际验证）。
 - 40 条过去回答先以源码 SHA `28a80ae186d2b116c40ff5e48361c739f35142717cc9c98b7c36c191b3223524` 冻结。审查发现重新加载原始 S 会恢复默认 assistant 阈值；在计时前停止资产任务，修正原始/训练后均为 constant/threshold0，并用 `--resume-assets` 只复用核验后的过去回答。正式训练/评测实际源码 SHA `89362a22632ac47397e53e189faf6175d8c16c82a3344816cec19ef8735a41b9`，不把初始未完成资产计算当正式性能结果。
-- LoRA 四轮训练40.485s、1,146,880参数；开发响应loss最低为第2轮0.083185，已固定该权重。开发64条长度计时、107个stride4前缀、24条路由计时选择k4，门控任务类为空；未宣称关闭H即成功。当前在未见八项目上做完整前缀与168次最终计时，结果未完成。
+- LoRA 四轮训练40.485s、1,146,880参数；开发响应loss最低为第2轮0.083185，已固定该权重。开发64条长度计时、107个stride4前缀、24条路由计时选择k4，门控任务类为空；未宣称关闭H即成功。
+- 测试八项目417个全前缀：未训练H−D_format平均+0.505590，请求bootstrap [0.068376,1.021098]；训练后H−D_format为−0.009273，[-0.084270,0.056452]，新静态R弱匹配96位置为+0.125。训练D_format平均接受长度3.749，训练H为3.740；历史对弱Draft有效的信号，未转化为对齐后Draft上的稳定增量。
+- 最终168次计时全部正确，加开发88次均与固定AR一致。测试AR64.075s，BASE_D62.933s、BASE_H48.837s、TRAIN_D46.522s、TRAIN_H46.099s、TRAIN_off36.149s、TRAIN_on36.482s。BASE_D/TRAIN_D=1.353，[1.079,1.537]；TRAIN_D/TRAIN_H=1.009，[0.972,1.055]；TRAIN_off/TRAIN_on=0.991，[0.953,1.052]。off/on验证450→366，模型起草93→132，节省验证仍未形成稳定净时间收益。
+- 报告 `docs/H_TRAINING_RESULTS.md`，原始公开/合成记录 `results/h-training/`；完整训练前未读取测试标签。报告复算重新核验项目隔离、冻结历史快照、Target参考及summary。未根据测试反馈继续训练或调阈值。
+
+实际环境和运行命令（服务器项目根目录）：
+
+```bash
+.venv/bin/python -m venv --system-site-packages .venv-dflash
+.venv-dflash/bin/python -m pip install --no-deps transformers==4.57.3 tokenizers==0.22.1 huggingface-hub==0.36.0
+.venv/bin/python -m venv --system-site-packages .venv-train
+.venv-train/bin/python -m pip install --no-deps bitsandbytes==0.45.5 pydivsufsort==0.0.19 rank-bm25==0.2.2
+OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_dflash_baseline.py
+OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-train/bin/python -u scripts/run_h_training.py --resume-assets
+```
+
+最后一条为本次复用已冻结过去资产的实际命令；干净目录从头运行不带 `--resume-assets`。目录存在时脚本拒绝覆盖；adapter或测试标签已存在时拒绝资产续跑。本机下载使用 `python -m scripts.prepare_dflash_assets` 并核验官方SHA；服务器镜像仅传输同一固定字节。DFlash已以`cd9ac0b`推送，最终H报告与结果随本次完成提交发布。
+
+- 本机最终完整回归48 passed、1 skipped in 12.76s；服务器独立训练环境49 passed、1 warning in 7.96s（LoRA小测试空模型名导致的保存元数据警告，测试通过）。命令 `.venv-train/bin/python -m pytest -q --basetemp .test-tmp-training-final`，日志 `results/h-training/tests-final.log`。GPU任务全部结束，服务器报告离线重建成功。
+- 发布清单现共99份白名单JSON/无损gzip JSONL/LOG；DFlash5份、本轮H23份。模型权重、adapter、数据库与源码压缩包未发布。统一原始/压缩SHA核验及Git字节核验用于交付；精确配置、checkpoint SHA、前缀候选、逐轮成本均保留可复算。
+- 补充直接比较：新配置未训练BASE_D/BASE_H=1.289，[1.048,1.463]，普通Draft上历史的确有正向效果；训练后H独立优势未通过。两项实验集合不同，不能直接用DFlash与训练后H两表加速比相除。没有按测试表现继续训练或改变门控。
 
 ## 2026-10-17 — Target 历史的对称 H 开关验证（完成）
 

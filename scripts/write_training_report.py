@@ -10,6 +10,8 @@ sys.path.insert(0, str(root))
 
 from scripts.write_h_causal_report import relative_time_interval
 from scripts.write_research_report import speed_interval
+from memorydraft.evaluation.replay import summarize
+from memorydraft.memory.store import MemoryEvent, MemoryStore
 
 
 def rows(path):
@@ -57,6 +59,18 @@ def main():
         labels = rows(base / "test-labels.jsonl")
         validate_training_rows(data, labels)
         summary = json.loads((base / "test-summary.json").read_text())
+        if summary != summarize(data):
+            raise ValueError("Saved training summary differs from paired replay")
+        requests = {split: rows(base / f"{split}-requests.jsonl") for split in ("train", "dev", "test")}
+        users = {split: {row["user_id"] for row in values} for split, values in requests.items()}
+        if users["train"] & users["dev"] or users["test"] & (users["train"] | users["dev"]):
+            raise ValueError("Training, development and test users overlap")
+        with MemoryStore(":memory:") as memory:
+            memory.append([MemoryEvent(**row) for row in rows(base / "history.jsonl")])
+            snapshots = {request["id"]: memory.snapshot(request["user_id"], request["order"])
+                         for request in requests["test"]}
+            if any(row["snapshot_id"] != snapshots[row["request_id"]].snapshot_id for row in data):
+                raise ValueError("Replay snapshot differs from published causal history")
         past = rows(base / "past-generations.jsonl")
         train_labels = rows(base / "train-labels.jsonl")
         dev_labels = rows(base / "dev-labels.jsonl")
@@ -88,7 +102,7 @@ def main():
         lines += paired_table(data, summary)
         lines += ["", "BASE 为未训练 Draft，TRAIN 为同一个 LoRA 合并后的 Draft。D 是官方原生 D，H 是历史条件化独立起草；off/on 是同一 RHD 路由的 H 开关。原始/训练后 S 同时驻留仅用于交错公平对照，模型选择/加载不属于每个请求的在线模型切换。", "",
                   "| 直接比较 | baseline/方法 | 请求 bootstrap 95% 区间 |", "|---|---:|---|"]
-        for baseline, method in (("BASE_D", "TRAIN_D"), ("TRAIN_D", "TRAIN_H"), ("TRAIN_off", "TRAIN_on")):
+        for baseline, method in (("BASE_D", "BASE_H"), ("BASE_D", "TRAIN_D"), ("TRAIN_D", "TRAIN_H"), ("TRAIN_off", "TRAIN_on")):
             low, high = relative_time_interval(data, baseline, method)
             ratio = summary[baseline]["total_seconds"] / summary[method]["total_seconds"]
             lines.append(f"| {baseline}/{method} | {ratio:.3f}× | [{low:.3f}, {high:.3f}] |")
@@ -123,6 +137,11 @@ def main():
             lines.append(f"| {family} | {totals['TRAIN_off']/totals['TRAIN_on']:.3f}× | {totals['TRAIN_D']/totals['TRAIN_H']:.3f}× |")
         lines += ["", f"{len(data)} 次最终配对计时全部与冻结 Target 一致；训练后 D 的改善属于蒸馏收益，H 必须另看同权重质量和 off/on 增量。", "",
                   f"训练运行源码清单 SHA-256：`{provenance['source_manifest']['source_sha256']}`。adapter 文件 SHA 保存在 provenance；权重不入 Git。"]
+        ratio = summary["TRAIN_D"]["total_seconds"] / summary["TRAIN_H"]["total_seconds"]
+        router = summary["TRAIN_off"]["total_seconds"] / summary["TRAIN_on"]["total_seconds"]
+        lines += ["", "## 本轮解释", "",
+                  f"普通未训练 S 的 H 在这组新任务、短词法历史和k4组合上有正向候选增量；蒸馏后同权重 H−D_format 为 {quality['trained_H_minus_D']['mean_delta']:+.3f}，区间跨零。训练后独立 D/H 时间比为 {ratio:.3f}，同路由 off/on 为 {router:.3f}，两者区间均跨1，未证明训练后 H 的稳定独立收益。",
+                  "本轮不将结果概括为历史永远无效：未训练 H 的质量和时间均有正信号；但对齐训练使空历史 D 追上 H，新增历史的价值需要在强基线上重新证明。旧六项目到新数据同时改变了任务、历史选择和候选长度，不能单独归因于某一个改动。"]
     dflash = root / "results/dflash-baseline"
     if (dflash / "provenance.json").exists():
         p = json.loads((dflash / "provenance.json").read_text())
@@ -144,8 +163,11 @@ def main():
         else:
             lines += [f"错误：`{p.get('error_type', '')}: {p.get('error', '')}`。保存失败现场，不将未通过或不完整运行汇总为无损加速。"]
     lines += ["", "## 复现与边界", "",
-              "命令与环境见 PROGRESS；`python scripts/write_training_report.py` 可从公开压缩记录离线重建。DFlash 是独立成熟起草对照，尚未集成 R 或记忆，不属于 H 收益。",
+              "命令与环境见 PROGRESS；`python scripts/write_training_report.py` 可从公开压缩记录离线重建。DFlash 是独立成熟起草对照，尚未集成 R 或记忆，不属于 H 收益。DFlash 与本轮训练后 H 使用不同测试集合，不能直接用两表加速比相除判断优劣。",
               "数据规模小且共享模板，只用于一次预声明机制小试验。候选质量、训练收益、H 增量和后端变化分开解释；不放宽 Target 接受规则，不从测试反馈追加训练或阈值选择。", ""]
+    log = base / "tests-final.log"
+    if log.exists():
+        lines += ["## 服务器最终回归", "", "```text", log.read_text(encoding="utf-8").strip(), "```", ""]
     (root / "docs/H_TRAINING_RESULTS.md").write_text("\n".join(lines), encoding="utf-8")
     print("Wrote docs/H_TRAINING_RESULTS.md")
 

@@ -1,0 +1,10 @@
+....                                                                     [100%]
+=============================== warnings summary ===============================
+tests/test_distillation.py::test_lora_training_keeps_target_fixed_and_selects_saved_adapter
+  /home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+4 passed, 1 warning in 5.22s
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.49s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.38s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+40 past answers frozen

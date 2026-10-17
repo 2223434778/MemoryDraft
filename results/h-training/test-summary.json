@@ -1,0 +1,240 @@
+{
+  "AR": {
+    "requests": 24,
+    "total_seconds": 64.07483540097019,
+    "speedup_vs_ar": 1.0,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 2.167307117517339,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "BASE_D": {
+    "requests": 24,
+    "total_seconds": 62.932932160270866,
+    "speedup_vs_ar": 1.018144764616898,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.6139867964957375,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 375,
+        "proposed": 1482,
+        "accepted": 876,
+        "committed": 1251
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "BASE_H": {
+    "requests": 24,
+    "total_seconds": 48.83650313789258,
+    "speedup_vs_ar": 1.3120275057378972,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.4691577345365658,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 288,
+        "proposed": 1140,
+        "accepted": 963,
+        "committed": 1251
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "TRAIN_D": {
+    "requests": 24,
+    "total_seconds": 46.522198503196705,
+    "speedup_vs_ar": 1.37729594607545,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.47630459049833,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 273,
+        "proposed": 1086,
+        "accepted": 978,
+        "committed": 1251
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "TRAIN_H": {
+    "requests": 24,
+    "total_seconds": 46.099330758152064,
+    "speedup_vs_ar": 1.389929839483394,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.471125303505687,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 270,
+        "proposed": 1074,
+        "accepted": 981,
+        "committed": 1251
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "TRAIN_off": {
+    "requests": 24,
+    "total_seconds": 36.14919441594975,
+    "speedup_vs_ar": 1.7725107415588515,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.2062876239651814,
+    "routes": {
+      "R": {
+        "rounds": 216,
+        "proposed": 810,
+        "accepted": 507,
+        "committed": 723
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 93,
+        "proposed": 342,
+        "accepted": 294,
+        "committed": 387
+      },
+      "AR": {
+        "rounds": 141,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 141
+      }
+    }
+  },
+  "TRAIN_on": {
+    "requests": 24,
+    "total_seconds": 36.48167869291501,
+    "speedup_vs_ar": 1.7563565520194648,
+    "all_correct": true,
+    "generated_tokens": 1251,
+    "median_latency_seconds": 1.1918543935171328,
+    "routes": {
+      "R": {
+        "rounds": 180,
+        "proposed": 648,
+        "accepted": 432,
+        "committed": 612
+      },
+      "H": {
+        "rounds": 59,
+        "proposed": 229,
+        "accepted": 203,
+        "committed": 262
+      },
+      "D": {
+        "rounds": 73,
+        "proposed": 284,
+        "accepted": 250,
+        "committed": 323
+      },
+      "AR": {
+        "rounds": 54,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 54
+      }
+    }
+  }
+}
