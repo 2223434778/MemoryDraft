@@ -64,6 +64,8 @@ python -m pytest -q --basetemp .test-tmp
 
 `results/qwen3-pilot/` 包含配对记录、失败现场与来源清单；JSONL 使用无损 gzip，原始/发布哈希见 `results/research-v2-publication.json`。`qwen3-inherited-defaults` 是修复 greedy 参数前的无效运行，不能并入性能统计。
 
+追加历史向量缓存消融另有 144 次计时运行，检索时间约从 3s 降到 1s，H/RHD 总耗时分别改善约 2.6%/3.4%，仍未超过同批 D/RD。缓存与未缓存路径均保留在 `memorydraft/retrieval/pool.py`；实验脚本为 `scripts/run_embedding_cache_check.py`，明确区分首次与后续访问。
+
 该脚本会保存失败现场、用开发请求选择候选长度，再冻结配置做测试；不会将测试输出写入历史。新方法名 `D_native` 是官方起草控制、`D_adapter` 是相同输入的适配控制、`D` 是 H 的同指令空历史控制，`PLD` 是补齐长度边界的上游 prompt lookup。`--r-scope shared_pool` 可保留旧级联检索消融，默认独立快照索引。
 
 `--methods AR D R RD H RHD` 对应 B0–B5。回放强制加入 AR，逐 token 检查各方法结果，遇到首个差异即保存现场并停止。每个方法共享同一历史快照，不会把测试答案写入过去历史。合成重复场景与真实长期用户分布不能混同。

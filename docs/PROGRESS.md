@@ -123,3 +123,10 @@ OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python -u scripts/run_
 结果路径：主报告 `docs/EXPERIMENTS_V2.md`，主配对记录 `results/qwen3-pilot/{memory-test,public-test}/replay-k2.jsonl.gz`，H 诊断 `prefix-test/` 与 `prefix-dense-check/`，成本消融 `embedding-cache-check/`。发布工具仅收集公开/合成实验的 JSON/JSONL/TXT/LOG，JSONL 无损 gzip；逐文件原始与发布 SHA 在 `results/research-v2-publication.json`。权重、数据库与原始下载档不上传。
 
 成熟 B6/B7、自然长期用户数据、采样/并发仍未完成；下一机制重点是历史接续与固定 Target 对齐，而不是在这六个测试项目上继续换检索器挑最优结果。项目未被标记为六阶段完成。
+
+### 缓存消融结果与发布收尾
+
+- 追加 6 项目 × 8 条方法/缓存条件 × 3 次 = **144** 次计时运行全部正确；本轮主测试加成本消融共 **576** 次，不含开发校准/失败/离线前缀诊断，不是 576 个独立请求。
+- 同批 AR=81.172s，D=69.858s，D_native=69.446s，RD=56.956s；H 未缓存/缓存为 73.331/71.414s，RHD 为 59.944/57.923s。缓存使 H 约快 1.027×、RHD 约快 1.035×；但缓存 H 仍比同指令 D 慢约 2.23%，缓存 RHD 仍比 RD 慢约 1.70%。候选增益不足的问题没有被缓存掩盖。
+- H/RHD 检索累计分别从 2.980/3.000s 降到 1.008/1.015s；两个独立缓存均命中 63 次、新编码 9 个片段。逐轮路线、来源、提议数、接受数和推进量在各自 18/18 个缓存配对中相同。第一次编码也计入，没有把离线预处理当零成本。
+- 完整报告由已完成结果重建，缓存为看过测试后的工程消融；对应 provenance/缓存访问记录/测试日志一并保留。已有主证据提交 `4bf7010` 已推送。新增 `.gitattributes` 固定发布文件原始字节，并用 `git show HEAD:<path>` 确认全部已提交文件与发布 SHA 相符，避免换行转换破坏核查。

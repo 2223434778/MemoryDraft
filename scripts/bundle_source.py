@@ -10,7 +10,7 @@ root = Path(__file__).resolve().parents[1]
 paths = []
 for directory in ("memorydraft", "scripts", "tests", "configs", "docs", "data/synthetic", "data/research"):
     paths.extend(p for p in (root / directory).rglob("*") if p.is_file() and "__pycache__" not in p.parts)
-paths.extend(root / name for name in ("pyproject.toml", "README.md", "AGENTS.md", ".gitignore"))
+paths.extend(root / name for name in ("pyproject.toml", "README.md", "AGENTS.md", ".gitignore", ".gitattributes"))
 manifest = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(paths)}
 payload = {"files": manifest, "source_sha256": hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest(),
            "base_git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()}

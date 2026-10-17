@@ -17,6 +17,7 @@ def test_publication_is_lossless_and_excludes_database_weights_and_other_roots(t
     (other / "private.json").write_text("{}")
     destination = tmp_path / "published"
     entries = publish(source, destination)
+    assert b"\r\n" not in (destination / "research-v2-publication.json").read_bytes()
     assert len(entries) == 1
     assert gzip.decompress((destination / entries[0]["published"]).read_bytes()) == raw
     assert entries[0]["raw_sha256"] == hashlib.sha256(raw).hexdigest()

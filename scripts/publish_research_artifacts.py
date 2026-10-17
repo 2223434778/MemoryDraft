@@ -30,7 +30,7 @@ def publish(source: Path, destination: Path):
                                 raw_sha256=hashlib.sha256(data).hexdigest(),
                                 published=target.relative_to(destination).as_posix(),
                                 published_bytes=len(encoded), published_sha256=hashlib.sha256(encoded).hexdigest()))
-    (destination / "research-v2-publication.json").write_text(json.dumps(entries, indent=2) + "\n")
+    (destination / "research-v2-publication.json").write_bytes((json.dumps(entries, indent=2) + "\n").encode("utf-8"))
     return entries
 
 

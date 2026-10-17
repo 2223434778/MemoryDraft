@@ -168,6 +168,17 @@ if __name__ == "__main__":
         for name, stats in cache_provenance["cache_stats"].items():
             lines.append(f"- {name}: 命中 {stats['hits']}、新编码 {stats['misses']}、结束时 {stats['chunks']} 个向量，逻辑向量 payload 为 {stats['vector_bytes']} 字节（不是内存峰值；不含 NumPy 底层批次、Python 键/对象和 encoder 权重）。")
         lines += ["", f"此消融另有 {len(rows)} 次计时方法运行，逐 token / Target prompt hash / snapshot 配对检查通过。缓存优化不直接证明 H 提议质量改善；仍须与同权重 D 及 RD 比较。", ""]
+        by_pair = {(r["request_id"], r["repeat"], r["method"]): r for r in rows}
+        for method, baseline in (("H", "D"), ("RHD", "RD")):
+            same, count = 0, 0
+            for row in (r for r in rows if r["method"] == method):
+                cached = by_pair[(row["request_id"], row["repeat"], method + "_cached")]
+                sequence = lambda r: [tuple(e.get(k) for k in ("route", "source_id", "proposed", "accepted", "committed")) for e in r["rounds"]]
+                same += sequence(row) == sequence(cached)
+                count += 1
+            extra = cache_summary[method + "_cached"]["total_seconds"] / cache_summary[baseline]["total_seconds"] - 1
+            lines.append(f"{method} 的 {same}/{count} 个配对中，逐轮路线/来源/提议数量/接受数量/推进量均相同；缓存后仍比 {baseline} 多耗时 {extra:.2%}。这里没有保存所有未接受候选的完整 token，因此不把计数相同写成全部候选 IDs 相同。")
+        lines.append("")
     diagnostic = json.loads((base / "bf16-diagnostic.json").read_text())
     lines += ["## BF16 首个分歧的定点诊断", "",
               f"在 `{diagnostic['request_id']}` 的 index={diagnostic['position']}，实际 Target forward 的已确认输入前缀相同，AR query 长度为 {diagnostic['AR']['state']['query']}，块验证为 {diagnostic['D_adapter']['state']['query']}；AR 前两名 logits 差 {diagnostic['AR']['top2_gap']:.2f}，块验证差 {diagnostic['D_adapter']['top2_gap']:.2f}，整向量最大绝对差 {diagnostic['max_abs_logit_difference']:.2f}。",

@@ -64,6 +64,46 @@
     "published_sha256": "4a8ff2804e5c8a458dc0352a7ac269bedf9bfc89c48faa1fde15750ef3569f93"
   },
   {
+    "source": "qwen3-pilot/embedding-cache-check/cache-visits.json",
+    "raw_bytes": 13733,
+    "raw_sha256": "837f9429023571aabc0f2bc1738c122ab3548f91f282f5453c162eb921a95e87",
+    "published": "qwen3-pilot/embedding-cache-check/cache-visits.json",
+    "published_bytes": 13733,
+    "published_sha256": "837f9429023571aabc0f2bc1738c122ab3548f91f282f5453c162eb921a95e87"
+  },
+  {
+    "source": "qwen3-pilot/embedding-cache-check/provenance.json",
+    "raw_bytes": 9900,
+    "raw_sha256": "650b5475e4f9ca4a132a77fe39f7d29ea41388a160398729f986b18c05783c02",
+    "published": "qwen3-pilot/embedding-cache-check/provenance.json",
+    "published_bytes": 9900,
+    "published_sha256": "650b5475e4f9ca4a132a77fe39f7d29ea41388a160398729f986b18c05783c02"
+  },
+  {
+    "source": "qwen3-pilot/embedding-cache-check/replay-k2.jsonl",
+    "raw_bytes": 2569251,
+    "raw_sha256": "ab96d4c2919d62000e81af8dbc6e59ec8734acf6cc710c844ffe7bd75df52e4a",
+    "published": "qwen3-pilot/embedding-cache-check/replay-k2.jsonl.gz",
+    "published_bytes": 269739,
+    "published_sha256": "64c2648b8c3c57228d9704fb8ef1b848a8c09379ca1386fcdb1a9a391b5e2dd1"
+  },
+  {
+    "source": "qwen3-pilot/embedding-cache-check/summary-k2.json",
+    "raw_bytes": 5627,
+    "raw_sha256": "9015229f66418a4a3fd73212af16f76b6ac3301c949758d8fb5c70e42278ab12",
+    "published": "qwen3-pilot/embedding-cache-check/summary-k2.json",
+    "published_bytes": 5627,
+    "published_sha256": "9015229f66418a4a3fd73212af16f76b6ac3301c949758d8fb5c70e42278ab12"
+  },
+  {
+    "source": "qwen3-pilot/embedding-cache-check/tests.log",
+    "raw_bytes": 99,
+    "raw_sha256": "059b64b9200e692112aa5155ed55961bd6714b934fe8ef545142a42a0997f0c8",
+    "published": "qwen3-pilot/embedding-cache-check/tests.log",
+    "published_bytes": 99,
+    "published_sha256": "059b64b9200e692112aa5155ed55961bd6714b934fe8ef545142a42a0997f0c8"
+  },
+  {
     "source": "qwen3-pilot/memory-test/provenance.json",
     "raw_bytes": 10916,
     "raw_sha256": "0d5d03ea5d040acfcb0d4ef95a55eebef862b9e541535ff3176e33149b57ea61",
