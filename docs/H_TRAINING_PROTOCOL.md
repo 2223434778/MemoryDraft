@@ -8,6 +8,7 @@
 - 先用固定 Qwen3-8B FP32/eager/non-thinking AR 生成全部模拟过去回答并冻结。过去请求 order=0，回答 order=1；当前请求 order=10。旧回答仅依赖旧任务。训练标签只来自 train 项目的当前 Target 回答，不进入检索历史；测试当前回答在权重及开发选择冻结后生成。
 - 每个 train 项目同时构造 D_format 空历史、H 相关旧片段、H 无关片段三个样本；三者预测相同的固定 Target 输出，prompt token 的训练标签全部为 -100。H 用低成本词法 top-1 检索、128 token 历史预算，训练与推理一致；R 始终使用完整合法快照。
 - 复用 PEFT 0.11.1 LoRA：rank=8、alpha=16、dropout=0、q_proj/v_proj，AdamW lr=1e-4，batch=1、累积4、四轮、seed=20261017。保存每轮开发响应 token loss，按开发 loss 选择 checkpoint；不按测试结果继续训练。是序列级硬标签蒸馏，不冒充 DistillSpec 的 on-policy/KL 完整复现。
+- 部署前小测试发现全局旧 bitsandbytes 不支持当前 CUDA 12.4；因此训练使用独立 `.venv-train`，仅覆盖 bitsandbytes=0.45.5，保留 torch 2.5.1、Transformers 4.52.2、PEFT 0.11.1。训练不用量化；此依赖用于兼容 PEFT 的导入，不改原环境。
 - 模型、精度、Target 模板及验证规则保持旧配置。训练只更新 Draft LoRA，合并后 D/H 共用同一模型；原始 Draft 作为配对对照。LoRA 权重不上传 Git。
 - 开发集先比较 D_native、D_format、H 的同前缀连续接受长度，H/D 候选长度各在 {2,4} 中选择，并计入完整生成成本。主 H 质量对照是同权重 D_format，D_native 同时报告。检索及短历史选择均在生成当前评分答案前完成。
 - 系统阶段比较 AR、原始/训练后 D、H、同一 RHD 路由 H-off/on；门控版仅当同权重 H 在对应任务开发子集同时改善质量与端到端耗时时启用。门控先判断任务再决定是否检索，H 首次 prefill/追赶全部计入。若开发无获益任务，明确记录门控关闭全部 H，不宣称 H 系统成功。
