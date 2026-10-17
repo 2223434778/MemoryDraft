@@ -13,6 +13,7 @@ dependencies = ["torch>=2.5,<2.7", "transformers==4.52.2", "numpy>=1.24,<2.5", "
 semantic = ["sentence-transformers==4.1.0"]
 test = ["pytest>=8,<9", "rank-bm25==0.2.2"]
 research = ["pydivsufsort==0.0.19", "rank-bm25==0.2.2"]
+training = ["peft==0.11.1"]
 
 [project.scripts]
 memorydraft = "memorydraft.cli:main"

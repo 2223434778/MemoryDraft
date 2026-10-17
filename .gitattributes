@@ -6,3 +6,5 @@ results/research-old-controls/** -text
 results/research-v2-publication.json -text
 results/h-causal/** -text
 results/h-teacher-router/** -text
+results/h-training/** -text
+results/dflash-baseline/** -text

@@ -5,6 +5,10 @@
 - 用户授权执行上一轮建议的两个交付；运行前协议 `docs/H_TRAINING_PROTOCOL.md`。先核验数据隔离/标签掩码，完成独立环境 DFlash 小检查及同权重 D/H 蒸馏，不修改 Target 或放宽验证规则。
 - A6000 GPU0/GPU1 空闲，项目盘余 410GB；原环境 torch 2.5.1、Transformers 4.52.2、PEFT 0.11.1。DFlash 使用独立环境，不更新原环境。
 - 已读取官方模型快照源码与上游 MIT 许可；锁定 HF revision、上游 commit 和权重 SHA，详见协议及 `configs/dflash-manifest.json`。模型源码/权重留在忽略目录。
+- DFlash 独立基线已完成：12 请求（旧六合成+六类别公开各一条）×2方法×3重复=72 次，全部与同环境 AR 及旧 AR 严格一致。FP32/eager、Transformers4.57.3/torch2.5.1，AR=187.385s、DFlash=84.682s，2.213×，请求 bootstrap [1.713,3.263]；合成2.840×、公开1.894×，不是完整公开24请求复现。结果 `results/dflash-baseline/`；模型从 hf-mirror 传输，最终官方 SHA 核验通过。大文件直传留下的部分 tar 未用于加载。
+- H 训练前增加独立 `.venv-train`（bitsandbytes0.45.5、pydivsufsort0.0.19/rank-bm25），避开全局旧 bitsandbytes CUDA124 导入问题，不覆盖原环境。服务器四项训练小测试通过；本机完整48 passed、1 skipped（本机没有所需 PEFT，服务器已实际验证）。
+- 40 条过去回答先以源码 SHA `28a80ae186d2b116c40ff5e48361c739f35142717cc9c98b7c36c191b3223524` 冻结。审查发现重新加载原始 S 会恢复默认 assistant 阈值；在计时前停止资产任务，修正原始/训练后均为 constant/threshold0，并用 `--resume-assets` 只复用核验后的过去回答。正式训练/评测实际源码 SHA `89362a22632ac47397e53e189faf6175d8c16c82a3344816cec19ef8735a41b9`，不把初始未完成资产计算当正式性能结果。
+- LoRA 四轮训练40.485s、1,146,880参数；开发响应loss最低为第2轮0.083185，已固定该权重。开发64条长度计时、107个stride4前缀、24条路由计时选择k4，门控任务类为空；未宣称关闭H即成功。当前在未见八项目上做完整前缀与168次最终计时，结果未完成。
 
 ## 2026-10-17 — Target 历史的对称 H 开关验证（完成）
 

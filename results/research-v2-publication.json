@@ -566,5 +566,45 @@
     "published": "h-teacher-router/tests-final.log",
     "published_bytes": 99,
     "published_sha256": "cd276d5d6117d6aa91e4bed7069d6b72e50a2dab3cf82e5269cacc91a0f18824"
+  },
+  {
+    "source": "dflash-baseline/provenance.json",
+    "raw_bytes": 13162,
+    "raw_sha256": "f8ea0fb3873b8da0885954e35f47d17b98c878dd8cb48a7d0267afb92c6ad4d1",
+    "published": "dflash-baseline/provenance.json",
+    "published_bytes": 13162,
+    "published_sha256": "f8ea0fb3873b8da0885954e35f47d17b98c878dd8cb48a7d0267afb92c6ad4d1"
+  },
+  {
+    "source": "dflash-baseline/replay.jsonl",
+    "raw_bytes": 97424,
+    "raw_sha256": "3b66711d7720ba4685d241cc2d7bf164179490c3f0228cf636aabbcc017cfeed",
+    "published": "dflash-baseline/replay.jsonl.gz",
+    "published_bytes": 7762,
+    "published_sha256": "46f40721d9ef9dbc22530ffea517b01ec3b0b7b07c5eb15d75cafaa099395a8d"
+  },
+  {
+    "source": "dflash-baseline/run.log",
+    "raw_bytes": 1038,
+    "raw_sha256": "63f66e87aa0c95c746aa9bf450a80b04b40ca5c5958affac3af72dd1fb9d7765",
+    "published": "dflash-baseline/run.log",
+    "published_bytes": 1038,
+    "published_sha256": "63f66e87aa0c95c746aa9bf450a80b04b40ca5c5958affac3af72dd1fb9d7765"
+  },
+  {
+    "source": "dflash-baseline/summary.json",
+    "raw_bytes": 130,
+    "raw_sha256": "34d183aa57f20313f648127261463591c0f2cb8438c1bf0553a084d0c93a2081",
+    "published": "dflash-baseline/summary.json",
+    "published_bytes": 130,
+    "published_sha256": "34d183aa57f20313f648127261463591c0f2cb8438c1bf0553a084d0c93a2081"
+  },
+  {
+    "source": "dflash-baseline/transport.json",
+    "raw_bytes": 403,
+    "raw_sha256": "4b0a760e096125e1b6cc9258604fc3c06357f8ef345529c3ccb0cb3f1138a110",
+    "published": "dflash-baseline/transport.json",
+    "published_bytes": 403,
+    "published_sha256": "4b0a760e096125e1b6cc9258604fc3c06357f8ef345529c3ccb0cb3f1138a110"
   }
 ]
