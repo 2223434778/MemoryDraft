@@ -168,7 +168,7 @@ def main():
     log = base / "tests-final.log"
     if log.exists():
         lines += ["## 服务器最终回归", "", "```text", log.read_text(encoding="utf-8").strip(), "```", ""]
-    (root / "docs/H_TRAINING_RESULTS.md").write_text("\n".join(lines), encoding="utf-8")
+    (root / "docs/H_TRAINING_RESULTS.md").write_bytes("\n".join(lines).encode("utf-8"))
     print("Wrote docs/H_TRAINING_RESULTS.md")
 
 
