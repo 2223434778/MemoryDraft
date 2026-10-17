@@ -6,19 +6,22 @@ from pathlib import Path
 import pytest
 
 from memorydraft.memory.store import MemoryStore, Snapshot
-from scripts.run_h_teacher_router import FixedTargetComparison, load_frozen_inputs
+from scripts.run_h_teacher_router import FixedTargetComparison, artifact_bytes, load_frozen_inputs
 from tests.test_backend import backend
 
 
 def test_frozen_teacher_assets_are_reused_and_protect_history_and_requests(tmp_path):
     project = Path(__file__).resolve().parents[1]
     for name in ("data/research/history.jsonl", "data/research/memory-test.jsonl",
-                 "results/h-causal/provenance.json", "results/h-causal/teacher-history/history.jsonl.gz",
-                 "results/h-causal/teacher-history/past-requests.jsonl.gz",
-                 "results/h-causal/teacher-history/generations.json", "results/h-causal/router-replay.jsonl.gz"):
+                 "results/h-causal/provenance.json", "results/h-causal/teacher-history/history.jsonl",
+                 "results/h-causal/teacher-history/past-requests.jsonl",
+                 "results/h-causal/teacher-history/generations.json", "results/h-causal/router-replay.jsonl"):
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(project / name, target)
+        if name.startswith("results/") and name.endswith(".jsonl"):
+            target.with_suffix(".jsonl.gz").write_bytes(gzip.compress(artifact_bytes(project / name)))
+        else:
+            shutil.copyfile(project / name, target)
     events, requests, references, _, evidence = load_frozen_inputs(tmp_path)
     assert len(requests) == len(references) == 6 and evidence["history_reused_without_regeneration"]
     with MemoryStore(tmp_path / "test.db") as store:
