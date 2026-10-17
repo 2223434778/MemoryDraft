@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-18 — R/DFlash 接入与场景开发（运行中）
+
+- 用户授权实现并运行。新增 `backends/dflash_reuse.py`，薄适配已审计 MIT DFlash 循环，复用模型前向/严格最长前缀验证/KV裁剪；支持连续R后累计有效Target特征并在回切时补齐，设待消费缓冲门槛。
+- 后缀索引保留旧 `match`，增加有界位置查询及显式当前prompt候选；`retrieval/reuse.py` 增加本请求游标和局部重匹配。当前prompt不伪装成过去事件；历史仍由原MemoryStore时间快照读取。
+- 本机首轮完整59 passed、2 skipped（PEFT和审计DFlash环境）；服务器4.57.3中12项新测试全部通过，包括真实小型DFlash类与官方循环对齐。补充报告/发布检查另6项通过。
+- 服务器DFlash环境新增固定 `pydivsufsort==0.0.19`，不修改原环境。初次GPU A阶段暴露零命中 `sa_search` 返回left=None，已补提前返回及回归；该失败批次保留为 `results/reuse-pilot-lookup-failure/`，未进入开发计时。
+- 正式运行源码SHA `57a013cadafc9859dc002bdefce72d47acaae4774bd13263788a9140ff8e947e`；A八请求×三方法24次全部对齐AR。B按 `REUSE_PILOT_PROTOCOL.md` 运行12合成开发项目/18当前请求/五方法单重复，尚不作为独立性能结论。
+- 实际命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_reuse_pilot.py`。源码/模型SHA已校验，A6000仅GPU0。结果 `results/reuse-pilot/`，作业日志 `results/reuse-pilot-job.log`。
+- 新增离线报告审计：重建每轮过去快照，核对固定参考、配对、场景标签和KV前沿。待开发结束后发布准确结果和解释。
+
 ## 2026-10-17 — 用户修订：场景优先，允许复用成熟架构（方案已调整）
 
 - 用户明确无需击败所有基线，优先找到设计适合的场景；允许借鉴已有架构并形成自己的有效差异。更新 `MEMORY_REUSE_RESEARCH_PLAN.md` 和审阅入口，作为此前通用门槛的替代。

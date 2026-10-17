@@ -7,7 +7,7 @@
 ## 当前状态
 
 已实现基于 Transformers 4.52.2 的单请求 greedy 研究原型：独立 KV 的 H/D、R 接续复制、用户/时间快照、词法及可选语义检索、带探测/冷却/AR 退路的路由，以及冻结历史回放。
-已在 A6000 上用真实 Qwen2.5-1.5B Target + 0.5B Draft 跑通初始 13 请求、6 方法的一致性检查。首轮 H 未取得净收益；这不是已完成的论文性能结论或生产服务。已补独立成熟 DFlash 基线，成熟 Draft 与记忆的集成、随机采样和并发尚未实现。
+已在 A6000 上用真实 Qwen2.5-1.5B Target + 0.5B Draft 跑通初始 13 请求、6 方法的一致性检查。首轮 H 未取得净收益；这不是已完成的论文性能结论或生产服务。已补独立成熟 DFlash 基线；R+DFlash 薄适配已实现并通过首轮接入检查，正在做合成开发场景验证。随机采样和并发尚未实现。
 
 第二轮 [GPU 报告](docs/EXPERIMENTS_V2.md) 已完成 432 次配对计时运行：A6000、Qwen3-8B/0.6B、FP32/eager、非思考模式。合成历史任务 D_native **1.168×**、R **1.487×**；公开任务 D_native **1.000×**、R **1.056×**、PLD **1.117×**。D 尚未在全部任务上加速。H 的全前缀接受长度增量约 **+0.045 token**、区间跨零，且在线慢于同指令 D；没有宣称 H 成功。Qwen3 默认采样回填与 PLD 长度边界已修复并有回归测试。
 
@@ -16,6 +16,8 @@
 进一步的 [同一 Target 历史在线验证](docs/H_TEACHER_ROUTER_RESULTS.md) 已完成：R/H 共用上一轮冻结历史，72 次计时和 8 次 smoke 全部正确。H-off=49.356s（相对 AR 1.643×），H-on=53.934s，缓存 on=52.043s；启用 H 分别慢 9.27%/5.44%，验证轮数增加 9、小模型起草增加 19。改善历史来源仍未使当前固定 H 策略获得净收益。入口 `scripts/run_h_teacher_router.py`，离线重建报告使用 `python scripts/write_h_teacher_router_report.py`。
 
 最新 [H 蒸馏与 DFlash 报告](docs/H_TRAINING_RESULTS.md)：独立 DFlash 在旧六合成+六公开请求上完成72次严格一致计时，FP32/eager为 **2.213× AR**。新项目按24训练/8开发/8测试分离，LoRA训练后D从62.933s降至46.522s；H=46.099s，但同权重同前缀H增量−0.009、区间跨零，RHD开启H仍无稳定净收益。未训练H在新数据、短历史和k4组合上有正信号，不能概括历史永远无效。H最终168次计时全部正确，两项实验集合不同，不直接比较其加速比。离线复算：`python scripts/write_training_report.py`。
+
+新方向按[场景优先方案](docs/MEMORY_REUSE_RESEARCH_PLAN.md)推进，首轮[运行协议](docs/REUSE_PILOT_PROTOCOL.md)固定R接续、DFlash回退及局部重匹配。入口 `scripts/run_reuse_pilot.py`，复算 `scripts/write_reuse_report.py`。新循环许可和来源见 `docs/third_party/DFLASH_LICENSE.txt` 及文件头。
 
 ## 阅读与执行顺序
 

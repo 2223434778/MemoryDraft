@@ -9,12 +9,22 @@ from __future__ import annotations
 
 from bisect import bisect_right
 from collections import Counter
+from dataclasses import dataclass
 
 import numpy as np
 
 
+@dataclass(frozen=True)
+class PositionedMatch:
+    tokens: tuple[int, ...]
+    source: str
+    matched: int
+    position: int
+    end: int
+
+
 class SuffixArrayIndex:
-    def __init__(self, snapshot, tokenizer, min_match=3, max_match=32):
+    def __init__(self, snapshot, tokenizer, min_match=3, max_match=32, *, prompt_text=None):
         from pydivsufsort import divsufsort
 
         if not 1 <= min_match <= max_match:
@@ -23,18 +33,24 @@ class SuffixArrayIndex:
         self.starts, self.ends, self.sources = [], [], []
         data = []
         special = set(tokenizer.all_special_ids)
+        texts = []
         for record in snapshot.records:
             # User text requires an explicit quotation policy; start with finalized assistant text.
             if record.source_role != "assistant":
                 continue
+            texts.append((record.record_id, record.text))
+        if prompt_text is not None:
+            # Current input is an explicit candidate resource, never a past memory event.
+            texts.append(("context:current-prompt", prompt_text))
+        for source, text in texts:
             segment = []
-            for token in [*tokenizer.encode(record.text, add_special_tokens=False), None]:
+            for token in [*tokenizer.encode(text, add_special_tokens=False), None]:
                 if token is None or token in special:
                     if segment:
                         self.starts.append(len(data))
                         data.extend(segment)
                         self.ends.append(len(data))
-                        self.sources.append(record.record_id)
+                        self.sources.append(source)
                         data.append(2**32 - 1)
                     segment = []
                 else:
@@ -72,3 +88,30 @@ class SuffixArrayIndex:
                 best = min(candidates, key=lambda x: (-candidates[x], x))
                 return list(best), sources[best], n
         return [], None, 0
+
+    def locate(self, prefix, max_tokens, max_positions=64):
+        """Bounded positional lookup for the reuse cursor; preserve legacy match()."""
+        from pydivsufsort import sa_search
+
+        if max_positions < 1:
+            raise ValueError("max_positions must be positive")
+        if not self.tokens or max_tokens <= 0:
+            return None
+        for n in range(min(len(prefix), self.max_match), self.min_match - 1, -1):
+            count, left = sa_search(self.data, self.sa, np.asarray(prefix[-n:], dtype=">u4").tobytes())
+            if not count:
+                continue
+            found = []
+            for offset in self.sa[left:left + min(count, max_positions)]:
+                if int(offset) % 4:
+                    continue
+                start = int(offset) // 4
+                record = bisect_right(self.starts, start) - 1
+                position = start + n
+                if record >= 0 and position < self.ends[record]:
+                    found.append(PositionedMatch(tuple(self.tokens[position:min(position + max_tokens, self.ends[record])]),
+                                                 self.sources[record], n, position, self.ends[record]))
+            if found:
+                counts = Counter(item.tokens for item in found)
+                return min(found, key=lambda item: (-counts[item.tokens], item.tokens, item.position))
+        return None

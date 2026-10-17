@@ -9,3 +9,6 @@ results/h-teacher-router/** -text
 results/h-training/** -text
 results/dflash-baseline/** -text
 docs/H_TRAINING_RESULTS.md text eol=lf
+results/reuse-pilot/** -text
+results/reuse-pilot-lookup-failure/** -text
+docs/REUSE_PILOT_RESULTS.md text eol=lf
