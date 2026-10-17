@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-17 — H 蒸馏与 DFlash 基线（执行中）
+
+- 用户授权执行上一轮建议的两个交付；运行前协议 `docs/H_TRAINING_PROTOCOL.md`。先核验数据隔离/标签掩码，完成独立环境 DFlash 小检查及同权重 D/H 蒸馏，不修改 Target 或放宽验证规则。
+- A6000 GPU0/GPU1 空闲，项目盘余 410GB；原环境 torch 2.5.1、Transformers 4.52.2、PEFT 0.11.1。DFlash 使用独立环境，不更新原环境。
+- 已读取官方模型快照源码与上游 MIT 许可；锁定 HF revision、上游 commit 和权重 SHA，详见协议及 `configs/dflash-manifest.json`。模型源码/权重留在忽略目录。
+
 ## 2026-10-17 — Target 历史的对称 H 开关验证（完成）
 
 - 用户授权验证更换历史后 H 是否产生净加速。协议 `docs/H_TEACHER_ROUTER_PROTOCOL.md`：复用上一轮冻结 Target 历史，双方共享同一完整 R 索引；固定旧参数，仅比较 AR/H-off/H-on/缓存 H-on，六请求、三重复，72 次计时和 8 次 smoke。
