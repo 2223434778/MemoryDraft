@@ -111,14 +111,14 @@ class IndependentDraft:
 class MemoryCandidates(CandidateGenerator):
     def __init__(self, *, target_ids, draft_model, prefixes, generation_config,
                  bundle: MemoryBundle, method: str, block_size: int, min_match: int = 3,
-                 retrieval_index=None, dynamic_lookup=False, special_ids=()):
+                 retrieval_index=None, dynamic_lookup=False, special_ids=(), enable_history=True):
         self.target_length = target_ids.shape[1]
         self.max_length = generation_config.max_length
         self.draft_model = draft_model
         self.prefixes = prefixes
         self.config = generation_config
         self.block_size = block_size
-        self.router = Router(method, bool(bundle.chunks))
+        self.router = Router(method, bool(bundle.chunks), enable_history=enable_history)
         index_start = time.perf_counter()
         self.index = retrieval_index if retrieval_index is not None else ContinuationIndex(bundle, min_match=min_match)
         self.index_seconds = time.perf_counter() - index_start

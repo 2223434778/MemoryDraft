@@ -122,11 +122,13 @@ class TransformersBackend:
     @torch.inference_mode()
     def generate(self, messages, snapshot, *, method="RHD", max_new_tokens=128, block_size=8,
                  encoder=None, token_budget=2048, history_budget=512, top_k=8,
-                 temperature=0.0, min_match=3, r_scope="snapshot"):
+                 temperature=0.0, min_match=3, r_scope="snapshot", enable_history=True):
         if method not in METHODS or temperature != 0.0:
             raise ValueError("Only registered methods with greedy temperature=0 are supported")
         if r_scope not in {"snapshot", "shared_pool"}:
             raise ValueError("Unknown R retrieval scope")
+        if not enable_history and (method != "RHD" or r_scope != "snapshot"):
+            raise ValueError("H switch ablation requires RHD with an independent snapshot R index")
         if min(max_new_tokens, block_size, token_budget, history_budget, top_k) <= 0:
             raise ValueError("Generation and memory budgets must be positive")
         if not self.lock.acquire(blocking=False):
@@ -144,7 +146,7 @@ class TransformersBackend:
             start = time.perf_counter()
             target_ids = self.prompt(messages).to(self.target.device)
             retrieval_start = time.perf_counter()
-            if method in {"H", "RHD"} or (r_scope == "shared_pool" and method in {"R", "RD"}):
+            if (enable_history and method in {"H", "RHD"}) or (r_scope == "shared_pool" and method in {"R", "RD"}):
                 bundle = retrieve(messages[-1]["content"], snapshot, self.tokenizer, encoder or LexicalEncoder(),
                                   top_k=top_k, token_budget=token_budget)
             else:
@@ -198,6 +200,7 @@ class TransformersBackend:
                     method="D" if method == "D_adapter" else method, block_size=block_size, min_match=min_match,
                     retrieval_index=r_index, dynamic_lookup=r_index is not None,
                     special_ids=self.tokenizer.all_special_ids,
+                    enable_history=enable_history,
                 )
                 return candidates
 

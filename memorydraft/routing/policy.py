@@ -14,10 +14,11 @@ class RouteStats:
 
 
 class Router:
-    def __init__(self, method: str, has_history: bool, probe_rounds: int = 2, cooldown: int = 3):
+    def __init__(self, method: str, has_history: bool, probe_rounds: int = 2, cooldown: int = 3,
+                 enable_history: bool = True):
         if method not in METHODS:
             raise ValueError(f"Unsupported method: {method}")
-        self.method, self.has_history = method, has_history
+        self.method, self.has_history = method, has_history and enable_history
         self.probe_rounds, self.cooldown = probe_rounds, cooldown
         self.stats = {route: RouteStats() for route in ("R", "H", "D", "AR")}
         self.round = 0
