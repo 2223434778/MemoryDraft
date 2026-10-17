@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import math
 import re
-from collections import Counter, defaultdict
+from collections import Counter, OrderedDict, defaultdict
 from dataclasses import dataclass
 
 from memorydraft.memory.store import Snapshot
@@ -58,6 +58,41 @@ class SemanticEncoder:
         # No cross-snapshot derived cache: future summaries/embeddings cannot leak.
         vectors = self.model.encode([query, *texts], normalize_embeddings=True)
         return (vectors[1:] @ vectors[0]).tolist()
+
+
+class CachedSemanticEncoder:
+    """Bounded text-only embeddings; score only chunks supplied by the legal snapshot."""
+
+    def __init__(self, encoder: SemanticEncoder, *, capacity: int = 4096):
+        if capacity < 1:
+            raise ValueError("Embedding cache capacity must be positive")
+        self.model = encoder.model
+        self.name = f"chunk-lru{capacity}+{encoder.name}"
+        self.capacity = capacity
+        self.cache = OrderedDict()
+        self.hits = self.misses = 0
+
+    def scores(self, query: str, texts: list[str]) -> list[float]:
+        if not texts:
+            return []
+        missing = list(dict.fromkeys(text for text in texts if text not in self.cache))
+        # Batch missing chunks with the live query, retaining the uncached encoder path.
+        encoded = self.model.encode([query, *missing], normalize_embeddings=True)
+        available = {text: self.cache[text] for text in texts if text in self.cache}
+        available.update(zip(missing, encoded[1:]))
+        self.misses += len(missing)
+        self.hits += len(texts) - len(missing)
+        result = [float(available[text] @ encoded[0]) for text in texts]
+        for text in dict.fromkeys(texts):
+            self.cache[text] = available[text]
+            self.cache.move_to_end(text)
+            while len(self.cache) > self.capacity:
+                self.cache.popitem(last=False)
+        return result
+
+    def stats(self):
+        return dict(hits=self.hits, misses=self.misses, chunks=len(self.cache), capacity=self.capacity,
+                    vector_bytes=sum(v.nbytes for v in self.cache.values()))
 
 
 class HybridEncoder:

@@ -1,0 +1,9 @@
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 81.44it/s]
+running smoke bfloat16 eager block 8
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/scripts/run_research.py", line 101, in <module>
+    summary = replay(backend, store, requests, args.methods, out / f"replay-k{block}.jsonl",
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/memorydraft/evaluation/replay.py", line 68, in replay
+    raise RuntimeError(f"Greedy mismatch: {request['id']} / {method}; result saved")
+RuntimeError: Greedy mismatch: spec-121 / D_adapter; result saved

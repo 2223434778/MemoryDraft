@@ -2,14 +2,14 @@
 
 **长期用户记忆增强的投机解码研究项目。**
 
-围绕 R（直接复用）、H（历史辅助小模型起草）和 D（普通 Draft），交由固定 Target 严格验证。当前原型使用共享历史候选池；下一阶段分离 R/H 检索，先校准 D/R 加速基线，再验证 H 的独立接受增益。
+围绕 R（直接复用）、H（历史辅助小模型起草）和 D（普通 Draft），交由固定 Target 严格验证。R 使用合法快照上的独立 token 接续索引；H 使用请求级 dense/BM25 检索及独立 Draft 上下文。
 
 ## 当前状态
 
 已实现基于 Transformers 4.52.2 的单请求 greedy 研究原型：独立 KV 的 H/D、R 接续复制、用户/时间快照、词法及可选语义检索、带探测/冷却/AR 退路的路由，以及冻结历史回放。
 已在 A6000 上用真实 Qwen2.5-1.5B Target + 0.5B Draft 跑通初始 13 请求、6 方法的一致性检查。首轮 H 未取得净收益；这不是已完成的论文性能结论或生产服务。成熟学习型 Draft 的 B6/B7、随机采样和并发尚未实现。
 
-第二轮已实现官方 D/PLD 对照、独立 R 索引和同前缀 H 诊断。Qwen3 默认采样回填与 PLD 长度边界已修复并有回归测试。新实验使用固定 Qwen3-8B/0.6B、非思考模板，服务器运行脚本为 `scripts/run_qwen3_pilot.py`；结果完成后由 `scripts/write_research_report.py` 生成报告。
+第二轮 [GPU 报告](docs/EXPERIMENTS_V2.md) 已完成 432 次配对计时运行：A6000、Qwen3-8B/0.6B、FP32/eager、非思考模式。合成历史任务 D_native **1.168×**、R **1.487×**；公开任务 D_native **1.000×**、R **1.056×**、PLD **1.117×**。D 尚未在全部任务上加速。H 的全前缀接受长度增量约 **+0.045 token**、区间跨零，且在线慢于同指令 D；没有宣称 H 成功。Qwen3 默认采样回填与 PLD 长度边界已修复并有回归测试。
 
 ## 阅读与执行顺序
 
@@ -22,7 +22,7 @@
 
 Astra 审阅请从 [REVIEW_HANDOFF](docs/REVIEW_HANDOFF.md) 开始，里面列出失败证据、代码入口和仍需验证的原因。
 
-用户最新要求对应 [下一阶段实验协议与上游审计](docs/NEXT_EXPERIMENT.md)。本轮已复算 R 覆盖率、检查候选模型 tokenizer 与 REST 索引兼容性；这些核查不代表新的 GPU 加速结果。
+实验设计和上游核查见 [协议与审计](docs/NEXT_EXPERIMENT.md)；实际执行结果以第二轮报告为准，协议中的“尚未运行”描述保留为运行前记录。
 
 ## 安装与检查
 
@@ -38,7 +38,7 @@ python -m memorydraft env --output results/environment.json
 
 ## 可运行的合成回放
 
-以下命令在项目根目录运行。`configs/local.example.json` 固定官方模型 revision，可复制修改设备/本地路径。RTX3090 足以容纳本轮模型；本机现有 PyTorch 是 CPU 版，实际 GPU 运行使用服务器。FP32/eager 是当前正确性参考；BF16/SDPA 已发现数值分歧，不视为已验证配置。
+以下旧模型 demo 命令在项目根目录运行。`configs/local.example.json` 固定官方模型 revision，可复制修改设备/本地路径。项目本机 venv 已有 CUDA PyTorch；第二轮 FP32 8B 配置峰值约 33GiB，使用 48GB A6000。FP32/eager 是当前正确性参考；BF16 已发现并复现数值分歧，不视为已验证配置。
 
 ```bash
 python scripts/make_pilot.py
@@ -54,6 +54,15 @@ python -m memorydraft report --input results/pilot/replay.jsonl --output results
 ```bash
 OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python scripts/run_qwen3_pilot.py
 ```
+
+已有提交结果可在本机离线复算，无需模型/GPU：
+
+```bash
+python scripts/write_research_report.py
+python -m pytest -q --basetemp .test-tmp
+```
+
+`results/qwen3-pilot/` 包含配对记录、失败现场与来源清单；JSONL 使用无损 gzip，原始/发布哈希见 `results/research-v2-publication.json`。`qwen3-inherited-defaults` 是修复 greedy 参数前的无效运行，不能并入性能统计。
 
 该脚本会保存失败现场、用开发请求选择候选长度，再冻结配置做测试；不会将测试输出写入历史。新方法名 `D_native` 是官方起草控制、`D_adapter` 是相同输入的适配控制、`D` 是 H 的同指令空历史控制，`PLD` 是补齐长度边界的上游 prompt lookup。`--r-scope shared_pool` 可保留旧级联检索消融，默认独立快照索引。
 

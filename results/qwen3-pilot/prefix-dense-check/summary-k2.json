@@ -1,0 +1,121 @@
+{
+  "D_native": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.6343533114815443,
+    "mean_delta_vs_format_per_request": 0.016635917363288052,
+    "delta_bootstrap95_request": [
+      -0.012705176767676768,
+      0.05042205459770115
+    ],
+    "worse_position_fraction": 0.005639097744360902,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": -0.004629629629629629,
+    "survival_by_position": {
+      "1": 0.8609022556390977,
+      "2": 0.7623574144486692
+    }
+  },
+  "D_format": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.617717394118256,
+    "mean_delta_vs_format_per_request": 0.0,
+    "delta_bootstrap95_request": [
+      0.0,
+      0.0
+    ],
+    "worse_position_fraction": 0.0,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": 0.0,
+    "survival_by_position": {
+      "1": 0.8590225563909775,
+      "2": 0.7547528517110266
+    }
+  },
+  "H_empty": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.617717394118256,
+    "mean_delta_vs_format_per_request": 0.0,
+    "delta_bootstrap95_request": [
+      0.0,
+      0.0
+    ],
+    "worse_position_fraction": 0.0,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": 0.0,
+    "survival_by_position": {
+      "1": 0.8590225563909775,
+      "2": 0.7547528517110266
+    }
+  },
+  "H_dense": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.6631923484024778,
+    "mean_delta_vs_format_per_request": 0.045474954284221526,
+    "delta_bootstrap95_request": [
+      -0.058475378787878785,
+      0.1486619971264368
+    ],
+    "worse_position_fraction": 0.05075187969924812,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": 0.004629629629629629,
+    "survival_by_position": {
+      "1": 0.8627819548872181,
+      "2": 0.7737642585551331
+    }
+  },
+  "H_hybrid": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.6580629292105584,
+    "mean_delta_vs_format_per_request": 0.040345535092302334,
+    "delta_bootstrap95_request": [
+      -0.06873421717171717,
+      0.14605783045977014
+    ],
+    "worse_position_fraction": 0.05263157894736842,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": -0.009259259259259259,
+    "survival_by_position": {
+      "1": 0.8590225563909775,
+      "2": 0.7718631178707225
+    }
+  },
+  "H_selected": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.6631134342610636,
+    "mean_delta_vs_format_per_request": 0.04539604014280738,
+    "delta_bootstrap95_request": [
+      -0.05863320707070707,
+      0.14605783045977014
+    ],
+    "worse_position_fraction": 0.05263157894736842,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": 0.0,
+    "survival_by_position": {
+      "1": 0.8609022556390977,
+      "2": 0.7737642585551331
+    }
+  },
+  "H_unrelated": {
+    "requests": 6,
+    "positions": 532,
+    "mean_accepted_length_per_request": 1.6094572604540278,
+    "mean_delta_vs_format_per_request": -0.008260133664228493,
+    "delta_bootstrap95_request": [
+      -0.030303030303030304,
+      0.013335129310344827
+    ],
+    "worse_position_fraction": 0.015037593984962405,
+    "weak_r_positions": 216,
+    "weak_r_mean_delta": -0.023148148148148147,
+    "survival_by_position": {
+      "1": 0.8552631578947368,
+      "2": 0.7490494296577946
+    }
+  }
+}

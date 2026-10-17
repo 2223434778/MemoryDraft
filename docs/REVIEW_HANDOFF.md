@@ -2,13 +2,21 @@
 
 ## 本次交付
 
-这是首个可运行的 R/H/D 机制原型及负结果报告，不是六阶段研究的最终完成版。先读 [实测报告](EXPERIMENTS.md)、[底座选择](BASE_SELECTION.md)、[H 与缓存实现](HISTORY_DRAFTER.md)，再对照 [进度](PROGRESS.md) 和架构 v0.2。
+**2026-10-17 更新：先读 [第二轮 GPU 报告](EXPERIMENTS_V2.md)。** 旧版以下问题与数据保留作第一轮证据，不代表当前实现仍共享 R/H 候选池或只有 19 项测试。当前完整回归在本机/A6000 均为 35 项通过。
 
-用户后续要求已形成 [下一阶段实验协议与上游审计](NEXT_EXPERIMENT.md)：分离 R/H 检索、补充原生 D，并用同前缀对照验证 H。本轮还核实了 R 覆盖率及 REST/Qwen 适配问题；没有新增 GPU 性能结果。
+第二轮完成原生 D/PLD 对照、独立 R 后缀数组、H dense/hybrid/人工合法历史及等长无关控制，432 次计时方法运行全部 token 一致。合成项目 D_native=1.168×、R=1.487×；公开任务 D_native=1.000×、PLD=1.117×、R=1.056×。D 的目标尚未在全部任务达成。
+
+H 的预定稀疏前缀增量为 +0.375，但为解释在线接受率反向，追加同请求 532 个全前缀检查后仅 +0.045、请求 bootstrap 区间跨零。人工预选片段未明显优于自动检索，R 弱匹配位置的增量接近零；优先审查历史/S/Target 的接续对齐与任务范围，不先假定换检索器就会解决。H 在线接受 966/1245，低于同指令 D 的 972/1239；RHD 慢于 RD。追加缓存消融用于检验检索成本，单独标明首次/后续访问。
+
+已排查两类不同故障：Qwen3 默认采样参数回填是实现问题，已修复；显式 greedy 后 BF16 在相同已确认前缀的 AR/块验证出现并列 logits 翻转，定点复现证据在 `results/qwen3-pilot/bf16-diagnostic.json`。有效速度表仅用 FP32/eager，不能合并旧错误运行。
+
+复核时运行 `python scripts/write_research_report.py` 即可从 gzip 配对记录重建报告；脚本核对 token、Target prompt hash、snapshot 和配对完整性。来源清单在各阶段 provenance，发布压缩前后哈希在 `results/research-v2-publication.json`。完整 GPU 重跑还需要 README 中的固定模型与服务器路径。
+
+本轮仍不是六阶段研究的最终完成版。成熟 EAGLE B6/B7、自然长期用户历史、采样及并发仍未完成。先读报告，再对照 [底座选择](BASE_SELECTION.md)、[H 与缓存实现](HISTORY_DRAFTER.md)、[进度](PROGRESS.md) 和架构 v0.2。
 
 代码主入口：`memorydraft/backends/transformers.py`、`memorydraft/drafters/candidates.py`、`memorydraft/routing/policy.py`；检索和时间快照位于 `retrieval/`、`memory/`，回放位于 `evaluation/replay.py`。
 
-## 可核对的证据
+## 第一轮保留证据
 
 - 本机与 A6000 的既有回归均为 19 项通过。GPU 结果共 212 次配对方法运行，均通过相同 Target 输入下的 token 一致性检查；不是 212 个独立自然请求。
 - `results/semantic/` 是最终语义检索配置：AR 9.972s、D 18.819s、H 19.965s、RHD 13.300s。D 接受 322/819 个候选 token，H 接受 320/852；未取得 H 净收益。

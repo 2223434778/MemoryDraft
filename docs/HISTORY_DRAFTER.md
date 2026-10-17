@@ -1,5 +1,19 @@
 # H 的实现与验证
 
+## 第二轮修订（2026-10-17）
+
+以下正文中的 H/D 同指令比较仍保留；实用性能基线另有 `D_native`（官方 generator）与 `D_adapter`（同原生输入适配）。RD/RHD 的 D 路径使用原生输入，而固定 H 与带空 reference 的 `D` 用于隔离历史内容的效果。
+
+R 默认对整个合法快照建立独立 uint32 后缀数组，查询完整已确认 Target 上下文，并用上游 prompt lookup 补充动态复用；不再受 H 语义 top-k 限制。`r_scope=shared_pool` 仅保留旧版消融。H 可用 dense 或 BM25-RRF 检索，同一请求内不重新检索。
+
+Target 和 S 的生成入口显式关闭 `use_model_defaults`，避免 Qwen3 检查点的采样默认值回填；保持严格 greedy，不放宽 token 匹配。PLD 适配器保留最后一个 Target token 的长度预算。
+
+同前缀诊断在生成 AR 评分参考之前确定 dense/hybrid/人工合法历史，保存来源和 payload 长度；空 H 与 D_format 候选完全相同，等长无关控制直接注入。第二轮主测试及追加全前缀结果见 [EXPERIMENTS_V2.md](EXPERIMENTS_V2.md)。H 的全前缀增量小且区间跨零，在线接受比例亦未提高，不能根据少量前缀位置宣布核心假设成立。
+
+`CachedSemanticEncoder` 是显式启用的逐片段向量 LRU，默认 `SemanticEncoder` 保留未缓存路径。每个实例固定 encoder 权重/revision，键是原始片段文本；查询向量仍在线计算，只有 `retrieve()` 从当前合法快照传入的文本被打分。没有缓存由未来上下文汇总出的摘要、排名或答案。缓存不写盘；淘汰与重新编码测试在 `tests/test_embedding_cache.py`。追加实验为 H/RHD 分别建立空缓存，首次编码仍计费，不能拿重复请求命中效果冒充从未见过的新历史收益。
+
+## 初版 H/KV 设计
+
 H 和 D 使用相同独立小模型和完全相同的起草规则，唯一不同是 `<reference>` 区域内容。两者都保留应用给出的原始 messages，包括应用事实记忆。Target 的 messages 在所有方法间保持完全相同。
 
 `TransformersBackend.prompt()` 使用模型 chat template 预构造固定前缀，开放 assistant 回答。每轮直接追加共同的已确认 `Y` 的 token IDs，不 decode/re-encode 当前回答，不添加“继续”消息。H 可以生成新 token，并非复制旧答案；复制单独走 R。

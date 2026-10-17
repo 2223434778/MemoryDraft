@@ -1,0 +1,104 @@
+{
+  "AR": {
+    "requests": 8,
+    "total_seconds": 25.2201747840154,
+    "speedup_vs_ar": 1.0,
+    "all_correct": true,
+    "generated_tokens": 496,
+    "median_latency_seconds": 3.188982297491748,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      }
+    }
+  },
+  "D_native": {
+    "requests": 8,
+    "total_seconds": 22.41545139311347,
+    "speedup_vs_ar": 1.125124555455689,
+    "all_correct": true,
+    "generated_tokens": 496,
+    "median_latency_seconds": 2.4848174970247783,
+    "routes": {
+      "R": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 132,
+        "proposed": 519,
+        "accepted": 361,
+        "committed": 493
+      },
+      "AR": {
+        "rounds": 3,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 3
+      }
+    }
+  },
+  "R": {
+    "requests": 8,
+    "total_seconds": 17.992058887029998,
+    "speedup_vs_ar": 1.4017392307556285,
+    "all_correct": true,
+    "generated_tokens": 496,
+    "median_latency_seconds": 2.432003590016393,
+    "routes": {
+      "R": {
+        "rounds": 97,
+        "proposed": 365,
+        "accepted": 164,
+        "committed": 261
+      },
+      "H": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "D": {
+        "rounds": 0,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 0
+      },
+      "AR": {
+        "rounds": 235,
+        "proposed": 0,
+        "accepted": 0,
+        "committed": 235
+      }
+    }
+  }
+}

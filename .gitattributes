@@ -1,0 +1,6 @@
+# Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/qwen3-pilot/** -text
+results/qwen3-inherited-defaults/** -text
+results/research-old-bounded/** -text
+results/research-old-controls/** -text
+results/research-v2-publication.json -text

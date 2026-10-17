@@ -1,0 +1,193 @@
+{
+  "config": {
+    "target": {
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-8b",
+      "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "device": "cuda:0"
+    },
+    "draft": {
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-0.6b",
+      "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+      "device": "cuda:0"
+    },
+    "dtype": "bfloat16",
+    "attention": "eager",
+    "template_options": {
+      "enable_thinking": false
+    },
+    "retrieval": {
+      "kind": "semantic",
+      "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/multilingual-minilm",
+      "revision": "e8f8c211226b894fcb81acc59f3b34ba3efd5f42"
+    },
+    "history_budget": 512,
+    "r_scope": "snapshot"
+  },
+  "args": {
+    "config": "configs/a6000-qwen3.json",
+    "output": "/media/a6000/D/ZhaoBinHe/MemoryDraft/results/qwen3-pilot/smoke-bf16",
+    "stage": "smoke",
+    "split": "dev",
+    "suite": "combined",
+    "dtype": "bfloat16",
+    "attention": "eager",
+    "methods": [
+      "AR",
+      "D_native",
+      "D_adapter",
+      "D",
+      "PLD",
+      "R"
+    ],
+    "blocks": [
+      8
+    ],
+    "max_new_tokens": 64,
+    "repeats": 1,
+    "hybrid": false,
+    "r_scope": "snapshot"
+  },
+  "torch": "2.5.1+cu124",
+  "gpu": "NVIDIA RTX A6000",
+  "request_ids": [
+    "spec-121",
+    "spec-122",
+    "dev-project-0",
+    "dev-project-1",
+    "dev-project-2",
+    "dev-project-3",
+    "dev-project-4",
+    "dev-project-5"
+  ],
+  "input_sha256": {
+    "data/research/specbench-dev.jsonl": "f996c518e8e20cd1ebefa91e09a3a033bca3f14899aee30f78f08a8a1be0d4b5",
+    "data/research/memory-dev.jsonl": "77b3c5c27841aa6f4150986e5980e26ce01c0b41bdf3f9fe6c2b0c1497db319d"
+  },
+  "status": "failed",
+  "reference": "Separate untimed AR trace; measured AR order randomized.",
+  "source_manifest": {
+    "files": {
+      ".gitignore": "ccb75951c7ff1a6e3397d750887b0e8e030c04504584cb74a11c132a79b64772",
+      "AGENTS.md": "2591c6f4a5be9c31a34d0bee0cb0b44441754edf1e913c34761ef022e4982870",
+      "configs/a6000-pilot.json": "54bbaffbb9c90532270e84b428b3d8602947e0fa21a8ab4a736010dcb65ea3a6",
+      "configs/a6000-qwen3.json": "4a8cf0d46f3a5ebd49c70f900059e05d22b0613f3386c096f3385c6da4ea7940",
+      "configs/a6000-semantic.json": "62238611f5f2de7c323ee8f72029d5737786548775c00dc71cc933618e2f41d3",
+      "configs/a6000-validation.json": "e0a88f6dac0c04a8ba5a507ac27a85bdb4943474055f7b6f043b3f65d12641ee",
+      "configs/local-qwen3.json": "2fe9bc01c011475c5574674144c2c2621fbbbb3825f7786de1bf9250bbd352c0",
+      "configs/local.example.json": "b84df1f6ee0b75a07ffd3c57cb2a64f0197526ab7af980ca488ca8289bee45a3",
+      "configs/qwen3-download-manifest.json": "114b4c6993cb459e9f39d7900cc4ec52199f8ef0b4edb557b0d92d5c631c0557",
+      "data/research/history.jsonl": "c82d81cc48db6545dbeb7a989c3efdf969b749ac5ce31ea44d4b806d42c6cabe",
+      "data/research/memory-dev.jsonl": "77b3c5c27841aa6f4150986e5980e26ce01c0b41bdf3f9fe6c2b0c1497db319d",
+      "data/research/memory-test.jsonl": "ae9dbf9ded81a429bd5b80f02bf425d937c84aa380d637f0a1f81f6f0aa19ce7",
+      "data/research/SPEC_BENCH_LICENSE": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+      "data/research/specbench-dev.jsonl": "f996c518e8e20cd1ebefa91e09a3a033bca3f14899aee30f78f08a8a1be0d4b5",
+      "data/research/specbench-source.json": "3d141af0cda3d82dc0fb9dcd3c02dcbabd813b0a45b8c295fd94cb0ae2e8229d",
+      "data/research/specbench-test.jsonl": "3e5b1f70d94c5393b6335748ac7483328a7b80de629453ea83acd0bdedc4a9ac",
+      "data/synthetic/h_cases.jsonl": "5bb0b0b07341390a249852dd8e1d247275174a32314524df4a305007b1cb5b06",
+      "data/synthetic/history.jsonl": "0391687ec07671776987e41be5936eeeca58864055da33c56979ceaa008a0918",
+      "data/synthetic/request.json": "9ffeb8232347f4c0eede4ffba835a11551d95f4192ec81a504d2c0841cd18393",
+      "data/synthetic/requests.jsonl": "70aa284847bf26ac05270c2589eab9389d8690569174a447e89b925c28c20a20",
+      "docs/ARCHITECTURE.md": "8174e77c7651ed0cb3ea08adc3f3fd6f6cf1cfbd3075c6249bc8d8e9b15794e2",
+      "docs/ARCHITECTURE_REVIEW.md": "6708059e903d0627d1817c64a4454a5accac0f36273f1033628b2c5eb27c757d",
+      "docs/BASE_SELECTION.md": "78add3d1e48e261d2453f571c9ba9dca0d522f43642b49ce40b78f967d5dc882",
+      "docs/CODEX_START.md": "7d5212e60aeeba77232cd639ae26bd5976646da8561f039f48c6f30c724914b9",
+      "docs/EXPERIMENTS.md": "6c0135bdb929f959c7ac7d54a60884c6c245e2d3da33862f2f0003d874f211a9",
+      "docs/HISTORY_DRAFTER.md": "c78607870bcf031ac54ce93545284c83e9d6310caa7e9f48575c87dc7a351eac",
+      "docs/NEXT_EXPERIMENT.md": "cfd45c88f195bdaa1139e67b8ffb916029ad52c3c6dedab4718c1e291ae15e4d",
+      "docs/PROGRESS.md": "bcc0d49eb1798597c4f124d50a3b80383dddc7b43b31706b5c1963508d44408d",
+      "docs/REVIEW_HANDOFF.md": "dbe41e1a1237554e7ba0e70cb810c6679f488b4c05b85cc8365a15ffd07504d6",
+      "memorydraft/__init__.py": "0b9f607d47206a8acaf377f8a174e1ab67e1b814e9e5bb84d423b6ce18d78644",
+      "memorydraft/__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "memorydraft/backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "memorydraft/backends/transformers.py": "b979d4f33787212c1cbfaa763182f590e1b352dc3607d36400c2884465ab1e22",
+      "memorydraft/cli.py": "45b031d876bf7bf3fa00862e1bc9ef9fc2ed3cb967b75b18f559e4f69d05a4a2",
+      "memorydraft/drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "memorydraft/drafters/candidates.py": "3e1262a8a0d11d3ff0dcafca3287b4ef94c70cdca44b29a1e660a3c08243cabf",
+      "memorydraft/evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "memorydraft/evaluation/prefixes.py": "31fde0b67648631c447396c6bd0e42f6ca4572e502e71e962121d0f86b4faf25",
+      "memorydraft/evaluation/replay.py": "7be7a2ee765743a013540e9157aba5727373ddc08903e18b5171f77bc8801409",
+      "memorydraft/memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memorydraft/memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "memorydraft/retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "memorydraft/retrieval/pool.py": "f272f3274901598e9677aed3f4f7b4e2f2064172da6f24eb23860647c1abb40d",
+      "memorydraft/retrieval/suffix.py": "286db0a0a6e835a2a71879c5357e95aaac48fcae3bd650974f7a4f5af7fb5fc6",
+      "memorydraft/routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "memorydraft/routing/policy.py": "3d6a3d156906753952fa6d0d1a777dc7cce000975f298ae1d2b7e5c612777a23",
+      "pyproject.toml": "0aa05c6659f8506258dadfe7f0a0cc759103d1261d0d9a13751b8d3538d1c3eb",
+      "README.md": "c0f8b91130d0e8f3211008f8d38234004e19696a796157e03c23010ffe764ef8",
+      "scripts/__init__.py": "81720c32b7a0377933e3cf10c56044bf70433f93cd6ae60ed12437ba5df7ac8c",
+      "scripts/audit_pilot.py": "e4ba7152a973e53c9bb0bcc40b14e1c00f5d2e6c1abce9c9ce9c2e2c676b2751",
+      "scripts/bundle_source.py": "2a71e23e4e50756552f79c48f674156d62fc5c17ff3f73e20bf65d09f628d584",
+      "scripts/check_demo.py": "2f5a717447d0a388ede9eceb0f3b4b2eb62242850e1400337f0576fe62aec7bb",
+      "scripts/diagnose_precision.py": "451a7379813e1d9aff9bf860cc30aead18f435f50a7f756a9163aaa71b5db775",
+      "scripts/download_models.py": "9e15cabd3cc3ffb331ef225df28d3862774b7895879912bbb15016c65420337b",
+      "scripts/download_verified_weights.py": "abe5db49f013e4a38fb82efd52aadcc69296948ccc212a76e18121833241e98b",
+      "scripts/make_pilot.py": "5857137db76b2c59d65397f78329f532efd741a32ed941dbb1f6e53d17f39b25",
+      "scripts/prepare_research_data.py": "12ff887261f9fa2795d9452ea2891fc0efa7fd4c1f018da36388de3e5732820e",
+      "scripts/run_a6000_suite.py": "c4bc9dc1a59956b3af1c0f6842a16825944bd61447fab0e49749488dd0f16238",
+      "scripts/run_qwen3_pilot.py": "7535d0232ca303ed8d233cb43b75f95b110d05d8426c5a5a619a831c8efa0fdf",
+      "scripts/run_research.py": "50ee6b823c0a179ef4f01bd32bcda691d66e81fdc9576d35f5134d28871a757e",
+      "scripts/write_report.py": "24918845b3cf80bc81c30f1a511cdf69ddcc1309ad8411db1fc0dbfdda5989e7",
+      "tests/test_backend.py": "56aa8bec743a0c5e2ef68ca553eb4d1f9219dd0af29438be92431d5a92e10cba",
+      "tests/test_evaluation.py": "579d64d04776e9a5eaf9b8df433ee1ea07dca30e86182464e9a67af78b1bc9f4",
+      "tests/test_memory_retrieval.py": "24b96b3ccd2e7b658f1a99af348cb677dc2ca0ef234c6dfa0dbda58c63905def",
+      "tests/test_pilot_audit.py": "399db1309f068314de549330af769a0a4abc13e1520af9015d02280c27f632a4",
+      "tests/test_research.py": "55125980a0857fa3742dd782f1c73167f01e2b2f87b6fdc5748b135ef1341318"
+    },
+    "source_sha256": "24b211b1928c8cc947db87313869ed8cfd57598ae067092567c9e0a642cf4d00",
+    "base_git_commit": "3370ca42af82367b77a24a9a0bffb8ee933897f8"
+  },
+  "source_manifest_mismatches": [],
+  "weight_verification": {
+    "manifest_sha256": "114b4c6993cb459e9f39d7900cc4ec52199f8ef0b4edb557b0d92d5c631c0557",
+    "verified": [
+      {
+        "model": "Qwen/Qwen3-8B",
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "filename": "model-00001-of-00005.safetensors",
+        "sha256": "31d6a825ae35f11fb85b195b4c42c146c051e446433125a215336abdf95cbf5f",
+        "size": 3996250744
+      },
+      {
+        "model": "Qwen/Qwen3-8B",
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "filename": "model-00002-of-00005.safetensors",
+        "sha256": "5991236cea6fe21f3d43cab0f0e84448734fbbe0789816202989f2ddc9d18282",
+        "size": 3993160032
+      },
+      {
+        "model": "Qwen/Qwen3-8B",
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "filename": "model-00003-of-00005.safetensors",
+        "sha256": "c5185c4794be2d8a9784d5753c9922db38df478ce11f9ed0b415b7304d896836",
+        "size": 3959604768
+      },
+      {
+        "model": "Qwen/Qwen3-8B",
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "filename": "model-00004-of-00005.safetensors",
+        "sha256": "b5ee7de71fbf17db3d5704e0c8f2bc7d005ca9e1d7ca2aeb19827b0cfcaa917a",
+        "size": 3187841392
+      },
+      {
+        "model": "Qwen/Qwen3-8B",
+        "hf_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "filename": "model-00005-of-00005.safetensors",
+        "sha256": "20c2d6366ab85c90786ccdd829cd2b9e7d30ef3b2ebbb998280e7e4014b542ff",
+        "size": 1244659840
+      },
+      {
+        "model": "Qwen/Qwen3-0.6B",
+        "hf_revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+        "filename": "model.safetensors",
+        "sha256": "f47f71177f32bcd101b7573ec9171e6a57f4f4d31148d38e382306f42996874b",
+        "size": 1503300328
+      }
+    ]
+  },
+  "model_load_seconds": 8.778710198006593,
+  "retriever": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/multilingual-minilm@e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "tokenizer_fingerprint": "df4f2b2c8bbcc218029b899b904c31211b9b05ba5de60350122f2c2555dff921",
+  "exception_type": "RuntimeError",
+  "error": "Greedy mismatch: spec-121 / D_adapter; result saved"
+}
