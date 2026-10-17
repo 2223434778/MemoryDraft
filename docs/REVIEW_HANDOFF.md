@@ -1,5 +1,13 @@
 # Astra 审阅入口
 
+## 最新实现：R/DFlash 场景开发与独立确认（2026-10-18）
+
+先读 [REUSE_PILOT_RESULTS](REUSE_PILOT_RESULTS.md) 与对应运行前协议。新增 `backends/dflash_reuse.py` 薄适配已审计MIT循环，连续R积累有效Target特征，回切Draft补齐独立KV；保留严格greedy及原后端。源代码已推送 `f43239a`。
+
+24次接入检查和90次开发计时全部与AR一致。配置连续修订中Global12.053s、DFlash16.284s（1.351×），Cursor14.191s；游标减少查询却增加Draft轮数，不保留其为必需增强。P1/P3的当前prompt含旧产物，不能自动当作长期记忆增益；开发同后端关闭R性能控制尚不完整。
+
+因此预先声明 [REUSE_CONFIRMATION_PROTOCOL](REUSE_CONFIRMATION_PROTOCOL.md)：4个新项目/4种schema/两轮修订/三重复，比较官方DFlash、关闭R适配、Global及完全相同策略的Context。参数固定，96次确认正在运行。开发源码57a013ca…、确认源码2518e677…分别保留，不替换实际来源。首轮零命中查询失败只在接入阶段，已修复并保留证据，未并入性能。
+
 ## 优先修订：聚焦适用场景与复用架构（2026-10-17）
 
 用户明确目标为特定场景性能优秀，允许借鉴成熟架构，无需击败所有基线。以 [研究方案第 1.1 节](MEMORY_REUSE_RESEARCH_PLAN.md#11-优先场景与发现规则) 及修订后的阶段/评价标准为准。主候选是同项目长产物的多轮局部修订；开发阶段发现并冻结适用条件，再用新项目确认。

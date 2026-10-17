@@ -1,14 +1,16 @@
 # 项目进度
 
-## 2026-10-18 — R/DFlash 接入与场景开发（运行中）
+## 2026-10-18 — R/DFlash 开发完成，独立场景确认运行中
 
 - 用户授权实现并运行。新增 `backends/dflash_reuse.py`，薄适配已审计 MIT DFlash 循环，复用模型前向/严格最长前缀验证/KV裁剪；支持连续R后累计有效Target特征并在回切时补齐，设待消费缓冲门槛。
 - 后缀索引保留旧 `match`，增加有界位置查询及显式当前prompt候选；`retrieval/reuse.py` 增加本请求游标和局部重匹配。当前prompt不伪装成过去事件；历史仍由原MemoryStore时间快照读取。
 - 本机首轮完整59 passed、2 skipped（PEFT和审计DFlash环境）；服务器4.57.3中12项新测试全部通过，包括真实小型DFlash类与官方循环对齐。补充报告/发布检查另6项通过。
 - 服务器DFlash环境新增固定 `pydivsufsort==0.0.19`，不修改原环境。初次GPU A阶段暴露零命中 `sa_search` 返回left=None，已补提前返回及回归；该失败批次保留为 `results/reuse-pilot-lookup-failure/`，未进入开发计时。
-- 正式运行源码SHA `57a013cadafc9859dc002bdefce72d47acaae4774bd13263788a9140ff8e947e`；A八请求×三方法24次全部对齐AR。B按 `REUSE_PILOT_PROTOCOL.md` 运行12合成开发项目/18当前请求/五方法单重复，尚不作为独立性能结论。
+- 开发实际源码SHA `57a013cadafc9859dc002bdefce72d47acaae4774bd13263788a9140ff8e947e`；A八请求×三方法24次全部对齐AR。B按 `REUSE_PILOT_PROTOCOL.md` 完成12合成开发项目/18当前请求/五方法单重复90次，全部对齐。开发Global总18.314s、DFlash23.345s；配置修订Global12.053s、DFlash16.284s（1.351×），Cursor14.191s，Context16.362s。完整文档Global1.363×，边界0.998×；不是独立性能结论。
 - 实际命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_reuse_pilot.py`。源码/模型SHA已校验，A6000仅GPU0。结果 `results/reuse-pilot/`，作业日志 `results/reuse-pilot-job.log`。
-- 新增离线报告审计：重建每轮过去快照，核对固定参考、配对、场景标签和KV前沿。待开发结束后发布准确结果和解释。
+- 离线报告 `REUSE_PILOT_RESULTS.md` 已从原始及公开gzip复算：重建每轮过去快照，核对固定参考、配对、场景标签和KV前沿。开发及首次失败证据13份已加入发布白名单/哈希清单，合计112份。过去资产0/12、当前参考0/18达到预算。
+- 预先声明小规模确认 `REUSE_CONFIRMATION_PROTOCOL.md`：选择简单Global，在4个全新项目/4种JSON schema/两轮修订上做3重复，另加适配关闭R和同策略Context对照。数据与参数在确认生成前固定，计划96次计时；不增加概率模型或修改R参数。服务器相关18项测试通过，确认实际源码SHA `2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2`。
+- 确认命令为上述runner加 `--confirmation`；结果 `results/reuse-confirmation/`，独立复算入口 `python -m scripts.write_reuse_confirmation_report`。仍在运行，结果完整后才作确认判断。本机最新完整回归65 passed、2 skipped（实际结果见最终日志）。
 
 ## 2026-10-17 — 用户修订：场景优先，允许复用成熟架构（方案已调整）
 

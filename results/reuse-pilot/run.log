@@ -1,0 +1,29 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.49s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.50s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.38s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+smoke 0 correct
+smoke 1 correct
+smoke 2 correct
+smoke 3 correct
+smoke 4 correct
+smoke 5 correct
+smoke 6 correct
+smoke 7 correct
+complete reuse-code-0 0
+complete reuse-code-1 0
+complete reuse-code-2 0
+complete reuse-revision-0 0
+complete reuse-revision-0 1
+complete reuse-revision-0 2
+complete reuse-revision-1 0
+complete reuse-revision-1 1
+complete reuse-revision-1 2
+complete reuse-revision-2 0
+complete reuse-revision-2 1
+complete reuse-revision-2 2
+complete reuse-template-0 0
+complete reuse-template-1 0
+complete reuse-template-2 0
+complete reuse-boundary-0 0
+complete reuse-boundary-1 0
+complete reuse-boundary-2 0

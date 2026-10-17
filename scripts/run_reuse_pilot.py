@@ -14,7 +14,7 @@ import transformers
 from transformers import AutoModel, AutoModelForCausalLM, AutoTokenizer
 
 from memorydraft.backends.dflash_reuse import ReuseConfig, generate_reuse
-from memorydraft.evaluation.reuse_cases import development_projects, messages
+from memorydraft.evaluation.reuse_cases import confirmation_projects, development_projects, messages
 from memorydraft.memory.store import MemoryEvent, MemoryStore, Snapshot
 from memorydraft.retrieval.reuse import ReuseMatcher
 from memorydraft.retrieval.suffix import SuffixArrayIndex
@@ -22,6 +22,7 @@ from memorydraft.retrieval.suffix import SuffixArrayIndex
 
 ROOT = Path(__file__).resolve().parents[1]
 METHODS = ("AR", "DFlash", "Global", "Cursor", "Context")
+CONFIRMATION_METHODS = ("DFlash", "Adapted", "Global", "Context")
 
 
 def save(path, value):
@@ -37,13 +38,13 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
-def summarize(rows):
+def summarize(rows, methods=METHODS):
     result = {}
     groups = ["all", *dict.fromkeys(row["scenario"] for row in rows)]
     for scenario in groups:
         selected = [row for row in rows if scenario == "all" or row["scenario"] == scenario]
         times = {method: sum(row["latency_seconds"] for row in selected if row["method"] == method)
-                 for method in METHODS}
+                 for method in methods}
         result[scenario] = dict(times=times, rows=len(selected), projects=len({r["project_id"] for r in selected}),
                                 vs_dflash={m: times["DFlash"] / t for m, t in times.items() if t},
                                 correct=all(row["correct"] for row in selected))
@@ -52,15 +53,19 @@ def summarize(rows):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / "results/reuse-pilot")
+    parser.add_argument("--output", type=Path)
     parser.add_argument("--smoke-only", action="store_true")
+    parser.add_argument("--confirmation", action="store_true")
     args = parser.parse_args()
-    out = args.output
+    out = args.output or ROOT / ("results/reuse-confirmation" if args.confirmation else "results/reuse-pilot")
     if out.exists():
         raise RuntimeError("Preserve existing reuse evidence; choose a new output directory")
     out.mkdir(parents=True)
+    methods = CONFIRMATION_METHODS if args.confirmation else METHODS
+    repeats = 3 if args.confirmation else 1
     provenance = dict(status="started", transformers=transformers.__version__, torch=torch.__version__,
-                      dtype="float32", attention="eager", stage="development", repeats=1,
+                      dtype="float32", attention="eager", stage="confirmation" if args.confirmation else "development",
+                      repeats=repeats, methods=methods,
                       source=json.loads((ROOT / "SOURCE_MANIFEST.json").read_text()), config=asdict(ReuseConfig()))
     save(out / "provenance.json", provenance)
     try:
@@ -103,7 +108,7 @@ def main():
             if method in {"Global", "Cursor", "Context", "Mixed"}:
                 resource = Snapshot(user, order, ()) if method == "Context" else snapshot
                 index = SuffixArrayIndex(resource, tokenizer, min_match=3, max_match=32, prompt_text=text)
-                matcher = ReuseMatcher(index, cursor=method != "Global")
+                matcher = ReuseMatcher(index, cursor=method != "Global" and not args.confirmation)
             if method == "AR":
                 output = target.generate(input_ids, attention_mask=torch.ones_like(input_ids), do_sample=False,
                                          use_model_defaults=False, max_new_tokens=budget, use_cache=True,
@@ -139,7 +144,7 @@ def main():
         smoke_text = "Repeat exactly, without extra text:\n" + "alpha bravo charlie delta echo foxtrot.\n" * 5
         with MemoryStore(out / "smoke.db") as smoke_store:
             smoke_store.append([MemoryEvent("smoke", "past", 0, "alpha bravo charlie delta echo foxtrot.\n" * 5)])
-            for case in range(8):
+            for case in range(0 if args.confirmation else 8):
                 budget = (1, 2, 31, 48, 64, 64, 64, 48)[case]
                 stops = eos
                 if case == 7:
@@ -156,12 +161,17 @@ def main():
                     row.update(case=case, stage="smoke")
                     append(out / "smoke.jsonl", row)
                 print("smoke", case, "correct", flush=True)
-        provenance["smoke_complete"] = True
+        provenance["smoke_complete"] = not args.confirmation
+        if args.confirmation:
+            previous = json.loads((ROOT / "results/reuse-pilot/provenance.json").read_text())
+            if previous["status"] != "complete" or not previous.get("smoke_complete"):
+                raise RuntimeError("Complete the development integration run first")
+            provenance["integration_reference_source"] = previous["source"]["source_sha256"]
         save(out / "provenance.json", provenance)
         if args.smoke_only:
             provenance["status"] = "smoke_complete"
             return
-        projects = development_projects()
+        projects = confirmation_projects() if args.confirmation else development_projects()
         save(out / "projects.json", projects)
         rows = []
         with MemoryStore(out / "history.db") as store:
@@ -180,22 +190,23 @@ def main():
                     reference = generate(text, "AR", budget, store, project["id"], order)
                     reference.update(project_id=project["id"], turn=turn, order=order)
                     append(out / "references.jsonl", reference)
-                    methods = list(METHODS)
-                    random.Random(20261018 + int(project["id"].rsplit("-", 1)[-1]) + 17 * turn).shuffle(methods)
-                    for method in methods:
-                        row = generate(text, method, budget, store, project["id"], order)
-                        compare(row, reference, f"{project['id']}/{turn}/{method}")
-                        if row["snapshot_id"] != reference["snapshot_id"]:
-                            raise RuntimeError("Methods used different legal snapshots")
-                        row.update(project_id=project["id"], scenario=project["scenario"], turn=turn, order=order,
-                                   repeat=0, prompt_contains_old_artifact=project["prompt_contains_old_artifact"])
-                        rows.append(row)
-                        append(out / "replay.jsonl", row)
+                    for repeat in range(repeats):
+                        shuffled = list(methods)
+                        random.Random(20261018 + int(project["id"].rsplit("-", 1)[-1]) + 17 * turn + 101 * repeat).shuffle(shuffled)
+                        for method in shuffled:
+                            row = generate(text, method, budget, store, project["id"], order)
+                            compare(row, reference, f"{project['id']}/{turn}/{repeat}/{method}")
+                            if row["snapshot_id"] != reference["snapshot_id"]:
+                                raise RuntimeError("Methods used different legal snapshots")
+                            row.update(project_id=project["id"], scenario=project["scenario"], turn=turn, order=order,
+                                       repeat=repeat, prompt_contains_old_artifact=project["prompt_contains_old_artifact"])
+                            rows.append(row)
+                            append(out / "replay.jsonl", row)
                     # Shared finalized answer becomes legal only for a later request.
                     store.append([MemoryEvent(project["id"], "artifact", order + 1, reference["text"],
                                               project_id=project["id"])])
                     print("complete", project["id"], turn, flush=True)
-                    save(out / "summary.json", summarize(rows))
+                    save(out / "summary.json", summarize(rows, methods))
         provenance["status"] = "complete"
         provenance["rows"] = len(rows)
     except Exception as error:

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "reuse-code-0",
+    "scenario": "P1_local_file",
+    "past": "Return this entire Python module exactly, without markdown fences:\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n",
+    "currents": [
+      "Return the entire updated Python module, without markdown fences. Change only the threshold in check_score from 11 to 21. Preserve all other code and blank lines.\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-code-1",
+    "scenario": "P1_local_file",
+    "past": "Return this entire Python module exactly, without markdown fences:\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n",
+    "currents": [
+      "Return the entire updated Python module, without markdown fences. Change only the threshold in check_score from 11 to 22. Preserve all other code and blank lines.\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-code-2",
+    "scenario": "P1_local_file",
+    "past": "Return this entire Python module exactly, without markdown fences:\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n",
+    "currents": [
+      "Return the entire updated Python module, without markdown fences. Change only the threshold in check_score from 11 to 23. Preserve all other code and blank lines.\ndef check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15\n"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-revision-0",
+    "scenario": "P2_sequential_config",
+    "past": "Generate the complete deployment configuration. The project is delta_0. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown.",
+    "currents": [
+      "Generate the complete deployment configuration. The project is delta_0. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 40.",
+      "Generate the complete deployment configuration. The project is delta_0. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 50.",
+      "Generate the complete deployment configuration. The project is delta_0. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 60."
+    ],
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "reuse-revision-1",
+    "scenario": "P2_sequential_config",
+    "past": "Generate the complete deployment configuration. The project is delta_1. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown.",
+    "currents": [
+      "Generate the complete deployment configuration. The project is delta_1. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 41.",
+      "Generate the complete deployment configuration. The project is delta_1. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 51.",
+      "Generate the complete deployment configuration. The project is delta_1. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 61."
+    ],
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "reuse-revision-2",
+    "scenario": "P2_sequential_config",
+    "past": "Generate the complete deployment configuration. The project is delta_2. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown.",
+    "currents": [
+      "Generate the complete deployment configuration. The project is delta_2. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 42.",
+      "Generate the complete deployment configuration. The project is delta_2. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 52.",
+      "Generate the complete deployment configuration. The project is delta_2. It has services alpha, bravo, charlie, delta, echo and foxtrot. Each service has fields name, enabled=true, timeout_seconds=30, retries=3 and log_level=info. Use that service order and that field order. The top-level fields are project and services. Use two-space indented JSON, with one field per line, without markdown. Set only bravo's timeout_seconds to 62."
+    ],
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "reuse-template-0",
+    "scenario": "P3_document_template",
+    "past": "Return this runbook exactly, preserving its Markdown:\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "currents": [
+      "Return the entire updated runbook, preserving all unaffected text. In the Monitoring section only, change Review interval to every 2 days.\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-template-1",
+    "scenario": "P3_document_template",
+    "past": "Return this runbook exactly, preserving its Markdown:\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "currents": [
+      "Return the entire updated runbook, preserving all unaffected text. In the Monitoring section only, change Review interval to every 3 days.\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-template-2",
+    "scenario": "P3_document_template",
+    "past": "Return this runbook exactly, preserving its Markdown:\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "currents": [
+      "Return the entire updated runbook, preserving all unaffected text. In the Monitoring section only, change Review interval to every 4 days.\n## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved"
+    ],
+    "prompt_contains_old_artifact": true
+  },
+  {
+    "id": "reuse-boundary-0",
+    "scenario": "boundary",
+    "past": "Write a Python function returning a list in reverse order.",
+    "currents": [
+      "Reply with exactly: ready"
+    ],
+    "prompt_contains_old_artifact": false,
+    "budget": 32
+  },
+  {
+    "id": "reuse-boundary-1",
+    "scenario": "boundary",
+    "past": "Describe a quiet garden in three sentences.",
+    "currents": [
+      "Explain why the sky appears blue in two sentences."
+    ],
+    "prompt_contains_old_artifact": false,
+    "budget": 96
+  },
+  {
+    "id": "reuse-boundary-2",
+    "scenario": "boundary",
+    "past": "Return exactly this file:\nlimit = 10\nmode = 'safe'\n",
+    "currents": [
+      "Output only a unified diff changing limit=10 to limit=20 in config.py. The original file is:\nlimit = 10\nmode = 'safe'\n"
+    ],
+    "prompt_contains_old_artifact": true,
+    "budget": 96
+  }
+]

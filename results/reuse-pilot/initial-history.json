@@ -1,0 +1,122 @@
+[
+  {
+    "user_id": "reuse-code-0",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "def check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-code-0"
+  },
+  {
+    "user_id": "reuse-code-1",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "def check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-code-1"
+  },
+  {
+    "user_id": "reuse-code-2",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "def check_age(value):\n    return value >= 10\n\ndef check_score(value):\n    return value >= 11\n\ndef check_stock(value):\n    return value >= 12\n\ndef check_credit(value):\n    return value >= 13\n\ndef check_quota(value):\n    return value >= 14\n\ndef check_level(value):\n    return value >= 15",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-code-2"
+  },
+  {
+    "user_id": "reuse-revision-0",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"delta_0\",\n  \"services\": [\n    {\n      \"name\": \"alpha\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    },\n    {\n      \"name\": \"bravo\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    },\n    {\n      \"name\": \"charlie\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    },\n    {\n      \"name\": \"delta\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    },\n    {\n      \"name\": \"echo\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    },\n    {\n      \"name\": \"foxtrot\",\n      \"enabled\": true,\n      \"timeout_seconds\": 30,\n      \"retries\": 3,\n      \"log_level\": \"info\"\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-revision-0"
+  },
+  {
+    "user_id": "reuse-revision-1",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"delta_1\"\n  \"services\": [\n    {\n      \"name\": \"alpha\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"bravo\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"charlie\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"delta\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"echo\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"foxtrot\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-revision-1"
+  },
+  {
+    "user_id": "reuse-revision-2",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"delta_2\"\n  \"services\": [\n    {\n      \"name\": \"alpha\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"bravo\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"charlie\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"delta\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"echo\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n    {\n      \"name\": \"foxtrot\"\n      \"enabled\": true\n      \"timeout_seconds\": 30\n      \"retries\": 3\n      \"log_level\": \"info\"\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-revision-2"
+  },
+  {
+    "user_id": "reuse-template-0",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-template-0"
+  },
+  {
+    "user_id": "reuse-template-1",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-template-1"
+  },
+  {
+    "user_id": "reuse-template-2",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "## Overview\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Inputs\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Validation\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Execution\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Monitoring\nOwner: operations\nReview interval: weekly\nStatus: approved\n\n## Recovery\nOwner: operations\nReview interval: weekly\nStatus: approved",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-template-2"
+  },
+  {
+    "user_id": "reuse-boundary-0",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "```python\ndef reverse_list(input_list):\n    return input_list[::-1]\n```",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-boundary-0"
+  },
+  {
+    "user_id": "reuse-boundary-1",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "The garden is a peaceful sanctuary where soft sunlight filters through the leaves. Gentle rustling of the breeze accompanies the subtle scent of blooming flowers. A small bench sits under a tree, inviting moments of calm and reflection.",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-boundary-1"
+  },
+  {
+    "user_id": "reuse-boundary-2",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "limit = 10\nmode = 'safe'",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "reuse-boundary-2"
+  }
+]

@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 
-NAMES = ("qwen3-pilot", "qwen3-inherited-defaults", "research-old-bounded", "research-old-controls", "h-causal", "h-teacher-router", "h-training", "dflash-baseline", "reuse-pilot", "reuse-pilot-lookup-failure")
+NAMES = ("qwen3-pilot", "qwen3-inherited-defaults", "research-old-bounded", "research-old-controls", "h-causal", "h-teacher-router", "h-training", "dflash-baseline", "reuse-pilot", "reuse-pilot-lookup-failure", "reuse-confirmation")
 
 
 def publish(source: Path, destination: Path):

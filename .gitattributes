@@ -12,3 +12,5 @@ docs/H_TRAINING_RESULTS.md text eol=lf
 results/reuse-pilot/** -text
 results/reuse-pilot-lookup-failure/** -text
 docs/REUSE_PILOT_RESULTS.md text eol=lf
+results/reuse-confirmation/** -text
+docs/REUSE_CONFIRMATION_RESULTS.md text eol=lf

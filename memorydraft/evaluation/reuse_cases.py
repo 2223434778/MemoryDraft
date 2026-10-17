@@ -54,3 +54,38 @@ def development_projects():
 
 def messages(text):
     return [dict(role="system", content=SYSTEM), dict(role="user", content=text)]
+
+
+def confirmation_projects():
+    """Fresh project IDs and four JSON schemas; never used for development selection."""
+    schemas = [
+        ("workers", ["id", "enabled", "timeout_seconds", "retries", "region"],
+         ["worker", True, 25, 2, "east"], 5),
+        ("routes", ["name", "path", "method", "timeout_seconds", "cache"],
+         ["route", "/api", "GET", 35, False], 6),
+        ("steps", ["key", "action", "timeout_seconds", "retries", "enabled"],
+         ["step", "validate", 45, 4, True], 7),
+        ("checks", ["key", "interval_seconds", "timeout_seconds", "severity", "enabled"],
+         ["check", 60, 15, "warning", True], 8),
+    ]
+    import json
+
+    projects = []
+    for i, (collection, fields, values, size) in enumerate(schemas):
+        identifier = f"confirm-schema-{i}"
+        names = [f"{values[0]}_{j:02d}" for j in range(size)]
+        defaults = dict(zip(fields[1:], values[1:]))
+        facts = (f"Top-level fields in order: project={identifier}, {collection}=an array. "
+                 f"The {fields[0]} values in order are {', '.join(names)}. "
+                 f"Each array entry has fields in this order: {', '.join(fields)}. "
+                 f"All entries have these defaults: {json.dumps(defaults)}. "
+                 "Return the complete valid JSON with two-space indentation and one field per line, "
+                 "without markdown fences or other text.")
+        past = "Generate the configuration. " + facts
+        changed = names[len(names) // 2]
+        currents = ["Generate the configuration. " + facts +
+                    f" Override only timeout_seconds for {changed} to {defaults['timeout_seconds'] + delta}."
+                    for delta in (7, 14)]
+        projects.append(dict(id=identifier, scenario="confirmation_structured_revision", past=past,
+                             currents=currents, budget=768, prompt_contains_old_artifact=False))
+    return projects

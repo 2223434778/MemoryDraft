@@ -790,5 +790,109 @@
     "published": "dflash-baseline/transport.json",
     "published_bytes": 403,
     "published_sha256": "4b0a760e096125e1b6cc9258604fc3c06357f8ef345529c3ccb0cb3f1138a110"
+  },
+  {
+    "source": "reuse-pilot/initial-history.json",
+    "raw_bytes": 8147,
+    "raw_sha256": "d92368cc2aae6375a436ea4978accfd919ab843899776cbb7ebf08d075e304cf",
+    "published": "reuse-pilot/initial-history.json",
+    "published_bytes": 8147,
+    "published_sha256": "d92368cc2aae6375a436ea4978accfd919ab843899776cbb7ebf08d075e304cf"
+  },
+  {
+    "source": "reuse-pilot/past-generations.jsonl",
+    "raw_bytes": 18710,
+    "raw_sha256": "d1fcf504b15c23583a2bc54964800c76499c33f8e3c4b5f1424c290d3fc18a1d",
+    "published": "reuse-pilot/past-generations.jsonl.gz",
+    "published_bytes": 2178,
+    "published_sha256": "c9c11e249ee1cd6e9e66405a0f068759e12898cd167dd2b5b9ff45868c75a091"
+  },
+  {
+    "source": "reuse-pilot/projects.json",
+    "raw_bytes": 13385,
+    "raw_sha256": "5d5759eb448bcfb62479872be117e75d0122552dfb577e523ad51312fd9fa369",
+    "published": "reuse-pilot/projects.json",
+    "published_bytes": 13385,
+    "published_sha256": "5d5759eb448bcfb62479872be117e75d0122552dfb577e523ad51312fd9fa369"
+  },
+  {
+    "source": "reuse-pilot/provenance.json",
+    "raw_bytes": 14384,
+    "raw_sha256": "8752df7f2898a6c7c968436b7fe71fe5646a855c7f6b6e9b09dabdc227f80474",
+    "published": "reuse-pilot/provenance.json",
+    "published_bytes": 14384,
+    "published_sha256": "8752df7f2898a6c7c968436b7fe71fe5646a855c7f6b6e9b09dabdc227f80474"
+  },
+  {
+    "source": "reuse-pilot/references.jsonl",
+    "raw_bytes": 36065,
+    "raw_sha256": "e5aea3330e70b982e1a2f423e484f8d03290de4188c6b8eb3366ccdda195eebd",
+    "published": "reuse-pilot/references.jsonl.gz",
+    "published_bytes": 3535,
+    "published_sha256": "6506c829678785a0937f734ee7a65cad43f930949d1bd1bf01db4e776c2c0e93"
+  },
+  {
+    "source": "reuse-pilot/replay.jsonl",
+    "raw_bytes": 369960,
+    "raw_sha256": "b7040afede6c4cfbaff9d16463b3292288f6d567415e937fa213ec6f98c79e7e",
+    "published": "reuse-pilot/replay.jsonl.gz",
+    "published_bytes": 12276,
+    "published_sha256": "ea32b39d2a7a550ffde208734d11e571d98fafe6a2974a4a5ff8ce76ee6ed4ef"
+  },
+  {
+    "source": "reuse-pilot/run.log",
+    "raw_bytes": 1406,
+    "raw_sha256": "bc7bded9bae2b39fafdfee6bf4f447195eeaaf6ebc969709d94fecf3efd598f6",
+    "published": "reuse-pilot/run.log",
+    "published_bytes": 1406,
+    "published_sha256": "bc7bded9bae2b39fafdfee6bf4f447195eeaaf6ebc969709d94fecf3efd598f6"
+  },
+  {
+    "source": "reuse-pilot/smoke-references.jsonl",
+    "raw_bytes": 6215,
+    "raw_sha256": "81da695c53728d1c591275d7351f94593b88b488b0801d533d9a77505345d0b0",
+    "published": "reuse-pilot/smoke-references.jsonl.gz",
+    "published_bytes": 624,
+    "published_sha256": "f537531992725bb3e8d327f483eec1fe79b8841cb3b135ee687dabad7cfb86fd"
+  },
+  {
+    "source": "reuse-pilot/smoke.jsonl",
+    "raw_bytes": 35053,
+    "raw_sha256": "d7f76c2d36d0dc4d24fed334ae20203954efaff73f56955e4d65e9d43c73cbe0",
+    "published": "reuse-pilot/smoke.jsonl.gz",
+    "published_bytes": 1709,
+    "published_sha256": "921105712b1b5ed90098d4f3fc682d8cb22e731c47d49ef6f021d7bad13fe10c"
+  },
+  {
+    "source": "reuse-pilot/summary.json",
+    "raw_bytes": 2325,
+    "raw_sha256": "56f3392f1113a44cb7d64d0105c0c6e826e0d0186bda246f7b85cc6fba1a346e",
+    "published": "reuse-pilot/summary.json",
+    "published_bytes": 2325,
+    "published_sha256": "56f3392f1113a44cb7d64d0105c0c6e826e0d0186bda246f7b85cc6fba1a346e"
+  },
+  {
+    "source": "reuse-pilot-lookup-failure/provenance.json",
+    "raw_bytes": 14441,
+    "raw_sha256": "2cf7f8d9d00c100c3ce600532e80748f0f7071d92ba92672f1a5f931dba997a5",
+    "published": "reuse-pilot-lookup-failure/provenance.json",
+    "published_bytes": 14441,
+    "published_sha256": "2cf7f8d9d00c100c3ce600532e80748f0f7071d92ba92672f1a5f931dba997a5"
+  },
+  {
+    "source": "reuse-pilot-lookup-failure/run.log",
+    "raw_bytes": 2699,
+    "raw_sha256": "c40f8d22925d1dd98efef341fd4695bb76822bf57f7e70e7bf73926caedc886a",
+    "published": "reuse-pilot-lookup-failure/run.log",
+    "published_bytes": 2699,
+    "published_sha256": "c40f8d22925d1dd98efef341fd4695bb76822bf57f7e70e7bf73926caedc886a"
+  },
+  {
+    "source": "reuse-pilot-lookup-failure/smoke.jsonl",
+    "raw_bytes": 11217,
+    "raw_sha256": "404e8d4c1d60845b05042b82648c6f400ee397a3d373eb4592713ae5b106ee0b",
+    "published": "reuse-pilot-lookup-failure/smoke.jsonl.gz",
+    "published_bytes": 1072,
+    "published_sha256": "dfa9662b1244ff9550bba1be4ccf295a9c20951c3470cca2f806494740e55b92"
   }
 ]
