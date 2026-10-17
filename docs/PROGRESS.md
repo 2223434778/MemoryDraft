@@ -1,12 +1,25 @@
 # 项目进度
 
-## 2026-10-17 — H 来源与对称路由追加实验（执行中）
+## 2026-10-17 — H 来源与对称路由追加实验（完成）
 
 - 用户授权执行两项小实验，协议预先固定于 `docs/H_CAUSAL_PROTOCOL.md`。复用已有六个合成测试项目，明确属于追加归因诊断；固定 Qwen3-8B/0.6B、FP32/eager、非思考 greedy、k=2、当前输出上限 128，没有重新挑选样例或阈值。
 - 新增 `memorydraft/evaluation/history_alignment.py`：仅从原始 order=1 记录构造过去 lower()/ten-minutes 任务，保存 order=0 请求和 order=1 Target AR 回答，再冻结派生历史后读取当前测试请求。版本替换键包含 user/record/order，避免未来同 ID 版本污染过去。人工/Target 历史选取同一合法记录，全前缀评分，另报等长度截断敏感性检查。
 - `TransformersBackend.generate(... enable_history=False)` 仅允许 RHD + 独立快照 R 索引；跳过 H 语义检索，R/D/AR 的探测、EMA、驻留和冷却保持相同逻辑。关闭 H 的旧 RD 保留为辅助基线，不充当严格 H 开关对照。
 - 新增测试覆盖过去任务构造/未来更正、H 关闭和路由一致性、相同历史/空历史质量控制。本机针对新增模块 **4 passed**；完整回归和 GPU 结果随后记录。
 - 实际运行命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python -u scripts/run_h_causal.py`。结果目录 `results/h-causal/`；先来源诊断，再两请求 smoke，再六方法三重复的路由评测，避免 GPU 任务重叠。
+
+### 结果与复核
+
+- 实际运行源码清单 SHA-256：`d5072df7254a4867a73e4ed2548d502d30234e2e29acec056aad15dd4b15577f`。协议与实现先以 `8c230ec` 推送；原运行 provenance 保留其实际文件清单，后补报告/CPU 审计不冒充主运行源码。
+- 六条模拟过去回答均未达到 256 token 上限，Target 生成累计 32.618s。冻结历史 SHA `55483ae5160588591aed932bca5fb62e188e301f39bd064c817e3abcab0c919a`，之后才加载当前请求。全前缀 **532** 个位置，新 AR 与第二轮保存的 token/Target prompt hash 完全一致。
+- H_manual 平均接受长度 1.663，H_teacher 1.753；Teacher−Manual 为 **+0.090**，请求 bootstrap 95% **[+0.008,+0.238]**，主要来自文档修改项目。首位命中 86.09%→91.17%（位置等权）；等长度截断比较 +0.153，但截断会改变信息覆盖，不将其当作纯文风因果证明。
+- 108 次路由配对计时 + 6 次 smoke 全部正确。AR=81.264s、D_native=69.960s、旧 RD=57.317s、对称 RHD_off=54.550s、RHD_on=60.086s、缓存 on=58.082s。相对 AR 分别为 1.000/1.162/1.418/1.490/1.352/1.399×。H-on 比 H-off 慢约 10.15%，缓存后仍慢约 6.47%；旧 RD 不能替代对称 H-off。
+- H-off/on 验证回合 914/912，仅少两轮；模型 H+D 起草回合 76/120，多 44 轮。H-on 的 150/168 接受量不是全局增量收益，需扣除被它替代的 R/D 机会；不把其 89% 接受比例直接解释为系统成功。
+- 两个主 GPU 实验结束后执行 CPU 后分析：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python scripts/audit_teacher_overlap.py`。来源改善的 51 个位置中，使用同一 Target 历史的静态 R 可覆盖其中 31 个。此为接续质量审计，不是在线速度；文档项目在新 R 弱匹配处仍有局部来源增益，但只有一个项目。
+- 本机完整回归 **40 passed in 12.26s**；新增模块/报告/发布针对性检查 **6 passed**。服务器主运行前针对性 **4 passed**；两个 GPU 实验结束、最终源码部署后，完整回归 **40 passed in 6.00s**，日志见 `results/h-causal/tests-final.log`。
+- 已导出只含合成/公开 JSON、压缩 JSONL、TXT/LOG 的结果，模型、数据库和源码压缩包不入库。`docs/H_CAUSAL_RESULTS.md` 由 `python scripts/write_h_causal_report.py` 离线重建；发布原始/压缩后 SHA 保存在统一 publication ledger。
+
+本轮支持“历史来源对齐影响 H 候选质量”，但没有测出原人工历史上启用 H 的净收益；两个实验不合并冒充 Target-history RHD 的在线加速。成熟 B6/B7 及新的独立用户项目验证仍未完成。
 
 ## 2026-10-16 — 架构 v0.2
 

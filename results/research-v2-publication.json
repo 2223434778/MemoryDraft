@@ -382,5 +382,117 @@
     "published": "research-old-controls/replay-k8.jsonl.gz",
     "published_bytes": 11691,
     "published_sha256": "704c40c5510b84ec1ece40f35d16c15e0f98779eb5a424d3cd0ae59da997a414"
+  },
+  {
+    "source": "h-causal/alignment-prefix.jsonl",
+    "raw_bytes": 719015,
+    "raw_sha256": "75aaaf8b890627a36813e666854350321e3a8d9a5727e96b7f05d000e3966f09",
+    "published": "h-causal/alignment-prefix.jsonl.gz",
+    "published_bytes": 25369,
+    "published_sha256": "2ea37e5bfea8068aed0f81eed811bc2037b897c5e2d144ccb71df1fdf18c16e9"
+  },
+  {
+    "source": "h-causal/alignment-summary.json",
+    "raw_bytes": 4600,
+    "raw_sha256": "640e5eb8bb1d6a8fa0a2f4e1573330f4a0ee0001db6af40be0da7f3e000ce29a",
+    "published": "h-causal/alignment-summary.json",
+    "published_bytes": 4600,
+    "published_sha256": "640e5eb8bb1d6a8fa0a2f4e1573330f4a0ee0001db6af40be0da7f3e000ce29a"
+  },
+  {
+    "source": "h-causal/cache-visits.json",
+    "raw_bytes": 6382,
+    "raw_sha256": "5e9b682013805243ff103523223c16dc758e2d1c909850a0b4d4189c15973643",
+    "published": "h-causal/cache-visits.json",
+    "published_bytes": 6382,
+    "published_sha256": "5e9b682013805243ff103523223c16dc758e2d1c909850a0b4d4189c15973643"
+  },
+  {
+    "source": "h-causal/provenance.json",
+    "raw_bytes": 12369,
+    "raw_sha256": "f2921e41207546ce3fe79c039843f26ad29ce1234d785520bd5a072357e9cf7e",
+    "published": "h-causal/provenance.json",
+    "published_bytes": 12369,
+    "published_sha256": "f2921e41207546ce3fe79c039843f26ad29ce1234d785520bd5a072357e9cf7e"
+  },
+  {
+    "source": "h-causal/router-replay.jsonl",
+    "raw_bytes": 1760565,
+    "raw_sha256": "d3a6b06f95f37209972373153d95a1199ba1fa440578095531365f33613bc249",
+    "published": "h-causal/router-replay.jsonl.gz",
+    "published_bytes": 192106,
+    "published_sha256": "6ad1ea896648df16254b6af478f246ef827ee2fcdc5511a4736031664e58b308"
+  },
+  {
+    "source": "h-causal/router-smoke-summary.json",
+    "raw_bytes": 2068,
+    "raw_sha256": "a6c1a2cafe45038059d8808271ae9c540ac445f68633f2bf24e009432e40ad6a",
+    "published": "h-causal/router-smoke-summary.json",
+    "published_bytes": 2068,
+    "published_sha256": "a6c1a2cafe45038059d8808271ae9c540ac445f68633f2bf24e009432e40ad6a"
+  },
+  {
+    "source": "h-causal/router-smoke.jsonl",
+    "raw_bytes": 21057,
+    "raw_sha256": "3205ec6a88908e8fae1f63a564e592450484dc3dd95bceea9cc02f2dfccb2df8",
+    "published": "h-causal/router-smoke.jsonl.gz",
+    "published_bytes": 3650,
+    "published_sha256": "05030003302a12b399d6373c326d54f0895e51e4fac6d68ba9eaf31013af1cfe"
+  },
+  {
+    "source": "h-causal/router-summary.json",
+    "raw_bytes": 4245,
+    "raw_sha256": "703a3011d7bd21ff1cdd1c55992ee1616fa810f5b7dffbb4ff9703854e4bc896",
+    "published": "h-causal/router-summary.json",
+    "published_bytes": 4245,
+    "published_sha256": "703a3011d7bd21ff1cdd1c55992ee1616fa810f5b7dffbb4ff9703854e4bc896"
+  },
+  {
+    "source": "h-causal/run.log",
+    "raw_bytes": 3963,
+    "raw_sha256": "42981961a6e19b4bfcc268571a7d0db5fa517d841de80e6aa17220262e1043ea",
+    "published": "h-causal/run.log",
+    "published_bytes": 3963,
+    "published_sha256": "42981961a6e19b4bfcc268571a7d0db5fa517d841de80e6aa17220262e1043ea"
+  },
+  {
+    "source": "h-causal/teacher-history/generations.json",
+    "raw_bytes": 12391,
+    "raw_sha256": "3c65f55696e25458a0d9fb33a7a84928e45c43c8b99de1c48cf2b18135d59823",
+    "published": "h-causal/teacher-history/generations.json",
+    "published_bytes": 12391,
+    "published_sha256": "3c65f55696e25458a0d9fb33a7a84928e45c43c8b99de1c48cf2b18135d59823"
+  },
+  {
+    "source": "h-causal/teacher-history/history.jsonl",
+    "raw_bytes": 8899,
+    "raw_sha256": "55483ae5160588591aed932bca5fb62e188e301f39bd064c817e3abcab0c919a",
+    "published": "h-causal/teacher-history/history.jsonl.gz",
+    "published_bytes": 1053,
+    "published_sha256": "08215b71d2aa92d0ae71045d93f5d67ce55736426be19e299e790c1f5cd75769"
+  },
+  {
+    "source": "h-causal/teacher-history/past-requests.jsonl",
+    "raw_bytes": 4238,
+    "raw_sha256": "2ea37a31841f9cafcf9a6aa0a8c5a234b03d3edcf917b2bd49fe10f0c8109883",
+    "published": "h-causal/teacher-history/past-requests.jsonl.gz",
+    "published_bytes": 928,
+    "published_sha256": "01308e65fd469cb12b7e0939c97343cbee93a771f3fd2060bc8ac12a0bc8ca87"
+  },
+  {
+    "source": "h-causal/teacher-r-overlap.json",
+    "raw_bytes": 1833,
+    "raw_sha256": "fe2e46bfd4bbc81fff85cf720d045c69fb81025b51c514a3fd82dc2552b8e8d0",
+    "published": "h-causal/teacher-r-overlap.json",
+    "published_bytes": 1833,
+    "published_sha256": "fe2e46bfd4bbc81fff85cf720d045c69fb81025b51c514a3fd82dc2552b8e8d0"
+  },
+  {
+    "source": "h-causal/tests-final.log",
+    "raw_bytes": 99,
+    "raw_sha256": "a0932cfb54a41b9e33cac0cdf3360a03ed919f73340248bd79b6c54b60630ce6",
+    "published": "h-causal/tests-final.log",
+    "published_bytes": 99,
+    "published_sha256": "a0932cfb54a41b9e33cac0cdf3360a03ed919f73340248bd79b6c54b60630ce6"
   }
 ]

@@ -11,6 +11,8 @@
 
 第二轮 [GPU 报告](docs/EXPERIMENTS_V2.md) 已完成 432 次配对计时运行：A6000、Qwen3-8B/0.6B、FP32/eager、非思考模式。合成历史任务 D_native **1.168×**、R **1.487×**；公开任务 D_native **1.000×**、R **1.056×**、PLD **1.117×**。D 尚未在全部任务上加速。H 的全前缀接受长度增量约 **+0.045 token**、区间跨零，且在线慢于同指令 D；没有宣称 H 成功。Qwen3 默认采样回填与 PLD 长度边界已修复并有回归测试。
 
+追加的 [H 来源与对称路由实验](docs/H_CAUSAL_RESULTS.md) 已完成：同一 Target 在模拟过去任务上生成的历史，使 H 平均连续接受长度从 1.663 提高到 1.753；但原人工历史上，对称路由的 H-on 比 H-off 慢约 10.15%，缓存后仍慢约 6.47%。来源质量实验与路由成本实验分开控制变量，不能拼成已测的 Target-history RHD 加速。新结果含 108 次计时与 6 次 smoke，源码入口 `scripts/run_h_causal.py`，协议见 `docs/H_CAUSAL_PROTOCOL.md`。
+
 ## 阅读与执行顺序
 
 1. [Codex 启动任务](docs/CODEX_START.md)

@@ -1,0 +1,47 @@
+{
+  "purpose": "Post-test CPU proposal-quality audit only; full teacher snapshot static R, not an online speed measurement or dynamic lookup.",
+  "diagnostic_script_sha256": "2ebfebe303d579d65c00377c66c4d0b610ff361d0956521ab1c2fc50cf3de763",
+  "alignment_input_sha256": "75aaaf8b890627a36813e666854350321e3a8d9a5727e96b7f05d000e3966f09",
+  "teacher_history_sha256": "55483ae5160588591aed932bca5fb62e188e301f39bd064c817e3abcab0c919a",
+  "positions": 532,
+  "h_improved_positions": 51,
+  "improved_positions_static_r_covers_h": 31,
+  "per_request": {
+    "test-project-0": {
+      "mean_h_teacher": 1.9639639639639639,
+      "mean_static_r_teacher": 0.009009009009009009,
+      "teacher_r_weak_positions": 107,
+      "weak_mean_h_teacher_minus_manual": 0.0
+    },
+    "test-project-1": {
+      "mean_h_teacher": 1.9827586206896552,
+      "mean_static_r_teacher": 1.6896551724137931,
+      "teacher_r_weak_positions": 7,
+      "weak_mean_h_teacher_minus_manual": 0.0
+    },
+    "test-project-2": {
+      "mean_h_teacher": 1.4296875,
+      "mean_static_r_teacher": 0.8671875,
+      "teacher_r_weak_positions": 61,
+      "weak_mean_h_teacher_minus_manual": 0.4262295081967213
+    },
+    "test-project-3": {
+      "mean_h_teacher": 1.9639639639639639,
+      "mean_static_r_teacher": 0.009009009009009009,
+      "teacher_r_weak_positions": 107,
+      "weak_mean_h_teacher_minus_manual": 0.0
+    },
+    "test-project-4": {
+      "mean_h_teacher": 1.9482758620689655,
+      "mean_static_r_teacher": 1.6896551724137931,
+      "teacher_r_weak_positions": 7,
+      "weak_mean_h_teacher_minus_manual": -0.2857142857142857
+    },
+    "test-project-5": {
+      "mean_h_teacher": 1.2272727272727273,
+      "mean_static_r_teacher": 0.0,
+      "teacher_r_weak_positions": 66,
+      "weak_mean_h_teacher_minus_manual": 0.015151515151515152
+    }
+  }
+}

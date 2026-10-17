@@ -65,26 +65,33 @@ if __name__ == "__main__":
         payload = first["history_payload_tokens"]
         delta = source["teacher_minus_manual"]["per_request"][rid]
         lines.append(f"| {rid} | {first['scenario']} | {len(group)} | {payload['H_manual']}/{payload['H_teacher']} | {delta:+.3f} |")
-    lines += ["", f"共 {len(prefix)} 个位置；新 AR 参考 token 和 Target prompt hash 已与第二轮计时 AR 核对一致。两种历史来自相同任务事实，但生成方式、措辞和长度可能一起变化，因此主比较衡量整体历史来源效果，不能只归因为某个格式特征。", "",
+    lines += ["", f"共 {len(prefix)} 个位置；新 AR 参考 token 和 Target prompt hash 已与第二轮计时 AR 核对一致。两种历史共享 lower()/ten-minutes 等核心过去任务约束，但细节、生成方式、措辞和长度可能一起变化，因此主比较衡量整体历史来源效果，不能只归因为某个格式特征。", "",
               "## 实验二：相同路由规则的 H 开关", "",
               "继续使用原人工历史。RHD_off/on 共享 R 索引、D 原生上下文和 RHD 路由代码：同样的 R 冷却、D/AR 两轮探测、EMA、最小驻留；on 额外允许 H 并计入其两轮探测、检索、prefill 和追赶成本。旧 RD 无相同 AR 选择逻辑，仅作为辅助基线。",
               "RHD_on_cached 是同一个 H-on 的缓存优化控制，缓存初始为空；查询每次在线编码，首次历史编码计入在线成本。AR 与所有方法交错运行，三次重复。预热/模型加载与离线评分参考不计入请求延迟；在线快照、检索、索引、起草、验证、缓存维护、输出解码均计入。", ""]
     data = rows("router-replay.jsonl")
     summary = json.loads((base / "router-summary.json").read_text(encoding="utf-8"))
-    lines += ["| 方法 | 次数 | 总秒数 | AR/方法 | 请求 bootstrap 95% 区间 | TTFT 中位数 ms | L1 累计秒数 |", "|---|---:|---:|---:|---|---:|---:|"]
+    lines += ["| 方法 | 次数 | 总秒数 | AR/方法 | 请求 bootstrap 95% 区间 | TTFT 中位数 ms | L1 累计秒数 | PyTorch 峰值 GiB |", "|---|---:|---:|---:|---|---:|---:|---:|"]
     for method, value in summary.items():
         low, high = speed_interval(data, method)
         selected = [r for r in data if r["method"] == method]
         ttft = statistics.median(r["ttft_seconds"] for r in selected) * 1000
         retrieval = sum(r["stage_seconds"]["l1_host"] for r in selected)
-        lines.append(f"| {method} | {value['requests']} | {value['total_seconds']:.3f} | {value['speedup_vs_ar']:.3f}× | [{low:.3f}, {high:.3f}] | {ttft:.1f} | {retrieval:.3f} |")
-    lines += ["", "| 比较 | baseline/方法 | 请求 bootstrap 95% 区间 |", "|---|---:|---|"]
+        peak = max(max(r["peak_gpu_bytes"].values()) for r in selected) / 2**30
+        lines.append(f"| {method} | {value['requests']} | {value['total_seconds']:.3f} | {value['speedup_vs_ar']:.3f}× | [{low:.3f}, {high:.3f}] | {ttft:.1f} | {retrieval:.3f} | {peak:.2f} |")
+    lines += ["", "显存为 PyTorch 峰值分配，包含驻留的 Target/S，不是驱动报告的全部显存；CPU 峰值内存未测。", "", "| 比较 | baseline/方法 | 请求 bootstrap 95% 区间 |", "|---|---:|---|"]
     for baseline, method in (("RHD_off", "RHD_on"), ("RHD_off", "RHD_on_cached"),
                              ("RHD_on", "RHD_on_cached"), ("RD", "RHD_off")):
         ratio = summary[baseline]["total_seconds"] / summary[method]["total_seconds"]
         low, high = relative_time_interval(data, baseline, method)
         lines.append(f"| {baseline}/{method} | {ratio:.3f}× | [{low:.3f}, {high:.3f}] |")
     lines += ["", "大于 1 表示分母方法更快。H-on 相对 H-off 才是主要功能开关估计；包含探测和成本反馈导致的路线变化，不能单独归因为 H 提议质量。", "",
+              "| 访问 | H-off/H-on | H-off/缓存 H-on | H-on/缓存 H-on |", "|---|---:|---:|---:|"]
+    for label, repeats in (("首次（repeat=0）", {0}), ("后续（repeat=1,2）", {1, 2})):
+        times = {m: sum(r["latency_seconds"] for r in data if r["method"] == m and r["repeat"] in repeats)
+                 for m in ("RHD_off", "RHD_on", "RHD_on_cached")}
+        lines.append(f"| {label} | {times['RHD_off']/times['RHD_on']:.3f}× | {times['RHD_off']/times['RHD_on_cached']:.3f}× | {times['RHD_on']/times['RHD_on_cached']:.3f}× |")
+    lines += ["", "缓存从空开始；相同文本向量可能跨合法快照复用，首次访问不保证所有片段都未命中。", "",
               "| 方法 | R/H/D/AR 轮数 | 全部验证轮数 | H 接受/提议 token | H 首次设置 host 秒数 | H 首次/追赶输入 token 数 |", "|---|---|---:|---:|---:|---:|"]
     for method, value in summary.items():
         routes = value["routes"]
@@ -93,10 +100,19 @@ if __name__ == "__main__":
         events = [e for r in data if r["method"] == method for e in r["rounds"] if e["route"] == "H"]
         setup = sum(e.get("setup_host_seconds", 0.) for e in events)
         tokens = sum(e.get("draft_prefill_or_catchup_tokens", 0) for e in events)
-        lines.append(f"| {method} | {counts} | {sum(v['rounds'] for v in routes.values())} | {h['accepted']}/{h['proposed']} | {setup:.4f} | {tokens} |")
+        round_count = str(sum(v["rounds"] for v in routes.values()))
+        if method == "AR":
+            counts, round_count = "—", "未记录"
+        lines.append(f"| {method} | {counts} | {round_count} | {h['accepted']}/{h['proposed']} | {setup:.4f} | {tokens} |")
     if summary["RHD_off"]["routes"]["H"]["rounds"]:
         raise ValueError("H-off activated H")
-    lines += ["", "H 设置列是 host 包装器初始化，GPU prefill/追赶在生成路径内计入总延迟；不能将该 host 数值解释为完整 prefill 耗时。H-off 的 H 路线必须为零。路线的起始前缀不同，H/D 在线汇总接受率不作同前缀因果比较。", "",
+    off_routes = summary["RHD_off"]["routes"]
+    on_routes = summary["RHD_on"]["routes"]
+    off_rounds = sum(v["rounds"] for v in off_routes.values())
+    on_rounds = sum(v["rounds"] for v in on_routes.values())
+    extra_draft = sum(on_routes[k]["rounds"] - off_routes[k]["rounds"] for k in ("H", "D"))
+    lines += ["", f"启用 H 后验证回合为 {on_rounds}，关闭为 {off_rounds}，只少 {off_rounds-on_rounds} 回合；H+D 模型起草轮数却增加 {extra_draft}。H 路线自身接受 {on_routes['H']['accepted']}/{on_routes['H']['proposed']} 并不等于同样多的增量收益，因为它替代了部分原本也能接受的 R/D 接续。当前额外检索与模型起草成本没有换来足够的验证次数下降。", ""]
+    lines += ["", "H 设置列是 host 包装器初始化，GPU prefill/追赶在生成路径内计入总延迟；不能将该 host 数值解释为完整 prefill 耗时。AR 没有候选器事件，轮次缺失不等于零次 Target 前向。H-off 的 H 路线必须为零。路线的起始前缀不同，H/D 在线汇总接受率不作同前缀因果比较。", "",
               "| 场景 | AR/RHD_off | AR/RHD_on | AR/RHD_on_cached |", "|---|---:|---:|---:|"]
     for scenario in dict.fromkeys(r["scenario"] for r in data):
         selected = [r for r in data if r["scenario"] == scenario]
@@ -120,11 +136,17 @@ if __name__ == "__main__":
             weak_text = f"{weak:+.3f}" if weak is not None else "无"
             lines.append(f"| {rid} | {value['mean_h_teacher']:.3f} | {value['mean_static_r_teacher']:.3f} | {value['teacher_r_weak_positions']} | {weak_text} |")
         lines += ["", "这些均为位置等权质量指标。若 H 增益主要可由同来源 R 直接复制，改进历史来源首先证明了历史语料对齐的价值，不能独自证明 H 在 R 之外的必要性。", ""]
+        lines += ["复制任务的当前 prompt 已含原文；本审计中静态 Target-history R 得分低，不代表完整 R 的动态输入复用也低。文档修改在新静态 R 弱匹配处仍有局部 H 来源增益，但只有一个项目，尚无联合 Target-history R/H 的在线净收益测量。", ""]
     q = source["teacher_minus_manual"]
     low, high = q["bootstrap95_request"]
     ratios = {m: summary["RHD_off"]["total_seconds"] / summary[m]["total_seconds"]
               for m in ("RHD_on", "RHD_on_cached")}
     lines[5:5] = [f"主结果：Target 过去历史相对人工过去历史的连续接受长度增量为 **{q['mean_delta']:+.3f} token**，请求 bootstrap 95% 区间 **[{low:+.3f}, {high:+.3f}]**。相同路由下，H-off/H-on 总时间比为 **{ratios['RHD_on']:.3f}×**，H-off/缓存 H-on 为 **{ratios['RHD_on_cached']:.3f}×**（大于 1 才是启用 H 更快）。", "",
                    "两项实验分开控制变量：来源实验的 Target 历史没有用于路由实验。因此不能把来源实验的质量提升和路由表直接拼成已测的 Target-history RHD 加速。", ""]
+    lines += ["## 上游依据", "",
+              "[SAM-Decoding 固定提交说明](https://github.com/hyx1999/SAM-Decoding/tree/aaf939819223147ce544e3a80f65758ac7758076)指出其静态语料来自 Vicuna-7B，与其他更大模型的输出可能不匹配。该提醒针对其静态检索候选，不是对本项目 H 的验证；本次通过独立历史来源对照实测相同风险是否影响 H。没有复制该项目代码或将其性能表当成本项目结果。", ""]
+    test_log = base / "tests-final.log"
+    if test_log.exists():
+        lines += ["## 完整回归", "", "服务器最终源码测试日志：", "", "```text", test_log.read_text(encoding="utf-8").strip(), "```", ""]
     (root / "docs/H_CAUSAL_RESULTS.md").write_text("\n".join(lines), encoding="utf-8")
     print("Wrote docs/H_CAUSAL_RESULTS.md")
