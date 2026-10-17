@@ -1,0 +1,284 @@
+{
+  "test-project-0": {
+    "user_id": "test-project-0",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-0",
+        "record_id": "test-project-0-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-0",
+        "record_id": "test-project-0-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-0",
+        "record_id": "test-project-0-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-0",
+        "record_id": "test-project-0-old",
+        "order": 1,
+        "text": "**Test-Project-0 Release Checklist**\n\n1. Prepare the deployment environment and ensure all dependencies are up to date.  \n2. Perform a full system backup before initiating the release.  \n3. Conduct all automated and manual tests to verify functionality.  \n4. Deploy the release to a canary environment for initial monitoring.  \n5. Monitor the canary environment for ten minutes to check for errors or anomalies.  \n6. If no issues are detected, proceed with the full rollout to production.  \n7. Document all changes, configurations, and deployment details for audit purposes.  \n8. Notify all relevant stakeholders of the successful deployment and next steps.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-0"
+      }
+    ],
+    "snapshot_id": "8fb54cabe2774d94c799b56351c0288dda5f32a151c74ef68b5bd427b0e8d971"
+  },
+  "test-project-1": {
+    "user_id": "test-project-1",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-1",
+        "record_id": "test-project-1-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-1",
+        "record_id": "test-project-1-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-1",
+        "record_id": "test-project-1-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-1",
+        "record_id": "test-project-1-old",
+        "order": 1,
+        "text": "def read_test_items_1(items, limit=10):\n    labels = []\n    for item in items:\n        label = item.strip()\n        if not label:\n            continue\n        labels.append(label.lower())\n        if len(labels) >= limit:\n            break\n    return labels",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-1"
+      }
+    ],
+    "snapshot_id": "27a82c7bb34accd498aef4cdd74b8ed2f6e08838af761b2e4587905601724e1a"
+  },
+  "test-project-2": {
+    "user_id": "test-project-2",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-2",
+        "record_id": "test-project-2-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-2",
+        "record_id": "test-project-2-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-2",
+        "record_id": "test-project-2-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-2",
+        "record_id": "test-project-2-old",
+        "order": 1,
+        "text": "**Test-Project-2 Release Checklist**\n\n1. Prepare the deployment environment and ensure all dependencies are up to date.  \n2. Perform a full system backup before initiating the release.  \n3. Conduct automated and manual testing to validate the changes.  \n4. Deploy the update to a canary group of users for initial monitoring.  \n5. Monitor the canary deployment for ten minutes to check for anomalies.  \n6. If no issues are detected, proceed with the full rollout to all users.  \n7. Document the release details, including version number and deployment time.  \n8. Notify all relevant stakeholders of the successful deployment and next steps.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-2"
+      }
+    ],
+    "snapshot_id": "8fb5b478434731be75c0397a2f154bcc68ee81dbfdf7579704b4cb4654023616"
+  },
+  "test-project-3": {
+    "user_id": "test-project-3",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-3",
+        "record_id": "test-project-3-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-3",
+        "record_id": "test-project-3-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-3",
+        "record_id": "test-project-3-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-3",
+        "record_id": "test-project-3-old",
+        "order": 1,
+        "text": "**Test-Project-3 Release Checklist**\n\n1. Prepare the deployment environment and ensure all dependencies are up to date.  \n2. Perform a full system backup before initiating the release.  \n3. Conduct automated and manual testing to validate the changes.  \n4. Deploy the update to a canary group of users for initial monitoring.  \n5. Monitor the canary deployment for ten minutes to check for anomalies.  \n6. If no issues are detected, proceed with the full rollout to all users.  \n7. Document the release details, including version number and deployment time.  \n8. Notify all relevant stakeholders of the successful deployment and next steps.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-3"
+      }
+    ],
+    "snapshot_id": "d54b568001f24f7a99fe9d35b3e314690328ee1c49edd1b2204df14468ef044a"
+  },
+  "test-project-4": {
+    "user_id": "test-project-4",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-4",
+        "record_id": "test-project-4-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-4",
+        "record_id": "test-project-4-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-4",
+        "record_id": "test-project-4-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-4",
+        "record_id": "test-project-4-old",
+        "order": 1,
+        "text": "def read_test_items_4(items, limit=10):\n    labels = []\n    for item in items:\n        label = item.strip()\n        if not label:\n            continue\n        labels.append(label.lower())\n        if len(labels) >= limit:\n            break\n    return labels",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-4"
+      }
+    ],
+    "snapshot_id": "7da25ccf87cd30fef4ce0bc85e771ca646a0f282b3f7171e881ffe2cd385e914"
+  },
+  "test-project-5": {
+    "user_id": "test-project-5",
+    "before_order": 10,
+    "records": [
+      {
+        "user_id": "test-project-5",
+        "record_id": "test-project-5-distractor-0",
+        "order": 2,
+        "text": "The botanical garden contains orchids, moss and ferns around a quiet pond.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-5",
+        "record_id": "test-project-5-distractor-1",
+        "order": 2,
+        "text": "Meeting notes: the office kitchen closes at six and the library opens at nine.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-5",
+        "record_id": "test-project-5-distractor-2",
+        "order": 2,
+        "text": "A different project builds reports using a database and a web dashboard.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": ""
+      },
+      {
+        "user_id": "test-project-5",
+        "record_id": "test-project-5-old",
+        "order": 1,
+        "text": "**Test-Project-5 Release Checklist**\n\n1. Prepare the deployment environment and ensure all dependencies are up to date.  \n2. Perform a full system backup before initiating the release.  \n3. Conduct automated and manual testing to validate the changes.  \n4. Deploy the update to a canary group of users for initial monitoring.  \n5. Monitor the canary deployment for ten minutes to check for anomalies.  \n6. Roll out the update to the full production environment if the canary is stable.  \n7. Document all changes, configurations, and deployment details for audit purposes.  \n8. Notify all relevant stakeholders of the successful deployment and next steps.",
+        "status": "active",
+        "session_id": "",
+        "source_role": "assistant",
+        "project_id": "test-project-5"
+      }
+    ],
+    "snapshot_id": "81a7fe7d16192f76ce8bed090ba854ca765296db137c5d755e1501a2a114bfba"
+  }
+}

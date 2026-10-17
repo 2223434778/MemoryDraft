@@ -1,5 +1,15 @@
 # Astra 审阅入口
 
+## 最新：Target 历史下的在线 H 开关（2026-10-17）
+
+先读 [H_TEACHER_ROUTER_RESULTS](H_TEACHER_ROUTER_RESULTS.md)，协议 [H_TEACHER_ROUTER_PROTOCOL](H_TEACHER_ROUTER_PROTOCOL.md)。这轮补齐上一轮尚未测量的联合条件：R/H 共用已冻结 Target 过去回答，同一完整 R 索引和路由，仅改变 H 是否可用；没有重新生成历史或调节参数。
+
+72 次计时与 8 次 smoke 全部与原 AR 相同。AR=81.109s，H-off=49.356s（1.643× AR），H-on=53.934s，缓存 on=52.043s，启用 H 慢 9.27%/5.44%；off/on 95% 请求区间 [0.888,0.932]，off/缓存 on [0.922,0.964]，两个时间比均小于 1。验证轮数 807→816，小模型起草 77→96，六项目启用 H 均更慢。
+
+实际 H 60 轮接受 96/120；对齐旧同前缀离线评分的 D_native 为 90/120，单条指定 Target 历史 H_teacher 为 93/120。不要将 H 自身接受比例或局部六个 token 差值当作全局收益，也不要把跨批耗时差直接归因于历史来源。当前结果支持“额外 H 质量与 R/D 的重叠、路由机会和全部启用成本不足以形成净收益”；不证明所有 H 策略或真实长期分布无效。
+
+运行前实现已推送 `b7e1e53`/`0419b0b`，实际 GPU 源码 SHA `436c2daaa920df93a6c0b745da0ede3d6a2b39c3d273f3bef2df32b4a88c640a`。报告可用 `python scripts/write_h_teacher_router_report.py` 从 gzip 记录离线重建；测试与发布清单见最新 PROGRESS。
+
 ## 最新两个 H 归因实验（2026-10-17）
 
 先读 [H_CAUSAL_RESULTS](H_CAUSAL_RESULTS.md) 和预先固定的 [H_CAUSAL_PROTOCOL](H_CAUSAL_PROTOCOL.md)。旧历史只来自原始 order=1 片段：生成模拟 order=0 过去请求与 Target 的 order=1 回答，冻结并保存哈希后才读当前 order=10 请求。

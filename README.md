@@ -13,6 +13,8 @@
 
 追加的 [H 来源与对称路由实验](docs/H_CAUSAL_RESULTS.md) 已完成：同一 Target 在模拟过去任务上生成的历史，使 H 平均连续接受长度从 1.663 提高到 1.753；但原人工历史上，对称路由的 H-on 比 H-off 慢约 10.15%，缓存后仍慢约 6.47%。来源质量实验与路由成本实验分开控制变量，不能拼成已测的 Target-history RHD 加速。新结果含 108 次计时与 6 次 smoke，源码入口 `scripts/run_h_causal.py`，协议见 `docs/H_CAUSAL_PROTOCOL.md`。
 
+进一步的 [同一 Target 历史在线验证](docs/H_TEACHER_ROUTER_RESULTS.md) 已完成：R/H 共用上一轮冻结历史，72 次计时和 8 次 smoke 全部正确。H-off=49.356s（相对 AR 1.643×），H-on=53.934s，缓存 on=52.043s；启用 H 分别慢 9.27%/5.44%，验证轮数增加 9、小模型起草增加 19。改善历史来源仍未使当前固定 H 策略获得净收益。入口 `scripts/run_h_teacher_router.py`，离线重建报告使用 `python scripts/write_h_teacher_router_report.py`。
+
 ## 阅读与执行顺序
 
 1. [Codex 启动任务](docs/CODEX_START.md)

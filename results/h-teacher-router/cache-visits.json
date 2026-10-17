@@ -1,0 +1,308 @@
+[
+  {
+    "snapshot_id": "8fb54cabe2774d94c799b56351c0288dda5f32a151c74ef68b5bd427b0e8d971",
+    "before": {
+      "hits": 0,
+      "misses": 0,
+      "chunks": 0,
+      "capacity": 4096,
+      "vector_bytes": 0
+    },
+    "after": {
+      "hits": 0,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    }
+  },
+  {
+    "snapshot_id": "8fb54cabe2774d94c799b56351c0288dda5f32a151c74ef68b5bd427b0e8d971",
+    "before": {
+      "hits": 0,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    },
+    "after": {
+      "hits": 4,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    }
+  },
+  {
+    "snapshot_id": "8fb54cabe2774d94c799b56351c0288dda5f32a151c74ef68b5bd427b0e8d971",
+    "before": {
+      "hits": 4,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    },
+    "after": {
+      "hits": 8,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    }
+  },
+  {
+    "snapshot_id": "27a82c7bb34accd498aef4cdd74b8ed2f6e08838af761b2e4587905601724e1a",
+    "before": {
+      "hits": 8,
+      "misses": 4,
+      "chunks": 4,
+      "capacity": 4096,
+      "vector_bytes": 6144
+    },
+    "after": {
+      "hits": 11,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    }
+  },
+  {
+    "snapshot_id": "27a82c7bb34accd498aef4cdd74b8ed2f6e08838af761b2e4587905601724e1a",
+    "before": {
+      "hits": 11,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    },
+    "after": {
+      "hits": 15,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    }
+  },
+  {
+    "snapshot_id": "27a82c7bb34accd498aef4cdd74b8ed2f6e08838af761b2e4587905601724e1a",
+    "before": {
+      "hits": 15,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    },
+    "after": {
+      "hits": 19,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    }
+  },
+  {
+    "snapshot_id": "8fb5b478434731be75c0397a2f154bcc68ee81dbfdf7579704b4cb4654023616",
+    "before": {
+      "hits": 19,
+      "misses": 5,
+      "chunks": 5,
+      "capacity": 4096,
+      "vector_bytes": 7680
+    },
+    "after": {
+      "hits": 22,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    }
+  },
+  {
+    "snapshot_id": "8fb5b478434731be75c0397a2f154bcc68ee81dbfdf7579704b4cb4654023616",
+    "before": {
+      "hits": 22,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    },
+    "after": {
+      "hits": 26,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    }
+  },
+  {
+    "snapshot_id": "8fb5b478434731be75c0397a2f154bcc68ee81dbfdf7579704b4cb4654023616",
+    "before": {
+      "hits": 26,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    },
+    "after": {
+      "hits": 30,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    }
+  },
+  {
+    "snapshot_id": "d54b568001f24f7a99fe9d35b3e314690328ee1c49edd1b2204df14468ef044a",
+    "before": {
+      "hits": 30,
+      "misses": 6,
+      "chunks": 6,
+      "capacity": 4096,
+      "vector_bytes": 9216
+    },
+    "after": {
+      "hits": 33,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    }
+  },
+  {
+    "snapshot_id": "d54b568001f24f7a99fe9d35b3e314690328ee1c49edd1b2204df14468ef044a",
+    "before": {
+      "hits": 33,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    },
+    "after": {
+      "hits": 37,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    }
+  },
+  {
+    "snapshot_id": "d54b568001f24f7a99fe9d35b3e314690328ee1c49edd1b2204df14468ef044a",
+    "before": {
+      "hits": 37,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    },
+    "after": {
+      "hits": 41,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    }
+  },
+  {
+    "snapshot_id": "7da25ccf87cd30fef4ce0bc85e771ca646a0f282b3f7171e881ffe2cd385e914",
+    "before": {
+      "hits": 41,
+      "misses": 7,
+      "chunks": 7,
+      "capacity": 4096,
+      "vector_bytes": 10752
+    },
+    "after": {
+      "hits": 44,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    }
+  },
+  {
+    "snapshot_id": "7da25ccf87cd30fef4ce0bc85e771ca646a0f282b3f7171e881ffe2cd385e914",
+    "before": {
+      "hits": 44,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    },
+    "after": {
+      "hits": 48,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    }
+  },
+  {
+    "snapshot_id": "7da25ccf87cd30fef4ce0bc85e771ca646a0f282b3f7171e881ffe2cd385e914",
+    "before": {
+      "hits": 48,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    },
+    "after": {
+      "hits": 52,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    }
+  },
+  {
+    "snapshot_id": "81a7fe7d16192f76ce8bed090ba854ca765296db137c5d755e1501a2a114bfba",
+    "before": {
+      "hits": 52,
+      "misses": 8,
+      "chunks": 8,
+      "capacity": 4096,
+      "vector_bytes": 12288
+    },
+    "after": {
+      "hits": 55,
+      "misses": 9,
+      "chunks": 9,
+      "capacity": 4096,
+      "vector_bytes": 13824
+    }
+  },
+  {
+    "snapshot_id": "81a7fe7d16192f76ce8bed090ba854ca765296db137c5d755e1501a2a114bfba",
+    "before": {
+      "hits": 55,
+      "misses": 9,
+      "chunks": 9,
+      "capacity": 4096,
+      "vector_bytes": 13824
+    },
+    "after": {
+      "hits": 59,
+      "misses": 9,
+      "chunks": 9,
+      "capacity": 4096,
+      "vector_bytes": 13824
+    }
+  },
+  {
+    "snapshot_id": "81a7fe7d16192f76ce8bed090ba854ca765296db137c5d755e1501a2a114bfba",
+    "before": {
+      "hits": 59,
+      "misses": 9,
+      "chunks": 9,
+      "capacity": 4096,
+      "vector_bytes": 13824
+    },
+    "after": {
+      "hits": 63,
+      "misses": 9,
+      "chunks": 9,
+      "capacity": 4096,
+      "vector_bytes": 13824
+    }
+  }
+]

@@ -1,10 +1,19 @@
 # 项目进度
 
-## 2026-10-17 — Target 历史的对称 H 开关验证（开始）
+## 2026-10-17 — Target 历史的对称 H 开关验证（完成）
 
 - 用户授权验证更换历史后 H 是否产生净加速。协议 `docs/H_TEACHER_ROUTER_PROTOCOL.md`：复用上一轮冻结 Target 历史，双方共享同一完整 R 索引；固定旧参数，仅比较 AR/H-off/H-on/缓存 H-on，六请求、三重复，72 次计时和 8 次 smoke。
 - 新入口 `scripts/run_h_teacher_router.py` 复用旧路由包装器，核验冻结原文 SHA、过去任务构造、历史版本替换和当前请求；与上一轮 AR token/prompt 逐条核对，不重新生成历史或调节阈值。结果目录 `results/h-teacher-router/`，拒绝覆盖。
-- 服务器 GPU0 空闲、冻结历史 SHA 与旧 provenance 相符；正式 GPU 运行及结果待下文记录。
+- 运行前协议/实现提交 `b7e1e53`；服务器测试发现夹具只兼容发布 gzip，修复为兼容原始 JSONL/gzip 并提交 `0419b0b`，未启动失败的 GPU 运行。修复后本机/服务器针对性均通过，服务器 **8 passed in 4.81s**。
+- 实际 GPU 命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python -u scripts/run_h_teacher_router.py`，只使用 GPU0。运行源码清单 SHA-256 为 `436c2daaa920df93a6c0b745da0ede3d6a2b39c3d273f3bef2df32b4a88c640a`；后补报告与测试不替换这个实际来源记录。
+- 72 次正式计时 + 8 次 smoke 全部与旧 AR 的 token/Target prompt 一致，方法间快照相同，结束后历史未变。AR=81.109s、H-off=49.356s（1.643× AR）、H-on=53.934s（1.504×）、缓存 on=52.043s（1.558×）。本批 H-on 比 off 慢 **9.27%**，缓存后仍慢 **5.44%**；off/on=0.915，请求 bootstrap 95% [0.888,0.932]；off/缓存 on=0.948，[0.922,0.964]。
+- H-off/on 验证轮数 **807/816**，小模型 H+D 起草 **77/96**；H 本身接受 96/120。六项目启用 H 均更慢；复制/代码修改验证轮数不变，文档修改增加 18 轮，新任务减少 9 轮但多 12 轮模型起草。缓存与未缓存路线/来源/接受计数序列 18/18 配对相同。
+- 无 GPU 的追加同前缀审计将在线 H 的 60 轮起点与旧完整评分对齐：在线 H 接受 96/120，旧离线 D_native 同位置 90/120，人工指定一条 Target 历史的 H_teacher 为 93/120。此为已保存候选质量检查，不是替换路由后的速度；在线自动历史与旧单条 H prompt 不同，不能单独归因多历史干扰。
+- 结果目录 `results/h-teacher-router/`，报告 `docs/H_TEACHER_ROUTER_RESULTS.md`。离线复算：`python scripts/write_h_teacher_router_report.py`；结果发布：`python scripts/publish_research_artifacts.py --source results/raw/research-stage2 --destination results`。
+- 本机完整回归 **44 passed in 12.29s**，服务器最终完整回归 **44 passed in 6.27s**，日志 `results/h-teacher-router/tests-final.log`。命令分别为 `.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-teacher-final` 和 `OMP_NUM_THREADS=4 PYTHONPATH=. .venv/bin/python -m pytest -q --basetemp .test-tmp-teacher-final`。服务器也成功离线重建报告，两张 GPU 均已空闲。
+- 本轮导出 9 份白名单结果，统一发布清单共 71 份；全部原始/压缩 SHA-256 核对一致。原有 62 份结果不变；模型、数据库、原始私有对话与源码压缩包均未发布。报告、协议、入口和测试提交 GitHub 供 Astra 审阅。
+
+本轮补上“同一 Target 历史下 H 是否有净收益”的缺失对照：当前固定策略仍无收益。原人工历史批次不用于跨批来源加速因果估计；没有调节模板、块长、阈值或样例。六合成项目并非独立自然长期数据，成熟 B6/B7、新触发策略、训练、采样及并发仍待验证。
 
 ## 2026-10-17 — H 来源与对称路由追加实验（完成）
 

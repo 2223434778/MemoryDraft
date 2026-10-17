@@ -494,5 +494,77 @@
     "published": "h-causal/tests-final.log",
     "published_bytes": 99,
     "published_sha256": "a0932cfb54a41b9e33cac0cdf3360a03ed919f73340248bd79b6c54b60630ce6"
+  },
+  {
+    "source": "h-teacher-router/cache-visits.json",
+    "raw_bytes": 6382,
+    "raw_sha256": "f2f32ed9e20f5982e9c703774a707621ba0cc65e2eff99b54b3c8cde3944ddfe",
+    "published": "h-teacher-router/cache-visits.json",
+    "published_bytes": 6382,
+    "published_sha256": "f2f32ed9e20f5982e9c703774a707621ba0cc65e2eff99b54b3c8cde3944ddfe"
+  },
+  {
+    "source": "h-teacher-router/provenance.json",
+    "raw_bytes": 13314,
+    "raw_sha256": "4b8ddce00549965f3533db79a7e24a8d1f4f77b17bb76d867a8b897ad96c1bc3",
+    "published": "h-teacher-router/provenance.json",
+    "published_bytes": 13314,
+    "published_sha256": "4b8ddce00549965f3533db79a7e24a8d1f4f77b17bb76d867a8b897ad96c1bc3"
+  },
+  {
+    "source": "h-teacher-router/replay.jsonl",
+    "raw_bytes": 1171670,
+    "raw_sha256": "a495fb180bdd6a6c5705485f040b27ffa496d5787ad5a095fe07255a4a200e06",
+    "published": "h-teacher-router/replay.jsonl.gz",
+    "published_bytes": 131220,
+    "published_sha256": "300452cd4d8917cef88dd368d01fb7bc989020bedaddc8ca90942ba9d9bc2049"
+  },
+  {
+    "source": "h-teacher-router/run.log",
+    "raw_bytes": 2632,
+    "raw_sha256": "88400f09572237c1bff25cb356d586006342343f10c35451a12c53ddcc1b9c93",
+    "published": "h-teacher-router/run.log",
+    "published_bytes": 2632,
+    "published_sha256": "88400f09572237c1bff25cb356d586006342343f10c35451a12c53ddcc1b9c93"
+  },
+  {
+    "source": "h-teacher-router/smoke-summary.json",
+    "raw_bytes": 2774,
+    "raw_sha256": "58b2fc184af7436d2f6601af62e5f7695efe0039fad3c97b8b0317818d0377dd",
+    "published": "h-teacher-router/smoke-summary.json",
+    "published_bytes": 2774,
+    "published_sha256": "58b2fc184af7436d2f6601af62e5f7695efe0039fad3c97b8b0317818d0377dd"
+  },
+  {
+    "source": "h-teacher-router/smoke.jsonl",
+    "raw_bytes": 29452,
+    "raw_sha256": "c593f95fafb0caa6b6ab6bcc447586a7745c0befa2d31b74d6e86c1fc6341030",
+    "published": "h-teacher-router/smoke.jsonl.gz",
+    "published_bytes": 4528,
+    "published_sha256": "a90eb09748722235e96d0fff7726ec8752b5d91865578da054d1e6f7746e52d6"
+  },
+  {
+    "source": "h-teacher-router/snapshots.json",
+    "raw_bytes": 11956,
+    "raw_sha256": "5d1e2f0e36649bbb2a4d3be70fc465e3595c6c2d880553d47afc22cb23a3565f",
+    "published": "h-teacher-router/snapshots.json",
+    "published_bytes": 11956,
+    "published_sha256": "5d1e2f0e36649bbb2a4d3be70fc465e3595c6c2d880553d47afc22cb23a3565f"
+  },
+  {
+    "source": "h-teacher-router/summary.json",
+    "raw_bytes": 2833,
+    "raw_sha256": "bd4ffad751f976107c45d351f4c0cd3906426a353c8b548d6028b886e0b3a1b1",
+    "published": "h-teacher-router/summary.json",
+    "published_bytes": 2833,
+    "published_sha256": "bd4ffad751f976107c45d351f4c0cd3906426a353c8b548d6028b886e0b3a1b1"
+  },
+  {
+    "source": "h-teacher-router/tests-final.log",
+    "raw_bytes": 99,
+    "raw_sha256": "cd276d5d6117d6aa91e4bed7069d6b72e50a2dab3cf82e5269cacc91a0f18824",
+    "published": "h-teacher-router/tests-final.log",
+    "published_bytes": 99,
+    "published_sha256": "cd276d5d6117d6aa91e4bed7069d6b72e50a2dab3cf82e5269cacc91a0f18824"
   }
 ]
