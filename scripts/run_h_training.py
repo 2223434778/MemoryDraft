@@ -1,5 +1,6 @@
 """One bounded, project-separated H distillation experiment on the existing backend."""
 import gc
+import argparse
 import hashlib
 import json
 import random
@@ -163,18 +164,28 @@ class Variants:
         variant, route = method.split("_", 1)
         self.backend.draft = self.models[{"BASE": "base", "TRAIN": "trained"}[variant]]
         actual = {"D": "D_native", "Dformat": "D", "H": "H", "off": "RHD", "on": "RHD", "gated": "RHD"}[route]
+        gate_start = time.perf_counter()
         if route in {"off", "on", "gated"}:
             kwargs["enable_history"] = route == "on" or (route == "gated" and task_family(messages) in self.gate)
+        gate_seconds = time.perf_counter() - gate_start
         kwargs.update(block_size=self.block.get(route, 2), top_k=1, token_budget=128, history_budget=128)
         result = self.backend.generate(messages, snapshot, method=actual, **kwargs)
+        result.latency_seconds += gate_seconds
+        if result.ttft_seconds is not None:
+            result.ttft_seconds += gate_seconds
+        result.stage_seconds["gate_host"] = gate_seconds
         result.method = method
         return result
 
 
-def main():
-    if out.exists():
+def main(resume_assets=False):
+    if out.exists() and not resume_assets:
         raise RuntimeError("Preserve existing experiment")
-    out.mkdir(parents=True)
+    if resume_assets and (not (out / "history.jsonl").exists() or adapter.exists() or (out / "test-labels.jsonl").exists()):
+        raise RuntimeError("Resume only the frozen asset stage, before adapter training or test labels")
+    out.mkdir(parents=True, exist_ok=resume_assets)
+    if resume_assets:
+        save(out / "asset-stage-provenance.json", json.loads((out / "provenance.json").read_text()))
     provenance = dict(status="started", protocol_sha256=sha(root / "docs/H_TRAINING_PROTOCOL.md"),
                       seed=20261017, counts=dict(train=24, dev=8, test=8), online_scope="synthetic pilot")
     try:
@@ -197,7 +208,18 @@ def main():
         events = []
         # Every past answer is generated before any current answer label exists.
         past_evidence = []
-        for split in ("train", "dev", "test"):
+        if resume_assets:
+            from memorydraft.evaluation.replay import read_jsonl
+            events = [MemoryEvent(**row) for row in read_jsonl(out / "history.jsonl")]
+            past_evidence = read_jsonl(out / "past-generations.jsonl")
+            expected = [project["past"] for split in ("train", "dev", "test") for project in projects(split)]
+            if [row["request"] for row in past_evidence] != expected:
+                raise ValueError("Frozen past task construction changed")
+            originals = {(event.user_id, event.record_id, event.order): event.text for event in events}
+            if len(events) != 80 or any(originals[(row["request"]["user_id"], row["request"]["user_id"] + "-old", 1)] != row["text"] for row in past_evidence):
+                raise ValueError("Frozen past history changed")
+            provenance["resumed_frozen_asset_sha256"] = sha(out / "history.jsonl")
+        for split in (() if resume_assets else ("train", "dev", "test")):
             for project in projects(split):
                 past = project["past"]
                 answer = backend.generate(past["messages"], Snapshot(past["user_id"], 0, ()), method="AR", max_new_tokens=192)
@@ -205,8 +227,9 @@ def main():
                                MemoryEvent(past["user_id"], past["user_id"] + "-other", 2, UNRELATED)])
                 past_evidence.append(dict(request=past, token_ids=answer.token_ids, text=answer.text,
                                           hit_budget=len(answer.token_ids) == 192, seconds=answer.latency_seconds))
-        write_rows(out / "past-generations.jsonl", past_evidence)
-        write_rows(out / "history.jsonl", [event.__dict__ for event in events])
+        if not resume_assets:
+            write_rows(out / "past-generations.jsonl", past_evidence)
+            write_rows(out / "history.jsonl", [event.__dict__ for event in events])
         provenance["frozen_history_sha256"] = sha(out / "history.jsonl")
         print("40 past answers frozen", flush=True)
         with MemoryStore(out / "history.db") as store:
@@ -223,6 +246,9 @@ def main():
             save(out / "provenance.json", provenance)
             original = AutoModelForCausalLM.from_pretrained(config["draft"]["model"], revision=config["draft"]["revision"],
                          torch_dtype=torch.float32, attn_implementation="eager").to("cuda:0").eval()
+            for model in (original, trained):
+                model.generation_config.num_assistant_tokens_schedule = "constant"
+                model.generation_config.assistant_confidence_threshold = 0.
             models = dict(base=original, trained=trained)
             backend.draft = trained
             # Only development data chooses lengths and eligibility; no test labels loaded yet.
@@ -276,4 +302,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--resume-assets", action="store_true")
+    main(parser.parse_args().resume_assets)
