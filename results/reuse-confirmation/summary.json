@@ -1,0 +1,36 @@
+{
+  "all": {
+    "times": {
+      "DFlash": 41.99159503396368,
+      "Adapted": 42.00049714901252,
+      "Global": 33.86214225104777,
+      "Context": 44.42728097969666
+    },
+    "rows": 96,
+    "projects": 4,
+    "vs_dflash": {
+      "DFlash": 1.0,
+      "Adapted": 0.9997880473886473,
+      "Global": 1.240074969936799,
+      "Context": 0.945175894359907
+    },
+    "correct": true
+  },
+  "confirmation_structured_revision": {
+    "times": {
+      "DFlash": 41.99159503396368,
+      "Adapted": 42.00049714901252,
+      "Global": 33.86214225104777,
+      "Context": 44.42728097969666
+    },
+    "rows": 96,
+    "projects": 4,
+    "vs_dflash": {
+      "DFlash": 1.0,
+      "Adapted": 0.9997880473886473,
+      "Global": 1.240074969936799,
+      "Context": 0.945175894359907
+    },
+    "correct": true
+  }
+}

@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 import json
 from pathlib import Path
+import re
 
 from memorydraft.evaluation.reuse_cases import confirmation_projects
 from scripts.run_reuse_pilot import CONFIRMATION_METHODS
@@ -10,6 +11,22 @@ from scripts.write_reuse_report import audit, ratio_interval, read
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def expected_config(project, turn):
+    """Derive task semantics from the already frozen request, never from its answer."""
+    request = project["currents"][turn]
+    header = re.search(r"project=([^,]+), (\w+)=an array", request)
+    fields = re.search(r"fields in this order: ([^.]+)\.", request).group(1).split(", ")
+    names = re.search(r"values in order are ([^.]+)\.", request).group(1).split(", ")
+    defaults_start = request.index("All entries have these defaults: ") + len("All entries have these defaults: ")
+    defaults, _ = json.JSONDecoder().raw_decode(request[defaults_start:])
+    override = re.search(r"timeout_seconds for (\w+) to (\d+)\.", request)
+    entries = [{fields[0]: name, **defaults} for name in names]
+    for entry in entries:
+        if entry[fields[0]] == override.group(1):
+            entry["timeout_seconds"] = int(override.group(2))
+    return {"project": header.group(1), header.group(2): entries}
 
 
 def write_report(source, output):
@@ -56,11 +73,13 @@ def write_report(source, output):
         sources = Counter(e["source"] for e in r)
         lines.append(f"| {method} | {c['R']}/{c['D']} | {sum(e['accepted'] for e in r)}/{sum(e['proposed'] for e in r)}"
                      f" | {sources['artifact']}/{sources['context:current-prompt']} |")
-    parseable = 0
+    parseable, semantic_correct = 0, 0
+    project_map = {project["id"]: project for project in projects}
     for reference in references:
         try:
-            json.loads(reference["text"])
+            parsed = json.loads(reference["text"])
             parseable += 1
+            semantic_correct += parsed == expected_config(project_map[reference["project_id"]], reference["turn"])
         except json.JSONDecodeError:
             pass
     supported = intervals[("DFlash", "Global")][0] > 1 and intervals[("Adapted", "Global")][0] > 1
@@ -71,8 +90,8 @@ def write_report(source, output):
               ("同策略Context消融支持过去完整回答在当前事实描述之外的独立时间收益。" if memory else
                "同策略Context消融尚未证明过去完整回答的稳定独立时间收益。"),
               "这不是新概率反馈模型的收益，也不是已击败全部检索起草方法；Global为现有接续复用与DFlash的场景适配。独立于开发项目，但四种schema仍属于受控JSON工作负载。",
-              f"当前AR参考JSON可解析：{parseable}/{len(references)}；预算命中：{sum(r['budget_hit'] for r in references)}/{len(references)}；过去回答预算命中：{sum(r['budget_hit'] for r in past)}/{len(past)}。",
-              "可解析只说明格式完整，不替代全面任务语义评测；由于输出与固定AR一致，性能优化不改善Target自身的任务质量。",
+              f"当前AR参考JSON可解析：{parseable}/{len(references)}；按冻结请求逐字段核验（包括指定修改及其他值不变）：{semantic_correct}/{len(references)}；预算命中：{sum(r['budget_hit'] for r in references)}/{len(references)}；过去回答预算命中：{sum(r['budget_hit'] for r in past)}/{len(past)}。",
+              "逐字段检查仅用于报告任务完成度，不筛选计时样本或调整参数；所有项目均保留。由于输出与固定AR一致，性能优化不改善Target自身的任务质量。",
               "所有在线tokenization、快照、冷索引、查找、前向、特征维护、回切和解码计入。未额外测TTFT；CPU索引bytes为数组载荷而非完整进程RSS。",
               f"离线过去回答构造{sum(r['latency_seconds'] for r in past):.3f}s，当前AR参考{sum(r['latency_seconds'] for r in references):.3f}s，另行记录。",
               "每轮参考仅用于评分，全部方法及重复结束后才成为下一轮过去记录；离线重新构造快照并核对全部token、prompt、配对、场景和KV前沿。",

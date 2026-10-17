@@ -1,0 +1,42 @@
+[
+  {
+    "user_id": "confirm-schema-0",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"confirm-schema-0\",\n  \"workers\": [\n    {\n      \"id\": \"worker_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "confirm-schema-0"
+  },
+  {
+    "user_id": "confirm-schema-1",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"confirm-schema-1\",\n  \"routes\": [\n    {\n      \"name\": \"route_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "confirm-schema-1"
+  },
+  {
+    "user_id": "confirm-schema-2",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"confirm-schema-2\",\n  \"steps\": [\n    {\n      \"key\": \"step_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "confirm-schema-2"
+  },
+  {
+    "user_id": "confirm-schema-3",
+    "record_id": "artifact",
+    "order": 1,
+    "text": "{\n  \"project\": \"confirm-schema-3\",\n  \"checks\": [\n    {\n      \"key\": \"check_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+    "status": "active",
+    "session_id": "",
+    "source_role": "assistant",
+    "project_id": "confirm-schema-3"
+  }
+]

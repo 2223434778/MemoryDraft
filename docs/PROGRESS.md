@@ -1,6 +1,6 @@
 # 项目进度
 
-## 2026-10-18 — R/DFlash 开发完成，独立场景确认运行中
+## 2026-10-18 — R/DFlash 接入、场景开发与独立小规模确认（完成）
 
 - 用户授权实现并运行。新增 `backends/dflash_reuse.py`，薄适配已审计 MIT DFlash 循环，复用模型前向/严格最长前缀验证/KV裁剪；支持连续R后累计有效Target特征并在回切时补齐，设待消费缓冲门槛。
 - 后缀索引保留旧 `match`，增加有界位置查询及显式当前prompt候选；`retrieval/reuse.py` 增加本请求游标和局部重匹配。当前prompt不伪装成过去事件；历史仍由原MemoryStore时间快照读取。
@@ -10,7 +10,11 @@
 - 实际命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_reuse_pilot.py`。源码/模型SHA已校验，A6000仅GPU0。结果 `results/reuse-pilot/`，作业日志 `results/reuse-pilot-job.log`。
 - 离线报告 `REUSE_PILOT_RESULTS.md` 已从原始及公开gzip复算：重建每轮过去快照，核对固定参考、配对、场景标签和KV前沿。开发及首次失败证据13份已加入发布白名单/哈希清单，合计112份。过去资产0/12、当前参考0/18达到预算。
 - 预先声明小规模确认 `REUSE_CONFIRMATION_PROTOCOL.md`：选择简单Global，在4个全新项目/4种JSON schema/两轮修订上做3重复，另加适配关闭R和同策略Context对照。数据与参数在确认生成前固定，计划96次计时；不增加概率模型或修改R参数。服务器相关18项测试通过，确认实际源码SHA `2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2`。
-- 确认命令为上述runner加 `--confirmation`；结果 `results/reuse-confirmation/`，独立复算入口 `python -m scripts.write_reuse_confirmation_report`。仍在运行，结果完整后才作确认判断。本机最新完整回归65 passed、2 skipped（实际结果见最终日志）。
+- 确认命令为上述runner加 `--confirmation`；结果 `results/reuse-confirmation/`，独立复算入口 `python -m scripts.write_reuse_confirmation_report`。96次计时全部严格一致：DFlash41.991595s、关闭R适配42.000497s、Global33.862142s、同策略Context44.427281s。DFlash/Global=1.240075，[1.198,1.286]；延迟降低19.36%。Adapted/Global=1.240338，[1.199,1.286]，Context/Global=1.311998，[1.290,1.333]。4个项目都比DFlash更快，但仍是小型受控JSON工作负载。
+- 确认Global有246轮R、123轮Draft，R接受5418/7329；关闭R为498轮Draft。R全部来自合法过去回答。同策略Context有21轮R但接受0/672，说明当前事实描述不能替代过去完整表达。8/8当前参考JSON可解析，且按冻结请求逐字段检查全部正确；当前0/8、过去0/4达到768预算。检查不筛选任何计时样本。
+- 本机完整65 passed、2 skipped；服务器旧后端/PEFT环境完整66 passed、1 skipped、1个已有toy保存警告；DFlash专用环境相关18项通过。新增语义审计另6项通过。服务器测试原始日志及其源码来源随确认结果发布。
+- 原始/压缩发布清单共123份（以前99份+本轮24份），模型/数据库不发布。开发、首次失败和确认来源分别保存，禁止以最终部署SHA替换实际运行SHA。报告 `REUSE_PILOT_RESULTS.md` / `REUSE_CONFIRMATION_RESULTS.md` 均离线重建，主结论限定在配置连续小改。
+- 本阶段完成后不继续对确认项目调参；保留游标负结果，采用简单Global作为此场景的后续底座。更广的自然配置/代码/文档、并发、其他精度和采样尚未验证。
 
 ## 2026-10-17 — 用户修订：场景优先，允许复用成熟架构（方案已调整）
 

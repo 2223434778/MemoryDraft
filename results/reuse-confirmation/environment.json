@@ -1,0 +1,12 @@
+{
+  "python": "3.11.9",
+  "packages": {
+    "torch": "2.5.1",
+    "transformers": "4.57.3",
+    "tokenizers": "0.22.1",
+    "huggingface-hub": "0.36.0",
+    "numpy": "1.26.4",
+    "pydivsufsort": "0.0.19"
+  },
+  "captured_after_run": true
+}

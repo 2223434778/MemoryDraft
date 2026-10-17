@@ -7,6 +7,7 @@ from memorydraft.evaluation.reuse_cases import confirmation_projects, developmen
 from memorydraft.memory.store import MemoryEvent, Snapshot
 from scripts.run_reuse_pilot import CONFIRMATION_METHODS, METHODS
 from scripts.write_reuse_report import audit
+from scripts.write_reuse_confirmation_report import expected_config
 
 
 def frozen_development(projects=None, methods=METHODS, repeats=1):
@@ -66,3 +67,11 @@ def test_confirmation_projects_and_repeats_remain_disjoint_and_paired():
     broken[3][0]["repeat"] = 3
     with pytest.raises(ValueError, match="Unpaired"):
         audit(*broken, expected_projects=projects, methods=CONFIRMATION_METHODS, repeats=3)
+    for i, project in enumerate(projects):
+        old = expected_config(project, 0)
+        new = expected_config(project, 1)
+        key = next(key for key in old if key != "project")
+        assert len(old[key]) == 5 + i
+        changed = [j for j, (a, b) in enumerate(zip(old[key], new[key])) if a != b]
+        assert changed == [len(old[key]) // 2]
+        assert new[key][changed[0]]["timeout_seconds"] - old[key][changed[0]]["timeout_seconds"] == 7

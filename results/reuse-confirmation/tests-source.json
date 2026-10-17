@@ -1,0 +1,4 @@
+{
+  "source_sha256": "2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2",
+  "environment": ".venv-train; DFlash-specific tests separately passed in .venv-dflash"
+}

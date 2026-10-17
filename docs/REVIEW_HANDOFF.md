@@ -1,12 +1,16 @@
 # Astra 审阅入口
 
-## 最新实现：R/DFlash 场景开发与独立确认（2026-10-18）
+## 最新完成：R/DFlash 场景开发与独立确认（2026-10-18）
 
 先读 [REUSE_PILOT_RESULTS](REUSE_PILOT_RESULTS.md) 与对应运行前协议。新增 `backends/dflash_reuse.py` 薄适配已审计MIT循环，连续R积累有效Target特征，回切Draft补齐独立KV；保留严格greedy及原后端。源代码已推送 `f43239a`。
 
 24次接入检查和90次开发计时全部与AR一致。配置连续修订中Global12.053s、DFlash16.284s（1.351×），Cursor14.191s；游标减少查询却增加Draft轮数，不保留其为必需增强。P1/P3的当前prompt含旧产物，不能自动当作长期记忆增益；开发同后端关闭R性能控制尚不完整。
 
-因此预先声明 [REUSE_CONFIRMATION_PROTOCOL](REUSE_CONFIRMATION_PROTOCOL.md)：4个新项目/4种schema/两轮修订/三重复，比较官方DFlash、关闭R适配、Global及完全相同策略的Context。参数固定，96次确认正在运行。开发源码57a013ca…、确认源码2518e677…分别保留，不替换实际来源。首轮零命中查询失败只在接入阶段，已修复并保留证据，未并入性能。
+因此按预先声明的 [REUSE_CONFIRMATION_PROTOCOL](REUSE_CONFIRMATION_PROTOCOL.md) 完成4个新项目/4种schema/两轮修订/三重复，见 [REUSE_CONFIRMATION_RESULTS](REUSE_CONFIRMATION_RESULTS.md)。96次全部严格一致；Global33.862s、官方DFlash41.992s（1.240×，[1.198,1.286]，延迟降低19.4%）、关闭R适配42.000s、同策略Context44.427s（Context/Global1.312×，[1.290,1.333]）。参数未改变，4个项目均快于DFlash，8/8当前JSON逐字段语义检查通过且无预算截断。
+
+Global仅123轮Draft，相比关闭R的498轮大幅减少；246轮R全部来自过去回答。简单架构的场景适配取得收益，概率反馈模型和游标均未构成此结果。仍只有4个受控合成schema，不外推自然用户场景或全基线领先。开发源码57a013ca…、确认源码2518e677…分别保留，不替换实际来源。首轮零命中查询失败只在接入阶段，已修复并保留证据，未并入性能。
+
+复算：`python -m scripts.write_reuse_report` 和 `python -m scripts.write_reuse_confirmation_report`。发布清单123份原始/压缩哈希，数据库和模型未上传。服务器完整66 passed、1 skipped；DFlash环境相关18项通过，任务语义审计另有测试。
 
 ## 优先修订：聚焦适用场景与复用架构（2026-10-17）
 

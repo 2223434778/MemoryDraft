@@ -894,5 +894,93 @@
     "published": "reuse-pilot-lookup-failure/smoke.jsonl.gz",
     "published_bytes": 1072,
     "published_sha256": "dfa9662b1244ff9550bba1be4ccf295a9c20951c3470cca2f806494740e55b92"
+  },
+  {
+    "source": "reuse-confirmation/environment.json",
+    "raw_bytes": 240,
+    "raw_sha256": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af",
+    "published": "reuse-confirmation/environment.json",
+    "published_bytes": 240,
+    "published_sha256": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af"
+  },
+  {
+    "source": "reuse-confirmation/initial-history.json",
+    "raw_bytes": 5298,
+    "raw_sha256": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852",
+    "published": "reuse-confirmation/initial-history.json",
+    "published_bytes": 5298,
+    "published_sha256": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852"
+  },
+  {
+    "source": "reuse-confirmation/past-generations.jsonl",
+    "raw_bytes": 12626,
+    "raw_sha256": "8edc324608480e90946ee0ba5bb91fadb1aba9c2a6b11d69bbcd8c6c9df59ea8",
+    "published": "reuse-confirmation/past-generations.jsonl.gz",
+    "published_bytes": 1279,
+    "published_sha256": "42dce7d31326d3c94e2e9550162d116607b858d8f2e1b5f0074100e9bfbb3fcf"
+  },
+  {
+    "source": "reuse-confirmation/projects.json",
+    "raw_bytes": 7554,
+    "raw_sha256": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d",
+    "published": "reuse-confirmation/projects.json",
+    "published_bytes": 7554,
+    "published_sha256": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d"
+  },
+  {
+    "source": "reuse-confirmation/provenance.json",
+    "raw_bytes": 15009,
+    "raw_sha256": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c",
+    "published": "reuse-confirmation/provenance.json",
+    "published_bytes": 15009,
+    "published_sha256": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c"
+  },
+  {
+    "source": "reuse-confirmation/references.jsonl",
+    "raw_bytes": 25351,
+    "raw_sha256": "5c9d0bd74181c97c313d546ab4b11a48315655dd7f3570759dd74baeaad69b18",
+    "published": "reuse-confirmation/references.jsonl.gz",
+    "published_bytes": 1999,
+    "published_sha256": "f741e90bfef00c38c081cbf020573303af594e1384cf82639f19cc473d894546"
+  },
+  {
+    "source": "reuse-confirmation/replay.jsonl",
+    "raw_bytes": 673437,
+    "raw_sha256": "2fee36846d1d87ce50cf6013256bcc6d5051bb9863910e7dd659c92e627ae410",
+    "published": "reuse-confirmation/replay.jsonl.gz",
+    "published_bytes": 16328,
+    "published_sha256": "617a2018167cca5ebfb8753265d768c98e3d120ba0abfa8e381d456e5380f7f3"
+  },
+  {
+    "source": "reuse-confirmation/run.log",
+    "raw_bytes": 1010,
+    "raw_sha256": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255",
+    "published": "reuse-confirmation/run.log",
+    "published_bytes": 1010,
+    "published_sha256": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255"
+  },
+  {
+    "source": "reuse-confirmation/summary.json",
+    "raw_bytes": 808,
+    "raw_sha256": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8",
+    "published": "reuse-confirmation/summary.json",
+    "published_bytes": 808,
+    "published_sha256": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8"
+  },
+  {
+    "source": "reuse-confirmation/tests-final.log",
+    "raw_bytes": 597,
+    "raw_sha256": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c",
+    "published": "reuse-confirmation/tests-final.log",
+    "published_bytes": 597,
+    "published_sha256": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c"
+  },
+  {
+    "source": "reuse-confirmation/tests-source.json",
+    "raw_bytes": 178,
+    "raw_sha256": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505",
+    "published": "reuse-confirmation/tests-source.json",
+    "published_bytes": 178,
+    "published_sha256": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505"
   }
 ]

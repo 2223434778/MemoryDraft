@@ -1,0 +1,46 @@
+[
+  {
+    "id": "confirm-schema-0",
+    "scenario": "confirmation_structured_revision",
+    "past": "Generate the configuration. Top-level fields in order: project=confirm-schema-0, workers=an array. The id values in order are worker_00, worker_01, worker_02, worker_03, worker_04. Each array entry has fields in this order: id, enabled, timeout_seconds, retries, region. All entries have these defaults: {\"enabled\": true, \"timeout_seconds\": 25, \"retries\": 2, \"region\": \"east\"}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text.",
+    "currents": [
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-0, workers=an array. The id values in order are worker_00, worker_01, worker_02, worker_03, worker_04. Each array entry has fields in this order: id, enabled, timeout_seconds, retries, region. All entries have these defaults: {\"enabled\": true, \"timeout_seconds\": 25, \"retries\": 2, \"region\": \"east\"}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for worker_02 to 32.",
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-0, workers=an array. The id values in order are worker_00, worker_01, worker_02, worker_03, worker_04. Each array entry has fields in this order: id, enabled, timeout_seconds, retries, region. All entries have these defaults: {\"enabled\": true, \"timeout_seconds\": 25, \"retries\": 2, \"region\": \"east\"}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for worker_02 to 39."
+    ],
+    "budget": 768,
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "confirm-schema-1",
+    "scenario": "confirmation_structured_revision",
+    "past": "Generate the configuration. Top-level fields in order: project=confirm-schema-1, routes=an array. The name values in order are route_00, route_01, route_02, route_03, route_04, route_05. Each array entry has fields in this order: name, path, method, timeout_seconds, cache. All entries have these defaults: {\"path\": \"/api\", \"method\": \"GET\", \"timeout_seconds\": 35, \"cache\": false}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text.",
+    "currents": [
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-1, routes=an array. The name values in order are route_00, route_01, route_02, route_03, route_04, route_05. Each array entry has fields in this order: name, path, method, timeout_seconds, cache. All entries have these defaults: {\"path\": \"/api\", \"method\": \"GET\", \"timeout_seconds\": 35, \"cache\": false}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for route_03 to 42.",
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-1, routes=an array. The name values in order are route_00, route_01, route_02, route_03, route_04, route_05. Each array entry has fields in this order: name, path, method, timeout_seconds, cache. All entries have these defaults: {\"path\": \"/api\", \"method\": \"GET\", \"timeout_seconds\": 35, \"cache\": false}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for route_03 to 49."
+    ],
+    "budget": 768,
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "confirm-schema-2",
+    "scenario": "confirmation_structured_revision",
+    "past": "Generate the configuration. Top-level fields in order: project=confirm-schema-2, steps=an array. The key values in order are step_00, step_01, step_02, step_03, step_04, step_05, step_06. Each array entry has fields in this order: key, action, timeout_seconds, retries, enabled. All entries have these defaults: {\"action\": \"validate\", \"timeout_seconds\": 45, \"retries\": 4, \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text.",
+    "currents": [
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-2, steps=an array. The key values in order are step_00, step_01, step_02, step_03, step_04, step_05, step_06. Each array entry has fields in this order: key, action, timeout_seconds, retries, enabled. All entries have these defaults: {\"action\": \"validate\", \"timeout_seconds\": 45, \"retries\": 4, \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for step_03 to 52.",
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-2, steps=an array. The key values in order are step_00, step_01, step_02, step_03, step_04, step_05, step_06. Each array entry has fields in this order: key, action, timeout_seconds, retries, enabled. All entries have these defaults: {\"action\": \"validate\", \"timeout_seconds\": 45, \"retries\": 4, \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for step_03 to 59."
+    ],
+    "budget": 768,
+    "prompt_contains_old_artifact": false
+  },
+  {
+    "id": "confirm-schema-3",
+    "scenario": "confirmation_structured_revision",
+    "past": "Generate the configuration. Top-level fields in order: project=confirm-schema-3, checks=an array. The key values in order are check_00, check_01, check_02, check_03, check_04, check_05, check_06, check_07. Each array entry has fields in this order: key, interval_seconds, timeout_seconds, severity, enabled. All entries have these defaults: {\"interval_seconds\": 60, \"timeout_seconds\": 15, \"severity\": \"warning\", \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text.",
+    "currents": [
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-3, checks=an array. The key values in order are check_00, check_01, check_02, check_03, check_04, check_05, check_06, check_07. Each array entry has fields in this order: key, interval_seconds, timeout_seconds, severity, enabled. All entries have these defaults: {\"interval_seconds\": 60, \"timeout_seconds\": 15, \"severity\": \"warning\", \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for check_04 to 22.",
+      "Generate the configuration. Top-level fields in order: project=confirm-schema-3, checks=an array. The key values in order are check_00, check_01, check_02, check_03, check_04, check_05, check_06, check_07. Each array entry has fields in this order: key, interval_seconds, timeout_seconds, severity, enabled. All entries have these defaults: {\"interval_seconds\": 60, \"timeout_seconds\": 15, \"severity\": \"warning\", \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for check_04 to 29."
+    ],
+    "budget": 768,
+    "prompt_contains_old_artifact": false
+  }
+]
