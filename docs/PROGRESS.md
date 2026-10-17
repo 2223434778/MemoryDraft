@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-17 — 新方向文献、接口核查与研究方案（规划完成，实验未开始）
+
+- 用户要求详细规划新方向及 idea 运作机制。新增 `docs/MEMORY_REUSE_RESEARCH_PLAN.md`，把主线候选收窄为严格验证反馈下的历史接续长度估计及成本选择；保留 H 实现和已有负结果。
+- 核查 REST、SAM-Decoding、SuffixDecoding、EfficientEdit、ReSpec、DReSD、DFlash、ReTrace。明确后缀检索、动态长度、混合回退、编辑后重匹配及位置反馈均有先例；尚未宣称新颖性或新方法有效。文献链接和比较限制在方案中。
+- 读取实际 `SuffixArrayIndex`、`Router`、`MemoryStore` 和锁定 DFlash `spec_generate`。识别连续 R 后 Draft KV 落后、有效 Target 特征累积、anchor 与缓存位置等接入约束；没有修改模型/验证逻辑。
+- 方案规定 A 正确性、B 开发机会诊断、C 独立项目评估及强基线消融；所有数据规模、长度和停止门槛为拟议参数，正式运行前冻结。未构建新数据、未训练或运行 GPU，暂无新结果目录。
+- 本轮检查命令：`git diff --check`；仅文档变化不重复模型实验或代码测试。研究方案入口同步到 `docs/REVIEW_HANDOFF.md`。
+
 ## 2026-10-17 — H 蒸馏与 DFlash 基线（完成）
 
 - 用户授权执行上一轮建议的两个交付；运行前协议 `docs/H_TRAINING_PROTOCOL.md`。先核验数据隔离/标签掩码，完成独立环境 DFlash 小检查及同权重 D/H 蒸馏，不修改 Target 或放宽验证规则。

@@ -1,5 +1,13 @@
 # Astra 审阅入口
 
+## 新方向方案：验证反馈驱动的历史片段复用（2026-10-17）
+
+用户要求详细规划，见 [MEMORY_REUSE_RESEARCH_PLAN](MEMORY_REUSE_RESEARCH_PLAN.md)。这是研究方案，未实现、未跑新实验。主线候选是同一严格验证器下，对历史接续的连续接受长度及完整成本做估计，再选择 R 或成熟 DFlash。
+
+优先审查与 SuffixDecoding 动态长度/混合策略、EfficientEdit 重匹配、ReSpec 位置反馈的重叠；本方案没有将这些已有机制宣称为首创。需要证明正确处理部分观测的接受长度估计，比同资源的匹配长度/接受率 EMA 强基线产生独立净收益。
+
+工程先核验连续 R 后 DFlash KV 与 Target 特征的补齐。实验分正确性、开发机会诊断、独立测试三阶段；过去历史相对当前 prompt 的独立价值单独消融。H 保留，当前没有扩大训练或根据旧测试调参数。
+
 ## 最新：H 蒸馏与独立 DFlash 基线（2026-10-17）
 
 先读 [H_TRAINING_RESULTS](H_TRAINING_RESULTS.md) 与运行前 [H_TRAINING_PROTOCOL](H_TRAINING_PROTOCOL.md)。两个交付已跑完：官方DFlash固定快照、独立环境72次严格一致，2.213× AR；合成2.840×，公开六类别各一条1.894×。这不是完整公开24请求复现，也未集成R/记忆。许可、revision、权重/代码SHA见manifest/provenance。
