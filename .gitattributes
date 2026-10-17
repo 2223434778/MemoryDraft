@@ -8,3 +8,4 @@ results/h-causal/** -text
 results/h-teacher-router/** -text
 results/h-training/** -text
 results/dflash-baseline/** -text
+docs/H_TRAINING_RESULTS.md text eol=lf
