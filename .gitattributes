@@ -5,3 +5,4 @@ results/research-old-bounded/** -text
 results/research-old-controls/** -text
 results/research-v2-publication.json -text
 results/h-causal/** -text
+results/h-teacher-router/** -text

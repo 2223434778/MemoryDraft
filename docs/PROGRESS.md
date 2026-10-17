@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-17 — Target 历史的对称 H 开关验证（开始）
+
+- 用户授权验证更换历史后 H 是否产生净加速。协议 `docs/H_TEACHER_ROUTER_PROTOCOL.md`：复用上一轮冻结 Target 历史，双方共享同一完整 R 索引；固定旧参数，仅比较 AR/H-off/H-on/缓存 H-on，六请求、三重复，72 次计时和 8 次 smoke。
+- 新入口 `scripts/run_h_teacher_router.py` 复用旧路由包装器，核验冻结原文 SHA、过去任务构造、历史版本替换和当前请求；与上一轮 AR token/prompt 逐条核对，不重新生成历史或调节阈值。结果目录 `results/h-teacher-router/`，拒绝覆盖。
+- 服务器 GPU0 空闲、冻结历史 SHA 与旧 provenance 相符；正式 GPU 运行及结果待下文记录。
+
 ## 2026-10-17 — H 来源与对称路由追加实验（完成）
 
 - 用户授权执行两项小实验，协议预先固定于 `docs/H_CAUSAL_PROTOCOL.md`。复用已有六个合成测试项目，明确属于追加归因诊断；固定 Qwen3-8B/0.6B、FP32/eager、非思考 greedy、k=2、当前输出上限 128，没有重新挑选样例或阈值。
