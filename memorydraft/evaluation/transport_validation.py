@@ -84,6 +84,7 @@ def attach_references(tasks, references):
                 or not row["token_ids"] or any(type(t) is not int or t < 0 for t in row["token_ids"])
                 or len(row["token_ids"]) > task.request.max_new_tokens
                 or not isinstance(row["prompt_sha256"], str) or len(row["prompt_sha256"]) != 64
+                or row["finish_reason"] not in {"eos", "length"}
                 or not math.isfinite(row["latency_seconds"]) or row["latency_seconds"] <= 0
                 or row["contract"] != contract_check(row["text"], task.expected_text)):
             raise ValueError("Invalid fresh reference, legal snapshot or artifact contract")
@@ -104,7 +105,7 @@ def audit_rows(rows, tasks):
                 or row["prompt_sha256"] != task.reference["prompt_sha256"] or row["snapshot_id"] != task.snapshot_id
                 or row["project_id"] != task.project_id or row["group"] != task.group
                 or row["budget"] != task.request.max_new_tokens or row["contract"] != task.reference["contract"]
-                or row["stop_reason"] != task.reference["stop_reason"]
+                or row["finish_reason"] != task.reference["finish_reason"]
                 or not math.isfinite(row["latency_seconds"]) or row["latency_seconds"] <= 0):
             raise ValueError("Changed validation output, input, snapshot or timing contract")
         counters = row["counters"]
@@ -133,7 +134,7 @@ def audit_rows(rows, tasks):
     return {"rows": len(rows), "requests": len(tasks), "projects": projects, "groups": groups,
             "contracts": {g: {"correct": sum(t.reference["contract"]["artifact_correct"] for t in tasks if g == "all" or t.group == g),
                                "requests": sum(g == "all" or t.group == g for t in tasks),
-                               "length_stops": sum(t.reference["stop_reason"] == "length" for t in tasks if g == "all" or t.group == g)}
+                               "length_stops": sum(t.reference["finish_reason"] == "length" for t in tasks if g == "all" or t.group == g)}
                           for g in ("all", *GROUPS)}}
 
 
@@ -175,5 +176,5 @@ def prompt_identity(tokenizer, request, template_options):
 
 def check_generation(result, task):
     check_result(result, task)
-    if result.text != task.reference["text"] or result.stop_reason != task.reference["stop_reason"]:
+    if result.text != task.reference["text"] or result.finish_reason != task.reference["finish_reason"]:
         raise ValueError("Text/stop reason differs despite strict token equality")

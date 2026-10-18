@@ -6,6 +6,7 @@
 - `python -m scripts.make_transport_validation --output data/research/ot-validation/cases.json`已导出固定任务，SHA`6dea703af88c9e428d130dd967d81a21662713acac77f50dff97531a1c34e802`。保留全部当前源文及明确编辑指令，expected_text只用于任务评分，不进入检索。512预算、24新AR、四组两重复共192计时；原OT/edit参数、Target输入/验证保持固定。
 - 协议`OT_R_VALIDATION_PROTOCOL.md`在输出前冻结：适用候选组至少5%优于Suffix、2%优于Edit，分别3/4项目更快，8/8任务正确且无截断，才通过继续投入工程门槛；区间单独报告，不当统计显著性。先测试/audit，再部署隔离研究目录。默认suffix、面试分支/标签/main及服务器infra-v0.3均不改。
 - 本机新评测审计21 passed；完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-ot-validation-full --junitxml=artifacts/ot-validation-tests-full-local.xml`为204 passed/3 skipped（21.92s）。最初一项测试把Python tuple直接与JSON list比较而失败，规范化比较后通过，任务文件未改。首轮相关44项中其余43项当时已通过。原Starlette multipart弃用提示未改。运行脚本另在首个严格分歧保存failure.json并停止；启动时核验首轮全部package文件保持原SHA。
+- 首次冻结`226399cb4c7ad14cf2fe85a891f6b25d8f78307f`，461文件服务器SHA一致，86项服务器测试输出通过（SSH在测试打印结束后的10秒边界超时，XML已保存），GitHub CI成功39141060160。A6000 PID1654831在24个AR参考后、第一条计时结果审计时暴露新评测字段误用：`GenerationResult`真实字段是`finish_reason`，不是`stop_reason`。该运行status=failed、有效rows=0，目录`ot-r-validation/artifacts/ot-validation-v1`完整保留，不计入性能结果。仅修正评测字段并增加真实运行时数据结构回归；已看过AR的22/24任务正确（两格式控制失败），但任务/输入/参数/门槛均不修改，重新冻结并在新目录运行全部AR与计时。
 
 ## 2026-10-18 — 独立保存 infra 并接入 OT-R（首轮完成）
 

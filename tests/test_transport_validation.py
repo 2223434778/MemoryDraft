@@ -1,5 +1,5 @@
 from copy import deepcopy
-from dataclasses import replace
+from dataclasses import asdict, fields, replace
 import json
 from pathlib import Path
 
@@ -8,8 +8,9 @@ import pytest
 from memorydraft.evaluation.runtime_migration import file_hash, input_hashes
 from memorydraft.evaluation.transport_probe import METHODS, REPEATS
 from memorydraft.evaluation.transport_validation import (GROUPS, attach_references, audit_rows, comparisons,
-                                                       contract_check, load_inputs)
+                                                       check_generation, contract_check, load_inputs)
 from memorydraft.memory.store import MemoryStore
+from memorydraft.runtime.contracts import GenerationResult
 from scripts.make_transport_validation import authored_projects
 
 
@@ -22,17 +23,30 @@ def simulated_evidence():
     tasks, _ = load_inputs(CASES)
     references = [{"request_id": t.request.id, "method": "AR", "token_ids": [2, 3],
                    "text": t.expected_text, "prompt_sha256": "a" * 64, "prompt_tokens": 50,
-                   "snapshot_id": t.snapshot_id, "latency_seconds": 2., "stop_reason": "eos",
+                   "snapshot_id": t.snapshot_id, "latency_seconds": 2., "finish_reason": "eos",
+                   "ttft_seconds": .2,
                    "contract": contract_check(t.expected_text, t.expected_text)} for t in tasks]
     tasks = attach_references(tasks, references)
     rows = [{"request_id": t.request.id, "method": m, "repeat": repeat, "correct": True,
              "project_id": t.project_id, "group": t.group, "budget": t.request.max_new_tokens,
              "token_ids": t.reference["token_ids"], "prompt_sha256": t.reference["prompt_sha256"],
-             "snapshot_id": t.snapshot_id, "latency_seconds": 1., "stop_reason": "eos",
+             "snapshot_id": t.snapshot_id, "latency_seconds": 1., "finish_reason": "eos",
              "contract": t.reference["contract"],
              "counters": {"rounds": 1, "draft_rounds": 1, "reuse_rounds": 0, "reuse_accepted_tokens": 0}}
             for t in tasks for m in METHODS for repeat in range(REPEATS)]
     return tasks, references, rows
+
+
+def test_generation_audit_uses_actual_runtime_result_and_serialized_field_names():
+    tasks, references, _ = simulated_evidence()
+    names = {field.name for field in fields(GenerationResult)}
+    result = GenerationResult(**{key: value for key, value in references[0].items() if key in names})
+    check_generation(result, tasks[0])
+    reference = {**asdict(result), "contract": references[0]["contract"]}
+    attach_references([tasks[0]], [reference])
+    result.finish_reason = "length"
+    with pytest.raises(ValueError):
+        check_generation(result, tasks[0])
 
 
 def test_new_cases_are_frozen_distinct_and_match_real_legal_snapshots(tmp_path):
