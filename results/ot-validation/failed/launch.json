@@ -1,0 +1,19 @@
+{
+  "pid": 1654831,
+  "command": [
+    "../.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_transport_validation",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/ot-validation-v1"
+  ],
+  "cwd": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-validation",
+  "environment": {
+    "OMP_NUM_THREADS": "4",
+    "HF_HUB_OFFLINE": "1",
+    "PYTHONPATH": "."
+  }
+}

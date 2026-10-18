@@ -120,7 +120,7 @@ def test_project_comparison_gate_requires_spread_and_task_success():
     assert not comparisons(audit_rows(rows, failed), failed)["local-edit"]["engineering_gate"]
 
 
-@pytest.mark.parametrize("change", ["fresh_ar", "summary", "cases", "identity", "original"])
+@pytest.mark.parametrize("change", ["fresh_ar", "summary", "cases", "identity", "original", "failed_reference"])
 def test_report_reaudits_references_inputs_identities_and_summary(tmp_path, change):
     from scripts.write_transport_validation_report import rebuild
 
@@ -145,7 +145,16 @@ def test_report_reaudits_references_inputs_identities_and_summary(tmp_path, chan
     rebuild(tmp_path, tmp_path / "unit-report.md", cases=CASES)
     assert b"\r" not in (tmp_path / "unit-report.md").read_bytes()
     assert b"\r" not in (tmp_path / "diagnostic.json").read_bytes()
-    if change == "fresh_ar":
+    if change == "failed_reference":
+        failed = tmp_path / "failed"
+        failed.mkdir()
+        (failed / "provenance.json").write_text(json.dumps({**info, "status": "failed", "rows": 0}), encoding="utf-8")
+        (failed / "fresh-ar.jsonl").write_text("\n".join(json.dumps(r) for r in references) + "\n", encoding="utf-8")
+        rebuild(tmp_path, tmp_path / "unit-report-with-failure.md", cases=CASES)
+        bad_references = deepcopy(references)
+        bad_references[0]["token_ids"] = [6, 7]
+        (failed / "fresh-ar.jsonl").write_text("\n".join(json.dumps(r) for r in bad_references) + "\n", encoding="utf-8")
+    elif change == "fresh_ar":
         with (tmp_path / "fresh-ar.jsonl").open("a") as stream:
             stream.write(json.dumps(references[0]) + "\n")
     elif change == "summary":

@@ -1,0 +1,10 @@
+{
+  "report_sha256": "c9572d3f26ac99d6526d2fee018c5b97fef59036ff09ff74aa4f4607c6da0545",
+  "diagnostic_sha256": "7071844474062ce4c6f77f581e794feb43852e05fe586b317820e8001380c322",
+  "independent_rebuilds": [
+    "Windows local",
+    "Linux A6000"
+  ],
+  "byte_identical": true,
+  "method": "Reaudit all rows, references, identities, contracts, failed-run equality and protected old input hashes, then compare SHA-256"
+}

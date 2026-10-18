@@ -1,0 +1,1022 @@
+{
+  "rows": 192,
+  "requests": 24,
+  "projects": {
+    "artifact-store": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.538806033087894,
+        "counters": {
+          "rounds": 48,
+          "draft_rounds": 48,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.4222263171104714,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 12,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 474,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.434332596953027,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 12,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 474,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.4355371090350673,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 12,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 474,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "cache-operations": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.396441545919515,
+        "counters": {
+          "rounds": 46,
+          "draft_rounds": 46,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.61904917890206,
+        "counters": {
+          "rounds": 34,
+          "draft_rounds": 16,
+          "reuse_rounds": 18,
+          "reuse_accepted_tokens": 408,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.6352875671582296,
+        "counters": {
+          "rounds": 34,
+          "draft_rounds": 16,
+          "reuse_rounds": 18,
+          "reuse_accepted_tokens": 408,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.6314449111232534,
+        "counters": {
+          "rounds": 34,
+          "draft_rounds": 16,
+          "reuse_rounds": 18,
+          "reuse_accepted_tokens": 408,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "catalog-deploy": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.2249125429661945,
+        "counters": {
+          "rounds": 44,
+          "draft_rounds": 44,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.1271121160825714,
+        "counters": {
+          "rounds": 28,
+          "draft_rounds": 8,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 454,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.1355827688239515,
+        "counters": {
+          "rounds": 28,
+          "draft_rounds": 8,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 454,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.1269042489584535,
+        "counters": {
+          "rounds": 28,
+          "draft_rounds": 8,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 454,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "empty-history": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 2.687093156040646,
+        "counters": {
+          "rounds": 26,
+          "draft_rounds": 26,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 2.144529393874109,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 198,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 2.137727456050925,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 198,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 2.127696551848203,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 198,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "format-conversion": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 2.2835886559914798,
+        "counters": {
+          "rounds": 24,
+          "draft_rounds": 24,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 1.670923164114356,
+        "counters": {
+          "rounds": 16,
+          "draft_rounds": 12,
+          "reuse_rounds": 4,
+          "reuse_accepted_tokens": 120,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 1.6670666079735383,
+        "counters": {
+          "rounds": 16,
+          "draft_rounds": 12,
+          "reuse_rounds": 4,
+          "reuse_accepted_tokens": 120,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 1.6768230181187391,
+        "counters": {
+          "rounds": 16,
+          "draft_rounds": 12,
+          "reuse_rounds": 4,
+          "reuse_accepted_tokens": 120,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "gateway-routes": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.421884820796549,
+        "counters": {
+          "rounds": 46,
+          "draft_rounds": 46,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.543698541005142,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 10,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 534,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.516623090952635,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 10,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 534,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.5265391669236124,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 10,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 534,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "parcel-queue": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.0746676521375775,
+        "counters": {
+          "rounds": 42,
+          "draft_rounds": 42,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.254170192987658,
+        "counters": {
+          "rounds": 30,
+          "draft_rounds": 14,
+          "reuse_rounds": 16,
+          "reuse_accepted_tokens": 466,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.4286851718788967,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 12,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 474,
+          "alignment_calls": 4,
+          "alignment_candidates": 32,
+          "alignment_proposals": 4,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0022196340141817927
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.4990831109462306,
+        "counters": {
+          "rounds": 32,
+          "draft_rounds": 12,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 474,
+          "alignment_calls": 4,
+          "alignment_candidates": 32,
+          "alignment_proposals": 4,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.07472818496171385
+        }
+      }
+    },
+    "payment-runbook": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.066728041158058,
+        "counters": {
+          "rounds": 42,
+          "draft_rounds": 42,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.5535008249571547,
+        "counters": {
+          "rounds": 34,
+          "draft_rounds": 16,
+          "reuse_rounds": 18,
+          "reuse_accepted_tokens": 436,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.7537534409202635,
+        "counters": {
+          "rounds": 36,
+          "draft_rounds": 14,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 450,
+          "alignment_calls": 6,
+          "alignment_candidates": 48,
+          "alignment_proposals": 6,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.003332488238811493
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.8425190201960504,
+        "counters": {
+          "rounds": 36,
+          "draft_rounds": 14,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 450,
+          "alignment_calls": 6,
+          "alignment_candidates": 48,
+          "alignment_proposals": 6,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.11342900688759983
+        }
+      }
+    },
+    "short-settings": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 1.141841096105054,
+        "counters": {
+          "rounds": 8,
+          "draft_rounds": 8,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 1.1443002099404112,
+        "counters": {
+          "rounds": 8,
+          "draft_rounds": 8,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 1.266385130933486,
+        "counters": {
+          "rounds": 10,
+          "draft_rounds": 8,
+          "reuse_rounds": 2,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 10,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.00039888801984488964
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 1.2878219940466806,
+        "counters": {
+          "rounds": 10,
+          "draft_rounds": 8,
+          "reuse_rounds": 2,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 10,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.023151142057031393
+        }
+      }
+    },
+    "tiered-reader": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 5.406484008999541,
+        "counters": {
+          "rounds": 56,
+          "draft_rounds": 56,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 4.340124025940895,
+        "counters": {
+          "rounds": 40,
+          "draft_rounds": 16,
+          "reuse_rounds": 24,
+          "reuse_accepted_tokens": 596,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 4.343819507979788,
+        "counters": {
+          "rounds": 40,
+          "draft_rounds": 16,
+          "reuse_rounds": 24,
+          "reuse_accepted_tokens": 596,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 4.30787020502612,
+        "counters": {
+          "rounds": 40,
+          "draft_rounds": 16,
+          "reuse_rounds": 24,
+          "reuse_accepted_tokens": 596,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "unrelated-history": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 2.3957876480417326,
+        "counters": {
+          "rounds": 22,
+          "draft_rounds": 22,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 2.139487474109046,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 184,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 2.143591624102555,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 184,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 2.1298213120317087,
+        "counters": {
+          "rounds": 18,
+          "draft_rounds": 10,
+          "reuse_rounds": 8,
+          "reuse_accepted_tokens": 184,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "worker-pools": {
+      "DFlash": {
+        "observations": 4,
+        "seconds": 4.263768395059742,
+        "counters": {
+          "rounds": 44,
+          "draft_rounds": 44,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 4,
+        "seconds": 3.7912167130270973,
+        "counters": {
+          "rounds": 36,
+          "draft_rounds": 14,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 496,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 4,
+        "seconds": 3.78042381699197,
+        "counters": {
+          "rounds": 36,
+          "draft_rounds": 14,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 496,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 4,
+        "seconds": 3.783858688082546,
+        "counters": {
+          "rounds": 36,
+          "draft_rounds": 14,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 496,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    }
+  },
+  "groups": {
+    "all": {
+      "DFlash": {
+        "observations": 48,
+        "seconds": 43.902003596303985,
+        "counters": {
+          "rounds": 448,
+          "draft_rounds": 448,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 48,
+        "seconds": 35.75033815205097,
+        "counters": {
+          "rounds": 326,
+          "draft_rounds": 146,
+          "reuse_rounds": 180,
+          "reuse_accepted_tokens": 4366,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 48,
+        "seconds": 36.243278780719265,
+        "counters": {
+          "rounds": 332,
+          "draft_rounds": 142,
+          "reuse_rounds": 190,
+          "reuse_accepted_tokens": 4388,
+          "alignment_calls": 12,
+          "alignment_candidates": 90,
+          "alignment_proposals": 12,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.005951010272838175
+        }
+      },
+      "OT-R": {
+        "observations": 48,
+        "seconds": 36.375919336336665,
+        "counters": {
+          "rounds": 332,
+          "draft_rounds": 142,
+          "reuse_rounds": 190,
+          "reuse_accepted_tokens": 4388,
+          "alignment_calls": 12,
+          "alignment_candidates": 90,
+          "alignment_proposals": 12,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.21130833390634507
+        }
+      }
+    },
+    "local-edit": {
+      "DFlash": {
+        "observations": 16,
+        "seconds": 16.905114269349724,
+        "counters": {
+          "rounds": 176,
+          "draft_rounds": 176,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 16,
+        "seconds": 13.357009451137856,
+        "counters": {
+          "rounds": 124,
+          "draft_rounds": 50,
+          "reuse_rounds": 74,
+          "reuse_accepted_tokens": 1830,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 16,
+        "seconds": 13.752353978576139,
+        "counters": {
+          "rounds": 128,
+          "draft_rounds": 46,
+          "reuse_rounds": 82,
+          "reuse_accepted_tokens": 1852,
+          "alignment_calls": 10,
+          "alignment_candidates": 80,
+          "alignment_proposals": 10,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.005552122252993286
+        }
+      },
+      "OT-R": {
+        "observations": 16,
+        "seconds": 13.904043489135802,
+        "counters": {
+          "rounds": 128,
+          "draft_rounds": 46,
+          "reuse_rounds": 82,
+          "reuse_accepted_tokens": 1852,
+          "alignment_calls": 10,
+          "alignment_candidates": 80,
+          "alignment_proposals": 10,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.18815719184931368
+        }
+      }
+    },
+    "ambiguity": {
+      "DFlash": {
+        "observations": 16,
+        "seconds": 18.488578770775348,
+        "counters": {
+          "rounds": 192,
+          "draft_rounds": 192,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 16,
+        "seconds": 15.294088458875194,
+        "counters": {
+          "rounds": 142,
+          "draft_rounds": 56,
+          "reuse_rounds": 86,
+          "reuse_accepted_tokens": 2034,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 16,
+        "seconds": 15.276153983082622,
+        "counters": {
+          "rounds": 142,
+          "draft_rounds": 56,
+          "reuse_rounds": 86,
+          "reuse_accepted_tokens": 2034,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      },
+      "OT-R": {
+        "observations": 16,
+        "seconds": 15.249712971155532,
+        "counters": {
+          "rounds": 142,
+          "draft_rounds": 56,
+          "reuse_rounds": 86,
+          "reuse_accepted_tokens": 2034,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.0
+        }
+      }
+    },
+    "control": {
+      "DFlash": {
+        "observations": 16,
+        "seconds": 8.508310556178913,
+        "counters": {
+          "rounds": 80,
+          "draft_rounds": 80,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Suffix-R": {
+        "observations": 16,
+        "seconds": 7.099240242037922,
+        "counters": {
+          "rounds": 60,
+          "draft_rounds": 40,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 502,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0
+        }
+      },
+      "Edit-R": {
+        "observations": 16,
+        "seconds": 7.214770819060504,
+        "counters": {
+          "rounds": 62,
+          "draft_rounds": 40,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 502,
+          "alignment_calls": 2,
+          "alignment_candidates": 10,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.00039888801984488964
+        }
+      },
+      "OT-R": {
+        "observations": 16,
+        "seconds": 7.222162876045331,
+        "counters": {
+          "rounds": 62,
+          "draft_rounds": 40,
+          "reuse_rounds": 22,
+          "reuse_accepted_tokens": 502,
+          "alignment_calls": 2,
+          "alignment_candidates": 10,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0.023151142057031393
+        }
+      }
+    }
+  },
+  "contracts": {
+    "all": {
+      "correct": 22,
+      "requests": 24,
+      "length_stops": 0
+    },
+    "local-edit": {
+      "correct": 8,
+      "requests": 8,
+      "length_stops": 0
+    },
+    "ambiguity": {
+      "correct": 8,
+      "requests": 8,
+      "length_stops": 0
+    },
+    "control": {
+      "correct": 6,
+      "requests": 8,
+      "length_stops": 0
+    }
+  }
+}

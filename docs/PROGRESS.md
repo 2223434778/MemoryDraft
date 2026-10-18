@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-18 — OT-R新场景验证（完成，按门槛停止）
+
+- 修复后在`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-validation-v2`运行，冻结提交`45ec2ef995bd7521c579c2fe998fcd35c9c20c31`，PID1658928已结束，两GPU恢复19MiB/0%。24个新AR输入/快照核对、192/192计时逐token严格一致；两次24个AR的tokens/text/prompt/snapshot/finish_reason/contract逐项相同。任务22/24正确，两个格式控制失败；两个候选适用组均8/8正确，无截断，不剔除失败请求。
+- 四组总秒数DFlash43.902004、Suffix35.750338、Edit36.243279、OT36.375919，OT相对Suffix+1.75%、相对Edit+0.37%。local-edit分别13.357009/13.752354/13.904043（Suffix/Edit/OT），OT+4.10%；ambiguity15.294088/15.276154/15.249713，OT-0.29%，但对齐调用0且解码计数相同，不能归因于OT；control7.099240/7.214771/7.222163，OT+1.73%。两个预先指定候选场景均未通过工程门槛，停止扩大同类测试/在本批答案上调参，保留显式实验选项，默认suffix。
+- OT/Edit的48个请求-重复配对中D/R轮数、R接受量、对齐调用/候选/提议/接受量全部相同；两者对齐均接受66token，查询0.211308s对0.005951s。仅parcel-queue/payment-runbook/short-settings三个项目触发对齐。Suffix→OT：D146→142、R180→190、总326→332，R接受4366→4388。66个对齐接受token不能当成相对Suffix新增66token，更不能据此声称加速；新增验证与查询没有换来净收益。
+- 实际命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_transport_validation --config configs/runtime-dflash.json --output artifacts/ot-validation-v2`。实际package SHA`7201d6615cd38402d74aefb82c6d941e9048863c65bd8271fa5b1eca2a3ce03c`，首轮42个既有package文件SHA全部保持；本轮只新增评测模块。461文件部署逐项核验。运行前任务/协议来自226399c，修复仅评测字段；失败目录和原执行清单均保留。
+- 本机修复后完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-ot-validation-final --junitxml=artifacts/ot-validation-tests-final-local.xml`：205 passed/3 skipped/20.71s；服务器87 passed/8.03s。之后纯报告与失败参考审计新增检查，本机23 passed/2.20s，实际XML另存。冻结修复提交CI成功39141490756。原始下载ZIP103252字节，SHA`40f9e589e238980593dbd19c1c1bef200c883e18e662d83ac3cdef84455e81df`。
+- 原始计时/参考/失败记录、执行清单、测试XML和发布SHA保存在`results/ot-validation/`，报告`OT_R_VALIDATION_RESULTS.md`，复算`python -m scripts.write_transport_validation_report`。这些是12个作者编写受控项目，不能当生产流量或宣称OT普遍无效。完整infra面试版本423文件及三个固定ref重新核验仍为27e3619，研究不覆盖main或原infra服务器目录。
+- 最终报告审计两平台各23 passed（本机2.14s、服务器1.41s），独立重建正文SHA均`c9572d3f26ac99d6526d2fee018c5b97fef59036ff09ff74aa4f4607c6da0545`，diagnostic SHA均`7071844474062ce4c6f77f581e794feb43852e05fe586b317820e8001380c322`。发布24份小型证据加publication.json，总约296KB；最终package与实际GPU package逐文件完全相同。之后只有报告/测试/交付文档更新，执行源码包、原失败包和最终交付清单分别保留。
+
 ## 2026-10-18 — OT-R新场景验证（运行前冻结）
 
 - 用户授权开展上一轮提出的24新请求验证。新增12个作者编写的受控项目，每项目两次独立v1修订，分local-edit/ambiguity/control各4项目；不是自然生产流量或12个真实外部仓库。24请求、13条合法旧记录，未生成Target答案、没有把新答案写入历史。

@@ -1,0 +1,53 @@
+{
+  "execution_commit": "45ec2ef995bd7521c579c2fe998fcd35c9c20c31",
+  "initial_freeze_commit": "226399cb4c7ad14cf2fe85a891f6b25d8f78307f",
+  "failed_attempt": {
+    "reason": "New evaluation incorrectly used stop_reason instead of the existing runtime finish_reason",
+    "valid_timed_rows": 0,
+    "evidence": "failed/",
+    "same_24_ar_references": true
+  },
+  "original_42_package_files_unchanged": 42,
+  "final_package_equals_execution_package": true,
+  "execution_package_sha256": "7201d6615cd38402d74aefb82c6d941e9048863c65bd8271fa5b1eca2a3ce03c",
+  "tests": {
+    "tests-full-local.xml": {
+      "scope": "Full package/serving suite after finish_reason correction, before post-run report-only additions",
+      "tests": 208,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "passed": 205
+    },
+    "tests-report-local.xml": {
+      "scope": "Final report, failed-reference audit and real GenerationResult schema; local",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 23
+    },
+    "tests-report-server.xml": {
+      "scope": "Same final report scope; A6000 environment",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 23
+    },
+    "tests-server-execution.xml": {
+      "scope": "Frozen execution code: runtime, DFlash, OT and validation audits before GPU run",
+      "tests": 87,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "final_report_code_sha256": "bc45e342fee3e4fde043d50d1a71131c43a39d47b400faa1ec44e37ae9ee7a4f",
+  "final_report_test_sha256": "7e5ac8c11afc7b343722b8d2beac2b80f63accd7284462f786ae4f0badfc6e56",
+  "frozen_execution_ci": {
+    "conclusion": "success",
+    "url": "https://github.com/2223434778/MemoryDraft/actions/runs/39141490756"
+  },
+  "infra_preserved_commit": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+}

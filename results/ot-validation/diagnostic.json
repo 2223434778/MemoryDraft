@@ -1,0 +1,154 @@
+{
+  "comparisons": {
+    "all": {
+      "DFlash": {
+        "ot_over_baseline": 0.8285708249406429,
+        "project_bootstrap_95": [
+          0.7905713424363139,
+          0.8715596613846975
+        ],
+        "projects_faster": 11,
+        "projects": 12
+      },
+      "Suffix-R": {
+        "ot_over_baseline": 1.0174986088697962,
+        "project_bootstrap_95": [
+          0.9988820963816943,
+          1.0402746636136588
+        ],
+        "projects_faster": 6,
+        "projects": 12
+      },
+      "Edit-R": {
+        "ot_over_baseline": 1.0036597283711528,
+        "project_bootstrap_95": [
+          0.9977637546528079,
+          1.0100968760836015
+        ],
+        "projects_faster": 5,
+        "projects": 12
+      },
+      "engineering_gate": false
+    },
+    "local-edit": {
+      "DFlash": {
+        "ot_over_baseline": 0.8224755696768584,
+        "project_bootstrap_95": [
+          0.7488192712993638,
+          0.9017621066112808
+        ],
+        "projects_faster": 4,
+        "projects": 4
+      },
+      "Suffix-R": {
+        "ot_over_baseline": 1.040954828998144,
+        "project_bootstrap_95": [
+          1.0020006486050668,
+          1.0784308042780038
+        ],
+        "projects_faster": 1,
+        "projects": 4
+      },
+      "Edit-R": {
+        "ot_over_baseline": 1.0110300760725015,
+        "project_bootstrap_95": [
+          0.9988623890313123,
+          1.02216009449207
+        ],
+        "projects_faster": 1,
+        "projects": 4
+      },
+      "engineering_gate": false
+    },
+    "ambiguity": {
+      "DFlash": {
+        "ot_over_baseline": 0.8248180219920718,
+        "project_bootstrap_95": [
+          0.7971220359779958,
+          0.8643438680457327
+        ],
+        "projects_faster": 4,
+        "projects": 4
+      },
+      "Suffix-R": {
+        "ot_over_baseline": 0.9970985202655924,
+        "project_bootstrap_95": [
+          0.9937323304048628,
+          1.0013907392992034
+        ],
+        "projects_faster": 3,
+        "projects": 4
+      },
+      "Edit-R": {
+        "ot_over_baseline": 0.9982691316180518,
+        "project_bootstrap_95": [
+          0.993789330923628,
+          1.0018296370065838
+        ],
+        "projects_faster": 2,
+        "projects": 4
+      },
+      "engineering_gate": false
+    },
+    "control": {
+      "DFlash": {
+        "ot_over_baseline": 0.8488363028545598,
+        "project_bootstrap_95": [
+          0.7653918946808566,
+          0.9801306181283941
+        ],
+        "projects_faster": 3,
+        "projects": 4
+      },
+      "Suffix-R": {
+        "ot_over_baseline": 1.0173148998789372,
+        "project_bootstrap_95": [
+          0.9938144491677227,
+          1.0755329999259393
+        ],
+        "projects_faster": 2,
+        "projects": 4
+      },
+      "Edit-R": {
+        "ot_over_baseline": 1.0010245726676859,
+        "project_bootstrap_95": [
+          0.994440681521753,
+          1.0106336411963668
+        ],
+        "projects_faster": 2,
+        "projects": 4
+      },
+      "engineering_gate": false
+    }
+  },
+  "contracts": {
+    "all": {
+      "correct": 22,
+      "requests": 24,
+      "length_stops": 0
+    },
+    "local-edit": {
+      "correct": 8,
+      "requests": 8,
+      "length_stops": 0
+    },
+    "ambiguity": {
+      "correct": 8,
+      "requests": 8,
+      "length_stops": 0
+    },
+    "control": {
+      "correct": 6,
+      "requests": 8,
+      "length_stops": 0
+    }
+  },
+  "rows": 192,
+  "ot_edit_counter_pairs_equal": 48,
+  "alignment_active_projects": [
+    "parcel-queue",
+    "payment-runbook",
+    "short-settings"
+  ],
+  "report_sha256": "c9572d3f26ac99d6526d2fee018c5b97fef59036ff09ff74aa4f4607c6da0545"
+}
