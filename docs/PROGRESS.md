@@ -10,6 +10,7 @@
 - 首轮本机检查暴露默认GBK读取和系统临时目录不可写；统一UTF8及项目内忽略目录，隔离Git外层仓库发现/自动换行，未改冻结数据。修复后本机完整75 passed、3 skipped，服务器DFlash环境29 passed，包含官方C++候选器+真实tiny Target验证。原服务器源码清单 `c6c269ffce98cbfd2036dca7ccd612892cef52287e12a2a637da2bf91bd0215b` 全文件一致；冻结实现/协议提交6b1451c已推送。
 - GPU开发运行：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_config_revisions.py --split development`，结果 `results/config-revisions-development/`。进程1223876；仅GPU0，不把部分配对当完整结论。
 - 开发发现真实Target会遗漏未修改部分，任务质量与严格token一致性分别报告，不剔除失败。另发现diff评分v1未补最后LF而误判可应用性；新增评分v2及缺失LF回归，本机10 passed。原始输出/计时/评分不改，报告先按原版本审计再离线记录quality-v2.json更正；原GPU进程仍运行c6源码。该修正不改变Target或接受条件。
+- 任何确认输出之前收敛确认计时：开发仍有正式AR；确认保留独立AR参考、五条加速路径及diff边界，共468次而非原拟540次，避免额外重复AR基准成本。主比较仍为DFlash/Global，参数和Target输入不变；确认不报告相对AR加速比。方法集合/缺失行审计已补测试，本机11 passed。协议修订在 `CONFIG_REVISIONS_PROTOCOL.md` 顶部。
 
 ## 2026-10-18 — R/DFlash 接入、场景开发与独立小规模确认（完成）
 

@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 from memorydraft.evaluation.config_revisions import (METHODS_BY_MODE, answer_event, load_projects,
-                                                     quality, working_event)
+                                                     methods_for_split, quality, working_event)
 from memorydraft.memory.store import Snapshot
 from scripts.run_config_revisions import save, summaries
 from scripts.write_reuse_report import ratio_interval, read
@@ -18,9 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/research/config-revisions"
 
 
-def audit(projects, references, rows, *, repeats, quality_version=2):
+def audit(projects, references, rows, *, repeats, quality_version=2, methods_by_mode=METHODS_BY_MODE):
     definitions = {p["id"]: p for p in projects}
-    keys = {(p["id"], mode, turn) for p in projects for mode in METHODS_BY_MODE
+    keys = {(p["id"], mode, turn) for p in projects for mode in methods_by_mode
             for turn in range(2 if mode == "full" else 1)}
     labels = {(r["project_id"], r["mode"], r["turn"]): r for r in references}
     if len(labels) != len(references) or set(labels) != keys:
@@ -42,7 +42,7 @@ def audit(projects, references, rows, *, repeats, quality_version=2):
     for row in rows:
         key = row["project_id"], row["mode"], row["turn"]
         identity = (*key, row["method"], row["repeat"])
-        if (key not in keys or identity in seen or row["method"] not in METHODS_BY_MODE[row["mode"]]
+        if (key not in keys or identity in seen or row["method"] not in methods_by_mode[row["mode"]]
                 or row["repeat"] not in range(repeats)):
             raise ValueError("Unexpected, duplicate or unpaired method row")
         seen.add(identity)
@@ -60,10 +60,10 @@ def audit(projects, references, rows, *, repeats, quality_version=2):
                 raise ValueError("Invalid accepted-prefix or KV frontier")
             if event["route"] == "R" and event["source"] not in {"artifact", "working-file", "context:current-prompt", "arctic:legal-resources"}:
                 raise ValueError("Unexpected candidate resource")
-    expected_rows = sum(len(METHODS_BY_MODE[mode]) for _, mode, _ in keys) * repeats
+    expected_rows = sum(len(methods_by_mode[mode]) for _, mode, _ in keys) * repeats
     if len(rows) != expected_rows:
         raise ValueError("Incomplete paired replay")
-    return summaries(rows)
+    return summaries(rows, methods_by_mode)
 
 
 def write_report(source: Path, output: Path):
@@ -77,7 +77,11 @@ def write_report(source: Path, output: Path):
         raise ValueError("Project selection changed")
     references, rows = read(source / "references.jsonl"), read(source / "replay.jsonl")
     recorded_quality_version = provenance.get("quality_version", 1)
-    summary = audit(projects, references, rows, repeats=provenance["repeats"], quality_version=recorded_quality_version)
+    methods = methods_for_split(provenance["split"])
+    if provenance["methods"] != {mode: list(names) for mode, names in methods.items()}:
+        raise ValueError("Method selection differs from the frozen stage")
+    summary = audit(projects, references, rows, repeats=provenance["repeats"], quality_version=recorded_quality_version,
+                    methods_by_mode=methods)
     if summary != json.loads((source / "summary.json").read_text()):
         raise ValueError("Summary does not reproduce")
     definitions = {p["id"]: p for p in projects}
@@ -103,10 +107,12 @@ def write_report(source: Path, output: Path):
              f"每方法{provenance['repeats']}重复，共{len(rows)}次计时。全部与各自固定Target AR参考逐token一致。",
              "这是基于真实仓库文件/提交构造的编辑API回放；请求和输出合同由实验指定，不是自然用户或部署服务日志。",
              "", "## 完整文件：全部在线成本", "", "| 方法 | 次数 | 秒 | DFlash/方法 |", "|---|---:|---:|---:|"]
-    for method in METHODS_BY_MODE["full"]:
+    for method in methods["full"]:
         lines.append(f"| {method} | {sum(r['method']==method for r in full)} | {t[method]:.3f} | {t['DFlash']/t[method]:.3f}× |")
     lines += ["", "| 对照/Global | 配对总时间比 | 按项目bootstrap95%区间 |", "|---|---:|---|"]
     for method in ("DFlash", "Adapted", "Context", "Arctic", "AR"):
+        if method not in t:
+            continue
         low, high = ratio_interval(full, method, "Global")
         lines.append(f"| {method}/Global | {t[method]/t['Global']:.3f}× | [{low:.3f}, {high:.3f}] |")
     lines += ["", "Global/Context使用相同算法，仅资源不同；当前输入已含完整旧文件和所需patch。"
@@ -117,7 +123,7 @@ def write_report(source: Path, output: Path):
               "|---|---|---:|---:|---:|---:|---:|"]
     for project in projects:
         group = [r for r in full if r["project_id"] == project["id"]]
-        times = {m: sum(r["latency_seconds"] for r in group if r["method"] == m) for m in METHODS_BY_MODE["full"]}
+        times = {m: sum(r["latency_seconds"] for r in group if r["method"] == m) for m in methods["full"]}
         lines.append(f"| {project['repository']} | `{project['path']}` | {times['DFlash']:.3f} | {times['Global']:.3f} | "
                      f"{times['DFlash']/times['Global']:.3f}× | {times['Context']/times['Global']:.3f}× | {times['Arctic']/times['Global']:.3f}× |")
     lines += ["", "## 任务完成与截断", "",
@@ -151,6 +157,7 @@ def write_report(source: Path, output: Path):
               "固定Qwen3-8B/DFlash、FP32/eager、greedy、Transformers4.57.3、A6000 GPU0。"
               "每个方法/重复独立SQLite，首轮库创建、用户文件版本更新、冷索引、检索、所有前向、缓存追赶、解码和最终回答写入均计入。",
               f"独立参考构造时间 {sum(r['latency_seconds'] for r in references):.3f}s；模型加载 {provenance['load_seconds']:.3f}s，单列。",
+              "开发包含交错正式AR对照；确认阶段AR仅为独立正确性参考，没有正式AR方法或确认相对AR加速比。",
               "历史从真实旧文件及已经完成的同方法回答重建，逐请求审核版本、用户、Target prompt、token、配对、KV前沿与summary。"
               "方法间的结果重复不增加独立项目数；项目间文件规模不同，主结果为配对总时间比。",
               "这批工作流维护及统一diff指令不能代表自然语言修改请求、一般部署配置或真实长期用户。"

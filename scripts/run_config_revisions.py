@@ -16,7 +16,7 @@ import yaml
 
 from memorydraft.backends.dflash_reuse import ReuseConfig, generate_reuse
 from memorydraft.evaluation.config_revisions import (METHODS_BY_MODE, answer_event, load_projects,
-                                                     messages, quality, request_text, working_event)
+                                                     messages, methods_for_split, quality, request_text, working_event)
 from memorydraft.memory.store import MemoryStore, Snapshot
 from memorydraft.retrieval.arctic import ArcticMatcher
 from memorydraft.retrieval.reuse import ReuseMatcher
@@ -28,9 +28,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/research/config-revisions"
 
 
-def summaries(rows):
+def summaries(rows, methods_by_mode=METHODS_BY_MODE):
     result = {}
-    for mode, methods in METHODS_BY_MODE.items():
+    for mode, methods in methods_by_mode.items():
         group = [r for r in rows if r["mode"] == mode]
         times = {m: sum(r["latency_seconds"] for r in group if r["method"] == m) for m in methods}
         result[mode] = dict(times=times, rows=len(group), correct=all(r["correct"] for r in group),
@@ -64,9 +64,10 @@ def main():
         raise RuntimeError("Preserve existing evidence; select a new output path")
     projects = load_projects(DATA, args.split)
     repeats = 1 if args.split == "development" else 3
+    selected_methods = methods_for_split(args.split)
     out.mkdir(parents=True)
     (out / "stores").mkdir()
-    provenance = dict(status="started", split=args.split, repeats=repeats, methods=METHODS_BY_MODE, quality_version=2,
+    provenance = dict(status="started", split=args.split, repeats=repeats, methods=selected_methods, quality_version=2,
                       config=asdict(ReuseConfig()), budget_full=3072, budget_diff=768,
                       source=json.loads((ROOT / "SOURCE_MANIFEST.json").read_text()),
                       data_sha256=hashlib.sha256((DATA / "projects.json").read_bytes()).hexdigest(),
@@ -174,7 +175,7 @@ def main():
                         buffer_flushes=detail.buffer_flushes if detail else 0)
 
         for i, project in enumerate(projects):
-            for mode, methods in METHODS_BY_MODE.items():
+            for mode, methods in selected_methods.items():
                 for turn in range(2 if mode == "full" else 1):
                     reference = generate(project, turn, mode, "Reference", 0)
                     reference["quality"] = quality(reference["text"], project, turn, mode)
@@ -186,7 +187,7 @@ def main():
                             row = generate(project, turn, mode, method, repeat, reference)
                             rows.append(row)
                             append(out / "replay.jsonl", row)
-                    save(out / "summary.json", summaries(rows))
+                    save(out / "summary.json", summaries(rows, selected_methods))
                     print("complete", project["id"], mode, turn, "quality", reference["quality"], flush=True)
         provenance.update(status="complete", rows=len(rows))
     except Exception as error:

@@ -7,7 +7,7 @@ import shutil
 import pytest
 
 from memorydraft.evaluation.config_revisions import (METHODS_BY_MODE, answer_event, load_projects,
-                                                     quality, request_text, working_event)
+                                                     methods_for_split, quality, request_text, working_event)
 from memorydraft.memory.store import MemoryStore, Snapshot
 from memorydraft.retrieval.suffix import SuffixArrayIndex
 from scripts.prepare_config_revisions import CUTOFF, REPOSITORIES
@@ -111,3 +111,11 @@ def test_report_rebuilds_past_and_rejects_corruption(corruption):
         references[0]["quality"]["exact_file_or_patch"] = False
     with pytest.raises(ValueError):
         audit(projects, references, rows, repeats=1)
+
+
+def test_confirmation_keeps_strong_controls_and_independent_ar_labels():
+    projects, references, rows = fixture_rows()
+    methods = methods_for_split("confirmation")
+    assert methods["full"] == ("DFlash", "Adapted", "Global", "Context", "Arctic")
+    rows = [r for r in rows if r["method"] != "AR"]
+    assert audit(projects, references, rows, repeats=1, methods_by_mode=methods)["full"]["rows"] == 10

@@ -15,6 +15,13 @@ METHODS_BY_MODE = {"full": ("AR", "DFlash", "Adapted", "Global", "Context", "Arc
                    "diff": ("DFlash", "Global", "Context")}
 
 
+def methods_for_split(split):
+    if split not in {"development", "confirmation"}:
+        raise ValueError("Unknown project split")
+    return {mode: tuple(m for m in methods if split == "development" or m != "AR")
+            for mode, methods in METHODS_BY_MODE.items()}
+
+
 def load_projects(directory: Path, split: str):
     manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
     for relative, expected in manifest.items():
