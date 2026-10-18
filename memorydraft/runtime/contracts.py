@@ -54,7 +54,7 @@ class GenerationResult:
     ttft_seconds: float | None
     finish_reason: str
     peak_gpu_bytes: int = 0
-    counters: dict[str, int] = field(default_factory=dict)
+    counters: dict[str, int | float] = field(default_factory=dict)
 
 
 TokenCallback = Callable[[list[int]], None]

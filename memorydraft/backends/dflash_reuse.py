@@ -122,7 +122,8 @@ also cover [0,start). R skips draft forward and accumulates those features.
             with mark("retrieval_lookup"):
                 confirmed = ids[0, prompt:start + 1].tolist()
                 proposal = matcher.propose(confirmed, min(config.max_tokens, limit - start - 1))
-            if proposal is not None and proposal.matched < config.min_match and forced != "R":
+            if (proposal is not None and proposal.matched < config.min_match
+                    and not proposal.context_qualified and forced != "R"):
                 proposal = None
         before_draft = draft_cache.get_seq_length()
         before_pending = pending_tokens

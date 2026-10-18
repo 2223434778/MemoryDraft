@@ -66,3 +66,15 @@ docs/RUNTIME_MIGRATION_RESULTS.md text eol=lf
 results/runtime-migration/** -text
 results/runtime-migration/*.json whitespace=cr-at-eol
 results/runtime-migration/*.log -whitespace
+
+# OT-R source/evidence stay separate from the frozen infra branch.
+memorydraft/retrieval/transport.py text eol=lf
+memorydraft/retrieval/reuse.py text eol=lf
+memorydraft/backends/dflash_reuse.py text eol=lf
+memorydraft/evaluation/transport_probe.py text eol=lf
+scripts/*transport*.py text eol=lf
+scripts/archive_infra.py text eol=lf
+tests/test_transport*.py text eol=lf
+docs/OT_R*.md text eol=lf
+results/ot-r/** -text
+results/ot-r/*.log -whitespace

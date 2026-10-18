@@ -116,6 +116,20 @@ def test_context_and_output_limits_release_engine(engine):
     assert not engine.lock.locked()
 
 
+@pytest.mark.parametrize("retrieval", ["edit", "ot"])
+def test_runtime_selects_aligned_retrieval_and_reports_actual_cost(engine, retrieval):
+    if retrieval == "ot":
+        pytest.importorskip("ot")
+    reference = engine.generate(request(), "AR")
+    engine.config = replace(engine.config, retrieval=retrieval)
+    result = engine.generate(request(), "R+DFlash")
+    assert result.token_ids == reference.token_ids
+    assert result.prompt_sha256 == reference.prompt_sha256
+    assert result.snapshot_id == reference.snapshot_id
+    assert 0 < result.counters["alignment_calls"] <= 4
+    assert result.counters["alignment_seconds"] >= 0
+
+
 @pytest.mark.parametrize("changes", [{"order": True}, {"max_new_tokens": 0}, {"temperature": 0.5},
                                      {"messages": [{"role": "assistant", "content": "x"}]}])
 def test_invalid_requests_fail_explicitly(changes):

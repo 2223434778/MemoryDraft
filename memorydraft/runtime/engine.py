@@ -41,6 +41,9 @@ class InferenceEngine:
         self.methods = ("AR", "DFlash", "R+DFlash") if draft is not None else ("AR",)
         self.lock = threading.Lock()
         self.reuse = ReuseConfig(**config.reuse)
+        if config.retrieval == "ot":
+            # Import optional solver libraries during load, before request timing.
+            from ot import sinkhorn
         eos = target.generation_config.eos_token_id
         self.stops = [eos] if isinstance(eos, int) else list(eos or [])
 
@@ -131,7 +134,13 @@ class InferenceEngine:
                 with mark("index_build"):
                     index = SuffixArrayIndex(snapshot, self.tokenizer, min_match=3, max_match=32,
                                              prompt_text="\n".join(m["content"] for m in request.messages))
-                    matcher = ReuseMatcher(index, cursor=False)
+                    if self.config.retrieval == "suffix":
+                        matcher = ReuseMatcher(index, cursor=False)
+                    else:
+                        from memorydraft.retrieval.transport import AlignedReuseMatcher, AlignmentConfig
+                        matcher = AlignedReuseMatcher(index, method=self.config.retrieval,
+                                                      exact_min_match=self.reuse.min_match,
+                                                      config=AlignmentConfig(**self.config.alignment))
             check()
             counters = {}
             if method == "AR":
@@ -168,6 +177,7 @@ class InferenceEngine:
                             "draft_rounds": sum(r["route"] == "D" for r in detail.rounds),
                             "index_bytes": index.bytes_used if index else 0,
                             "feature_peak_tokens": detail.feature_peak_tokens, "buffer_flushes": detail.buffer_flushes}
+                counters.update(getattr(matcher, "stats", {}))
             self.synchronize()
             check()
             tokens = output[0, prompt_tokens:].tolist()

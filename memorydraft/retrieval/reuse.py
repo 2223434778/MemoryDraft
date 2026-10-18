@@ -16,6 +16,8 @@ class ReuseProposal:
     position: int
     end: int
     lookup: str
+    # Qualification of the retrieval context never changes Target verification.
+    context_qualified: bool = False
 
 
 class ReuseMatcher:

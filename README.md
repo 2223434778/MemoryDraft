@@ -1,5 +1,10 @@
 # MemoryDraft
 
+> OT-R 实验在 `codex/ot-r-probe` 分支进行。此前完整 infra 已独立冻结为
+> `codex/infra-interview-v0.3` / `infra-v0.3-interview`，本机另存独立仓库、ZIP 和 Git bundle。
+> 见 [面试版本位置与复现](docs/INFRA_INTERVIEW.md)。OT 运行配置为 `configs/runtime-ot.json`，
+> 需安装额外依赖 `python -m pip install -e ".[dflash,transport]"`；实验规则见 [OT-R 协议](docs/OT_R_PROTOCOL.md)。
+
 **固定 Target 的推理优化、服务与正确性评测工具链。**
 
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。

@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-18 — 独立保存 infra 并接入 OT-R（首轮实验启动）
+
+- 用户授权尝试 OT-R，并要求单独保留面试项目。infra 固定提交 `27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`，独立分支 `codex/infra-interview-v0.3`、标签 `infra-v0.3-interview`，研究分支 `codex/ot-r-probe`。本机 `artifacts/infra-interview-v0.3/project` 为独立 Git 克隆；ZIP/bundle/逐项 SHA 清单另存，423 文件原始 Git blob 字节核验通过。复现命令 `.venv\Scripts\python.exe -m scripts.archive_infra --output artifacts/infra-interview-v0.3`；归档位置与面试范围见 `INFRA_INTERVIEW.md`。服务器既有 `infra-v0.3` 不覆盖。
+- 新增带预算的 `retrieval/transport.py`，沿用精确后缀路径，失败后调用 lexical OT 或同池 Levenshtein；默认运行配置仍为 suffix。OT 复用 MIT POT 0.9.6.post1，上游标签 commit `85113e9a380f5fcf684c50c73c1ff6a164a7366e`，没有复制上游源码。32-token 窗口、8 候选、双 dustbin、位置先验、4 次调用上限在首轮输出前固定；不是完整 OPW 或 SpecTr，不声称语义检索或新验证算法。实际短锚点保留在 `matched`，新增上下文合格标记只决定是否提议，Target 接受条件仍为逐 token greedy 相等。
+- CPU 首轮 `.venv\Scripts\python.exe -m pytest -q tests/test_transport.py tests/test_dflash_reuse.py tests/test_runtime.py --basetemp .test-tmp-ot-first`：50 passed/2 skipped；补充运行配置与配对审计测试后相关 60 passed/2 skipped，XML 在 `artifacts/ot-tests-ready.xml`。含真实 tiny Target 的 OT 拒绝/KV/流式正确性及用户、未来历史、特殊 token 边界检查。
+- `.venv\Scripts\python.exe -m scripts.diagnose_transport --output artifacts/ot-r-offline-v1` 已完成，只加载 tokenizer。对旧 8 JSON 与 2 infra 请求的所有长度>=8前缀作独立决策，不模拟在线4次预算/路由。旧 JSON 60 个后缀缺失位置，原始/候选池 oracle 均有48个>=8-token机会；OT 找回48，edit找回47，但 OT 词法总正确前缀1443、edit1491，OT查询更贵。copy 的22个缺失位置原始/池均有12个机会，OT找回0、edit6，OT零接受提议19/22。离线不是在线接受率或加速，参数保持原样，后续只进行协议限定的80次GPU计时。
+- 服务器已仅新增 POT 0.9.6.post1，NumPy/SciPy 等原依赖未升级。GPU试验将运行独立 `ot-r-probe` 目录，同权重/FP32/eager/4线程、10个旧AR先核验、四组两重复交错、全在线成本计入；协议 `OT_R_PROTOCOL.md`。未将 CPU 机会结果冒充实测性能。
+
 ## 2026-10-18 — 旧正结果向infra迁移的配对验证（完成）
 
 - A6000正式运行完成，PID1596891已退出，两GPU恢复19MiB/0%。原8个完整新AR逐token/prompt/snapshot一致，单列125.609s；之后120/120计时全部一致。Legacy-D=42.030658s、Legacy-R=33.879012s、Runtime-D=42.060590s、Runtime-R=33.881685s、Runtime-R-aligned=33.875867s。新版D/默认R=1.241396，[1.198093,1.291931]，延迟降低约19.45%；旧收益保留，不支持此前短样例退化是工程化破坏旧负载的解释。

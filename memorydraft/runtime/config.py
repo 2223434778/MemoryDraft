@@ -21,10 +21,17 @@ class RuntimeConfig:
     template_options: dict = field(default_factory=lambda: {"enable_thinking": False})
     reuse: dict = field(default_factory=lambda: {"max_tokens": 32, "min_match": 6,
                                                "cooldown_rounds": 1, "max_pending_tokens": 1024})
+    retrieval: str = "suffix"
+    alignment: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
             raise ValueError("backend must be transformers, dflash or demo")
+        if self.retrieval not in {"suffix", "ot", "edit"}:
+            raise ValueError("retrieval must be suffix, ot or edit")
+        if self.alignment or self.retrieval != "suffix":
+            from memorydraft.retrieval.transport import AlignmentConfig
+            AlignmentConfig(**self.alignment)
         if self.dtype != "float32" or self.attention != "eager":
             raise ValueError("The validated runtime profile requires float32/eager")
         if any(type(v) is not int or v < 1 for v in

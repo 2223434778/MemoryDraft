@@ -159,6 +159,27 @@ def test_invalid_controls_are_explicit(tiny):
                        max_new_tokens=5, route_sequence=("H",))
 
 
+@pytest.mark.parametrize("method", ["edit", "ot"])
+def test_aligned_candidates_still_obey_real_target_rejection_and_kv(tiny, method):
+    if method == "ot":
+        pytest.importorskip("ot")
+    from memorydraft.retrieval.transport import AlignedReuseMatcher
+
+    # Test-only corrupted reference: guarantee short exact matches and rejected tokens.
+    history = tiny.reference[0, tiny.ids.shape[1]:].tolist()
+    for offset in range(2, len(history), 4):
+        history[offset] = (history[offset] + 1) % 30
+    snapshot = Snapshot("toy", 10, (MemoryEvent("toy", "old", 1, " ".join(map(str, history))),))
+    matcher = AlignedReuseMatcher(SuffixArrayIndex(snapshot, IntegerTokenizer()), method=method)
+    commits = []
+    result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29,
+                            matcher=matcher, on_tokens=commits.extend)
+    assert result.sequences.tolist() == tiny.reference.tolist()
+    assert commits == tiny.reference[0, tiny.ids.shape[1]:].tolist()
+    assert matcher.stats["alignment_calls"] > 0
+    assert any(row["lookup"] == method and row["accepted"] < row["proposed"] for row in result.rounds)
+
+
 @pytest.mark.skipif(transformers.__version__ != "4.57.3", reason="Audited DFlash environment only")
 def test_actual_audited_dflash_forward_and_native_control(tiny):
     from pathlib import Path
