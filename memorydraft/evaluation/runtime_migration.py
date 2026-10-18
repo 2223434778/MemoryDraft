@@ -14,7 +14,8 @@ from memorydraft.runtime.contracts import GenerationRequest
 
 
 METHODS = ("Legacy-D", "Legacy-R", "Runtime-D", "Runtime-R", "Runtime-R-aligned")
-LEGACY_COMMIT = "dd0077fb6ed278837f9e3de48f946008519816ff"
+LEGACY_COMMITS = {"legacy_decode.py": "dd0077fb6ed278837f9e3de48f946008519816ff",
+                  "legacy_suffix.py": "f43239af59c49c17ee4b9d7749473259e501251d"}
 
 
 def file_hash(path):

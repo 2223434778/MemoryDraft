@@ -78,9 +78,6 @@ def main():
                                 old_hashes["memorydraft/backends/dflash_reuse.py"])
     legacy_suffix = load_legacy(args.legacy / "legacy_suffix.py", "migration_legacy_suffix",
                                 old_hashes["memorydraft/retrieval/suffix.py"])
-    if ((args.legacy / "legacy_suffix.py").read_bytes().replace(b"\r\n", b"\n")
-            != (ROOT / "memorydraft/retrieval/suffix.py").read_bytes().replace(b"\r\n", b"\n")):
-        raise ValueError("Current suffix implementation differs beyond line endings")
     tasks, events = frozen_inputs(args.source)
     database = args.output.resolve() / "history.db"
     with MemoryStore(database) as store:
