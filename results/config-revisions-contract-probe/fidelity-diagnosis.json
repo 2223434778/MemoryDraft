@@ -1,0 +1,29 @@
+{
+  "post_run_analysis": true,
+  "runtime_source_sha256": "077a04368b75f50be7a5d8a4ad2c0fd94e15763dfcc8c53e7f9e19dd4fe27be8",
+  "cases": [
+    {
+      "project_id": "astral-sh--ruff",
+      "turn": 0,
+      "reference_sha256": "a0bfb69eddd58c32ef90466535494fb149e1627468eb17f0649fc7a13ff8c54b",
+      "only_hash_prefixed_line_changes": true,
+      "text_diff_ignoring_terminal_lf": "--- expected\n+++ AR\n@@ -42,7 +42,6 @@\n       - uses: Swatinem/rust-cache@98c8021b550208e191a6a3145459bfc9fb29c4c0 # v2.8.0\n       - name: Build ruff\n         # A debug build means the script runs slower once it gets started,\n-        # but this is outweighed by the fact that a release build takes *much* longer to compile in CI\n         run: cargo build --locked\n       - name: Fuzz\n         run: |",
+      "yaml_value_differences": [
+        {
+          "path": "/jobs/create-issue-on-failure/steps/0/with/script",
+          "expected_tail": "' github.repository }}/actions/runs/${{ github.run_id }}\",\\n  labels: [\"bug\", \"parser\", \"fuzzer\"],\\n})\\n'",
+          "actual_tail": "'{ github.repository }}/actions/runs/${{ github.run_id }}\",\\n  labels: [\"bug\", \"parser\", \"fuzzer\"],\\n})'",
+          "only_terminal_lf": true
+        }
+      ]
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 0,
+      "reference_sha256": "3ad7b2fad3d007c918281f542afce5bd1ce4d501bb89b0f35ae298a8a7c335ca",
+      "only_hash_prefixed_line_changes": true,
+      "text_diff_ignoring_terminal_lf": "--- expected\n+++ AR\n@@ -1,7 +1,7 @@\n # For most projects, this workflow file will not need changing; you simply need\n # to commit it to your repository.\n #\n-# You may wish to alter this file to override the set of languages analyzed,\n+# You may wish to alter this workflow to override the set of languages analyzed,\n # or to provide custom queries or build logic.\n name: \"CodeQL\"\n ",
+      "yaml_value_differences": []
+    }
+  ]
+}

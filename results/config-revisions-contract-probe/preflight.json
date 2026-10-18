@@ -1,0 +1,14 @@
+[
+  {
+    "project_id": "astral-sh--ruff",
+    "turn": 0,
+    "input_tokens": 1243,
+    "expected_tokens": 843
+  },
+  {
+    "project_id": "psf--requests",
+    "turn": 0,
+    "input_tokens": 1461,
+    "expected_tokens": 775
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "post_run_analysis": true,
+  "runtime_source_sha256": "077a04368b75f50be7a5d8a4ad2c0fd94e15763dfcc8c53e7f9e19dd4fe27be8",
+  "required_exact_cases": 2,
+  "observed_exact_cases": 0,
+  "confirmation_allowed": false,
+  "action": "stop_confirmation"
+}

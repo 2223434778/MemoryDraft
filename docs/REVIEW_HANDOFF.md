@@ -1,8 +1,10 @@
 # Astra 审阅入口
 
-## 最新进行：公开CI配置修订（2026-10-18）
+## 最新完成：公开CI配置修订开发与合同诊断（2026-10-18）
 
-先读 [CONFIG_REVISIONS_DEVELOPMENT_RESULTS](CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md) 与 [协议](CONFIG_REVISIONS_PROTOCOL.md)。18个真实公开项目文件/修订已冻结，开发6项目90次全部逐token一致；Global为DFlash的1.677×，但Context/Global只有1.005且区间跨1，旧文件已在当前输入。完整文件Target任务仅5/12正确，失败保留；因此尚不能宣布真实应用可用或长期记忆独立有效。正在按协议对两个失败开发首轮做一次输出合同v2诊断，通过后才启动12项目独立确认；各方法将共享新输入和新AR，保留原v1结果，不跨版本归因。相关对照为官方ArcticInference线性后缀候选器接相同严格DFlash循环，不是完整SuffixDecoding/vLLM复现。
+先读 [CONFIG_REVISIONS_DEVELOPMENT_RESULTS](CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md)、[合同诊断](CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md) 与 [协议](CONFIG_REVISIONS_PROTOCOL.md)。18个真实公开项目文件/修订已冻结，开发6项目90次全部逐token一致；Global为DFlash的1.677×，Context/Global只有1.005且区间跨1，旧文件已在当前输入。原完整文件Target任务仅5/12正确，失败保留。按预定协议只对两个失败开发首轮做一次v2输出合同诊断：4次严格一致，但完整文本0/2；Ruff删注释、Requests改写注释，Ruff的YAML叶子差异仅末尾块字符串LF。保真门槛未通过，12项目确认未启动；不把提示版本差异归于R，也不把注释/换行差异夸大为业务逻辑错误。相关对照为官方ArcticInference线性候选器接同一严格循环，非完整SuffixDecoding/vLLM复现。
+
+本阶段支持既定LLM输出路径上的编辑复用提速，未证明长期记忆的独立收益、原文保真工作流已可用或新算法优于完整相关系统。当前给定diff本可用git apply直接完成；后续真实应用研究应先明确LLM需要完成的生成/理解任务及输出合同，再选择工作负载。开发来源c6c269ff…、诊断来源077a0436…分别保存，原始错误及评分v2修正均可复算。
 
 ## 最新完成：R/DFlash 场景开发与独立确认（2026-10-18）
 

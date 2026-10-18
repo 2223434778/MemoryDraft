@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import hashlib
+import difflib
 import json
 from pathlib import Path
 
@@ -66,6 +67,40 @@ def audit(projects, references, rows, *, repeats, quality_version=2, methods_by_
     return summaries(rows, methods_by_mode)
 
 
+def fidelity_differences(project, reference):
+    import yaml
+
+    expected = project["turns"][reference["turn"]]["expected"]
+    actual = reference["text"]
+    left, right = expected.rstrip("\n").splitlines(), actual.rstrip("\n").splitlines()
+    changed = [line for tag, a, b, c, d in difflib.SequenceMatcher(a=left, b=right).get_opcodes()
+               if tag != "equal" for line in [*left[a:b], *right[c:d]]]
+    values = []
+
+    def walk(a, b, path=""):
+        if isinstance(a, dict) and isinstance(b, dict):
+            for key in sorted(set(a) | set(b)):
+                if key not in a or key not in b:
+                    values.append(dict(path=path + "/" + key, missing_key=True, only_terminal_lf=False))
+                else:
+                    walk(a[key], b[key], path + "/" + key)
+        elif isinstance(a, list) and isinstance(b, list) and len(a) == len(b):
+            for i, (x, y) in enumerate(zip(a, b)):
+                walk(x, y, path + "/" + str(i))
+        elif a != b:
+            values.append(dict(path=path, expected_tail=repr(str(a)[-100:]), actual_tail=repr(str(b)[-100:]),
+                               only_terminal_lf=isinstance(a, str) and isinstance(b, str) and a.rstrip("\n") == b.rstrip("\n")))
+
+    try:
+        walk(yaml.load(expected, Loader=yaml.BaseLoader), yaml.load(actual, Loader=yaml.BaseLoader))
+    except yaml.YAMLError as error:
+        values.append(dict(parse_error=type(error).__name__, only_terminal_lf=False))
+    return dict(project_id=project["id"], turn=reference["turn"], reference_sha256=hashlib.sha256(actual.encode()).hexdigest(),
+                only_hash_prefixed_line_changes=bool(changed) and all(line.lstrip().startswith("#") for line in changed),
+                text_diff_ignoring_terminal_lf="\n".join(difflib.unified_diff(left, right, fromfile="expected", tofile="AR", lineterm="")),
+                yaml_value_differences=values)
+
+
 def write_probe_report(source, output, provenance):
     if provenance.get("contract_version") != 2 or provenance.get("quality_version") != 2:
         raise ValueError("Unexpected contract probe version")
@@ -77,6 +112,21 @@ def write_probe_report(source, output, provenance):
     summary = audit(projects, references, rows, repeats=1, methods_by_mode=methods, turns_by_mode={"full": 1})
     if summary != json.loads((source / "summary.json").read_text(encoding="utf-8")):
         raise ValueError("Probe summary does not reproduce")
+    definitions = {p["id"]: p for p in projects}
+    diagnoses = [fidelity_differences(definitions[r["project_id"]], r) for r in references]
+    evidence = dict(post_run_analysis=True, runtime_source_sha256=provenance["source"]["source_sha256"], cases=diagnoses)
+    path = source / "fidelity-diagnosis.json"
+    if path.exists() and json.loads(path.read_text(encoding="utf-8")) != evidence:
+        raise ValueError("Fidelity diagnosis changed")
+    save(path, evidence)
+    passes = sum(r["quality"]["exact_file_or_patch"] for r in references)
+    decision = dict(post_run_analysis=True, runtime_source_sha256=provenance["source"]["source_sha256"],
+                    required_exact_cases=2, observed_exact_cases=passes, confirmation_allowed=passes == 2,
+                    action="eligible_for_confirmation" if passes == 2 else "stop_confirmation")
+    path = source / "gate-decision.json"
+    if path.exists() and json.loads(path.read_text(encoding="utf-8")) != decision:
+        raise ValueError("Predeclared gate decision changed")
+    save(path, decision)
     lines = ["# 完整文件输出合同：开发失败例小探测", "",
              "只使用已观察失败的Ruff/Requests首轮，统一在输入末尾重申完整文件、注释和未修改部分。"
              "没有新事实/答案或候选参数；所有方法共享新Target输入和新AR参考。原开发结果保留。",
@@ -85,6 +135,19 @@ def write_probe_report(source, output, provenance):
     for r in references:
         lines.append(f"| {r['project_id']} | {r['quality']['exact_file_or_patch']} | {r['quality']['yaml_equivalent']} |")
     lines += ["", f"{len(rows)}次DFlash/Global计时全部逐token对齐各自AR；仅用于检查接入及合同。",
+              f"完整文本正确{passes}/{len(references)}；预定两例均正确门槛{'通过' if passes == len(references) else '未通过，停止12项目确认'}。",
+              "", "## 原文保真诊断", "",
+              "忽略文件末尾换行后，逐行diff及YAML叶子差异保存在fidelity-diagnosis.json，绑定原输出SHA。"
+              "YAML结构相等检查保留字符串末尾LF，因此文件末尾块标量会因缺最后LF出现值差异；它不能自动解释为业务逻辑错误。"]
+    for diagnosis in diagnoses:
+        values = diagnosis["yaml_value_differences"]
+        lines += ["", f"`{diagnosis['project_id']}`：变化行均以#开头={diagnosis['only_hash_prefixed_line_changes']}；"
+                  f"YAML叶子差异{len(values)}项。"]
+        for value in values:
+            lines.append(f"- `{value.get('path', 'parse')}`：" + ("仅字符串结尾LF不同。" if value["only_terminal_lf"] else "存在其他值或解析差异，详见诊断JSON。"))
+        lines += ["", "```diff", diagnosis["text_diff_ignoring_terminal_lf"], "```"]
+    lines += ["", "上述diff记录Target的改写/遗漏；严格验证与AR一致不能等同于满足编辑原文保真合同。"
+              "没有放宽质量门槛来继续确认，没有改变Target接受条件或按测试结果筛样本。",
               "源码SHA-256：`" + provenance["source"]["source_sha256"] + "`。", ""]
     output.write_bytes("\n".join(lines).encode())
     return summary

@@ -1,0 +1,14 @@
+{
+  "full": {
+    "times": {
+      "DFlash": 17.884432653023396,
+      "Global": 9.243327905016486
+    },
+    "rows": 4,
+    "correct": true,
+    "vs_dflash": {
+      "DFlash": 1.0,
+      "Global": 1.934847799061338
+    }
+  }
+}

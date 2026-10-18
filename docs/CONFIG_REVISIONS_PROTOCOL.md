@@ -18,3 +18,5 @@
 - 已知范围：CI维护可能以依赖/Action版本替换为主，不能推广为部署配置、自然长期用户、任意代码修改。当前输入已有旧文件，若Context接近Global，应将收益归为编辑复用，不宣称长期记忆独立成功。新颖性及生产精度/并发是后续问题，不据本轮完成作声明。
 
 实际入口：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_config_revisions.py --split development`；确认将`development`换为`confirmation`。结果目录 `results/config-revisions-{development,confirmation}/`。本协议参数不是已运行结果。
+
+执行结局：开发90次与单次合同探测4次均严格一致；原v1完整文本5/12，v2两例0/2文本正确，未通过门槛，**原拟468次确认没有执行**。v2主要剩下注释保真和块字符串终止LF差异，不把它们夸大为业务逻辑失败，也不放宽预定门槛继续测试。详见 [开发结果](CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md) 和 [合同诊断](CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md)。两种合同各有自己的固定Target输入和AR参考，跨版本没有加速/质量归因。

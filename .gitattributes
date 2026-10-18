@@ -23,3 +23,7 @@ docs/CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md text eol=lf
 docs/CONFIG_REVISIONS_CONFIRMATION_RESULTS.md text eol=lf
 results/config-revisions-contract-probe/** -text
 docs/CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md text eol=lf
+# Preserve raw process output, including terminal whitespace, for provenance hashes.
+results/config-revisions-*/*.log -whitespace
+# Generated unified diffs retain the space prefix of blank context lines.
+docs/CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md whitespace=-blank-at-eol

@@ -1,17 +1,22 @@
 # 项目进度
 
-## 2026-10-18 — 公开CI配置修订回放（开发完成，合同诊断）
+## 2026-10-18 — 公开CI配置修订回放（开发与单次探测完成，确认按门槛停止）
+
+- 单次contract-v2探测已完成：2个开发首轮、4次DFlash/Global配对全部与新AR严格一致；完整文本0/2正确，YAML结构1/2相等。深入逐行及叶子诊断表明Ruff删一行注释，Requests改写一句注释；Ruff唯一YAML值差异为末尾script块少终止LF，不能自动解释为业务逻辑错误。两例均文本正确的预定门槛未通过，**12项目确认未启动、未生成任何确认Target参考**，未继续扫提示或放宽保真要求。
+- 探测实际命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_config_revisions.py --split development --contract-version 2 --contract-probe`。源码清单 `077a04368b75f50be7a5d8a4ad2c0fd94e15763dfcc8c53e7f9e19dd4fe27be8`，与开发c6来源分开。GPU0/GPU1均已空闲。原模型输出/计时未改；两个输入版本都只在同批方法内比较。
+- 报告 `CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md`，原始探测 `results/config-revisions-contract-probe/`，包含输出SHA绑定的 `fidelity-diagnosis.json` 和预定门槛 `gate-decision.json`。本机最终完整83 passed、3 skipped；服务器`.venv-train`完整85 passed、1 skipped、1 warning（原有toy LoRA保存元数据提示），DFlash环境前置35 passed。最终服务器测试来源 `11bff98ee8bdfcb5536e61cef6c1ec6b86485a00c076e2e900bb968d1da97d30`，代码文件SHA与本机最终代码一致；测试来源与c6/077推理来源分开。
+- 最终新增26份公开结果（开发13、探测13），统一发布清单149份；原123份保持不变。开发/诊断两报告在Windows/Linux复算逐字节相同，SHA分别 `770bc42af38fd7f2ae1a822ed3ab3469a251d9019c749deea508e95fa80e5297` / `f458c25f2835730f440641b0c78c19a3912b8cffadcc3c7662d7e1cc235d1fae`。原始构建日志保留终端空格并标记-whitespace，原始/压缩及Git blob SHA核验后发布。
 
 - 开发90/90严格一致，完整组AR318.002s、DFlash60.753s、Adapted60.819s、Global36.220s、Context36.414s、Arctic37.306s。Global为DFlash的1.677×，Context/Global1.005、项目区间[0.997,1.019]，没有稳定独立历史贡献；Arctic/Global1.030仅6开发项目/单重复，不能作全面方法优势。
 - 原Target合同v1完整文件仅5/12文本及YAML结构正确，10/12可解析；diff修正终止LF评分后3/6可正确应用，0/18参考截断。全部失败保留，性能不代表可用任务已经成立。报告 `CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md` 已从原始/发布数据离线重建：版本/用户快照、token、KV前沿、任务检查、配对、summary全部核对。运行源码仍为c6清单，不用后补报告冒充原运行来源。
-- 预先声明单次contract-v2小探测：Ruff/Requests开发首轮，尾部重申完整文件/注释/未修改行，2个新AR参考+4次DFlash/Global配对。无答案或新事实；16项本机审计/合同/前置阶段测试通过。两例均正确才进入确认；确认如启动将全部共享新输入及新AR，不能把输入版本改变的效果归为R。当前尚无probe或确认结果。
+- 探测前预先声明：Ruff/Requests开发首轮，尾部重申完整文件/注释/未修改行，2个新AR参考+4次DFlash/Global配对。无答案或新事实；当时16项本机审计/合同/前置阶段测试通过。两例均正确才进入确认；不能把输入版本改变的效果归为R。结果与停止决定见本节顶部。
 - 开发结果11份白名单JSON/无损gzip JSONL/LOG已发布，含原始v1评分和独立quality-v2.json更正、失败g++与成功clang构建日志、事后环境捕获；统一发布清单现134份。权重、C++二进制、SQLite和公开API原始缓存未入库。
 
 - 用户授权进入真实项目工作负载。新增采集器、`evaluation/config_revisions.py`、`run_config_revisions.py`、离线审计报告和测试。固定6开发/12确认仓库、2025-09-01之前三版同一工作流及两轮修改，新增diff边界；这是公开项目衍生编辑API回放，不冒称自然用户对话。
 - 全部18项目已冻结；数据SHA256 `944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e`。未按模型结果选取文件。API限流/服务器读取超时通过已连接GitHub只读工具缓存公开响应解决，保留原规则和跳过候选；手动复核mypy MIT/NumPy BSD三条款及scikit-learn COPYING，保留完整许可。Starlette同仓库ID迁移记录为Kludex/starlette。
 - 初始用户文件与模型回答分开记录；后续真实仓库状态作为显式外部版本更新。Global增加显式授权用户文件选项，默认索引仍只读assistant。每条方法/重复独立SQLite，库创建、文件更新、冷索引、前向、缓存恢复、解码和写回计时；未来输出仅用于评分。
 - 最相关基线锁定Apache-2.0 ArcticInference@aca5d9a8a62474035c15d114d40a01abc8c94b51的官方线性后缀候选组件，接入相同严格验证循环，非完整vLLM/树系统。源码七文件SHA与许可已保存。服务器`.venv-dflash`安装nanobind2.7.0；默认g++9缺少C++20 span，改用已有clang++15及官方CMake后成功构建，直接接续查询通过，未改系统环境或上游算法。
-- 运行前协议 `CONFIG_REVISIONS_PROTOCOL.md`；开发计划90次、确认540次。此条仅为实现/数据/构建状态，尚无本轮GPU结果。实际推理命令、源码SHA和结果将在阶段完成后补充。
+- 阶段启动协议 `CONFIG_REVISIONS_PROTOCOL.md` 原拟开发90次、确认540次；后续确认资源收敛和保真门槛见顶部与协议修订，原计划不是已运行结果。
 - 首轮本机检查暴露默认GBK读取和系统临时目录不可写；统一UTF8及项目内忽略目录，隔离Git外层仓库发现/自动换行，未改冻结数据。修复后本机完整75 passed、3 skipped，服务器DFlash环境29 passed，包含官方C++候选器+真实tiny Target验证。原服务器源码清单 `c6c269ffce98cbfd2036dca7ccd612892cef52287e12a2a637da2bf91bd0215b` 全文件一致；冻结实现/协议提交6b1451c已推送。
 - GPU开发运行：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_config_revisions.py --split development`，结果 `results/config-revisions-development/`。进程1223876；仅GPU0，不把部分配对当完整结论。
 - 开发发现真实Target会遗漏未修改部分，任务质量与严格token一致性分别报告，不剔除失败。另发现diff评分v1未补最后LF而误判可应用性；新增评分v2及缺失LF回归，本机10 passed。原始输出/计时/评分不改，报告先按原版本审计再离线记录quality-v2.json更正；原GPU进程仍运行c6源码。该修正不改变Target或接受条件。

@@ -12,7 +12,7 @@ from memorydraft.memory.store import MemoryStore, Snapshot
 from memorydraft.retrieval.suffix import SuffixArrayIndex
 from scripts.prepare_config_revisions import CUTOFF, REPOSITORIES
 from scripts.run_config_revisions import development_reference
-from scripts.write_config_revisions_report import audit
+from scripts.write_config_revisions_report import audit, fidelity_differences
 
 
 DATA = Path(__file__).resolve().parents[1] / "data/research/config-revisions"
@@ -79,6 +79,23 @@ def test_contract_probe_only_restates_the_same_known_edit_and_output_format():
     assert project["turns"][0]["expected"] not in explicit
     with pytest.raises(ValueError):
         request_text(project, 0, contract_version=3)
+
+
+@pytest.mark.parametrize("change", ["comment", "value"])
+def test_fidelity_diagnosis_distinguishes_comment_lines_from_values(change):
+    project = load_projects(DATA, "development")[0]
+    text = project["turns"][0]["expected"]
+    if change == "comment":
+        lines = text.splitlines(keepends=True)
+        at = next(i for i, line in enumerate(lines) if line.lstrip().startswith("#"))
+        actual = "".join(lines[:at] + lines[at+1:]).rstrip("\n")
+    else:
+        actual = "name: changed\n" + text.split("\n", 1)[1]
+    result = fidelity_differences(project, dict(turn=0, text=actual))
+    assert result["only_hash_prefixed_line_changes"] == (change == "comment")
+    assert result["text_diff_ignoring_terminal_lf"]
+    if change == "value":
+        assert any(v["path"] == "/name" and not v["only_terminal_lf"] for v in result["yaml_value_differences"])
 
 
 def fixture_rows():
