@@ -1,0 +1,469 @@
+{
+  "post_run_exploratory": true,
+  "does_not_change_gate": true,
+  "measured_speedup": false,
+  "references_sha256": "f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed",
+  "runtime_source_sha256": "83f7e6f6b8f43965b9e916c8edd91e36cc484f85e933f25b9224763bef7cc302",
+  "analysis_script_sha256": "d7b718b241540163798597ce1dc79d25812f5fa4de399fa04fd3de11c43128e2",
+  "data_sha256": "e5e0b6ac9ddd1a33da4b3dadb5d11e1f3211aab93b3b34006f566c9b9c3415e7",
+  "static_example_sha256": [
+    "c197226d7bbb4a51fe3310c9a3121471bef93d9a290936784509e6ba4cde4871",
+    "3c90ed1b211fac2ad5a358dfc997c899ab38329b97dcefddbc93a1ee4d7dc99f"
+  ],
+  "static_examples": [
+    "{\n  \"version\": \"0.0.0\",\n  \"checks\": [\n    {\n      \"area\": \"python_runtime\",\n      \"status\": \"not_mentioned\",\n      \"evidence\": []\n    },\n    {\n      \"area\": \"dependency\",\n      \"status\": \"not_mentioned\",\n      \"evidence\": []\n    },\n    {\n      \"area\": \"api_migration\",\n      \"status\": \"not_mentioned\",\n      \"evidence\": []\n    },\n    {\n      \"area\": \"security_fix\",\n      \"status\": \"not_mentioned\",\n      \"evidence\": []\n    },\n    {\n      \"area\": \"other_behavior\",\n      \"status\": \"not_mentioned\",\n      \"evidence\": []\n    }\n  ]\n}",
+    "{\n  \"version\": \"0.0.0\",\n  \"checks\": [\n    {\n      \"area\": \"python_runtime\",\n      \"status\": \"review\",\n      \"evidence\": [\"L001\"]\n    },\n    {\n      \"area\": \"dependency\",\n      \"status\": \"review\",\n      \"evidence\": [\"L001\"]\n    },\n    {\n      \"area\": \"api_migration\",\n      \"status\": \"review\",\n      \"evidence\": [\"L001\"]\n    },\n    {\n      \"area\": \"security_fix\",\n      \"status\": \"review\",\n      \"evidence\": [\"L001\"]\n    },\n    {\n      \"area\": \"other_behavior\",\n      \"status\": \"review\",\n      \"evidence\": [\"L001\"]\n    }\n  ]\n}"
+  ],
+  "summary": {
+    "base_json_identity_and_area_order": 18,
+    "status_correct_requests": 16,
+    "status_correct_categories": 88,
+    "evidence_count_violation_requests": 11,
+    "unsupported_evidence_requests": 9,
+    "critical_status_false_negatives": 0,
+    "critical_status_false_positives": 1,
+    "warm_output_tokens": 2597,
+    "history_beyond_schema": 96,
+    "static_example_tokens": 323,
+    "history_beyond_schema_fraction": 0.036965729688101655
+  },
+  "rows": [
+    {
+      "project_id": "psf--requests",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {
+        "other_behavior": [
+          "L004"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": []
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {
+        "security_fix": [
+          "L004"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 174,
+      "schema_plus_prompt_covered": 128,
+      "history_beyond_schema": 7
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 174,
+      "schema_plus_prompt_covered": 128,
+      "history_beyond_schema": 1
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": []
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 168,
+      "schema_plus_prompt_covered": 131,
+      "history_beyond_schema": 1
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {
+        "other_behavior": [
+          "L018",
+          "L019",
+          "L024"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 204,
+      "schema_plus_prompt_covered": 129,
+      "history_beyond_schema": 2
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {
+        "other_behavior": [
+          "L006",
+          "L021",
+          "L026"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": []
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "api_migration",
+        "other_behavior"
+      ],
+      "unsupported_evidence": {
+        "dependency": [
+          "L007"
+        ],
+        "api_migration": [
+          "L030",
+          "L044",
+          "L046",
+          "L049",
+          "L050",
+          "L052",
+          "L055",
+          "L057",
+          "L058",
+          "L063",
+          "L067",
+          "L080",
+          "L084",
+          "L089",
+          "L092",
+          "L096"
+        ],
+        "other_behavior": [
+          "L027",
+          "L067",
+          "L068",
+          "L071",
+          "L079",
+          "L083",
+          "L088",
+          "L095"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 611,
+      "schema_plus_prompt_covered": 121,
+      "history_beyond_schema": 1
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 182,
+      "schema_plus_prompt_covered": 133,
+      "history_beyond_schema": 24
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "other_behavior"
+      ],
+      "status_all_correct": false,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {
+        "security_fix": [
+          "L006"
+        ],
+        "other_behavior": [
+          "L009"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [
+        "security_fix"
+      ]
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 182,
+      "schema_plus_prompt_covered": 126,
+      "history_beyond_schema": 7
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {
+        "other_behavior": [
+          "L012"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 167,
+      "schema_plus_prompt_covered": 129,
+      "history_beyond_schema": 8
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": []
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {
+        "other_behavior": [
+          "L018"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 180,
+      "schema_plus_prompt_covered": 130,
+      "history_beyond_schema": 1
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": false,
+      "evidence_count_violations": [],
+      "unsupported_evidence": {
+        "api_migration": [
+          "L010",
+          "L012"
+        ]
+      },
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 174,
+      "schema_plus_prompt_covered": 130,
+      "history_beyond_schema": 7
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 0,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": []
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 1,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 189,
+      "schema_plus_prompt_covered": 137,
+      "history_beyond_schema": 13
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 2,
+      "base_json_identity_and_area_order": true,
+      "status_correct": [
+        "python_runtime",
+        "dependency",
+        "api_migration",
+        "security_fix",
+        "other_behavior"
+      ],
+      "status_all_correct": true,
+      "evidence_count_violations": [
+        "other_behavior"
+      ],
+      "unsupported_evidence": {},
+      "critical_status_false_negative": [],
+      "critical_status_false_positive": [],
+      "output_tokens": 192,
+      "schema_plus_prompt_covered": 131,
+      "history_beyond_schema": 24
+    }
+  ]
+}

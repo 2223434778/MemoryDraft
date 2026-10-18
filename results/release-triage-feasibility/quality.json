@@ -1,0 +1,377 @@
+{
+  "references_sha256": "f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed",
+  "rows": [
+    {
+      "project_id": "psf--requests",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": false,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": false,
+          "other_behavior": true
+        },
+        "critical_misses": [
+          "security_fix"
+        ],
+        "error": null
+      }
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": true,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": true,
+          "other_behavior": true
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": true,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": true,
+          "other_behavior": true
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [
+          "python_runtime",
+          "dependency"
+        ],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": false,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [
+          "python_runtime",
+          "dependency"
+        ],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": false,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": true,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": true,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": true,
+          "security_fix": true,
+          "other_behavior": true
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": true,
+        "identity": true,
+        "correct": false,
+        "areas": {
+          "python_runtime": true,
+          "dependency": true,
+          "api_migration": false,
+          "security_fix": true,
+          "other_behavior": true
+        },
+        "critical_misses": [],
+        "error": null
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 0,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [
+          "python_runtime"
+        ],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 1,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [],
+        "error": "Invalid area/status/evidence contract"
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 2,
+      "budget_hit": false,
+      "eos": true,
+      "quality": {
+        "schema": false,
+        "identity": false,
+        "correct": false,
+        "areas": {
+          "python_runtime": false,
+          "dependency": false,
+          "api_migration": false,
+          "security_fix": false,
+          "other_behavior": false
+        },
+        "critical_misses": [
+          "dependency"
+        ],
+        "error": "Invalid area/status/evidence contract"
+      }
+    }
+  ]
+}

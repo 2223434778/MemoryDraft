@@ -1,6 +1,14 @@
 # 项目进度
 
-## 2026-10-18 — 真实发布说明初筛：小成本可行性检查（准备）
+## 2026-10-18 — 真实发布说明初筛：小成本可行性检查（完成，按门槛停止）
+
+- 数据/协议/标签/代码在模型输出前提交并推送 `d45f942`；实际推理源码SHA `83f7e6f6b8f43965b9e916c8edd91e36cc484f85e933f25b9224763bef7cc302`，归档 `source-release-triage.tar.gz`。服务器部署全文件哈希通过，前置13 passed；原Qwen3-8B五权重分片SHA逐一验证后，A6000 GPU0执行18次正式Target AR，全部结束、0截断，累计请求217.819s，加载13.761s单列。固定预热、权重审计和离线评分不并入请求时间。作业PID1388481已完成，两GPU均空闲。
+- 实际命令：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_release_triage.py`。首评分：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv-dflash/bin/python -m scripts.write_release_triage_report`。冻结质量门槛失败：严格合同3/18、合同合格7/18、严格类别30/90。18份实际都可解析JSON且版本/类别顺序正确；整体合同失败会将五类全计错，不能把该严格得分称为纯分类准确率。
+- 原预定oracle机会通过：12个有历史请求1633/2597额外独有覆盖（62.9%），6项目均达到项目门槛；它使用答案枚举最优接续，未计在线成本，不是接受率或加速比。质量未过，因此未启动最多48次DFlash/Context/Global/Arctic计时，原CI12项目确认和H训练亦未重启。
+- 事后只读诊断 `scripts/diagnose_release_triage.py` / `posthoc-diagnosis.json`：只看status为88/90类、16/18请求正确；11请求证据超1–2条、9请求含不支持相应判断的证据行（重叠），关键status漏判0/误报1。两实际status错误为FIPS兼容误作漏洞修复、注解/内部typing导入误作API迁移。原始门槛/得分/标签/输出未改。
+- 新增探索性静态schema资源对照：两个虚构JSON、323 token，不用当前事实/标签/答案。历史在prompt+静态资源之外独有覆盖仅96/2597（3.7%），解释大量固定格式重复。它在看过输出后追加，格式选择有事后性、资源未逐请求配平、没有在线计时，不能当新门槛或实测速度。两平台独立重算逐例诊断与oracle一致；补充回归本机15 passed（7.47s）、服务器15 passed（2.91s）。
+- 结果 `results/release-triage-feasibility/`，主报告 `RELEASE_TRIAGE_RESULTS.md`，解释及结束决定 `RELEASE_TRIAGE_DIAGNOSIS.md`。完整运行前协议与标签保留。发布新增12文件（无权重/数据库），总161份，原149份逐项不变。参考原JSONL SHA `f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed`；原门槛SHA `a21fe1416869abc0f0f1f0c0d38fb4514a5db3245c3e6ca9cc3012ff60050d10`；Windows/Linux主报告SHA均 `d8ddb168079eb8f65b0bec8ac386d7e5568d157c407bafd990593326fcc5d8c2`。
+- 本轮候选检查结束，保留R+DFlash与负结果；不自动继续换数据集、扫提示或增加H/路由。既有静态格式就能解释大部分机会，尚无已论证的新方法贡献。用户未来若提供独立真实应用需求及明确瓶颈，再据其重新评估；不是声明所有自然结构化任务都无历史价值。
 
 - 用户授权执行最后一个小成本候选。按 `RELEASE_TRIAGE_PROTOCOL.md` 固定6项目×3版本18请求，先Target质量/合法历史独有机会，任一门槛失败则停止加速计时。没有启动原12项目CI确认或H训练。
 - 已通过只读GitHub连接获取每版真实changelog，tag逐一解析commit并校验tag/commit文件相同；保留各版完整章节及六份许可。模型当前材料充分，历史只来自同项目更早已完成回答。逐例来源标签在任何Target输出前审阅；没有独立专家或Target自评，限制明确记录。

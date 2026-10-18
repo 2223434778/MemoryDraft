@@ -1,0 +1,71 @@
+{
+  "quality": {
+    "passed": false,
+    "rows": 18,
+    "schema_and_identity": 7,
+    "correct_requests": 3,
+    "correct_categories": 30,
+    "critical_misses": [
+      [
+        "psf--requests",
+        1,
+        "security_fix"
+      ],
+      [
+        "pallets--click",
+        1,
+        "python_runtime"
+      ],
+      [
+        "pallets--click",
+        1,
+        "dependency"
+      ],
+      [
+        "pallets--flask",
+        1,
+        "python_runtime"
+      ],
+      [
+        "pallets--flask",
+        1,
+        "dependency"
+      ],
+      [
+        "Textualize--rich",
+        0,
+        "python_runtime"
+      ],
+      [
+        "Textualize--rich",
+        2,
+        "dependency"
+      ]
+    ],
+    "incomplete_outputs": 0
+  },
+  "opportunity": {
+    "passed": true,
+    "warm_requests": 12,
+    "output_tokens": 2597,
+    "history_only_covered": 1633,
+    "history_only_fraction": 0.6288024643819792,
+    "per_project": {
+      "Kludex--starlette": 0.7570621468926554,
+      "Textualize--rich": 0.7952755905511811,
+      "encode--httpx": 0.706989247311828,
+      "pallets--click": 0.3455233291298865,
+      "pallets--flask": 0.7650429799426934,
+      "psf--requests": 0.7413793103448276
+    },
+    "qualifying_projects": 6,
+    "oracle": true,
+    "measured_speedup": false
+  },
+  "timing_allowed": false,
+  "action": "stop_candidate",
+  "references_sha256": "f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed",
+  "data_sha256": "e5e0b6ac9ddd1a33da4b3dadb5d11e1f3211aab93b3b34006f566c9b9c3415e7",
+  "runtime_source_sha256": "83f7e6f6b8f43965b9e916c8edd91e36cc484f85e933f25b9224763bef7cc302",
+  "measured_speedup": false
+}

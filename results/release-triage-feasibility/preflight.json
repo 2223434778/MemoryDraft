@@ -1,0 +1,92 @@
+[
+  {
+    "project_id": "psf--requests",
+    "turn": 0,
+    "input_tokens": 574
+  },
+  {
+    "project_id": "psf--requests",
+    "turn": 1,
+    "input_tokens": 639
+  },
+  {
+    "project_id": "psf--requests",
+    "turn": 2,
+    "input_tokens": 645
+  },
+  {
+    "project_id": "encode--httpx",
+    "turn": 0,
+    "input_tokens": 756
+  },
+  {
+    "project_id": "encode--httpx",
+    "turn": 1,
+    "input_tokens": 607
+  },
+  {
+    "project_id": "encode--httpx",
+    "turn": 2,
+    "input_tokens": 871
+  },
+  {
+    "project_id": "pallets--click",
+    "turn": 0,
+    "input_tokens": 972
+  },
+  {
+    "project_id": "pallets--click",
+    "turn": 1,
+    "input_tokens": 2496
+  },
+  {
+    "project_id": "pallets--click",
+    "turn": 2,
+    "input_tokens": 634
+  },
+  {
+    "project_id": "pallets--flask",
+    "turn": 0,
+    "input_tokens": 609
+  },
+  {
+    "project_id": "pallets--flask",
+    "turn": 1,
+    "input_tokens": 1068
+  },
+  {
+    "project_id": "pallets--flask",
+    "turn": 2,
+    "input_tokens": 676
+  },
+  {
+    "project_id": "Kludex--starlette",
+    "turn": 0,
+    "input_tokens": 631
+  },
+  {
+    "project_id": "Kludex--starlette",
+    "turn": 1,
+    "input_tokens": 768
+  },
+  {
+    "project_id": "Kludex--starlette",
+    "turn": 2,
+    "input_tokens": 767
+  },
+  {
+    "project_id": "Textualize--rich",
+    "turn": 0,
+    "input_tokens": 692
+  },
+  {
+    "project_id": "Textualize--rich",
+    "turn": 1,
+    "input_tokens": 755
+  },
+  {
+    "project_id": "Textualize--rich",
+    "turn": 2,
+    "input_tokens": 771
+  }
+]

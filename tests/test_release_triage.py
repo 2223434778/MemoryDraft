@@ -12,6 +12,7 @@ from scripts.run_reuse_pilot import digest
 from scripts.write_release_triage_report import audit
 from memorydraft.evaluation.release_triage import sha
 from memorydraft.memory.store import Snapshot
+from scripts.diagnose_release_triage import classify_diagnosis, schema_examples
 
 
 DATA = Path(__file__).resolve().parents[1] / "data/research/release-triage"
@@ -135,3 +136,26 @@ def test_frozen_label_change_is_detected(tmp_path):
     path.write_bytes(path.read_bytes() + b" ")
     with pytest.raises(ValueError, match="Frozen data changed"):
         load_dataset(tmp_path / "data")
+
+
+def test_posthoc_diagnosis_distinguishes_contract_failure_from_correct_status():
+    p, labels, _ = load_dataset(DATA)
+    release = p[0]["releases"][0]
+    gold = labels[p[0]["id"] + ":" + release["tag"]]
+    value = answer(release, gold)
+    value["checks"][-1]["evidence"] = ["L005", "L006", "L007"]
+    original = quality(json.dumps(value), release, gold)
+    extra = classify_diagnosis(json.dumps(value), release, gold)
+    assert not original["schema"] and not original["correct"]
+    assert extra["status_all_correct"] and extra["evidence_count_violations"] == ["other_behavior"]
+    assert not extra["critical_status_false_negative"]
+
+
+def test_static_schema_examples_contain_no_source_version_or_answer():
+    examples = schema_examples()
+    assert len(examples) == 2
+    for text in examples:
+        value = json.loads(text)
+        assert value["version"] == "0.0.0"
+        assert [item["area"] for item in value["checks"]] == list(AREAS)
+        assert {line for item in value["checks"] for line in item["evidence"]} <= {"L001"}

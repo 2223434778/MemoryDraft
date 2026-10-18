@@ -1190,5 +1190,101 @@
     "published": "config-revisions-contract-probe/tests-final.log",
     "published_bytes": 677,
     "published_sha256": "d7cff0e73e71efb322a56f49e757aeeb8efffeb9c84252749a3fbc01322290c0"
+  },
+  {
+    "source": "release-triage-feasibility/environment.json",
+    "raw_bytes": 207,
+    "raw_sha256": "990df2692520a7f45bff489f2925a132c6d5066857220c63bf4b19a18a985955",
+    "published": "release-triage-feasibility/environment.json",
+    "published_bytes": 207,
+    "published_sha256": "990df2692520a7f45bff489f2925a132c6d5066857220c63bf4b19a18a985955"
+  },
+  {
+    "source": "release-triage-feasibility/gate-decision.json",
+    "raw_bytes": 1657,
+    "raw_sha256": "a21fe1416869abc0f0f1f0c0d38fb4514a5db3245c3e6ca9cc3012ff60050d10",
+    "published": "release-triage-feasibility/gate-decision.json",
+    "published_bytes": 1657,
+    "published_sha256": "a21fe1416869abc0f0f1f0c0d38fb4514a5db3245c3e6ca9cc3012ff60050d10"
+  },
+  {
+    "source": "release-triage-feasibility/opportunities.json",
+    "raw_bytes": 7702,
+    "raw_sha256": "eeb7fffcff758478884777abed804841b161abe9657d6173e4ba51a79ff2ba2a",
+    "published": "release-triage-feasibility/opportunities.json",
+    "published_bytes": 7702,
+    "published_sha256": "eeb7fffcff758478884777abed804841b161abe9657d6173e4ba51a79ff2ba2a"
+  },
+  {
+    "source": "release-triage-feasibility/posthoc-diagnosis.json",
+    "raw_bytes": 13632,
+    "raw_sha256": "5a5d1510ec7e13ac64185c77a434e51ffe38d3be62b5a44b91b14ccd27b96e4c",
+    "published": "release-triage-feasibility/posthoc-diagnosis.json",
+    "published_bytes": 13632,
+    "published_sha256": "5a5d1510ec7e13ac64185c77a434e51ffe38d3be62b5a44b91b14ccd27b96e4c"
+  },
+  {
+    "source": "release-triage-feasibility/preflight.json",
+    "raw_bytes": 1526,
+    "raw_sha256": "bbddcf5ec95d47a1201e8badbf46731d4a7de0c9fcd02de362af4dcaa6be9509",
+    "published": "release-triage-feasibility/preflight.json",
+    "published_bytes": 1526,
+    "published_sha256": "bbddcf5ec95d47a1201e8badbf46731d4a7de0c9fcd02de362af4dcaa6be9509"
+  },
+  {
+    "source": "release-triage-feasibility/projects.json",
+    "raw_bytes": 28905,
+    "raw_sha256": "53e8d636e12b140c21b805d2bab0ffbd8addd94594e07973f006f943e40b924d",
+    "published": "release-triage-feasibility/projects.json",
+    "published_bytes": 28905,
+    "published_sha256": "53e8d636e12b140c21b805d2bab0ffbd8addd94594e07973f006f943e40b924d"
+  },
+  {
+    "source": "release-triage-feasibility/provenance.json",
+    "raw_bytes": 22249,
+    "raw_sha256": "dacd8112bc400fc32f6915c7456cc0eaac08951371e038efa94f5ff24b344fe3",
+    "published": "release-triage-feasibility/provenance.json",
+    "published_bytes": 22249,
+    "published_sha256": "dacd8112bc400fc32f6915c7456cc0eaac08951371e038efa94f5ff24b344fe3"
+  },
+  {
+    "source": "release-triage-feasibility/quality.json",
+    "raw_bytes": 9121,
+    "raw_sha256": "e09b201e1c03188eb8b72ead69136330de9d0e460b544572ecfb4ae2127eef30",
+    "published": "release-triage-feasibility/quality.json",
+    "published_bytes": 9121,
+    "published_sha256": "e09b201e1c03188eb8b72ead69136330de9d0e460b544572ecfb4ae2127eef30"
+  },
+  {
+    "source": "release-triage-feasibility/references.jsonl",
+    "raw_bytes": 124814,
+    "raw_sha256": "f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed",
+    "published": "release-triage-feasibility/references.jsonl.gz",
+    "published_bytes": 14933,
+    "published_sha256": "c3429a2116d9bb3ae09b1f2f2e43c930e2d7f865b79249ca7d1de8b6a1805604"
+  },
+  {
+    "source": "release-triage-feasibility/run.log",
+    "raw_bytes": 1623,
+    "raw_sha256": "09a37b2e8c3cdfb073f318923c4e3c49b7f2114ba494ce073b292dad37c54877",
+    "published": "release-triage-feasibility/run.log",
+    "published_bytes": 1623,
+    "published_sha256": "09a37b2e8c3cdfb073f318923c4e3c49b7f2114ba494ce073b292dad37c54877"
+  },
+  {
+    "source": "release-triage-feasibility/tests-post-source.json",
+    "raw_bytes": 690,
+    "raw_sha256": "860f891ad0fa89c2b2b3d6f99df373160fff335a65d38ad45bb70772c8078aa2",
+    "published": "release-triage-feasibility/tests-post-source.json",
+    "published_bytes": 690,
+    "published_sha256": "860f891ad0fa89c2b2b3d6f99df373160fff335a65d38ad45bb70772c8078aa2"
+  },
+  {
+    "source": "release-triage-feasibility/tests-post.log",
+    "raw_bytes": 99,
+    "raw_sha256": "828814576a5d79ea7733983e73d5ccdb44c1a60fd05cd412ea4e3e53505db400",
+    "published": "release-triage-feasibility/tests-post.log",
+    "published_bytes": 99,
+    "published_sha256": "828814576a5d79ea7733983e73d5ccdb44c1a60fd05cd412ea4e3e53505db400"
   }
 ]

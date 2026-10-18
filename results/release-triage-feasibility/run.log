@@ -1,0 +1,21 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:06,  1.51s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.51s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.50s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.38s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+complete psf--requests 0 tokens 183 eos True
+complete psf--requests 1 tokens 174 eos True
+complete psf--requests 2 tokens 174 eos True
+complete encode--httpx 0 tokens 192 eos True
+complete encode--httpx 1 tokens 168 eos True
+complete encode--httpx 2 tokens 204 eos True
+complete pallets--click 0 tokens 242 eos True
+complete pallets--click 1 tokens 611 eos True
+complete pallets--click 2 tokens 182 eos True
+complete pallets--flask 0 tokens 161 eos True
+complete pallets--flask 1 tokens 182 eos True
+complete pallets--flask 2 tokens 167 eos True
+complete Kludex--starlette 0 tokens 168 eos True
+complete Kludex--starlette 1 tokens 180 eos True
+complete Kludex--starlette 2 tokens 174 eos True
+complete Textualize--rich 0 tokens 180 eos True
+complete Textualize--rich 1 tokens 189 eos True
+complete Textualize--rich 2 tokens 192 eos True

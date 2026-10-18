@@ -30,3 +30,4 @@ docs/CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md whitespace=-blank-at-eol
 data/research/release-triage/** -text
 results/release-triage-feasibility/** -text
 docs/RELEASE_TRIAGE_RESULTS.md text eol=lf
+results/release-triage-feasibility/*.log -whitespace

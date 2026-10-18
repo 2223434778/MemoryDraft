@@ -95,10 +95,10 @@ def run(source, output, *, report_only=False, tokenizer_path=None):
         "", "6个公开项目、各3个指定版本，共18次Target AR推理。数据是真实发布说明，任务及输出合同由实验构造；没有自然用户需求/服务日志，不声称独立泛化确认。",
         "标签在推理前由开发agent按来源逐例标注并冻结；没有独立领域专家复核，不使用Target自评。",
         "", "| 质量检查 | 结果 | 门槛 |", "|---|---:|---:|",
-        f"| JSON/schema及版本正确 | {qgate['schema_and_identity']}/18 | 18/18 |",
+        f"| 严格输出合同及版本全部合格 | {qgate['schema_and_identity']}/18 | 18/18 |",
         f"| 五类判断与证据全部正确的请求 | {qgate['correct_requests']}/18 | 至少17/18 |",
-        f"| 正确类别 | {qgate['correct_categories']}/90 | 至少86/90 |",
-        f"| 关键正类漏判或证据错误 | {len(qgate['critical_misses'])} | 0 |",
+        f"| 严格类别得分（整份合同失败时五类均计错） | {qgate['correct_categories']}/90 | 至少86/90 |",
+        f"| 关键正类未通过严格评分（含整体合同失败） | {len(qgate['critical_misses'])} | 0 |",
         f"| 截断或未结束输出 | {qgate['incomplete_outputs']} | 0 |", "",
         "| 项目 | 正确请求 | 有历史请求的独有覆盖 |", "|---|---:|---:|"]
     for project in projects:
@@ -125,6 +125,25 @@ def run(source, output, *, report_only=False, tokenizer_path=None):
         f"原始参考JSONL SHA-256：`{reference_hash}`。", "",
         "服务器首次评分：`PYTHONPATH=. HF_HUB_OFFLINE=1 .venv-dflash/bin/python -m scripts.write_release_triage_report`。",
         "无模型离线复算：`python -m scripts.write_release_triage_report --report-only`。", ""]
+    diagnosis_path = source / "posthoc-diagnosis.json"
+    if diagnosis_path.exists():
+        diagnosis = json.loads(diagnosis_path.read_text(encoding="utf-8"))
+        if (diagnosis["references_sha256"] != reference_hash or diagnosis["data_sha256"] != provenance["data_sha256"]
+                or diagnosis["runtime_source_sha256"] != provenance["source"]["source_sha256"]):
+            raise ValueError("Post-run diagnosis does not bind these outputs")
+        detail = diagnosis["summary"]
+        lines += ["事后诊断（不更改上述门槛/得分/停止决定）：",
+            f"实际{detail['base_json_identity_and_area_order']}/18均可解析JSON且版本/类别顺序正确；"
+            f"只看status为{detail['status_correct_categories']}/90类、{detail['status_correct_requests']}/18请求正确。",
+            f"{detail['evidence_count_violation_requests']}请求超过1–2条证据上限，"
+            f"{detail['unsupported_evidence_requests']}请求引用不支持该类的行；两者可重叠。"
+            f"关键正类实际status漏判{detail['critical_status_false_negatives']}，关键类误报{detail['critical_status_false_positives']}。",
+            "严格合同失败会令整份评分归零；不能把30/90称为纯分类准确率，或把严格评分的7项关键失败全部称为真实漏判。",
+            f"另用两个不含来源事实/标签/当前答案的静态schema示例（共{detail['static_example_tokens']} token）作探索性oracle对照："
+            f"历史在prompt+静态示例之外独有覆盖为{detail['history_beyond_schema']}/{detail['warm_output_tokens']}"
+            f"（{detail['history_beyond_schema_fraction']:.1%}）。",
+            "静态对照在看过输出后增加，格式选择有事后性，资源预算未逐请求严格配平，没有在线计时；"
+            "它解释结构重复，不证明静态方案的实际速度或新门槛通过。详见 [诊断](RELEASE_TRIAGE_DIAGNOSIS.md)。", ""]
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_bytes("\n".join(lines).encode())
     return decision

@@ -1,0 +1,297 @@
+{
+  "references_sha256": "f151438d2d31d2fd84aadfcc0773c93edbfaacb58dd85c54204c7ddb0b93d7ed",
+  "data_sha256": "e5e0b6ac9ddd1a33da4b3dadb5d11e1f3211aab93b3b34006f566c9b9c3415e7",
+  "runtime_source_sha256": "83f7e6f6b8f43965b9e916c8edd91e36cc484f85e933f25b9224763bef7cc302",
+  "oracle": true,
+  "measured_speedup": false,
+  "rows": [
+    {
+      "project_id": "psf--requests",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 183,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 174,
+        "context_covered": 0,
+        "history_covered": 129,
+        "global_covered": 129,
+        "history_only_covered": 129,
+        "history_only_fraction": 0.7413793103448276,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "psf--requests",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 174,
+        "context_covered": 0,
+        "history_covered": 129,
+        "global_covered": 129,
+        "history_only_covered": 129,
+        "history_only_fraction": 0.7413793103448276,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 192,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 168,
+        "context_covered": 0,
+        "history_covered": 132,
+        "global_covered": 132,
+        "history_only_covered": 132,
+        "history_only_fraction": 0.7857142857142857,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 204,
+        "context_covered": 0,
+        "history_covered": 131,
+        "global_covered": 131,
+        "history_only_covered": 131,
+        "history_only_fraction": 0.6421568627450981,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 242,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 611,
+        "context_covered": 0,
+        "history_covered": 117,
+        "global_covered": 117,
+        "history_only_covered": 117,
+        "history_only_fraction": 0.19148936170212766,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--click",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 182,
+        "context_covered": 0,
+        "history_covered": 157,
+        "global_covered": 157,
+        "history_only_covered": 157,
+        "history_only_fraction": 0.8626373626373627,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 161,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 182,
+        "context_covered": 0,
+        "history_covered": 130,
+        "global_covered": 130,
+        "history_only_covered": 130,
+        "history_only_fraction": 0.7142857142857143,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "pallets--flask",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 167,
+        "context_covered": 0,
+        "history_covered": 137,
+        "global_covered": 137,
+        "history_only_covered": 137,
+        "history_only_fraction": 0.8203592814371258,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 168,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 180,
+        "context_covered": 0,
+        "history_covered": 131,
+        "global_covered": 131,
+        "history_only_covered": 131,
+        "history_only_fraction": 0.7277777777777777,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Kludex--starlette",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 174,
+        "context_covered": 0,
+        "history_covered": 137,
+        "global_covered": 137,
+        "history_only_covered": 137,
+        "history_only_fraction": 0.7873563218390804,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 0,
+      "opportunity": {
+        "tokens": 180,
+        "context_covered": 0,
+        "history_covered": 0,
+        "global_covered": 0,
+        "history_only_covered": 0,
+        "history_only_fraction": 0.0,
+        "context_max": 0,
+        "history_max": 0,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 1,
+      "opportunity": {
+        "tokens": 189,
+        "context_covered": 0,
+        "history_covered": 148,
+        "global_covered": 148,
+        "history_only_covered": 148,
+        "history_only_fraction": 0.783068783068783,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    },
+    {
+      "project_id": "Textualize--rich",
+      "turn": 2,
+      "opportunity": {
+        "tokens": 192,
+        "context_covered": 0,
+        "history_covered": 155,
+        "global_covered": 155,
+        "history_only_covered": 155,
+        "history_only_fraction": 0.8072916666666666,
+        "context_max": 0,
+        "history_max": 32,
+        "oracle": true,
+        "measured_speedup": false
+      }
+    }
+  ]
+}
