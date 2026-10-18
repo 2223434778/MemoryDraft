@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-18 — 旧正结果向infra迁移的配对验证（执行中）
+
+- 用户授权继续验证。本轮先隔离工作负载与迁移开销，不修改R路由。冻结协议`RUNTIME_MIGRATION_PROTOCOL.md`：原4项目8请求/原合法历史，五组Legacy-D/Legacy-R/Runtime-D/Runtime-R/Runtime-R-aligned交错3重复，共120计时，先新AR8例严格匹配原参考。
+- 发现新版候选索引额外包含system文本，加入只对齐候选资源的控制组，Target输入始终相同。旧解码从`dd0077f`恢复，SHA`e8a697c2397b127c78db8db7dab10b42f9b1cf9f17a65e10c6bd2e43522a7099`与原确认清单一致；旧索引仅恢复原CRLF后SHA`9d15c30963a1194b9ad7f58c27579d6dbb68396e49a73bebc500715080bea9be`，规范化文本与当前索引相同；共享matcher与请求定义SHA相同。
+- 新增`evaluation/runtime_migration.py`、`run_runtime_migration.py`与快照/配对/篡改审计测试。初步命令`.venv\Scripts\python.exe -m pytest -q tests/test_runtime_migration.py tests/test_reuse_report.py --basetemp .test-tmp-runtime-migration --junitxml=artifacts/runtime-migration-tests-local.xml`：13 passed/7.33s；脚本编译检查通过。A6000两GPU空闲，模型及TF4.57.3环境可用。GPU结果将在实际完成后追加，不用旧耗时冒充新结果。
+
 ## 2026-10-18 — v0.3 单GPU推理 infra（工程交付）
 
 - 最终GitHub CI已确认：提交`c37f3206cd8136f6db321c9fa9325294e25ceb2f`的research和DFlash两个job均success，见[Actions 39129849841](https://github.com/2223434778/MemoryDraft/actions/runs/39129849841)。Linux原冻结输入针对性2 passed/4.18s。服务器完整404文件发布SHA逐项一致，独立重建`INFRA_VALIDATION.md`字节相同，package source与delivery.json逐文件相同；两张GPU空闲。该最终文档补记不改变已验证运行代码。

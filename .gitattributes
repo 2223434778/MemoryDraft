@@ -56,3 +56,13 @@ results/infra-v0.3/*.log -whitespace
 # These frozen inputs were hashed as CRLF during the original GPU experiment.
 data/research/history.jsonl -text whitespace=cr-at-eol
 data/research/memory-test.jsonl -text whitespace=cr-at-eol
+
+memorydraft/evaluation/runtime_migration.py text eol=lf
+scripts/run_runtime_migration.py text eol=lf
+scripts/write_runtime_migration_report.py text eol=lf
+tests/test_runtime_migration.py text eol=lf
+docs/RUNTIME_MIGRATION_PROTOCOL.md text eol=lf
+docs/RUNTIME_MIGRATION_RESULTS.md text eol=lf
+results/runtime-migration/** -text
+results/runtime-migration/*.json whitespace=cr-at-eol
+results/runtime-migration/*.log -whitespace
