@@ -1,5 +1,7 @@
 # Astra 审阅入口
 
+最新原因分析见 [CONFIG_REVISIONS_DIAGNOSIS](CONFIG_REVISIONS_DIAGNOSIS.md)（2026-10-18）。本轮离线复核 94 次保存输出，另用请求中已有 patch 直接应用开发 12 个修改，12/12 正确，未做性能计时。结论是生成提速成立，但当前应用可确定性完成且历史资源与当前输入重复；有工程处理方法，没有已论证的办法能靠继续调 H/检索救回当前研究主张。报告给出有限的新场景可行性检查及退出条件，尚未执行新方向。
+
 ## 最新完成：公开CI配置修订开发与合同诊断（2026-10-18）
 
 先读 [CONFIG_REVISIONS_DEVELOPMENT_RESULTS](CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md)、[合同诊断](CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md) 与 [协议](CONFIG_REVISIONS_PROTOCOL.md)。18个真实公开项目文件/修订已冻结，开发6项目90次全部逐token一致；Global为DFlash的1.677×，Context/Global只有1.005且区间跨1，旧文件已在当前输入。原完整文件Target任务仅5/12正确，失败保留。按预定协议只对两个失败开发首轮做一次v2输出合同诊断：4次严格一致，但完整文本0/2；Ruff删注释、Requests改写注释，Ruff的YAML叶子差异仅末尾块字符串LF。保真门槛未通过，12项目确认未启动；不把提示版本差异归于R，也不把注释/换行差异夸大为业务逻辑错误。相关对照为官方ArcticInference线性候选器接同一严格循环，非完整SuffixDecoding/vLLM复现。
