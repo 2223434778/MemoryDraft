@@ -1,9 +1,10 @@
 from copy import deepcopy
+import json
 from pathlib import Path
 
 import pytest
 
-from memorydraft.evaluation.runtime_migration import METHODS, audit_rows, frozen_inputs
+from memorydraft.evaluation.runtime_migration import METHODS, audit_rows, frozen_inputs, input_hashes
 from memorydraft.memory.store import MemoryStore
 
 
@@ -55,3 +56,39 @@ def test_migration_audit_rejects_corrupted_or_unpaired_evidence(change):
         rows[0]["counters"]["rounds"] = 2
     with pytest.raises(ValueError):
         audit_rows(rows, tasks)
+
+
+@pytest.mark.parametrize("change", ["fresh_reference", "resources", "summary"])
+def test_report_checks_reference_resources_and_summary_before_claiming_success(tmp_path, change):
+    from scripts.write_runtime_migration_report import rebuild
+
+    original = ROOT / "results/reuse-confirmation"
+    tasks, _ = frozen_inputs(original)
+    rows = fake_rows(tasks)
+
+    def write(name, value):
+        (tmp_path / name).write_text(json.dumps(value), encoding="utf-8")
+
+    write("provenance.json", {"status": "complete", "fresh_ar_correct": 8, "original_inputs_unchanged": True,
+                              "original_input_sha256": input_hashes(original), "original_runtime_source": "unit-test",
+                              "source": {"sha256": "unit-test-only"}, "runner_sha256": "unit-test"})
+    write("summary.json", audit_rows(rows, tasks))
+    with (tmp_path / "rows.jsonl").open("w") as stream:
+        stream.writelines(json.dumps(row) + "\n" for row in rows)
+    fresh = [{**task.reference, "request_id": task.request.id} for task in tasks]
+    with (tmp_path / "fresh-ar.jsonl").open("w") as stream:
+        stream.writelines(json.dumps(row) + "\n" for row in fresh)
+    resources = [{"request_id": task.request.id, "legacy": "same", "aligned": "same"} for task in tasks]
+    write("resources.json", resources)
+    # These rows are simulated audit inputs, never published performance evidence.
+    assert rebuild(tmp_path, original, tmp_path / "unit-report.md")["d_budget_passed"]
+    if change == "fresh_reference":
+        with (tmp_path / "fresh-ar.jsonl").open("a") as stream:
+            stream.write(json.dumps(fresh[0]) + "\n")
+    elif change == "resources":
+        resources[0]["aligned"] = "different"
+        write("resources.json", resources)
+    else:
+        write("summary.json", {})
+    with pytest.raises(ValueError):
+        rebuild(tmp_path, original, tmp_path / "invalid-report.md")

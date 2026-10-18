@@ -1,6 +1,12 @@
 # 项目进度
 
-## 2026-10-18 — 旧正结果向infra迁移的配对验证（执行中）
+## 2026-10-18 — 旧正结果向infra迁移的配对验证（完成）
+
+- A6000正式运行完成，PID1596891已退出，两GPU恢复19MiB/0%。原8个完整新AR逐token/prompt/snapshot一致，单列125.609s；之后120/120计时全部一致。Legacy-D=42.030658s、Legacy-R=33.879012s、Runtime-D=42.060590s、Runtime-R=33.881685s、Runtime-R-aligned=33.875867s。新版D/默认R=1.241396，[1.198093,1.291931]，延迟降低约19.45%；旧收益保留，不支持此前短样例退化是工程化破坏旧负载的解释。
+- Legacy-D/Runtime-D累计均498轮Draft；三个R组均246轮R、123轮Draft、5418接受token，逐请求/重复计数24/24相同。对齐候选的tokens/记录边界/来源指纹8/8相同；默认system资源增量在本批没有改变这些计数，默认/对齐耗时比1.000172、区间跨1。Runtime-D/Legacy-D=1.000712（约+0.071%）；对齐Runtime-R/Legacy-R=0.999907、区间跨1；预设10%工程预算均通过，不宣称零开销或统计等价。
+- 实际命令（服务器infra-v0.3目录）：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_runtime_migration --config configs/runtime-dflash.json --legacy artifacts/runtime-migration-legacy --output artifacts/runtime-migration-v1`。在新输出前冻结协议/代码的提交为`06c3c4e3effb804eefce9ee7368b0138144aa255`；部署411文件逐项哈希一致。GPU实际package SHA`94340a2485f8ab5778a58da4bdda113ae374e8de3b0026be4de73437790ab738`，脚本/协议/旧源码逐文件SHA保存在provenance及execution-source.json；原确认11文件运行前后SHA不变。
+- 新增离线报告及参考/资源/汇总篡改拒绝测试，未修改生产解码/检索策略。最终本机`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-migration-final --junitxml=artifacts/runtime-migration-final-local.xml`：156 passed/3 skipped/17.60s；服务器报告与原审计相关16 passed/3.03s。Windows/Linux独立重算diagnostic逐字一致，报告SHA均`2f42fcf242db68fa5acdb221b78958abd92e2af7a9bbd52c0041f65f1cd319fb`。实际测试XML发布，不把测试模拟数据当性能证据。
+- 结果`results/runtime-migration/`，报告`RUNTIME_MIGRATION_RESULTS.md`，复算`python -m scripts.write_runtime_migration_report`。保存原始/压缩SHA，不提交数据库、权重或大trace。该批仍是原合成工作负载，不能重新证明历史必要性；之前infra两短请求的负结果不改写。后续退化保护应独立开发/验证，不根据本批事后改策略冒充本次迁移结果。
 
 - 用户授权继续验证。本轮先隔离工作负载与迁移开销，不修改R路由。冻结协议`RUNTIME_MIGRATION_PROTOCOL.md`：原4项目8请求/原合法历史，五组Legacy-D/Legacy-R/Runtime-D/Runtime-R/Runtime-R-aligned交错3重复，共120计时，先新AR8例严格匹配原参考。
 - 发现新版候选索引额外包含system文本，加入只对齐候选资源的控制组，Target输入始终相同。旧解码从`dd0077f`恢复，SHA`e8a697c2397b127c78db8db7dab10b42f9b1cf9f17a65e10c6bd2e43522a7099`与原确认清单一致。索引差异最初误判为换行，恢复校验失败；进一步核对原服务器归档与Git，确认后续新增`include_user_records=False`，旧`f43239a`索引SHA`9d15c30963a1194b9ad7f58c27579d6dbb68396e49a73bebc500715080bea9be`严格匹配原运行。已在GPU运行前修正协议，并加入逐例资源指纹核对；共享matcher与请求定义SHA相同。

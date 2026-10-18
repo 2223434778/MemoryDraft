@@ -28,3 +28,15 @@
 报告以项目为重采样单位给出2000次bootstrap95%区间；只有4个项目，不泛化生产分布。工程回归预算暂取10%，以当前/旧版同批耗时比判断，仅为工程门槛，不等于显著性检验。若发现额外开销，先报告，不根据本批结果调整策略后冒充同一次确认。
 
 这批合成任务的历史必要性已被事后归因削弱。本次只验证已有复用收益能否迁移到infra，不重启H、不恢复新论文主张，也不把本次测试当成新工作负载泛化。
+
+## 恢复与执行
+
+在含完整历史的Git checkout中、使用DFlash虚拟环境，按字节恢复原代码；Python写入避免PowerShell重定向转换编码。运行时还会根据原provenance重新校验SHA。
+
+```bash
+python -c "from pathlib import Path; import subprocess; from memorydraft.evaluation.runtime_migration import LEGACY_COMMITS; p=Path('artifacts/runtime-migration-legacy'); p.mkdir(parents=True,exist_ok=True); [p.joinpath(n).write_bytes(subprocess.check_output(['git','cat-file','blob',LEGACY_COMMITS[n]+':'+s])) for n,s in [('legacy_decode.py','memorydraft/backends/dflash_reuse.py'),('legacy_suffix.py','memorydraft/retrieval/suffix.py')]]"
+python -m scripts.run_runtime_migration --config configs/runtime-dflash.json --legacy artifacts/runtime-migration-legacy --output artifacts/runtime-migration-NEW
+python -m scripts.write_runtime_migration_report --source artifacts/runtime-migration-NEW --output artifacts/runtime-migration-NEW/report.md
+```
+
+恢复/执行说明在计时完成后补写，运行时绑定的是上方已冻结实验口径及当时协议SHA；新增操作说明不更改已执行配置或旧provenance。

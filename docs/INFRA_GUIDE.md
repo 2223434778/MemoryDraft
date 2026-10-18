@@ -102,6 +102,8 @@ P50 在有样本时报告；P95 至少 20 次观测，P99 至少 100 次才输�
 
 可在 benchmark 后加 `--baseline artifacts/benchmark-01 --max-slowdown 0.10` 设置工程退化门槛。先核对环境、固定 Target revision、请求、配对、输出和快照；不兼容时拒绝比较。超过门槛写入 `regression.json` 并以非零状态退出。阈值是调用者选择的工程预算，不是显著性检验，不应对 demo 或跨硬件结果使用。
 
+原正结果向本运行时的同负载迁移已通过，见[迁移报告](RUNTIME_MIGRATION_RESULTS.md)。该验证固定旧请求与合法历史，恢复原解码/索引并校验SHA；对照默认与候选对齐入口，不用不同样例的总耗时判断版本回归。恢复与执行命令见[协议](RUNTIME_MIGRATION_PROTOCOL.md)。
+
 ```bash
 python -m memorydraft load-test --url http://127.0.0.1:8000 --request examples/request.json --method R+DFlash --count 20 --concurrency 2 --output artifacts/http-load-01
 ```

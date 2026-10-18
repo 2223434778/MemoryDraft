@@ -1,0 +1,66 @@
+[
+  {
+    "request_id": "confirm-schema-0:0",
+    "legacy": "8514d9c0dfcda133928e178ec7ee38a6743dc2be26b72052eb3180b09743c350",
+    "aligned": "8514d9c0dfcda133928e178ec7ee38a6743dc2be26b72052eb3180b09743c350",
+    "default": "b344bbe90499a448c1bf574a3888e3a3a6c8e6fb39f6021bec597fe8d102a7a8",
+    "legacy_tokens": 383,
+    "default_tokens": 395
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "legacy": "1bba3b52599ff568243defdc0bbdff0559786d1f98947de48f4344478c76f86f",
+    "aligned": "1bba3b52599ff568243defdc0bbdff0559786d1f98947de48f4344478c76f86f",
+    "default": "7ba2863867cf2b355501329fbbb1d2b6806e6a3db54e3f13e3bb0740e8fdac23",
+    "legacy_tokens": 383,
+    "default_tokens": 395
+  },
+  {
+    "request_id": "confirm-schema-1:0",
+    "legacy": "abefd7796edd151dd29292a9f9e656a0b8fd452dc1a8d4123c40bbc747cf9383",
+    "aligned": "abefd7796edd151dd29292a9f9e656a0b8fd452dc1a8d4123c40bbc747cf9383",
+    "default": "dab02696dedbddbdc9dec276f3b499efe41d7f9c60a109b1a34cc57ccdcbd570",
+    "legacy_tokens": 424,
+    "default_tokens": 436
+  },
+  {
+    "request_id": "confirm-schema-1:1",
+    "legacy": "f51b4276b32472ba85f72b76cd9edaf6d5ef13770addcfb27540a430e31db51b",
+    "aligned": "f51b4276b32472ba85f72b76cd9edaf6d5ef13770addcfb27540a430e31db51b",
+    "default": "9e1593d25020853d7d33eaf0bc3f0d61da77cbf2311071db62ffe0ddb8ea65bb",
+    "legacy_tokens": 424,
+    "default_tokens": 436
+  },
+  {
+    "request_id": "confirm-schema-2:0",
+    "legacy": "7a5b41bc7e74ef9f249428f02e87c182acfaea1f1ad49598a3eb668ae8f07688",
+    "aligned": "7a5b41bc7e74ef9f249428f02e87c182acfaea1f1ad49598a3eb668ae8f07688",
+    "default": "102e973120c2269c5530c2331887714c33db55335bf294a0c2cb127bc9b0fc21",
+    "legacy_tokens": 480,
+    "default_tokens": 492
+  },
+  {
+    "request_id": "confirm-schema-2:1",
+    "legacy": "7c1da057a6ac4394a57604d4f7986a09f385ff70a495cab8218d256a90442b58",
+    "aligned": "7c1da057a6ac4394a57604d4f7986a09f385ff70a495cab8218d256a90442b58",
+    "default": "14b1de2d3c955f58bc64d49b9824ff2e760c3a06b98e1686ecf104eb04f6ebf3",
+    "legacy_tokens": 480,
+    "default_tokens": 492
+  },
+  {
+    "request_id": "confirm-schema-3:0",
+    "legacy": "80f8f66f41b53189d5101298a64f3fb022862caddd3ad25325f948473bd7eda1",
+    "aligned": "80f8f66f41b53189d5101298a64f3fb022862caddd3ad25325f948473bd7eda1",
+    "default": "cf2f2a17e7adc750ee44a3bf0589de38fcea4013a8544eccc7596be9cb729572",
+    "legacy_tokens": 539,
+    "default_tokens": 551
+  },
+  {
+    "request_id": "confirm-schema-3:1",
+    "legacy": "97e97ea3b1d044de06ffdac276c4ce9a1b6668134bc7b8f3771f5328a0ffe497",
+    "aligned": "97e97ea3b1d044de06ffdac276c4ce9a1b6668134bc7b8f3771f5328a0ffe497",
+    "default": "0c5985e484d5473b83417f7c8b88e6dd048eccb727d5f1a774734c107865c703",
+    "legacy_tokens": 539,
+    "default_tokens": 551
+  }
+]

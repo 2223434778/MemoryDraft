@@ -1,0 +1,128 @@
+{
+  "version": "0.3.0",
+  "engine": {
+    "backend": "dflash",
+    "synthetic": false,
+    "methods": [
+      "AR",
+      "DFlash",
+      "R+DFlash"
+    ],
+    "torch": "2.5.1+cu124",
+    "transformers": "4.57.3",
+    "device": "cuda:0",
+    "dtype": "torch.float32",
+    "gpu": "NVIDIA RTX A6000",
+    "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "implementation": "DFlash uses the audited adapter with R disabled; native control remains in research scripts",
+    "config": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-v0.3/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-v0.3/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-v0.3/artifacts/runtime-migration-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      }
+    }
+  },
+  "packages": {
+    "torch": "2.5.1",
+    "transformers": "4.57.3",
+    "numpy": "1.26.4",
+    "pydivsufsort": "0.0.19",
+    "fastapi": "0.111.1",
+    "uvicorn": "0.30.2"
+  },
+  "source": {
+    "sha256": "94340a2485f8ab5778a58da4bdda113ae374e8de3b0026be4de73437790ab738",
+    "files": {
+      "__init__.py": "3185d26a581cfcdeb72d8f1e9123f83a2c271f7548b5b6de6752277307ce545c",
+      "__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "assets/DFLASH_LICENSE.txt": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422",
+      "assets/dflash-manifest.json": "eb5e6b37ac58f40e31e8ba132eff2a15cea38a0f29577d9b22f8f2abdfb62c72",
+      "backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "backends/dflash_reuse.py": "715296c03eb695b63d06138dbad6a873b27869c9f7465bc501b9097fe1a4179d",
+      "backends/transformers.py": "7e9fd1bce07003610ee36816af82290a7393eeecba11bc6bf8023eb4b2b89f05",
+      "cli.py": "4959cf3a86fa06e01c21f954f5eb373d39b0dadc1b45fe824deda041a0b70d4e",
+      "drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "drafters/candidates.py": "ab3f58f49776b1c7528c6f57b469bd42c6fe5a357dea2aba4e07940ffc84574c",
+      "evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "evaluation/config_revisions.py": "b8ea6cafd61ffd40c7fccd21e524bb5863c6778454b78a4d117f5c05e55f944e",
+      "evaluation/distillation.py": "e5989b6bfd3d98feaf601fc25305e82618939353e5c4632002574d6088f7479d",
+      "evaluation/history_alignment.py": "b67c92f603b6ef0d5c8abc4ff1f5a0e7f8532009050be63f4ce1e3522494f704",
+      "evaluation/prefixes.py": "ef00e6275d2487ad179794700bbedf08e1f7fc52b9d2442c6ce67cf53fe1c138",
+      "evaluation/release_triage.py": "ea36616bdc48672f8a4d8f1040cd5554501519c85da3b6ae56acf688360c03f7",
+      "evaluation/replay.py": "8128dc566578e329503b6fff9a668fb0a8ef0fb38e490c93dec170a46f7ce296",
+      "evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1",
+      "evaluation/reuse_cases.py": "1441e35eb4defffd13a7d21a124b216619baa4b1588a4279f71b80ec1470e202",
+      "evaluation/runtime_migration.py": "73c93ac51f2515dafaf59b94a1144aa5d659b2afa65a9e5ee885c5548c400965",
+      "memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "retrieval/arctic.py": "44c9d34c92d81392190e418f8081bb78d61c4630cd6549068fa6837745ffab6e",
+      "retrieval/pool.py": "4f4333ca07fa30e8ed7ab9dcf9400156cc4785e133238628ef08997f7ee69146",
+      "retrieval/reuse.py": "d4988782acffd08b2589d6a284b3baaa7876d1285642f8212d9475a5c21c0230",
+      "retrieval/suffix.py": "b49a2edab03aeac462cacb59338fd89bcd695c9c2f5bc79580a2b00290598d57",
+      "routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "routing/policy.py": "02b3428efd8e2246d30315e88bb7e9bc00a6b9604baf8f8454a2e514217649a9",
+      "runtime/__init__.py": "7dfa5205ea91fa64acd53a47d678278adf869be0819d699df9bc44e03d306fcd",
+      "runtime/benchmark.py": "c393cc7759a19c5f0662c544a4f638b8e2b920ea5bdc2ef0a8988ef3110cdd26",
+      "runtime/cli.py": "089b9c91d6cc8abc9f0bc5f1d40d9e6d128fcf92dbc809d4bcd16925fde6d404",
+      "runtime/config.py": "31c5013982d3c0af5d5ed028cbb7ebf951b1c6c6192dbb8808ab0399cbff31bc",
+      "runtime/contracts.py": "01fc383f191163eb0f149f3826fecee83e81415c844099fb0b6d5a83f71e3204",
+      "runtime/demo.py": "8be2aa9a60cb5c6e641f3a1ac22d43bc3e23b9519d9498bba8b7d6f83df88da7",
+      "runtime/engine.py": "1cea8ae3e55aaea4d90ec2e290f638cfefb1c4c7b7ba461a4a422d6b44a73c49",
+      "serving/__init__.py": "7b4d5d621027fad0c986aa4c0820c0f105aec807b1dc9872355dd00160486fda",
+      "serving/app.py": "4c69c22aa44156b159e3050590905781f3b20b86270b2599c5e790b2126aa69b",
+      "serving/loadtest.py": "5b5c786adbb7820b33a27e232bde8ad0ff2db91c3f2a8a51a39ac764d6d9b8a8",
+      "serving/worker.py": "d28659db45f66fd43da5125493c4c611bdaa8c3261e5739cb00041510acb526f"
+    }
+  },
+  "timing": "Synchronized engine call; all online snapshot/tokenize/index/decode work included. Load, warmup, resource audit and fresh AR checks separate. No HTTP/profiler.",
+  "status": "complete",
+  "methods": [
+    "Legacy-D",
+    "Legacy-R",
+    "Runtime-D",
+    "Runtime-R",
+    "Runtime-R-aligned"
+  ],
+  "repeats": 3,
+  "original_input_sha256": {
+    "environment.json": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af",
+    "initial-history.json": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852",
+    "past-generations.jsonl.gz": "42dce7d31326d3c94e2e9550162d116607b858d8f2e1b5f0074100e9bfbb3fcf",
+    "projects.json": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d",
+    "provenance.json": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c",
+    "references.jsonl.gz": "f741e90bfef00c38c081cbf020573303af594e1384cf82639f19cc473d894546",
+    "replay.jsonl.gz": "617a2018167cca5ebfb8753265d768c98e3d120ba0abfa8e381d456e5380f7f3",
+    "run.log": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255",
+    "summary.json": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8",
+    "tests-final.log": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c",
+    "tests-source.json": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505"
+  },
+  "original_runtime_source": "2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2",
+  "legacy_sources": {
+    "legacy_decode.py": "e8a697c2397b127c78db8db7dab10b42f9b1cf9f17a65e10c6bd2e43522a7099",
+    "legacy_suffix.py": "9d15c30963a1194b9ad7f58c27579d6dbb68396e49a73bebc500715080bea9be"
+  },
+  "runner_sha256": "536261be5cba3913d54467caf43967da0a6e804d8d529bdb523a72ba9a405304",
+  "protocol_sha256": "e7f3778324d7c91148ff22ef838b93aff50517c26ff7897554451ab91868d760",
+  "replay_module_sha256": "73c93ac51f2515dafaf59b94a1144aa5d659b2afa65a9e5ee885c5548c400965",
+  "fresh_ar_correct": 8,
+  "rows": 120,
+  "original_inputs_unchanged": true
+}

@@ -1,0 +1,44 @@
+{
+  "rows": 120,
+  "requests": 8,
+  "projects": 4,
+  "times": {
+    "Legacy-D": 42.03065775614232,
+    "Legacy-R": 33.87901206535753,
+    "Runtime-D": 42.06058964563999,
+    "Runtime-R": 33.88168502494227,
+    "Runtime-R-aligned": 33.87586672382895
+  },
+  "counters": {
+    "Legacy-D": {
+      "rounds": 498,
+      "draft_rounds": 498,
+      "reuse_rounds": 0,
+      "reuse_accepted_tokens": 0
+    },
+    "Legacy-R": {
+      "rounds": 369,
+      "draft_rounds": 123,
+      "reuse_rounds": 246,
+      "reuse_accepted_tokens": 5418
+    },
+    "Runtime-D": {
+      "rounds": 498,
+      "draft_rounds": 498,
+      "reuse_rounds": 0,
+      "reuse_accepted_tokens": 0
+    },
+    "Runtime-R": {
+      "rounds": 369,
+      "draft_rounds": 123,
+      "reuse_rounds": 246,
+      "reuse_accepted_tokens": 5418
+    },
+    "Runtime-R-aligned": {
+      "rounds": 369,
+      "draft_rounds": 123,
+      "reuse_rounds": 246,
+      "reuse_accepted_tokens": 5418
+    }
+  }
+}

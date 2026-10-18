@@ -1,0 +1,19 @@
+{
+  "local": {
+    "tests": "159",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "3",
+    "time": "17.599"
+  },
+  "server": {
+    "tests": "16",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "3.040"
+  },
+  "report_sha256": "2f42fcf242db68fa5acdb221b78958abd92e2af7a9bbd52c0041f65f1cd319fb",
+  "report_script_sha256": "d7d58ebd44682c6d16a42aecd991f7d1f07e84972953f3f2d788dfc831c949db",
+  "test_source_sha256": "5a764b7215c27ef8a03d2242df64116c0db840d75cb10b1616f0f62b106bbe1a"
+}

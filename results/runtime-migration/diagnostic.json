@@ -1,0 +1,53 @@
+{
+  "comparisons": {
+    "Legacy-D/Legacy-R": {
+      "ratio": 1.2406104899121344,
+      "project_bootstrap_95": [
+        1.1986065243582884,
+        1.2898015202113742
+      ]
+    },
+    "Runtime-D/Runtime-R": {
+      "ratio": 1.241396040801299,
+      "project_bootstrap_95": [
+        1.1980932692039394,
+        1.2919309487204806
+      ]
+    },
+    "Runtime-D/Runtime-R-aligned": {
+      "ratio": 1.241609255005533,
+      "project_bootstrap_95": [
+        1.197809455758939,
+        1.2921119701928194
+      ]
+    },
+    "Runtime-D/Legacy-D": {
+      "ratio": 1.0007121442084332,
+      "project_bootstrap_95": [
+        1.0004548537570588,
+        1.001107640620196
+      ]
+    },
+    "Runtime-R-aligned/Legacy-R": {
+      "ratio": 0.9999071595853353,
+      "project_bootstrap_95": [
+        0.9981762009357639,
+        1.0014858310058818
+      ]
+    },
+    "Runtime-R/Runtime-R-aligned": {
+      "ratio": 1.0001717535719679,
+      "project_bootstrap_95": [
+        0.9996152675914826,
+        1.0008367072225939
+      ]
+    }
+  },
+  "engineering_slowdown_budget": 0.1,
+  "d_budget_passed": true,
+  "r_aligned_budget_passed": true,
+  "legacy_to_aligned_counter_differences": [],
+  "default_to_aligned_counter_differences": [],
+  "aligned_resources_equal": 8,
+  "fresh_ar_seconds_separate": 125.60873884323519
+}

@@ -1,0 +1,14 @@
+{
+  "files": {
+    "legacy_decode.py": {
+      "original_path": "memorydraft/backends/dflash_reuse.py",
+      "sha256": "e8a697c2397b127c78db8db7dab10b42f9b1cf9f17a65e10c6bd2e43522a7099",
+      "git_commit": "dd0077fb6ed278837f9e3de48f946008519816ff"
+    },
+    "legacy_suffix.py": {
+      "original_path": "memorydraft/retrieval/suffix.py",
+      "sha256": "9d15c30963a1194b9ad7f58c27579d6dbb68396e49a73bebc500715080bea9be",
+      "git_commit": "f43239af59c49c17ee4b9d7749473259e501251d"
+    }
+  }
+}
