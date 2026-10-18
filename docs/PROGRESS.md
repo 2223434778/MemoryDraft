@@ -2,6 +2,8 @@
 
 ## 2026-10-18 — v0.3 单GPU推理 infra（工程交付）
 
+- 最终GitHub CI已确认：提交`c37f3206cd8136f6db321c9fa9325294e25ceb2f`的research和DFlash两个job均success，见[Actions 39129849841](https://github.com/2223434778/MemoryDraft/actions/runs/39129849841)。Linux原冻结输入针对性2 passed/4.18s。服务器完整404文件发布SHA逐项一致，独立重建`INFRA_VALIDATION.md`字节相同，package source与delivery.json逐文件相同；两张GPU空闲。该最终文档补记不改变已验证运行代码。
+
 - 首次GitHub Actions实际执行：DFlash profile通过测试、构建和隔离wheel运行；research profile为145 passed/3 skipped/1 failed，定位旧冻结history/request输入在Linux checkout被规范成LF，而原GPU审计SHA绑定CRLF。仅将这两份原工作区输入按原始字节固定为`-text`，不改JSON内容或既有审计期望。首次发布归档也受Windows Git的换行导出影响，改为从Git blob原始字节构建归档并核对全文件SHA；不忽略错误或放宽哈希条件。
 
 - 用户明确授权将科研原型转为完整infra。新增`memorydraft/runtime/`的请求/结果协议、配置、模型加载、AR/DFlash/R+DFlash统一生成、配对benchmark、可比性检查与退化阈值、CPU/CUDA profiler；旧H/D/RHD与研究证据保留。运行时DFlash是关闭R的同一审计适配器，原生控制仍在研究脚本。未改变Target prompt或接受条件。
