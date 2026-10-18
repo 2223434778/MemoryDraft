@@ -2,6 +2,8 @@
 
 ## 2026-10-18 — v0.3 单GPU推理 infra（工程交付）
 
+- 首次GitHub Actions实际执行：DFlash profile通过测试、构建和隔离wheel运行；research profile为145 passed/3 skipped/1 failed，定位旧冻结history/request输入在Linux checkout被规范成LF，而原GPU审计SHA绑定CRLF。仅将这两份原工作区输入按原始字节固定为`-text`，不改JSON内容或既有审计期望。首次发布归档也受Windows Git的换行导出影响，改为从Git blob原始字节构建归档并核对全文件SHA；不忽略错误或放宽哈希条件。
+
 - 用户明确授权将科研原型转为完整infra。新增`memorydraft/runtime/`的请求/结果协议、配置、模型加载、AR/DFlash/R+DFlash统一生成、配对benchmark、可比性检查与退化阈值、CPU/CUDA profiler；旧H/D/RHD与研究证据保留。运行时DFlash是关闭R的同一审计适配器，原生控制仍在研究脚本。未改变Target prompt或接受条件。
 - 新增`memorydraft/serving/`：单执行worker、有界FIFO队列和token buffer、429、deadline、断连/排队取消、慢客户端背压、异常恢复及健康/指标接口。SSE只发送Target已确认token，最终统一解码文本。取消不提前释放worker；异常清除traceback/context/cause，避免保存GPU KV等局部资源引用。测试覆盖失败后下一请求恢复与资源释放。
 - 基础包不依赖GPU库，`research`/`dflash`分别固定TF4.52.2/4.57.3；服务声明FastAPI0.111.1、Uvicorn0.30.2、Pydantic>=2.10。加入GitHub双profile CPU CI、CPU demo Dockerfile、示例、安装/运维/API/计时文档。README改为工程入口，原README保留为`RESEARCH_README.md`，未改写原实验结论。项目版本0.3.0，无统一新开源许可。

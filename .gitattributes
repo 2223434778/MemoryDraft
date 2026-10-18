@@ -52,3 +52,7 @@ scripts/validate_infra.py text eol=lf
 results/infra-v0.3/** -text
 results/infra-v0.3/*.json whitespace=cr-at-eol
 results/infra-v0.3/*.log -whitespace
+
+# These frozen inputs were hashed as CRLF during the original GPU experiment.
+data/research/history.jsonl -text whitespace=cr-at-eol
+data/research/memory-test.jsonl -text whitespace=cr-at-eol
