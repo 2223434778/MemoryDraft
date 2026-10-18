@@ -9,7 +9,8 @@ The model forward, attention, strict longest-prefix verification and KV crop are
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Sequence
+from contextlib import nullcontext
+from typing import Callable, Sequence
 
 import torch
 from transformers import DynamicCache
@@ -45,7 +46,10 @@ def _features(output, layers):
 def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: int,
                    stop_token_ids: Sequence[int] = (), matcher: ReuseMatcher | None = None,
                    config: ReuseConfig = ReuseConfig(), trace: bool = True,
-                   route_sequence: Sequence[str] = ()) -> ReuseGeneration:
+                   route_sequence: Sequence[str] = (),
+                   on_tokens: Callable[[list[int]], None] | None = None,
+                   should_stop: Callable[[], bool] | None = None,
+                   profile: bool = False) -> ReuseGeneration:
     """Single-request strict greedy decoding. route_sequence is a diagnostic override.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -58,6 +62,9 @@ also cover [0,start). R skips draft forward and accumulates those features.
         raise ValueError("Invalid generation budget or diagnostic route")
     if max_new_tokens == 0:
         return ReuseGeneration(input_ids.clone())
+    if should_stop and should_stop():
+        from memorydraft.runtime.contracts import RequestCancelled
+        raise RequestCancelled("Request cancelled before prefill")
     if draft.block_size < 2:
         raise ValueError("DFlash requires an anchor and at least one proposal")
     target.eval()
@@ -69,18 +76,38 @@ also cover [0,start). R skips draft forward and accumulates those features.
     ids[:, :prompt] = input_ids
     positions = torch.arange(ids.shape[1], device=ids.device).unsqueeze(0)
     target_cache, draft_cache = DynamicCache(), DynamicCache()
-    output = target(input_ids, position_ids=positions[:, :prompt], past_key_values=target_cache,
-                    use_cache=True, logits_to_keep=1, output_hidden_states=True)
+    def mark(name):
+        return torch.profiler.record_function("memorydraft::" + name) if profile else nullcontext()
+
+    with mark("target_prefill"):
+        output = target(input_ids, position_ids=positions[:, :prompt], past_key_values=target_cache,
+                        use_cache=True, logits_to_keep=1, output_hidden_states=True)
     ids[:, prompt:prompt + 1] = output.logits.argmax(dim=-1)
     pending = [_features(output, draft.target_layer_ids)]
     pending_tokens = prompt
     result = ReuseGeneration(ids, feature_peak_tokens=prompt)
     start, blocked_until, step = prompt, 0, 0
     stops = set(stop_token_ids)
+    published = prompt
+
+    def publish(end):
+        nonlocal published
+        if on_tokens and end > published:
+            tokens = ids[0, published:end].tolist()
+            ended = next((i for i, token in enumerate(tokens) if token in stops), None)
+            if ended is not None:
+                tokens = tokens[:ended + 1]
+            on_tokens(tokens)
+            published += len(tokens)
+
+    publish(prompt + 1)
     if int(ids[0, prompt]) in stops:
         result.sequences = ids[:, :prompt + 1].clone()
         return result
     while start + 1 < limit:
+        if should_stop and should_stop():
+            from memorydraft.runtime.contracts import RequestCancelled
+            raise RequestCancelled("Request cancelled between verification rounds")
         if target_cache.get_seq_length() != start or draft_cache.get_seq_length() + pending_tokens != start:
             raise RuntimeError("R/DFlash feature and KV frontiers diverged")
         forced = route_sequence[step % len(route_sequence)] if route_sequence else None
@@ -92,8 +119,9 @@ also cover [0,start). R skips draft forward and accumulates those features.
         confirmed = None
         proposal = None
         if can_reuse:
-            confirmed = ids[0, prompt:start + 1].tolist()
-            proposal = matcher.propose(confirmed, min(config.max_tokens, limit - start - 1))
+            with mark("retrieval_lookup"):
+                confirmed = ids[0, prompt:start + 1].tolist()
+                proposal = matcher.propose(confirmed, min(config.max_tokens, limit - start - 1))
             if proposal is not None and proposal.matched < config.min_match and forced != "R":
                 proposal = None
         before_draft = draft_cache.get_seq_length()
@@ -107,17 +135,19 @@ also cover [0,start). R skips draft forward and accumulates those features.
             # Clear stale proposals left in the output workspace by previous rounds.
             block[:, 1:] = draft.mask_token_id
             context = pending[0] if len(pending) == 1 else torch.cat(pending, dim=1)
-            hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
-                           position_ids=positions[:, before_draft:start + draft.block_size],
-                           past_key_values=draft_cache, use_cache=True, is_causal=False)
-            logits = target.lm_head(hidden[:, -draft.block_size + 1:, :])
-            block[:, 1:] = logits.argmax(dim=-1)
+            with mark("draft_forward"):
+                hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
+                               position_ids=positions[:, before_draft:start + draft.block_size],
+                               past_key_values=draft_cache, use_cache=True, is_causal=False)
+                logits = target.lm_head(hidden[:, -draft.block_size + 1:, :])
+                block[:, 1:] = logits.argmax(dim=-1)
             draft_cache.crop(start)
             pending.clear()
             pending_tokens = 0
             block = block[:, :min(block.shape[1], limit - start)]
-        output = target(block, position_ids=positions[:, start:start + block.shape[1]],
-                        past_key_values=target_cache, use_cache=True, output_hidden_states=True)
+        with mark("target_verify"):
+            output = target(block, position_ids=positions[:, start:start + block.shape[1]],
+                            past_key_values=target_cache, use_cache=True, output_hidden_states=True)
         posterior = output.logits.argmax(dim=-1)
         accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
         advance = accepted + 1
@@ -143,6 +173,7 @@ also cover [0,start). R skips draft forward and accumulates those features.
                                       matched=proposal.matched if proposal else 0, buffer_flush=bool(flush)))
         step += 1
         available = min(start + 1, limit)
+        publish(available)
         if stops:
             generated = ids[0, prompt:available].tolist()
             ended = next((i for i, token in enumerate(generated) if token in stops), None)

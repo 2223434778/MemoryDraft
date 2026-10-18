@@ -1,0 +1,2 @@
+{"id":"explain","user_id":"example","order":10,"messages":[{"role":"user","content":"Explain speculative decoding in two short sentences."}],"max_new_tokens":64}
+{"id":"copy","user_id":"example","order":20,"messages":[{"role":"user","content":"Repeat exactly, without extra text:\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot."}],"max_new_tokens":96}

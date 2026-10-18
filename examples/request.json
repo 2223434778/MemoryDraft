@@ -1,0 +1,7 @@
+{
+  "id": "hello",
+  "user_id": "example",
+  "order": 10,
+  "messages": [{"role": "user", "content": "Explain speculative decoding in two short sentences."}],
+  "max_new_tokens": 64
+}

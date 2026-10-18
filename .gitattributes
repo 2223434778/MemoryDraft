@@ -40,3 +40,15 @@ tests/test_reuse_attribution.py text eol=lf
 # Preserve Windows test evidence bytes, including native CRLF.
 results/reuse-attribution/tests-local-source.json whitespace=cr-at-eol
 results/reuse-attribution/*.log -whitespace
+
+# Infra source and small published acceptance artifacts.
+memorydraft/runtime/*.py text eol=lf
+memorydraft/serving/*.py text eol=lf
+memorydraft/assets/** -text
+memorydraft/assets/*.json whitespace=cr-at-eol
+tests/test_runtime.py text eol=lf
+tests/test_serving.py text eol=lf
+scripts/validate_infra.py text eol=lf
+results/infra-v0.3/** -text
+results/infra-v0.3/*.json whitespace=cr-at-eol
+results/infra-v0.3/*.log -whitespace

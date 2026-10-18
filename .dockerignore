@@ -1,0 +1,13 @@
+.git
+.venv*
+models
+data
+results
+artifacts
+checkpoints
+.env*
+*.db
+*.sqlite*
+*.tar.gz
+.test-tmp*
+__pycache__

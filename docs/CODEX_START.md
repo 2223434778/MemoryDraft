@@ -1,5 +1,7 @@
 # Codex 的第一轮任务
 
+> 当前阶段（2026-10-18）：用户已授权转为 infra 项目，先读 README 与 [INFRA_GUIDE](INFRA_GUIDE.md)。下文是原研究启动任务，保留用于核查，不应重复启动已完成的模型实验。
+
 你负责实现 MemoryDraft，用户选择的开发执行模型为 GPT-6.1-sol。先读本仓库 AGENTS.md 和 ARCHITECTURE.md；实际模型与后端以环境核验为准。
 
 ## 第一部分：选可复用底座并跑通基线

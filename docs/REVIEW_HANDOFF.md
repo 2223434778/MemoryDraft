@@ -1,5 +1,11 @@
 # Astra 审阅入口
 
+## 最新交付：v0.3 单GPU infra（2026-10-18）
+
+用户授权工程转向，先读[使用指南](INFRA_GUIDE.md)、[工程验收](INFRA_VALIDATION.md)。新运行时和服务不依赖旧研究CLI私有接口；H与负结果保留。重点审查`runtime/engine.py`的固定Target与提交前缀、`serving/worker.py`的独占生命周期/取消/背压/异常资源释放、`runtime/benchmark.py`的严格配对与退化可比性。DFlash执行仍复用已审计MIT循环，未声称自研推理引擎或新算子。
+
+最终本机146 passed/3 skipped、服务器相关54 passed；真实A6000 12/12配对一致、三方法HTTP/SSE对齐、直接取消后恢复；6条并发2的HTTP请求完成。新例子里DFlash4.490s、R+DFlash4.967s，不宣称检索净加速。GPU原运行与最后资源清理等增补的源码SHA分别记录在`results/infra-v0.3/`，原实验证据不变。仅发布约小型JSON/JSONL与原日志，无数据库/模型/大trace。CI执行状态及未构建的Dockerfile不作为已验证结果。
+
 ## 最新完成：合成正结果归因（2026-10-18，仅CPU）
 
 先读[归因报告](REUSE_ATTRIBUTION_RESULTS.md)及[事后协议](REUSE_ATTRIBUTION_PROTOCOL.md)。原4合成项目/8请求/96计时通过原audit，41.992s→33.862s（延迟降低19.4%）保留，实际推理来源仍为2518e677…，未被新代码替换。新候选只解析当前request，未读gold/历史/当前答案；中性结构覆盖4.08%，schema默认模板74.71%，真实历史95.27%。补齐当前已知标识的Expanded覆盖95.11%，历史之外仅4/2452（0.16%）；它故意未执行本轮修改，0/8任务正确，只能作为待验证候选。再按请求应用修改的Compiled逐字/token及语义均8/8正确，历史额外覆盖0。Expanded/Compiled与历史的候选token数8/8配平。

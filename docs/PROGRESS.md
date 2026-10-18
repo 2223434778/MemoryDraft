@@ -1,5 +1,19 @@
 # 项目进度
 
+## 2026-10-18 — v0.3 单GPU推理 infra（工程交付）
+
+- 用户明确授权将科研原型转为完整infra。新增`memorydraft/runtime/`的请求/结果协议、配置、模型加载、AR/DFlash/R+DFlash统一生成、配对benchmark、可比性检查与退化阈值、CPU/CUDA profiler；旧H/D/RHD与研究证据保留。运行时DFlash是关闭R的同一审计适配器，原生控制仍在研究脚本。未改变Target prompt或接受条件。
+- 新增`memorydraft/serving/`：单执行worker、有界FIFO队列和token buffer、429、deadline、断连/排队取消、慢客户端背压、异常恢复及健康/指标接口。SSE只发送Target已确认token，最终统一解码文本。取消不提前释放worker；异常清除traceback/context/cause，避免保存GPU KV等局部资源引用。测试覆盖失败后下一请求恢复与资源释放。
+- 基础包不依赖GPU库，`research`/`dflash`分别固定TF4.52.2/4.57.3；服务声明FastAPI0.111.1、Uvicorn0.30.2、Pydantic>=2.10。加入GitHub双profile CPU CI、CPU demo Dockerfile、示例、安装/运维/API/计时文档。README改为工程入口，原README保留为`RESEARCH_README.md`，未改写原实验结论。项目版本0.3.0，无统一新开源许可。
+- 最终本机命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-infra-final-full`：**146 passed、3 skipped、17.19s**；服务器`.venv-dflash`相关**54 passed、6.79s**。测试计数摘自实际工具stdout，原始测试log未落盘。Windows受限环境阻止asyncio内部loopback，曾在TestClient启动前挂起；在允许loopback的执行环境通过，不以跳过HTTP测试规避。只清理了本任务挂起的pytest进程。
+- wheel命令`.venv\Scripts\python.exe -m pip wheel --no-deps --no-build-isolation . --wheel-dir artifacts/wheels-final`。在`artifacts/wheel-env`干净环境仅离线安装wheel，无torch/transformers/fastapi；基础infer在仓库外运行，最终demo benchmark成功，明确synthetic=true。Docker CLI不可用，未实际构建Dockerfile；CI定义提交后状态以Actions为准。
+- 服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-v0.3`，模型通过只读使用原模型目录，未重复下载。正式命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.validate_infra --config configs/runtime-dflash.json --output artifacts/acceptance-v1`。初次归档漏带`scripts/__init__.py`，启动在加载模型前失败；补齐后正式运行完成，首次错误见工具输出，发布日志为后续正式运行，不计失败尝试为GPU计时。
+- 真实Qwen3-8B+DFlash、A6000 GPU0、FP32/eager：2请求×3方法×2重复，**12/12**计时token/prompt/snapshot严格一致；AR9.230410s、DFlash4.489956s、R+DFlash4.966973s，分别为AR的2.056×/1.858×。本轮R+DFlash反而比DFlash慢约10.6%，不宣称检索净收益或独立自然工作负载确认。加载、预热和参考生成不并入计时；全部在线处理计入。
+- 真实HTTP/SSE每方法16token均与AR一致，直接取消R+DFlash后再次DFlash生成正确。真实loopback HTTP压测6/6成功、concurrency2、wall2.998s、P50约0.982s、客户端TTFT P50约0.556s；小样本不输出P95/P99，最后queued/running均0。HTTP断连、慢流及429的系统场景另由CPU测试覆盖，不夸大为GPU高并发验证。
+- GPU profiler单独插桩：218550事件、20602 CUDA kernel事件，含7个命名阶段。索引/查找较短，矩阵乘与Target验证具有显著设备成本；完整trace保留服务器`artifacts/acceptance-v1/profile/trace.json`，不提交大型trace。不据插桩时间宣布新性能优化。
+- GPU实际package源码SHA`52f5845362006bc8aacebf96f85a8274c4b305b1e43953ffe49c611dfe2801f3`；最终package源码SHA`bec65fec2c1524fabec9d2b4dbbb01fb5c4259d41a96b48828e34f926b63f64a`。逐文件差异和生成核心不变核查见`results/infra-v0.3/delivery.json`；不以最终来源覆盖原计时来源。GPU验收后新增门槛/资源清理等代码已完成最终CPU/小模型回归。
+- 小型公开验收证据在`results/infra-v0.3/`，报告`INFRA_VALIDATION.md`；复算`.venv\Scripts\python.exe -m scripts.write_infra_report`。无私有对话、模型、数据库、wheel或完整trace上传。下一步从真实服务负载和profile选择一项深优化；连续批处理、BF16、采样、分布式和CUDA/Triton算子均不作为本版已交付能力。
+
 ## 2026-10-18 — 已有合成正结果的归因检查（完成，CPU阶段结束）
 
 - 用户授权落实归因对照。新增`evaluation/reuse_attribution.py`、`diagnose_reuse_confirmation.py`、离线报告生成器、7项测试和`REUSE_ATTRIBUTION_PROTOCOL.md`。候选构造仅接收当前request，明确限于原合成benchmark语法，不读取gold、当前答案、过去回答或生成器隐藏元数据。旧4项目/8请求/96计时通过原audit，并绑定全部旧发布文件SHA，原推理来源仍为`2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2`。

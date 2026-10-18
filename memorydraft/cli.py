@@ -19,8 +19,10 @@ def write_json(path, value):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="MemoryDraft batch=1 greedy research CLI")
+    parser = argparse.ArgumentParser(description="MemoryDraft inference, serving and correctness evaluation")
     sub = parser.add_subparsers(dest="command", required=True)
+    from memorydraft.runtime.cli import add_commands
+    add_commands(sub)
     env = sub.add_parser("env")
     env.add_argument("--output")
     imp = sub.add_parser("import")
@@ -48,6 +50,10 @@ def main(argv=None):
             run.add_argument("--method", default="RHD")
             run.add_argument("--commit-order", type=int, help="Persist final turn only, at this later availability order")
     args = parser.parse_args(argv)
+    if args.command in {"infer", "benchmark", "profile", "serve", "load-test"}:
+        from memorydraft.runtime.cli import run
+        run(args)
+        return
     if args.command == "import":
         with MemoryStore(args.db) as store:
             print(json.dumps({"imported": store.import_jsonl(args.input)}))

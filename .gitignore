@@ -16,6 +16,9 @@ data/raw/
 *.ckpt
 *.bin
 results/raw/
+artifacts/
+build/
+dist/
 .DS_Store
 .pytest_cache/
 .test-tmp*/
