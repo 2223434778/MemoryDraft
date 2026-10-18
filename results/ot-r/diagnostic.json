@@ -1,0 +1,65 @@
+{
+  "comparisons": {
+    "all": {
+      "ot_vs_suffix_latency_change": -0.009290859501575599,
+      "ot_vs_edit_latency_change": -0.010014866502687014
+    },
+    "old-json": {
+      "ot_vs_suffix_latency_change": -0.01828932825014884,
+      "ot_vs_edit_latency_change": -0.013707194765429587
+    },
+    "infra-explain": {
+      "ot_vs_suffix_latency_change": -0.0011062217698070143,
+      "ot_vs_edit_latency_change": -0.002235558871777732
+    },
+    "infra-copy": {
+      "ot_vs_suffix_latency_change": 0.11611323307364341,
+      "ot_vs_edit_latency_change": 0.025784517599649392
+    }
+  },
+  "projects": {
+    "confirm-schema-0": {
+      "seconds": {
+        "DFlash": 5.829687096062116,
+        "Suffix-R": 4.759366208105348,
+        "Edit-R": 4.672852484043688,
+        "OT-R": 4.320043039973825
+      },
+      "ot_vs_suffix_latency_change": -0.09230707386696613,
+      "ot_alignment_accepted_tokens": 128
+    },
+    "confirm-schema-1": {
+      "seconds": {
+        "DFlash": 6.470848815981299,
+        "Suffix-R": 4.9242111870553344,
+        "Edit-R": 4.924470443977043,
+        "OT-R": 4.927398732048459
+      },
+      "ot_vs_suffix_latency_change": 0.0006473209356869791,
+      "ot_alignment_accepted_tokens": 0
+    },
+    "confirm-schema-2": {
+      "seconds": {
+        "DFlash": 7.396117855911143,
+        "Suffix-R": 5.818141803028993,
+        "Edit-R": 5.825388401164673,
+        "OT-R": 5.828153294860385
+      },
+      "ot_vs_suffix_latency_change": 0.0017207369930687388,
+      "ot_alignment_accepted_tokens": 0
+    },
+    "confirm-schema-3": {
+      "seconds": {
+        "DFlash": 8.332231450942345,
+        "Suffix-R": 7.083109215949662,
+        "Edit-R": 7.057192160049453,
+        "OT-R": 7.096172006917186
+      },
+      "ot_vs_suffix_latency_change": 0.0018442170760419874,
+      "ot_alignment_accepted_tokens": 0
+    }
+  },
+  "rows": 80,
+  "fresh_ar": 10,
+  "report_sha256": "6bb035227c3e4764996e2a78d5df79846f870ed5a7a297da8a792d04b7d862e6"
+}

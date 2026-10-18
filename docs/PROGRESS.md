@@ -1,6 +1,12 @@
 # 项目进度
 
-## 2026-10-18 — 独立保存 infra 并接入 OT-R（首轮实验启动）
+## 2026-10-18 — 独立保存 infra 并接入 OT-R（首轮完成）
+
+- A6000 PID1622185已结束，两GPU恢复19MiB/0%。10/10新AR与旧token/prompt/snapshot一致，独立耗时130.186340s；随后80/80配对计时全部严格一致。旧JSON：DFlash28.028885s、Suffix-R22.584828s、Edit-R22.479903s、OT-R22.171767s；OT比Suffix降低1.83%、比edit降低1.37%。收益集中在事后拆分的confirm-schema-0（两请求各两重复）：4.759366→4.320043s、-9.23%；其余三项目没有明确改善。不能把已看过数据上的子组当独立确认。
+- 旧JSON里Suffix/Edit/OT的Draft轮数82/76/72，R轮数164/168/166，对齐接受token分别0/64/128，OT额外查询0.117405s计入总时间。copy负例Suffix1.373279s、OT1.532735s（+11.61%），两组Draft均10轮，OT额外2个提议接受0token；不能仅凭减少Draft轮数或离线覆盖宣布加速。全部十请求总计Suffix27.747403s、OT27.489606s（-0.93%）。默认仍suffix，不在旧任务上继续调参或扩大重复。
+- 运行前代码/协议已提交推送`f30b60a7e908307c5f398b88ffb28a1c5eead712`，433文件部署逐项SHA通过。实际GPU package SHA`27070f0f5d720641ef8f250c59188e33c3ab4bc9a8c5ac5f4169d0dc2367df43`，与本机离线分析及最终package相同；后续只补报告/测试与交付文档。服务器命令：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_transport_probe --config configs/runtime-dflash.json --output artifacts/ot-r-v1`。隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe`，原`infra-v0.3`未覆盖。
+- 本机最终完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-ot-final --junitxml=artifacts/ot-tests-final-local.xml`：183 passed、3 skipped（19.18s，原Starlette multipart弃用提示）。服务器相关65 passed（6.55s）。报告LF输出补充检查两平台各11 passed，原始XML分别保存。`python -m build --no-isolation`因本机未安装build前端失败；替代pip wheel首次遇Windows沙箱临时目录权限，正常临时目录下`.venv\Scripts\python.exe -m pip wheel --no-deps --no-build-isolation . -w artifacts/ot-wheel`成功，wheel SHA`82ca3f6f07566eaf16795e2abe7631de74e62f8e37168c3f7fa0cefc459e0727`。没有因此改代码或安装额外build前端。
+- 结果发布在`results/ot-r/`，报告`OT_R_RESULTS.md`。两平台`.venv-dflash/bin/python -m scripts.write_transport_report`独立重建正文SHA均`6bb035227c3e4764996e2a78d5df79846f870ed5a7a297da8a792d04b7d862e6`、diagnostic SHA均`c84ae2a673686e547901aec192b5714ae1dbea2477624ac52db32cd25bfde832`。首次JSON字节核验暴露Windows CRLF，数值与正文已相同；仅报告生成器统一LF后核验通过。原始计时/模型输出未改；旧输入所有SHA保持原值。模型、数据库和大型trace不提交。下一步若继续，是未参与本轮调参项目的独立机制验证和退化保护，不宣称OT已能普遍替换R。
 
 - 用户授权尝试 OT-R，并要求单独保留面试项目。infra 固定提交 `27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`，独立分支 `codex/infra-interview-v0.3`、标签 `infra-v0.3-interview`，研究分支 `codex/ot-r-probe`。本机 `artifacts/infra-interview-v0.3/project` 为独立 Git 克隆；ZIP/bundle/逐项 SHA 清单另存，423 文件原始 Git blob 字节核验通过。复现命令 `.venv\Scripts\python.exe -m scripts.archive_infra --output artifacts/infra-interview-v0.3`；归档位置与面试范围见 `INFRA_INTERVIEW.md`。服务器既有 `infra-v0.3` 不覆盖。
 - 新增带预算的 `retrieval/transport.py`，沿用精确后缀路径，失败后调用 lexical OT 或同池 Levenshtein；默认运行配置仍为 suffix。OT 复用 MIT POT 0.9.6.post1，上游标签 commit `85113e9a380f5fcf684c50c73c1ff6a164a7366e`，没有复制上游源码。32-token 窗口、8 候选、双 dustbin、位置先验、4 次调用上限在首轮输出前固定；不是完整 OPW 或 SpecTr，不声称语义检索或新验证算法。实际短锚点保留在 `matched`，新增上下文合格标记只决定是否提议，Target 接受条件仍为逐 token greedy 相等。

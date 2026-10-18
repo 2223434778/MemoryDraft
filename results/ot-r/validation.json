@@ -1,0 +1,33 @@
+{
+  "test_suites": {
+    "tests-local.xml": {
+      "tests": 186,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3
+    },
+    "tests-server.xml": {
+      "tests": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-report-local.xml": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "tests-report-server.xml": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "package_sha256": "27070f0f5d720641ef8f250c59188e33c3ab4bc9a8c5ac5f4169d0dc2367df43",
+  "wheel_sha256": "82ca3f6f07566eaf16795e2abe7631de74e62f8e37168c3f7fa0cefc459e0727",
+  "report_script_sha256": "3bce87fda61425f3a86e01fcf90ad066beac515039cce405f8858ac633068d52",
+  "report_test_sha256": "acd7a7e54f079deb13a5c6a36240aedcd3d6da03e420b5094a8b4e02e16f2b2e",
+  "scope": "Full local and targeted server suites preceded the final LF-only report serialization fix; the final 11-case report suites then verified it. Generation package is unchanged from the timed execution."
+}

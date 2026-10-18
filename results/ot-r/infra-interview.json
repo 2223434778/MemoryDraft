@@ -1,0 +1,8 @@
+{
+  "commit": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+  "reference": "codex/infra-interview-v0.3",
+  "archive_sha256": "f4ecf9af4d37a44d0c087283a576dd28abf2215d99373d31e6e83138f910a2fe",
+  "bundle_sha256": "1ec8b71b965ad18161dbc8b6462c9575e5986ee7900393d8daa79197b2fe197a",
+  "scope": "Tracked source, synthetic/public evidence and independent Git history; excludes weights, environments and private data.",
+  "verified_files": 423
+}

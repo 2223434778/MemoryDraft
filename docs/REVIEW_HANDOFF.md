@@ -141,3 +141,15 @@ OMP_NUM_THREADS=4 .venv/bin/python scripts/run_a6000_suite.py
 ```
 
 若只审阅报告，可直接核对各目录的 summary、配对 JSONL、provenance 与 `docs/EXPERIMENTS.md`，无需重新下载模型或重复完整 GPU 套件。
+# 2026-10-18 OT-R 首轮补充
+
+此前 infra 已独立固定为 `codex/infra-interview-v0.3` / `infra-v0.3-interview`（27e3619），
+本机另存独立 Git 仓库、源码 ZIP、bundle 与逐文件清单，位置见 `INFRA_INTERVIEW.md`。
+OT 研究在 `codex/ot-r-probe` 与 A6000 独立目录运行，main/旧服务器交付不覆盖。
+
+新增 bounded lexical OT fallback 与同池edit对照，保留后缀快速路径，严格Target验证不变。
+10个旧请求四组两重复、80次计时全部正确，10个新AR逐项匹配旧参考。
+旧JSON上OT比Suffix延迟低1.83%，收益集中一个旧项目（事后9.23%），其余三项目基本无增量；
+copy负例OT再慢11.61%，额外对齐提议接受0token。不能称通用OT加速或独立研究确认。
+实际来源、命令、正负例、正确性测试及两平台字节一致的复算见 `OT_R_RESULTS.md` / `results/ot-r/`。
+本机完整183 passed/3 skipped，服务器相关65 passed；默认仍suffix。

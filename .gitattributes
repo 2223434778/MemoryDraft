@@ -77,4 +77,5 @@ scripts/archive_infra.py text eol=lf
 tests/test_transport*.py text eol=lf
 docs/OT_R*.md text eol=lf
 results/ot-r/** -text
+results/ot-r/*.json whitespace=cr-at-eol
 results/ot-r/*.log -whitespace

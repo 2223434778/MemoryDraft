@@ -4,6 +4,7 @@
 > `codex/infra-interview-v0.3` / `infra-v0.3-interview`，本机另存独立仓库、ZIP 和 Git bundle。
 > 见 [面试版本位置与复现](docs/INFRA_INTERVIEW.md)。OT 运行配置为 `configs/runtime-ot.json`，
 > 需安装额外依赖 `python -m pip install -e ".[dflash,transport]"`；实验规则见 [OT-R 协议](docs/OT_R_PROTOCOL.md)。
+> [首轮结果](docs/OT_R_RESULTS.md)：80次计时严格一致，旧JSON上OT较后缀R降低约1.83%延迟，收益集中在一个旧项目；格式不匹配复制例仍退化。默认检索保持suffix。
 
 **固定 Target 的推理优化、服务与正确性评测工具链。**
 

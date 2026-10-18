@@ -1,0 +1,250 @@
+{
+  "all": {
+    "DFlash": {
+      "observations": 20,
+      "seconds": 32.68189932894893,
+      "counters": {
+        "rounds": 392,
+        "draft_rounds": 392,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Suffix-R": {
+      "observations": 20,
+      "seconds": 27.747403164044954,
+      "counters": {
+        "rounds": 312,
+        "draft_rounds": 142,
+        "reuse_rounds": 170,
+        "reuse_accepted_tokens": 3614,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Edit-R": {
+      "observations": 20,
+      "seconds": 27.767695705289952,
+      "counters": {
+        "rounds": 312,
+        "draft_rounds": 136,
+        "reuse_rounds": 176,
+        "reuse_accepted_tokens": 3676,
+        "alignment_calls": 16,
+        "alignment_candidates": 64,
+        "alignment_proposals": 8,
+        "alignment_accepted_tokens": 64,
+        "alignment_seconds": 0.01983567699790001
+      }
+    },
+    "OT-R": {
+      "observations": 20,
+      "seconds": 27.489605939714238,
+      "counters": {
+        "rounds": 306,
+        "draft_rounds": 132,
+        "reuse_rounds": 174,
+        "reuse_accepted_tokens": 3742,
+        "alignment_calls": 16,
+        "alignment_candidates": 64,
+        "alignment_proposals": 8,
+        "alignment_accepted_tokens": 128,
+        "alignment_seconds": 0.1563735738163814
+      }
+    }
+  },
+  "old-json": {
+    "DFlash": {
+      "observations": 16,
+      "seconds": 28.028885218896903,
+      "counters": {
+        "rounds": 332,
+        "draft_rounds": 332,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Suffix-R": {
+      "observations": 16,
+      "seconds": 22.584828414139338,
+      "counters": {
+        "rounds": 246,
+        "draft_rounds": 82,
+        "reuse_rounds": 164,
+        "reuse_accepted_tokens": 3612,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Edit-R": {
+      "observations": 16,
+      "seconds": 22.479903489234857,
+      "counters": {
+        "rounds": 244,
+        "draft_rounds": 76,
+        "reuse_rounds": 168,
+        "reuse_accepted_tokens": 3674,
+        "alignment_calls": 6,
+        "alignment_candidates": 48,
+        "alignment_proposals": 6,
+        "alignment_accepted_tokens": 64,
+        "alignment_seconds": 0.015333124902099371
+      }
+    },
+    "OT-R": {
+      "observations": 16,
+      "seconds": 22.171767073799856,
+      "counters": {
+        "rounds": 238,
+        "draft_rounds": 72,
+        "reuse_rounds": 166,
+        "reuse_accepted_tokens": 3740,
+        "alignment_calls": 6,
+        "alignment_candidates": 48,
+        "alignment_proposals": 6,
+        "alignment_accepted_tokens": 128,
+        "alignment_seconds": 0.11740492784883827
+      }
+    }
+  },
+  "infra-explain": {
+    "DFlash": {
+      "observations": 2,
+      "seconds": 3.7685363991186023,
+      "counters": {
+        "rounds": 50,
+        "draft_rounds": 50,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Suffix-R": {
+      "observations": 2,
+      "seconds": 3.7892952989786863,
+      "counters": {
+        "rounds": 50,
+        "draft_rounds": 50,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Edit-R": {
+      "observations": 2,
+      "seconds": 3.793584279017523,
+      "counters": {
+        "rounds": 50,
+        "draft_rounds": 50,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 8,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0.0001345750642940402
+      }
+    },
+    "OT-R": {
+      "observations": 2,
+      "seconds": 3.7851034980267286,
+      "counters": {
+        "rounds": 50,
+        "draft_rounds": 50,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 8,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0.00013320508878678083
+      }
+    }
+  },
+  "infra-copy": {
+    "DFlash": {
+      "observations": 2,
+      "seconds": 0.8844777109334245,
+      "counters": {
+        "rounds": 10,
+        "draft_rounds": 10,
+        "reuse_rounds": 0,
+        "reuse_accepted_tokens": 0,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Suffix-R": {
+      "observations": 2,
+      "seconds": 1.3732794509269297,
+      "counters": {
+        "rounds": 16,
+        "draft_rounds": 10,
+        "reuse_rounds": 6,
+        "reuse_accepted_tokens": 2,
+        "alignment_calls": 0,
+        "alignment_candidates": 0,
+        "alignment_proposals": 0,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0
+      }
+    },
+    "Edit-R": {
+      "observations": 2,
+      "seconds": 1.4942079370375723,
+      "counters": {
+        "rounds": 18,
+        "draft_rounds": 10,
+        "reuse_rounds": 8,
+        "reuse_accepted_tokens": 2,
+        "alignment_calls": 2,
+        "alignment_candidates": 16,
+        "alignment_proposals": 2,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0.004367977031506598
+      }
+    },
+    "OT-R": {
+      "observations": 2,
+      "seconds": 1.5327353678876534,
+      "counters": {
+        "rounds": 18,
+        "draft_rounds": 10,
+        "reuse_rounds": 8,
+        "reuse_accepted_tokens": 2,
+        "alignment_calls": 2,
+        "alignment_candidates": 16,
+        "alignment_proposals": 2,
+        "alignment_accepted_tokens": 0,
+        "alignment_seconds": 0.038835440878756344
+      }
+    }
+  }
+}

@@ -1,0 +1,435 @@
+{
+  "version": "0.3.0",
+  "engine": {
+    "backend": "dflash",
+    "synthetic": false,
+    "methods": [
+      "AR",
+      "DFlash",
+      "R+DFlash"
+    ],
+    "torch": "2.5.1+cu124",
+    "transformers": "4.57.3",
+    "device": "cuda:0",
+    "dtype": "torch.float32",
+    "gpu": "NVIDIA RTX A6000",
+    "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "implementation": "DFlash uses the audited adapter with R disabled; native control remains in research scripts",
+    "config": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/artifacts/ot-r-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "suffix",
+      "alignment": {}
+    }
+  },
+  "packages": {
+    "torch": "2.5.1",
+    "transformers": "4.57.3",
+    "numpy": "1.26.4",
+    "pydivsufsort": "0.0.19",
+    "fastapi": "0.111.1",
+    "uvicorn": "0.30.2"
+  },
+  "source": {
+    "sha256": "27070f0f5d720641ef8f250c59188e33c3ab4bc9a8c5ac5f4169d0dc2367df43",
+    "files": {
+      "__init__.py": "3185d26a581cfcdeb72d8f1e9123f83a2c271f7548b5b6de6752277307ce545c",
+      "__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "assets/DFLASH_LICENSE.txt": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422",
+      "assets/dflash-manifest.json": "eb5e6b37ac58f40e31e8ba132eff2a15cea38a0f29577d9b22f8f2abdfb62c72",
+      "backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "backends/dflash_reuse.py": "ca4b3e5ef13f73335ee9deb56e0e123329c991ef5dae95f360064ea9645620df",
+      "backends/transformers.py": "7e9fd1bce07003610ee36816af82290a7393eeecba11bc6bf8023eb4b2b89f05",
+      "cli.py": "4959cf3a86fa06e01c21f954f5eb373d39b0dadc1b45fe824deda041a0b70d4e",
+      "drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "drafters/candidates.py": "ab3f58f49776b1c7528c6f57b469bd42c6fe5a357dea2aba4e07940ffc84574c",
+      "evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "evaluation/config_revisions.py": "b8ea6cafd61ffd40c7fccd21e524bb5863c6778454b78a4d117f5c05e55f944e",
+      "evaluation/distillation.py": "e5989b6bfd3d98feaf601fc25305e82618939353e5c4632002574d6088f7479d",
+      "evaluation/history_alignment.py": "b67c92f603b6ef0d5c8abc4ff1f5a0e7f8532009050be63f4ce1e3522494f704",
+      "evaluation/prefixes.py": "ef00e6275d2487ad179794700bbedf08e1f7fc52b9d2442c6ce67cf53fe1c138",
+      "evaluation/release_triage.py": "ea36616bdc48672f8a4d8f1040cd5554501519c85da3b6ae56acf688360c03f7",
+      "evaluation/replay.py": "8128dc566578e329503b6fff9a668fb0a8ef0fb38e490c93dec170a46f7ce296",
+      "evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1",
+      "evaluation/reuse_cases.py": "1441e35eb4defffd13a7d21a124b216619baa4b1588a4279f71b80ec1470e202",
+      "evaluation/runtime_migration.py": "73c93ac51f2515dafaf59b94a1144aa5d659b2afa65a9e5ee885c5548c400965",
+      "evaluation/transport_probe.py": "e86283f367c7cf149f90d2ffd911e5c746e011308885073027c18de6070c4296",
+      "memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "retrieval/arctic.py": "44c9d34c92d81392190e418f8081bb78d61c4630cd6549068fa6837745ffab6e",
+      "retrieval/pool.py": "4f4333ca07fa30e8ed7ab9dcf9400156cc4785e133238628ef08997f7ee69146",
+      "retrieval/reuse.py": "acce3044fef35f44a41724e0c9ec169888798caf7c5ce3b5f887eedce33bc8b0",
+      "retrieval/suffix.py": "b49a2edab03aeac462cacb59338fd89bcd695c9c2f5bc79580a2b00290598d57",
+      "retrieval/transport.py": "86db3b1b5c79ef184252019d03911038b5747a0583bf7d436b2d86d23ca2fdff",
+      "routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "routing/policy.py": "02b3428efd8e2246d30315e88bb7e9bc00a6b9604baf8f8454a2e514217649a9",
+      "runtime/__init__.py": "7dfa5205ea91fa64acd53a47d678278adf869be0819d699df9bc44e03d306fcd",
+      "runtime/benchmark.py": "c393cc7759a19c5f0662c544a4f638b8e2b920ea5bdc2ef0a8988ef3110cdd26",
+      "runtime/cli.py": "089b9c91d6cc8abc9f0bc5f1d40d9e6d128fcf92dbc809d4bcd16925fde6d404",
+      "runtime/config.py": "b20fab278c7bdbb31d985df414cf7a2b1021080653d9854080ad49e22cd1f045",
+      "runtime/contracts.py": "8e7e0f57938220734f0eda06d42f8ca86554238b3be2b58016310a3ea385c15a",
+      "runtime/demo.py": "8be2aa9a60cb5c6e641f3a1ac22d43bc3e23b9519d9498bba8b7d6f83df88da7",
+      "runtime/engine.py": "cdabbc22a52aacd95799b24a4f5018d332f498f3964078b1ecac65e2f67ca90b",
+      "serving/__init__.py": "7b4d5d621027fad0c986aa4c0820c0f105aec807b1dc9872355dd00160486fda",
+      "serving/app.py": "4c69c22aa44156b159e3050590905781f3b20b86270b2599c5e790b2126aa69b",
+      "serving/loadtest.py": "5b5c786adbb7820b33a27e232bde8ad0ff2db91c3f2a8a51a39ac764d6d9b8a8",
+      "serving/worker.py": "d28659db45f66fd43da5125493c4c611bdaa8c3261e5739cb00041510acb526f"
+    }
+  },
+  "timing": "Synchronized engine latency includes snapshot, tokenization, indexing, generation and decode; load/warmup excluded",
+  "status": "complete",
+  "methods": [
+    "DFlash",
+    "Suffix-R",
+    "Edit-R",
+    "OT-R"
+  ],
+  "repeats": 2,
+  "load_seconds": 19.129575546947308,
+  "POT": "0.9.6.post1",
+  "original_sha256": {
+    "reuse-confirmation": {
+      "environment.json": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af",
+      "initial-history.json": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852",
+      "past-generations.jsonl.gz": "42dce7d31326d3c94e2e9550162d116607b858d8f2e1b5f0074100e9bfbb3fcf",
+      "projects.json": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d",
+      "provenance.json": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c",
+      "references.jsonl.gz": "f741e90bfef00c38c081cbf020573303af594e1384cf82639f19cc473d894546",
+      "replay.jsonl.gz": "617a2018167cca5ebfb8753265d768c98e3d120ba0abfa8e381d456e5380f7f3",
+      "run.log": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255",
+      "summary.json": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8",
+      "tests-final.log": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c",
+      "tests-source.json": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505"
+    },
+    "infra-v0.3": {
+      "acceptance-v1.json": "198a1c9f4416c5b0917374e172f49cac9d74f46effe94947648a86fa8bd7d100",
+      "acceptance-v1.log": "2b0aad363294a2ba3ce3212dee673ea52c3ecb630f62a5ec7b332dee4c55e1ca",
+      "benchmark-provenance.json": "c5f70c7f371377f7a5d8aac7699ddcb4169fa35305efdd5ac306f9c8f42618ba",
+      "benchmark-rows.jsonl": "c463cd5b6b3a272a7097a80cbb4ec0e037c031f251f6a9f3d1103efd6d318270",
+      "benchmark-summary.json": "260ec499a661ae8ce34e9bd52e74f02b8bb5063d8eb48024c7262ee96b060f19",
+      "delivery.json": "a36e9a26e6f05f6287f5a57d63518a621a13ddca8e6be9219a59a8670b81eaf7",
+      "deployment-v1.json": "80899f12d5477a802ab0535d9115b12776fae6c00b0e371ede495168195a3af4",
+      "http-rows.jsonl": "a6a6712b8ce0f3cb086d231b88975d4f84ce07de4857a424d9acf014fd02b1c5",
+      "http-summary.json": "6afcdcd59bd143617aff79c944cc824244331e6340c9d91197bc49ba7b66b2ec",
+      "profile-operators.json": "a8b7876915b326262409bffe6d2cae424e3ca3394c806f0ceaf647a14e81a03a",
+      "profile-provenance.json": "91aef4a557ddc20e3f6bed0e3544e1a47a321aef656cfd59d31b00c9c05e11c9",
+      "publication.json": "1524655dd79672d83453fa77688442ae5e6f30dff9ba6b4127146d13c738d11b"
+    }
+  },
+  "runner_sha256": "91dfef67a4034861d90258f861bfa7fb8be2d3ecbf7a390f92e82a41e80941fb",
+  "protocol_sha256": "89588442306f424a03edffd6af3f682e20b53ef141f68491d9f53e380e6ffc98",
+  "tasks": [
+    {
+      "request": {
+        "id": "confirm-schema-0:0",
+        "user_id": "confirm-schema-0",
+        "order": 10,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-0, workers=an array. The id values in order are worker_00, worker_01, worker_02, worker_03, worker_04. Each array entry has fields in this order: id, enabled, timeout_seconds, retries, region. All entries have these defaults: {\"enabled\": true, \"timeout_seconds\": 25, \"retries\": 2, \"region\": \"east\"}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for worker_02 to 32."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-0",
+      "snapshot_id": "d6f2c9d8989228fb39f1aa4d82ad8522a744de479792a574edd047c131650cbe"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-0:1",
+        "user_id": "confirm-schema-0",
+        "order": 20,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-0, workers=an array. The id values in order are worker_00, worker_01, worker_02, worker_03, worker_04. Each array entry has fields in this order: id, enabled, timeout_seconds, retries, region. All entries have these defaults: {\"enabled\": true, \"timeout_seconds\": 25, \"retries\": 2, \"region\": \"east\"}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for worker_02 to 39."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-0",
+      "snapshot_id": "beb1f3637f55b649db61c9468076212bfa80a9ae25d2188ad3a340cf810e808c"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-1:0",
+        "user_id": "confirm-schema-1",
+        "order": 10,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-1, routes=an array. The name values in order are route_00, route_01, route_02, route_03, route_04, route_05. Each array entry has fields in this order: name, path, method, timeout_seconds, cache. All entries have these defaults: {\"path\": \"/api\", \"method\": \"GET\", \"timeout_seconds\": 35, \"cache\": false}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for route_03 to 42."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-1",
+      "snapshot_id": "e8851f36ba78f0e483c0eb28d0b3e52c28aaf2e8bf714099a8f55dfdfa1a6913"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-1:1",
+        "user_id": "confirm-schema-1",
+        "order": 20,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-1, routes=an array. The name values in order are route_00, route_01, route_02, route_03, route_04, route_05. Each array entry has fields in this order: name, path, method, timeout_seconds, cache. All entries have these defaults: {\"path\": \"/api\", \"method\": \"GET\", \"timeout_seconds\": 35, \"cache\": false}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for route_03 to 49."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-1",
+      "snapshot_id": "ec0c4ec703b444aa77553c6ec5b018e7a4064fe01c70d7899ec89a8af3edace7"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-2:0",
+        "user_id": "confirm-schema-2",
+        "order": 10,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-2, steps=an array. The key values in order are step_00, step_01, step_02, step_03, step_04, step_05, step_06. Each array entry has fields in this order: key, action, timeout_seconds, retries, enabled. All entries have these defaults: {\"action\": \"validate\", \"timeout_seconds\": 45, \"retries\": 4, \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for step_03 to 52."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-2",
+      "snapshot_id": "c989542e565c2674edef6aa0f0519b99bf943bfa5065053bc0d3ff607e74ce8d"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-2:1",
+        "user_id": "confirm-schema-2",
+        "order": 20,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-2, steps=an array. The key values in order are step_00, step_01, step_02, step_03, step_04, step_05, step_06. Each array entry has fields in this order: key, action, timeout_seconds, retries, enabled. All entries have these defaults: {\"action\": \"validate\", \"timeout_seconds\": 45, \"retries\": 4, \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for step_03 to 59."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-2",
+      "snapshot_id": "d90d295862f54c1ca29fb4332791c4c81571df20c78d5415b2c1dc71932a1e54"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-3:0",
+        "user_id": "confirm-schema-3",
+        "order": 10,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-3, checks=an array. The key values in order are check_00, check_01, check_02, check_03, check_04, check_05, check_06, check_07. Each array entry has fields in this order: key, interval_seconds, timeout_seconds, severity, enabled. All entries have these defaults: {\"interval_seconds\": 60, \"timeout_seconds\": 15, \"severity\": \"warning\", \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for check_04 to 22."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-3",
+      "snapshot_id": "7a67c5ed1dfe595b2928d33ed8b7091c685f05c949ac14b642f50ea667ea8022"
+    },
+    {
+      "request": {
+        "id": "confirm-schema-3:1",
+        "user_id": "confirm-schema-3",
+        "order": 20,
+        "messages": [
+          {
+            "role": "system",
+            "content": "Follow the requested artifact format exactly. Do not add explanations."
+          },
+          {
+            "role": "user",
+            "content": "Generate the configuration. Top-level fields in order: project=confirm-schema-3, checks=an array. The key values in order are check_00, check_01, check_02, check_03, check_04, check_05, check_06, check_07. Each array entry has fields in this order: key, interval_seconds, timeout_seconds, severity, enabled. All entries have these defaults: {\"interval_seconds\": 60, \"timeout_seconds\": 15, \"severity\": \"warning\", \"enabled\": true}. Return the complete valid JSON with two-space indentation and one field per line, without markdown fences or other text. Override only timeout_seconds for check_04 to 29."
+          }
+        ],
+        "max_new_tokens": 768
+      },
+      "project_id": "confirm-schema-3",
+      "snapshot_id": "cfc4301e968ab374aa7a980edacf9534ffc334d8388f7f6b1d1aa12ac84a8c9e"
+    },
+    {
+      "request": {
+        "id": "explain",
+        "user_id": "example",
+        "order": 10,
+        "messages": [
+          {
+            "role": "user",
+            "content": "Explain speculative decoding in two short sentences."
+          }
+        ],
+        "max_new_tokens": 64
+      },
+      "project_id": "infra-explain",
+      "snapshot_id": "ad9e860fda89b54a63430390af991113d65d218b38dd75c66195364d8d565e06"
+    },
+    {
+      "request": {
+        "id": "copy",
+        "user_id": "example",
+        "order": 20,
+        "messages": [
+          {
+            "role": "user",
+            "content": "Repeat exactly, without extra text:\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot.\nalpha bravo charlie delta echo foxtrot."
+          }
+        ],
+        "max_new_tokens": 96
+      },
+      "project_id": "infra-copy",
+      "snapshot_id": "2ebf558a3db4870ea53c8453ba3b4beaf2d195d708cac589463dd1b6069dec27"
+    }
+  ],
+  "config_per_arm": {
+    "DFlash": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/artifacts/ot-r-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "suffix",
+      "alignment": {}
+    },
+    "Suffix-R": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/artifacts/ot-r-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "suffix",
+      "alignment": {}
+    },
+    "Edit-R": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/artifacts/ot-r-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "edit",
+      "alignment": {}
+    },
+    "OT-R": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-probe/artifacts/ot-r-v1/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "ot",
+      "alignment": {}
+    }
+  },
+  "fresh_ar_correct": 10,
+  "original_unchanged": true,
+  "rows": 80
+}

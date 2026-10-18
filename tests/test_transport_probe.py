@@ -46,3 +46,47 @@ def test_probe_audit_rejects_changed_answers_inputs_and_accounting(change):
         rows[0]["latency_seconds"] = float("nan")
     with pytest.raises(ValueError):
         audit(rows, tasks)
+
+
+@pytest.mark.parametrize("change", ["fresh_ar", "summary", "original"])
+def test_report_checks_fresh_reference_summary_and_original_hashes(tmp_path, change):
+    import json
+
+    from memorydraft.evaluation.runtime_migration import input_hashes
+    from scripts.write_transport_report import rebuild
+
+    tasks, _ = probe_inputs(ROOT)
+    rows = rows_for(tasks)
+    originals = {name: input_hashes(ROOT / "results" / name) for name in ("reuse-confirmation", "infra-v0.3")}
+    info = dict(status="complete", original_unchanged=True, fresh_ar_correct=10, rows=80,
+                original_sha256=originals, source={"sha256": "unit-test-only"},
+                runner_sha256="unit-test", protocol_sha256="unit-test", load_seconds=1.)
+    fresh = [{"request_id": t.request.id, "token_ids": t.reference["token_ids"],
+              "prompt_sha256": t.reference["prompt_sha256"], "snapshot_id": t.snapshot_id, "latency_seconds": 1.}
+             for t in tasks]
+    offline = {"original_sha256": originals, "per_request": {
+        t.request.id: {"misses": 0, "raw_ge8": 0, "pool_ge8": 0,
+                       "ot": {"recovered_ge8": 0, "zero_accept": 0},
+                       "edit": {"recovered_ge8": 0, "zero_accept": 0}} for t in tasks}}
+
+    def write(name, value):
+        (tmp_path / name).write_text(json.dumps(value), encoding="utf-8")
+
+    write("provenance.json", info)
+    write("offline-local-v1.json", offline)
+    write("summary.json", audit(rows, tasks))
+    for name, values in (("rows.jsonl", rows), ("fresh-ar.jsonl", fresh)):
+        (tmp_path / name).write_text("\n".join(json.dumps(r) for r in values) + "\n", encoding="utf-8")
+    # Simulated evidence tests only the report audit and is never published.
+    rebuild(tmp_path, tmp_path / "unit-report.md")
+    assert b"\r" not in (tmp_path / "diagnostic.json").read_bytes()
+    if change == "fresh_ar":
+        with (tmp_path / "fresh-ar.jsonl").open("a") as stream:
+            stream.write(json.dumps(fresh[0]) + "\n")
+    elif change == "summary":
+        write("summary.json", {})
+    else:
+        info["original_sha256"] = {}
+        write("provenance.json", info)
+    with pytest.raises(ValueError):
+        rebuild(tmp_path, tmp_path / "invalid.md")
