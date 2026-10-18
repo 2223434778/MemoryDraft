@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-18 — 真实发布说明初筛：小成本可行性检查（准备）
+
+- 用户授权执行最后一个小成本候选。按 `RELEASE_TRIAGE_PROTOCOL.md` 固定6项目×3版本18请求，先Target质量/合法历史独有机会，任一门槛失败则停止加速计时。没有启动原12项目CI确认或H训练。
+- 已通过只读GitHub连接获取每版真实changelog，tag逐一解析commit并校验tag/commit文件相同；保留各版完整章节及六份许可。模型当前材料充分，历史只来自同项目更早已完成回答。逐例来源标签在任何Target输出前审阅；没有独立专家或Target自评，限制明确记录。
+- 推理前复核收窄三组过宽证据行范围，剔除纯类型/内部重构行；最初未运行标签草稿和准备manifest保存在忽略缓存。最终manifest SHA `e5e0b6ac9ddd1a33da4b3dadb5d11e1f3211aab93b3b34006f566c9b9c3415e7`。不按任何模型输出更改标签。
+- 新增冻结采集器、分类评分/离线oracle模块、Target-only回放、审计报告和对应回归。本机针对性命令 `.venv\Scripts\python.exe -m pytest -q tests/test_release_triage.py --basetemp .test-tmp-release-triage`：11 passed。权重manifest结构已按现有文件核对，使用原Target五分片SHA校验。后续实际部署/推理来源及结果按完成情况追加。
+- 补充未来答案/跨项目快照与标签篡改回归后，本机完整 `.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-release-full`：96 passed、3 skipped（41.39s）；脚本语法及 `git diff --check` 通过。数据/协议/评分代码将在任何GPU输出前提交并推送。
+
 ## 2026-10-18 — CI 负结果归因与处理建议（离线分析完成）
 
 - 用户要求分析原因、提出可行解决办法，并明确没有可靠办法的部分。新增 `CONFIG_REVISIONS_DIAGNOSIS.md`：区分 Target 原文保真、当前输入与历史重复、成熟基线贡献和实际应用必要性。新方向仅为有停止条件的候选，未实施或宣称成功。

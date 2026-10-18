@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "files": {
+    "projects.json": "05ec690e9a789aa8efda2a1ec079df2eb9062aeb8182554d94c747bafab994cc",
+    "labels.json": "630b3a9a3443aea034ef91f7f598c95e52dd58f36deace3ce4187f746251a499",
+    "licenses/encode--httpx.txt": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+    "licenses/Kludex--starlette.txt": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf",
+    "licenses/pallets--click.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+    "licenses/pallets--flask.txt": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+    "licenses/psf--requests.txt": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+    "licenses/Textualize--rich.txt": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15"
+  }
+}

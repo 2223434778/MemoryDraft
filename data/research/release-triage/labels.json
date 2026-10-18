@@ -1,0 +1,413 @@
+{
+  "version": 1,
+  "annotation": "Pre-inference, source-based developer-agent annotations; no target self-grading; no independent expert adjudication.",
+  "labels": {
+    "psf--requests:v2.32.3": {
+      "other_behavior": {
+        "lines": [
+          "L005",
+          "L006",
+          "L007",
+          "L008"
+        ],
+        "rationale": "Custom SSLContext and ssl-less build fixes change behavior, not version support or identified vulnerabilities."
+      }
+    },
+    "psf--requests:v2.32.4": {
+      "python_runtime": {
+        "lines": [
+          "L013",
+          "L014"
+        ],
+        "rationale": "Explicit PyPy version support added/dropped."
+      },
+      "security_fix": {
+        "lines": [
+          "L005",
+          "L006",
+          "L007"
+        ],
+        "rationale": "Explicit CVE-2024-47081 netrc credential disclosure fix."
+      }
+    },
+    "psf--requests:v2.32.5": {
+      "python_runtime": {
+        "lines": [
+          "L012",
+          "L013"
+        ],
+        "rationale": "Python 3.14 added and 3.8 dropped."
+      },
+      "other_behavior": {
+        "lines": [
+          "L006",
+          "L007",
+          "L008",
+          "L009"
+        ],
+        "rationale": "Reverts SSLContext caching behavior; no identified vulnerability in this release section."
+      }
+    },
+    "encode--httpx:0.26.0": {
+      "api_migration": {
+        "lines": [
+          "L005",
+          "L009"
+        ],
+        "rationale": "proxies deprecated; proxy/mounts migration explicitly described."
+      },
+      "other_behavior": {
+        "lines": [
+          "L013",
+          "L014",
+          "L015",
+          "L016",
+          "L017"
+        ],
+        "rationale": "URL, proxy environment, ASGI path and iter_text correctness changes."
+      }
+    },
+    "encode--httpx:0.27.0": {
+      "api_migration": {
+        "lines": [
+          "L005"
+        ],
+        "rationale": "app shortcut deprecated in favor of explicit transport."
+      },
+      "other_behavior": {
+        "lines": [
+          "L009",
+          "L010"
+        ],
+        "rationale": "Proxy http1 and RFC digest correctness; no identified security vulnerability."
+      }
+    },
+    "encode--httpx:0.28.0": {
+      "api_migration": {
+        "lines": [
+          "L011",
+          "L012",
+          "L018",
+          "L019"
+        ],
+        "rationale": "verify/cert deprecated and proxies/app removed."
+      },
+      "other_behavior": {
+        "lines": [
+          "L020",
+          "L021",
+          "L022",
+          "L023"
+        ],
+        "rationale": "JSON encoding, URL escaping, lazy imports and socks5h behavior. Lazy imports are not dependency requirements."
+      }
+    },
+    "pallets--click:8.1.8": {
+      "other_behavior": {
+        "lines": [
+          "L007",
+          "L008",
+          "L009",
+          "L010",
+          "L011",
+          "L012",
+          "L013",
+          "L014",
+          "L015",
+          "L016",
+          "L017",
+          "L018",
+          "L019",
+          "L020",
+          "L022",
+          "L023",
+          "L024",
+          "L025",
+          "L028",
+          "L029"
+        ],
+        "rationale": "CLI error/help/color/default/test-runner behavior. Annotation fixes/internal refactor alone excluded."
+      }
+    },
+    "pallets--click:8.2.0": {
+      "python_runtime": {
+        "lines": [
+          "L006"
+        ],
+        "rationale": "Drops three Python versions."
+      },
+      "dependency": {
+        "lines": [
+          "L009"
+        ],
+        "rationale": "Switches build backend from setuptools to flit_core."
+      },
+      "api_migration": {
+        "lines": [
+          "L010",
+          "L011",
+          "L012",
+          "L013",
+          "L014",
+          "L015",
+          "L016",
+          "L017",
+          "L019",
+          "L020",
+          "L021",
+          "L022",
+          "L023",
+          "L024",
+          "L025",
+          "L040",
+          "L041",
+          "L042",
+          "L043",
+          "L099",
+          "L100"
+        ],
+        "rationale": "Deprecated APIs, removed mix_stderr and HelpOption."
+      },
+      "other_behavior": {
+        "lines": [
+          "L029",
+          "L030",
+          "L031",
+          "L032",
+          "L033",
+          "L034",
+          "L035",
+          "L036",
+          "L037",
+          "L038",
+          "L039",
+          "L040",
+          "L041",
+          "L042",
+          "L043",
+          "L044",
+          "L045",
+          "L046",
+          "L047",
+          "L048",
+          "L049",
+          "L050",
+          "L051",
+          "L052",
+          "L053",
+          "L054",
+          "L055",
+          "L056",
+          "L057",
+          "L058",
+          "L059",
+          "L060",
+          "L061",
+          "L062",
+          "L063",
+          "L064",
+          "L065",
+          "L066",
+          "L069",
+          "L070",
+          "L072",
+          "L073",
+          "L074",
+          "L075",
+          "L076",
+          "L077",
+          "L078",
+          "L080",
+          "L081",
+          "L082",
+          "L084",
+          "L085",
+          "L086",
+          "L087",
+          "L089",
+          "L090",
+          "L091",
+          "L092",
+          "L093",
+          "L094",
+          "L096",
+          "L097",
+          "L098"
+        ],
+        "rationale": "Observable command naming/help/streams/cleanup/options/new optional features; excludes annotation-only items."
+      }
+    },
+    "pallets--click:8.2.1": {
+      "other_behavior": {
+        "lines": [
+          "L006",
+          "L007",
+          "L008",
+          "L009",
+          "L010"
+        ],
+        "rationale": "Flag handling, completion, stderr flushing and EOF fixes."
+      }
+    },
+    "pallets--flask:3.0.3": {
+      "other_behavior": {
+        "lines": [
+          "L006",
+          "L007",
+          "L008"
+        ],
+        "rationale": "FIPS import compatibility and concrete Flask CLI initialization; no Python version policy or identified vulnerability."
+      }
+    },
+    "pallets--flask:3.1.0": {
+      "python_runtime": {
+        "lines": [
+          "L006"
+        ],
+        "rationale": "Drops Python 3.8."
+      },
+      "dependency": {
+        "lines": [
+          "L007",
+          "L008"
+        ],
+        "rationale": "Raises minimum Werkzeug/ItsDangerous/Blinker versions."
+      },
+      "other_behavior": {
+        "lines": [
+          "L009",
+          "L010",
+          "L011",
+          "L012",
+          "L013",
+          "L014",
+          "L015",
+          "L016",
+          "L017",
+          "L018",
+          "L019",
+          "L020",
+          "L021",
+          "L022",
+          "L023",
+          "L024",
+          "L025",
+          "L026",
+          "L027",
+          "L028",
+          "L029",
+          "L030"
+        ],
+        "rationale": "New optional configuration and observable dotenv/routing/cookie/key-rotation behavior. Security capabilities are not identified security fixes."
+      }
+    },
+    "pallets--flask:3.1.1": {
+      "security_fix": {
+        "lines": [
+          "L006",
+          "L007"
+        ],
+        "rationale": "Identified GHSA signing key order correction."
+      },
+      "other_behavior": {
+        "lines": [
+          "L009",
+          "L010"
+        ],
+        "rationale": "CLI help now loads app and plugins before listing commands. Pure annotations excluded."
+      }
+    },
+    "Kludex--starlette:0.45.0": {
+      "python_runtime": {
+        "lines": [
+          "L005"
+        ],
+        "rationale": "Drops Python 3.8."
+      },
+      "api_migration": {
+        "lines": [
+          "L006",
+          "L007"
+        ],
+        "rationale": "Removes import proxy and deprecated WebSocket constants."
+      }
+    },
+    "Kludex--starlette:0.46.0": {
+      "api_migration": {
+        "lines": [
+          "L014",
+          "L018"
+        ],
+        "rationale": "Renames multipart parser parameter and deprecates TestClient timeout."
+      },
+      "other_behavior": {
+        "lines": [
+          "L005",
+          "L009",
+          "L010"
+        ],
+        "rationale": "GZip headers/server-sent events and background task exception behavior."
+      }
+    },
+    "Kludex--starlette:0.47.0": {
+      "other_behavior": {
+        "lines": [
+          "L005",
+          "L006",
+          "L017",
+          "L018"
+        ],
+        "rationale": "Optional ASGI/cookie features and async exception handling. methods parameter typing widening is excluded from migration."
+      }
+    },
+    "Textualize--rich:v13.9.0": {
+      "python_runtime": {
+        "lines": [
+          "L005"
+        ],
+        "rationale": "Drops Python 3.7."
+      },
+      "other_behavior": {
+        "lines": [
+          "L006",
+          "L010",
+          "L011",
+          "L012"
+        ],
+        "rationale": "Traceback precision and rendering fixes. Python 3.11-specific feature is not added version support."
+      }
+    },
+    "Textualize--rich:v14.0.0": {
+      "other_behavior": {
+        "lines": [
+          "L005",
+          "L009",
+          "L010",
+          "L011",
+          "L012",
+          "L013"
+        ],
+        "rationale": "TTY/color environment and exception rendering changes, no support-policy update."
+      }
+    },
+    "Textualize--rich:v14.1.0": {
+      "dependency": {
+        "lines": [
+          "L005"
+        ],
+        "rationale": "Removes typing_extensions runtime dependency."
+      },
+      "other_behavior": {
+        "lines": [
+          "L006",
+          "L007",
+          "L011",
+          "L012",
+          "L013",
+          "L017"
+        ],
+        "rationale": "Nested Live, Syntax property/padding, rendering, exception extraction and environment control."
+      }
+    }
+  }
+}
