@@ -1,0 +1,13 @@
+{
+  "command": ".venv\\Scripts\\python.exe -m pytest -q --basetemp .test-tmp-attribution-full",
+  "passed": 105,
+  "skipped": 3,
+  "seconds": 18.61,
+  "analysis_sha256": "16c4ce5db2b8afba80bda46e592e567fdb42e15a3428086a52fc97cb8033ca35",
+  "tested_files": {
+    "memorydraft/evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1",
+    "scripts/diagnose_reuse_confirmation.py": "23f61c710a898beb418953e722d20ce5ff94a1dfe43637875327e7a68e8fe9c0",
+    "scripts/write_reuse_attribution_report.py": "fad58a49d002234cae87dfa91c34d048a0662a316e18a10e6c60042f395b1472",
+    "tests/test_reuse_attribution.py": "e174ec8b9a55ba3fcebc793d7182133fe34d9301380fb42cdf267757f619b4f6"
+  }
+}

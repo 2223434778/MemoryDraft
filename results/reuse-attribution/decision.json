@@ -1,0 +1,9 @@
+{
+  "post_run_exploratory": true,
+  "new_gpu_timing_started": false,
+  "all_compiled_text_and_tokens_exact": true,
+  "history_outside_compiled": 0,
+  "measured_static_speedup": false,
+  "decision": "stop_after_offline",
+  "analysis_sha256": "16c4ce5db2b8afba80bda46e592e567fdb42e15a3428086a52fc97cb8033ca35"
+}

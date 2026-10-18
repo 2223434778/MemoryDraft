@@ -6,6 +6,8 @@
 
 ## 当前状态
 
+最新[合成正结果归因](docs/REUSE_ATTRIBUTION_RESULTS.md)已完成CPU复核：原19.4%在线延迟降低仍成立；从当前请求展开默认事实及标识后，历史独有oracle覆盖只剩4/2452（0.16%），补上本轮修改后程序产物与Target逐字/token相同8/8。说明这批合成结果验证了已知事实展开后的候选复用，尚未证明长期历史的必要性。两平台独立复算一致；本轮未新增GPU计时，未宣称静态/规则候选已达到相同速度。
+
 最新[发布说明初筛检验](docs/RELEASE_TRIAGE_RESULTS.md)已完成：6项目18次Target生成，0截断；冻结严格合同仅3/18正确，按门槛停止加速计时。事后拆分显示status分类88/90、16/18请求正确，主要剩余问题为证据超长及引用不支持判断的行。[诊断](docs/RELEASE_TRIAGE_DIAGNOSIS.md)进一步发现，两个静态schema示例（323 token）使历史独有的离线oracle覆盖从62.9%降至3.7%；大量机会可由固定输出结构解释。静态对照为事后探索、没有在线计时；本次候选检查结束，保留实现和负结果，未据此修改门槛或自动重启H。
 
 已完成[公开CI配置衍生开发回放](docs/CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md)：90次全部严格一致，完整文件Global36.220s、DFlash60.753s（1.677×）；当前输入已有旧文件，Context/Global仅1.005且区间跨1，未显示稳定额外历史贡献。原Target只有5/12完整文件正确。按[协议](docs/CONFIG_REVISIONS_PROTOCOL.md)完成[单次合同诊断](docs/CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md)，4次对齐新AR，但两例都改写或遗漏注释，未通过原文保真门槛，12项目确认未启动。全部失败保留；生成提速不能据此宣称真实编辑流程可用，未恢复H训练或增加复杂路由。

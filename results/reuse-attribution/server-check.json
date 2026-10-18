@@ -1,0 +1,29 @@
+{
+  "independent_tokenizer_recomputation": true,
+  "python": "3.11.9",
+  "transformers": "4.57.3",
+  "matched_fields": [
+    "summary",
+    "resources",
+    "rows",
+    "oracle",
+    "input_files_sha256",
+    "analysis_files_sha256",
+    "original_source_sha256"
+  ],
+  "requests": 8,
+  "expected_analysis_sha256": "16c4ce5db2b8afba80bda46e592e567fdb42e15a3428086a52fc97cb8033ca35",
+  "server_analysis_sha256": "d50d686819aebadfba57f6875eb92ef766161e81ba2bf44e36b165f74eef92dd",
+  "report_sha256": "d15186f34306b97663fc7fe748ca7bee905560e3e397f79a60c22691fa7365f5",
+  "analysis_files_sha256": {
+    "scripts/diagnose_reuse_confirmation.py": "23f61c710a898beb418953e722d20ce5ff94a1dfe43637875327e7a68e8fe9c0",
+    "memorydraft/evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1"
+  },
+  "target_or_draft_weights_loaded": false,
+  "new_gpu_generation": false,
+  "tests": {
+    "passed": 13,
+    "seconds": 2.78,
+    "command": "OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv-dflash/bin/python -m pytest -q tests/test_reuse_attribution.py tests/test_reuse_report.py --basetemp .test-tmp-attribution-cpu-server"
+  }
+}

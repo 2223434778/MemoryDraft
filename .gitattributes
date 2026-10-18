@@ -31,3 +31,12 @@ data/research/release-triage/** -text
 results/release-triage-feasibility/** -text
 docs/RELEASE_TRIAGE_RESULTS.md text eol=lf
 results/release-triage-feasibility/*.log -whitespace
+results/reuse-attribution/** -text
+docs/REUSE_ATTRIBUTION_RESULTS.md text eol=lf
+memorydraft/evaluation/reuse_attribution.py text eol=lf
+scripts/diagnose_reuse_confirmation.py text eol=lf
+scripts/write_reuse_attribution_report.py text eol=lf
+tests/test_reuse_attribution.py text eol=lf
+# Preserve Windows test evidence bytes, including native CRLF.
+results/reuse-attribution/tests-local-source.json whitespace=cr-at-eol
+results/reuse-attribution/*.log -whitespace

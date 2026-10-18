@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-18 — 已有合成正结果的归因检查（完成，CPU阶段结束）
+
+- 用户授权落实归因对照。新增`evaluation/reuse_attribution.py`、`diagnose_reuse_confirmation.py`、离线报告生成器、7项测试和`REUSE_ATTRIBUTION_PROTOCOL.md`。候选构造仅接收当前request，明确限于原合成benchmark语法，不读取gold、当前答案、过去回答或生成器隐藏元数据。旧4项目/8请求/96计时通过原audit，并绑定全部旧发布文件SHA，原推理来源仍为`2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2`。
+- 首轮离线结果见忽略缓存及发布`offline.json`：Structure100/2452、Static1832/2452、Global2336/2452、Compiled2396/2452；Compiled文本/token/语义全8/8，历史在其外覆盖0。随后透明追加Expanded中间对照：仅展开当前标识和默认值、故意不执行override，保持同schema两轮一致；该对照在首轮诊断后提出，不称预注册。`offline-expanded.json`保留中间结果，`offline-final.json`为最终证据。
+- 最终Expanded覆盖2332/2452，历史独有4/2452（0.16%）；原Global实际接受5418个R token的位置中，Expanded也可oracle覆盖5409个（99.83%）。Expanded与历史首轮4/4逐字相同，全两轮4/8；Expanded任务0/8正确，Compiled8/8正确。Expanded/Compiled额外候选token数均与历史8/8配平；Static稍短，组合条件更多，逐例长度公开。oracle是6锚点/32接续/至少8连续正确的乐观枚举，来源/特殊token边界独立，不是速度、接受率或19.4%收益的因果百分比分摊。
+- 原DFlash41.991595s、Global33.862142s（1.240×，延迟降低19.4%）和D轮数498→123保留。新证据表明这批结果可由当前明确事实展开成目标格式解释，未证明长期历史必要性。按协议在CPU阶段结束，不新增GPU生成或Static/Expanded/Compiled计时，也不宣称替代候选实际达到旧速度；H、原CI确认及新任务搜索未恢复。
+- 本机命令：`.venv\Scripts\python.exe -m pytest -q tests/test_reuse_attribution.py tests/test_reuse_report.py --basetemp .test-tmp-attribution-final`，13 passed/5.66s；`.venv\Scripts\python.exe -m scripts.diagnose_reuse_confirmation --output results/raw/research-stage2/reuse-attribution-complete/offline-final.json`，最终结果复制至规范发布源目录，旧中间结果保留。完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-attribution-full`：105 passed、3 skipped、18.61s。分析本身仅CPU/tokenizer，无Target或Draft权重加载。
+- 服务器审核包`reuse-attribution-audit.tar.gz` SHA `63d84631dc1a06ad494c74b3769eb97a9dd2cabf2c966ba1a43323455e918df9`，18个部署文件SHA通过。`.venv-dflash`相关13 passed/2.78s；用同一旧发布证据执行`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv-dflash/bin/python -m scripts.diagnose_reuse_confirmation --source data/raw/reuse-attribution-original --output results/raw/research-stage2/reuse-attribution-server/offline-final.json`。两平台summary/逐例/资源/代码SHA/原证据SHA全部一致，报告字节SHA均`d15186f34306b97663fc7fe748ca7bee905560e3e397f79a60c22691fa7365f5`。初次服务器日志重定向因`results/raw`尚不存在失败，创建目录后完成；该次没有执行分析或模型生成。
+- 最终本机分析SHA `16c4ce5db2b8afba80bda46e592e567fdb42e15a3428086a52fc97cb8033ca35`；服务器分析SHA `d50d686819aebadfba57f6875eb92ef766161e81ba2bf44e36b165f74eef92dd`（差异为tokenizer绝对路径和离线耗时）。分析脚本SHA `23f61c710a898beb418953e722d20ce5ff94a1dfe43637875327e7a68e8fe9c0`，模块SHA `6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1`。服务器两GPU仍19MiB/0%。结果见`results/reuse-attribution/`及`REUSE_ATTRIBUTION_RESULTS.md`，原发布161文件保持原内容。
+- 发布命令：`.venv\Scripts\python.exe scripts/publish_research_artifacts.py --source results/raw/research-stage2 --destination results`，新增8份公开CPU诊断/决定/测试证据，总169份；原161份manifest条目及发布文件SHA逐项不变。`.venv\Scripts\python.exe -m scripts.write_reuse_attribution_report`可从公开证据离线重建报告，不需要tokenizer。代码、报告及8份新证据提交GitHub供审阅。
+
 ## 2026-10-18 — 真实发布说明初筛：小成本可行性检查（完成，按门槛停止）
 
 - 数据/协议/标签/代码在模型输出前提交并推送 `d45f942`；实际推理源码SHA `83f7e6f6b8f43965b9e916c8edd91e36cc484f85e933f25b9224763bef7cc302`，归档 `source-release-triage.tar.gz`。服务器部署全文件哈希通过，前置13 passed；原Qwen3-8B五权重分片SHA逐一验证后，A6000 GPU0执行18次正式Target AR，全部结束、0截断，累计请求217.819s，加载13.761s单列。固定预热、权重审计和离线评分不并入请求时间。作业PID1388481已完成，两GPU均空闲。

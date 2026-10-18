@@ -1,0 +1,1044 @@
+{
+  "post_run_exploratory": true,
+  "measured_new_speedup": false,
+  "original_source_sha256": "2518e677cde7d1ee4d7c4201b560d14f7a44bd75500c95e2497c0c072e2b46c2",
+  "input_files_sha256": {
+    "environment.json": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af",
+    "initial-history.json": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852",
+    "past-generations.jsonl.gz": "42dce7d31326d3c94e2e9550162d116607b858d8f2e1b5f0074100e9bfbb3fcf",
+    "projects.json": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d",
+    "provenance.json": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c",
+    "references.jsonl.gz": "f741e90bfef00c38c081cbf020573303af594e1384cf82639f19cc473d894546",
+    "replay.jsonl.gz": "617a2018167cca5ebfb8753265d768c98e3d120ba0abfa8e381d456e5380f7f3",
+    "run.log": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255",
+    "summary.json": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8",
+    "tests-final.log": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c",
+    "tests-source.json": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505"
+  },
+  "analysis_files_sha256": {
+    "scripts/diagnose_reuse_confirmation.py": "c635793e6550c328368b0b31b4115e0a549076a4df9470bcf87b385555b3a8f1",
+    "memorydraft/evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1"
+  },
+  "tokenizer": "E:\\PycharmProject\\MemoryDraft\\models\\qwen3-8b",
+  "oracle": {
+    "anchor": 6,
+    "limit": 32,
+    "minimum": 8,
+    "extra_token_ceiling": 1536,
+    "exact_token_matched": false,
+    "candidate_boundaries": true
+  },
+  "summary": {
+    "requests": 8,
+    "projects": 4,
+    "output_tokens": 2452,
+    "coverage": {
+      "Context": {
+        "covered": 0,
+        "extra_tokens": 0
+      },
+      "Structure": {
+        "covered": 100,
+        "extra_tokens": 2352
+      },
+      "Static": {
+        "covered": 1832,
+        "extra_tokens": 2420
+      },
+      "Global": {
+        "covered": 2336,
+        "extra_tokens": 2444
+      },
+      "StaticGlobal": {
+        "covered": 2336,
+        "extra_tokens": 4864
+      },
+      "Expanded": {
+        "covered": 2332,
+        "extra_tokens": 2444
+      },
+      "Compiled": {
+        "covered": 2396,
+        "extra_tokens": 2444
+      }
+    },
+    "history_outside": {
+      "Context": 2336,
+      "Structure": 2236,
+      "Static": 504,
+      "Expanded": 4,
+      "Compiled": 0
+    },
+    "history_outside_fraction": {
+      "Context": 0.9526916802610114,
+      "Structure": 0.9119086460032626,
+      "Static": 0.20554649265905384,
+      "Expanded": 0.0016313213703099511,
+      "Compiled": 0.0
+    },
+    "compiled_text_exact": 8,
+    "compiled_tokens_exact": 8,
+    "compiled_semantic_exact": 8,
+    "expanded_equals_history": 4,
+    "expanded_semantic_exact": 0,
+    "observed_r_tokens": {
+      "accepted": 5418,
+      "Structure": 237,
+      "Static": 4284,
+      "Expanded": 5409,
+      "Compiled": 5418
+    },
+    "original_times": {
+      "DFlash": 41.99159503396368,
+      "Adapted": 42.00049714901252,
+      "Global": 33.86214225104777,
+      "Context": 44.42728097969666
+    },
+    "original_route_counts": {
+      "Adapted": {
+        "D": 498
+      },
+      "Global": {
+        "D": 123,
+        "R": 246
+      },
+      "Context": {
+        "D": 504,
+        "R": 21
+      }
+    }
+  },
+  "resources": [
+    {
+      "project_id": "confirm-schema-0",
+      "turn": 0,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"workers\": [\n    {\n      \"id\": \"item_00\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_01\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_02\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_03\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_04\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    }\n  ]\n}",
+          "sha256": "0d1b73a9bddbad6c6d340e50831d3c09d90eff4ae5a97f3a5775d24929a70e02",
+          "tokens": 231
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"workers\": [\n    {\n      \"id\": \"item_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "523be21fc1a7a1cddfe984bed9df31b713bd9e9def4d19ed16f92473e9b23ed6",
+          "tokens": 236
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-0\",\n  \"workers\": [\n    {\n      \"id\": \"worker_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "63afeb8be17478d7a486447e87f32da536ab463de1964d87076489703a995e57",
+          "tokens": 239
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-0\",\n  \"workers\": [\n    {\n      \"id\": \"worker_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 32,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "f8705f2ca570d74a4d9729ac5bb9048d3f10898b9a289c0857322447bff118df",
+          "tokens": 239
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-0",
+      "turn": 1,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"workers\": [\n    {\n      \"id\": \"item_00\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_01\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_02\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_03\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    },\n    {\n      \"id\": \"item_04\",\n      \"enabled\": false,\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"region\": \"example\"\n    }\n  ]\n}",
+          "sha256": "0d1b73a9bddbad6c6d340e50831d3c09d90eff4ae5a97f3a5775d24929a70e02",
+          "tokens": 231
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"workers\": [\n    {\n      \"id\": \"item_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"item_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "523be21fc1a7a1cddfe984bed9df31b713bd9e9def4d19ed16f92473e9b23ed6",
+          "tokens": 236
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-0\",\n  \"workers\": [\n    {\n      \"id\": \"worker_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "63afeb8be17478d7a486447e87f32da536ab463de1964d87076489703a995e57",
+          "tokens": 239
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-0\",\n  \"workers\": [\n    {\n      \"id\": \"worker_00\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_01\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_02\",\n      \"enabled\": true,\n      \"timeout_seconds\": 39,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_03\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    },\n    {\n      \"id\": \"worker_04\",\n      \"enabled\": true,\n      \"timeout_seconds\": 25,\n      \"retries\": 2,\n      \"region\": \"east\"\n    }\n  ]\n}",
+          "sha256": "d36de5a2b3a666f81770a367010d2b94daf73aebe536c4d9e40637fac4d1259f",
+          "tokens": 239
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-1",
+      "turn": 0,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"routes\": [\n    {\n      \"name\": \"item_00\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_01\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_02\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_03\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_04\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_05\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "80b7fc46b4515176f0c5e96a54ca560b67956315ede8fa1dd3c40b9b4b523ccf",
+          "tokens": 268
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"routes\": [\n    {\n      \"name\": \"item_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "8424eed8d116c01d838e824ff26b43c4bf7f0d45be399bbe6bbc023c7583c1ce",
+          "tokens": 274
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-1\",\n  \"routes\": [\n    {\n      \"name\": \"route_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "248836b05c94ec0b771da3e35390d0da6a44ff2870d5c8a2319ca4fe8b18f9fa",
+          "tokens": 277
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-1\",\n  \"routes\": [\n    {\n      \"name\": \"route_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 42,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "cfd4d17828e5206e3db5452463e32a605d03943ae00e068e785947d335870817",
+          "tokens": 277
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-1",
+      "turn": 1,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"routes\": [\n    {\n      \"name\": \"item_00\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_01\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_02\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_03\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_04\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_05\",\n      \"path\": \"example\",\n      \"method\": \"example\",\n      \"timeout_seconds\": 0,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "80b7fc46b4515176f0c5e96a54ca560b67956315ede8fa1dd3c40b9b4b523ccf",
+          "tokens": 268
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"routes\": [\n    {\n      \"name\": \"item_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"item_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "8424eed8d116c01d838e824ff26b43c4bf7f0d45be399bbe6bbc023c7583c1ce",
+          "tokens": 274
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-1\",\n  \"routes\": [\n    {\n      \"name\": \"route_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "248836b05c94ec0b771da3e35390d0da6a44ff2870d5c8a2319ca4fe8b18f9fa",
+          "tokens": 277
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-1\",\n  \"routes\": [\n    {\n      \"name\": \"route_00\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_01\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_02\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_03\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 49,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_04\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    },\n    {\n      \"name\": \"route_05\",\n      \"path\": \"/api\",\n      \"method\": \"GET\",\n      \"timeout_seconds\": 35,\n      \"cache\": false\n    }\n  ]\n}",
+          "sha256": "60afed939262746ccb6d1144a8f38228e39927c835a339bc91e8e894802bc98d",
+          "tokens": 277
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-2",
+      "turn": 0,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"steps\": [\n    {\n      \"key\": \"item_00\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_01\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_02\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_03\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_04\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_05\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_06\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    }\n  ]\n}",
+          "sha256": "949652ef4fb2e3a1f027bac1fc5f01c0595f163d4dc951c4a39e59f0f4a7947a",
+          "tokens": 317
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"steps\": [\n    {\n      \"key\": \"item_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "ec990c0e234f973b268c50ee27f0c44cd918b2caa8c283ea33dda1b6874a1777",
+          "tokens": 324
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-2\",\n  \"steps\": [\n    {\n      \"key\": \"step_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "f5741d5b1b7e2084523eab5aac48dcbf9688a537961e89f69a4e128c95ebbc45",
+          "tokens": 327
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-2\",\n  \"steps\": [\n    {\n      \"key\": \"step_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 52,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "30ccdbd7cbc4c0b137a4db2522b8008e3403bf4906b1552405706e96aa5f723a",
+          "tokens": 327
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-2",
+      "turn": 1,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"steps\": [\n    {\n      \"key\": \"item_00\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_01\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_02\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_03\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_04\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_05\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_06\",\n      \"action\": \"example\",\n      \"timeout_seconds\": 0,\n      \"retries\": 0,\n      \"enabled\": false\n    }\n  ]\n}",
+          "sha256": "949652ef4fb2e3a1f027bac1fc5f01c0595f163d4dc951c4a39e59f0f4a7947a",
+          "tokens": 317
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"steps\": [\n    {\n      \"key\": \"item_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "ec990c0e234f973b268c50ee27f0c44cd918b2caa8c283ea33dda1b6874a1777",
+          "tokens": 324
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-2\",\n  \"steps\": [\n    {\n      \"key\": \"step_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "f5741d5b1b7e2084523eab5aac48dcbf9688a537961e89f69a4e128c95ebbc45",
+          "tokens": 327
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-2\",\n  \"steps\": [\n    {\n      \"key\": \"step_00\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_01\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_02\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_03\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 59,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_04\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_05\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    },\n    {\n      \"key\": \"step_06\",\n      \"action\": \"validate\",\n      \"timeout_seconds\": 45,\n      \"retries\": 4,\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "27068fc9c66adfa63439875dff5e1ae57c19aeec15e0f4399496dd3777e1414a",
+          "tokens": 327
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-3",
+      "turn": 0,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"checks\": [\n    {\n      \"key\": \"item_00\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_01\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_02\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_03\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_04\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_05\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_06\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_07\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    }\n  ]\n}",
+          "sha256": "ec2f9f0006257947633fd95d2793f2fa8bc9ea93aa904a9482d11999e5f3aa9e",
+          "tokens": 360
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"checks\": [\n    {\n      \"key\": \"item_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "50ba76452efa45032a07f607a20652f7c338be23ea7d569ce56577bf1eb923e7",
+          "tokens": 376
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-3\",\n  \"checks\": [\n    {\n      \"key\": \"check_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "bfc9ea1d2a1219b90c2a74dbce7d482e9982c2ea41d66facfa57b61d70854dd8",
+          "tokens": 379
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-3\",\n  \"checks\": [\n    {\n      \"key\": \"check_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 22,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "1fd403b63c91fba8eaf9d89f738c3524dff57d0e6cef4ef7ed82d4f7712b01cc",
+          "tokens": 379
+        }
+      }
+    },
+    {
+      "project_id": "confirm-schema-3",
+      "turn": 1,
+      "candidates": {
+        "Structure": {
+          "text": "{\n  \"project\": \"example\",\n  \"checks\": [\n    {\n      \"key\": \"item_00\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_01\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_02\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_03\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_04\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_05\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_06\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    },\n    {\n      \"key\": \"item_07\",\n      \"interval_seconds\": 0,\n      \"timeout_seconds\": 0,\n      \"severity\": \"example\",\n      \"enabled\": false\n    }\n  ]\n}",
+          "sha256": "ec2f9f0006257947633fd95d2793f2fa8bc9ea93aa904a9482d11999e5f3aa9e",
+          "tokens": 360
+        },
+        "Static": {
+          "text": "{\n  \"project\": \"example\",\n  \"checks\": [\n    {\n      \"key\": \"item_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"item_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "50ba76452efa45032a07f607a20652f7c338be23ea7d569ce56577bf1eb923e7",
+          "tokens": 376
+        },
+        "Expanded": {
+          "text": "{\n  \"project\": \"confirm-schema-3\",\n  \"checks\": [\n    {\n      \"key\": \"check_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "bfc9ea1d2a1219b90c2a74dbce7d482e9982c2ea41d66facfa57b61d70854dd8",
+          "tokens": 379
+        },
+        "Compiled": {
+          "text": "{\n  \"project\": \"confirm-schema-3\",\n  \"checks\": [\n    {\n      \"key\": \"check_00\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_01\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_02\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_03\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_04\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 29,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_05\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_06\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    },\n    {\n      \"key\": \"check_07\",\n      \"interval_seconds\": 60,\n      \"timeout_seconds\": 15,\n      \"severity\": \"warning\",\n      \"enabled\": true\n    }\n  ]\n}",
+          "sha256": "0a3d768530b9849b7e7d9a883e9d1beaaf8e1224c93625a37a6a0142a37d1d3f",
+          "tokens": 379
+        }
+      }
+    }
+  ],
+  "rows": [
+    {
+      "project_id": "confirm-schema-0",
+      "turn": 0,
+      "output_tokens": 240,
+      "request_sha256": "540f4818b72d1d7bd7ed83ec06da89dc8152be0603c6ac7579c5fc0eebdf4ab6",
+      "prompt_sha256": "01efa39d39425318c4b874449b8d2c63a9f476bc299f8f828f779756fd1712a2",
+      "snapshot_id": "d6f2c9d8989228fb39f1aa4d82ad8522a744de479792a574edd047c131650cbe",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 1,
+          "text_sha256": "63afeb8be17478d7a486447e87f32da536ab463de1964d87076489703a995e57"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": true,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 234,
+          "sum_best_lengths": 4,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 225
+        },
+        "Structure": {
+          "extra_tokens": 231,
+          "covered": 0,
+          "prefix_positions": 234,
+          "sum_best_lengths": 97,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 225
+        },
+        "Static": {
+          "extra_tokens": 236,
+          "covered": 173,
+          "prefix_positions": 234,
+          "sum_best_lengths": 2897,
+          "long_prefix_positions": 131,
+          "max_best_length": 32,
+          "history_outside": 52
+        },
+        "Global": {
+          "extra_tokens": 239,
+          "covered": 225,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6208,
+          "long_prefix_positions": 211,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 475,
+          "covered": 225,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6208,
+          "long_prefix_positions": 211,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 239,
+          "covered": 225,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6208,
+          "long_prefix_positions": 211,
+          "max_best_length": 32,
+          "history_outside": 0
+        },
+        "Compiled": {
+          "extra_tokens": 239,
+          "covered": 233,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6960,
+          "long_prefix_positions": 226,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 486,
+        "Structure": 0,
+        "Static": 381,
+        "Expanded": 486,
+        "Compiled": 486
+      }
+    },
+    {
+      "project_id": "confirm-schema-0",
+      "turn": 1,
+      "output_tokens": 240,
+      "request_sha256": "14429dd9d9c980d76ac323dd2e5324f0fe10b69f60f73b89669b20e27172a7e8",
+      "prompt_sha256": "d5c9588f4686b9462c6b0b64bfb12d6fb637f3ec6797fafe68accf7ba239dfd5",
+      "snapshot_id": "beb1f3637f55b649db61c9468076212bfa80a9ae25d2188ad3a340cf810e808c",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 11,
+          "text_sha256": "f8705f2ca570d74a4d9729ac5bb9048d3f10898b9a289c0857322447bff118df"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": false,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 234,
+          "sum_best_lengths": 4,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 226
+        },
+        "Structure": {
+          "extra_tokens": 231,
+          "covered": 0,
+          "prefix_positions": 234,
+          "sum_best_lengths": 97,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 226
+        },
+        "Static": {
+          "extra_tokens": 236,
+          "covered": 173,
+          "prefix_positions": 234,
+          "sum_best_lengths": 2897,
+          "long_prefix_positions": 131,
+          "max_best_length": 32,
+          "history_outside": 53
+        },
+        "Global": {
+          "extra_tokens": 239,
+          "covered": 226,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6240,
+          "long_prefix_positions": 212,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 475,
+          "covered": 226,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6240,
+          "long_prefix_positions": 212,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 239,
+          "covered": 225,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6208,
+          "long_prefix_positions": 211,
+          "max_best_length": 32,
+          "history_outside": 1
+        },
+        "Compiled": {
+          "extra_tokens": 239,
+          "covered": 233,
+          "prefix_positions": 234,
+          "sum_best_lengths": 6960,
+          "long_prefix_positions": 226,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 483,
+        "Structure": 0,
+        "Static": 378,
+        "Expanded": 483,
+        "Compiled": 483
+      }
+    },
+    {
+      "project_id": "confirm-schema-1",
+      "turn": 0,
+      "output_tokens": 278,
+      "request_sha256": "7a9b21bf039152a9ee94997fc40ec3798e0cc26efb9b3f0067ef18381279ea45",
+      "prompt_sha256": "c4e6217cc68a3107d98dbfb02a484a8d730151fcec4f59526480573fb34faa69",
+      "snapshot_id": "e8851f36ba78f0e483c0eb28d0b3e52c28aaf2e8bf714099a8f55dfdfa1a6913",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 1,
+          "text_sha256": "248836b05c94ec0b771da3e35390d0da6a44ff2870d5c8a2319ca4fe8b18f9fa"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": true,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 272,
+          "sum_best_lengths": 5,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 263
+        },
+        "Structure": {
+          "extra_tokens": 268,
+          "covered": 50,
+          "prefix_positions": 272,
+          "sum_best_lengths": 353,
+          "long_prefix_positions": 15,
+          "max_best_length": 10,
+          "history_outside": 213
+        },
+        "Static": {
+          "extra_tokens": 274,
+          "covered": 204,
+          "prefix_positions": 272,
+          "sum_best_lengths": 3406,
+          "long_prefix_positions": 155,
+          "max_best_length": 32,
+          "history_outside": 59
+        },
+        "Global": {
+          "extra_tokens": 277,
+          "covered": 263,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7424,
+          "long_prefix_positions": 249,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 551,
+          "covered": 263,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7424,
+          "long_prefix_positions": 249,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 277,
+          "covered": 263,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7424,
+          "long_prefix_positions": 249,
+          "max_best_length": 32,
+          "history_outside": 0
+        },
+        "Compiled": {
+          "extra_tokens": 277,
+          "covered": 271,
+          "prefix_positions": 272,
+          "sum_best_lengths": 8176,
+          "long_prefix_positions": 264,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 642,
+        "Structure": 120,
+        "Static": 495,
+        "Expanded": 642,
+        "Compiled": 642
+      }
+    },
+    {
+      "project_id": "confirm-schema-1",
+      "turn": 1,
+      "output_tokens": 278,
+      "request_sha256": "1e685ba2f1777d53eb785adcc2bc2802ea292935403a43af2ec60e3d0907d3b7",
+      "prompt_sha256": "35d6dd136cdc27d789d4d0f47282cfd6ec269af7865542eb0d0404dd77dad0d4",
+      "snapshot_id": "ec0c4ec703b444aa77553c6ec5b018e7a4064fe01c70d7899ec89a8af3edace7",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 11,
+          "text_sha256": "cfd4d17828e5206e3db5452463e32a605d03943ae00e068e785947d335870817"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": false,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 272,
+          "sum_best_lengths": 5,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 264
+        },
+        "Structure": {
+          "extra_tokens": 268,
+          "covered": 50,
+          "prefix_positions": 272,
+          "sum_best_lengths": 353,
+          "long_prefix_positions": 15,
+          "max_best_length": 10,
+          "history_outside": 214
+        },
+        "Static": {
+          "extra_tokens": 274,
+          "covered": 204,
+          "prefix_positions": 272,
+          "sum_best_lengths": 3406,
+          "long_prefix_positions": 155,
+          "max_best_length": 32,
+          "history_outside": 60
+        },
+        "Global": {
+          "extra_tokens": 277,
+          "covered": 264,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7456,
+          "long_prefix_positions": 250,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 551,
+          "covered": 264,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7456,
+          "long_prefix_positions": 250,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 277,
+          "covered": 263,
+          "prefix_positions": 272,
+          "sum_best_lengths": 7424,
+          "long_prefix_positions": 249,
+          "max_best_length": 32,
+          "history_outside": 1
+        },
+        "Compiled": {
+          "extra_tokens": 277,
+          "covered": 271,
+          "prefix_positions": 272,
+          "sum_best_lengths": 8176,
+          "long_prefix_positions": 264,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 642,
+        "Structure": 117,
+        "Static": 492,
+        "Expanded": 639,
+        "Compiled": 642
+      }
+    },
+    {
+      "project_id": "confirm-schema-2",
+      "turn": 0,
+      "output_tokens": 328,
+      "request_sha256": "3fbda694041172e9f20c8d3eaa4798fdf363c876948103edd64c74fe79d0f479",
+      "prompt_sha256": "19cad20cb84b6fe38b0ad2718ada2cd2c72f5a6524485c19d802c3405d91fbfb",
+      "snapshot_id": "c989542e565c2674edef6aa0f0519b99bf943bfa5065053bc0d3ff607e74ce8d",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 1,
+          "text_sha256": "f5741d5b1b7e2084523eab5aac48dcbf9688a537961e89f69a4e128c95ebbc45"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": true,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 322,
+          "sum_best_lengths": 6,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 313
+        },
+        "Structure": {
+          "extra_tokens": 317,
+          "covered": 0,
+          "prefix_positions": 322,
+          "sum_best_lengths": 150,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 313
+        },
+        "Static": {
+          "extra_tokens": 324,
+          "covered": 247,
+          "prefix_positions": 322,
+          "sum_best_lengths": 4265,
+          "long_prefix_positions": 191,
+          "max_best_length": 32,
+          "history_outside": 66
+        },
+        "Global": {
+          "extra_tokens": 327,
+          "covered": 313,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9024,
+          "long_prefix_positions": 299,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 651,
+          "covered": 313,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9024,
+          "long_prefix_positions": 299,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 327,
+          "covered": 313,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9024,
+          "long_prefix_positions": 299,
+          "max_best_length": 32,
+          "history_outside": 0
+        },
+        "Compiled": {
+          "extra_tokens": 327,
+          "covered": 321,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9776,
+          "long_prefix_positions": 314,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 744,
+        "Structure": 0,
+        "Static": 594,
+        "Expanded": 744,
+        "Compiled": 744
+      }
+    },
+    {
+      "project_id": "confirm-schema-2",
+      "turn": 1,
+      "output_tokens": 328,
+      "request_sha256": "7a587f709630e8529a9755f0d6b3820c0851cbcaf9cd0412d02d388c52cdbdcb",
+      "prompt_sha256": "9f8b86e9c96c0817e33a22d9ea83bf214916c5e7715fb5301c2e86e6b0a84bd1",
+      "snapshot_id": "d90d295862f54c1ca29fb4332791c4c81571df20c78d5415b2c1dc71932a1e54",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 11,
+          "text_sha256": "30ccdbd7cbc4c0b137a4db2522b8008e3403bf4906b1552405706e96aa5f723a"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": false,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 322,
+          "sum_best_lengths": 6,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 314
+        },
+        "Structure": {
+          "extra_tokens": 317,
+          "covered": 0,
+          "prefix_positions": 322,
+          "sum_best_lengths": 150,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 314
+        },
+        "Static": {
+          "extra_tokens": 324,
+          "covered": 247,
+          "prefix_positions": 322,
+          "sum_best_lengths": 4265,
+          "long_prefix_positions": 191,
+          "max_best_length": 32,
+          "history_outside": 67
+        },
+        "Global": {
+          "extra_tokens": 327,
+          "covered": 314,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9056,
+          "long_prefix_positions": 300,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 651,
+          "covered": 314,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9056,
+          "long_prefix_positions": 300,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 327,
+          "covered": 313,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9024,
+          "long_prefix_positions": 299,
+          "max_best_length": 32,
+          "history_outside": 1
+        },
+        "Compiled": {
+          "extra_tokens": 327,
+          "covered": 321,
+          "prefix_positions": 322,
+          "sum_best_lengths": 9776,
+          "long_prefix_positions": 314,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 744,
+        "Structure": 0,
+        "Static": 591,
+        "Expanded": 741,
+        "Compiled": 744
+      }
+    },
+    {
+      "project_id": "confirm-schema-3",
+      "turn": 0,
+      "output_tokens": 380,
+      "request_sha256": "b87056ba06826556980f25e4b5c49640afb535fcca515af0612f5020280ed9f5",
+      "prompt_sha256": "6dff00610127c94f9326bd17435815c00ba9b22348972eed3d3c5f888991028e",
+      "snapshot_id": "7a67c5ed1dfe595b2928d33ed8b7091c685f05c949ac14b642f50ea667ea8022",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 1,
+          "text_sha256": "bfc9ea1d2a1219b90c2a74dbce7d482e9982c2ea41d66facfa57b61d70854dd8"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": true,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 374,
+          "sum_best_lengths": 7,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 365
+        },
+        "Structure": {
+          "extra_tokens": 360,
+          "covered": 0,
+          "prefix_positions": 374,
+          "sum_best_lengths": 209,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 365
+        },
+        "Static": {
+          "extra_tokens": 376,
+          "covered": 292,
+          "prefix_positions": 374,
+          "sum_best_lengths": 5184,
+          "long_prefix_positions": 229,
+          "max_best_length": 32,
+          "history_outside": 73
+        },
+        "Global": {
+          "extra_tokens": 379,
+          "covered": 365,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10688,
+          "long_prefix_positions": 351,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 755,
+          "covered": 365,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10688,
+          "long_prefix_positions": 351,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 379,
+          "covered": 365,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10688,
+          "long_prefix_positions": 351,
+          "max_best_length": 32,
+          "history_outside": 0
+        },
+        "Compiled": {
+          "extra_tokens": 379,
+          "covered": 373,
+          "prefix_positions": 374,
+          "sum_best_lengths": 11440,
+          "long_prefix_positions": 366,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 837,
+        "Structure": 0,
+        "Static": 681,
+        "Expanded": 837,
+        "Compiled": 837
+      }
+    },
+    {
+      "project_id": "confirm-schema-3",
+      "turn": 1,
+      "output_tokens": 380,
+      "request_sha256": "e22ac5defd1a07b5fdb78aa1a93292f0a24d910ea67efe281f8f9543bf18ed38",
+      "prompt_sha256": "fd692ed7cc46432590efd089b1b471e4cb03bf96968ec2f452b3dcaa456302d3",
+      "snapshot_id": "cfc4301e968ab374aa7a980edacf9534ffc334d8388f7f6b1d1aa12ac84a8c9e",
+      "history": [
+        {
+          "record_id": "artifact",
+          "order": 11,
+          "text_sha256": "1fd403b63c91fba8eaf9d89f738c3524dff57d0e6cef4ef7ed82d4f7712b01cc"
+        }
+      ],
+      "compiled_text_exact": true,
+      "compiled_tokens_exact": true,
+      "compiled_semantic_exact": true,
+      "expanded_equals_history": false,
+      "expanded_semantic_exact": false,
+      "coverage": {
+        "Context": {
+          "extra_tokens": 0,
+          "covered": 0,
+          "prefix_positions": 374,
+          "sum_best_lengths": 7,
+          "long_prefix_positions": 0,
+          "max_best_length": 1,
+          "history_outside": 366
+        },
+        "Structure": {
+          "extra_tokens": 360,
+          "covered": 0,
+          "prefix_positions": 374,
+          "sum_best_lengths": 209,
+          "long_prefix_positions": 0,
+          "max_best_length": 7,
+          "history_outside": 366
+        },
+        "Static": {
+          "extra_tokens": 376,
+          "covered": 292,
+          "prefix_positions": 374,
+          "sum_best_lengths": 5184,
+          "long_prefix_positions": 229,
+          "max_best_length": 32,
+          "history_outside": 74
+        },
+        "Global": {
+          "extra_tokens": 379,
+          "covered": 366,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10720,
+          "long_prefix_positions": 352,
+          "max_best_length": 32
+        },
+        "StaticGlobal": {
+          "extra_tokens": 755,
+          "covered": 366,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10720,
+          "long_prefix_positions": 352,
+          "max_best_length": 32
+        },
+        "Expanded": {
+          "extra_tokens": 379,
+          "covered": 365,
+          "prefix_positions": 374,
+          "sum_best_lengths": 10688,
+          "long_prefix_positions": 351,
+          "max_best_length": 32,
+          "history_outside": 1
+        },
+        "Compiled": {
+          "extra_tokens": 379,
+          "covered": 373,
+          "prefix_positions": 374,
+          "sum_best_lengths": 11440,
+          "long_prefix_positions": 366,
+          "max_best_length": 32,
+          "history_outside": 0
+        }
+      },
+      "observed_r_tokens": {
+        "accepted": 840,
+        "Structure": 0,
+        "Static": 672,
+        "Expanded": 837,
+        "Compiled": 840
+      }
+    }
+  ],
+  "offline_seconds": 0.4859621000068728
+}
