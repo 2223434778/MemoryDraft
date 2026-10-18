@@ -1,0 +1,808 @@
+{
+  "schema": 1,
+  "origin": "new authored controlled fixtures; not natural production traffic",
+  "history_policy": "Both requests independently edit the supplied v1. No current output is written to history.",
+  "projects": [
+    {
+      "id": "parcel-queue",
+      "group": "local-edit",
+      "kind": "json",
+      "source": "{\n  \"service\": \"parcel-dispatch\",\n  \"queue_capacity\": 48,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\n",
+      "history": [
+        {
+          "user_id": "otv2-parcel-queue",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "{\n  \"service\": \"parcel-dispatch\",\n  \"queue_capacity\": 48,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "parcel-queue"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "parcel-queue:0",
+            "user_id": "otv2-parcel-queue",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only queue_capacity from 48 to 72.\n\nSOURCE BEGIN\n{\n  \"service\": \"parcel-dispatch\",\n  \"queue_capacity\": 48,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"queue_capacity\": 48",
+            "new": "\"queue_capacity\": 72"
+          },
+          "expected_text": "{\n  \"service\": \"parcel-dispatch\",\n  \"queue_capacity\": 72,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\n"
+        },
+        {
+          "request": {
+            "id": "parcel-queue:1",
+            "user_id": "otv2-parcel-queue",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Add the root field delivery_mode with value durable immediately after service.\n\nSOURCE BEGIN\n{\n  \"service\": \"parcel-dispatch\",\n  \"queue_capacity\": 48,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"service\": \"parcel-dispatch\",",
+            "new": "\"service\": \"parcel-dispatch\",\n  \"delivery_mode\": \"durable\","
+          },
+          "expected_text": "{\n  \"service\": \"parcel-dispatch\",\n  \"delivery_mode\": \"durable\",\n  \"queue_capacity\": 48,\n  \"consumer\": {\n    \"batch_size\": 12,\n    \"visibility_timeout_seconds\": 90,\n    \"retry\": {\n      \"attempts\": 4,\n      \"initial_delay_ms\": 250,\n      \"maximum_delay_ms\": 8000,\n      \"jitter\": true\n    }\n  },\n  \"dead_letter\": {\n    \"enabled\": true,\n    \"retention_days\": 14,\n    \"alert_after_messages\": 30\n  },\n  \"telemetry\": {\n    \"sample_rate\": 0.1,\n    \"include_payload\": false\n  }\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "artifact-store",
+      "group": "local-edit",
+      "kind": "python",
+      "source": "from pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"bundle.bin\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".pending\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\n",
+      "history": [
+        {
+          "user_id": "otv2-artifact-store",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "from pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"bundle.bin\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".pending\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "artifact-store"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "artifact-store:0",
+            "user_id": "otv2-artifact-store",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the default filename from bundle.bin to archive.dat.\n\nSOURCE BEGIN\nfrom pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"bundle.bin\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".pending\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "filename=\"bundle.bin\"",
+            "new": "filename=\"archive.dat\""
+          },
+          "expected_text": "from pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"archive.dat\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".pending\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\n"
+        },
+        {
+          "request": {
+            "id": "artifact-store:1",
+            "user_id": "otv2-artifact-store",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the temporary suffix from .pending to .staging.\n\nSOURCE BEGIN\nfrom pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"bundle.bin\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".pending\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "suffix + \".pending\"",
+            "new": "suffix + \".staging\""
+          },
+          "expected_text": "from pathlib import Path\nimport hashlib\n\n\ndef store_artifact(payload, directory, filename=\"bundle.bin\"):\n    \"\"\"Store one artifact and return its content digest.\"\"\"\n    directory = Path(directory)\n    directory.mkdir(parents=True, exist_ok=True)\n    destination = directory / filename\n    temporary = destination.with_suffix(destination.suffix + \".staging\")\n    temporary.write_bytes(payload)\n    digest = hashlib.sha256(payload).hexdigest()\n    temporary.replace(destination)\n    manifest = destination.with_suffix(destination.suffix + \".sha256\")\n    manifest.write_text(digest + \"  \" + filename + \"\\n\", encoding=\"utf-8\")\n    return {\"path\": str(destination), \"sha256\": digest, \"bytes\": len(payload)}\n"
+        }
+      ]
+    },
+    {
+      "id": "catalog-deploy",
+      "group": "local-edit",
+      "kind": "yaml",
+      "source": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.7\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\n",
+      "history": [
+        {
+          "user_id": "otv2-catalog-deploy",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.7\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "catalog-deploy"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "catalog-deploy:0",
+            "user_id": "otv2-catalog-deploy",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only replicas from 3 to 5.\n\nSOURCE BEGIN\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.7\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "replicas: 3",
+            "new": "replicas: 5"
+          },
+          "expected_text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 5\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.7\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\n"
+        },
+        {
+          "request": {
+            "id": "catalog-deploy:1",
+            "user_id": "otv2-catalog-deploy",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the container image tag from 1.7 to 1.8.\n\nSOURCE BEGIN\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.7\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "catalog:1.7",
+            "new": "catalog:1.8"
+          },
+          "expected_text": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: catalog-reader\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: catalog-reader\n  template:\n    metadata:\n      labels:\n        app: catalog-reader\n    spec:\n      containers:\n        - name: reader\n          image: registry.example/catalog:1.8\n          ports:\n            - containerPort: 8080\n          readinessProbe:\n            httpGet:\n              path: /ready\n              port: 8080\n            periodSeconds: 5\n          resources:\n            requests:\n              cpu: 250m\n              memory: 256Mi\n"
+        }
+      ]
+    },
+    {
+      "id": "payment-runbook",
+      "group": "local-edit",
+      "kind": "markdown",
+      "source": "# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-2\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\n",
+      "history": [
+        {
+          "user_id": "otv2-payment-runbook",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-2\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "payment-runbook"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "payment-runbook:0",
+            "user_id": "otv2-payment-runbook",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the severity from SEV-2 to SEV-1.\n\nSOURCE BEGIN\n# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-2\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "Severity: SEV-2",
+            "new": "Severity: SEV-1"
+          },
+          "expected_text": "# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-1\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\n"
+        },
+        {
+          "request": {
+            "id": "payment-runbook:1",
+            "user_id": "otv2-payment-runbook",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Insert 'Region: eu-west' on a new line immediately after the Owner line.\n\nSOURCE BEGIN\n# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-2\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "Owner: payments-platform\n",
+            "new": "Owner: payments-platform\nRegion: eu-west\n"
+          },
+          "expected_text": "# Payment queue recovery\n\nOwner: payments-platform\nRegion: eu-west\nSeverity: SEV-2\n\n## Establish scope\n1. Record the first alert timestamp and affected region.\n2. Compare queue depth with the previous fifteen minutes.\n3. Confirm that the producer error rate remains below one percent.\n\n## Restore consumers\n1. Pause the scheduled backfill before changing replica counts.\n2. Restart one consumer and wait for its readiness check.\n3. Increase capacity only after the oldest message age decreases.\n\n## Validate recovery\n1. Verify that the dead-letter queue is not growing.\n2. Keep the incident open for two complete sampling intervals.\n3. Record the final backlog size and link the dashboard snapshot.\n"
+        }
+      ]
+    },
+    {
+      "id": "worker-pools",
+      "group": "ambiguity",
+      "kind": "json",
+      "source": "{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 6, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\n",
+      "history": [
+        {
+          "user_id": "otv2-worker-pools",
+          "record_id": "distractor-0",
+          "order": 1,
+          "text": "{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 5, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "worker-pools"
+        },
+        {
+          "user_id": "otv2-worker-pools",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 6, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "worker-pools"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "worker-pools:0",
+            "user_id": "otv2-worker-pools",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the transform pool workers from 6 to 9.\n\nSOURCE BEGIN\n{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 6, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"transform\", \"workers\": 6",
+            "new": "\"transform\", \"workers\": 9"
+          },
+          "expected_text": "{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 9, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\n"
+        },
+        {
+          "request": {
+            "id": "worker-pools:1",
+            "user_id": "otv2-worker-pools",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the ingest pool delay_ms from 100 to 180.\n\nSOURCE BEGIN\n{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 6, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 100",
+            "new": "\"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 180"
+          },
+          "expected_text": "{\n  \"pools\": [\n    {\"name\": \"ingest\", \"workers\": 4, \"policy\": {\"attempts\": 3, \"delay_ms\": 180, \"overflow\": \"park\"}},\n    {\"name\": \"transform\", \"workers\": 6, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"reject\"}},\n    {\"name\": \"export\", \"workers\": 2, \"policy\": {\"attempts\": 3, \"delay_ms\": 100, \"overflow\": \"spill\"}}\n  ],\n  \"shutdown\": {\"drain\": true, \"timeout_seconds\": 45},\n  \"accounting\": {\"labels\": [\"tenant\", \"pool\"], \"interval_seconds\": 20}\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "tiered-reader",
+      "group": "ambiguity",
+      "kind": "python",
+      "source": "def read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=10):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=10):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\n",
+      "history": [
+        {
+          "user_id": "otv2-tiered-reader",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "def read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=10):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=10):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "tiered-reader"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "tiered-reader:0",
+            "user_id": "otv2-tiered-reader",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only read_replica's default timeout from 10 to 18.\n\nSOURCE BEGIN\ndef read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=10):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=10):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "read_replica(client, key, timeout=10)",
+            "new": "read_replica(client, key, timeout=18)"
+          },
+          "expected_text": "def read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=18):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=10):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\n"
+        },
+        {
+          "request": {
+            "id": "tiered-reader:1",
+            "user_id": "otv2-tiered-reader",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only read_archive's default timeout from 10 to 25.\n\nSOURCE BEGIN\ndef read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=10):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=10):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "read_archive(client, key, timeout=10)",
+            "new": "read_archive(client, key, timeout=25)"
+          },
+          "expected_text": "def read_primary(client, key, timeout=10):\n    response = client.get(\"/primary/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"primary\", \"value\": data[\"value\"], \"revision\": data[\"revision\"]}\n\n\ndef read_replica(client, key, timeout=10):\n    response = client.get(\"/replica/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"replica\", \"value\": data[\"value\"], \"lag_ms\": data[\"lag_ms\"]}\n\n\ndef read_archive(client, key, timeout=25):\n    response = client.get(\"/archive/\" + key, timeout=timeout)\n    response.raise_for_status()\n    data = response.json()\n    return {\"source\": \"archive\", \"value\": data[\"value\"], \"checksum\": data[\"checksum\"]}\n"
+        }
+      ]
+    },
+    {
+      "id": "gateway-routes",
+      "group": "ambiguity",
+      "kind": "yaml",
+      "source": "routes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v4\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\n",
+      "history": [
+        {
+          "user_id": "otv2-gateway-routes",
+          "record_id": "distractor-0",
+          "order": 1,
+          "text": "routes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v1\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "gateway-routes"
+        },
+        {
+          "user_id": "otv2-gateway-routes",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "routes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v4\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "gateway-routes"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "gateway-routes:0",
+            "user_id": "otv2-gateway-routes",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the silver route timeout_ms from 900 to 1200.\n\nSOURCE BEGIN\nroutes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v4\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "backend: silver-v3\n    timeout_ms: 900",
+            "new": "backend: silver-v3\n    timeout_ms: 1200"
+          },
+          "expected_text": "routes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 1200\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v4\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\n"
+        },
+        {
+          "request": {
+            "id": "gateway-routes:1",
+            "user_id": "otv2-gateway-routes",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the gold route backend from gold-v4 to gold-v5.\n\nSOURCE BEGIN\nroutes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v4\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "backend: gold-v4",
+            "new": "backend: gold-v5"
+          },
+          "expected_text": "routes:\n  - name: bronze\n    match: /bronze\n    backend: bronze-v2\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: bronze\n  - name: silver\n    match: /silver\n    backend: silver-v3\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: silver\n  - name: gold\n    match: /gold\n    backend: gold-v5\n    timeout_ms: 900\n    retry:\n      attempts: 2\n      backoff_ms: 80\n    headers:\n      x-tier: gold\n"
+        }
+      ]
+    },
+    {
+      "id": "cache-operations",
+      "group": "ambiguity",
+      "kind": "markdown",
+      "source": "# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: catalog\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\n",
+      "history": [
+        {
+          "user_id": "otv2-cache-operations",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: catalog\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "cache-operations"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "cache-operations:0",
+            "user_id": "otv2-cache-operations",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the Write cache TTL from 60 to 90 seconds.\n\nSOURCE BEGIN\n# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: catalog\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "Owner: ingestion\nTTL: 60 seconds",
+            "new": "Owner: ingestion\nTTL: 90 seconds"
+          },
+          "expected_text": "# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 90 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: catalog\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\n"
+        },
+        {
+          "request": {
+            "id": "cache-operations:1",
+            "user_id": "otv2-cache-operations",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the Metadata cache owner from catalog to metadata-platform.\n\nSOURCE BEGIN\n# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: catalog\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "Owner: catalog",
+            "new": "Owner: metadata-platform"
+          },
+          "expected_text": "# Cache operations\n\n## Read cache\nOwner: serving\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect evictions and confirm that latency recovers.\nEscalation: serving-oncall\n\n## Write cache\nOwner: ingestion\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect retries and confirm that queue depth recovers.\nEscalation: ingestion-oncall\n\n## Metadata cache\nOwner: metadata-platform\nTTL: 60 seconds\nBefore changing capacity, record the current hit rate and memory usage.\nAfter changing capacity, inspect refresh errors and confirm that freshness recovers.\nEscalation: catalog-oncall\n"
+        }
+      ]
+    },
+    {
+      "id": "format-conversion",
+      "group": "control",
+      "kind": "json-format",
+      "source": "{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\n",
+      "history": [
+        {
+          "user_id": "otv2-format-conversion",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "format-conversion"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "format-conversion:0",
+            "user_id": "otv2-format-conversion",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Reformat this JSON with exactly two spaces of indentation, preserving key order and values, and a final newline.\n\nSOURCE BEGIN\n{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\n",
+            "new": "{\n  \"region\": \"north\",\n  \"limits\": {\n    \"read\": 80,\n    \"write\": 25\n  },\n  \"retry\": {\n    \"attempts\": 3,\n    \"delay_ms\": 150\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"fields\": [\n      \"actor\",\n      \"action\",\n      \"resource\",\n      \"timestamp\"\n    ]\n  }\n}\n"
+          },
+          "expected_text": "{\n  \"region\": \"north\",\n  \"limits\": {\n    \"read\": 80,\n    \"write\": 25\n  },\n  \"retry\": {\n    \"attempts\": 3,\n    \"delay_ms\": 150\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"fields\": [\n      \"actor\",\n      \"action\",\n      \"resource\",\n      \"timestamp\"\n    ]\n  }\n}\n"
+        },
+        {
+          "request": {
+            "id": "format-conversion:1",
+            "user_id": "otv2-format-conversion",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Reformat this JSON with exactly four spaces of indentation, preserving key order and values, and a final newline.\n\nSOURCE BEGIN\n{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "{\"region\":\"north\",\"limits\":{\"read\":80,\"write\":25},\"retry\":{\"attempts\":3,\"delay_ms\":150},\"audit\":{\"enabled\":true,\"fields\":[\"actor\",\"action\",\"resource\",\"timestamp\"]}}\n",
+            "new": "{\n    \"region\": \"north\",\n    \"limits\": {\n        \"read\": 80,\n        \"write\": 25\n    },\n    \"retry\": {\n        \"attempts\": 3,\n        \"delay_ms\": 150\n    },\n    \"audit\": {\n        \"enabled\": true,\n        \"fields\": [\n            \"actor\",\n            \"action\",\n            \"resource\",\n            \"timestamp\"\n        ]\n    }\n}\n"
+          },
+          "expected_text": "{\n    \"region\": \"north\",\n    \"limits\": {\n        \"read\": 80,\n        \"write\": 25\n    },\n    \"retry\": {\n        \"attempts\": 3,\n        \"delay_ms\": 150\n    },\n    \"audit\": {\n        \"enabled\": true,\n        \"fields\": [\n            \"actor\",\n            \"action\",\n            \"resource\",\n            \"timestamp\"\n        ]\n    }\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "empty-history",
+      "group": "control",
+      "kind": "toml",
+      "source": "[storage]\nengine = \"local\"\ndirectory = \"/var/lib/ledger\"\nsync_on_commit = true\ncheckpoint_records = 500\n\n[rotation]\nmax_segment_mb = 64\nretain_segments = 8\ncompress_closed_segments = true\n\n[verification]\nchecksum = \"sha256\"\nverify_on_open = true\nrepair_partial_tail = false\n",
+      "history": [],
+      "requests": [
+        {
+          "request": {
+            "id": "empty-history:0",
+            "user_id": "otv2-empty-history",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only checkpoint_records from 500 to 750.\n\nSOURCE BEGIN\n[storage]\nengine = \"local\"\ndirectory = \"/var/lib/ledger\"\nsync_on_commit = true\ncheckpoint_records = 500\n\n[rotation]\nmax_segment_mb = 64\nretain_segments = 8\ncompress_closed_segments = true\n\n[verification]\nchecksum = \"sha256\"\nverify_on_open = true\nrepair_partial_tail = false\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "checkpoint_records = 500",
+            "new": "checkpoint_records = 750"
+          },
+          "expected_text": "[storage]\nengine = \"local\"\ndirectory = \"/var/lib/ledger\"\nsync_on_commit = true\ncheckpoint_records = 750\n\n[rotation]\nmax_segment_mb = 64\nretain_segments = 8\ncompress_closed_segments = true\n\n[verification]\nchecksum = \"sha256\"\nverify_on_open = true\nrepair_partial_tail = false\n"
+        },
+        {
+          "request": {
+            "id": "empty-history:1",
+            "user_id": "otv2-empty-history",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only retain_segments from 8 to 12.\n\nSOURCE BEGIN\n[storage]\nengine = \"local\"\ndirectory = \"/var/lib/ledger\"\nsync_on_commit = true\ncheckpoint_records = 500\n\n[rotation]\nmax_segment_mb = 64\nretain_segments = 8\ncompress_closed_segments = true\n\n[verification]\nchecksum = \"sha256\"\nverify_on_open = true\nrepair_partial_tail = false\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "retain_segments = 8",
+            "new": "retain_segments = 12"
+          },
+          "expected_text": "[storage]\nengine = \"local\"\ndirectory = \"/var/lib/ledger\"\nsync_on_commit = true\ncheckpoint_records = 500\n\n[rotation]\nmax_segment_mb = 64\nretain_segments = 12\ncompress_closed_segments = true\n\n[verification]\nchecksum = \"sha256\"\nverify_on_open = true\nrepair_partial_tail = false\n"
+        }
+      ]
+    },
+    {
+      "id": "unrelated-history",
+      "group": "control",
+      "kind": "markdown",
+      "source": "# Search index maintenance\n\nStart by checking the replication delay for every index shard.\nFreeze scheduled rebuilds before taking a consistent snapshot.\nCopy the snapshot manifest to the verification directory.\nValidate the document count against the last completed checkpoint.\nResume rebuilds only after every shard reports a healthy status.\nRetain the previous snapshot until the next successful verification.\n",
+      "history": [
+        {
+          "user_id": "otv2-unrelated-history",
+          "record_id": "distractor-0",
+          "order": 1,
+          "text": "Recipe: steep green tea for two minutes, then remove the leaves.\nRecipe: steep green tea for two minutes, then remove the leaves.\nRecipe: steep green tea for two minutes, then remove the leaves.\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "unrelated-history"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "unrelated-history:0",
+            "user_id": "otv2-unrelated-history",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only 'verification directory' to 'audit directory'.\n\nSOURCE BEGIN\n# Search index maintenance\n\nStart by checking the replication delay for every index shard.\nFreeze scheduled rebuilds before taking a consistent snapshot.\nCopy the snapshot manifest to the verification directory.\nValidate the document count against the last completed checkpoint.\nResume rebuilds only after every shard reports a healthy status.\nRetain the previous snapshot until the next successful verification.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "verification directory",
+            "new": "audit directory"
+          },
+          "expected_text": "# Search index maintenance\n\nStart by checking the replication delay for every index shard.\nFreeze scheduled rebuilds before taking a consistent snapshot.\nCopy the snapshot manifest to the audit directory.\nValidate the document count against the last completed checkpoint.\nResume rebuilds only after every shard reports a healthy status.\nRetain the previous snapshot until the next successful verification.\n"
+        },
+        {
+          "request": {
+            "id": "unrelated-history:1",
+            "user_id": "otv2-unrelated-history",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only 'next successful verification' to 'next weekly audit'.\n\nSOURCE BEGIN\n# Search index maintenance\n\nStart by checking the replication delay for every index shard.\nFreeze scheduled rebuilds before taking a consistent snapshot.\nCopy the snapshot manifest to the verification directory.\nValidate the document count against the last completed checkpoint.\nResume rebuilds only after every shard reports a healthy status.\nRetain the previous snapshot until the next successful verification.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "next successful verification",
+            "new": "next weekly audit"
+          },
+          "expected_text": "# Search index maintenance\n\nStart by checking the replication delay for every index shard.\nFreeze scheduled rebuilds before taking a consistent snapshot.\nCopy the snapshot manifest to the verification directory.\nValidate the document count against the last completed checkpoint.\nResume rebuilds only after every shard reports a healthy status.\nRetain the previous snapshot until the next weekly audit.\n"
+        }
+      ]
+    },
+    {
+      "id": "short-settings",
+      "group": "control",
+      "kind": "text",
+      "source": "status=ready\nworkers=4\nregion=east\n",
+      "history": [
+        {
+          "user_id": "otv2-short-settings",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "status=ready\nworkers=4\nregion=east\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "short-settings"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "short-settings:0",
+            "user_id": "otv2-short-settings",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only workers from 4 to 6.\n\nSOURCE BEGIN\nstatus=ready\nworkers=4\nregion=east\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "workers=4",
+            "new": "workers=6"
+          },
+          "expected_text": "status=ready\nworkers=6\nregion=east\n"
+        },
+        {
+          "request": {
+            "id": "short-settings:1",
+            "user_id": "otv2-short-settings",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only region from east to west.\n\nSOURCE BEGIN\nstatus=ready\nworkers=4\nregion=east\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "region=east",
+            "new": "region=west"
+          },
+          "expected_text": "status=ready\nworkers=4\nregion=west\n"
+        }
+      ]
+    }
+  ]
+}

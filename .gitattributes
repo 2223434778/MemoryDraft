@@ -79,3 +79,9 @@ docs/OT_R*.md text eol=lf
 results/ot-r/** -text
 results/ot-r/*.json whitespace=cr-at-eol
 results/ot-r/*.log -whitespace
+
+memorydraft/evaluation/transport_validation.py text eol=lf
+data/research/ot-validation/** -text
+results/ot-validation/** -text
+results/ot-validation/*.json whitespace=cr-at-eol
+results/ot-validation/*.log -whitespace

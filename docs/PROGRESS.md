@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-18 — OT-R新场景验证（运行前冻结）
+
+- 用户授权开展上一轮提出的24新请求验证。新增12个作者编写的受控项目，每项目两次独立v1修订，分local-edit/ambiguity/control各4项目；不是自然生产流量或12个真实外部仓库。24请求、13条合法旧记录，未生成Target答案、没有把新答案写入历史。
+- `python -m scripts.make_transport_validation --output data/research/ot-validation/cases.json`已导出固定任务，SHA`6dea703af88c9e428d130dd967d81a21662713acac77f50dff97531a1c34e802`。保留全部当前源文及明确编辑指令，expected_text只用于任务评分，不进入检索。512预算、24新AR、四组两重复共192计时；原OT/edit参数、Target输入/验证保持固定。
+- 协议`OT_R_VALIDATION_PROTOCOL.md`在输出前冻结：适用候选组至少5%优于Suffix、2%优于Edit，分别3/4项目更快，8/8任务正确且无截断，才通过继续投入工程门槛；区间单独报告，不当统计显著性。先测试/audit，再部署隔离研究目录。默认suffix、面试分支/标签/main及服务器infra-v0.3均不改。
+- 本机新评测审计21 passed；完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-ot-validation-full --junitxml=artifacts/ot-validation-tests-full-local.xml`为204 passed/3 skipped（21.92s）。最初一项测试把Python tuple直接与JSON list比较而失败，规范化比较后通过，任务文件未改。首轮相关44项中其余43项当时已通过。原Starlette multipart弃用提示未改。运行脚本另在首个严格分歧保存failure.json并停止；启动时核验首轮全部package文件保持原SHA。
+
 ## 2026-10-18 — 独立保存 infra 并接入 OT-R（首轮完成）
 
 - A6000 PID1622185已结束，两GPU恢复19MiB/0%。10/10新AR与旧token/prompt/snapshot一致，独立耗时130.186340s；随后80/80配对计时全部严格一致。旧JSON：DFlash28.028885s、Suffix-R22.584828s、Edit-R22.479903s、OT-R22.171767s；OT比Suffix降低1.83%、比edit降低1.37%。收益集中在事后拆分的confirm-schema-0（两请求各两重复）：4.759366→4.320043s、-9.23%；其余三项目没有明确改善。不能把已看过数据上的子组当独立确认。
