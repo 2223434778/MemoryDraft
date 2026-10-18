@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-18 — 公开CI配置修订回放（实现与运行准备）
+
+- 用户授权进入真实项目工作负载。新增采集器、`evaluation/config_revisions.py`、`run_config_revisions.py`、离线审计报告和测试。固定6开发/12确认仓库、2025-09-01之前三版同一工作流及两轮修改，新增diff边界；这是公开项目衍生编辑API回放，不冒称自然用户对话。
+- 全部18项目已冻结；数据SHA256 `944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e`。未按模型结果选取文件。API限流/服务器读取超时通过已连接GitHub只读工具缓存公开响应解决，保留原规则和跳过候选；手动复核mypy MIT/NumPy BSD三条款及scikit-learn COPYING，保留完整许可。Starlette同仓库ID迁移记录为Kludex/starlette。
+- 初始用户文件与模型回答分开记录；后续真实仓库状态作为显式外部版本更新。Global增加显式授权用户文件选项，默认索引仍只读assistant。每条方法/重复独立SQLite，库创建、文件更新、冷索引、前向、缓存恢复、解码和写回计时；未来输出仅用于评分。
+- 最相关基线锁定Apache-2.0 ArcticInference@aca5d9a8a62474035c15d114d40a01abc8c94b51的官方线性后缀候选组件，接入相同严格验证循环，非完整vLLM/树系统。源码七文件SHA与许可已保存。服务器`.venv-dflash`安装nanobind2.7.0；默认g++9缺少C++20 span，改用已有clang++15及官方CMake后成功构建，直接接续查询通过，未改系统环境或上游算法。
+- 运行前协议 `CONFIG_REVISIONS_PROTOCOL.md`；开发计划90次、确认540次。此条仅为实现/数据/构建状态，尚无本轮GPU结果。实际推理命令、源码SHA和结果将在阶段完成后补充。
+
 ## 2026-10-18 — R/DFlash 接入、场景开发与独立小规模确认（完成）
 
 - 用户授权实现并运行。新增 `backends/dflash_reuse.py`，薄适配已审计 MIT DFlash 循环，复用模型前向/严格最长前缀验证/KV裁剪；支持连续R后累计有效Target特征并在回切时补齐，设待消费缓冲门槛。

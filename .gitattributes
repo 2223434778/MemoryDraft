@@ -14,3 +14,10 @@ results/reuse-pilot-lookup-failure/** -text
 docs/REUSE_PILOT_RESULTS.md text eol=lf
 results/reuse-confirmation/** -text
 docs/REUSE_CONFIRMATION_RESULTS.md text eol=lf
+data/research/config-revisions/** -text
+configs/suffix-manifest.json -text
+docs/third_party/ARCTIC_SUFFIX_LICENSE.txt -text
+results/config-revisions-development/** -text
+results/config-revisions-confirmation/** -text
+docs/CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md text eol=lf
+docs/CONFIG_REVISIONS_CONFIRMATION_RESULTS.md text eol=lf

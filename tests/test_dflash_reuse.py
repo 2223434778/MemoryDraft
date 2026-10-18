@@ -112,6 +112,25 @@ def test_pending_feature_limit_forces_real_draft_catchup(tiny):
     assert result.feature_peak_tokens <= 6 + 5
 
 
+def test_official_arctic_candidates_with_real_target(tiny):
+    from pathlib import Path
+    from memorydraft.retrieval.arctic import ArcticMatcher
+
+    directory = Path(__file__).resolve().parents[1] / "models/arctic-suffix-audit"
+    if not list(directory.glob("arctic_inference/suffix_decoding/_C*.so")):
+        pytest.skip("Official Linux C++ candidate component not built in this environment")
+
+    class Tokenizer(IntegerTokenizer):
+        all_special_ids = []
+
+    text = " ".join(map(str, tiny.reference[0, tiny.ids.shape[1]:].tolist()))
+    snapshot = Snapshot("toy", 10, (MemoryEvent("toy", "artifact", 1, text),))
+    matcher = ArcticMatcher(snapshot, Tokenizer(), "3 4 5 6", directory=directory)
+    result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29, matcher=matcher)
+    assert result.sequences.tolist() == tiny.reference.tolist()
+    assert {event["route"] for event in result.rounds} == {"R", "D"}
+
+
 def test_cursor_realigns_after_one_changed_token_and_stays_in_snapshot():
     snapshot = Snapshot("u", 10, (MemoryEvent("u", "old", 1, "1 2 3 4 5 6 7 8 9 10 11 12"),
                                   MemoryEvent("u", "special", 2, "20 21 31 22 23")))

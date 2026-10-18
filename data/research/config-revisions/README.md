@@ -1,0 +1,13 @@
+# Public CI revision replay
+
+These are **public-project-derived editor tasks**, not natural user conversations or production traces. The source files and changes are real; the request wrapper and full-file/diff output contracts are specified by this experiment. Do not execute the included workflow contents.
+
+`projects.json` freezes 18 repositories, three versions of one workflow per repository, two consecutive edits, source commit URLs, UTC dates, content SHA-256 hashes, and rejected candidates. Six repositories are development and twelve are confirmation. The cutoff is 2025-09-01 UTC. Selection is independent of model output or timing: recent modified workflow, deterministic filename ordering, 300–6000 bytes and 12–180 lines per version. No repository is replaced based on performance.
+
+The initial artifact is an externally supplied **user file**, not an assistant answer. The target prompt contains the old file and the requested patch. Expected new files are scoring labels and are never retrieval candidates for that request. Later repository versions represent explicit external application state updates; they do not imply the model completed an earlier request correctly. Earlier finalized model responses are separate, versioned assistant records.
+
+Reproduction: `python -m scripts.prepare_config_revisions` performs explicit public network acquisition and caches responses under ignored `data/raw/config-revisions`. `--offline` uses only cached exact-text responses. API responses may be populated through the connected GitHub reader when direct unauthenticated access is limited. Existing frozen data cannot be silently overwritten. Network access is unnecessary during evaluation.
+
+Every copied file retains its original text inside the JSON representation. Diffs and request wrappers are derived by MemoryDraft; they are not upstream patches or user instructions verbatim. Original copyright and license notices are retained in `licenses/`, with repository/revision/SPDX provenance in each project. Mypy and NumPy required manual inspection because GitHub reported NOASSERTION; the recorded reviews identify the applicable MIT/BSD notices. Starlette's verified repository ID is 138597372; the historical name encode/starlette redirects to Kludex/starlette.
+
+See `docs/CONFIG_REVISIONS_PROTOCOL.md` for controls, complete online costs, strict correctness rules, quality checks, and scope limitations. Small-file CI maintenance with a provided unified diff does not represent arbitrary code editing, natural-language requests, deployment validation, or long-term user memory.

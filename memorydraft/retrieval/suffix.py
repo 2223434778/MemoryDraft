@@ -24,7 +24,8 @@ class PositionedMatch:
 
 
 class SuffixArrayIndex:
-    def __init__(self, snapshot, tokenizer, min_match=3, max_match=32, *, prompt_text=None):
+    def __init__(self, snapshot, tokenizer, min_match=3, max_match=32, *, prompt_text=None,
+                 include_user_records=False):
         from pydivsufsort import divsufsort
 
         if not 1 <= min_match <= max_match:
@@ -35,8 +36,8 @@ class SuffixArrayIndex:
         special = set(tokenizer.all_special_ids)
         texts = []
         for record in snapshot.records:
-            # User text requires an explicit quotation policy; start with finalized assistant text.
-            if record.source_role != "assistant":
+            # User files require the caller's explicit quotation policy; default to assistant text.
+            if record.source_role != "assistant" and not include_user_records:
                 continue
             texts.append((record.record_id, record.text))
         if prompt_text is not None:

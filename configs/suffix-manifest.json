@@ -1,0 +1,36 @@
+{
+  "repository": "https://github.com/snowflakedb/ArcticInference",
+  "revision": "aca5d9a8a62474035c15d114d40a01abc8c94b51",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "filename": "LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "filename": "arctic_inference/suffix_decoding/cache.py",
+      "sha256": "91c48e6cb335edbd202c8f440e5766df54315ea2d8e40decf8f7a130f3a5e126"
+    },
+    {
+      "filename": "csrc/suffix_decoding/CMakeLists.txt",
+      "sha256": "d0ba0a52b33dc97466f3fe17a2f0207c7e6e3e2cf8b42409e99c3d12ecf13ff2"
+    },
+    {
+      "filename": "csrc/suffix_decoding/bindings.cc",
+      "sha256": "4fbc28596b4cdfa898e3341468fc6debed5a33bb4d9df37566907071ae60f41d"
+    },
+    {
+      "filename": "csrc/suffix_decoding/int32_map.h",
+      "sha256": "49fd3c8ffb900630f145958211d2e121a3347583ef4cf42910572ad2166e54ef"
+    },
+    {
+      "filename": "csrc/suffix_decoding/suffix_tree.cc",
+      "sha256": "cbd8b63b13fbf0beaab4e8736a54d52891b1aac959c5d292d083d88ed37dfc7c"
+    },
+    {
+      "filename": "csrc/suffix_decoding/suffix_tree.h",
+      "sha256": "d3c9a51fc57a974d680510bee8cfb1ba0a6f5ce6c582ed472cb5ef975b2f5aec"
+    }
+  ],
+  "adaptation": "Unmodified C++/cache.py; empty package initializers; standalone CMake build"
+}

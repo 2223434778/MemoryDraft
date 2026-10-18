@@ -1,0 +1,21 @@
+{
+  "projects.json": "944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e",
+  "licenses/astral-sh--ruff.txt": "3209c0b7fb7257c05b16433728c1e974bac40000fef171b8e9e89f095623c954",
+  "licenses/encode--httpx.txt": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+  "licenses/encode--starlette.txt": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf",
+  "licenses/fastapi--fastapi.txt": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+  "licenses/numpy--numpy.txt": "1be1df33863f97a7bc1c4d67980bd6c69c9a6fef0a5ee76e6ad6cb91e56e8491",
+  "licenses/pallets--click.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+  "licenses/pallets--flask.txt": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+  "licenses/pandas-dev--pandas.txt": "418e798a8d794d913ceb8a065117c1e5425763bf060c3333e30488898b7df2f1",
+  "licenses/pre-commit--pre-commit.txt": "ea2ca27cba7cc35822d95a46d59bcd3cc88e196592e6390d1949a359ffc990e8",
+  "licenses/psf--black.txt": "9c0428f0c3b4779850cf5bd96e11aaa8afc72d4a86d4a36223d7aba2e58d6e00",
+  "licenses/psf--requests.txt": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+  "licenses/pydantic--pydantic.txt": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3",
+  "licenses/pytest-dev--pytest.txt": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
+  "licenses/python--mypy.txt": "de341f6e031d021aab9eb27bdf713cc6fb844dee832ef3bcd4688bff5517220b",
+  "licenses/python-poetry--poetry.txt": "1786f071a510648a24695f295117f02bae0bbf0fb7c6730aafe9c93a3e4bf7ee",
+  "licenses/scikit-learn--scikit-learn.txt": "75684d16f4662ab842ed5af9482ac01939aee83c8243d89993616d959d3053f8",
+  "licenses/scipy--scipy.txt": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+  "licenses/Textualize--rich.txt": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15"
+}
