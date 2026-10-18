@@ -66,7 +66,7 @@ def main():
     repeats = 1 if args.split == "development" else 3
     out.mkdir(parents=True)
     (out / "stores").mkdir()
-    provenance = dict(status="started", split=args.split, repeats=repeats, methods=METHODS_BY_MODE,
+    provenance = dict(status="started", split=args.split, repeats=repeats, methods=METHODS_BY_MODE, quality_version=2,
                       config=asdict(ReuseConfig()), budget_full=3072, budget_diff=768,
                       source=json.loads((ROOT / "SOURCE_MANIFEST.json").read_text()),
                       data_sha256=hashlib.sha256((DATA / "projects.json").read_bytes()).hexdigest(),

@@ -10,7 +10,7 @@ from pathlib import Path
 from memorydraft.evaluation.config_revisions import (METHODS_BY_MODE, answer_event, load_projects,
                                                      quality, working_event)
 from memorydraft.memory.store import Snapshot
-from scripts.run_config_revisions import summaries
+from scripts.run_config_revisions import save, summaries
 from scripts.write_reuse_report import ratio_interval, read
 
 
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/research/config-revisions"
 
 
-def audit(projects, references, rows, *, repeats):
+def audit(projects, references, rows, *, repeats, quality_version=2):
     definitions = {p["id"]: p for p in projects}
     keys = {(p["id"], mode, turn) for p in projects for mode in METHODS_BY_MODE
             for turn in range(2 if mode == "full" else 1)}
@@ -36,7 +36,7 @@ def audit(projects, references, rows, *, repeats):
         snapshot = Snapshot(project_id + ":" + mode, order, tuple(sorted(events, key=lambda event: event.record_id)))
         if reference["snapshot_id"] != snapshot.snapshot_id or reference["order"] != order:
             raise ValueError("Reference used a future, cross-user or incorrect file/answer version")
-        if reference["quality"] != quality(reference["text"], project, turn, mode):
+        if reference["quality"] != quality(reference["text"], project, turn, mode, version=quality_version):
             raise ValueError("Task completion does not reproduce")
     seen = set()
     for row in rows:
@@ -76,9 +76,24 @@ def write_report(source: Path, output: Path):
     if projects != json.loads((source / "projects.json").read_text(encoding="utf-8")):
         raise ValueError("Project selection changed")
     references, rows = read(source / "references.jsonl"), read(source / "replay.jsonl")
-    summary = audit(projects, references, rows, repeats=provenance["repeats"])
+    recorded_quality_version = provenance.get("quality_version", 1)
+    summary = audit(projects, references, rows, repeats=provenance["repeats"], quality_version=recorded_quality_version)
     if summary != json.loads((source / "summary.json").read_text()):
         raise ValueError("Summary does not reproduce")
+    definitions = {p["id"]: p for p in projects}
+    corrected_references = [dict(r, quality=quality(r["text"], definitions[r["project_id"]], r["turn"], r["mode"]))
+                            for r in references]
+    corrections = [dict(project_id=old["project_id"], mode=old["mode"], turn=old["turn"],
+                        recorded=old["quality"], corrected=new["quality"])
+                   for old, new in zip(references, corrected_references) if old["quality"] != new["quality"]]
+    if recorded_quality_version == 1:
+        result = dict(recorded_quality_version=1, quality_version=2, reason="Append missing terminal LF before git apply; no output or timing changes",
+                      runtime_source_sha256=provenance["source"]["source_sha256"], corrections=corrections)
+        path = source / "quality-v2.json"
+        if path.exists() and json.loads(path.read_text(encoding="utf-8")) != result:
+            raise ValueError("Quality correction evidence changed")
+        save(path, result)
+    references = corrected_references
     full = [r for r in rows if r["mode"] == "full"]
     label_full = [r for r in references if r["mode"] == "full"]
     label_diff = [r for r in references if r["mode"] == "diff"]
@@ -114,6 +129,8 @@ def write_report(source: Path, output: Path):
               f"参考输出达到预算 {sum(r['budget_hit'] for r in references)}/{len(references)}；所有计时达到预算 "
               f"{sum(r['budget_hit'] for r in rows)}/{len(rows)}。任务检查在计时外进行，不删除失败样本。",
               "YAML结构相等不保证注释/文本保留；不执行工作流，不声明CI或部署测试通过。所有方法输出相同，速度优化不改善Target任务能力。",
+              f"原运行评分版本{recorded_quality_version}；本报告版本2。旧版未为无结尾LF的diff补patch终止符，"
+              f"离线修正{len(corrections)}项应用检查；原参考/计时未修改，差异保存在quality-v2.json（仅旧版运行）。",
               "", "未完全符合文本合同的请求："]
     failures = [r for r in references if not r["quality"]["exact_file_or_patch"]]
     lines += [f"- `{r['project_id']}` / {r['mode']} / turn={r['turn']}：{r['quality']}" for r in failures] or ["- 无。"]
@@ -137,6 +154,7 @@ def write_report(source: Path, output: Path):
               "历史从真实旧文件及已经完成的同方法回答重建，逐请求审核版本、用户、Target prompt、token、配对、KV前沿与summary。"
               "方法间的结果重复不增加独立项目数；项目间文件规模不同，主结果为配对总时间比。",
               "这批工作流维护及统一diff指令不能代表自然语言修改请求、一般部署配置或真实长期用户。"
+              "给定完整diff本可由git apply直接完成；本回放衡量既定LLM输出路径的性能，不证明该任务必须调用LLM。"
               "未测生产精度、并发、TTFT或稳定尾延迟。CPU索引数组载荷与C++树估计的口径不同，不能据它们宣称内存优势。",
               "源码SHA-256：`" + provenance["source"]["source_sha256"] + "`。",
               "冻结数据SHA-256：`" + provenance["data_sha256"] + "`。", "",

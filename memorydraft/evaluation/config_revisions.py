@@ -78,7 +78,9 @@ def answer_event(project, mode, turn, text):
     return MemoryEvent(project["id"] + ":" + mode, "artifact", 11 + 10 * turn, text, project_id=project["id"])
 
 
-def quality(text, project, turn, mode):
+def quality(text, project, turn, mode, *, version=2):
+    if version not in {1, 2}:
+        raise ValueError("Unknown quality checker version")
     expected = project["turns"][turn]["expected" if mode == "full" else "patch"]
     exact = text.rstrip("\n") == expected.rstrip("\n")
     parsed, equivalent, error, applies = None, None, None, None
@@ -106,13 +108,15 @@ def quality(text, project, turn, mode):
             # Isolate this text check from the enclosing repo and Windows checkout settings.
             environment = dict(os.environ, GIT_CEILING_DIRECTORIES=str(scratch.resolve()))
             command = ["git", "-c", "core.autocrlf=false", "apply"]
-            stat = subprocess.run([*command, "--numstat", "-"], cwd=root, input=text.encode(),
+            # v1 omitted the patch terminator even though text equality ignored final LF.
+            patch_bytes = (text + ("\n" if version == 2 and not text.endswith("\n") else "")).encode()
+            stat = subprocess.run([*command, "--numstat", "-"], cwd=root, input=patch_bytes,
                                   capture_output=True, env=environment)
             paths = [line.split(b"\t")[-1].decode() for line in stat.stdout.splitlines()]
             applies = False
             if stat.returncode == 0 and paths == [project["path"]]:
                 result = subprocess.run([*command, "--whitespace=nowarn", "-"], cwd=root,
-                                        input=text.encode(), capture_output=True, env=environment)
+                                        input=patch_bytes, capture_output=True, env=environment)
                 applies = result.returncode == 0 and path.read_bytes().rstrip(b"\n") == project["turns"][turn]["expected"].encode().rstrip(b"\n")
     return dict(exact_file_or_patch=exact, yaml_mapping=parsed, yaml_equivalent=equivalent,
                 patch_applies_to_expected=applies, parse_error=error)

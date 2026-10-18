@@ -63,6 +63,8 @@ def test_patch_quality_accepts_other_context_but_never_other_paths():
     alternate = "".join(difflib.unified_diff(item["before"].splitlines(keepends=True), item["expected"].splitlines(keepends=True),
                                            fromfile="a/" + project["path"], tofile="b/" + project["path"], n=1))
     assert quality(alternate, project, 0, "diff")["patch_applies_to_expected"]
+    assert quality(alternate.rstrip("\n"), project, 0, "diff")["patch_applies_to_expected"]
+    assert not quality(alternate.rstrip("\n"), project, 0, "diff", version=1)["patch_applies_to_expected"]
     assert not quality(alternate.replace(project["path"], "../outside.yml"), project, 0, "diff")["patch_applies_to_expected"]
     assert not quality("```yaml\n" + item["expected"] + "```", project, 0, "full")["exact_file_or_patch"]
 
