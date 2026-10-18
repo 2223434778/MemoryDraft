@@ -1,0 +1,21 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.48s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+complete astral-sh--ruff full 0 quality {'exact_file_or_patch': False, 'yaml_mapping': True, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete astral-sh--ruff full 1 quality {'exact_file_or_patch': False, 'yaml_mapping': False, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': 'ParserError'}
+complete astral-sh--ruff diff 0 quality {'exact_file_or_patch': True, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}
+complete fastapi--fastapi full 0 quality {'exact_file_or_patch': True, 'yaml_mapping': True, 'yaml_equivalent': True, 'patch_applies_to_expected': None, 'parse_error': None}
+complete fastapi--fastapi full 1 quality {'exact_file_or_patch': True, 'yaml_mapping': True, 'yaml_equivalent': True, 'patch_applies_to_expected': None, 'parse_error': None}
+complete fastapi--fastapi diff 0 quality {'exact_file_or_patch': False, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}
+complete encode--httpx full 0 quality {'exact_file_or_patch': True, 'yaml_mapping': True, 'yaml_equivalent': True, 'patch_applies_to_expected': None, 'parse_error': None}
+complete encode--httpx full 1 quality {'exact_file_or_patch': True, 'yaml_mapping': True, 'yaml_equivalent': True, 'patch_applies_to_expected': None, 'parse_error': None}
+complete encode--httpx diff 0 quality {'exact_file_or_patch': True, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}
+complete pallets--flask full 0 quality {'exact_file_or_patch': False, 'yaml_mapping': True, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete pallets--flask full 1 quality {'exact_file_or_patch': True, 'yaml_mapping': True, 'yaml_equivalent': True, 'patch_applies_to_expected': None, 'parse_error': None}
+complete pallets--flask diff 0 quality {'exact_file_or_patch': False, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}
+complete psf--requests full 0 quality {'exact_file_or_patch': False, 'yaml_mapping': True, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete psf--requests full 1 quality {'exact_file_or_patch': False, 'yaml_mapping': False, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete psf--requests diff 0 quality {'exact_file_or_patch': True, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}
+complete Textualize--rich full 0 quality {'exact_file_or_patch': False, 'yaml_mapping': True, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete Textualize--rich full 1 quality {'exact_file_or_patch': False, 'yaml_mapping': True, 'yaml_equivalent': False, 'patch_applies_to_expected': None, 'parse_error': None}
+complete Textualize--rich diff 0 quality {'exact_file_or_patch': False, 'yaml_mapping': None, 'yaml_equivalent': None, 'patch_applies_to_expected': False, 'parse_error': None}

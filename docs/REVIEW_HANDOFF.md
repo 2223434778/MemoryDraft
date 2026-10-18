@@ -1,5 +1,9 @@
 # Astra 审阅入口
 
+## 最新进行：公开CI配置修订（2026-10-18）
+
+先读 [CONFIG_REVISIONS_DEVELOPMENT_RESULTS](CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md) 与 [协议](CONFIG_REVISIONS_PROTOCOL.md)。18个真实公开项目文件/修订已冻结，开发6项目90次全部逐token一致；Global为DFlash的1.677×，但Context/Global只有1.005且区间跨1，旧文件已在当前输入。完整文件Target任务仅5/12正确，失败保留；因此尚不能宣布真实应用可用或长期记忆独立有效。正在按协议对两个失败开发首轮做一次输出合同v2诊断，通过后才启动12项目独立确认；各方法将共享新输入和新AR，保留原v1结果，不跨版本归因。相关对照为官方ArcticInference线性后缀候选器接相同严格DFlash循环，不是完整SuffixDecoding/vLLM复现。
+
 ## 最新完成：R/DFlash 场景开发与独立确认（2026-10-18）
 
 先读 [REUSE_PILOT_RESULTS](REUSE_PILOT_RESULTS.md) 与对应运行前协议。新增 `backends/dflash_reuse.py` 薄适配已审计MIT循环，连续R积累有效Target特征，回切Draft补齐独立KV；保留严格greedy及原后端。源代码已推送 `f43239a`。

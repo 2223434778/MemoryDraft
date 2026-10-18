@@ -21,3 +21,5 @@ results/config-revisions-development/** -text
 results/config-revisions-confirmation/** -text
 docs/CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md text eol=lf
 docs/CONFIG_REVISIONS_CONFIRMATION_RESULTS.md text eol=lf
+results/config-revisions-contract-probe/** -text
+docs/CONFIG_REVISIONS_CONTRACT_PROBE_RESULTS.md text eol=lf

@@ -1,0 +1,74 @@
+[
+  {
+    "project_id": "astral-sh--ruff",
+    "turn": 0,
+    "input_tokens": 1195,
+    "expected_tokens": 843
+  },
+  {
+    "project_id": "astral-sh--ruff",
+    "turn": 1,
+    "input_tokens": 1177,
+    "expected_tokens": 847
+  },
+  {
+    "project_id": "fastapi--fastapi",
+    "turn": 0,
+    "input_tokens": 1360,
+    "expected_tokens": 1079
+  },
+  {
+    "project_id": "fastapi--fastapi",
+    "turn": 1,
+    "input_tokens": 1448,
+    "expected_tokens": 1079
+  },
+  {
+    "project_id": "encode--httpx",
+    "turn": 0,
+    "input_tokens": 352,
+    "expected_tokens": 161
+  },
+  {
+    "project_id": "encode--httpx",
+    "turn": 1,
+    "input_tokens": 362,
+    "expected_tokens": 161
+  },
+  {
+    "project_id": "pallets--flask",
+    "turn": 0,
+    "input_tokens": 717,
+    "expected_tokens": 407
+  },
+  {
+    "project_id": "pallets--flask",
+    "turn": 1,
+    "input_tokens": 944,
+    "expected_tokens": 410
+  },
+  {
+    "project_id": "psf--requests",
+    "turn": 0,
+    "input_tokens": 1413,
+    "expected_tokens": 775
+  },
+  {
+    "project_id": "psf--requests",
+    "turn": 1,
+    "input_tokens": 1052,
+    "expected_tokens": 775
+  },
+  {
+    "project_id": "Textualize--rich",
+    "turn": 0,
+    "input_tokens": 374,
+    "expected_tokens": 181
+  },
+  {
+    "project_id": "Textualize--rich",
+    "turn": 1,
+    "input_tokens": 473,
+    "expected_tokens": 195
+  }
+]

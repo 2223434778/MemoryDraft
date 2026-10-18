@@ -1,0 +1,16 @@
+{
+  "captured_after_run_utc": "2026-10-18T04:20:26.652091+00:00",
+  "python": "3.11.9 (main, Apr 19 2024, 16:48:06) [GCC 11.2.0]",
+  "platform": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "packages": {
+    "torch": "2.5.1",
+    "transformers": "4.57.3",
+    "tokenizers": "0.22.1",
+    "huggingface-hub": "0.36.0",
+    "numpy": "1.26.4",
+    "PyYAML": "6.0.1",
+    "pydivsufsort": "0.0.19",
+    "nanobind": "2.7.0"
+  },
+  "compiler": "Ubuntu clang version 15.0.7"
+}

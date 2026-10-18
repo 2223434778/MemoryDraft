@@ -1,0 +1,49 @@
+Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple
+Collecting nanobind==2.7.0
+  Downloading https://pypi.tuna.tsinghua.edu.cn/packages/96/14/989883082b395146120d34ca7e484a2b24cb73b0e428576a3a4249bd4082/nanobind-2.7.0-py3-none-any.whl (241 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 241.7/241.7 kB 1.9 MB/s eta 0:00:00
+Installing collected packages: nanobind
+Successfully installed nanobind-2.7.0
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python -m pip install --upgrade pip
+-- The CXX compiler identification is GNU 9.4.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python (found suitable version "3.11.9", minimum required is "3.10") found components: Interpreter Development.Module 
+-- Configuring done (0.6s)
+-- Generating done (0.0s)
+-- Build files have been written to: /media/a6000/D/ZhaoBinHe/MemoryDraft/models/arctic-suffix-audit/build
+[  6%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_func.cpp.o
+[ 13%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_enum.cpp.o
+[ 20%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_internals.cpp.o
+[ 26%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_type.cpp.o
+[ 33%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_ndarray.cpp.o
+[ 40%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_static_property.cpp.o
+[ 46%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/nb_ft.cpp.o
+[ 53%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/common.cpp.o
+[ 60%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/error.cpp.o
+[ 66%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/trampoline.cpp.o
+[ 73%] Building CXX object CMakeFiles/nanobind-static.dir/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/nanobind/src/implicit.cpp.o
+[ 80%] Linking CXX static library libnanobind-static.a
+[ 80%] Built target nanobind-static
+[ 86%] Building CXX object CMakeFiles/_C.dir/bindings.cc.o
+[ 93%] Building CXX object CMakeFiles/_C.dir/suffix_tree.cc.o
+In file included from /media/a6000/D/ZhaoBinHe/MemoryDraft/models/arctic-suffix-audit/csrc/suffix_decoding/suffix_tree.cc:22:
+/media/a6000/D/ZhaoBinHe/MemoryDraft/models/arctic-suffix-audit/csrc/suffix_decoding/suffix_tree.h:21:10: fatal error: span: 没有那个文件或目录
+   21 | #include <span>
+      |          ^~~~~~
+compilation terminated.
+make[2]: *** [CMakeFiles/_C.dir/build.make:90：CMakeFiles/_C.dir/suffix_tree.cc.o] 错误 1
+make[2]: *** 正在等待未完成的任务....
+In file included from /media/a6000/D/ZhaoBinHe/MemoryDraft/models/arctic-suffix-audit/csrc/suffix_decoding/bindings.cc:21:
+/media/a6000/D/ZhaoBinHe/MemoryDraft/models/arctic-suffix-audit/csrc/suffix_decoding/suffix_tree.h:21:10: fatal error: span: 没有那个文件或目录
+   21 | #include <span>
+      |          ^~~~~~
+compilation terminated.
+make[2]: *** [CMakeFiles/_C.dir/build.make:76：CMakeFiles/_C.dir/bindings.cc.o] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:84：CMakeFiles/_C.dir/all] 错误 2
+make: *** [Makefile:91：all] 错误 2

@@ -11,6 +11,7 @@ from memorydraft.evaluation.config_revisions import (METHODS_BY_MODE, answer_eve
 from memorydraft.memory.store import MemoryStore, Snapshot
 from memorydraft.retrieval.suffix import SuffixArrayIndex
 from scripts.prepare_config_revisions import CUTOFF, REPOSITORIES
+from scripts.run_config_revisions import development_reference
 from scripts.write_config_revisions_report import audit
 
 
@@ -69,6 +70,17 @@ def test_patch_quality_accepts_other_context_but_never_other_paths():
     assert not quality("```yaml\n" + item["expected"] + "```", project, 0, "full")["exact_file_or_patch"]
 
 
+def test_contract_probe_only_restates_the_same_known_edit_and_output_format():
+    project = load_projects(DATA, "development")[0]
+    original = request_text(project, 0)
+    explicit = request_text(project, 0, contract_version=2)
+    assert explicit.startswith(original) and "every unchanged section" in explicit
+    assert project["turns"][0]["before"] in explicit and project["turns"][0]["patch"] in explicit
+    assert project["turns"][0]["expected"] not in explicit
+    with pytest.raises(ValueError):
+        request_text(project, 0, contract_version=3)
+
+
 def fixture_rows():
     project = load_projects(DATA, "development")[0]
     references, rows = [], []
@@ -119,3 +131,22 @@ def test_confirmation_keeps_strong_controls_and_independent_ar_labels():
     assert methods["full"] == ("DFlash", "Adapted", "Global", "Context", "Arctic")
     rows = [r for r in rows if r["method"] != "AR"]
     assert audit(projects, references, rows, repeats=1, methods_by_mode=methods)["full"]["rows"] == 10
+
+
+@pytest.mark.parametrize("change", [None, "incomplete", "data", "missing_rows"])
+def test_confirmation_requires_a_completed_matching_predecessor(tmp_path, change):
+    previous = dict(status="complete", rows=90, data_sha256="frozen", source=dict(source_sha256="runtime-source"))
+    summary = dict(full=dict(rows=72, correct=True), diff=dict(rows=18, correct=True))
+    if change == "incomplete":
+        previous["status"] = "started"
+    elif change == "data":
+        previous["data_sha256"] = "different"
+    elif change == "missing_rows":
+        summary["full"]["rows"] = 71
+    (tmp_path / "provenance.json").write_text(json.dumps(previous), encoding="utf-8")
+    (tmp_path / "summary.json").write_text(json.dumps(summary), encoding="utf-8")
+    if change:
+        with pytest.raises(ValueError, match="before confirmation"):
+            development_reference(tmp_path, "frozen")
+    else:
+        assert development_reference(tmp_path, "frozen")["source_sha256"] == "runtime-source"

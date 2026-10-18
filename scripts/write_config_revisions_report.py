@@ -18,10 +18,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/research/config-revisions"
 
 
-def audit(projects, references, rows, *, repeats, quality_version=2, methods_by_mode=METHODS_BY_MODE):
+def audit(projects, references, rows, *, repeats, quality_version=2, methods_by_mode=METHODS_BY_MODE, turns_by_mode=None):
     definitions = {p["id"]: p for p in projects}
     keys = {(p["id"], mode, turn) for p in projects for mode in methods_by_mode
-            for turn in range(2 if mode == "full" else 1)}
+            for turn in range((turns_by_mode or {}).get(mode, 2 if mode == "full" else 1))}
     labels = {(r["project_id"], r["mode"], r["turn"]): r for r in references}
     if len(labels) != len(references) or set(labels) != keys:
         raise ValueError("Missing, duplicate or unexpected references")
@@ -66,12 +66,38 @@ def audit(projects, references, rows, *, repeats, quality_version=2, methods_by_
     return summaries(rows, methods_by_mode)
 
 
+def write_probe_report(source, output, provenance):
+    if provenance.get("contract_version") != 2 or provenance.get("quality_version") != 2:
+        raise ValueError("Unexpected contract probe version")
+    projects = [p for p in load_projects(DATA, "development") if p["id"] in {"astral-sh--ruff", "psf--requests"}]
+    if projects != json.loads((source / "projects.json").read_text(encoding="utf-8")):
+        raise ValueError("Probe used other than the two predeclared development failures")
+    references, rows = read(source / "references.jsonl"), read(source / "replay.jsonl")
+    methods = {"full": ("DFlash", "Global")}
+    summary = audit(projects, references, rows, repeats=1, methods_by_mode=methods, turns_by_mode={"full": 1})
+    if summary != json.loads((source / "summary.json").read_text(encoding="utf-8")):
+        raise ValueError("Probe summary does not reproduce")
+    lines = ["# 完整文件输出合同：开发失败例小探测", "",
+             "只使用已观察失败的Ruff/Requests首轮，统一在输入末尾重申完整文件、注释和未修改部分。"
+             "没有新事实/答案或候选参数；所有方法共享新Target输入和新AR参考。原开发结果保留。",
+             "这是单一提示诊断，不是独立泛化/性能结论。", "",
+             "| 项目 | 文本一致 | YAML结构相等 |", "|---|---|---|"]
+    for r in references:
+        lines.append(f"| {r['project_id']} | {r['quality']['exact_file_or_patch']} | {r['quality']['yaml_equivalent']} |")
+    lines += ["", f"{len(rows)}次DFlash/Global计时全部逐token对齐各自AR；仅用于检查接入及合同。",
+              "源码SHA-256：`" + provenance["source"]["source_sha256"] + "`。", ""]
+    output.write_bytes("\n".join(lines).encode())
+    return summary
+
+
 def write_report(source: Path, output: Path):
     provenance = json.loads((source / "provenance.json").read_text(encoding="utf-8"))
     if provenance["status"] != "complete":
         raise ValueError("Do not report an incomplete experiment as performance evidence")
     if hashlib.sha256((DATA / "projects.json").read_bytes()).hexdigest() != provenance["data_sha256"]:
         raise ValueError("Frozen dataset changed since inference")
+    if provenance.get("contract_probe"):
+        return write_probe_report(source, output, provenance)
     projects = load_projects(DATA, provenance["split"])
     if projects != json.loads((source / "projects.json").read_text(encoding="utf-8")):
         raise ValueError("Project selection changed")
@@ -106,6 +132,7 @@ def write_report(source: Path, output: Path):
              f"阶段：{provenance['split']}；{len(projects)}个公开项目，每项目两轮完整文件修订和一项diff边界，"
              f"每方法{provenance['repeats']}重复，共{len(rows)}次计时。全部与各自固定Target AR参考逐token一致。",
              "这是基于真实仓库文件/提交构造的编辑API回放；请求和输出合同由实验指定，不是自然用户或部署服务日志。",
+             f"Target输入合同版本{provenance.get('contract_version', 1)}，同批所有方法共享；不同版本结果不作跨批加速归因。",
              "", "## 完整文件：全部在线成本", "", "| 方法 | 次数 | 秒 | DFlash/方法 |", "|---|---:|---:|---:|"]
     for method in methods["full"]:
         lines.append(f"| {method} | {sum(r['method']==method for r in full)} | {t[method]:.3f} | {t['DFlash']/t[method]:.3f}× |")
@@ -163,6 +190,7 @@ def write_report(source: Path, output: Path):
               "这批工作流维护及统一diff指令不能代表自然语言修改请求、一般部署配置或真实长期用户。"
               "给定完整diff本可由git apply直接完成；本回放衡量既定LLM输出路径的性能，不证明该任务必须调用LLM。"
               "未测生产精度、并发、TTFT或稳定尾延迟。CPU索引数组载荷与C++树估计的口径不同，不能据它们宣称内存优势。",
+              "每轮快照仅包含一个当前文件版本及至多一个过去回答；未验证大规模跨项目长期记忆的容量或索引维护。",
               "源码SHA-256：`" + provenance["source"]["source_sha256"] + "`。",
               "冻结数据SHA-256：`" + provenance["data_sha256"] + "`。", "",
               f"复算：`python -m scripts.write_config_revisions_report --source results/config-revisions-{provenance['split']}`。", ""]

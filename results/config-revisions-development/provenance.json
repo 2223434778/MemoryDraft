@@ -1,0 +1,280 @@
+{
+  "status": "complete",
+  "split": "development",
+  "repeats": 1,
+  "methods": {
+    "full": [
+      "AR",
+      "DFlash",
+      "Adapted",
+      "Global",
+      "Context",
+      "Arctic"
+    ],
+    "diff": [
+      "DFlash",
+      "Global",
+      "Context"
+    ]
+  },
+  "config": {
+    "max_tokens": 32,
+    "min_match": 6,
+    "cooldown_rounds": 1,
+    "max_pending_tokens": 1024
+  },
+  "budget_full": 3072,
+  "budget_diff": 768,
+  "source": {
+    "files": {
+      ".gitattributes": "d376a0c34f681a51b5ef5fb546efa7a812fa5b59a72d2882487e849dcb42c5cf",
+      ".gitignore": "3a1043582cf82df6feb7ef39b44468af42f7a581c6d5fbac3b77eb7d7eb42388",
+      "AGENTS.md": "2591c6f4a5be9c31a34d0bee0cb0b44441754edf1e913c34761ef022e4982870",
+      "configs/a6000-pilot.json": "54bbaffbb9c90532270e84b428b3d8602947e0fa21a8ab4a736010dcb65ea3a6",
+      "configs/a6000-qwen3.json": "4a8cf0d46f3a5ebd49c70f900059e05d22b0613f3386c096f3385c6da4ea7940",
+      "configs/a6000-semantic.json": "62238611f5f2de7c323ee8f72029d5737786548775c00dc71cc933618e2f41d3",
+      "configs/a6000-validation.json": "e0a88f6dac0c04a8ba5a507ac27a85bdb4943474055f7b6f043b3f65d12641ee",
+      "configs/dflash-manifest.json": "eb5e6b37ac58f40e31e8ba132eff2a15cea38a0f29577d9b22f8f2abdfb62c72",
+      "configs/local-qwen3.json": "2fe9bc01c011475c5574674144c2c2621fbbbb3825f7786de1bf9250bbd352c0",
+      "configs/local.example.json": "b84df1f6ee0b75a07ffd3c57cb2a64f0197526ab7af980ca488ca8289bee45a3",
+      "configs/qwen3-download-manifest.json": "114b4c6993cb459e9f39d7900cc4ec52199f8ef0b4edb557b0d92d5c631c0557",
+      "configs/suffix-manifest.json": "3e7e537995a632213faa55f77d3450c80e498278305fd69d150b0c1d20b1c79b",
+      "data/research/config-revisions/licenses/astral-sh--ruff.txt": "3209c0b7fb7257c05b16433728c1e974bac40000fef171b8e9e89f095623c954",
+      "data/research/config-revisions/licenses/encode--httpx.txt": "4ec59d544f12b5f539a3a716fd321ac58ccd8030b465221f2c880200cdf28d8d",
+      "data/research/config-revisions/licenses/encode--starlette.txt": "dcb95677a02240243187e964f941847d19b17821cf99e5afae684fab328c19bf",
+      "data/research/config-revisions/licenses/fastapi--fastapi.txt": "4ec89ffc81485b97fec584b2d4a961032eeffe834453894fd9c1274906cc744e",
+      "data/research/config-revisions/licenses/numpy--numpy.txt": "1be1df33863f97a7bc1c4d67980bd6c69c9a6fef0a5ee76e6ad6cb91e56e8491",
+      "data/research/config-revisions/licenses/pallets--click.txt": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d",
+      "data/research/config-revisions/licenses/pallets--flask.txt": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+      "data/research/config-revisions/licenses/pandas-dev--pandas.txt": "418e798a8d794d913ceb8a065117c1e5425763bf060c3333e30488898b7df2f1",
+      "data/research/config-revisions/licenses/pre-commit--pre-commit.txt": "ea2ca27cba7cc35822d95a46d59bcd3cc88e196592e6390d1949a359ffc990e8",
+      "data/research/config-revisions/licenses/psf--black.txt": "9c0428f0c3b4779850cf5bd96e11aaa8afc72d4a86d4a36223d7aba2e58d6e00",
+      "data/research/config-revisions/licenses/psf--requests.txt": "09e8a9bcec8067104652c168685ab0931e7868f9c8284b66f5ae6edae5f1130b",
+      "data/research/config-revisions/licenses/pydantic--pydantic.txt": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3",
+      "data/research/config-revisions/licenses/pytest-dev--pytest.txt": "ca836a5f9ecca3b2f350230faa20a48fb8b145653b5568d784862df864706b9b",
+      "data/research/config-revisions/licenses/python--mypy.txt": "de341f6e031d021aab9eb27bdf713cc6fb844dee832ef3bcd4688bff5517220b",
+      "data/research/config-revisions/licenses/python-poetry--poetry.txt": "1786f071a510648a24695f295117f02bae0bbf0fb7c6730aafe9c93a3e4bf7ee",
+      "data/research/config-revisions/licenses/scikit-learn--scikit-learn.txt": "75684d16f4662ab842ed5af9482ac01939aee83c8243d89993616d959d3053f8",
+      "data/research/config-revisions/licenses/scipy--scipy.txt": "221e59f5e910fd7f94e44f0dac77436a11338c285c6346232e4a850a50da0e94",
+      "data/research/config-revisions/licenses/Textualize--rich.txt": "deed7c17a4318158190a3ea239cc879a5a50271cebb98ae7025f48fbe58dca15",
+      "data/research/config-revisions/manifest.json": "784dddb82ec4153459a98013a28b86cc9d1a59a809cd565b45e412d1a1c4d860",
+      "data/research/config-revisions/projects.json": "944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e",
+      "data/research/config-revisions/README.md": "3f80e9bb55e8a703a8f34158518350285867e0fe2e4cc867575fd3f4e66b7f67",
+      "data/research/history.jsonl": "c82d81cc48db6545dbeb7a989c3efdf969b749ac5ce31ea44d4b806d42c6cabe",
+      "data/research/memory-dev.jsonl": "77b3c5c27841aa6f4150986e5980e26ce01c0b41bdf3f9fe6c2b0c1497db319d",
+      "data/research/memory-test.jsonl": "ae9dbf9ded81a429bd5b80f02bf425d937c84aa380d637f0a1f81f6f0aa19ce7",
+      "data/research/SPEC_BENCH_LICENSE": "50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a",
+      "data/research/specbench-dev.jsonl": "f996c518e8e20cd1ebefa91e09a3a033bca3f14899aee30f78f08a8a1be0d4b5",
+      "data/research/specbench-source.json": "3d141af0cda3d82dc0fb9dcd3c02dcbabd813b0a45b8c295fd94cb0ae2e8229d",
+      "data/research/specbench-test.jsonl": "3e5b1f70d94c5393b6335748ac7483328a7b80de629453ea83acd0bdedc4a9ac",
+      "data/synthetic/h_cases.jsonl": "5bb0b0b07341390a249852dd8e1d247275174a32314524df4a305007b1cb5b06",
+      "data/synthetic/history.jsonl": "0391687ec07671776987e41be5936eeeca58864055da33c56979ceaa008a0918",
+      "data/synthetic/request.json": "9ffeb8232347f4c0eede4ffba835a11551d95f4192ec81a504d2c0841cd18393",
+      "data/synthetic/requests.jsonl": "70aa284847bf26ac05270c2589eab9389d8690569174a447e89b925c28c20a20",
+      "docs/ARCHITECTURE.md": "8174e77c7651ed0cb3ea08adc3f3fd6f6cf1cfbd3075c6249bc8d8e9b15794e2",
+      "docs/ARCHITECTURE_REVIEW.md": "6708059e903d0627d1817c64a4454a5accac0f36273f1033628b2c5eb27c757d",
+      "docs/BASE_SELECTION.md": "7a15c2037df7f8174de03596a7eaf1f4565fbd5e6a49c81aa2c48f700a61e07d",
+      "docs/CODEX_START.md": "7d5212e60aeeba77232cd639ae26bd5976646da8561f039f48c6f30c724914b9",
+      "docs/CONFIG_REVISIONS_PROTOCOL.md": "7a13d715a3e944cfa4b4a35100755185e4eb0760671823d8d1f4ff2cf33d640d",
+      "docs/EXPERIMENTS.md": "6c0135bdb929f959c7ac7d54a60884c6c245e2d3da33862f2f0003d874f211a9",
+      "docs/EXPERIMENTS_V2.md": "36af5daa6aae8853cdf3bb7db219467e119653487505a830a495b2b46d0b3185",
+      "docs/H_CAUSAL_PROTOCOL.md": "96af9399496e944e0c32a0cfd45da3abaaca0ba1acd554a97ce6058bb298b298",
+      "docs/H_CAUSAL_RESULTS.md": "7701948b9b4104eaf73fae2f946761a86472863a97a19ca144f7a1d47718da5c",
+      "docs/H_TEACHER_ROUTER_PROTOCOL.md": "8e55d17af92b6476a881cb0d2106fc231103c00994e5ed88814b4bd8c67fbc9b",
+      "docs/H_TEACHER_ROUTER_RESULTS.md": "91ffb060f90dd5cfe92dc70b9c80ef0905e138cd9a9f0e2bb14f4c01356f056d",
+      "docs/H_TRAINING_PROTOCOL.md": "bffed0e8575f44e8c5c49e5f2ecc5f92cc8714b75f98b387d7a99f67102aa389",
+      "docs/H_TRAINING_RESULTS.md": "98805d4d329af21617d4035f1dc82c4e82bc251cfbc395b6aa5f8b1753801abb",
+      "docs/HISTORY_DRAFTER.md": "290f178b5e89788b1179560e68518054d123651476082e2881f9bbc84a8d8a6a",
+      "docs/MEMORY_REUSE_RESEARCH_PLAN.md": "ad73669367a8c7765a295cd82d5cd7716509767a175b2e21c17a5e4160b28e14",
+      "docs/NEXT_EXPERIMENT.md": "f3cc39eb3a7ba04561e587fe63405c77a34dfb001ad1904f55bbf3d47e417b95",
+      "docs/PROGRESS.md": "f433e5d1a0012d9bc5170c8e7372348a3c51eea9dd20e08e66d90629c1c8600b",
+      "docs/REUSE_CONFIRMATION_PROTOCOL.md": "a7a48043264467605a8504b0b49c8587936013acf1ff9c4bedd337b732f4b968",
+      "docs/REUSE_CONFIRMATION_RESULTS.md": "2d31d4ba9847b10ca809f52fcaaa8f955e566875c17d797331a875053ef41c99",
+      "docs/REUSE_PILOT_PROTOCOL.md": "57886f39d9af75c6de46c42667dc948f3b87a71deb1ba2b18c753a2a5a62eed9",
+      "docs/REUSE_PILOT_RESULTS.md": "a0bbab0bffd8ed6fbe695f7bcfdbf478f2652aa11b855970acd69c8746652178",
+      "docs/REVIEW_HANDOFF.md": "1d190c6c8a98ae444e54671dacbf5f2aedbb99cd14a8823235486d96ab286672",
+      "docs/third_party/ARCTIC_SUFFIX_LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "docs/third_party/DFLASH_LICENSE.txt": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422",
+      "memorydraft/__init__.py": "0b9f607d47206a8acaf377f8a174e1ab67e1b814e9e5bb84d423b6ce18d78644",
+      "memorydraft/__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "memorydraft/backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "memorydraft/backends/dflash_reuse.py": "e8a697c2397b127c78db8db7dab10b42f9b1cf9f17a65e10c6bd2e43522a7099",
+      "memorydraft/backends/transformers.py": "7e9fd1bce07003610ee36816af82290a7393eeecba11bc6bf8023eb4b2b89f05",
+      "memorydraft/cli.py": "45b031d876bf7bf3fa00862e1bc9ef9fc2ed3cb967b75b18f559e4f69d05a4a2",
+      "memorydraft/drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "memorydraft/drafters/candidates.py": "ab3f58f49776b1c7528c6f57b469bd42c6fe5a357dea2aba4e07940ffc84574c",
+      "memorydraft/evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "memorydraft/evaluation/config_revisions.py": "97f5b98f529bbaa736ca2468a1f0e60f3ccbe798473c9499b30adf273854bd50",
+      "memorydraft/evaluation/distillation.py": "e5989b6bfd3d98feaf601fc25305e82618939353e5c4632002574d6088f7479d",
+      "memorydraft/evaluation/history_alignment.py": "b67c92f603b6ef0d5c8abc4ff1f5a0e7f8532009050be63f4ce1e3522494f704",
+      "memorydraft/evaluation/prefixes.py": "ef00e6275d2487ad179794700bbedf08e1f7fc52b9d2442c6ce67cf53fe1c138",
+      "memorydraft/evaluation/replay.py": "8128dc566578e329503b6fff9a668fb0a8ef0fb38e490c93dec170a46f7ce296",
+      "memorydraft/evaluation/reuse_cases.py": "1441e35eb4defffd13a7d21a124b216619baa4b1588a4279f71b80ec1470e202",
+      "memorydraft/memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memorydraft/memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "memorydraft/retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "memorydraft/retrieval/arctic.py": "44c9d34c92d81392190e418f8081bb78d61c4630cd6549068fa6837745ffab6e",
+      "memorydraft/retrieval/pool.py": "4f4333ca07fa30e8ed7ab9dcf9400156cc4785e133238628ef08997f7ee69146",
+      "memorydraft/retrieval/reuse.py": "d4988782acffd08b2589d6a284b3baaa7876d1285642f8212d9475a5c21c0230",
+      "memorydraft/retrieval/suffix.py": "b49a2edab03aeac462cacb59338fd89bcd695c9c2f5bc79580a2b00290598d57",
+      "memorydraft/routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "memorydraft/routing/policy.py": "02b3428efd8e2246d30315e88bb7e9bc00a6b9604baf8f8454a2e514217649a9",
+      "pyproject.toml": "dc4f0b6351461913c0591ef67660b886b8fec2c66f1fd60a47c196f0b0883bc6",
+      "README.md": "64709868bf5d3580fa5c7570c839041593c16fb5909786744c850f25056bf96a",
+      "scripts/__init__.py": "81720c32b7a0377933e3cf10c56044bf70433f93cd6ae60ed12437ba5df7ac8c",
+      "scripts/audit_pilot.py": "e4ba7152a973e53c9bb0bcc40b14e1c00f5d2e6c1abce9c9ce9c2e2c676b2751",
+      "scripts/audit_teacher_overlap.py": "2ebfebe303d579d65c00377c66c4d0b610ff361d0956521ab1c2fc50cf3de763",
+      "scripts/bundle_source.py": "ba5137cf317134f939ed9334924d381f31db6e61c6a2314cc57c0d9832e2f7c9",
+      "scripts/check_demo.py": "2f5a717447d0a388ede9eceb0f3b4b2eb62242850e1400337f0576fe62aec7bb",
+      "scripts/diagnose_precision.py": "451a7379813e1d9aff9bf860cc30aead18f435f50a7f756a9163aaa71b5db775",
+      "scripts/diagnose_saved_mismatch.py": "77e7b5808d886ec1932d47bcc347d3a91aa0940b17d1c14f85d02973129b31e3",
+      "scripts/download_models.py": "cd0c2b2568a1a717b03d1a7c7ac16a911e0a4d25681d710db327bdd5c5790503",
+      "scripts/download_verified_weights.py": "abe5db49f013e4a38fb82efd52aadcc69296948ccc212a76e18121833241e98b",
+      "scripts/make_pilot.py": "5857137db76b2c59d65397f78329f532efd741a32ed941dbb1f6e53d17f39b25",
+      "scripts/prepare_config_revisions.py": "516e231143f6ceb096f69edd5c502ef5389685b20502fbc92f1d56437804612f",
+      "scripts/prepare_dflash_assets.py": "cabdcdf2494fcfeb8b71aea46fa5c0d0f7a4b057613ea9dbd3b0f5d99078d1c0",
+      "scripts/prepare_research_data.py": "12ff887261f9fa2795d9452ea2891fc0efa7fd4c1f018da36388de3e5732820e",
+      "scripts/prepare_suffix_assets.py": "28471529c2be4187c0fcea3c2cfd804e5fa175704ba10deb38a1306aa3df284c",
+      "scripts/publish_research_artifacts.py": "83f6dfe9f6c8eae9b420b18732ecf6725ced6d27a72feee491bf51b329f627fa",
+      "scripts/run_a6000_suite.py": "c4bc9dc1a59956b3af1c0f6842a16825944bd61447fab0e49749488dd0f16238",
+      "scripts/run_config_revisions.py": "69445af59e2fa9a62e571f985c7315c2eb56c1fb830a62f6722966dd72b2afb8",
+      "scripts/run_dense_prefix_check.py": "adad1565d556814d5a1d23396ddcb35b2ca390d99e4837d6a90a7fbbc953695e",
+      "scripts/run_dflash_baseline.py": "52098c88695109477e603eb415d6cd36b5fbc1a1650a7b4bc87824ddd245b1da",
+      "scripts/run_embedding_cache_check.py": "81ec1535f48e001cdb92e386b0f70bf3231f873196161aededc28b249161e462",
+      "scripts/run_h_causal.py": "78c547f6155826a28742e0dea717d405022ba2950eefdaaf8ee02e5688e83f33",
+      "scripts/run_h_teacher_router.py": "a82865210ebdf836d0204cf24942363b5b80f9a1c7a26e22c6e20dfbdae1a6bd",
+      "scripts/run_h_training.py": "603c6ce05df0a383fc1713298ac83fe14e0d5427e4dbcc4f6b95b2495bff5b7a",
+      "scripts/run_post_checks.py": "d9ddb78d0bf1fa9cfc1936e720c4601c62268e552928777e1cecf58b6138a110",
+      "scripts/run_qwen3_pilot.py": "7535d0232ca303ed8d233cb43b75f95b110d05d8426c5a5a619a831c8efa0fdf",
+      "scripts/run_research.py": "9e9aa5bfaeac10acc12498ae39f0e32f72798414763c61894f3c649329039055",
+      "scripts/run_reuse_pilot.py": "e5d8c1d034a39c7dd685282ee967487f860d81816f82f67b966c2d72bc232c30",
+      "scripts/write_config_revisions_report.py": "94c77cf474b5ceaa7150d5439caf44a9213e0b5fac5a424a89eb55a070450669",
+      "scripts/write_h_causal_report.py": "5a72c25a8c2583eb942c895d26fb01fe187b485c22c79cfb5e50810e6b959223",
+      "scripts/write_h_teacher_router_report.py": "04e60a2772c26154ab33e1e9e9861420c5f44e196fd46ed1131782d0318219b4",
+      "scripts/write_report.py": "24918845b3cf80bc81c30f1a511cdf69ddcc1309ad8411db1fc0dbfdda5989e7",
+      "scripts/write_research_report.py": "166336e9e1a1787b0c9f47162bc6567a241e6f36099c937372c9bcb519bba921",
+      "scripts/write_reuse_confirmation_report.py": "0e1a3ce992a1b0f1606c5feaba31f1c57db20c376b083eeaa52ee45f3f8fd566",
+      "scripts/write_reuse_report.py": "f146a431311666063c4eb95ebfe862964ddbf96b7f59ff83930fe6883d7bd2a4",
+      "scripts/write_training_report.py": "ffd8bac7b09e34f5ec495226f67a3b6e16044ad90703e546fdfedce94898c129",
+      "tests/test_backend.py": "56aa8bec743a0c5e2ef68ca553eb4d1f9219dd0af29438be92431d5a92e10cba",
+      "tests/test_config_revisions.py": "da52c0325734fdd0761665bc638571b2220e2cc0c86939e863402973ee6e3f9a",
+      "tests/test_dflash_reuse.py": "2128a7aeb10f96905db42eeb4504393b8ccb36ae32d2483531136a19eca1df34",
+      "tests/test_distillation.py": "c828ef710645e5f6ac9bdafa6adfed86a507a40d64d66ad29b1c74d3801cf188",
+      "tests/test_embedding_cache.py": "7fe57414a421e6a24722e6796d05cb39954aab25904e98d3d237b9504a6fcd2a",
+      "tests/test_evaluation.py": "579d64d04776e9a5eaf9b8df433ee1ea07dca30e86182464e9a67af78b1bc9f4",
+      "tests/test_h_ablation.py": "cac823c6905a3b338de25348030a870c385cc63d54169713a8681b141a7b3729",
+      "tests/test_h_teacher_report.py": "8e81145dca7b152fed72250d45db0b779059d9706611ec892548647a52e8bca9",
+      "tests/test_h_teacher_router.py": "42e8bb788d3ad99d497c3c97a9efb58d6e7c82116b95a53779f83d813f6bd12a",
+      "tests/test_memory_retrieval.py": "24b96b3ccd2e7b658f1a99af348cb677dc2ca0ef234c6dfa0dbda58c63905def",
+      "tests/test_pilot_audit.py": "399db1309f068314de549330af769a0a4abc13e1520af9015d02280c27f632a4",
+      "tests/test_publication.py": "4e1ccbdb0fe64dfddf907ad1f057022aca4f807440cc7109f0cc406a81db98aa",
+      "tests/test_research.py": "8b86ec67a8610e40323c771678de4691f46b3da2ebfc870ba45595d1224d06e4",
+      "tests/test_research_report.py": "54a411ebbe13dcb7f38890b485d33884092fa5e1a919dc12903085955c67f278",
+      "tests/test_reuse_report.py": "6d36e38ff8623d63adfa96d2c61c418ea4b6bdb6e7cde0fb5cd134df70ed4e76",
+      "tests/test_training_report.py": "b0c6f50f0f0a8939a30a6c77afd6375f2d000cad131cc0972e7b21ed564b7047"
+    },
+    "source_sha256": "c6c269ffce98cbfd2036dca7ccd612892cef52287e12a2a637da2bf91bd0215b",
+    "base_git_commit": "09ca64a56eb60ea90e800c4f118700fa83dad97e"
+  },
+  "data_sha256": "944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e",
+  "transformers": "4.57.3",
+  "torch": "2.5.1+cu124",
+  "yaml": "6.0.1",
+  "dtype": "float32",
+  "attention": "eager",
+  "threads": 4,
+  "assets": {
+    "dflash": {
+      "model": "z-lab/Qwen3-8B-DFlash-b16",
+      "revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+      "upstream_commit": "07ebd93db9f472af339b644bb70221ad8428328a",
+      "license": "MIT",
+      "code": [
+        {
+          "filename": "config.json",
+          "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/config.json",
+          "sha256": "9834d608c9ca53d5548b415471ae9e8ebc9aab6cedfc2a7af95b6bd097373102"
+        },
+        {
+          "filename": "dflash.py",
+          "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/dflash.py",
+          "sha256": "17ab761ba665a41965b27bdc3a1c6795d1b07b285ec1f0789ad146f2ee9c1cc5"
+        },
+        {
+          "filename": "modeling_dflash.py",
+          "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/modeling_dflash.py",
+          "sha256": "d2b61a1fa5d469830c2285b552d75773274943fae5ac66dc2713beddea338528"
+        },
+        {
+          "filename": "utils.py",
+          "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/utils.py",
+          "sha256": "00b91431932c94b87443d9e2c0cf4d743846bd6c9666c9c736008df7bbd0faf1"
+        },
+        {
+          "filename": "README.md",
+          "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/README.md",
+          "sha256": "5aae3cb1633e80fea3578f7330776320409313a6aeb6d922750d833fc89aa647"
+        },
+        {
+          "filename": "LICENSE",
+          "url": "https://raw.githubusercontent.com/z-lab/dflash/07ebd93db9f472af339b644bb70221ad8428328a/LICENSE",
+          "sha256": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422"
+        }
+      ],
+      "weight": {
+        "model": "z-lab/Qwen3-8B-DFlash-b16",
+        "hf_revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+        "destination": "dflash-qwen3-8b",
+        "filename": "model.safetensors",
+        "size": 2097259104,
+        "sha256": "c702878094f38ad5843e6ac40b327720b3147ffbf669a5d9ca1974865ca6c080",
+        "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16/resolve/9b41424b7109f9c5413454f481b09a82b85333f4/model.safetensors"
+      }
+    },
+    "suffix": {
+      "repository": "https://github.com/snowflakedb/ArcticInference",
+      "revision": "aca5d9a8a62474035c15d114d40a01abc8c94b51",
+      "license": "Apache-2.0",
+      "files": [
+        {
+          "filename": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "filename": "arctic_inference/suffix_decoding/cache.py",
+          "sha256": "91c48e6cb335edbd202c8f440e5766df54315ea2d8e40decf8f7a130f3a5e126"
+        },
+        {
+          "filename": "csrc/suffix_decoding/CMakeLists.txt",
+          "sha256": "d0ba0a52b33dc97466f3fe17a2f0207c7e6e3e2cf8b42409e99c3d12ecf13ff2"
+        },
+        {
+          "filename": "csrc/suffix_decoding/bindings.cc",
+          "sha256": "4fbc28596b4cdfa898e3341468fc6debed5a33bb4d9df37566907071ae60f41d"
+        },
+        {
+          "filename": "csrc/suffix_decoding/int32_map.h",
+          "sha256": "49fd3c8ffb900630f145958211d2e121a3347583ef4cf42910572ad2166e54ef"
+        },
+        {
+          "filename": "csrc/suffix_decoding/suffix_tree.cc",
+          "sha256": "cbd8b63b13fbf0beaab4e8736a54d52891b1aac959c5d292d083d88ed37dfc7c"
+        },
+        {
+          "filename": "csrc/suffix_decoding/suffix_tree.h",
+          "sha256": "d3c9a51fc57a974d680510bee8cfb1ba0a6f5ce6c582ed472cb5ef975b2f5aec"
+        }
+      ],
+      "adaptation": "Unmodified C++/cache.py; empty package initializers; standalone CMake build"
+    },
+    "suffix_binary_sha256": "42db9a5129ff0defaf23162ac27a37de008869bcaef682d2f36bd696faa81b65"
+  },
+  "gpu": "NVIDIA RTX A6000",
+  "target": {
+    "model": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-8b",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "device": "cuda:0"
+  },
+  "load_seconds": 15.64478248701198,
+  "rows": 90
+}

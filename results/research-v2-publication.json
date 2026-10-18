@@ -982,5 +982,93 @@
     "published": "reuse-confirmation/tests-source.json",
     "published_bytes": 178,
     "published_sha256": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505"
+  },
+  {
+    "source": "config-revisions-development/environment.json",
+    "raw_bytes": 475,
+    "raw_sha256": "165787d3e4e3e9152f8734c56477e8a1007b053b3b097ad5a9a6c69185ef4901",
+    "published": "config-revisions-development/environment.json",
+    "published_bytes": 475,
+    "published_sha256": "165787d3e4e3e9152f8734c56477e8a1007b053b3b097ad5a9a6c69185ef4901"
+  },
+  {
+    "source": "config-revisions-development/preflight.json",
+    "raw_bytes": 1361,
+    "raw_sha256": "c4c9e69bedbf42f2c674db3711fd8f87de2d106fa9450ecf351eb464e88861b5",
+    "published": "config-revisions-development/preflight.json",
+    "published_bytes": 1361,
+    "published_sha256": "c4c9e69bedbf42f2c674db3711fd8f87de2d106fa9450ecf351eb464e88861b5"
+  },
+  {
+    "source": "config-revisions-development/projects.json",
+    "raw_bytes": 107834,
+    "raw_sha256": "a987d8f1d8f9bd727f041ad596570d5853c02a766db0ca19651c4d19485e5012",
+    "published": "config-revisions-development/projects.json",
+    "published_bytes": 107834,
+    "published_sha256": "a987d8f1d8f9bd727f041ad596570d5853c02a766db0ca19651c4d19485e5012"
+  },
+  {
+    "source": "config-revisions-development/provenance.json",
+    "raw_bytes": 21054,
+    "raw_sha256": "d7830aa01c340accbbba805e5cec676e5770064b85a6ca21ba60845348fc508d",
+    "published": "config-revisions-development/provenance.json",
+    "published_bytes": 21054,
+    "published_sha256": "d7830aa01c340accbbba805e5cec676e5770064b85a6ca21ba60845348fc508d"
+  },
+  {
+    "source": "config-revisions-development/quality-v2.json",
+    "raw_bytes": 1738,
+    "raw_sha256": "8f82451a4b1b90064d48969b6dda549bd51ffc66cf180c4684a701821b5d42f0",
+    "published": "config-revisions-development/quality-v2.json",
+    "published_bytes": 1738,
+    "published_sha256": "8f82451a4b1b90064d48969b6dda549bd51ffc66cf180c4684a701821b5d42f0"
+  },
+  {
+    "source": "config-revisions-development/references.jsonl",
+    "raw_bytes": 70516,
+    "raw_sha256": "182d009e66e5f16397bb6b56b64e9bfbd830d5ee80a00a742dcaee3b5709675d",
+    "published": "config-revisions-development/references.jsonl.gz",
+    "published_bytes": 13588,
+    "published_sha256": "2090aaa5c1afb51217f8f325b16836b469a3938f338d7483fbef4fcc4182420d"
+  },
+  {
+    "source": "config-revisions-development/replay.jsonl",
+    "raw_bytes": 761967,
+    "raw_sha256": "f37f5a5b28db8e4a2d95f0e88d9ea6b3f5fb5def0165954facf5e8355df85ebf",
+    "published": "config-revisions-development/replay.jsonl.gz",
+    "published_bytes": 49062,
+    "published_sha256": "49344b0fe2e620bd11adb2c006dea8b7b6a1cc31c82799dc3d1526b47f6a7044"
+  },
+  {
+    "source": "config-revisions-development/run.log",
+    "raw_bytes": 3925,
+    "raw_sha256": "754b259e00f3b42c4268af6910f0a31fe6ebb2515f5936eca88be248fa31e672",
+    "published": "config-revisions-development/run.log",
+    "published_bytes": 3925,
+    "published_sha256": "754b259e00f3b42c4268af6910f0a31fe6ebb2515f5936eca88be248fa31e672"
+  },
+  {
+    "source": "config-revisions-development/suffix-build-clang.log",
+    "raw_bytes": 2835,
+    "raw_sha256": "7f3bb817eeb14e692c9108bb525b726f98c4df44be61245f915548ade777dbb2",
+    "published": "config-revisions-development/suffix-build-clang.log",
+    "published_bytes": 2835,
+    "published_sha256": "7f3bb817eeb14e692c9108bb525b726f98c4df44be61245f915548ade777dbb2"
+  },
+  {
+    "source": "config-revisions-development/suffix-build-gcc-failure.log",
+    "raw_bytes": 4337,
+    "raw_sha256": "232f304dcf68b1209f21a88ff458800a7ea29be8526b0bf46c570ca974f7be0c",
+    "published": "config-revisions-development/suffix-build-gcc-failure.log",
+    "published_bytes": 4337,
+    "published_sha256": "232f304dcf68b1209f21a88ff458800a7ea29be8526b0bf46c570ca974f7be0c"
+  },
+  {
+    "source": "config-revisions-development/summary.json",
+    "raw_bytes": 813,
+    "raw_sha256": "7310d6e5fcef3219d8e9f67046dcddbab60101a6d3f469fbb1b044273e68aa87",
+    "published": "config-revisions-development/summary.json",
+    "published_bytes": 813,
+    "published_sha256": "7310d6e5fcef3219d8e9f67046dcddbab60101a6d3f469fbb1b044273e68aa87"
   }
 ]

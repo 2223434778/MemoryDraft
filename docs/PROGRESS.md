@@ -1,6 +1,11 @@
 # 项目进度
 
-## 2026-10-18 — 公开CI配置修订回放（运行中）
+## 2026-10-18 — 公开CI配置修订回放（开发完成，合同诊断）
+
+- 开发90/90严格一致，完整组AR318.002s、DFlash60.753s、Adapted60.819s、Global36.220s、Context36.414s、Arctic37.306s。Global为DFlash的1.677×，Context/Global1.005、项目区间[0.997,1.019]，没有稳定独立历史贡献；Arctic/Global1.030仅6开发项目/单重复，不能作全面方法优势。
+- 原Target合同v1完整文件仅5/12文本及YAML结构正确，10/12可解析；diff修正终止LF评分后3/6可正确应用，0/18参考截断。全部失败保留，性能不代表可用任务已经成立。报告 `CONFIG_REVISIONS_DEVELOPMENT_RESULTS.md` 已从原始/发布数据离线重建：版本/用户快照、token、KV前沿、任务检查、配对、summary全部核对。运行源码仍为c6清单，不用后补报告冒充原运行来源。
+- 预先声明单次contract-v2小探测：Ruff/Requests开发首轮，尾部重申完整文件/注释/未修改行，2个新AR参考+4次DFlash/Global配对。无答案或新事实；16项本机审计/合同/前置阶段测试通过。两例均正确才进入确认；确认如启动将全部共享新输入及新AR，不能把输入版本改变的效果归为R。当前尚无probe或确认结果。
+- 开发结果11份白名单JSON/无损gzip JSONL/LOG已发布，含原始v1评分和独立quality-v2.json更正、失败g++与成功clang构建日志、事后环境捕获；统一发布清单现134份。权重、C++二进制、SQLite和公开API原始缓存未入库。
 
 - 用户授权进入真实项目工作负载。新增采集器、`evaluation/config_revisions.py`、`run_config_revisions.py`、离线审计报告和测试。固定6开发/12确认仓库、2025-09-01之前三版同一工作流及两轮修改，新增diff边界；这是公开项目衍生编辑API回放，不冒称自然用户对话。
 - 全部18项目已冻结；数据SHA256 `944f0f77a41b08126411e8558a7b451e45341a412d2cee0460fb7c96b12f351e`。未按模型结果选取文件。API限流/服务器读取超时通过已连接GitHub只读工具缓存公开响应解决，保留原规则和跳过候选；手动复核mypy MIT/NumPy BSD三条款及scikit-learn COPYING，保留完整许可。Starlette同仓库ID迁移记录为Kludex/starlette。
@@ -11,6 +16,25 @@
 - GPU开发运行：`OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 CUDA_VISIBLE_DEVICES=0 .venv-dflash/bin/python -u scripts/run_config_revisions.py --split development`，结果 `results/config-revisions-development/`。进程1223876；仅GPU0，不把部分配对当完整结论。
 - 开发发现真实Target会遗漏未修改部分，任务质量与严格token一致性分别报告，不剔除失败。另发现diff评分v1未补最后LF而误判可应用性；新增评分v2及缺失LF回归，本机10 passed。原始输出/计时/评分不改，报告先按原版本审计再离线记录quality-v2.json更正；原GPU进程仍运行c6源码。该修正不改变Target或接受条件。
 - 任何确认输出之前收敛确认计时：开发仍有正式AR；确认保留独立AR参考、五条加速路径及diff边界，共468次而非原拟540次，避免额外重复AR基准成本。主比较仍为DFlash/Global，参数和Target输入不变；确认不报告相对AR加速比。方法集合/缺失行审计已补测试，本机11 passed。协议修订在 `CONFIG_REVISIONS_PROTOCOL.md` 顶部。
+
+本阶段实际准备/验证命令：
+
+```powershell
+.venv\Scripts\python.exe scripts/prepare_config_revisions.py --offline
+.venv\Scripts\python.exe scripts/prepare_suffix_assets.py
+.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-config-full
+.venv\Scripts\python.exe -m pytest -q tests/test_config_revisions.py --basetemp .test-tmp-config-confirm-plan
+.venv\Scripts\python.exe scripts/bundle_source.py
+```
+
+服务器官方后缀组件构建及GPU前检查（默认g++失败日志另保留）：
+
+```bash
+.venv-dflash/bin/python -m pip install --no-deps --timeout 15 --retries 1 nanobind==2.7.0
+cmake -S models/arctic-suffix-audit/csrc/suffix_decoding -B models/arctic-suffix-audit/build-clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++-15 -DPython_EXECUTABLE=$PWD/.venv-dflash/bin/python -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=$PWD/models/arctic-suffix-audit/arctic_inference/suffix_decoding -DCMAKE_BUILD_TYPE=Release
+cmake --build models/arctic-suffix-audit/build-clang -j4
+OMP_NUM_THREADS=4 PYTHONPATH=. .venv-dflash/bin/python -m pytest -q tests/test_config_revisions.py tests/test_dflash_reuse.py tests/test_reuse_report.py --basetemp .test-tmp-config-dflash
+```
 
 ## 2026-10-18 — R/DFlash 接入、场景开发与独立小规模确认（完成）
 

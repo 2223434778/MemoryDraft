@@ -54,20 +54,41 @@ def verify_assets():
                 suffix_binary_sha256=hashlib.sha256(binaries[0].read_bytes()).hexdigest())
 
 
+def development_reference(directory: Path, data_sha256: str):
+    previous = json.loads((directory / "provenance.json").read_text(encoding="utf-8"))
+    summary = json.loads((directory / "summary.json").read_text(encoding="utf-8"))
+    if (previous["status"] != "complete" or previous.get("rows") != 90
+            or previous["data_sha256"] != data_sha256
+            or any(summary[mode]["rows"] != count or not summary[mode]["correct"]
+                   for mode, count in (("full", 72), ("diff", 18)))):
+        raise ValueError("Complete and audit the unchanged development replay before confirmation")
+    return dict(source_sha256=previous["source"]["source_sha256"], data_sha256=data_sha256, rows=90)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--split", choices=("development", "confirmation"), default="development")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--contract-version", type=int, choices=(1, 2), default=1)
+    parser.add_argument("--contract-probe", action="store_true")
     args = parser.parse_args()
-    out = args.output or ROOT / ("results/config-revisions-" + args.split)
+    if args.contract_probe and (args.split != "development" or args.contract_version != 2):
+        raise ValueError("The one contract probe uses only development failures with explicit contract v2")
+    out = args.output or ROOT / ("results/config-revisions-contract-probe" if args.contract_probe else
+                                 "results/config-revisions-" + args.split)
     if out.exists():
         raise RuntimeError("Preserve existing evidence; select a new output path")
     projects = load_projects(DATA, args.split)
+    if args.contract_probe:
+        projects = [p for p in projects if p["id"] in {"astral-sh--ruff", "psf--requests"}]
     repeats = 1 if args.split == "development" else 3
     selected_methods = methods_for_split(args.split)
+    if args.contract_probe:
+        selected_methods = {"full": ("DFlash", "Global")}
     out.mkdir(parents=True)
     (out / "stores").mkdir()
     provenance = dict(status="started", split=args.split, repeats=repeats, methods=selected_methods, quality_version=2,
+                      contract_version=args.contract_version, contract_probe=args.contract_probe,
                       config=asdict(ReuseConfig()), budget_full=3072, budget_diff=768,
                       source=json.loads((ROOT / "SOURCE_MANIFEST.json").read_text()),
                       data_sha256=hashlib.sha256((DATA / "projects.json").read_bytes()).hexdigest(),
@@ -78,6 +99,9 @@ def main():
     try:
         if transformers.__version__ != "4.57.3":
             raise ValueError("Use isolated .venv-dflash")
+        if args.split == "confirmation" or args.contract_probe:
+            provenance["development_reference"] = development_reference(ROOT / "results/config-revisions-development",
+                                                                         provenance["data_sha256"])
         provenance["assets"] = verify_assets()
         provenance["gpu"] = torch.cuda.get_device_name(0)
         config = json.loads((ROOT / "configs/a6000-qwen3.json").read_text())
@@ -88,10 +112,10 @@ def main():
         tokenizer = AutoTokenizer.from_pretrained(config["target"]["model"], local_files_only=True)
         # Check sizes without using expected outputs to select or drop any task.
         preflight = [dict(project_id=p["id"], turn=t,
-                          input_tokens=len(tokenizer.apply_chat_template(messages(request_text(p, t)),
+                          input_tokens=len(tokenizer.apply_chat_template(messages(request_text(p, t, contract_version=args.contract_version)),
                                 add_generation_prompt=True, enable_thinking=False)),
                           expected_tokens=len(tokenizer.encode(p["turns"][t]["expected"], add_special_tokens=False)))
-                     for p in projects for t in range(2)]
+                     for p in projects for t in range(1 if args.contract_probe else 2)]
         save(out / "preflight.json", preflight)
         if any(r["input_tokens"] > 6144 or r["expected_tokens"] >= 3072 for r in preflight):
             raise ValueError("Predeclared budget insufficient; revise protocol before inference, never drop cases")
@@ -119,7 +143,7 @@ def main():
             torch.cuda.synchronize()
             torch.cuda.reset_peak_memory_stats()
             started = time.perf_counter()
-            text = request_text(project, turn, mode)
+            text = request_text(project, turn, mode, contract_version=args.contract_version)
             identity = (project["id"], mode, method, repeat)
             if identity not in stores:
                 stores[identity] = MemoryStore(out / "stores" / ("-".join(map(str, identity)) + ".db"))
@@ -176,7 +200,7 @@ def main():
 
         for i, project in enumerate(projects):
             for mode, methods in selected_methods.items():
-                for turn in range(2 if mode == "full" else 1):
+                for turn in range(2 if mode == "full" and not args.contract_probe else 1):
                     reference = generate(project, turn, mode, "Reference", 0)
                     reference["quality"] = quality(reference["text"], project, turn, mode)
                     append(out / "references.jsonl", reference)

@@ -56,16 +56,22 @@ def load_projects(directory: Path, split: str):
     return [p for p in payload["projects"] if p["split"] == split]
 
 
-def request_text(project, turn, mode="full"):
+def request_text(project, turn, mode="full", *, contract_version=1):
     item = project["turns"][turn]
-    if mode not in {"full", "diff"}:
+    if mode not in {"full", "diff"} or contract_version not in {1, 2}:
         raise ValueError("Unknown editor output contract")
     contract = ("Return the entire updated YAML file, without markdown fences. Preserve all unaffected text."
                 if mode == "full" else "Return only the unified diff, without markdown fences or explanations.")
-    return (f"Repository: {project['repository']}\nFile: {project['path']}\n"
+    text = (f"Repository: {project['repository']}\nFile: {project['path']}\n"
             f"Apply exactly the supplied patch to the original file. {contract}\n"
             f"Original file:\n<original>\n{item['before']}</original>\n"
             f"Requested change (unified diff):\n<patch>\n{item['patch']}</patch>\n")
+    if contract_version == 2:
+        text += ("\nOutput the complete updated file now. Include its top-level metadata, comments, and every unchanged section. "
+                 "Preserve the original line order and all lines outside the patch edits. Begin with the updated file's first line. "
+                 "Return the file text alone.\n" if mode == "full" else
+                 "\nOutput the requested valid unified diff now, including file headers and complete hunk context. End with a newline.\n")
+    return text
 
 
 def messages(text):

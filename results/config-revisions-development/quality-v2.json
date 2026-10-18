@@ -1,0 +1,65 @@
+{
+  "recorded_quality_version": 1,
+  "quality_version": 2,
+  "reason": "Append missing terminal LF before git apply; no output or timing changes",
+  "runtime_source_sha256": "c6c269ffce98cbfd2036dca7ccd612892cef52287e12a2a637da2bf91bd0215b",
+  "corrections": [
+    {
+      "project_id": "astral-sh--ruff",
+      "mode": "diff",
+      "turn": 0,
+      "recorded": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": false,
+        "parse_error": null
+      },
+      "corrected": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": true,
+        "parse_error": null
+      }
+    },
+    {
+      "project_id": "encode--httpx",
+      "mode": "diff",
+      "turn": 0,
+      "recorded": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": false,
+        "parse_error": null
+      },
+      "corrected": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": true,
+        "parse_error": null
+      }
+    },
+    {
+      "project_id": "psf--requests",
+      "mode": "diff",
+      "turn": 0,
+      "recorded": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": false,
+        "parse_error": null
+      },
+      "corrected": {
+        "exact_file_or_patch": true,
+        "yaml_mapping": null,
+        "yaml_equivalent": null,
+        "patch_applies_to_expected": true,
+        "parse_error": null
+      }
+    }
+  ]
+}
