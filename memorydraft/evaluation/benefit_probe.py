@@ -62,7 +62,8 @@ def audit(rows, tasks, repeats, *, instrumented):
                                  for k in (*COUNTERS, *BENEFIT_COUNTERS)}
     for r in rows:
         c = r["counters"]
-        if (c.get("splice_prefix_accepted_tokens", 0) + c.get("splice_history_accepted_tokens", 0)
+        is_splice = r["method"].startswith("Splice-") or r["method"] in METHODS[-3:]
+        if (is_splice and c.get("splice_prefix_accepted_tokens", 0) + c.get("splice_history_accepted_tokens", 0)
                 != c.get("alignment_accepted_tokens", 0) or c.get("benefit_ot_candidates", 0) > c.get("alignment_candidates", 0)):
             raise ValueError("Invalid benefit accounting")
     return summary

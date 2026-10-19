@@ -92,3 +92,26 @@ def test_rejects_invalid_or_missing_calibration(change):
     change(config)
     with pytest.raises(ValueError):
         BenefitPolicy(**config)
+
+
+def test_audit_applies_splice_attribution_only_to_splices():
+    from pathlib import Path
+    from memorydraft.evaluation.benefit_probe import METHODS, audit, inputs
+    from memorydraft.evaluation.splice_probe import COUNTERS
+
+    tasks, _ = inputs(Path(__file__).resolve().parents[1], subset=True)
+    rows = []
+    for t in tasks:
+        for method in METHODS:
+            c = dict.fromkeys(COUNTERS, 0)
+            c.update(rounds=2, draft_rounds=1, draft_forward_rounds=1, reuse_rounds=1, reuse_accepted_tokens=4)
+            if method == "Guided-Edit":
+                c["alignment_accepted_tokens"] = 4
+            rows.append(dict(request_id=t.request.id, method=method, repeat=0, project_id=t.project_id,
+                             group=getattr(t, "group", "development"), correct=True,
+                             token_ids=t.reference["token_ids"], prompt_sha256=t.reference["prompt_sha256"],
+                             snapshot_id=t.snapshot_id, latency_seconds=1., counters=c))
+    audit(rows, tasks, 1, instrumented=False)
+    rows[-1]["counters"]["alignment_accepted_tokens"] = 4
+    with pytest.raises(ValueError, match="benefit accounting"):
+        audit(rows, tasks, 1, instrumented=False)
