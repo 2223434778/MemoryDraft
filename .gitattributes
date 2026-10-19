@@ -97,3 +97,5 @@ data/research/ot-guided/** -text
 docs/OT_GUIDED*.md text eol=lf
 results/ot-guided/** -text
 results/ot-guided/**/*.log -whitespace
+# Preserve the original Windows pytest failure tracebacks and their hashes.
+results/ot-guided/tests-*-failed-local.xml -whitespace
