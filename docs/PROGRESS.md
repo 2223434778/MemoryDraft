@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-19 — 风险拼接完整续测与已知机制覆盖（完成）
+
+- 用户授权放宽任务质量/零触发的停止条件后，主12请求已完整60机制/120计时；错误Target输出保留并单列，未重跑AR、不改prompt/权重/阈值。180/180严格匹配AR，120/120计数路径一致。五组同为64轮/32Draft前向，Risk评估/改选0；主Risk相对Splice-Edit−0.02%、相对Guided+0.17%，全量14.155447s vs14.154433s的微差无风险机制变化，不能算收益。
+- 补充旧payment/shipment训练项目10机制/20计时，全部30严格一致、20路径一致。执行`00bc845542cd6ab54778131a472a9e7945e8fd4e`，747文件核验，源zip SHA`1061fab2d3a6c4c77c3e456196ff5a34dd8b6db13217fb6b36f7054557bdbb67`，独立服务器`prefix-risk-controls`、PID2415173已完成；先8报告/输入测试通过/3.50s。原主数据和旧结果执行前后SHA一致。
+- 两次执行相同runtime package SHA`098e4ec770108a3b4da457f16f46d86ac58f9dd0e6c46d146accb1ab4f2ff44c`，算法未调整。payment/15风险将边界14→7、接受7→32，全请求验证8→7轮；Risk两次总1.519649s，Splice1.669519s，Guided1.484506s，无置信度1.520009s。无置信度也作同一改选，两个控制的实际逐轮候选完全相同；只能证明已知例中边界修复有效，未显示置信度独立增量，且仍慢于Guided。shipment保持8轮，Risk1.711838s、Splice1.712927s、Guided1.671890s。
+- 这两例特意选择自旧训练项目，只作机制覆盖，不合入12请求主结果，不称新holdout。控制原始zip73519字节/SHA`94344763aa0898514acbc7bea5cfc6b63fa4088a9d8a21d7705952ced3aa5779`，证据`results/prefix-risk/continuation/controls`；主zip109037字节/SHA`b2af856cf52177ed7d624924b4afe1b84691911a9ebdee06a2f341856176f097`。GPU双19MiB/0%。
+- 实际命令见三个新协议及各目录run-pipeline.sh。报告`PREFIX_RISK_CONTINUATION_RESULTS.md`、`PREFIX_RISK_CONTROLS_RESULTS.md`，分别`python -m scripts.write_prefix_risk_continuation_report`/`write_prefix_risk_controls_report`重建；只新增续测目录，原停止现场/报告/publication不变。后续不把细小计时差、训练例修复或相同无置信度行为称为新的算法优势。
+- 最终报告/输入审计10 passed/8.53s；完整373 passed/3 skipped/40.91s：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-risk-continued-full --junitxml=artifacts/risk-continued-tests-full-local.xml`。主/控制共210次严格匹配；payment Risk较Splice快8.9768%、较Guided慢2.3673%。三个infra引用保持`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。CI dflash补充续测与控制报告审计。
+
 ## 2026-10-19 — 风险续测12请求完成，补充分支覆盖检查（执行准备）
 
 - 执行冻结`41ecab699695c90653454c360516cbef816e3fd8`，729文件核验，源zip SHA`a429342d081f5477d1573b9ff023f9f28e40f21a4898d39d66630cfc68637dc1`，独立服务器`prefix-risk-continuation`。94相关测试通过/8.48s；流水PID2408502已完成，GPU双19MiB/0%。

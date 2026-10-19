@@ -102,6 +102,7 @@ def build(source):
               f"4主项目中{comparison['projects_faster']}个比Splice-Edit快，Risk/Splice项目bootstrap 95%区间[{interval[0]:.4f}, {interval[1]:.4f}]。四项目、两重复不足以支持广泛显著性或生产结论。",
               "", "原继续投入参考指标仅作描述，没有阻断本轮120次计时：", "", "```json", json.dumps(comparison["gate"], indent=2, sort_keys=True), "```", "",
               "本批风险评估和改选均为0，Splice三组均无内部拼接历史尾部接受。唯一的拼接候选池没有达到准入分数；现有精确suffix/普通Draft已覆盖实际路径，风险模型未被调用。因此约0.01%量级的总时差不能作为风险决策收益，也不能据此判断激活后的风险排序无效。", "",
+              "另有两个已知训练项目用于检查风险分支覆盖，单独见[PREFIX_RISK_CONTROLS_RESULTS.md](PREFIX_RISK_CONTROLS_RESULTS.md)。补充结果不合入本表，也不作为泛化证据。", "",
               f"冻结执行`{manifest['commit']}`，package SHA `{infos['mechanism']['source']['sha256']}`。旧结果含首次停止现场在执行前后SHA不变。", "",
               "```bash", "python -m scripts.write_prefix_risk_continuation_report", "```", ""]
     return "\n".join(lines), diagnostic

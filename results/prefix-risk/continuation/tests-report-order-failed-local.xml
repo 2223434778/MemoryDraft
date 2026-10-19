@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="8" time="8.020" timestamp="2026-10-19T20:06:29.190253+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_prefix_risk_continuation" name="test_continuation_includes_failed_contract_and_all_original_references" time="0.003" /><testcase classname="tests.test_prefix_risk_continuation" name="test_reference_inference_profile_must_remain_fixed" time="0.003" /><testcase classname="tests.test_prefix_risk_continuation" name="test_original_stop_evidence_is_protected_but_new_output_is_separate" time="0.007" /><testcase classname="tests.test_prefix_risk_continuation_report" name="test_all_requests_complete_despite_failed_contract_and_no_risk_switches" time="0.474"><failure message="assert '# 前缀风险拼接续测结果...report\n```\n' == '# 前缀风险拼接续测结果...report\n```\n'&#10;  &#10;  Skipping 2459 identical leading characters in diff, use -v to show&#10;  Skipping 217 identical trailing characters in diff, use -v to show&#10;    json&#10;    {&#10;  -   &quot;primary_splice_3_percent&quot;: false,&#10;  -   &quot;primary_guided_1_percent&quot;: false,...&#10;  &#10;  ...Full output truncated (14 lines hidden), use '-vv' to show">def test_all_requests_complete_despite_failed_contract_and_no_risk_switches():
+        before = {p: file_hash(p) for p in SOURCE.rglob("*") if p.is_file()}
+        report, d = build(SOURCE)
+&gt;       assert report == (ROOT / "docs/PREFIX_RISK_CONTINUATION_RESULTS.md").read_text(encoding="utf-8")
+E       assert '# 前缀风险拼接续测结果...report\n```\n' == '# 前缀风险拼接续测结果...report\n```\n'
+E         
+E         Skipping 2459 identical leading characters in diff, use -v to show
+E         Skipping 217 identical trailing characters in diff, use -v to show
+E           json
+E           {
+E         -   "primary_splice_3_percent": false,
+E         -   "primary_guided_1_percent": false,...
+E         
+E         ...Full output truncated (14 lines hidden), use '-vv' to show
+
+tests\test_prefix_risk_continuation_report.py:17: AssertionError</failure></testcase><testcase classname="tests.test_prefix_risk_continuation_report" name="test_task_failure_cannot_be_relabelled_as_correct" time="0.451" /><testcase classname="tests.test_prefix_risk_continuation_report" name="test_coverage_controls_are_fixed_known_training_projects" time="0.006" /><testcase classname="tests.test_prefix_risk_report" name="test_contract_stop_is_reported_without_inventing_policy_measurements" time="0.203" /><testcase classname="tests.test_prefix_risk_report" name="test_report_refuses_timing_after_contract_stop" time="0.218" /></testsuite></testsuites>

@@ -65,6 +65,8 @@
 
 本批风险评估和改选均为0，Splice三组均无内部拼接历史尾部接受。唯一的拼接候选池没有达到准入分数；现有精确suffix/普通Draft已覆盖实际路径，风险模型未被调用。因此约0.01%量级的总时差不能作为风险决策收益，也不能据此判断激活后的风险排序无效。
 
+另有两个已知训练项目用于检查风险分支覆盖，单独见[PREFIX_RISK_CONTROLS_RESULTS.md](PREFIX_RISK_CONTROLS_RESULTS.md)。补充结果不合入本表，也不作为泛化证据。
+
 冻结执行`41ecab699695c90653454c360516cbef816e3fd8`，package SHA `098e4ec770108a3b4da457f16f46d86ac58f9dd0e6c46d146accb1ab4f2ff44c`。旧结果含首次停止现场在执行前后SHA不变。
 
 ```bash

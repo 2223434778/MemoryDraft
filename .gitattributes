@@ -139,3 +139,4 @@ data/research/prefix-risk/** -text
 results/prefix-risk/** -text
 results/prefix-risk/**/*.log -whitespace
 results/prefix-risk/tests-*.xml -whitespace
+results/prefix-risk/continuation/tests-*.xml -whitespace

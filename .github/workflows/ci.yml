@@ -22,6 +22,8 @@ jobs:
       - if: matrix.profile == 'dflash'
         run: python -m pytest -q tests/test_runtime.py tests/test_runtime_migration.py tests/test_transport.py tests/test_transport_probe.py tests/test_transport_validation.py tests/test_transport_diagnosis.py tests/test_guided_reuse.py tests/test_guided_validation.py tests/test_guided_report.py tests/test_splice_reuse.py tests/test_splice_probe.py tests/test_splice_report.py tests/test_splice_cooldown_report.py tests/test_matrix.py tests/test_matrix_probe.py tests/test_matrix_report.py tests/test_benefit.py tests/test_benefit_report.py tests/test_acceptance.py tests/test_acceptance_probe.py tests/test_acceptance_report.py tests/test_prefix_risk.py tests/test_prefix_risk_probe.py tests/test_prefix_risk_report.py tests/test_serving.py tests/test_dflash_reuse.py --basetemp .test-tmp-ci
       - run: python -m build
+      - if: matrix.profile == 'dflash'
+        run: python -m pytest -q tests/test_prefix_risk_continuation.py tests/test_prefix_risk_continuation_report.py tests/test_prefix_risk_controls_report.py --basetemp .test-tmp-continuation-ci
       - run: python -m memorydraft benchmark --config configs/runtime-demo.json --requests examples/requests.jsonl --methods AR --repeats 1 --output artifacts/ci-demo
       - name: Installed wheel without inference dependencies
         run: |

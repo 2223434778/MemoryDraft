@@ -17,7 +17,7 @@ from scripts.write_splice_report import audit_calls, preserve_diagnostic
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def check_provenance(info, manifest, *, protected_hashes=None):
+def check_provenance(info, manifest, *, protected_hashes=None, runner="scripts/run_prefix_risk_probe.py"):
     files = {n.removeprefix("memorydraft/"): h for n, h in manifest["files"].items()
              if n.startswith("memorydraft/") and n.endswith((".py", ".json", ".txt"))}
     old = protected(ROOT) if protected_hashes is None else protected_hashes
@@ -35,7 +35,7 @@ def check_provenance(info, manifest, *, protected_hashes=None):
     if (not info["original_unchanged"]
             or info["source"]["files"] != files
             or info["source"]["sha256"] != hashlib.sha256(json.dumps(files, sort_keys=True).encode()).hexdigest()
-            or info["runner_sha256"] != manifest["files"]["scripts/run_prefix_risk_probe.py"]
+            or info["runner_sha256"] != manifest["files"][runner]
             or any(h != manifest["files"][name] or h != file_hash(ROOT / name)
                    for name, h in info["frozen_sha256"].items())):
         raise ValueError("Changed frozen prefix-risk execution provenance")
