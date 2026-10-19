@@ -27,8 +27,8 @@ class RuntimeConfig:
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
             raise ValueError("backend must be transformers, dflash or demo")
-        if self.retrieval not in {"suffix", "ot", "edit"}:
-            raise ValueError("retrieval must be suffix, ot or edit")
+        if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided"}:
+            raise ValueError("Unknown retrieval method")
         if self.alignment or self.retrieval != "suffix":
             from memorydraft.retrieval.transport import AlignmentConfig
             AlignmentConfig(**self.alignment)

@@ -159,6 +159,28 @@ def test_invalid_controls_are_explicit(tiny):
                        max_new_tokens=5, route_sequence=("H",))
 
 
+@pytest.mark.parametrize("reject_at", [None, 0, 2])
+def test_guided_replacement_after_real_draft_keeps_features_and_strict_output(tiny, reject_at):
+    class Guided(ScriptedMatcher):
+        def propose(self, confirmed, max_tokens):
+            return None
+
+        def propose_with_draft(self, confirmed, draft_tokens, max_tokens):
+            assert len(draft_tokens) == 3 or max_tokens < 3
+            return super().propose(confirmed, max_tokens)
+
+    draft = CheckedDraft(tiny.features)
+    matcher = Guided(tiny.reference[0, tiny.ids.shape[1]:].tolist(), reject_at)
+    commits = []
+    result = generate_reuse(tiny.target, draft, tiny.ids, max_new_tokens=29, matcher=matcher,
+                            config=ReuseConfig(max_tokens=8, cooldown_rounds=0), on_tokens=commits.extend)
+    assert result.sequences.tolist() == tiny.reference.tolist()
+    assert commits == tiny.reference[0, tiny.ids.shape[1]:].tolist()
+    assert len(draft.calls) == len(result.rounds)
+    assert all(r["draft_forward"] for r in result.rounds)
+    assert any(r["route"] == "R" for r in result.rounds)
+
+
 @pytest.mark.parametrize("method", ["edit", "ot"])
 def test_aligned_candidates_still_obey_real_target_rejection_and_kv(tiny, method):
     if method == "ot":

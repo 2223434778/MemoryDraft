@@ -89,3 +89,11 @@ results/ot-validation/*.log -whitespace
 results/ot-validation/**/run.log -whitespace
 results/ot-diagnosis/** -text
 results/ot-diagnosis/*.log -whitespace
+memorydraft/retrieval/guided.py text eol=lf
+memorydraft/evaluation/guided_validation.py text eol=lf
+scripts/*guided*.py text eol=lf
+tests/test_guided*.py text eol=lf
+data/research/ot-guided/** -text
+docs/OT_GUIDED*.md text eol=lf
+results/ot-guided/** -text
+results/ot-guided/**/*.log -whitespace

@@ -150,6 +150,17 @@ def test_config_paths_and_packaged_audit_assets(tmp_path):
         RuntimeConfig(target="x", dtype="bfloat16")
 
 
+@pytest.mark.parametrize("method", ["edit-guided", "ot-guided"])
+def test_guided_runtime_counts_actual_draft_forwards(engine, method):
+    if method == "ot-guided":
+        pytest.importorskip("ot")
+    reference = engine.generate(request(), "AR")
+    engine.config = replace(engine.config, retrieval=method)
+    result = engine.generate(request(), "R+DFlash")
+    assert result.token_ids == reference.token_ids
+    assert result.counters["draft_forward_rounds"] >= result.counters["draft_rounds"]
+
+
 def test_benchmark_pairs_outputs_and_preserves_existing_artifacts(tmp_path):
     output = tmp_path / "benchmark"
     report = benchmark(DemoEngine(), [request()], ["AR"], output, repeats=2)

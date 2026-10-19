@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-19 — DFlash前缀引导的OT/Edit（执行准备）
+
+- 用户授权进行下一步。新增`retrieval/guided.py`，精确suffix仍优先；未命中后复用已有DFlash前4个候选作为接续锚点，最多64后缀项/8候选/4查询，候选需长于现有Draft块。OT/Edit使用同池同预算，未改Target输入或逐token验证。`draft_forward_rounds`单列实际Draft计算，避免把引导R计为跳过Draft。旧`transport.py`不改，默认仍suffix，独立infra保留。
+- 机制参考LogitSpec（arXiv:2507.01449v3）预测token引导检索与SAM-Decoding模型/检索组合；没有复制新增上游代码。固定协议`OT_GUIDED_PROTOCOL.md`，先旧8请求×4组一次开发，再新8项目16请求×5组两重复验证。新任务在首个新Target答案前生成，全部方法共享给定源文，不写回当前输出。任何新AR契约不符或截断均停止正式计时。
+- 首轮相关测试51 passed/2 skipped/2 failed，发现suffix库无匹配返回空位置，已补`count==0`处理；随后53 passed/2 skipped/11.78s。新增fixture/audit检查曾因tuple/list直接比较失败，已仅在测试中标准化JSON表示，任务字节不变；对应6 passed/0.65s。首次完整回归241 passed/3 skipped/1 failed为同一fixture测试，修复后将运行完整检查。原始XML在artifacts/guided-tests-*.xml保留。
+- 服务器双A6000空闲；下一步部署独立`ot-r-guided`目录，不覆盖原诊断/实验/infra。完整在线成本纳入，hint只是未确认候选，不作参考答案或已确认上下文。
+
 ## 2026-10-19 — OT-R 在线错误定位（完成）
 
 - 固定执行提交`8a40def7e0b87a3d5090a5d11201ff90c2fd4d33`，491个Git原始文件部署逐项SHA通过；归档SHA`cd8286531f1d6cc9f9d72f90fdc4ec6e0789611aa7bd4fe6daa0b70695aa1e4e`。服务器新目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-diagnosis`，仅使用既有模型与`.venv-dflash`，原实验和infra不覆盖。首次部署检查遇系统Python不支持`Path.is_relative_to`，尚未解包/启动模型；改用既有Python3.11后校验通过。

@@ -54,7 +54,8 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
 
 At each loop entrance target KV covers [0,start), and output[start] is the
 already confirmed but uncached anchor. Draft KV plus pending valid features
-also cover [0,start). R skips draft forward and accumulates those features.
+also cover [0,start). Exact R skips draft forward and accumulates those features;
+guided R may replace a block after its draft forward has already run.
 """
     if input_ids.ndim != 2 or input_ids.shape[0] != 1 or not input_ids.shape[1]:
         raise ValueError("Expected one nonempty token sequence")
@@ -127,6 +128,7 @@ also cover [0,start). R skips draft forward and accumulates those features.
                 proposal = None
         before_draft = draft_cache.get_seq_length()
         before_pending = pending_tokens
+        draft_forward = proposal is None
         if proposal is not None:
             route = "R"
             block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
@@ -146,6 +148,14 @@ also cover [0,start). R skips draft forward and accumulates those features.
             pending.clear()
             pending_tokens = 0
             block = block[:, :min(block.shape[1], limit - start)]
+            guided = getattr(matcher, "propose_with_draft", None) if can_reuse else None
+            if guided is not None:
+                with mark("guided_retrieval"):
+                    proposal = guided(confirmed, block[0, 1:].tolist(),
+                                      min(config.max_tokens, limit - start - 1))
+                if proposal is not None:
+                    route = "R"
+                    block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
         with mark("target_verify"):
             output = target(block, position_ids=positions[:, start:start + block.shape[1]],
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True)
@@ -171,7 +181,8 @@ also cover [0,start). R skips draft forward and accumulates those features.
                                       pending_after=pending_tokens, target_cache_after=start,
                                       source=proposal.source if proposal else None,
                                       lookup=proposal.lookup if proposal else None,
-                                      matched=proposal.matched if proposal else 0, buffer_flush=bool(flush)))
+                                      matched=proposal.matched if proposal else 0, buffer_flush=bool(flush),
+                                      draft_forward=draft_forward))
         step += 1
         available = min(start + 1, limit)
         publish(available)

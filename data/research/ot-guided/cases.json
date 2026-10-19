@@ -1,0 +1,515 @@
+{
+  "schema": 1,
+  "origin": "Eight new authored controlled projects; not production traffic",
+  "projects": [
+    {
+      "id": "edge-router",
+      "group": "edited-continuation",
+      "source": "[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nconnect_timeout_ms = 120\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\n",
+      "history": [
+        {
+          "user_id": "ot-guided-edge-router",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nconnect_timeout_ms = 120\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "edge-router"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "edge-router:0",
+            "user_id": "ot-guided-edge-router",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only connect_timeout_ms from 120 to 175.\n\nSOURCE BEGIN\n[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nconnect_timeout_ms = 120\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "connect_timeout_ms = 120",
+            "new": "connect_timeout_ms = 175"
+          },
+          "expected_text": "[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nconnect_timeout_ms = 175\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\n"
+        },
+        {
+          "request": {
+            "id": "edge-router:1",
+            "user_id": "ot-guided-edge-router",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Insert zone = \"eu-central\" immediately after the mode line.\n\nSOURCE BEGIN\n[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nconnect_timeout_ms = 120\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "mode = \"balanced\"\n",
+            "new": "mode = \"balanced\"\nzone = \"eu-central\"\n"
+          },
+          "expected_text": "[proxy]\nname = \"edge-router\"\nmode = \"balanced\"\nzone = \"eu-central\"\nconnect_timeout_ms = 120\nupstream_group = \"public-api\"\n\n[health]\npath = \"/ready\"\ninterval_seconds = 15\nhealthy_threshold = 3\nunhealthy_threshold = 2\n\n[limits]\nmax_connections = 2048\nmax_pending_requests = 256\nidle_timeout_seconds = 90\n\n[access_log]\nenabled = true\nformat = \"request_id method path status duration_ms\"\ninclude_headers = false\n"
+        }
+      ]
+    },
+    {
+      "id": "inventory-query",
+      "group": "edited-continuation",
+      "source": "WITH parameters AS (\n    SELECT 30 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\n",
+      "history": [
+        {
+          "user_id": "ot-guided-inventory-query",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "WITH parameters AS (\n    SELECT 30 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "inventory-query"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "inventory-query:0",
+            "user_id": "ot-guided-inventory-query",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only freshness_days from 30 to 45.\n\nSOURCE BEGIN\nWITH parameters AS (\n    SELECT 30 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "30 AS freshness_days",
+            "new": "45 AS freshness_days"
+          },
+          "expected_text": "WITH parameters AS (\n    SELECT 45 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\n"
+        },
+        {
+          "request": {
+            "id": "inventory-query:1",
+            "user_id": "ot-guided-inventory-query",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Insert the comment '-- Nightly inventory view' immediately before WITH parameters.\n\nSOURCE BEGIN\nWITH parameters AS (\n    SELECT 30 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "WITH parameters AS (",
+            "new": "-- Nightly inventory view\nWITH parameters AS ("
+          },
+          "expected_text": "-- Nightly inventory view\nWITH parameters AS (\n    SELECT 30 AS freshness_days,\n           10 AS minimum_available\n), eligible_items AS (\n    SELECT item_id, warehouse_id, available_units, updated_at\n    FROM inventory_snapshots\n    WHERE archived = false\n      AND available_units > 0\n), ranked_items AS (\n    SELECT item_id, warehouse_id, available_units,\n           ROW_NUMBER() OVER (\n               PARTITION BY item_id ORDER BY updated_at DESC\n           ) AS version_rank\n    FROM eligible_items\n)\nSELECT item_id, warehouse_id, available_units\nFROM ranked_items\nWHERE version_rank = 1\nORDER BY item_id, warehouse_id;\n"
+        }
+      ]
+    },
+    {
+      "id": "image-worker",
+      "group": "edited-continuation",
+      "source": "def image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"workers\": 6,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\n",
+      "history": [
+        {
+          "user_id": "ot-guided-image-worker",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "def image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"workers\": 6,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "image-worker"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "image-worker:0",
+            "user_id": "ot-guided-image-worker",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only workers from 6 to 9.\n\nSOURCE BEGIN\ndef image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"workers\": 6,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"workers\": 6",
+            "new": "\"workers\": 9"
+          },
+          "expected_text": "def image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"workers\": 9,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\n"
+        },
+        {
+          "request": {
+            "id": "image-worker:1",
+            "user_id": "ot-guided-image-worker",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Insert the dictionary entry \"priority\": \"interactive\", immediately after name.\n\nSOURCE BEGIN\ndef image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"workers\": 6,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"name\": \"thumbnail-generator\",\n",
+            "new": "\"name\": \"thumbnail-generator\",\n        \"priority\": \"interactive\",\n"
+          },
+          "expected_text": "def image_worker_options():\n    return {\n        \"name\": \"thumbnail-generator\",\n        \"priority\": \"interactive\",\n        \"workers\": 6,\n        \"input\": {\n            \"queue\": \"images.pending\",\n            \"prefetch\": 24,\n            \"acknowledge_after_write\": True,\n        },\n        \"transform\": {\n            \"width\": 320,\n            \"height\": 240,\n            \"preserve_aspect_ratio\": True,\n            \"format\": \"webp\",\n        },\n        \"output\": {\n            \"bucket\": \"image-previews\",\n            \"prefix\": \"generated/\",\n            \"cache_control\": \"public,max-age=3600\",\n        },\n    }\n"
+        }
+      ]
+    },
+    {
+      "id": "shipment-contract",
+      "group": "edited-continuation",
+      "source": "{\n  \"title\": \"ShipmentRecorded\",\n  \"version\": 2,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\n",
+      "history": [
+        {
+          "user_id": "ot-guided-shipment-contract",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "{\n  \"title\": \"ShipmentRecorded\",\n  \"version\": 2,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "shipment-contract"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "shipment-contract:0",
+            "user_id": "ot-guided-shipment-contract",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only the root version from 2 to 3.\n\nSOURCE BEGIN\n{\n  \"title\": \"ShipmentRecorded\",\n  \"version\": 2,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"version\": 2",
+            "new": "\"version\": 3"
+          },
+          "expected_text": "{\n  \"title\": \"ShipmentRecorded\",\n  \"version\": 3,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\n"
+        },
+        {
+          "request": {
+            "id": "shipment-contract:1",
+            "user_id": "ot-guided-shipment-contract",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Insert the root field \"namespace\": \"logistics\", immediately after title.\n\nSOURCE BEGIN\n{\n  \"title\": \"ShipmentRecorded\",\n  \"version\": 2,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "\"title\": \"ShipmentRecorded\",\n",
+            "new": "\"title\": \"ShipmentRecorded\",\n  \"namespace\": \"logistics\",\n"
+          },
+          "expected_text": "{\n  \"title\": \"ShipmentRecorded\",\n  \"namespace\": \"logistics\",\n  \"version\": 2,\n  \"type\": \"object\",\n  \"required\": [\"shipment_id\", \"occurred_at\", \"items\"],\n  \"properties\": {\n    \"shipment_id\": {\"type\": \"string\", \"minLength\": 8},\n    \"occurred_at\": {\"type\": \"string\", \"format\": \"date-time\"},\n    \"items\": {\n      \"type\": \"array\",\n      \"minItems\": 1,\n      \"items\": {\n        \"type\": \"object\",\n        \"required\": [\"sku\", \"quantity\"],\n        \"properties\": {\n          \"sku\": {\"type\": \"string\"},\n          \"quantity\": {\"type\": \"integer\", \"minimum\": 1}\n        }\n      }\n    }\n  },\n  \"additionalProperties\": false\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "resolver-short",
+      "group": "control",
+      "source": "host=resolver\nport=53\nprotocol=udp\n",
+      "history": [
+        {
+          "user_id": "ot-guided-resolver-short",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "host=resolver\nport=53\nprotocol=udp\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "resolver-short"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "resolver-short:0",
+            "user_id": "ot-guided-resolver-short",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only port from 53 to 54.\n\nSOURCE BEGIN\nhost=resolver\nport=53\nprotocol=udp\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "port=53",
+            "new": "port=54"
+          },
+          "expected_text": "host=resolver\nport=54\nprotocol=udp\n"
+        },
+        {
+          "request": {
+            "id": "resolver-short:1",
+            "user_id": "ot-guided-resolver-short",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only protocol from udp to tcp.\n\nSOURCE BEGIN\nhost=resolver\nport=53\nprotocol=udp\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "protocol=udp",
+            "new": "protocol=tcp"
+          },
+          "expected_text": "host=resolver\nport=53\nprotocol=tcp\n"
+        }
+      ]
+    },
+    {
+      "id": "recovery-empty",
+      "group": "control",
+      "source": "# Recovery checklist\n\nConfirm that the replica is reachable before changing the routing table.\nRecord the current checkpoint identifier in the incident notebook.\nPause the scheduled compaction job and wait for active writes to finish.\nMount the snapshot in a separate read-only verification directory.\nCompare object counts and checksums with the saved manifest.\nRestore traffic gradually while monitoring the replication delay.\nKeep the previous snapshot until the next completed checkpoint.\n",
+      "history": [],
+      "requests": [
+        {
+          "request": {
+            "id": "recovery-empty:0",
+            "user_id": "ot-guided-recovery-empty",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only 'incident notebook' to 'operations notebook'.\n\nSOURCE BEGIN\n# Recovery checklist\n\nConfirm that the replica is reachable before changing the routing table.\nRecord the current checkpoint identifier in the incident notebook.\nPause the scheduled compaction job and wait for active writes to finish.\nMount the snapshot in a separate read-only verification directory.\nCompare object counts and checksums with the saved manifest.\nRestore traffic gradually while monitoring the replication delay.\nKeep the previous snapshot until the next completed checkpoint.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "incident notebook",
+            "new": "operations notebook"
+          },
+          "expected_text": "# Recovery checklist\n\nConfirm that the replica is reachable before changing the routing table.\nRecord the current checkpoint identifier in the operations notebook.\nPause the scheduled compaction job and wait for active writes to finish.\nMount the snapshot in a separate read-only verification directory.\nCompare object counts and checksums with the saved manifest.\nRestore traffic gradually while monitoring the replication delay.\nKeep the previous snapshot until the next completed checkpoint.\n"
+        },
+        {
+          "request": {
+            "id": "recovery-empty:1",
+            "user_id": "ot-guided-recovery-empty",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only 'replication delay' to 'replication lag'.\n\nSOURCE BEGIN\n# Recovery checklist\n\nConfirm that the replica is reachable before changing the routing table.\nRecord the current checkpoint identifier in the incident notebook.\nPause the scheduled compaction job and wait for active writes to finish.\nMount the snapshot in a separate read-only verification directory.\nCompare object counts and checksums with the saved manifest.\nRestore traffic gradually while monitoring the replication delay.\nKeep the previous snapshot until the next completed checkpoint.\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "replication delay",
+            "new": "replication lag"
+          },
+          "expected_text": "# Recovery checklist\n\nConfirm that the replica is reachable before changing the routing table.\nRecord the current checkpoint identifier in the incident notebook.\nPause the scheduled compaction job and wait for active writes to finish.\nMount the snapshot in a separate read-only verification directory.\nCompare object counts and checksums with the saved manifest.\nRestore traffic gradually while monitoring the replication lag.\nKeep the previous snapshot until the next completed checkpoint.\n"
+        }
+      ]
+    },
+    {
+      "id": "backup-unrelated",
+      "group": "control",
+      "source": "[backup]\ndestination = \"/srv/archives\"\ncompress = true\nencryption = \"aes256\"\nparallel_streams = 3\n\n[schedule]\ntimezone = \"UTC\"\nhour = 2\nminute = 15\n\n[retention]\ndaily = 7\nweekly = 4\nmonthly = 6\n",
+      "history": [
+        {
+          "user_id": "ot-guided-backup-unrelated",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "Garden note: water the seedlings at sunrise and check the soil before sunset.\nGarden note: water the seedlings at sunrise and check the soil before sunset.\nGarden note: water the seedlings at sunrise and check the soil before sunset.\nGarden note: water the seedlings at sunrise and check the soil before sunset.\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "backup-unrelated"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "backup-unrelated:0",
+            "user_id": "ot-guided-backup-unrelated",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only parallel_streams from 3 to 5.\n\nSOURCE BEGIN\n[backup]\ndestination = \"/srv/archives\"\ncompress = true\nencryption = \"aes256\"\nparallel_streams = 3\n\n[schedule]\ntimezone = \"UTC\"\nhour = 2\nminute = 15\n\n[retention]\ndaily = 7\nweekly = 4\nmonthly = 6\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "parallel_streams = 3",
+            "new": "parallel_streams = 5"
+          },
+          "expected_text": "[backup]\ndestination = \"/srv/archives\"\ncompress = true\nencryption = \"aes256\"\nparallel_streams = 5\n\n[schedule]\ntimezone = \"UTC\"\nhour = 2\nminute = 15\n\n[retention]\ndaily = 7\nweekly = 4\nmonthly = 6\n"
+        },
+        {
+          "request": {
+            "id": "backup-unrelated:1",
+            "user_id": "ot-guided-backup-unrelated",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only monthly retention from 6 to 9.\n\nSOURCE BEGIN\n[backup]\ndestination = \"/srv/archives\"\ncompress = true\nencryption = \"aes256\"\nparallel_streams = 3\n\n[schedule]\ntimezone = \"UTC\"\nhour = 2\nminute = 15\n\n[retention]\ndaily = 7\nweekly = 4\nmonthly = 6\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "monthly = 6",
+            "new": "monthly = 9"
+          },
+          "expected_text": "[backup]\ndestination = \"/srv/archives\"\ncompress = true\nencryption = \"aes256\"\nparallel_streams = 3\n\n[schedule]\ntimezone = \"UTC\"\nhour = 2\nminute = 15\n\n[retention]\ndaily = 7\nweekly = 4\nmonthly = 9\n"
+        }
+      ]
+    },
+    {
+      "id": "database-tail",
+      "group": "control",
+      "source": "SET statement_timeout = 800;\nSET lock_timeout = 200;\n",
+      "history": [
+        {
+          "user_id": "ot-guided-database-tail",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "SET statement_timeout = 800;\nSET lock_timeout = 200;\n",
+          "status": "active",
+          "session_id": "",
+          "source_role": "assistant",
+          "project_id": "database-tail"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "database-tail:0",
+            "user_id": "ot-guided-database-tail",
+            "order": 10,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only statement_timeout from 800 to 950.\n\nSOURCE BEGIN\nSET statement_timeout = 800;\nSET lock_timeout = 200;\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "statement_timeout = 800",
+            "new": "statement_timeout = 950"
+          },
+          "expected_text": "SET statement_timeout = 950;\nSET lock_timeout = 200;\n"
+        },
+        {
+          "request": {
+            "id": "database-tail:1",
+            "user_id": "ot-guided-database-tail",
+            "order": 11,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Edit the supplied artifact exactly as requested. Return only the complete resulting artifact, without Markdown fences, introductions or explanations. Preserve all other text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Change only lock_timeout from 200 to 350.\n\nSOURCE BEGIN\nSET statement_timeout = 800;\nSET lock_timeout = 200;\nSOURCE END\n"
+              }
+            ],
+            "max_new_tokens": 512
+          },
+          "edit": {
+            "old": "lock_timeout = 200",
+            "new": "lock_timeout = 350"
+          },
+          "expected_text": "SET statement_timeout = 800;\nSET lock_timeout = 350;\n"
+        }
+      ]
+    }
+  ]
+}
