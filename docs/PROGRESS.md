@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — 接受长度条件生存校准（执行准备）
+
+- 针对旧14状态MAE10.47，新增 `retrieval/acceptance.py`：Draft前缀生存 × 边界通过后的历史条件生存，候选分别预测，固定正则、逐项目排除；不使用完整OT矩阵，不更改默认路由。
+- decoder新增默认关闭的只读 `on_draft` 诊断接口；读取现有logits，不额外Target前向。`collect_acceptance_probe` 固定16旧请求×3旧路径48次，全部strict检查；旧matrix24路径计数对照，原14状态须完整Draft和候选匹配。shadow候选越过线上调用预算仅作离线诊断，标签strict通过后添加。
+- `evaluate_acceptance_probe` 对比旧预测、无置信度、有置信度；原14固定动作MAE/Brier、全部状态、候选排序、按项目bootstrap。协议 `ACCEPTANCE_PROTOCOL.md` 预先冻结通过条件，不按结果反复调参。本轮无速度声明，无独立holdout。
+- 首轮模型/decoder测试41 passed/2 skipped/17.02s：`.venv\Scripts\python.exe -m pytest -q tests/test_acceptance.py tests/test_dflash_reuse.py --basetemp .test-tmp-acceptance-unit`。将使用新服务器目录 `ot-r-acceptance`，保护全部旧证据和独立infra版本。
+- 冻结前相关43 passed/2 skipped/9.83s；完整347 passed/3 skipped/60.79s，命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-acceptance-full --junitxml=artifacts/acceptance-tests-full-local.xml`。两个runner通过py_compile，diff检查通过，14旧Draft重建无歧义。完整回归有一条既存python_multipart弃用警告。
+
 ## 2026-10-19 — 预计收益OT门控/动态长度（完成）
 
 - 按用户要求保留Draft内部拼接，停止完整矩阵可靠性路线，新策略只沿用既有TailOT标量排序。正式执行冻结`7c10c5dad39ffd0d909ae577b87a8026d39e2523`，635个Git原始文件SHA核验；源zip SHA`fa8e5f843b3956ed51b662ff8be0b9aa1905c5f6559b478b280b8f562ca48d44`，实际package SHA`1d7947ea6371e8c54c63ff382f46f6eee9de413cd87531c3cf6ccbc6eabbdd43`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget-v2`，流水PID2305668已结束，双GPU恢复19MiB/0%。旧结果含matrix全部递归SHA不变。

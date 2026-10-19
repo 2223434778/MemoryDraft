@@ -76,6 +76,21 @@ def tiny():
     return SimpleNamespace(target=target, ids=ids, reference=reference, features=features)
 
 
+def test_draft_diagnostic_observer_preserves_generation_and_observes_only_proposals(tiny):
+    calls = []
+
+    def inspect(confirmed, tokens, logits, budget):
+        assert tokens == logits.argmax(-1).tolist()
+        assert len(confirmed) >= 1 and len(tokens) <= budget
+        calls.append((len(confirmed), len(tokens)))
+
+    actual = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29,
+                            on_draft=inspect)
+    assert actual.sequences.tolist() == tiny.reference.tolist()
+    assert len(calls) == sum(r["draft_forward"] for r in actual.rounds)
+    assert calls == [(r["generated_before"], r["proposed"]) for r in actual.rounds]
+
+
 @pytest.mark.parametrize("reject_at", [None, 0, 2])
 def test_real_target_features_survive_reuse_and_draft_switches(tiny, reject_at):
     draft = CheckedDraft(tiny.features)

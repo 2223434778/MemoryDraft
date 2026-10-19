@@ -123,3 +123,9 @@ docs/OT_BENEFIT*.md text eol=lf
 results/ot-benefit/** -text
 results/ot-benefit/**/*.log -whitespace
 results/ot-benefit/tests-related-local-before-fixture-fix.xml -whitespace
+memorydraft/retrieval/acceptance.py text eol=lf
+scripts/*acceptance*.py text eol=lf
+tests/test_acceptance*.py text eol=lf
+docs/ACCEPTANCE*.md text eol=lf
+results/acceptance/** -text
+results/acceptance/**/*.log -whitespace

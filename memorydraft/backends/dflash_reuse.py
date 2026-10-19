@@ -49,6 +49,7 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    route_sequence: Sequence[str] = (),
                    on_tokens: Callable[[list[int]], None] | None = None,
                    should_stop: Callable[[], bool] | None = None,
+                   on_draft: Callable[[list[int], list[int], torch.Tensor, int], None] | None = None,
                    profile: bool = False) -> ReuseGeneration:
     """Single-request strict greedy decoding. route_sequence is a diagnostic override.
 
@@ -148,6 +149,11 @@ guided R may replace a block after its draft forward has already run.
             pending.clear()
             pending_tokens = 0
             block = block[:, :min(block.shape[1], limit - start)]
+            if on_draft is not None:
+                # Optional diagnostic observer; no extra Target forward. The
+                # callback must not mutate the live logits or decoding state.
+                on_draft(ids[0, prompt:start + 1].tolist(), block[0, 1:].tolist(),
+                         logits[0, :block.shape[1] - 1].detach(), min(config.max_tokens, limit - start - 1))
             guided = getattr(matcher, "propose_with_draft", None) if can_reuse else None
             if guided is not None:
                 with mark("guided_retrieval"):
