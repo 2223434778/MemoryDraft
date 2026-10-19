@@ -1,0 +1,370 @@
+[
+  {
+    "request_id": "parcel-queue:0",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 17,
+        "proposed": 15,
+        "accepted": 15,
+        "advance": 16,
+        "draft_cache_before": 217,
+        "pending_before": 16,
+        "pending_after": 16,
+        "target_cache_after": 249,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 17,
+        "proposed": 32,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 217,
+        "pending_before": 16,
+        "pending_after": 17,
+        "target_cache_after": 234,
+        "source": "context:current-prompt",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": true
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 13,
+        "proposed": 15,
+        "accepted": 5,
+        "advance": 6,
+        "draft_cache_before": 217,
+        "pending_before": 12,
+        "pending_after": 6,
+        "target_cache_after": 235,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 13,
+        "proposed": 32,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 217,
+        "pending_before": 12,
+        "pending_after": 13,
+        "target_cache_after": 230,
+        "source": "source-v1",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": false
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 19,
+        "proposed": 15,
+        "accepted": 12,
+        "advance": 13,
+        "draft_cache_before": 221,
+        "pending_before": 3,
+        "pending_after": 13,
+        "target_cache_after": 237,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 19,
+        "proposed": 32,
+        "accepted": 32,
+        "advance": 33,
+        "draft_cache_before": 221,
+        "pending_before": 3,
+        "pending_after": 36,
+        "target_cache_after": 257,
+        "source": "source-v1",
+        "lookup": "ot",
+        "matched": 3,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": true
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 11,
+        "proposed": 15,
+        "accepted": 3,
+        "advance": 4,
+        "draft_cache_before": 208,
+        "pending_before": 10,
+        "pending_after": 4,
+        "target_cache_after": 222,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 11,
+        "proposed": 32,
+        "accepted": 1,
+        "advance": 2,
+        "draft_cache_before": 208,
+        "pending_before": 10,
+        "pending_after": 12,
+        "target_cache_after": 220,
+        "source": "context:current-prompt",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": false
+  },
+  {
+    "request_id": "short-settings:1",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 10,
+        "proposed": 15,
+        "accepted": 1,
+        "advance": 2,
+        "draft_cache_before": 74,
+        "pending_before": 9,
+        "pending_after": 2,
+        "target_cache_after": 85,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 10,
+        "proposed": 5,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 74,
+        "pending_before": 9,
+        "pending_after": 10,
+        "target_cache_after": 84,
+        "source": "context:current-prompt",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": true
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 130,
+        "proposed": 15,
+        "accepted": 15,
+        "advance": 16,
+        "draft_cache_before": 285,
+        "pending_before": 15,
+        "pending_after": 16,
+        "target_cache_after": 316,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 130,
+        "proposed": 32,
+        "accepted": 32,
+        "advance": 33,
+        "draft_cache_before": 285,
+        "pending_before": 15,
+        "pending_after": 48,
+        "target_cache_after": 333,
+        "source": "artifact",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": {
+      "left": {
+        "route": "R",
+        "generated_before": 130,
+        "proposed": 32,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 285,
+        "pending_before": 15,
+        "pending_after": 16,
+        "target_cache_after": 301,
+        "source": "artifact",
+        "lookup": "edit",
+        "matched": 1,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 130,
+        "proposed": 32,
+        "accepted": 32,
+        "advance": 33,
+        "draft_cache_before": 285,
+        "pending_before": 15,
+        "pending_after": 48,
+        "target_cache_after": 333,
+        "source": "artifact",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot_proposals_equal": false
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 131,
+        "proposed": 15,
+        "accepted": 15,
+        "advance": 16,
+        "draft_cache_before": 285,
+        "pending_before": 16,
+        "pending_after": 16,
+        "target_cache_after": 317,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 131,
+        "proposed": 32,
+        "accepted": 32,
+        "advance": 33,
+        "draft_cache_before": 285,
+        "pending_before": 16,
+        "pending_after": 49,
+        "target_cache_after": 334,
+        "source": "artifact",
+        "lookup": "ot",
+        "matched": 1,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": null,
+    "edit_ot_proposals_equal": true
+  },
+  {
+    "request_id": "copy",
+    "suffix_ot": {
+      "left": {
+        "route": "D",
+        "generated_before": 46,
+        "proposed": 15,
+        "accepted": 3,
+        "advance": 4,
+        "draft_cache_before": 97,
+        "pending_before": 11,
+        "pending_after": 4,
+        "target_cache_after": 112,
+        "source": null,
+        "lookup": null,
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 46,
+        "proposed": 11,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 97,
+        "pending_before": 11,
+        "pending_after": 12,
+        "target_cache_after": 109,
+        "source": "past-quotation",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot": {
+      "left": {
+        "route": "R",
+        "generated_before": 46,
+        "proposed": 12,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 97,
+        "pending_before": 11,
+        "pending_after": 12,
+        "target_cache_after": 109,
+        "source": "past-quotation",
+        "lookup": "edit",
+        "matched": 10,
+        "buffer_flush": false
+      },
+      "right": {
+        "route": "R",
+        "generated_before": 46,
+        "proposed": 11,
+        "accepted": 0,
+        "advance": 1,
+        "draft_cache_before": 97,
+        "pending_before": 11,
+        "pending_after": 12,
+        "target_cache_after": 109,
+        "source": "past-quotation",
+        "lookup": "ot",
+        "matched": 0,
+        "buffer_flush": false
+      },
+      "same_prefix": true
+    },
+    "edit_ot_proposals_equal": false
+  }
+]

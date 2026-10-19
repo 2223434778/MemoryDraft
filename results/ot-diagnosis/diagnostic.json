@@ -1,0 +1,32 @@
+{
+  "Suffix-R": {
+    "calls": 0,
+    "proposals": 0,
+    "accepted": 0,
+    "classes": {},
+    "rounds": 68
+  },
+  "Edit-R": {
+    "calls": 9,
+    "proposals": 9,
+    "accepted": 65,
+    "classes": {
+      "no_long_raw_span": 5,
+      "long_pool_best": 2,
+      "shortlist_miss": 1,
+      "ranking_miss": 1
+    },
+    "rounds": 71
+  },
+  "OT-R": {
+    "calls": 9,
+    "proposals": 9,
+    "accepted": 97,
+    "classes": {
+      "no_long_raw_span": 5,
+      "long_pool_best": 3,
+      "shortlist_miss": 1
+    },
+    "rounds": 68
+  }
+}

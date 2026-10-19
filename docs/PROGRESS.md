@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-19 — OT-R 在线错误定位（完成）
+
+- 固定执行提交`8a40def7e0b87a3d5090a5d11201ff90c2fd4d33`，491个Git原始文件部署逐项SHA通过；归档SHA`cd8286531f1d6cc9f9d72f90fdc4ec6e0789611aa7bd4fe6daa0b70695aa1e4e`。服务器新目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-diagnosis`，仅使用既有模型与`.venv-dflash`，原实验和infra不覆盖。首次部署检查遇系统Python不支持`Path.is_relative_to`，尚未解包/启动模型；改用既有Python3.11后校验通过。
+- 实际命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.diagnose_transport_online --config configs/runtime-dflash.json --output artifacts/diagnosis-v1`。PID2116743已退出，24/24输出token/prompt/snapshot严格一致；全部计数与原未插桩两重复逐项一致。执行package SHA`35603a53734dde44673730c53abacbe5756e27dab24534149742dcd3120bcfc5`，原GPU package文件全保持原SHA。参考答案仅在生成后离线评分，生产检索/验证代码未修改。
+- 新五请求六次OT调用：四次合法原始span最好也不足8token、一次pool漏召回、一次32token全接受。parcel-queue新值/新字段尚未完成即复制旧文本；同状态DFlash能推进更多。payment-runbook插入Region行后的长Severity接续不在池内，三个稀有新词只命中修改指令，早期Owner锚点受当前倒排最小上下文范围限制，固定±2偏移未能恢复端点。没有将该组问题简单归因于OT池内排序。
+- 单点事后召回反事实：候选数8→32仍无长span；偏移2→5后池中出现32token，但OT/Edit仍选0token。该CPU诊断不改变线上参数，也不作速度/独立验证证据。可复算`python -m scripts.diagnose_transport_shortlist --source results/ot-diagnosis --tokenizer models/qwen3-8b --output artifacts/shortlist-analysis.json`，服务器重建JSON语义完全相同。
+- 原未插桩逐请求拆分：payment-runbook:0确实OT较suffix降低4.78%延迟（Edit也成功），另一个插入请求增加22.09%，整体平均掩盖了局部成功。confirm-schema-0:0的Edit在端点129/130分数同为0.9375，按位置取早端点接受0；OT约0.934891/0.941865，选130并接受32。旧正例有真实消歧，但不证明OT优于更好的便宜平分规则。不能用强制末token精确匹配作简单保护，该成功OT的exact_tail=0。
+- 本机完整回归216 passed/3 skipped/35.09s；服务器执行前22 passed/2.37s；追加报告/比较/篡改拒绝后本机17 passed/5.32s。命令和XML见`results/ot-diagnosis/tests-*.xml`。报告复算`python -m scripts.write_transport_diagnosis_report`，Windows/Linux正文SHA均`f7088bd4203c82120a23bc5e6ed2b9396b721463bcbac7ff9da46cbc0a8c976e`、diagnostic SHA均`2019028e0829c1a946fb300d2e967d8b6f21f66cb8b0924a9a190c4b38442003`。压缩的紧凑诊断与来源清单保存于`results/ot-diagnosis`，不含权重、数据库或私有内容。
+- 结论：先减少编辑区/结束处无收益调用，再处理插入后端点召回及接续排序，保留旧正例回归；求解器提速排在后面。本阶段完成错误定位，未实现新路由，也未重新宣称性能提升。两张GPU已恢复19MiB/0%。
+
 ## 2026-10-19 — OT-R 在线错误定位（执行准备）
 
 - 用户要求先定位错误。新增独立诊断模块/脚本和协议`OT_R_DIAGNOSIS_PROTOCOL.md`，只包装既有解码入口捕获实际提议与轮记录；生产检索/解码文件不改。范围为新验证五个实际触发请求、首轮两个局部正例及copy负例，八请求×Suffix/Edit/OT一次，共24次插桩运行，不作性能测量。

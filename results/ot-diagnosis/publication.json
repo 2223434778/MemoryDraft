@@ -1,0 +1,19 @@
+{
+  "files": {
+    "comparisons.json": "5fbf1c58c08617f8e0181dd1c588b78892c8ef2229cbfa8bc03f834b21565ef1",
+    "decisions.json.gz": "968b184100a846bb0a63d055c1ba54e45b6de8b794dc31a791f9f3fd3547447b",
+    "diagnostic.json": "2019028e0829c1a946fb300d2e967d8b6f21f66cb8b0924a9a190c4b38442003",
+    "download-receipt.json": "06ba7d880314fd66a5774a9358f39da154b6c975b64e209eb42d06d122115e05",
+    "execution-source.json": "1b6c873cee790f289bcf567a29f8a3613e7c2b5681f1128c3be1de2566f4d652",
+    "launch.json": "0449b8f5f8c085e9b44fc9a884136c51e8c15a3294cd2e19e8d5dc8103eb1e3b",
+    "provenance.json": "8afcf2804406cb662167636c85095feeb59f78ab48d509682197a929cf1dea7a",
+    "run.log": "3b80517ccb1d30e32edecaa4beb43849f2c0905c204f2877ddd26b4f290e799a",
+    "shortlist-analysis.json": "605aeeb90939be8741c5f02d5ec85b4cf7aa77e8b14401955bd49e2e3927c135",
+    "tests-full-local.xml": "0ad81822dbfed3d13a91e17642d1a35f44d8ed49239b544f557ee70dd5d3d7d8",
+    "tests-ready-local.xml": "2d84dc48958cce1300632ed1241b7d8a631e1043474ba52b7b7fb792ca50a750",
+    "tests-report-local.xml": "32401200473870782c662e48043b2e8fc1cc7f4392ee2651977a4c8aaa4126fb",
+    "tests-server.xml": "2320c5d278763bebd999885048d926e2bf0fde095a73c6739fd3339a4b2b5b70"
+  },
+  "report_sha256": "f7088bd4203c82120a23bc5e6ed2b9396b721463bcbac7ff9da46cbc0a8c976e",
+  "scope": "Eight already observed controlled cases; instrumented diagnostics, no speed claim"
+}

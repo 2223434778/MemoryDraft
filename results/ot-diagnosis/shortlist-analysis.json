@@ -1,0 +1,349 @@
+{
+  "request": "payment-runbook:1",
+  "position": 15,
+  "raw_best_position": 10,
+  "prefix_tokens": [
+    2,
+    20453,
+    7177,
+    13351,
+    271,
+    13801,
+    25,
+    14173,
+    54025,
+    198,
+    14091,
+    25,
+    15555,
+    37602,
+    198
+  ],
+  "details": [
+    {
+      "max_shift": 2,
+      "top8": [
+        202,
+        203,
+        204,
+        205,
+        206,
+        175,
+        176,
+        177
+      ],
+      "top32": [
+        202,
+        203,
+        204,
+        205,
+        206,
+        175,
+        176,
+        177,
+        178,
+        174
+      ],
+      "raw_best_in_top8": false,
+      "raw_best_in_top32": false,
+      "pool_best_top8": 0,
+      "pool_best_top32": 0,
+      "selected": {
+        "edit": {
+          "position": 204,
+          "accepted": 0
+        },
+        "ot": {
+          "position": 203,
+          "accepted": 0
+        }
+      }
+    },
+    {
+      "max_shift": 3,
+      "top8": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        175
+      ],
+      "top32": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        175,
+        176,
+        177,
+        178,
+        179,
+        174,
+        173
+      ],
+      "raw_best_in_top8": false,
+      "raw_best_in_top32": false,
+      "pool_best_top8": 0,
+      "pool_best_top32": 0,
+      "selected": {
+        "edit": {
+          "position": 204,
+          "accepted": 0
+        },
+        "ot": {
+          "position": 203,
+          "accepted": 0
+        }
+      }
+    },
+    {
+      "max_shift": 4,
+      "top8": [
+        201,
+        202,
+        203,
+        200,
+        204,
+        205,
+        206,
+        207
+      ],
+      "top32": [
+        201,
+        202,
+        203,
+        200,
+        204,
+        205,
+        206,
+        207,
+        208,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        174,
+        173,
+        172
+      ],
+      "raw_best_in_top8": false,
+      "raw_best_in_top32": false,
+      "pool_best_top8": 0,
+      "pool_best_top32": 0,
+      "selected": {
+        "edit": {
+          "position": 204,
+          "accepted": 0
+        },
+        "ot": {
+          "position": 203,
+          "accepted": 0
+        }
+      }
+    },
+    {
+      "max_shift": 5,
+      "top8": [
+        201,
+        202,
+        203,
+        199,
+        200,
+        204,
+        205,
+        206
+      ],
+      "top32": [
+        201,
+        202,
+        203,
+        199,
+        200,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        174,
+        173,
+        172,
+        171
+      ],
+      "raw_best_in_top8": false,
+      "raw_best_in_top32": false,
+      "pool_best_top8": 32,
+      "pool_best_top32": 32,
+      "selected": {
+        "edit": {
+          "position": 204,
+          "accepted": 0
+        },
+        "ot": {
+          "position": 203,
+          "accepted": 0
+        }
+      }
+    },
+    {
+      "max_shift": 8,
+      "top8": [
+        201,
+        202,
+        203,
+        199,
+        200,
+        204,
+        198,
+        205
+      ],
+      "top32": [
+        201,
+        202,
+        203,
+        199,
+        200,
+        204,
+        198,
+        205,
+        197,
+        206,
+        196,
+        207,
+        210,
+        208,
+        209,
+        211,
+        212,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        174,
+        173,
+        172,
+        168,
+        169
+      ],
+      "raw_best_in_top8": false,
+      "raw_best_in_top32": false,
+      "pool_best_top8": 32,
+      "pool_best_top32": 32,
+      "selected": {
+        "edit": {
+          "position": 204,
+          "accepted": 0
+        },
+        "ot": {
+          "position": 203,
+          "accepted": 0
+        }
+      }
+    }
+  ],
+  "anchors": [
+    {
+      "offset": 13,
+      "token": 37602,
+      "text": "-west",
+      "occurrences": [
+        {
+          "position": 175,
+          "source": "context:current-prompt",
+          "required_shift": -166
+        }
+      ]
+    },
+    {
+      "offset": 12,
+      "token": 15555,
+      "text": " eu",
+      "occurrences": [
+        {
+          "position": 174,
+          "source": "context:current-prompt",
+          "required_shift": -166
+        }
+      ]
+    },
+    {
+      "offset": 10,
+      "token": 14091,
+      "text": "Region",
+      "occurrences": [
+        {
+          "position": 172,
+          "source": "context:current-prompt",
+          "required_shift": -166
+        }
+      ]
+    },
+    {
+      "offset": 5,
+      "token": 13801,
+      "text": "Owner",
+      "occurrences": [
+        {
+          "position": 195,
+          "source": "context:current-prompt",
+          "required_shift": -194
+        }
+      ]
+    }
+  ],
+  "candidate_examples": [
+    {
+      "position": 10,
+      "history": "# Payment queue recovery\n\nOwner: payments-platform\n",
+      "next": "Severity: SEV-2\n\n##"
+    },
+    {
+      "position": 202,
+      "history": " BEGIN\n# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SE",
+      "next": "V-2\n\n## Establish scope\n"
+    },
+    {
+      "position": 203,
+      "history": "\n# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV",
+      "next": "-2\n\n## Establish scope\n1"
+    },
+    {
+      "position": 204,
+      "history": "# Payment queue recovery\n\nOwner: payments-platform\nSeverity: SEV-",
+      "next": "2\n\n## Establish scope\n1."
+    }
+  ],
+  "all_source_bounds": [
+    [
+      0,
+      137,
+      "source-v1"
+    ],
+    [
+      138,
+      329,
+      "context:current-prompt"
+    ]
+  ]
+}

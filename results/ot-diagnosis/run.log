@@ -1,0 +1,26 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.48s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.47s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.36s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+{"request": "parcel-queue:0", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "parcel-queue:0", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "parcel-queue:0", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "parcel-queue:1", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "parcel-queue:1", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "parcel-queue:1", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "payment-runbook:0", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "payment-runbook:0", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["long_pool_best"]}
+{"request": "payment-runbook:0", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["long_pool_best"]}
+{"request": "payment-runbook:1", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "payment-runbook:1", "method": "Edit-R", "correct": true, "alignment_calls": 2, "outcomes": ["no_long_raw_span", "shortlist_miss"]}
+{"request": "payment-runbook:1", "method": "OT-R", "correct": true, "alignment_calls": 2, "outcomes": ["no_long_raw_span", "shortlist_miss"]}
+{"request": "short-settings:1", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "short-settings:1", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "short-settings:1", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "confirm-schema-0:0", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "confirm-schema-0:0", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["ranking_miss"]}
+{"request": "confirm-schema-0:0", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["long_pool_best"]}
+{"request": "confirm-schema-0:1", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "confirm-schema-0:1", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["long_pool_best"]}
+{"request": "confirm-schema-0:1", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["long_pool_best"]}
+{"request": "copy", "method": "Suffix-R", "correct": true, "alignment_calls": 0, "outcomes": []}
+{"request": "copy", "method": "Edit-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}
+{"request": "copy", "method": "OT-R", "correct": true, "alignment_calls": 1, "outcomes": ["no_long_raw_span"]}

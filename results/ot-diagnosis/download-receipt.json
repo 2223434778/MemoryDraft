@@ -1,0 +1,5 @@
+{
+  "archive_sha256": "87c0f31296dba063aca60a18f264fecb0fb408c5eef161da691d44bb40d7acce",
+  "raw_decisions_sha256": "4c80774c6ab950bc7e565e70a7e47f1bf0a0b132ecea48afb67fca68fe700e59",
+  "scope": "Compact synthetic-case decisions; no model weights, private data or database"
+}

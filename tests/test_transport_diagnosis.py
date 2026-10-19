@@ -2,8 +2,10 @@ from types import SimpleNamespace
 
 import pytest
 
+pytest.importorskip("ot")
+
 from memorydraft.evaluation.transport_diagnosis import (DecodeRecorder, failure_class,
-                                                       inspect_calls, proposal_dict)
+                                                       first_divergence, inspect_calls, proposal_dict)
 from memorydraft.memory.store import MemoryEvent, Snapshot
 from memorydraft.retrieval.suffix import SuffixArrayIndex
 from memorydraft.retrieval.transport import AlignedReuseMatcher
@@ -83,3 +85,45 @@ def test_subset_is_frozen_and_uses_original_time_snapshots(tmp_path):
         store.append(events)
         for task in tasks:
             assert store.snapshot(task.request.user_id, task.request.order).snapshot_id == task.snapshot_id
+
+
+def test_comparison_ignores_lookup_label_and_keeps_first_behavior_change():
+    row = dict(route="R", generated_before=8, proposed=32, accepted=0, source="old", lookup="edit")
+    assert first_divergence([row], [dict(row, lookup="ot")]) is None
+    changed = dict(row, lookup="ot", accepted=32)
+    assert first_divergence([row], [changed])["same_prefix"]
+
+
+@pytest.mark.parametrize("change", [None, "tokens", "prefix", "candidate", "rounds", "comparison"])
+def test_report_reaudits_real_compact_evidence(tmp_path, change):
+    from pathlib import Path
+    import json
+    import shutil
+
+    from scripts.write_transport_diagnosis_report import read_json, rebuild
+
+    source = Path(__file__).resolve().parents[1] / "results/ot-diagnosis"
+    for name in ("provenance.json", "decisions.json.gz", "comparisons.json", "shortlist-analysis.json"):
+        shutil.copyfile(source / name, tmp_path / name)
+    rows = read_json(tmp_path / "decisions.json")
+    aligned_row = next(r for r in rows if r["counters"].get("alignment_calls", 0))
+    call = next(c for c in aligned_row["calls"] if c["alignment_called"])
+    if change == "tokens":
+        rows[0]["token_ids"] = [123]
+    elif change == "prefix":
+        call["prefix_sha256"] = "changed"
+    elif change == "candidate":
+        call["candidates"][0]["accepted"] += 1
+    elif change == "rounds":
+        rows[0]["counters"]["rounds"] += 1
+    elif change == "comparison":
+        comparisons = json.loads((tmp_path / "comparisons.json").read_text(encoding="utf-8"))
+        comparisons.pop()
+        (tmp_path / "comparisons.json").write_text(json.dumps(comparisons), encoding="utf-8")
+    (tmp_path / "decisions.json").write_text(json.dumps(rows), encoding="utf-8")
+    if change is None:
+        rebuild(tmp_path, tmp_path / "report.md")
+        assert b"\r" not in (tmp_path / "report.md").read_bytes()
+    else:
+        with pytest.raises(ValueError):
+            rebuild(tmp_path, tmp_path / "report.md")

@@ -1,0 +1,16 @@
+{
+  "pid": 2116743,
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.diagnose_transport_online",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/diagnosis-v1"
+  ],
+  "commit": "8a40def7e0b87a3d5090a5d11201ff90c2fd4d33",
+  "files_verified": 491,
+  "source_sha256": "04d3ff6ce62b146c23e3749f52aeed3e7240f03db9bc24cf5f75ea33f73f1970"
+}
