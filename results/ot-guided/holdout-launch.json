@@ -1,0 +1,20 @@
+{
+  "pid": 2137526,
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_guided_validation",
+    "--stage",
+    "holdout",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--development",
+    "artifacts/development-v1",
+    "--output",
+    "artifacts/holdout-v1"
+  ],
+  "source_sha256": "58dc6fdbd73ca3d404b521147ad3e8227df5f05bc022fda79084fe79ae88a466",
+  "cases_sha256": "0097a10eaa102db6c866326ca145c3842657103ee400c892c110b99e4cf2c2b4",
+  "protocol_sha256": "0f1eca2375b6e5bf19023cabd87d403913565d541597445b33b569eb4a1cdc80"
+}

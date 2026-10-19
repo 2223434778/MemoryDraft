@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-19 — DFlash前缀引导的OT/Edit（完成）
+
+- 执行提交`6f9303625ddf01b1c82938b2f1184a08e7c83141`，517个Git原始文件部署SHA逐项通过；原始归档SHA`3799e0d8649a8e0d85dbe0b3010afbbef7dbea965955ba8e515fe5572dbdb9de`。服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-guided`；开发/新验证实际package同为`58dc6fdbd73ca3d404b521147ad3e8227df5f05bc022fda79084fe79ae88a466`，runner相同，未在新答案上调参。任务SHA`0097a10eaa102db6c866326ca145c3842657103ee400c892c110b99e4cf2c2b4`，协议SHA`0f1eca2375b6e5bf19023cabd87d403913565d541597445b33b569eb4a1cdc80`。
+- 开发命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_guided_validation --stage development --config configs/runtime-dflash.json --output artifacts/development-v1`。PID2136237退出，32/32输出token/prompt/snapshot严格一致；两旧长正例Guided-OT/Edit均保留32token接受。旧插入负例的长接续恢复；短输出/未完成新内容误调用减少。开发计时不当独立确认。
+- 新验证命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_guided_validation --stage holdout --config configs/runtime-dflash.json --development artifacts/development-v1 --output artifacts/holdout-v1`。PID2137526退出，先16/16新AR契约正确/EOS，再160/160五组两重复严格一致。全部在线成本计入，历史不写回，旧结果SHA不变，两GPU恢复19MiB/0%。
+- 新主场景：DFlash16.784681s、Suffix12.724529s、原OT12.928572s、Guided-Edit12.400227s、Guided-OT12.421961s。引导OT比Suffix低2.38%、比原OT低3.92%，比引导Edit高0.18%；对Suffix仅2/4项目更快，项目bootstrap比值[0.9483,1.0025]，预定工程门槛未通过。新全部请求：引导OT较Suffix低1.25%、较原OT低3.77%；control较Suffix高0.74%。这些是作者受控任务，不宣称生产泛化。
+- 主场景总轮120→114，实际Draft前向50→50；引导R已经支付Draft，不能把D路线44说成只算了44次Draft。较长接续减少Target验证轮。引导OT/Edit在新32/32请求-重复配对的轮数、接受量、调用/候选/提议和Draft前向相同，均256对齐接受token；主场景各192。没有新证据支持OT排序增量；TOML/JSON两个项目的局部收益为事后格式拆分，不能升级为独立场景确认。
+- 本机最终完整回归242 passed/3 skipped/24.53s，服务器执行前相关61 passed/7.16s；追加报告篡改/配对/来源审计最终11 passed/5.27s。原始失败和修复XML一并保存。报告命令`python -m scripts.write_guided_report`，Windows/Linux正文SHA均`b1924812d8d974940f27bbbad96f3131c35e473d981b0b3dddd792d79c9aaaca`，diagnostic SHA均`41bc4d7b55c3a6ab326b5cf7991a0e8aa784de28ca7839fef72cd8e943dbf000`。
+- 结果`results/ot-guided/{development,holdout}`，报告`OT_GUIDED_RESULTS.md`；原始下载zip65728字节/SHA`4b85b66e58f1837a5da8e3e8334a8c028fbc237e4893df9e453cf027b1e58d64`。只发布紧凑受控任务结果、来源与测试，不含权重/数据库/私有历史。保留前缀引导为显式工程实验选项，默认suffix，独立infra面试版不改；不扩大同机制OT试验或把引导收益归为OT独有贡献。
+
 ## 2026-10-19 — DFlash前缀引导的OT/Edit（执行准备）
 
 - 用户授权进行下一步。新增`retrieval/guided.py`，精确suffix仍优先；未命中后复用已有DFlash前4个候选作为接续锚点，最多64后缀项/8候选/4查询，候选需长于现有Draft块。OT/Edit使用同池同预算，未改Target输入或逐token验证。`draft_forward_rounds`单列实际Draft计算，避免把引导R计为跳过Draft。旧`transport.py`不改，默认仍suffix，独立infra保留。

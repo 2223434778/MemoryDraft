@@ -7,6 +7,7 @@
 > [首轮结果](docs/OT_R_RESULTS.md)：80次计时严格一致，旧JSON上OT较后缀R降低约1.83%延迟，收益集中在一个旧项目；格式不匹配复制例仍退化。默认检索保持suffix。
 > [24个新请求验证](docs/OT_R_VALIDATION_RESULTS.md)：192次计时严格一致，OT总体较suffix慢1.75%，两个预定适用场景均未达继续投入门槛；停止扩大同类OT实验。
 > [实际触发位置诊断](docs/OT_R_DIAGNOSIS_RESULTS.md)：24次插桩回放均正确，定位到编辑区误触发、端点漏召回及排序问题；旧正例的OT消歧机制得到解释。插桩数据不作性能证据。
+> [DFlash前缀引导验证](docs/OT_GUIDED_RESULTS.md)：新16请求/160计时全部严格一致，主场景引导OT较suffix降低2.38%延迟，引导Edit降低2.55%；未显示OT排序增量，默认仍suffix。显式实验配置`configs/runtime-ot-guided.json`，检索选项`ot-guided`/`edit-guided`。
 
 **固定 Target 的推理优化、服务与正确性评测工具链。**
 

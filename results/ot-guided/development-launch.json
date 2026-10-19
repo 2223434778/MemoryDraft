@@ -1,0 +1,17 @@
+{
+  "pid": 2136237,
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_guided_validation",
+    "--stage",
+    "development",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/development-v1"
+  ],
+  "commit": "6f9303625ddf01b1c82938b2f1184a08e7c83141",
+  "files_verified": 517
+}

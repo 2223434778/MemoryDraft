@@ -1,0 +1,296 @@
+{
+  "status": "complete",
+  "contracts": 16,
+  "non_eos": 0,
+  "engineering_gate": false,
+  "comparisons": {
+    "Suffix-R": {
+      "ratio": 0.9762217409362519,
+      "projects_faster": 2,
+      "project_bootstrap_95": [
+        0.9482558554426221,
+        1.0024694179759799
+      ]
+    },
+    "OT-R": {
+      "ratio": 0.9608146387077764,
+      "projects_faster": 4,
+      "project_bootstrap_95": [
+        0.9393909532608966,
+        0.9876173350843902
+      ]
+    },
+    "Guided-Edit": {
+      "ratio": 1.0017527811767197,
+      "projects_faster": 1,
+      "project_bootstrap_95": [
+        0.9996542902855184,
+        1.00412704633892
+      ]
+    }
+  },
+  "summary": {
+    "all": {
+      "DFlash": {
+        "seconds": 24.556845799088478,
+        "counters": {
+          "rounds": 248,
+          "draft_rounds": 248,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Suffix-R": {
+        "seconds": 19.92477996076923,
+        "counters": {
+          "rounds": 182,
+          "draft_rounds": 94,
+          "reuse_rounds": 88,
+          "reuse_accepted_tokens": 2096,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "OT-R": {
+        "seconds": 20.446317310095765,
+        "counters": {
+          "rounds": 186,
+          "draft_rounds": 80,
+          "reuse_rounds": 106,
+          "reuse_accepted_tokens": 2186,
+          "alignment_calls": 22,
+          "alignment_candidates": 158,
+          "alignment_proposals": 20,
+          "alignment_accepted_tokens": 140,
+          "alignment_seconds": 0.35596280242316425,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Guided-Edit": {
+        "seconds": 19.660351172089577,
+        "counters": {
+          "rounds": 176,
+          "draft_rounds": 86,
+          "reuse_rounds": 90,
+          "reuse_accepted_tokens": 2204,
+          "alignment_calls": 14,
+          "alignment_candidates": 20,
+          "alignment_proposals": 8,
+          "alignment_accepted_tokens": 256,
+          "alignment_seconds": 0.0037353612715378404,
+          "guided_lookups": 26,
+          "guided_no_match": 12,
+          "draft_forward_rounds": 94
+        }
+      },
+      "Guided-OT": {
+        "seconds": 19.67515573767014,
+        "counters": {
+          "rounds": 176,
+          "draft_rounds": 86,
+          "reuse_rounds": 90,
+          "reuse_accepted_tokens": 2204,
+          "alignment_calls": 14,
+          "alignment_candidates": 20,
+          "alignment_proposals": 8,
+          "alignment_accepted_tokens": 256,
+          "alignment_seconds": 0.049801074084825814,
+          "guided_lookups": 26,
+          "guided_no_match": 12,
+          "draft_forward_rounds": 94
+        }
+      }
+    },
+    "edited-continuation": {
+      "DFlash": {
+        "seconds": 16.78468128014356,
+        "counters": {
+          "rounds": 178,
+          "draft_rounds": 178,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Suffix-R": {
+        "seconds": 12.724528556223959,
+        "counters": {
+          "rounds": 120,
+          "draft_rounds": 50,
+          "reuse_rounds": 70,
+          "reuse_accepted_tokens": 1738,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "OT-R": {
+        "seconds": 12.928572192089632,
+        "counters": {
+          "rounds": 120,
+          "draft_rounds": 44,
+          "reuse_rounds": 76,
+          "reuse_accepted_tokens": 1788,
+          "alignment_calls": 10,
+          "alignment_candidates": 80,
+          "alignment_proposals": 8,
+          "alignment_accepted_tokens": 66,
+          "alignment_seconds": 0.18152588233351707,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Guided-Edit": {
+        "seconds": 12.400226536090486,
+        "counters": {
+          "rounds": 114,
+          "draft_rounds": 44,
+          "reuse_rounds": 70,
+          "reuse_accepted_tokens": 1816,
+          "alignment_calls": 12,
+          "alignment_candidates": 18,
+          "alignment_proposals": 6,
+          "alignment_accepted_tokens": 192,
+          "alignment_seconds": 0.0027612621197476983,
+          "guided_lookups": 14,
+          "guided_no_match": 2,
+          "draft_forward_rounds": 50
+        }
+      },
+      "Guided-OT": {
+        "seconds": 12.421961419750005,
+        "counters": {
+          "rounds": 114,
+          "draft_rounds": 44,
+          "reuse_rounds": 70,
+          "reuse_accepted_tokens": 1816,
+          "alignment_calls": 12,
+          "alignment_candidates": 18,
+          "alignment_proposals": 6,
+          "alignment_accepted_tokens": 192,
+          "alignment_seconds": 0.04408898623660207,
+          "guided_lookups": 14,
+          "guided_no_match": 2,
+          "draft_forward_rounds": 50
+        }
+      }
+    },
+    "control": {
+      "DFlash": {
+        "seconds": 7.772164518944919,
+        "counters": {
+          "rounds": 70,
+          "draft_rounds": 70,
+          "reuse_rounds": 0,
+          "reuse_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Suffix-R": {
+        "seconds": 7.20025140454527,
+        "counters": {
+          "rounds": 62,
+          "draft_rounds": 44,
+          "reuse_rounds": 18,
+          "reuse_accepted_tokens": 358,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_accepted_tokens": 0,
+          "alignment_seconds": 0,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "OT-R": {
+        "seconds": 7.5177451180061325,
+        "counters": {
+          "rounds": 66,
+          "draft_rounds": 36,
+          "reuse_rounds": 30,
+          "reuse_accepted_tokens": 398,
+          "alignment_calls": 12,
+          "alignment_candidates": 78,
+          "alignment_proposals": 12,
+          "alignment_accepted_tokens": 74,
+          "alignment_seconds": 0.17443692008964717,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "draft_forward_rounds": 0
+        }
+      },
+      "Guided-Edit": {
+        "seconds": 7.260124635999091,
+        "counters": {
+          "rounds": 62,
+          "draft_rounds": 42,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 388,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 64,
+          "alignment_seconds": 0.0009740991517901421,
+          "guided_lookups": 12,
+          "guided_no_match": 10,
+          "draft_forward_rounds": 44
+        }
+      },
+      "Guided-OT": {
+        "seconds": 7.2531943179201335,
+        "counters": {
+          "rounds": 62,
+          "draft_rounds": 42,
+          "reuse_rounds": 20,
+          "reuse_accepted_tokens": 388,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 2,
+          "alignment_accepted_tokens": 64,
+          "alignment_seconds": 0.005712087848223746,
+          "guided_lookups": 12,
+          "guided_no_match": 10,
+          "draft_forward_rounds": 44
+        }
+      }
+    }
+  },
+  "guided_equal_counter_pairs": 32
+}

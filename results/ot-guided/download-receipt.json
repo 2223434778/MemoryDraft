@@ -1,0 +1,19 @@
+{
+  "archive_sha256": "4b85b66e58f1837a5da8e3e8334a8c028fbc237e4893df9e453cf027b1e58d64",
+  "raw_files_sha256": {
+    "development-launch.json": "525fa53c5b297959ca849ab923862eeeac4cba831abe5b8eb3d323fa56512505",
+    "execution-source.json": "fcf0292d386d0be45414500e5088fd6ee2fa5b6e8d60702c319dd7ab9dfc3a61",
+    "holdout-launch.json": "26fb10c393c7fc4cdd41a4899f7ab4bc136efcf87d538f2f8c82ac2d0801a931",
+    "tests-server.xml": "12acddcabfadc3b987b21e298bd5c44b08bea77379ee0d469b34dc34ca272105",
+    "development/provenance.json": "340012afd91f4db4aa6c79b443a8a4ff3167f3f153c8d1f5fcda10644d9f24e3",
+    "development/rows.jsonl": "613721078bd550761f59ad2d0144de94059bbc9470aebaa07ef0b530b3e8e513",
+    "development/run.log": "8a14f94af87d1e31b42a9d1ef11ee8f69bf134396cac934d24c114180ec23b6b",
+    "development/summary.json": "0ad81ab6b0b9589c6d6ee0da6c71a9a836c1e7d290ba7c833f988877178685c2",
+    "holdout/fresh-ar.jsonl": "221a890bea590f1d341bf9603f605ff4400b1b5f98b2242666ba6066d3c6fc77",
+    "holdout/provenance.json": "3b02c673f978e2057e03ccee0b5f6c349153ba29968345e45204a08888d31da4",
+    "holdout/rows.jsonl": "00c33f4fa837baff8525ba4345ffe7aef8b78449b0c4070c0051e3cc7788559e",
+    "holdout/run.log": "aa7e0ec3a7919ddfc05c8fc25319358de10f1046f5bbf754d2411bd48e2a4163",
+    "holdout/summary.json": "fb62ac5fd9e07e39b509176eb6be8926f8be3b50aeb0094c6accb30d53d9ffb9"
+  },
+  "scope": "Controlled synthetic fixtures and paired results; no weights, private history or database"
+}

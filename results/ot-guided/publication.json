@@ -1,0 +1,27 @@
+{
+  "files": {
+    "development/provenance.json": "340012afd91f4db4aa6c79b443a8a4ff3167f3f153c8d1f5fcda10644d9f24e3",
+    "development/rows.jsonl.gz": "66140b5912be8d1513a4ccbc4ffddbae2981bdf444ae16f306a8e52869fb4994",
+    "development/run.log": "8a14f94af87d1e31b42a9d1ef11ee8f69bf134396cac934d24c114180ec23b6b",
+    "development/summary.json": "0ad81ab6b0b9589c6d6ee0da6c71a9a836c1e7d290ba7c833f988877178685c2",
+    "development-launch.json": "525fa53c5b297959ca849ab923862eeeac4cba831abe5b8eb3d323fa56512505",
+    "diagnostic.json": "62a49d96532a105c940ca65c30d4af323104f3d2eb385b50f125246b5beb0aec",
+    "download-receipt.json": "4efef40a0be54f7a5c81c0ccce2614a8bf65fcc24da983b9783581a1946370a8",
+    "execution-source.json": "fcf0292d386d0be45414500e5088fd6ee2fa5b6e8d60702c319dd7ab9dfc3a61",
+    "holdout/fresh-ar.jsonl.gz": "8416440045e87e4ef494e43dbdec84b7759933300491634fbdcfc01b0a873645",
+    "holdout/provenance.json": "3b02c673f978e2057e03ccee0b5f6c349153ba29968345e45204a08888d31da4",
+    "holdout/rows.jsonl.gz": "697ad46b3641bfeea2a95cdd3e8d739f0b0cda9c451ddf469bea48800e19d344",
+    "holdout/run.log": "aa7e0ec3a7919ddfc05c8fc25319358de10f1046f5bbf754d2411bd48e2a4163",
+    "holdout/summary.json": "fb62ac5fd9e07e39b509176eb6be8926f8be3b50aeb0094c6accb30d53d9ffb9",
+    "holdout-launch.json": "26fb10c393c7fc4cdd41a4899f7ab4bc136efcf87d538f2f8c82ac2d0801a931",
+    "tests-fixture-failed-local.xml": "28f9594a810fd1309fc9566adb55d5a252168423e22c8d4805a689c19bb4f0c2",
+    "tests-fixture-fixed-local.xml": "5f67a6597ac404ef75ba7a3b88f797abc2645b0a9354161f327ee8611e6dbb24",
+    "tests-full-local.xml": "36cb3c18154f0242163008114e2acd680700a5df7feb28eac1f6193dd78c913b",
+    "tests-initial-failed-local.xml": "98f5fcdf40141cbf4b1a29c4eaa108b245d01e97b264f054daa4059cacf28d38",
+    "tests-report-local.xml": "6ec374e1ac71a0044d75cb00a2101fa34ecb8e665c5e8281a14f990a7ee1f864",
+    "tests-server.xml": "12acddcabfadc3b987b21e298bd5c44b08bea77379ee0d469b34dc34ca272105",
+    "tests-source-fixed-local.xml": "dd1c875192eaf2aab0fe633d0c713f4bec587666b9f6d5f4377a57d39f6cb872"
+  },
+  "report_sha256": "b1924812d8d974940f27bbbad96f3131c35e473d981b0b3dddd792d79c9aaaca",
+  "scope": "Separate old development replay and new authored controlled tasks; no production/generalization claim"
+}
