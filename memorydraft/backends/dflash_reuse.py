@@ -50,8 +50,9 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    on_tokens: Callable[[list[int]], None] | None = None,
                    should_stop: Callable[[], bool] | None = None,
                    on_draft: Callable[[list[int], list[int], torch.Tensor, int], None] | None = None,
+                   verifier=None,
                    profile: bool = False) -> ReuseGeneration:
-    """Single-request strict greedy decoding. route_sequence is a diagnostic override.
+    """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
 already confirmed but uncached anchor. Draft KV plus pending valid features
@@ -169,7 +170,12 @@ guided R may replace a block after its draft forward has already run.
             output = target(block, position_ids=positions[:, start:start + block.shape[1]],
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True)
         posterior = output.logits.argmax(dim=-1)
-        accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
+        decision = None
+        if verifier is None:
+            accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
+        else:
+            decision = verifier.decide(block[0, 1:], output.logits[0, :-1], stop_token_ids=stop_token_ids)
+            accepted = decision.accepted
         advance = accepted + 1
         ids[:, start:start + advance] = block[:, :advance]
         ids[:, start + advance] = posterior[:, accepted]
@@ -192,6 +198,10 @@ guided R may replace a block after its draft forward has already run.
                                       lookup=proposal.lookup if proposal else None,
                                       matched=proposal.matched if proposal else 0, buffer_flush=bool(flush),
                                       draft_forward=draft_forward))
+            if decision is not None:
+                result.rounds[-1].update(strict_accepted=decision.strict_accepted,
+                                         relaxed_tokens=decision.relaxed, regret=decision.regret,
+                                         draft_prefix=getattr(proposal, "draft_prefix", None))
         step += 1
         available = min(start + 1, limit)
         publish(available)

@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-20 — ASD 与历史拼接（执行准备）
+
+- 用户授权按合理机制直接实施，独立分支 `codex/asd-splice`，旧严格路径和 infra 引用保留。实现 ASD 请求级 B=2/g=0.25/M=2；唯一变体以实际连续 Target 匹配后缀替代剩余块长作为价值。近似输出单列，不宣称无损。
+- 新模块 `backends/asd.py`，解码器可选 verifier，实验脚本 `run_asd_splice_probe.py`；官方 ASD 提交 `9426ce7b3b8cafb2d34f675a5bb9db2ebf0259f6` Apache-2.0 已核验，本次独立实现论文公式，不复制源码。
+- 旧8请求/5项目，DFlash、Suffix、Guided、Splice 各 strict/ASD，加 Splice-ASD-Run；72机制+144自然EOS+144固定64token，无质量/速度提前停止门槛。协议 `docs/ASD_SPLICE_PROTOCOL.md`，已观察任务不作泛化。
+- 已运行 `.venv\Scripts\python.exe -m pytest -q tests/test_asd.py tests/test_dflash_reuse.py --basetemp .test-tmp-asd --junitxml=artifacts/asd-tests-related-local.xml`：52 passed/2 skipped/10.46s；`tests/test_asd_probe.py tests/test_runtime.py --basetemp .test-tmp-asd-inputs --junitxml=artifacts/asd-tests-inputs-local.xml`：41 passed/12.44s。
+- 服务器计划命令：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_splice_probe --config configs/runtime-ot-benefit.json --output results/raw/asd-splice`。GPU 实验尚未执行；隔离目录 `/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-splice`。
+
 ## 2026-10-19 — 风险拼接完整续测与已知机制覆盖（完成）
 
 - 用户授权放宽任务质量/零触发的停止条件后，主12请求已完整60机制/120计时；错误Target输出保留并单列，未重跑AR、不改prompt/权重/阈值。180/180严格匹配AR，120/120计数路径一致。五组同为64轮/32Draft前向，Risk评估/改选0；主Risk相对Splice-Edit−0.02%、相对Guided+0.17%，全量14.155447s vs14.154433s的微差无风险机制变化，不能算收益。
