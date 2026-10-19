@@ -137,8 +137,8 @@ def main():
     parser.add_argument("--report", type=Path, default=ROOT / "docs/ASD_SPLICE_RESULTS.md")
     args = parser.parse_args()
     analysis, _, info = analyze(args.source)
-    (args.source / "analysis.json").write_text(json.dumps(analysis, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    args.report.write_text(render(analysis, info), encoding="utf-8")
+    (args.source / "analysis.json").write_bytes((json.dumps(analysis, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
+    args.report.write_bytes(render(analysis, info).encode("utf-8"))
     print(json.dumps({"report": str(args.report), "sha256": file_hash(args.report)}))
 
 

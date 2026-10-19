@@ -144,5 +144,6 @@ memorydraft/backends/asd.py text eol=lf
 tests/test_asd*.py text eol=lf
 docs/ASD_SPLICE*.md text eol=lf
 results/asd-splice/** -text
+results/asd-splice/*.json whitespace=cr-at-eol
 results/asd-splice/*.log -whitespace
 results/asd-splice/tests-*.xml -whitespace
