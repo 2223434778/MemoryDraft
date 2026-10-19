@@ -10,6 +10,8 @@
 - 追加风险改选/拒绝/KV的真实tiny Target组合测试；首版夹具空索引使候选分支未进入，1 failed/48 passed/2 skipped（输出仍严格一致），已提供非空测试历史，失败XML保留。此项是正确性测试，非GPU性能结果。
 - 非空夹具进一步暴露真实边界bug：均匀分布的FP32归一化熵可因求和舍入略大于1，被范围检查错误拒绝；新增熵clamp[0,1]及均匀logits回归。此修复不改Target接受规则；旧ad231f7实验停止现场不重写，本轮未进入在线风险路径，最终交付代码单独验证。
 - 修复后相关49 passed/2 skipped/10.17s；最终完整365 passed/3 skipped/39.69s，命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-prefix-risk-final-2 --junitxml=artifacts/prefix-risk-tests-final-local-2.xml`。此前完整回归1 failed/364 passed/3 skipped的熵边界现场保留。报告重建与归档6文件SHA核验通过；CI的dflash组补入全部prefix-risk测试。
+- 最终交付执行`ea85be6a0dffea5fd570bf3684d3a691eb373c1f`到独立`prefix-risk-delivery`，723文件SHA全通过，zip SHA`7f8475bf396825d32d0ceb0cebaf87a1b6e6efdcabbb34d2eb5feff632cab548`，source SHA`50b91fbacb8424ce904e54b432db324ec698a649a09f2e25f2b5289fedee0195`，最终package SHA`ae2580992a6e364aebc4f40bd4254a38e745af1ebb73b3c41bf695fad022cd82`。服务器五份相关测试91 passed/8.32s，报告重建后723原始文件仍全部SHA一致，报告SHA`b709db48ec7c2312bf284700dd11ab1aa977a5f6a7f17baa614186bf129f0f34`。
+- 交付复核首次漏建basetemp父目录导致82 passed/9 setup errors，创建artifacts后以新basetemp重跑通过，XML现场保留；未重跑新AR或风险GPU性能路径。交付receipt与两份XML保存`results/prefix-risk/`。相关命令：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -m pytest -q tests/test_prefix_risk.py tests/test_prefix_risk_probe.py tests/test_prefix_risk_report.py tests/test_runtime.py tests/test_dflash_reuse.py --basetemp artifacts/test-tmp-v2 --junitxml=artifacts/delivery-tests-server.xml`。
 
 ## 2026-10-19 — 前缀风险辅助拼接（执行准备）
 

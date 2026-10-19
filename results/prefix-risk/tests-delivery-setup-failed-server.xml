@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="9" failures="0" skipped="0" tests="91" time="7.998" timestamp="2026-10-19T19:47:48.465635" hostname="a6000-Super-Server"><testcase classname="tests.test_prefix_risk" name="test_only_switches_unsafe_baseline_to_safe_existing_handoff" time="0.001" /><testcase classname="tests.test_prefix_risk" name="test_confidence_matches_saved_feature_definition_without_mutating_logits" time="0.067" /><testcase classname="tests.test_prefix_risk" name="test_matcher_single_boundary_skips_confidence_and_preserves_raw_splice" time="0.013" /><testcase classname="tests.test_prefix_risk" name="test_matcher_consumes_current_logits_and_filters_weak_history" time="0.002" /><testcase classname="tests.test_prefix_risk" name="test_runtime_requires_explicit_valid_frozen_policy" time="0.001" /><testcase classname="tests.test_prefix_risk_probe" name="test_frozen_new_projects_disjoint_from_old_calibration_and_legal_history" time="0.002" /><testcase classname="tests.test_prefix_risk_probe" name="test_no_candidate_change_stops_timing_without_cherry_picking_requests" time="0.000" /><testcase classname="tests.test_prefix_risk_probe" name="test_decision_audit_handles_live_tuple_proposals_and_rejects_changed_selection" time="0.001" /><testcase classname="tests.test_prefix_risk_report" name="test_contract_stop_is_reported_without_inventing_policy_measurements" time="0.035" /><testcase classname="tests.test_prefix_risk_report" name="test_report_refuses_timing_after_contract_stop" time="0.001"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[1-AR]" time="0.050" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[1-DFlash]" time="0.013" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[1-R+DFlash]" time="0.013" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[2-AR]" time="0.017" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[2-DFlash]" time="0.016" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[2-R+DFlash]" time="0.016" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[19-AR]" time="0.091" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[19-DFlash]" time="0.090" /><testcase classname="tests.test_runtime" name="test_real_model_stream_commits_exactly_reference[19-R+DFlash]" time="0.094" /><testcase classname="tests.test_runtime" name="test_cancel_releases_model_and_does_not_pollute_next_request[AR]" time="0.070" /><testcase classname="tests.test_runtime" name="test_cancel_releases_model_and_does_not_pollute_next_request[DFlash]" time="0.069" /><testcase classname="tests.test_runtime" name="test_cancel_releases_model_and_does_not_pollute_next_request[R+DFlash]" time="0.072" /><testcase classname="tests.test_runtime" name="test_benefit_runtime_keeps_target_and_empty_history_fallback[ot-budget-splice]" time="0.084" /><testcase classname="tests.test_runtime" name="test_benefit_runtime_keeps_target_and_empty_history_fallback[ot-gate-splice]" time="0.070" /><testcase classname="tests.test_runtime" name="test_benefit_runtime_keeps_target_and_empty_history_fallback[edit-budget-splice]" time="0.071" /><testcase classname="tests.test_runtime" name="test_prefix_risk_runtime_preserves_strict_target_with_explicit_policy[True]" time="0.072" /><testcase classname="tests.test_runtime" name="test_prefix_risk_runtime_preserves_strict_target_with_explicit_policy[False]" time="0.071" /><testcase classname="tests.test_runtime" name="test_legal_snapshot_only_and_no_writeback" time="0.004"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_context_and_output_limits_release_engine" time="0.005" /><testcase classname="tests.test_runtime" name="test_runtime_selects_aligned_retrieval_and_reports_actual_cost[edit]" time="0.071" /><testcase classname="tests.test_runtime" name="test_runtime_selects_aligned_retrieval_and_reports_actual_cost[ot]" time="0.070" /><testcase classname="tests.test_runtime" name="test_invalid_requests_fail_explicitly[changes0]" time="0.000" /><testcase classname="tests.test_runtime" name="test_invalid_requests_fail_explicitly[changes1]" time="0.000" /><testcase classname="tests.test_runtime" name="test_invalid_requests_fail_explicitly[changes2]" time="0.000" /><testcase classname="tests.test_runtime" name="test_invalid_requests_fail_explicitly[changes3]" time="0.000" /><testcase classname="tests.test_runtime" name="test_config_paths_and_packaged_audit_assets" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[edit-guided]" time="0.076" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-guided]" time="0.070" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[edit-splice]" time="0.070" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-splice]" time="0.070" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-tail-splice]" time="0.070" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-order-splice]" time="0.074" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-plan-splice]" time="0.071" /><testcase classname="tests.test_runtime" name="test_guided_runtime_counts_actual_draft_forwards[ot-all-splice]" time="0.070" /><testcase classname="tests.test_runtime" name="test_benchmark_pairs_outputs_and_preserves_existing_artifacts" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_benchmark_stops_on_first_token_prompt_or_snapshot_mismatch[token_ids]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_benchmark_stops_on_first_token_prompt_or_snapshot_mismatch[prompt_sha256]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_benchmark_stops_on_first_token_prompt_or_snapshot_mismatch[snapshot_id]" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_cpu_profiler_exports_real_operator_trace" time="0.004"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_runtime" name="test_regression_threshold_checks_compatibility_before_timing" time="0.000"><error message="failed on setup with &quot;FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'&quot;">self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+&gt;           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk-delivery/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError</error></testcase><testcase classname="tests.test_dflash_reuse" name="test_draft_diagnostic_observer_preserves_generation_and_observes_only_proposals" time="0.105" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[None]" time="0.016" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[0]" time="0.054" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[2]" time="0.023" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[0]" time="0.000" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[1]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[2]" time="0.005" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[9]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[29]" time="0.020" /><testcase classname="tests.test_dflash_reuse" name="test_pending_feature_limit_forces_real_draft_catchup" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_official_arctic_candidates_with_real_target" time="0.021" /><testcase classname="tests.test_dflash_reuse" name="test_cursor_realigns_after_one_changed_token_and_stays_in_snapshot" time="0.001" /><testcase classname="tests.test_dflash_reuse" name="test_invalid_controls_are_explicit" time="0.000" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[None]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[0]" time="0.055" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[2]" time="0.023" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-None]" time="0.011" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-0]" time="0.058" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-1]" time="0.029" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-2]" time="0.021" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-5]" time="0.012" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-None]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-0]" time="0.055" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-1]" time="0.029" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-2]" time="0.028" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-5]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-0]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-1]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-2]" time="0.008" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-5]" time="0.006" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-0]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-1]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-2]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-5]" time="0.008" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[edit]" time="0.044" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[ot]" time="0.107" /><testcase classname="tests.test_dflash_reuse" name="test_actual_audited_dflash_forward_and_native_control" time="0.719" /><testcase classname="tests.test_dflash_reuse" name="test_guided_matcher_receives_only_current_draft_logits" time="0.054" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_risk_handoff_switch_rejection_and_kv_recovery" time="0.055" /></testsuite></testsuites>

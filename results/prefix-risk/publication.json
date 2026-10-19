@@ -3,6 +3,7 @@
   "archive_sha256": "86cef10850e129a91230d6223d26a625d5dbfa5615578740a6f6dbf8585fb746",
   "report_sha256": "b709db48ec7c2312bf284700dd11ab1aa977a5f6a7f17baa614186bf129f0f34",
   "files": {
+    "delivery-verification.json": "ec6de5f7afa29a60079af2028aede79648c0ee64aa74e619acb1a97d32c53a70",
     "diagnostic.json": "7a7d8a9ececef3e8bd6a1a0c74d5c20214a913eab61a1b041658edc748a62037",
     "execution-audit.json": "1bd830ce53545eddf16bd23d3930d8f1da007aeab7f43be3120d3ebbb50cc6b0",
     "mechanism/fresh-ar.jsonl.gz": "29fa3bb21e31d18aef0f38014fae868c0eaf58e8416669ae27a4a7184fc1b2a0",
@@ -10,6 +11,8 @@
     "pipeline.log": "b2e4da9c5c17fbc962dbad6fe3cf4f37b8f90d355e87f793db24e2f0790c1971",
     "run-pipeline.sh": "a936a6d2d02a478a6e8d54494741ee9a3ac75313926cbe46efe1dd3df579ad42",
     "source-manifest.json": "005b79f59fa76bd36ecc56615049565e5777e05eda8f361a1d835f3974a3b837",
+    "tests-delivery-server.xml": "5f39e850e60fb104ab9be4587f4419a619ea35c48bbeff647e2acfef98b13dc7",
+    "tests-delivery-setup-failed-server.xml": "9ba6dfb73b43a66bb04ba3b1f69076ff7c328e1a429629e0787c537bd7457a2c",
     "tests-empty-fixture-failed-local.xml": "9ed9a9172755baaa94d9cf308ce8411e589b41e0c72dc63ac8f8ea1172f70f4f",
     "tests-entropy-failed-local.xml": "630d0a514c5403039b13b8cd691e5e05c2ce34381283419cdee008e62bab01eb",
     "tests-final-local.xml": "c044ed2aeb6992fd922a693b52957a8fcfb7413899dc8417a41aaf0f536bbb38",
