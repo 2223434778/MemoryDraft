@@ -136,6 +136,12 @@ class InferenceEngine:
                                              prompt_text="\n".join(m["content"] for m in request.messages))
                     if self.config.retrieval == "suffix":
                         matcher = ReuseMatcher(index, cursor=False)
+                    elif self.config.retrieval == "edit-risk-splice":
+                        from memorydraft.retrieval.prefix_risk import PrefixRiskPolicy, PrefixRiskReuseMatcher
+                        from memorydraft.retrieval.transport import AlignmentConfig
+                        matcher = PrefixRiskReuseMatcher(index, policy=PrefixRiskPolicy(**self.config.prefix_risk),
+                                                         exact_min_match=self.reuse.min_match,
+                                                         config=AlignmentConfig(**self.config.alignment))
                     elif self.config.retrieval in {"ot-budget-splice", "ot-gate-splice", "edit-budget-splice"}:
                         from memorydraft.retrieval.benefit import BenefitPolicy, BenefitReuseMatcher
                         from memorydraft.retrieval.transport import AlignmentConfig

@@ -276,3 +276,28 @@ def test_actual_audited_dflash_forward_and_native_control(tiny):
                            config=ReuseConfig(max_tokens=4, cooldown_rounds=0),
                            route_sequence=("R", "R", "D"))
     assert native.tolist() == empty.sequences.tolist() == mixed.sequences.tolist() == tiny.reference.tolist()
+
+
+def test_guided_matcher_receives_only_current_draft_logits(tiny):
+    class ObservedMatcher:
+        def __init__(self):
+            self.logits, self.calls = None, 0
+
+        def propose(self, *args):
+            return None
+
+        def set_draft_logits(self, logits):
+            assert self.logits is None
+            self.logits = logits
+
+        def propose_with_draft(self, confirmed, draft_tokens, budget):
+            assert self.logits.argmax(-1).tolist() == draft_tokens
+            assert len(draft_tokens) <= budget
+            self.logits = None
+            self.calls += 1
+            return None
+
+    matcher = ObservedMatcher()
+    result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29, matcher=matcher)
+    assert result.sequences.tolist() == tiny.reference.tolist()
+    assert matcher.calls == len(result.rounds)

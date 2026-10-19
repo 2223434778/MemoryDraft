@@ -157,6 +157,9 @@ guided R may replace a block after its draft forward has already run.
             guided = getattr(matcher, "propose_with_draft", None) if can_reuse else None
             if guided is not None:
                 with mark("guided_retrieval"):
+                    receive_logits = getattr(matcher, "set_draft_logits", None)
+                    if receive_logits is not None:
+                        receive_logits(logits[0, :block.shape[1] - 1].detach())
                     proposal = guided(confirmed, block[0, 1:].tolist(),
                                       min(config.max_tokens, limit - start - 1))
                 if proposal is not None:

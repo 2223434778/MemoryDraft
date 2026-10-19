@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "training_sha256": "af6358bf35c6affcc0d8be0decac96cf7d21009eb965fab9a15870fbccc8ecef",
+  "training_states": 56,
+  "training_projects": [
+    "confirm-schema-0",
+    "edge-router",
+    "image-worker",
+    "infra-copy",
+    "inventory-query",
+    "parcel-queue",
+    "payment-runbook",
+    "shipment-contract",
+    "short-settings"
+  ],
+  "models": {
+    "Risk-Splice": {
+      "weights": [
+        -3.2775591123633827,
+        -0.6192901114757939,
+        1.755290482411539,
+        0.6880484155709818,
+        -0.4686518255446107,
+        3.025743454507859
+      ],
+      "confidence": true
+    },
+    "Risk-NoConfidence": {
+      "weights": [
+        1.3223695994230094,
+        -2.0250971206789306,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "confidence": false
+    }
+  },
+  "fit": "Unchanged acceptance.py regularized project-balanced logistic; tail head discarded"
+}

@@ -1,0 +1,378 @@
+{
+  "schema": 1,
+  "origin": "Six new authored controlled projects; not production traffic or a history-necessity test",
+  "projects": [
+    {
+      "id": "archive-pruner",
+      "group": "edited-continuation",
+      "source": "SELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 45\n  AND deletion_marked = false\n  AND legal_hold = false\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-archive-pruner",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "SELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 45\n  AND deletion_marked = false\n  AND legal_hold = false\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\n",
+          "project_id": "archive-pruner"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "archive-pruner:0",
+            "user_id": "prefix-risk-archive-pruner",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nretention_days > 45\nwith:\nretention_days > 60\nChange nothing else.\n\nSOURCE BEGIN\nSELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 45\n  AND deletion_marked = false\n  AND legal_hold = false\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "retention_days > 45",
+            "new": "retention_days > 60"
+          },
+          "expected_text": "SELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 60\n  AND deletion_marked = false\n  AND legal_hold = false\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\n"
+        },
+        {
+          "request": {
+            "id": "archive-pruner:1",
+            "user_id": "prefix-risk-archive-pruner",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\n  AND legal_hold = false\n\nwith:\n  AND legal_hold = false\n  AND replication_complete = true\n\nChange nothing else.\n\nSOURCE BEGIN\nSELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 45\n  AND deletion_marked = false\n  AND legal_hold = false\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "  AND legal_hold = false\n",
+            "new": "  AND legal_hold = false\n  AND replication_complete = true\n"
+          },
+          "expected_text": "SELECT object_id, storage_path, created_at\nFROM archive_objects\nWHERE retention_days > 45\n  AND deletion_marked = false\n  AND legal_hold = false\n  AND replication_complete = true\nORDER BY created_at ASC, object_id ASC\nLIMIT 240;\n\n-- Cleanup runs after the daily inventory transaction.\n-- Preserve objects with an active legal hold.\n-- Record the selected object identifiers before deletion.\n-- Retry transient storage failures in the next scheduled run.\n"
+        }
+      ]
+    },
+    {
+      "id": "vector-ingest",
+      "group": "edited-continuation",
+      "source": "[ingest]\nservice = \"vector-ingest\"\nbatch_size = 160\nflush_interval_ms = 800\nordered_delivery = true\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-vector-ingest",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "[ingest]\nservice = \"vector-ingest\"\nbatch_size = 160\nflush_interval_ms = 800\nordered_delivery = true\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\n",
+          "project_id": "vector-ingest"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "vector-ingest:0",
+            "user_id": "prefix-risk-vector-ingest",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nbatch_size = 160\nwith:\nbatch_size = 224\nChange nothing else.\n\nSOURCE BEGIN\n[ingest]\nservice = \"vector-ingest\"\nbatch_size = 160\nflush_interval_ms = 800\nordered_delivery = true\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "batch_size = 160",
+            "new": "batch_size = 224"
+          },
+          "expected_text": "[ingest]\nservice = \"vector-ingest\"\nbatch_size = 224\nflush_interval_ms = 800\nordered_delivery = true\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\n"
+        },
+        {
+          "request": {
+            "id": "vector-ingest:1",
+            "user_id": "prefix-risk-vector-ingest",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nordered_delivery = true\n\nwith:\nordered_delivery = true\nregion = \"ap-southeast\"\n\nChange nothing else.\n\nSOURCE BEGIN\n[ingest]\nservice = \"vector-ingest\"\nbatch_size = 160\nflush_interval_ms = 800\nordered_delivery = true\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "ordered_delivery = true\n",
+            "new": "ordered_delivery = true\nregion = \"ap-southeast\"\n"
+          },
+          "expected_text": "[ingest]\nservice = \"vector-ingest\"\nbatch_size = 160\nflush_interval_ms = 800\nordered_delivery = true\nregion = \"ap-southeast\"\n\n[queue]\nname = \"document-events\"\nvisibility_timeout_seconds = 90\nmax_delivery_attempts = 4\n\n[storage]\nnamespace = \"search-documents\"\ncompression = \"zstd\"\nwrite_checksum = true\n\n[metrics]\nenabled = true\nlabels = [\"service\", \"region\", \"result\"]\nreport_interval_seconds = 30\n"
+        }
+      ]
+    },
+    {
+      "id": "blob-recovery",
+      "group": "edited-continuation",
+      "source": "Blob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 18 seconds.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-blob-recovery",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "Blob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 18 seconds.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\n",
+          "project_id": "blob-recovery"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "blob-recovery:0",
+            "user_id": "prefix-risk-blob-recovery",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\n18 seconds\nwith:\n27 seconds\nChange nothing else.\n\nSOURCE BEGIN\nBlob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 18 seconds.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "18 seconds",
+            "new": "27 seconds"
+          },
+          "expected_text": "Blob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 27 seconds.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\n"
+        },
+        {
+          "request": {
+            "id": "blob-recovery:1",
+            "user_id": "prefix-risk-blob-recovery",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nStep 2: Set the retry interval to 18 seconds.\n\nwith:\nStep 2: Set the retry interval to 18 seconds and enable checksum logging.\n\nChange nothing else.\n\nSOURCE BEGIN\nBlob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 18 seconds.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "Step 2: Set the retry interval to 18 seconds.\n",
+            "new": "Step 2: Set the retry interval to 18 seconds and enable checksum logging.\n"
+          },
+          "expected_text": "Blob recovery procedure\n\nStep 1: Pause the recovery worker before inspecting the manifest.\nStep 2: Set the retry interval to 18 seconds and enable checksum logging.\nStep 3: Read the newest committed manifest from the control bucket.\nStep 4: Compare each object checksum with its manifest entry.\nStep 5: Restore missing objects into the staging namespace.\nStep 6: Verify the restored object count before enabling reads.\nStep 7: Resume the recovery worker and observe the error counter.\nStep 8: Record the manifest identifier in the incident log.\n"
+        }
+      ]
+    },
+    {
+      "id": "quota-ledger",
+      "group": "edited-continuation",
+      "source": "{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"limits\": {\n    \"burst_requests\": 360,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-quota-ledger",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"limits\": {\n    \"burst_requests\": 360,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\n",
+          "project_id": "quota-ledger"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "quota-ledger:0",
+            "user_id": "prefix-risk-quota-ledger",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\n\"burst_requests\": 360\nwith:\n\"burst_requests\": 480\nChange nothing else.\n\nSOURCE BEGIN\n{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"limits\": {\n    \"burst_requests\": 360,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "\"burst_requests\": 360",
+            "new": "\"burst_requests\": 480"
+          },
+          "expected_text": "{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"limits\": {\n    \"burst_requests\": 480,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\n"
+        },
+        {
+          "request": {
+            "id": "quota-ledger:1",
+            "user_id": "prefix-risk-quota-ledger",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\n  \"revision\": 3,\n\nwith:\n  \"revision\": 3,\n  \"region\": \"west\",\n\nChange nothing else.\n\nSOURCE BEGIN\n{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"limits\": {\n    \"burst_requests\": 360,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "  \"revision\": 3,\n",
+            "new": "  \"revision\": 3,\n  \"region\": \"west\",\n"
+          },
+          "expected_text": "{\n  \"service\": \"quota-ledger\",\n  \"revision\": 3,\n  \"region\": \"west\",\n  \"limits\": {\n    \"burst_requests\": 360,\n    \"sustained_requests\": 120,\n    \"window_seconds\": 60\n  },\n  \"storage\": {\n    \"table\": \"tenant_quota_events\",\n    \"partition_key\": \"tenant_id\",\n    \"retention_days\": 14\n  },\n  \"audit\": {\n    \"enabled\": true,\n    \"include_request_id\": true,\n    \"fields\": [\"tenant_id\", \"operation\", \"result\", \"duration_ms\"]\n  }\n}\n"
+        }
+      ]
+    },
+    {
+      "id": "scheduler-copy",
+      "group": "control",
+      "source": "[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-scheduler-copy",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\n",
+          "project_id": "scheduler-copy"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "scheduler-copy:0",
+            "user_id": "prefix-risk-scheduler-copy",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Return the supplied artifact unchanged.\n\nSOURCE BEGIN\n[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "interval_seconds = 45",
+            "new": "interval_seconds = 45"
+          },
+          "expected_text": "[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\n"
+        },
+        {
+          "request": {
+            "id": "scheduler-copy:1",
+            "user_id": "prefix-risk-scheduler-copy",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Return the supplied artifact unchanged.\n\nSOURCE BEGIN\n[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "attempts = 4",
+            "new": "attempts = 4"
+          },
+          "expected_text": "[scheduler]\nname = \"snapshot-scheduler\"\ninterval_seconds = 45\nmax_parallel_jobs = 3\n\n[lease]\nrenewal_seconds = 10\nexpiry_seconds = 35\n\n[retry]\nattempts = 4\nbackoff_seconds = 8\n\n[logging]\nlevel = \"info\"\ninclude_job_id = true\ninclude_lease_id = true\n"
+        }
+      ]
+    },
+    {
+      "id": "status-rewrite",
+      "group": "control",
+      "source": "The export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\n",
+      "history": [
+        {
+          "user_id": "prefix-risk-status-rewrite",
+          "record_id": "source-v1",
+          "order": 2,
+          "text": "The export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\n",
+          "project_id": "status-rewrite"
+        }
+      ],
+      "requests": [
+        {
+          "request": {
+            "id": "status-rewrite:0",
+            "user_id": "prefix-risk-status-rewrite",
+            "order": 10,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nThe export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\nwith:\nThe import service is healthy. All partitions have completed validation. The next maintenance window begins at midnight. No operator action is required.\nChange nothing else.\n\nSOURCE BEGIN\nThe export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "The export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.",
+            "new": "The import service is healthy. All partitions have completed validation. The next maintenance window begins at midnight. No operator action is required."
+          },
+          "expected_text": "The import service is healthy. All partitions have completed validation. The next maintenance window begins at midnight. No operator action is required.\n"
+        },
+        {
+          "request": {
+            "id": "status-rewrite:1",
+            "user_id": "prefix-risk-status-rewrite",
+            "order": 11,
+            "max_new_tokens": 512,
+            "messages": [
+              {
+                "role": "system",
+                "content": "Return only the complete resulting artifact. Do not add Markdown fences or explanations. Preserve all unchanged text and whitespace."
+              },
+              {
+                "role": "user",
+                "content": "Replace exactly this text:\nThe export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\nwith:\nThe indexing job has finished. Every document passed the consistency check. The search endpoint is ready for traffic. The release manager has approved deployment.\nChange nothing else.\n\nSOURCE BEGIN\nThe export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.\nSOURCE END\n"
+              }
+            ]
+          },
+          "edit": {
+            "old": "The export queue is paused. Three workers are waiting for a storage lease. The last completed batch belongs to the northern region. The current incident is assigned to the daytime operations team.",
+            "new": "The indexing job has finished. Every document passed the consistency check. The search endpoint is ready for traffic. The release manager has approved deployment."
+          },
+          "expected_text": "The indexing job has finished. Every document passed the consistency check. The search endpoint is ready for traffic. The release manager has approved deployment.\n"
+        }
+      ]
+    }
+  ]
+}

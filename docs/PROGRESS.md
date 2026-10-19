@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — 前缀风险辅助拼接（执行准备）
+
+- 用户授权执行一次小验证。新增`retrieval/prefix_risk.py`，原Edit候选边界生存<0.5且存在≥0.5候选时才按Edit顺序改选；同边界或单候选跳过置信度。固定原32上限、top8/4查询预算、严格Target及旧冷却，不预测尾部、不求解OT、不改动态长度。
+- `RuntimeConfig.prefix_risk`与`edit-risk-splice`显式选项；matcher只接收当前实际Draft logits，不额外Target前向，在线成本全部计入。权重仅用旧56状态/9项目按原固定正则拟合；无置信度消融独立保留。
+- 新作者构造6项目/12请求，4项目稀疏修改+长复制、2控制，均与训练项目隔离；不是生产负载或长期历史必要性证据。协议`PREFIX_RISK_PROTOCOL.md`冻结12AR合同门槛、60机制、若发生风险改选才120交错计时，未达预定净收益门槛就停止本轮，不按新输出调参。
+- 准备脚本首次显式传.gz路径与旧read_rows的自动压缩回退约定不一致，修为传原jsonl路径；尚无新Target输出。首批相关测试2 failed/81 passed/2 skipped，原因是新增测试插入位置将旧benefit计数断言移入风险测试，推理输出检查均通过；最小修复将断言归位并检查risk计数，失败XML保留。
+- 修复第一次归位时上下文不足又匹配到通用流式测试，第二批9 failed/76 passed/2 skipped；核对完整diff后恢复旧断言原位置。最终相关85 passed/2 skipped/14.47s，完整361 passed/3 skipped/40.36s：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-prefix-risk-full --junitxml=artifacts/prefix-risk-tests-full-local.xml`。后补live tuple/JSON decision审计测试，prefix单测8 passed/2.75s。两个runner通过py_compile，diff检查通过；A6000双卡19MiB/0%。
+
 ## 2026-10-19 — 接受长度条件生存校准（完成，局部改善未达门槛）
 
 - 冻结执行提交`36798f32c2992511ea89479be7fd70279dfc4f5f`，671个Git原始文件SHA核验；源zip SHA`2aae5e51ae81c41bd9842296c586c1c27efb4f7511d5a8d42abecfdb1979580f`，实际package SHA`b6ec034a21ab76ca2d57912a8599214d9943aa22b792377610f68fd6b7c5a435`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance`，原文件执行前后均SHA一致。

@@ -94,6 +94,17 @@ def test_benefit_runtime_keeps_target_and_empty_history_fallback(engine, retriev
     assert actual.counters["benefit_ot_calls"] == actual.counters["benefit_decisions"] == 0
 
 
+@pytest.mark.parametrize("confidence", [True, False])
+def test_prefix_risk_runtime_preserves_strict_target_with_explicit_policy(engine, confidence):
+    reference = engine.generate(request(), "AR")
+    engine.config = replace(engine.config, retrieval="edit-risk-splice",
+                            prefix_risk=dict(weights=[0.] * 6, confidence=confidence))
+    actual = engine.generate(request(), "R+DFlash")
+    assert (actual.token_ids, actual.prompt_sha256, actual.snapshot_id) == (
+        reference.token_ids, reference.prompt_sha256, reference.snapshot_id)
+    assert actual.counters["risk_evaluations"] == actual.counters["risk_switches"] == 0
+
+
 def test_legal_snapshot_only_and_no_writeback(engine, tmp_path, monkeypatch):
     import memorydraft.runtime.engine as module
 

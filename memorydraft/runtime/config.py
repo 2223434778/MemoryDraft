@@ -24,6 +24,7 @@ class RuntimeConfig:
     retrieval: str = "suffix"
     alignment: dict = field(default_factory=dict)
     benefit: dict = field(default_factory=dict)
+    prefix_risk: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -31,7 +32,7 @@ class RuntimeConfig:
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",
-                                  "ot-budget-splice", "ot-gate-splice", "edit-budget-splice"}:
+                                  "ot-budget-splice", "ot-gate-splice", "edit-budget-splice", "edit-risk-splice"}:
             raise ValueError("Unknown retrieval method")
         if self.alignment or self.retrieval != "suffix":
             from memorydraft.retrieval.transport import AlignmentConfig
@@ -43,6 +44,13 @@ class RuntimeConfig:
             BenefitPolicy(**self.benefit)
         elif self.benefit:
             raise ValueError("Benefit calibration requires a benefit retrieval method")
+        if self.retrieval == "edit-risk-splice":
+            from memorydraft.retrieval.prefix_risk import PrefixRiskPolicy
+            if "weights" not in self.prefix_risk:
+                raise ValueError("Prefix risk retrieval requires frozen calibration weights")
+            PrefixRiskPolicy(**self.prefix_risk)
+        elif self.prefix_risk:
+            raise ValueError("Prefix risk calibration requires edit-risk-splice retrieval")
         if self.dtype != "float32" or self.attention != "eager":
             raise ValueError("The validated runtime profile requires float32/eager")
         if any(type(v) is not int or v < 1 for v in
