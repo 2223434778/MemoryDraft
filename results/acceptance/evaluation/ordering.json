@@ -1,0 +1,226 @@
+[
+  {
+    "request_id": "parcel-queue:0",
+    "generated": 17,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 12.879686588139702,
+        "confidence": 23.846485730826057
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 12.879686588139702,
+        "confidence": 23.846485730826057
+      }
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "generated": 19,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 12.631275404623018,
+        "confidence": 12.293957596345843
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 12.631275404623018,
+        "confidence": 12.293957596345843
+      }
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "generated": 19,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 14.268923910282613,
+        "confidence": 19.995332244031907
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 14.268923910282613,
+        "confidence": 19.995332244031907
+      }
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "generated": 11,
+    "options": {
+      "Splice-Edit": {
+        "actual": 3,
+        "no_confidence": 12.980832354814241,
+        "confidence": 5.571695138649982
+      },
+      "Splice-TailOT": {
+        "actual": 3,
+        "no_confidence": 12.980832354814241,
+        "confidence": 5.571695138649982
+      }
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "generated": 130,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 15.638619731883825,
+        "confidence": 26.571755411948786
+      },
+      "Splice-TailOT": {
+        "actual": 28,
+        "no_confidence": 15.344331207128738,
+        "confidence": 26.482354865760964
+      }
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "generated": 131,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 15.924549994864616,
+        "confidence": 26.64923430835367
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 15.924549994864616,
+        "confidence": 26.64923430835367
+      }
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "generated": 15,
+    "options": {
+      "Splice-Edit": {
+        "actual": 7,
+        "no_confidence": 7.852689131575849,
+        "confidence": 6.658488487879175
+      },
+      "Splice-TailOT": {
+        "actual": 7,
+        "no_confidence": 7.852689131575849,
+        "confidence": 6.658488487879175
+      }
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "generated": 23,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 13.008292212099974,
+        "confidence": 19.705896220364153
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 13.008292212099974,
+        "confidence": 19.705896220364153
+      }
+    }
+  },
+  {
+    "request_id": "inventory-query:0",
+    "generated": 8,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 13.720235200241543,
+        "confidence": 19.36129838395575
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 13.720235200241543,
+        "confidence": 19.36129838395575
+      }
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "generated": 10,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 10.37048328350537,
+        "confidence": 15.59993574946167
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 10.37048328350537,
+        "confidence": 15.59993574946167
+      }
+    }
+  },
+  {
+    "request_id": "shipment-contract:0",
+    "generated": 17,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 13.39691139573133,
+        "confidence": 12.846122798397506
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 13.39691139573133,
+        "confidence": 12.846122798397506
+      }
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "generated": 14,
+    "options": {
+      "Splice-Edit": {
+        "actual": 7,
+        "no_confidence": 12.587824928830718,
+        "confidence": 8.154500520295741
+      },
+      "Splice-TailOT": {
+        "actual": 7,
+        "no_confidence": 12.940355234305692,
+        "confidence": 8.033647074571217
+      }
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "generated": 15,
+    "options": {
+      "Splice-Edit": {
+        "actual": 7,
+        "no_confidence": 13.397399819014794,
+        "confidence": 8.516951058006393
+      },
+      "Splice-TailOT": {
+        "actual": 32,
+        "no_confidence": 11.859228197843976,
+        "confidence": 17.59178754315087
+      }
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "generated": 22,
+    "options": {
+      "Splice-Edit": {
+        "actual": 32,
+        "no_confidence": 10.358224343843172,
+        "confidence": 14.433312775321113
+      },
+      "Splice-TailOT": {
+        "actual": 6,
+        "no_confidence": 11.517317464474345,
+        "confidence": 7.338021612055466
+      }
+    }
+  }
+]

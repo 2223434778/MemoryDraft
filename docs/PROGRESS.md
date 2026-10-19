@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-19 — 接受长度条件生存校准（完成，局部改善未达门槛）
+
+- 冻结执行提交`36798f32c2992511ea89479be7fd70279dfc4f5f`，671个Git原始文件SHA核验；源zip SHA`2aae5e51ae81c41bd9842296c586c1c27efb4f7511d5a8d42abecfdb1979580f`，实际package SHA`b6ec034a21ab76ca2d57912a8599214d9943aa22b792377610f68fd6b7c5a435`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance`，原文件执行前后均SHA一致。
+- 首次漏建models软链接，load_engine在生成前退出；失败日志保留。补`models -> ../models`后同源码运行完成，服务器相关45 passed/5.72s（首次无模型缓存时43 passed/2 skipped）。生成进程2327090已结束、GPU恢复双19MiB/0%。
+- 实际运行协议中的`python -m scripts.collect_acceptance_probe --config configs/runtime-ot-benefit.json --output results/raw/acceptance/collection`和`python -m scripts.evaluate_acceptance_probe --input results/raw/acceptance/collection --output results/raw/acceptance/evaluation`，环境OMP_NUM_THREADS=4/HF_HUB_OFFLINE=1/PYTHONPATH=.；完整脚本保存`results/acceptance/run-pipeline.sh`。48/48生成严格匹配AR token/prompt/snapshot，24/24旧matrix路径计数一致，全部旧证据递归SHA不变。
+- 56去重Draft状态/69shadow候选/9项目，完整匹配14原状态；每次排除当前整个项目，固定特征、正则与参数。旧/无置信度/有置信度MAE分别10.472736/13.917830/8.423701，Brier0.234529/0.276227/0.155672；新比旧MAE降低19.57%，未达预定20%。按项目等权MAE改善0.962952，5000次bootstrap区间[-5.042062,6.926308]跨零，开发门槛失败，不接入默认路由、不调参凑过线。
+- 有效信号：56状态Draft MAE无置信度5.042924→2.122956；payment/11预测32→5.57实际3；shipment/14预测30.89→8.03实际7；shipment/22预测30.56→7.34实际6。payment/15恢复TailOT优于Edit、shipment/22恢复Edit优于TailOT的候选排序。
+- 尚未修复：原14动作平均偏差+4.18→−7.50，对原本正确的长接续明显低估。Draft概率仅覆盖前15位置，16–32尾部依赖少量跨项目条件标签；样本、正则和尾部特征各自作用尚未因果区分。保留前缀风险模块，未来优先独立项目风险排序/条件尾部校准，不将本次离线改善当作在线加速。
+- 原始归档116833字节/SHA`1479a35f1c04cee9cc61005c1dcc463d1009f7d91fa606688c2bfcfc2cb1921a`，紧凑证据在`results/acceptance`，报告`docs/ACCEPTANCE_RESULTS.md`。不含数据库、权重、完整词表logits；报告按服务器已执行系数重算，不跨SciPy版本重新拟合。报告/审计10 passed/6.92s，重建命令`.venv\Scripts\python.exe -m scripts.write_acceptance_report`。
+- 最终完整回归351 passed/3 skipped/48.27s：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-acceptance-final --junitxml=artifacts/acceptance-tests-final-local.xml`。此前一次自动审批因额度耗尽未启动该命令，用户恢复额度后运行完成；不是测试失败。原infra三引用仍为`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。
+
 ## 2026-10-19 — 接受长度条件生存校准（执行准备）
 
 - 针对旧14状态MAE10.47，新增 `retrieval/acceptance.py`：Draft前缀生存 × 边界通过后的历史条件生存，候选分别预测，固定正则、逐项目排除；不使用完整OT矩阵，不更改默认路由。

@@ -1,0 +1,1122 @@
+[
+  {
+    "request_id": "parcel-queue:0",
+    "project_id": "parcel-queue",
+    "generated": 1,
+    "state_sha256": "81f85ec96d55ebc161c0abd3685bb6b29ce0e5efde1e9151a606009437ff7fdb",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 15,
+      "error": 6.747558853731231,
+      "bias": -6.747558853731231,
+      "brier": 0.22286343731085675
+    },
+    "confidence": {
+      "predicted": 12.630737275062339,
+      "actual": 15,
+      "error": 2.369262724937661,
+      "bias": -2.369262724937661,
+      "brier": 0.026256699548512792
+    }
+  },
+  {
+    "request_id": "parcel-queue:0",
+    "project_id": "parcel-queue",
+    "generated": 17,
+    "state_sha256": "99d08d4b251afb78aa9394d46b3dc92178ff10d090a7dc214df8f585c109ea93",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 15,
+      "error": 6.747558853731231,
+      "bias": -6.747558853731231,
+      "brier": 0.22286343731085675
+    },
+    "confidence": {
+      "predicted": 12.935704601946725,
+      "actual": 15,
+      "error": 2.064295398053275,
+      "bias": -2.064295398053275,
+      "brier": 0.019497506579091897
+    }
+  },
+  {
+    "request_id": "parcel-queue:0",
+    "project_id": "parcel-queue",
+    "generated": 150,
+    "state_sha256": "8c15c284e8eb854c88a205ba2808f180edd44a9e6bd5dee1ea6bde40e22d300c",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 1,
+      "error": 7.252441146268769,
+      "bias": 7.252441146268769,
+      "brier": 0.2872050975850933
+    },
+    "confidence": {
+      "predicted": 3.898025339318526,
+      "actual": 1,
+      "error": 2.898025339318526,
+      "bias": 2.898025339318526,
+      "brier": 0.08698319153889407
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "project_id": "parcel-queue",
+    "generated": 1,
+    "state_sha256": "9ee6eeddf8ea34fafe5719e15f58d2c05fd056c2f991aef60882fa7d20d9b393",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 11,
+      "error": 2.747558853731231,
+      "bias": -2.747558853731231,
+      "brier": 0.15092128396956225
+    },
+    "confidence": {
+      "predicted": 12.376196242451105,
+      "actual": 11,
+      "error": 1.3761962424511047,
+      "bias": 1.3761962424511047,
+      "brier": 0.1779381359407117
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "project_id": "parcel-queue",
+    "generated": 13,
+    "state_sha256": "5b8ce9ac8fae7adc33ec6839e3ca39e881823c7e2b5a55c2231e3ae5e2bf6de6",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 5,
+      "error": 3.252441146268769,
+      "bias": 3.252441146268769,
+      "brier": 0.1802595076092634
+    },
+    "confidence": {
+      "predicted": 3.3100351077521455,
+      "actual": 5,
+      "error": 1.6899648922478545,
+      "bias": -1.6899648922478545,
+      "brier": 0.1291668569770609
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "project_id": "parcel-queue",
+    "generated": 19,
+    "state_sha256": "ebae04a7630f2cd281d8383a6656a05eaa8dc2577eb82ebe7dbb281eb74831fa",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 15,
+      "error": 6.747558853731231,
+      "bias": -6.747558853731231,
+      "brier": 0.22286343731085675
+    },
+    "confidence": {
+      "predicted": 10.139596080191039,
+      "actual": 15,
+      "error": 4.860403919808961,
+      "bias": -4.860403919808961,
+      "brier": 0.21232181051852594
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "project_id": "parcel-queue",
+    "generated": 159,
+    "state_sha256": "639471b27a5842a57dcc4dcc01e42415fdb9a287787077286c55e07ce20a9a3c",
+    "no_confidence": {
+      "predicted": 8.252441146268769,
+      "actual": 1,
+      "error": 7.252441146268769,
+      "bias": 7.252441146268769,
+      "brier": 0.2872050975850933
+    },
+    "confidence": {
+      "predicted": 3.912010142712461,
+      "actual": 1,
+      "error": 2.912010142712461,
+      "bias": 2.912010142712461,
+      "brier": 0.0787612203381828
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "project_id": "payment-runbook",
+    "generated": 1,
+    "state_sha256": "3a5fd004ffaef6ce233782c8ce6fb4266d27108c8f48d42a111486242af3aa69",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 11,
+      "error": 2.3413576617695675,
+      "bias": -2.3413576617695675,
+      "brier": 0.1458674607523299
+    },
+    "confidence": {
+      "predicted": 9.591217615559598,
+      "actual": 11,
+      "error": 1.4087823844404017,
+      "bias": -1.4087823844404017,
+      "brier": 0.026880275408766537
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "project_id": "payment-runbook",
+    "generated": 16,
+    "state_sha256": "52a6b2c1543f46367bb2e9452bdb365d96787d27c563a46311e0929c014df557",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 2,
+      "error": 6.6586423382304325,
+      "bias": 6.6586423382304325,
+      "brier": 0.2797124210548632
+    },
+    "confidence": {
+      "predicted": 7.4195587298064645,
+      "actual": 2,
+      "error": 5.4195587298064645,
+      "bias": 5.4195587298064645,
+      "brier": 0.16435322841973743
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "project_id": "payment-runbook",
+    "generated": 19,
+    "state_sha256": "06d9506b36a02728b2139e904fbe2878d91407fcf00f27ada99bd6745ce90130",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 12,
+      "error": 3.3413576617695675,
+      "bias": -3.3413576617695675,
+      "brier": 0.15208528733677337
+    },
+    "confidence": {
+      "predicted": 10.703395033184679,
+      "actual": 12,
+      "error": 1.2966049668153214,
+      "bias": -1.2966049668153214,
+      "brier": 0.01905314490090445
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "project_id": "payment-runbook",
+    "generated": 137,
+    "state_sha256": "c8a3bf44ef6c6b7dde317acd4389bd4dd679d5605d9f5fd60ee6ae8daa72f784",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 1,
+      "error": 7.6586423382304325,
+      "bias": 7.6586423382304325,
+      "brier": 0.313575200061739
+    },
+    "confidence": {
+      "predicted": 5.618059695868412,
+      "actual": 1,
+      "error": 4.618059695868412,
+      "bias": 4.618059695868412,
+      "brier": 0.16454012591465458
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 1,
+    "state_sha256": "0c51cd4d789bfd3bbe2071cc5a7718266d2ae8b924aa9a331d94c9af116d5cab",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 9,
+      "error": 0.3413576617695675,
+      "bias": -0.3413576617695675,
+      "brier": 0.14646473942980126
+    },
+    "confidence": {
+      "predicted": 10.30853290828488,
+      "actual": 9,
+      "error": 1.3085329082848798,
+      "bias": 1.3085329082848798,
+      "brier": 0.14506157411828227
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 11,
+    "state_sha256": "8f00559f41f135f3a4ababd82e9e372647b15e481332248a637f56dd143efd9b",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 3,
+      "error": 5.6586423382304325,
+      "bias": 5.6586423382304325,
+      "brier": 0.24918829431308614
+    },
+    "confidence": {
+      "predicted": 4.834394507077749,
+      "actual": 3,
+      "error": 1.8343945070777492,
+      "bias": 1.8343945070777492,
+      "brier": 0.06454660052121836
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 15,
+    "state_sha256": "94bf4b219fbf684572edbe18371e6762cfa4aeadf8ad0edd13fd065fb72fd627",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 7,
+      "error": 1.6586423382304325,
+      "bias": 1.6586423382304325,
+      "brier": 0.16436132247601493
+    },
+    "confidence": {
+      "predicted": 7.330998941368765,
+      "actual": 7,
+      "error": 0.3309989413687653,
+      "bias": 0.3309989413687653,
+      "brier": 0.01596569608438369
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 142,
+    "state_sha256": "bcd1e4fca6af21a5df6b619958603fe518152f32afa1e7e900741e2750f101da",
+    "no_confidence": {
+      "predicted": 8.658642338230433,
+      "actual": 1,
+      "error": 7.6586423382304325,
+      "bias": 7.6586423382304325,
+      "brier": 0.313575200061739
+    },
+    "confidence": {
+      "predicted": 4.3573254404321515,
+      "actual": 1,
+      "error": 3.3573254404321515,
+      "bias": 3.3573254404321515,
+      "brier": 0.09732618575314807
+    }
+  },
+  {
+    "request_id": "short-settings:1",
+    "project_id": "short-settings",
+    "generated": 1,
+    "state_sha256": "0a6268973b938f59c76ffd18163d472e3534269c45dd1f7bb782d380b099abe4",
+    "no_confidence": {
+      "predicted": 8.814815013132769,
+      "actual": 8,
+      "error": 0.8148150131327689,
+      "bias": 0.8148150131327689,
+      "brier": 0.1544732671011452
+    },
+    "confidence": {
+      "predicted": 9.492371857378252,
+      "actual": 8,
+      "error": 1.4923718573782523,
+      "bias": 1.4923718573782523,
+      "brier": 0.10117842537033007
+    }
+  },
+  {
+    "request_id": "short-settings:1",
+    "project_id": "short-settings",
+    "generated": 10,
+    "state_sha256": "f4c8e9a032d2832b6160ac2648f6248a7e7387f92fcc80034132c897e2f92c4d",
+    "no_confidence": {
+      "predicted": 8.814815013132769,
+      "actual": 1,
+      "error": 7.814815013132769,
+      "bias": 7.814815013132769,
+      "brier": 0.3244617074523473
+    },
+    "confidence": {
+      "predicted": 4.581154913529206,
+      "actual": 1,
+      "error": 3.581154913529206,
+      "bias": 3.581154913529206,
+      "brier": 0.1059910260660151
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 1,
+    "state_sha256": "6cbbcef6d9ab53f76b8649a7a099e3d55e40822af780efefa6b71726ed051538",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 5,
+      "error": 2.794280368345201,
+      "bias": 2.794280368345201,
+      "brier": 0.16547618825506225
+    },
+    "confidence": {
+      "predicted": 3.6605411407146358,
+      "actual": 5,
+      "error": 1.3394588592853642,
+      "bias": -1.3394588592853642,
+      "brier": 0.07964981393671865
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 115,
+    "state_sha256": "3c4435aabfc25e098b7208ada5b77b88207c72468b88396180e245c8d979e2fe",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 14,
+      "error": 6.205719631654799,
+      "bias": -6.205719631654799,
+      "brier": 0.22362048993114805
+    },
+    "confidence": {
+      "predicted": 12.532482544389072,
+      "actual": 14,
+      "error": 1.4675174556109276,
+      "bias": -1.4675174556109276,
+      "brier": 0.04594785250798448
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 130,
+    "state_sha256": "62f11cd4de0c59b3fd513bf6d2d698a20a2db48c5b2176c9dfe0d8c50001c8ea",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.725950342243292,
+      "actual": 15,
+      "error": 2.2740496577567075,
+      "bias": -2.2740496577567075,
+      "brier": 0.02353984719047686
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 203,
+    "state_sha256": "6fdd287fba451b51b046275cecd4b9969dadd5f2ee3e9bbd2f883d9ebd5ddf6e",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.647649295439368,
+      "actual": 15,
+      "error": 2.3523507045606316,
+      "bias": -2.3523507045606316,
+      "brier": 0.025752539981890622
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 159,
+    "state_sha256": "5fa127bd56bd4144fa3112c431faa1ace6bc7e9a1f1bbf10d56491e71e6ac255",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.72691959627027,
+      "actual": 15,
+      "error": 2.2730804037297307,
+      "bias": -2.2730804037297307,
+      "brier": 0.023535060748919187
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "project_id": "confirm-schema-0",
+    "generated": 1,
+    "state_sha256": "72c81b59d5c8bd959fb55cafbabe2364976ca9a69a5477b2036e1c84394cab44",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 5,
+      "error": 2.794280368345201,
+      "bias": 2.794280368345201,
+      "brier": 0.16547618825506225
+    },
+    "confidence": {
+      "predicted": 3.6717630450628884,
+      "actual": 5,
+      "error": 1.3282369549371116,
+      "bias": -1.3282369549371116,
+      "brier": 0.07870303148085456
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "project_id": "confirm-schema-0",
+    "generated": 115,
+    "state_sha256": "11bab5b07f2e87cac67ef8a6c6e114a154ee90cb7cc226c08bba304d23f49262",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.709449305830086,
+      "actual": 15,
+      "error": 2.290550694169914,
+      "bias": -2.290550694169914,
+      "brier": 0.02400473026404317
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "project_id": "confirm-schema-0",
+    "generated": 131,
+    "state_sha256": "36b16aef8e546f5c5cacc9c20a930aa569c48f32fecff83eb599aae5bc49268d",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.727119379116091,
+      "actual": 15,
+      "error": 2.2728806208839085,
+      "bias": -2.2728806208839085,
+      "brier": 0.02351082845462711
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "project_id": "confirm-schema-0",
+    "generated": 203,
+    "state_sha256": "07f8996d3dce483a67b3c086b7caab99ae242112e3b9c8915167254c5a541225",
+    "no_confidence": {
+      "predicted": 7.794280368345201,
+      "actual": 15,
+      "error": 7.205719631654799,
+      "bias": -7.205719631654799,
+      "brier": 0.2522494596156177
+    },
+    "confidence": {
+      "predicted": 12.706894844536084,
+      "actual": 15,
+      "error": 2.293105155463916,
+      "bias": -2.293105155463916,
+      "brier": 0.024054266615141703
+    }
+  },
+  {
+    "request_id": "copy",
+    "project_id": "infra-copy",
+    "generated": 1,
+    "state_sha256": "de871c257263c8bf8978b86dd2ad7c3a64e497147a588bef1263c629b403f8d9",
+    "no_confidence": {
+      "predicted": 8.4026092200894,
+      "actual": 7,
+      "error": 1.4026092200893991,
+      "bias": 1.4026092200893991,
+      "brier": 0.16484768755910834
+    },
+    "confidence": {
+      "predicted": 5.6971437190768395,
+      "actual": 7,
+      "error": 1.3028562809231605,
+      "bias": -1.3028562809231605,
+      "brier": 0.1111466373054533
+    }
+  },
+  {
+    "request_id": "copy",
+    "project_id": "infra-copy",
+    "generated": 11,
+    "state_sha256": "d8b95d15afc52ee635ac6c57e395bc08f81042fec33824e2ef7300d5b44c0226",
+    "no_confidence": {
+      "predicted": 8.4026092200894,
+      "actual": 10,
+      "error": 1.5973907799106009,
+      "bias": -1.5973907799106009,
+      "brier": 0.15128686882056158
+    },
+    "confidence": {
+      "predicted": 10.663264507721657,
+      "actual": 10,
+      "error": 0.6632645077216566,
+      "bias": 0.6632645077216566,
+      "brier": 0.11574011358345576
+    }
+  },
+  {
+    "request_id": "copy",
+    "project_id": "infra-copy",
+    "generated": 23,
+    "state_sha256": "5b3e74e12a7d2147a9a7496134e9113382febd7ca251520bd56dd3b89ab0c5dc",
+    "no_confidence": {
+      "predicted": 8.4026092200894,
+      "actual": 10,
+      "error": 1.5973907799106009,
+      "bias": -1.5973907799106009,
+      "brier": 0.15128686882056158
+    },
+    "confidence": {
+      "predicted": 9.590427440975693,
+      "actual": 10,
+      "error": 0.40957255902430667,
+      "bias": -0.40957255902430667,
+      "brier": 0.08719508208328229
+    }
+  },
+  {
+    "request_id": "copy",
+    "project_id": "infra-copy",
+    "generated": 35,
+    "state_sha256": "0b181b35f1721118e1ae37bd769089277ed7051ef183752d838a1872e69f9ffc",
+    "no_confidence": {
+      "predicted": 8.4026092200894,
+      "actual": 10,
+      "error": 1.5973907799106009,
+      "bias": -1.5973907799106009,
+      "brier": 0.15128686882056158
+    },
+    "confidence": {
+      "predicted": 9.157989713536141,
+      "actual": 10,
+      "error": 0.842010286463859,
+      "bias": -0.842010286463859,
+      "brier": 0.024250385841633984
+    }
+  },
+  {
+    "request_id": "copy",
+    "project_id": "infra-copy",
+    "generated": 46,
+    "state_sha256": "917f65bc3b57f2fad94bdccf57182ec977cd783dedd6580e72d7ea099ce0d9b2",
+    "no_confidence": {
+      "predicted": 8.4026092200894,
+      "actual": 2,
+      "error": 6.402609220089399,
+      "bias": 6.402609220089399,
+      "brier": 0.26511449296328776
+    },
+    "confidence": {
+      "predicted": 4.530570225119823,
+      "actual": 2,
+      "error": 2.530570225119823,
+      "bias": 2.530570225119823,
+      "brier": 0.11293736885770685
+    }
+  },
+  {
+    "request_id": "edge-router:0",
+    "project_id": "edge-router",
+    "generated": 1,
+    "state_sha256": "31fd078eaf3883eaa604fc3fd7a1b85f3c10585d42a0f9311fd33fe4f53dbc8c",
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 15,
+      "error": 7.147310868424151,
+      "bias": -7.147310868424151,
+      "brier": 0.24630756257967806
+    },
+    "confidence": {
+      "predicted": 11.062751118535893,
+      "actual": 15,
+      "error": 3.9372488814641073,
+      "bias": -3.9372488814641073,
+      "brier": 0.10200839226721348
+    }
+  },
+  {
+    "request_id": "edge-router:0",
+    "project_id": "edge-router",
+    "generated": 21,
+    "state_sha256": "eb3996f91b27007e9c612e3391632a52d8f0f4b006e426bb72afa5f3b52c9fcb",
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 11,
+      "error": 3.1473108684241513,
+      "bias": -3.1473108684241513,
+      "brier": 0.16401981521266815
+    },
+    "confidence": {
+      "predicted": 11.365357782906262,
+      "actual": 11,
+      "error": 0.365357782906262,
+      "bias": 0.365357782906262,
+      "brier": 0.13513026056171834
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "project_id": "edge-router",
+    "generated": 1,
+    "state_sha256": "b1ede3b061448f7c44e6a27186bb06f09eea5874a51833070144e414c5724a61",
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 13,
+      "error": 5.147310868424151,
+      "bias": -5.147310868424151,
+      "brier": 0.1970342155196533
+    },
+    "confidence": {
+      "predicted": 11.484629711659256,
+      "actual": 13,
+      "error": 1.515370288340744,
+      "bias": -1.515370288340744,
+      "brier": 0.047954732236592634
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "project_id": "edge-router",
+    "generated": 15,
+    "state_sha256": "1a673ae29a9c42ad641df26fe7ab1aea044d6abb0e4641b4239de309b6611b12",
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 7,
+      "error": 0.8526891315758487,
+      "bias": 0.8526891315758487,
+      "brier": 0.15067289283267712
+    },
+    "confidence": {
+      "predicted": 6.658488487879175,
+      "actual": 7,
+      "error": 0.3415115121208254,
+      "bias": -0.3415115121208254,
+      "brier": 0.06234600758684309
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "project_id": "edge-router",
+    "generated": 23,
+    "state_sha256": "b5ddeed1e91f6865dd359374b14f54ed70a69845d6a090d5b7252e5a3390196c",
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 15,
+      "error": 7.147310868424151,
+      "bias": -7.147310868424151,
+      "brier": 0.24630756257967806
+    },
+    "confidence": {
+      "predicted": 10.620525946446662,
+      "actual": 15,
+      "error": 4.379474053553338,
+      "bias": -4.379474053553338,
+      "brier": 0.10583109058457657
+    }
+  },
+  {
+    "request_id": "inventory-query:0",
+    "project_id": "inventory-query",
+    "generated": 1,
+    "state_sha256": "b3c332d08372a8be96285f7f021219990bc2f29013fe968e55c57d9366653d04",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 6,
+      "error": 2.6094617398232494,
+      "bias": 2.6094617398232494,
+      "brier": 0.1744063488103624
+    },
+    "confidence": {
+      "predicted": 9.98578780254891,
+      "actual": 6,
+      "error": 3.9857878025489093,
+      "bias": 3.9857878025489093,
+      "brier": 0.21398650727272348
+    }
+  },
+  {
+    "request_id": "inventory-query:0",
+    "project_id": "inventory-query",
+    "generated": 8,
+    "state_sha256": "fbe28fc66932d78500ebcf33d50d36d348a5aea4ae548ff8e9b09ef8f6a8349e",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 13,
+      "error": 4.390538260176751,
+      "bias": -4.390538260176751,
+      "brier": 0.16355065324396048
+    },
+    "confidence": {
+      "predicted": 11.610392158610127,
+      "actual": 13,
+      "error": 1.3896078413898731,
+      "bias": -1.3896078413898731,
+      "brier": 0.01905357693857348
+    }
+  },
+  {
+    "request_id": "inventory-query:0",
+    "project_id": "inventory-query",
+    "generated": 135,
+    "state_sha256": "f77ee2ed58a3e163e942ce64c910fbd1aa0a6c55eb208a2a8c3a8efcffc9260b",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 1,
+      "error": 7.609461739823249,
+      "bias": 7.609461739823249,
+      "brier": 0.3108093362334632
+    },
+    "confidence": {
+      "predicted": 3.7481792159247544,
+      "actual": 1,
+      "error": 2.7481792159247544,
+      "bias": 2.7481792159247544,
+      "brier": 0.09615255849285766
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "project_id": "inventory-query",
+    "generated": 1,
+    "state_sha256": "af8dee1d57e7b04fca46464fb241e02bfa76bf5c060b2a71865a0638e4bda214",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 0,
+      "error": 8.60946173982325,
+      "bias": 8.60946173982325,
+      "brier": 0.34874050459472483
+    },
+    "confidence": {
+      "predicted": 0.9396730143451506,
+      "actual": 0,
+      "error": 0.9396730143451506,
+      "bias": 0.9396730143451506,
+      "brier": 0.006718461388833532
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "project_id": "inventory-query",
+    "generated": 2,
+    "state_sha256": "6016f151d330fa39c80c57013fd1f6cddbcb3e9414c576ce2cf6ab84797e3714",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 7,
+      "error": 1.6094617398232494,
+      "bias": 1.6094617398232494,
+      "brier": 0.1592658101083886
+    },
+    "confidence": {
+      "predicted": 4.7220392764414845,
+      "actual": 7,
+      "error": 2.2779607235585155,
+      "bias": -2.2779607235585155,
+      "brier": 0.11159315789498393
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "project_id": "inventory-query",
+    "generated": 10,
+    "state_sha256": "ca3cbd89d623679c37a7be428787fdebf62da09c968a62f79234546f4acbbd61",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 15,
+      "error": 6.390538260176751,
+      "bias": -6.390538260176751,
+      "brier": 0.20081227261829154
+    },
+    "confidence": {
+      "predicted": 12.576847835401516,
+      "actual": 15,
+      "error": 2.423152164598484,
+      "bias": -2.423152164598484,
+      "brier": 0.028938753884378596
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "project_id": "inventory-query",
+    "generated": 141,
+    "state_sha256": "7fd06d4873dd7fcf169f7ee61bda0084d96abeaa2bae5b681075e9c8a500a0f3",
+    "no_confidence": {
+      "predicted": 8.60946173982325,
+      "actual": 1,
+      "error": 7.609461739823249,
+      "bias": 7.609461739823249,
+      "brier": 0.3108093362334632
+    },
+    "confidence": {
+      "predicted": 4.0581357509671365,
+      "actual": 1,
+      "error": 3.0581357509671365,
+      "bias": 3.0581357509671365,
+      "brier": 0.1150951071459924
+    }
+  },
+  {
+    "request_id": "image-worker:0",
+    "project_id": "image-worker",
+    "generated": 1,
+    "state_sha256": "a72db72b4de0bc55c42ba325086ad8038ea16b1a5d3297bd1e0f21453282dc98",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 15,
+      "error": 6.726694756602344,
+      "bias": -6.726694756602344,
+      "brier": 0.2207509103315987
+    },
+    "confidence": {
+      "predicted": 11.976139196198606,
+      "actual": 15,
+      "error": 3.0238608038013943,
+      "bias": -3.0238608038013943,
+      "brier": 0.05811602285663032
+    }
+  },
+  {
+    "request_id": "image-worker:0",
+    "project_id": "image-worker",
+    "generated": 22,
+    "state_sha256": "1ec7d197027dccf60fbad20d2bbd3990e47c3607eae85bb9a6c115ccbde924db",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 11,
+      "error": 2.7266947566023436,
+      "bias": -2.7266947566023436,
+      "brier": 0.15163694215402979
+    },
+    "confidence": {
+      "predicted": 8.329232288213259,
+      "actual": 11,
+      "error": 2.670767711786741,
+      "bias": -2.670767711786741,
+      "brier": 0.0937105282319998
+    }
+  },
+  {
+    "request_id": "image-worker:0",
+    "project_id": "image-worker",
+    "generated": 137,
+    "state_sha256": "21474b9d18eff9a90cac25a644513df86d5e00df3f073ddac20a019b698ca375",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 1,
+      "error": 7.273305243397656,
+      "bias": 7.273305243397656,
+      "brier": 0.28828636172333105
+    },
+    "confidence": {
+      "predicted": 2.1009260607009987,
+      "actual": 1,
+      "error": 1.1009260607009987,
+      "bias": 1.1009260607009987,
+      "brier": 0.008622374844695689
+    }
+  },
+  {
+    "request_id": "image-worker:1",
+    "project_id": "image-worker",
+    "generated": 1,
+    "state_sha256": "3528a6e866c828a89ecc8066aa4db131bc81d62e398055832f63b6f1926fdea1",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 12,
+      "error": 3.7266947566023436,
+      "bias": -3.7266947566023436,
+      "brier": 0.1624302924810598
+    },
+    "confidence": {
+      "predicted": 10.64998821748283,
+      "actual": 12,
+      "error": 1.3500117825171696,
+      "bias": -1.3500117825171696,
+      "brier": 0.018487589355189925
+    }
+  },
+  {
+    "request_id": "image-worker:1",
+    "project_id": "image-worker",
+    "generated": 19,
+    "state_sha256": "5f3baf79e3755cd514e48d162d7de1f3b61e46bc2ed7261947c36b0f54e4bab8",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 13,
+      "error": 4.726694756602344,
+      "bias": -4.726694756602344,
+      "brier": 0.1776436117018353
+    },
+    "confidence": {
+      "predicted": 12.192194407100725,
+      "actual": 13,
+      "error": 0.8078055928992747,
+      "bias": -0.8078055928992747,
+      "brier": 0.052781244512306716
+    }
+  },
+  {
+    "request_id": "image-worker:1",
+    "project_id": "image-worker",
+    "generated": 144,
+    "state_sha256": "8714dac4fd7478fe7c8e4babab9cd93003621da53c37c5d74fd168cfff6b7030",
+    "no_confidence": {
+      "predicted": 8.273305243397656,
+      "actual": 1,
+      "error": 7.273305243397656,
+      "bias": 7.273305243397656,
+      "brier": 0.28828636172333105
+    },
+    "confidence": {
+      "predicted": 5.07282239302795,
+      "actual": 1,
+      "error": 4.07282239302795,
+      "bias": 4.07282239302795,
+      "brier": 0.1286845807465295
+    }
+  },
+  {
+    "request_id": "shipment-contract:0",
+    "project_id": "shipment-contract",
+    "generated": 1,
+    "state_sha256": "02401f3f5dbd9f2a8479f09c5a0173afe566f533def535a9b47459890d8c9ea4",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 15,
+      "error": 6.640405073668008,
+      "bias": -6.640405073668008,
+      "brier": 0.2151574089397723
+    },
+    "confidence": {
+      "predicted": 12.193807374133508,
+      "actual": 15,
+      "error": 2.806192625866492,
+      "bias": -2.806192625866492,
+      "brier": 0.044158053788938695
+    }
+  },
+  {
+    "request_id": "shipment-contract:0",
+    "project_id": "shipment-contract",
+    "generated": 17,
+    "state_sha256": "d214d5a2ac2902ab731bc5e62eaf65b964755f9f5f51cd55ffb4c62030d1a8d2",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 15,
+      "error": 6.640405073668008,
+      "bias": -6.640405073668008,
+      "brier": 0.2151574089397723
+    },
+    "confidence": {
+      "predicted": 11.532828833292012,
+      "actual": 15,
+      "error": 3.4671711667079883,
+      "bias": -3.4671711667079883,
+      "brier": 0.09993395024460189
+    }
+  },
+  {
+    "request_id": "shipment-contract:0",
+    "project_id": "shipment-contract",
+    "generated": 172,
+    "state_sha256": "ee89590a11e6e499054b0aaddcf115310c96293c8cf9ccf0d9daa1ea57f0afa8",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 1,
+      "error": 7.359594926331992,
+      "bias": 7.359594926331992,
+      "brier": 0.2938472970795977
+    },
+    "confidence": {
+      "predicted": 3.5237031072511127,
+      "actual": 1,
+      "error": 2.5237031072511127,
+      "bias": 2.5237031072511127,
+      "brier": 0.05330893168037442
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 1,
+    "state_sha256": "550feb1503af041d9472e85bef130af08798359733fb2fc1744d23aadb8be0d3",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 12,
+      "error": 3.640405073668008,
+      "bias": -3.640405073668008,
+      "brier": 0.15990891618040545
+    },
+    "confidence": {
+      "predicted": 12.771408157334239,
+      "actual": 12,
+      "error": 0.7714081573342391,
+      "bias": 0.7714081573342391,
+      "brier": 0.14561726807416972
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 14,
+    "state_sha256": "61d5086929aec761e8f4b3b492860dfe35716f22c69447357a5d54f9170a5ab6",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 7,
+      "error": 1.359594926331992,
+      "bias": 1.359594926331992,
+      "brier": 0.15609547190457
+    },
+    "confidence": {
+      "predicted": 7.289637563494232,
+      "actual": 7,
+      "error": 0.28963756349423164,
+      "bias": 0.28963756349423164,
+      "brier": 0.020375978694972194
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 22,
+    "state_sha256": "b67a733db3e5de9e492ebd7563643450fb294542dbf3077c422f8aaaa78916da",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 6,
+      "error": 2.359594926331992,
+      "bias": 2.359594926331992,
+      "brier": 0.1688138764840329
+    },
+    "confidence": {
+      "predicted": 7.069911730842548,
+      "actual": 6,
+      "error": 1.0699117308425476,
+      "bias": 1.0699117308425476,
+      "brier": 0.029940806820220815
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 180,
+    "state_sha256": "edeb3519bb7f385813cae372f0086e2e64de72d160045842a26dc961fb158a5f",
+    "no_confidence": {
+      "predicted": 8.359594926331992,
+      "actual": 1,
+      "error": 7.359594926331992,
+      "bias": 7.359594926331992,
+      "brier": 0.2938472970795977
+    },
+    "confidence": {
+      "predicted": 2.112419402468951,
+      "actual": 1,
+      "error": 1.112419402468951,
+      "bias": 1.112419402468951,
+      "brier": 0.009855432844573854
+    }
+  }
+]

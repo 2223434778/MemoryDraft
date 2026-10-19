@@ -1,0 +1,20 @@
+{
+  "commit": "36798f32c2992511ea89479be7fd70279dfc4f5f",
+  "files_verified": 671,
+  "files": {
+    "collection/states.jsonl.gz": "af6358bf35c6affcc0d8be0decac96cf7d21009eb965fab9a15870fbccc8ecef",
+    "collection/rows.jsonl.gz": "9d7389d1161e372c75adce642064eb14cffb046bb1e799e31234216c0abd0633",
+    "collection/provenance.json": "b4af4bf760115ef465a236a086a1c9c14d5e42f68e55914a16b585bcf8d83155",
+    "evaluation/candidates.json": "59c7056c58fd406dc57032c4ea2b3188bf9102758e7e1e74a36945215e111450",
+    "evaluation/summary.json": "fd8332309b94053de5d3bdb936d25060fe0d3ec868eb91225a11b51fc5012bf3",
+    "evaluation/draft.json": "3ff1e091aa05f203fa9e566640f86e83ad773526fde1298b636407a22ceac00f",
+    "evaluation/models.json": "b36079be1c3e600434aaf6aff70a16e4fb3cfa07f6258c9083afc1deb2d7c982",
+    "evaluation/ordering.json": "438639c04e69a193af56bfaa9b307b233c8ebcd303695d0566c36201def9803b",
+    "evaluation/paired.json": "17d93bed339550e207d88294704d96751e12aa1a0c6e3056e9ac1db0326a1c4d",
+    "source-manifest.json": "f77d5a6adcbf42359a5f20f6c18d559f77d52f01b764b9fcd2939116e6d33a97",
+    "pipeline.log": "d6d6bce136192a5123035888df970114db3c5095ecb2ce1a44181f79533cda6f",
+    "pipeline-load-failed.log": "845fd099d490b800f286734354f634da1d586d2f0694578f251a7132dd1938ce",
+    "tests-server.xml": "ff9a51fa6c28858d7cd33ba514bf99cc75a7286816e4fcca132ead1a9fba5829",
+    "run-pipeline.sh": "28fe81a3c0d6968f19f278ccacc9c683b234658e21d8985a4f16e6ffddf5fdfc"
+  }
+}

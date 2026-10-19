@@ -1,0 +1,17 @@
+................s...........................s                            [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance/artifacts/acceptance-tests-server.xml -
+43 passed, 2 skipped in 5.31s
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance/scripts/collect_acceptance_probe.py", line 174, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance/scripts/collect_acceptance_probe.py", line 94, in main
+    engine = load_engine(config)
+             ^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance/memorydraft/runtime/config.py", line 76, in load_engine
+    return InferenceEngine.load(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-acceptance/memorydraft/runtime/engine.py", line 56, in load
+    raise ValueError("Target must be a prepared local directory; runtime never downloads models")
+ValueError: Target must be a prepared local directory; runtime never downloads models

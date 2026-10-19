@@ -1,0 +1,61 @@
+{
+  "states": 56,
+  "candidates": 69,
+  "projects": 9,
+  "paired": {
+    "old": {
+      "error": 10.47273605930479,
+      "bias": 4.180945701203498,
+      "brier": 0.23452860472443518
+    },
+    "no_confidence": {
+      "error": 13.917829734486636,
+      "bias": -9.81945916246022,
+      "brier": 0.2762269663699491
+    },
+    "confidence": {
+      "error": 8.423700567979896,
+      "bias": -7.5007984417966,
+      "brier": 0.15567188337198004
+    }
+  },
+  "broad": {
+    "draft": {
+      "no_confidence": {
+        "error": 5.04292437069502,
+        "bias": -0.3658196436982845,
+        "brier": 0.2184720906630433
+      },
+      "confidence": {
+        "error": 2.1229561517964224,
+        "bias": -0.18151238633636185,
+        "brier": 0.07578911842501965
+      }
+    },
+    "candidates": {
+      "no_confidence": {
+        "error": 7.797929934598989,
+        "bias": -5.116767162884247,
+        "brier": 0.18818357786729453
+      },
+      "confidence": {
+        "error": 5.108923739963837,
+        "bias": -1.1667286671017028,
+        "brier": 0.11481141780130119
+      }
+    }
+  },
+  "project_mean_mae_improvement": 0.962951572637006,
+  "project_bootstrap_95": [
+    -5.042061674420002,
+    6.926308207021468
+  ],
+  "gate": {
+    "coverage": true,
+    "mae_20_percent": false,
+    "brier_better_old": true,
+    "confidence_adds_value": true,
+    "project_interval_positive": false,
+    "passed": false
+  }
+}

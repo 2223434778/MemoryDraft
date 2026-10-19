@@ -1,0 +1,596 @@
+{
+  "confirm-schema-0": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.2337148608503268,
+        -2.1521211880704287,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.9232778902030618,
+        -0.3368206176190024,
+        0.7808149238340373,
+        2.371792213272726,
+        1.4029606207005312,
+        -1.1750338537652685,
+        -0.9947226466693011,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.3727640403575445,
+        -0.6333270708036469,
+        1.739947240259019,
+        0.7007018592644592,
+        -0.45479745265419574,
+        3.0071935892922594
+      ],
+      "tail_weights": [
+        -2.563796511534495,
+        -0.4148063051696221,
+        1.180685222585721,
+        2.2360679845845577,
+        1.104641000944957,
+        -0.7450048908056375,
+        -1.2861636875933864,
+        1.1303806167419344,
+        2.1905264169972787
+      ],
+      "confidence": true,
+      "projects": [
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "edge-router": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.1834364156408705,
+        -2.027673721283633,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.9275976417973022,
+        -0.6513418681697946,
+        0.49553869806230066,
+        2.5347360142876005,
+        0.9693621020301811,
+        -1.3078777378416104,
+        -0.6431773708748737,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.4088493287930857,
+        -0.6093079174415696,
+        1.765147713448455,
+        0.6828554096624152,
+        -0.47498871759653627,
+        3.04010477665695
+      ],
+      "tail_weights": [
+        -2.376149792505498,
+        -0.8561183087604753,
+        1.4940265463239182,
+        2.0356271061851925,
+        0.16833063377845903,
+        -0.7950002223341518,
+        -1.1013896141869968,
+        1.4710965511270209,
+        1.9020895322695135
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "image-worker": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.3281741368491116,
+        -2.06856138808331,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.834819055860461,
+        -0.5382379500680544,
+        0.4530535710599457,
+        2.342256080592579,
+        1.1206486493982657,
+        -1.4619809916125173,
+        -0.501553707554885,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.2284234058812884,
+        -0.6840479964159776,
+        1.737994284096671,
+        0.6918568813864134,
+        -0.4726510566852256,
+        2.9797527527412124
+      ],
+      "tail_weights": [
+        -2.0867382350426213,
+        -0.7217987251416239,
+        1.3264076957559565,
+        2.043294372342921,
+        0.19141597079995132,
+        -1.005277277968066,
+        -0.9587837815785532,
+        1.597665521887847,
+        1.4015869936867167
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "infra-copy": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.2367125365278573,
+        -1.834263322514579,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.818929295939818,
+        -0.7299816096518074,
+        1.042619207392172,
+        3.315090937985035,
+        0.5436569984610855,
+        -1.575534191812787,
+        -0.31851246030825786,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.4300186197982216,
+        -0.4705060615043769,
+        1.7857278673364747,
+        0.7134598636671254,
+        -0.4789913770458463,
+        3.076118601834133
+      ],
+      "tail_weights": [
+        -1.8856948815727348,
+        -0.7926099447541154,
+        1.4311013966321962,
+        2.9781608838350535,
+        0.03131499625424755,
+        -1.266150970788015,
+        -0.6003097955518911,
+        1.2988599000391072,
+        0.6274188035541433
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "inventory-query": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.4302751728652998,
+        -2.074283284460631,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.8806340798288876,
+        -0.4204950981745415,
+        0.296517971479436,
+        2.3007980570834508,
+        0.990767515624468,
+        -1.9731803161153008,
+        -0.18217735692205658,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.2408471706779935,
+        -0.6458990085506462,
+        1.7397080669325231,
+        0.6835109104705376,
+        -0.45117324093470246,
+        3.074302175905075
+      ],
+      "tail_weights": [
+        -2.082326933001186,
+        -0.6085906725255572,
+        1.1387053840980146,
+        1.9228195013897778,
+        -0.009824973014690588,
+        -1.595915276743484,
+        -0.5897940351376314,
+        1.6075617308743224,
+        1.5368806389574616
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "parcel-queue": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.3487657708563963,
+        -2.117090921421331,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -1.8797320312958774,
+        -0.545241461294337,
+        0.5048652734573624,
+        2.4667335309919873,
+        1.0257895071067156,
+        -1.4339373237699127,
+        -0.48997317065987855,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.328843171060162,
+        -0.65703638459417,
+        1.779604917711647,
+        0.6466461596595492,
+        -0.45847515414642603,
+        3.113197506392516
+      ],
+      "tail_weights": [
+        -2.179241308117492,
+        -0.7495668490736365,
+        1.4371323424393043,
+        2.1138981190760444,
+        0.24788092248236393,
+        -1.0464063556919083,
+        -0.9347131774703773,
+        1.4336147326979887,
+        1.498226271096756
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "payment-runbook",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "payment-runbook": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.3813000731307121,
+        -1.9604732351122933,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -2.403234356734219,
+        -0.6161666385827201,
+        0.6289490922724635,
+        2.466937706364988,
+        1.518849821735728,
+        -1.3868983542734037,
+        -0.5606698653901097,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "shipment-contract",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.1514375149407274,
+        -0.6195658750396802,
+        1.7501667808212447,
+        0.7154078255460088,
+        -0.4784808187139113,
+        2.9580769119066384
+      ],
+      "tail_weights": [
+        -2.5443977172090118,
+        -0.7818272179264961,
+        1.4505278069061618,
+        2.1595065696348916,
+        0.5549894041883405,
+        -0.9811884753711678,
+        -0.9737712973752588,
+        1.509496665014742,
+        1.3292292730022184
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "shipment-contract",
+        "short-settings"
+      ]
+    }
+  },
+  "shipment-contract": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.341503185837484,
+        -2.0468964270432974,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -2.4666331676894755,
+        -0.6720678803498281,
+        0.8247661099219942,
+        2.415279636458448,
+        1.6514043205766582,
+        -1.4880865221108184,
+        -0.5923664515776509,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "short-settings"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.241796991802551,
+        -0.6277164700711153,
+        1.7553165919577594,
+        0.6798220160381744,
+        -0.48520064674821645,
+        2.9846591300398146
+      ],
+      "tail_weights": [
+        -2.5967591901138527,
+        -0.8299088947678229,
+        1.64049155744531,
+        2.1281055112134912,
+        0.6634275980789449,
+        -1.0854937803115317,
+        -0.988838789818763,
+        1.6753329516266853,
+        1.188509598927909
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "short-settings"
+      ]
+    }
+  },
+  "short-settings": {
+    "no_confidence": {
+      "prefix_weights": [
+        1.4328449214415004,
+        -1.9702184956172986,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tail_weights": [
+        -2.008614977163133,
+        -0.5580343191732365,
+        0.6095677253139402,
+        2.52182946236907,
+        1.1553767210594414,
+        -1.4773488414178617,
+        -0.5572558836358252,
+        0.0,
+        0.0
+      ],
+      "confidence": false,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract"
+      ]
+    },
+    "confidence": {
+      "prefix_weights": [
+        -3.0609923378797905,
+        -0.6555935640184908,
+        1.741642189813039,
+        0.6789452641627552,
+        -0.4653062794176796,
+        2.980159448855761
+      ],
+      "tail_weights": [
+        -2.2758209176518793,
+        -0.7320309752897569,
+        1.4210841053360777,
+        2.1825857465158163,
+        0.3291676843899676,
+        -1.0452812512065883,
+        -0.9664066671848099,
+        1.4648674463407232,
+        1.4718928361399866
+      ],
+      "confidence": true,
+      "projects": [
+        "confirm-schema-0",
+        "edge-router",
+        "image-worker",
+        "infra-copy",
+        "inventory-query",
+        "parcel-queue",
+        "payment-runbook",
+        "shipment-contract"
+      ]
+    }
+  }
+}

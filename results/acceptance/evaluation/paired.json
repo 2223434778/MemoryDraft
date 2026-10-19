@@ -1,0 +1,394 @@
+[
+  {
+    "request_id": "parcel-queue:0",
+    "project_id": "parcel-queue",
+    "generated": 17,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 32.0,
+      "actual": 32,
+      "error": 0.0,
+      "bias": 0.0,
+      "brier": 0.0
+    },
+    "no_confidence": {
+      "predicted": 12.879686588139702,
+      "actual": 32,
+      "error": 19.120313411860298,
+      "bias": -19.120313411860298,
+      "brier": 0.38587902487269005
+    },
+    "confidence": {
+      "predicted": 23.846485730826057,
+      "actual": 32,
+      "error": 8.153514269173943,
+      "bias": -8.153514269173943,
+      "brier": 0.07743601370821021
+    }
+  },
+  {
+    "request_id": "parcel-queue:1",
+    "project_id": "parcel-queue",
+    "generated": 19,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 22.25999843714709,
+      "actual": 32,
+      "error": 9.74000156285291,
+      "bias": -9.74000156285291,
+      "brier": 0.10222805004782004
+    },
+    "no_confidence": {
+      "predicted": 12.631275404623018,
+      "actual": 32,
+      "error": 19.36872459537698,
+      "bias": -19.36872459537698,
+      "brier": 0.3969576493171514
+    },
+    "confidence": {
+      "predicted": 12.293957596345843,
+      "actual": 32,
+      "error": 19.70604240365416,
+      "bias": -19.70604240365416,
+      "brier": 0.5046595151491446
+    }
+  },
+  {
+    "request_id": "payment-runbook:0",
+    "project_id": "payment-runbook",
+    "generated": 19,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 32.0,
+      "actual": 32,
+      "error": 0.0,
+      "bias": 0.0,
+      "brier": 0.0
+    },
+    "no_confidence": {
+      "predicted": 14.268923910282613,
+      "actual": 32,
+      "error": 17.731076089717387,
+      "bias": -17.731076089717387,
+      "brier": 0.33003052387027726
+    },
+    "confidence": {
+      "predicted": 19.995332244031907,
+      "actual": 32,
+      "error": 12.004667755968093,
+      "bias": -12.004667755968093,
+      "brier": 0.17669522303932755
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 11,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 32.0,
+      "actual": 3,
+      "error": 29.0,
+      "bias": 29.0,
+      "brier": 0.90625
+    },
+    "no_confidence": {
+      "predicted": 12.980832354814241,
+      "actual": 3,
+      "error": 9.980832354814241,
+      "bias": 9.980832354814241,
+      "brier": 0.14866940853478333
+    },
+    "confidence": {
+      "predicted": 5.571695138649982,
+      "actual": 3,
+      "error": 2.5716951386499822,
+      "bias": 2.5716951386499822,
+      "brier": 0.031106589284901908
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:0",
+    "project_id": "confirm-schema-0",
+    "generated": 130,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 24.3696892312833,
+      "actual": 32,
+      "error": 7.630310768716701,
+      "bias": -7.630310768716701,
+      "brier": 0.07277705303399287
+    },
+    "no_confidence": {
+      "predicted": 15.638619731883825,
+      "actual": 32,
+      "error": 16.361380268116175,
+      "bias": -16.361380268116175,
+      "brier": 0.26824192791025686
+    },
+    "confidence": {
+      "predicted": 26.571755411948786,
+      "actual": 32,
+      "error": 5.428244588051214,
+      "bias": -5.428244588051214,
+      "brier": 0.029096463728028914
+    }
+  },
+  {
+    "request_id": "confirm-schema-0:1",
+    "project_id": "confirm-schema-0",
+    "generated": 131,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 24.645232853921208,
+      "actual": 32,
+      "error": 7.3547671460787925,
+      "bias": -7.3547671460787925,
+      "brier": 0.06761574971630023
+    },
+    "no_confidence": {
+      "predicted": 15.924549994864616,
+      "actual": 32,
+      "error": 16.075450005135384,
+      "bias": -16.075450005135384,
+      "brier": 0.2586435293492082
+    },
+    "confidence": {
+      "predicted": 26.64923430835367,
+      "actual": 32,
+      "error": 5.35076569164633,
+      "bias": -5.35076569164633,
+      "brier": 0.02824926403246896
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "project_id": "edge-router",
+    "generated": 15,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 20.56367846199102,
+      "actual": 7,
+      "error": 13.563678461991021,
+      "bias": 13.563678461991021,
+      "brier": 0.30600579032357644
+    },
+    "no_confidence": {
+      "predicted": 7.852689131575849,
+      "actual": 7,
+      "error": 0.8526891315758487,
+      "bias": 0.8526891315758487,
+      "brier": 0.15067289283267712
+    },
+    "confidence": {
+      "predicted": 6.658488487879175,
+      "actual": 7,
+      "error": 0.3415115121208254,
+      "bias": -0.3415115121208254,
+      "brier": 0.06234600758684309
+    }
+  },
+  {
+    "request_id": "edge-router:1",
+    "project_id": "edge-router",
+    "generated": 23,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 22.08088677054693,
+      "actual": 32,
+      "error": 9.919113229453071,
+      "bias": -9.919113229453071,
+      "brier": 0.10602242161499062
+    },
+    "no_confidence": {
+      "predicted": 13.008292212099974,
+      "actual": 32,
+      "error": 18.991707787900026,
+      "bias": -18.991707787900026,
+      "brier": 0.3720401162736957
+    },
+    "confidence": {
+      "predicted": 19.705896220364153,
+      "actual": 32,
+      "error": 12.294103779635847,
+      "bias": -12.294103779635847,
+      "brier": 0.16458702117564494
+    }
+  },
+  {
+    "request_id": "inventory-query:0",
+    "project_id": "inventory-query",
+    "generated": 8,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 32.0,
+      "actual": 32,
+      "error": 0.0,
+      "bias": 0.0,
+      "brier": 0.0
+    },
+    "no_confidence": {
+      "predicted": 13.720235200241543,
+      "actual": 32,
+      "error": 18.279764799758457,
+      "bias": -18.279764799758457,
+      "brier": 0.3537586479233567
+    },
+    "confidence": {
+      "predicted": 19.36129838395575,
+      "actual": 32,
+      "error": 12.638701616044251,
+      "bias": -12.638701616044251,
+      "brier": 0.2035551136365604
+    }
+  },
+  {
+    "request_id": "inventory-query:1",
+    "project_id": "inventory-query",
+    "generated": 10,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 22.601660200392427,
+      "actual": 32,
+      "error": 9.398339799607573,
+      "bias": -9.398339799607573,
+      "brier": 0.09518188684147415
+    },
+    "no_confidence": {
+      "predicted": 10.37048328350537,
+      "actual": 32,
+      "error": 21.629516716494628,
+      "bias": -21.629516716494628,
+      "brier": 0.5210291707642504
+    },
+    "confidence": {
+      "predicted": 15.59993574946167,
+      "actual": 32,
+      "error": 16.40006425053833,
+      "bias": -16.40006425053833,
+      "brier": 0.37275692282859296
+    }
+  },
+  {
+    "request_id": "shipment-contract:0",
+    "project_id": "shipment-contract",
+    "generated": 17,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 32.0,
+      "actual": 32,
+      "error": 0.0,
+      "bias": 0.0,
+      "brier": 0.0
+    },
+    "no_confidence": {
+      "predicted": 13.39691139573133,
+      "actual": 32,
+      "error": 18.60308860426867,
+      "bias": -18.60308860426867,
+      "brier": 0.36392246542726925
+    },
+    "confidence": {
+      "predicted": 12.846122798397506,
+      "actual": 32,
+      "error": 19.153877201602494,
+      "bias": -19.153877201602494,
+      "brier": 0.4991852604842446
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 14,
+    "route": "ot",
+    "length": 32,
+    "old": {
+      "predicted": 30.89150505434519,
+      "actual": 7,
+      "error": 23.89150505434519,
+      "bias": 23.89150505434519,
+      "brier": 0.721568761557061
+    },
+    "no_confidence": {
+      "predicted": 12.940355234305692,
+      "actual": 7,
+      "error": 5.940355234305692,
+      "bias": 5.940355234305692,
+      "brier": 0.11175604976248671
+    },
+    "confidence": {
+      "predicted": 8.033647074571217,
+      "actual": 7,
+      "error": 1.033647074571217,
+      "bias": 1.033647074571217,
+      "brier": 0.010570089623071264
+    }
+  },
+  {
+    "request_id": "payment-runbook:1",
+    "project_id": "payment-runbook",
+    "generated": 15,
+    "route": "edit",
+    "length": 32,
+    "old": {
+      "predicted": 18.561333859704167,
+      "actual": 7,
+      "error": 11.561333859704167,
+      "bias": 11.561333859704167,
+      "brier": 0.16708055076942724
+    },
+    "no_confidence": {
+      "predicted": 13.397399819014794,
+      "actual": 7,
+      "error": 6.397399819014794,
+      "bias": 6.397399819014794,
+      "brier": 0.11813280363255618
+    },
+    "confidence": {
+      "predicted": 8.516951058006393,
+      "actual": 7,
+      "error": 1.5169510580063932,
+      "bias": 1.5169510580063932,
+      "brier": 0.010001831233809686
+    }
+  },
+  {
+    "request_id": "shipment-contract:1",
+    "project_id": "shipment-contract",
+    "generated": 22,
+    "route": "ot",
+    "length": 32,
+    "old": {
+      "predicted": 30.559254947517644,
+      "actual": 6,
+      "error": 24.559254947517644,
+      "bias": 24.559254947517644,
+      "brier": 0.7386702022374494
+    },
+    "no_confidence": {
+      "predicted": 11.517317464474345,
+      "actual": 6,
+      "error": 5.5173174644743455,
+      "bias": 5.5173174644743455,
+      "brier": 0.08744331870862829
+    },
+    "confidence": {
+      "predicted": 7.338021612055466,
+      "actual": 6,
+      "error": 1.3380216120554662,
+      "bias": 1.3380216120554662,
+      "brier": 0.009161051696871467
+    }
+  }
+]

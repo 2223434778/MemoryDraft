@@ -82,12 +82,20 @@ def mean_metrics(rows, model):
     return {key: float(np.mean([r[model][key] for r in rows])) for key in ("error", "bias", "brier")}
 
 
-def evaluate(states, root=ROOT):
+def evaluate(states, root=ROOT, *, calibrated=None):
     tasks, _ = inputs(root)
     audit_states(states, tasks)
     projects = sorted({s["project_id"] for s in states})
-    models = {p: {name: AcceptancePredictor.fit(states, excluded_project=p, confidence=confidence)
-                  for name, confidence in (("no_confidence", False), ("confidence", True))} for p in projects}
+    models = calibrated if calibrated is not None else {
+        p: {name: AcceptancePredictor.fit(states, excluded_project=p, confidence=confidence)
+            for name, confidence in (("no_confidence", False), ("confidence", True))} for p in projects}
+    if set(models) != set(projects):
+        raise ValueError("Missing project-excluded model")
+    for project, fitted in models.items():
+        if set(fitted) != {"confidence", "no_confidence"} or any(
+                set(m.projects) != set(projects) - {project} or m.confidence != (name == "confidence")
+                for name, m in fitted.items()):
+            raise ValueError("Calibration leaked a project or changed the ablation")
     draft, candidates = [], []
     for s in states:
         fitted = models[s["project_id"]]
