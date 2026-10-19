@@ -92,6 +92,12 @@ class SpliceReuseMatcher(GuidedReuseMatcher):
                     unique[tokens] = item
         return sorted(unique.values(), key=lambda c: (-c["cheap"], c["prefix_length"], c["position"]))[:self.config.shortlist]
 
+    def candidate_score(self, item):
+        if self.method == "edit":
+            return item["cheap"]
+        scorer = tail_transport_score if self.tail_weighted else transport_score
+        return scorer(item["query"], item["history"], self.config, self.solver)
+
     def propose_with_draft(self, confirmed, draft_tokens, max_tokens):
         if (len(confirmed) < self.config.min_context or not self.hint_tokens <= len(draft_tokens) <= self.config.window
                 or max_tokens <= len(draft_tokens) or not self.index.tokens
@@ -108,11 +114,7 @@ class SpliceReuseMatcher(GuidedReuseMatcher):
             ranked = []
             for item in candidates:
                 self.stats["alignment_candidates"] += 1
-                if self.method == "edit":
-                    score = item["cheap"]
-                else:
-                    scorer = tail_transport_score if self.tail_weighted else transport_score
-                    score = scorer(item["query"], item["history"], self.config, self.solver)
+                score = self.candidate_score(item)
                 ranked.append((score, -item["prefix_length"], -item["position"], item))
             score, _, _, item = max(ranked, key=lambda x: x[:3])
             if score < self.config.minimum_score:

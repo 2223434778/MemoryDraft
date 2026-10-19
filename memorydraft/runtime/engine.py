@@ -136,6 +136,12 @@ class InferenceEngine:
                                              prompt_text="\n".join(m["content"] for m in request.messages))
                     if self.config.retrieval == "suffix":
                         matcher = ReuseMatcher(index, cursor=False)
+                    elif self.config.retrieval in {"ot-order-splice", "ot-plan-splice", "ot-all-splice"}:
+                        from memorydraft.retrieval.matrix import MatrixReuseMatcher
+                        from memorydraft.retrieval.transport import AlignmentConfig
+                        matcher = MatrixReuseMatcher(index, variant=self.config.retrieval.split("-")[1],
+                                                     exact_min_match=self.reuse.min_match,
+                                                     config=AlignmentConfig(**self.config.alignment))
                     elif self.config.retrieval.endswith("-splice"):
                         from memorydraft.retrieval.splice import SpliceReuseMatcher
                         from memorydraft.retrieval.transport import AlignmentConfig

@@ -108,3 +108,10 @@ results/ot-splice/** -text
 results/ot-splice/**/*.log -whitespace
 results/ot-splice-cooldown/** -text
 results/ot-splice-cooldown/**/*.log -whitespace
+memorydraft/retrieval/matrix.py text eol=lf
+memorydraft/evaluation/matrix_probe.py text eol=lf
+scripts/*matrix*.py text eol=lf
+tests/test_matrix*.py text eol=lf
+docs/OT_MATRIX*.md text eol=lf
+results/ot-matrix/** -text
+results/ot-matrix/**/*.log -whitespace

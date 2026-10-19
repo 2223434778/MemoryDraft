@@ -1,0 +1,15 @@
+{
+  "backend": "dflash",
+  "target": "../models/qwen3-8b",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "draft": "../models/dflash-qwen3-8b",
+  "device": "cuda:0",
+  "dtype": "float32",
+  "attention": "eager",
+  "threads": 4,
+  "max_input_tokens": 8192,
+  "max_new_tokens": 1024,
+  "template_options": {"enable_thinking": false},
+  "retrieval": "ot-all-splice",
+  "reuse": {"max_tokens": 32, "min_match": 6, "cooldown_rounds": 1, "max_pending_tokens": 1024}
+}

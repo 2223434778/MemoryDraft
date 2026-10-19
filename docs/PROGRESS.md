@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-19 — OT完整矩阵三个小改动（执行准备）
+
+- 用户授权测试接续可靠性、完整矩阵与三个小改动。新增`retrieval/matrix.py`：A沿用已有尾部加权；B用初始正确匹配流的相邻行1–4步顺序支持修正真实token代价，再求解一次；C用锚点前末8行支持度/集中度/连续性/dustbin质量排序或放弃；组合A+B+C独立。均为固定词面OT启发，不是校准接受概率/硬单调约束/OPW复现。参数先写入`OT_MATRIX_PROTOCOL.md`，不按新评分结果调参。
+- 旧`splice.py`仅抽出可覆盖的`candidate_score`，原Edit/OT/Tail公式不改；新增显式`ot-order-splice`、`ot-plan-splice`、`ot-all-splice`和`runtime-ot-matrix.json`。候选池、长度32、预算4/top8及严格Target验证不变，未实现按预计收益调用OT。
+- CPU脚本先恢复原16请求及五请求修复的三种Splice实际状态，核对旧提议/用户时间快照后才进行同池逐候选评分；只保存紧凑矩阵特征，答案只用于事后连续接受评价。若新组产生选择/放弃差异，再固定八个既有请求×八组=64次GPU机制检查；达门槛才做128次交错未插桩开发计时。
+- 首批48 passed/15.69s；相关91 passed/2 skipped/12.95s，命令`.venv\Scripts\python.exe -m pytest -q tests/test_matrix.py tests/test_matrix_probe.py tests/test_splice_reuse.py tests/test_runtime.py tests/test_dflash_reuse.py --basetemp .test-tmp-matrix-related --junitxml=artifacts/matrix-tests-related-local.xml`。新增同质量逆序/锚点自证排除/两次求解边际/同池Edit记录评分测试。完整回归正在完成。
+- A6000双卡19MiB/0%，将用独立`ot-r-matrix`目录，全部已发布旧结果含冷却修复递归SHA保护，独立infra不覆盖。
+- 冻结前完整回归314 passed/3 skipped/34.15s：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-matrix-full --junitxml=artifacts/matrix-tests-full-local.xml`。未发生本轮测试失败；下一步以冻结Git原始文件部署CPU检查。
+
 ## 2026-10-19 — 报告跨平台重建的字节保留修复
 
 - 首次最终交付在Linux重建首轮报告后，修复报告被旧证据SHA保护拒绝。确认诊断JSON语义完全相同，但字典键顺序变化：原SHA`cd81e60688775121a25ca2e4cffd57fa9557bd7b1f0acbf46303d4957e73b118`，重建SHA`bc3ab55d18d00ff1e68c7dac01ffd17d16e7662631e07c35e66938f7f047cd14`。不是模型输出或数值结果变化；原GPU目录和Git原证据不受影响。

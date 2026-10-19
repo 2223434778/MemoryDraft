@@ -28,7 +28,8 @@ class RuntimeConfig:
         if self.backend not in {"transformers", "dflash", "demo"}:
             raise ValueError("backend must be transformers, dflash or demo")
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
-                                  "edit-splice", "ot-splice", "ot-tail-splice"}:
+                                  "edit-splice", "ot-splice", "ot-tail-splice",
+                                  "ot-order-splice", "ot-plan-splice", "ot-all-splice"}:
             raise ValueError("Unknown retrieval method")
         if self.alignment or self.retrieval != "suffix":
             from memorydraft.retrieval.transport import AlignmentConfig

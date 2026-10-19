@@ -150,7 +150,8 @@ def test_config_paths_and_packaged_audit_assets(tmp_path):
         RuntimeConfig(target="x", dtype="bfloat16")
 
 
-@pytest.mark.parametrize("method", ["edit-guided", "ot-guided", "edit-splice", "ot-splice", "ot-tail-splice"])
+@pytest.mark.parametrize("method", ["edit-guided", "ot-guided", "edit-splice", "ot-splice", "ot-tail-splice",
+                                    "ot-order-splice", "ot-plan-splice", "ot-all-splice"])
 def test_guided_runtime_counts_actual_draft_forwards(engine, method):
     if method.startswith("ot"):
         pytest.importorskip("ot")
