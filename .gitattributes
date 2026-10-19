@@ -131,6 +131,7 @@ results/acceptance/** -text
 results/acceptance/**/*.log -whitespace
 memorydraft/retrieval/prefix_risk.py text eol=lf
 memorydraft/evaluation/prefix_risk_probe.py text eol=lf
+memorydraft/evaluation/prefix_risk_continuation.py text eol=lf
 scripts/*prefix_risk*.py text eol=lf
 tests/test_prefix_risk*.py text eol=lf
 docs/PREFIX_RISK*.md text eol=lf

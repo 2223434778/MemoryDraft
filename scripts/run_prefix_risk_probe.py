@@ -6,6 +6,7 @@ from dataclasses import asdict, replace
 import json
 from pathlib import Path
 import random
+import shutil
 import time
 from unittest.mock import patch
 
@@ -40,16 +41,24 @@ def main():
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--mechanism", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--continue-evaluation", action="store_true",
+                        help="User-authorized continuation: all old references, task-quality labels do not stop decoding checks")
     args = parser.parse_args()
     tasks, events, calibration = inputs(ROOT)
+    evidence_hashes = protected
+    if args.continue_evaluation:
+        from memorydraft.evaluation.prefix_risk_continuation import protected as continuation_protected
+        evidence_hashes = continuation_protected
+    protocol = "docs/PREFIX_RISK_CONTINUATION_PROTOCOL.md" if args.continue_evaluation else "docs/PREFIX_RISK_PROTOCOL.md"
     frozen = {name: file_hash(ROOT / name) for name in (
-        "data/research/prefix-risk/cases.json", "data/research/prefix-risk/calibration.json", "docs/PREFIX_RISK_PROTOCOL.md")}
+        "data/research/prefix-risk/cases.json", "data/research/prefix-risk/calibration.json", protocol)}
     if args.stage == "timing":
         if args.mechanism is None:
             parser.error("Timing needs a completed independent mechanism check")
         prior = json.loads((args.mechanism / "provenance.json").read_text())
         if (prior["status"] != "complete" or prior["stage"] != "mechanism" or prior["rows"] != 60
                 or not prior["timing_gate"]["passed"] or prior["source"] != source_digest()
+                or prior.get("continued_evaluation", False) != args.continue_evaluation
                 or prior["frozen_sha256"] != frozen or prior["runner_sha256"] != file_hash(Path(__file__))):
             raise ValueError("Timing requires the identical checked implementation and actual risk switches")
         tasks = attach_references(tasks, read_rows(args.mechanism / "fresh-ar.jsonl"))
@@ -63,11 +72,13 @@ def main():
     if (config.backend != "dflash" or config.threads != 4 or config.template_options != {"enable_thinking": False}
             or config.reuse != {"max_tokens": 32, "min_match": 6, "cooldown_rounds": 1, "max_pending_tokens": 1024}):
         raise ValueError("Use the fixed FP32/eager DFlash profile")
-    hashes = protected(ROOT)
+    hashes = evidence_hashes(ROOT)
     started = time.perf_counter()
     engine = load_engine(config)
     info = {**provenance(engine), "status": "started", "stage": args.stage, "methods": METHODS,
-            "scope": "New authored projects disjoint from old calibration; controlled workload, not production or history-necessity evidence",
+            "scope": ("Observed-project continuation; all 12 references including task failures; no parameter tuning or fresh holdout"
+                      if args.continue_evaluation else "New authored projects disjoint from old calibration; controlled workload, not production or history-necessity evidence"),
+            "continued_evaluation": args.continue_evaluation,
             "load_seconds": time.perf_counter() - started, "frozen_sha256": frozen,
             "runner_sha256": file_hash(Path(__file__)), "original_sha256": hashes}
     write(args.output / "provenance.json", info)
@@ -82,7 +93,18 @@ def main():
         warm = GenerationRequest("__warmup__", "__warmup__", 0, ({"role": "user", "content": "Say hello."},), 16)
         for method in METHODS:
             execute(warm, method)
-        if args.stage == "mechanism":
+        if args.stage == "mechanism" and args.continue_evaluation:
+            from memorydraft.evaluation.prefix_risk_continuation import check_reference_profile, reference_source
+            tasks, metadata, previous_profile = reference_source(ROOT, tasks)
+            check_reference_profile(previous_profile, config.as_dict())
+            for task in tasks:
+                identity = prompt_identity(engine.tokenizer, task.request, config.template_options)
+                if any(task.reference[k] != identity[k] for k in ("prompt_sha256", "prompt_tokens")):
+                    raise ValueError("Continuation prompt differs from the recorded AR reference")
+            shutil.copyfile(ROOT / "results/prefix-risk/mechanism/fresh-ar.jsonl.gz", args.output / "fresh-ar.jsonl.gz")
+            info["reference_source"] = metadata
+            print("Reused all", len(tasks), "AR references; task contracts correct", metadata["contract_correct"], flush=True)
+        elif args.stage == "mechanism":
             for task in tasks:
                 identity = prompt_identity(engine.tokenizer, task.request, config.template_options)
                 result = engine.generate(task.request, "AR")
@@ -135,6 +157,8 @@ def main():
         if args.stage == "mechanism":
             audit_decisions(rows, tasks, calibration)
             info["timing_gate"] = timing_gate(rows)
+            if args.continue_evaluation:
+                info["timing_gate"].update(passed=True, policy="Measure all completed strict pairs, including unchanged paths")
         else:
             expected = {(r["request_id"], r["method"]): r["counters"] for r in read_rows(args.mechanism / "rows.jsonl")}
             for row in rows:
@@ -142,14 +166,14 @@ def main():
                        if key != "alignment_seconds"):
                     raise ValueError("Timing changed the checked mechanism path")
             info["paired_paths"] = len(rows)
-        info.update(status="complete", rows=len(rows), original_unchanged=hashes == protected(ROOT))
+        info.update(status="complete", rows=len(rows), original_unchanged=hashes == evidence_hashes(ROOT))
         if not info["original_unchanged"] or frozen != {name: file_hash(ROOT / name) for name in frozen}:
             raise ValueError("Protected evidence or frozen protocol changed")
     except Exception as error:
         info.update(status="failed", rows=len(rows), error=type(error).__name__ + ": " + str(error))
         raise
     finally:
-        info["original_unchanged"] = hashes == protected(ROOT)
+        info["original_unchanged"] = hashes == evidence_hashes(ROOT)
         write(args.output / "provenance.json", info)
         engine.close()
 

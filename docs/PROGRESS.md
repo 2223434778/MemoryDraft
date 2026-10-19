@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-19 — 前缀风险续测（用户授权放宽评测停止条件，执行准备）
+
+- 用户明确要求继续，认为原停止条件过严。新增`--continue-evaluation`显式模式，任务质量标签不再阻断解码检查，Risk零改选也完成120计时以测开销；硬性token/prompt/snapshot/来源/计数检查仍保持。原strict模式和首次停止证据保留。
+- 不改风险策略、56状态训练系数、0.5阈值、候选池/长度/查询预算/Target输入；复用旧12个AR的全部参考（包括vector-ingest:0错误正文），不重新采样、不选11个成功例。校验旧参考SHA、输入/校准、固定推理设置和当前tokenizer prompt身份。
+- 新协议`PREFIX_RISK_CONTINUATION_PROTOCOL.md`冻结60机制+120交错计时；报告全部12、主8/控制4，以及合同正确11/错误1的子集。已观察答案，称开发续测而非新holdout。独立服务器`prefix-risk-continuation`，新发布目录`results/prefix-risk/continuation`，旧文件SHA单独保护。
+- 冻结前相关13 passed/7.67s：`.venv\Scripts\python.exe -m pytest -q tests/test_prefix_risk_continuation.py tests/test_prefix_risk.py tests/test_prefix_risk_probe.py tests/test_prefix_risk_report.py --basetemp .test-tmp-risk-continuation-related --junitxml=artifacts/risk-continuation-tests-related-local.xml`。runner/helper通过py_compile，diff检查通过，A6000空闲双19MiB/0%。
+
 ## 2026-10-19 — 前缀风险辅助拼接（实现完成，独立检查止于Target合同）
 
 - 冻结执行`ad231f712858868c418ce33494dd967d5de8230c`，702个Git原始文件SHA核验，源zip SHA`315904bb2076b8ad328e04f44ac4b70de4b97111ef91eec91f0f10e9a0389255`，实际package SHA`ba8782a55669b9bf4647d99b729c1f5023bd7ea78a87165d0688f5c20986a943`。新独立服务器目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk`，部署即建立`models -> ../models`。
