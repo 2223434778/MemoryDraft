@@ -1,0 +1,20 @@
+{
+  "pid": 2195100,
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_splice_probe",
+    "--cooldown-check",
+    "--stage",
+    "timing",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/timing-v1",
+    "--mechanism",
+    "artifacts/mechanism-v1"
+  ],
+  "cwd": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice-cooldown",
+  "started_unix": 1792390709.5368996
+}

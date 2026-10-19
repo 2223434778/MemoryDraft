@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-19 — 拼接冷却最小修复（五请求检查完成）
+
+- 修复执行提交`c98bb83e3e50a0ba1c01268317b074a2fcfcbbd4`，572个Git原始文件SHA全部通过，归档SHA`01568feab9c0d830900ec0bae95e8ac8f5b94feaa710e9645f50d803986bc545`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice-cooldown`，预执行90 passed/8.20s。实际package两阶段同为`89063c6e3007034cb72823d5a42494f26258baf35b7cbf9beaa74dbd0ee2513c`；全部旧证据含首轮拼接SHA保持不变，不覆盖原执行源码清单。
+- 实际命令见`OT_SPLICE_COOLDOWN_PROTOCOL.md`，使用`--cooldown-check --stage mechanism/timing`和独立`artifacts/mechanism-v1`/`timing-v1`。流水PID2194458完成；30/30插桩检查、60/60未插桩计时严格匹配既有AR，60/60轮数/接受/候选和Draft前向计数匹配插桩。双GPU恢复19MiB/0%。没有新holdout或进一步GPU扩展。
+- 冷却边界修复正确，但只恢复部分机会：payment-runbook:1中TailOT总轮8→7，普通Edit/OT仍8；shipment-contract:1中Edit总轮9→8，两OT仍9。三个正例各方法轮数保持。剩余问题有直接记录：runbook位置15普通Edit/OT保留14个Draft但仅前7个正确，TailOT保留7个并接受32；JSON位置22 Edit接受32，两OT保留8个但只接受6。可匹配内部锚点不保证其前面的Draft正确，不把剩余失败继续归于冷却。
+- 五请求两重复总时延Suffix8.926047s、Guided-Edit8.482442s、Guided-OT8.522107s、Splice-Edit8.540418s、Splice-OT8.780651s、TailOT8.474506s。TailOT相对Guided-Edit仅-0.09%（基本持平），普通OT+3.52%。SQL两请求均保留各少1轮的局部收益，Edit同样有效；旧JSON TailOT保持单例少1轮。不能外推修复后的16请求整体性能或宣称稳定OT优势。
+- 结果`results/ot-splice-cooldown`，报告`OT_SPLICE_COOLDOWN_RESULTS.md`。原始zip65857字节/SHA`01c55d562ad25f7418265a68e6280adba3a8582c7a6abfbe5f3cc07a7eab2370`；报告重建`.venv\Scripts\python.exe -m scripts.write_splice_cooldown_report`。追加两个报告/来源审计18 passed/5.77s；补充逐位置解释后最终10 passed/5.51s，原完整290 passed/3 skipped记录保留。main、infra分支和tag仍均`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。
+- 本阶段结论：保留内部桥接和尾部加权为显式研究选项，默认suffix；若继续，应先离线解决保留Draft前缀的风险和同状态排序，而不是再扩大同类GPU负载。
+
 ## 2026-10-19 — 拼接前缀拒绝的冷却修复（五请求检查准备）
 
 - 首轮代码/原始证据已独立提交`0000e5c`/`bc6b39e`。共享解码器只改一行冷却条件：`draft_prefix <= accepted < len(proposal.tokens)`时才冷却；尚未尝试历史的Draft前缀拒绝不触发冷却，普通R/原Guided默认prefix=0仍保持规则。匹配器此前已避免把前缀拒绝映射成历史端点失败。
