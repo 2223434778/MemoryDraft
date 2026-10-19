@@ -17,10 +17,10 @@ from scripts.write_splice_report import audit_calls, preserve_diagnostic
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def check_provenance(info, manifest):
+def check_provenance(info, manifest, *, protected_hashes=None):
     files = {n.removeprefix("memorydraft/"): h for n, h in manifest["files"].items()
              if n.startswith("memorydraft/") and n.endswith((".py", ".json", ".txt"))}
-    old = protected(ROOT)
+    old = protected(ROOT) if protected_hashes is None else protected_hashes
     if set(old) != set(info["original_sha256"]):
         raise ValueError("Changed protected evidence coverage")
     for name, digest in info["original_sha256"].items():

@@ -1,0 +1,818 @@
+{
+  "comparisons": {
+    "fewer_round_requests": [],
+    "gate": {
+      "better_than_no_confidence": true,
+      "control_within_3_percent": true,
+      "fewer_rounds": false,
+      "passed": false,
+      "primary_guided_1_percent": false,
+      "primary_splice_3_percent": false,
+      "projects_3_of_4": true
+    },
+    "projects": {
+      "archive-pruner": {
+        "Guided-Edit": 2.4712100060423836,
+        "Risk-NoConfidence": 2.476531998021528,
+        "Risk-Splice": 2.4717194649856538,
+        "Splice-Edit": 2.4731783710885793,
+        "Suffix-R": 2.4668283310020342
+      },
+      "blob-recovery": {
+        "Guided-Edit": 2.9012284480268136,
+        "Risk-NoConfidence": 2.902592491940595,
+        "Risk-Splice": 2.903333955910057,
+        "Splice-Edit": 2.906173320952803,
+        "Suffix-R": 2.8998271588934585
+      },
+      "quota-ledger": {
+        "Guided-Edit": 3.292653951095417,
+        "Risk-NoConfidence": 3.2949057839578018,
+        "Risk-Splice": 3.2980839259689674,
+        "Splice-Edit": 3.2948929549893364,
+        "Suffix-R": 3.291390305850655
+      },
+      "vector-ingest": {
+        "Guided-Edit": 1.9268600159557536,
+        "Risk-NoConfidence": 1.9467255999334157,
+        "Risk-Splice": 1.9364643720909953,
+        "Splice-Edit": 1.93705151299946,
+        "Suffix-R": 1.9150189269566908
+      }
+    },
+    "projects_faster": 3,
+    "risk_over_splice_project_bootstrap_95": [
+      0.9991454952878565,
+      1.0006565868727058
+    ],
+    "seconds": {
+      "all": {
+        "Guided-Edit": 14.13910409109667,
+        "Risk-NoConfidence": 14.16722389694769,
+        "Risk-Splice": 14.155446699936874,
+        "Splice-Edit": 14.15443305997178,
+        "Suffix-R": 14.110044743632898
+      },
+      "control": {
+        "Guided-Edit": 3.5471516699763015,
+        "Risk-NoConfidence": 3.5464680230943486,
+        "Risk-Splice": 3.545844980981201,
+        "Splice-Edit": 3.543136899941601,
+        "Suffix-R": 3.5369800209300593
+      },
+      "edited-continuation": {
+        "Guided-Edit": 10.591952421120368,
+        "Risk-NoConfidence": 10.62075587385334,
+        "Risk-Splice": 10.609601718955673,
+        "Splice-Edit": 10.611296160030179,
+        "Suffix-R": 10.573064722702838
+      }
+    }
+  },
+  "mechanism": {
+    "all": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0005591309163719416,
+          "draft_forward_rounds": 32,
+          "draft_rounds": 32,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 685,
+          "reuse_rounds": 32,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 64,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006140098907053471,
+          "draft_forward_rounds": 32,
+          "draft_rounds": 32,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 685,
+          "reuse_rounds": 32,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 64,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006078606937080622,
+          "draft_forward_rounds": 32,
+          "draft_rounds": 32,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 685,
+          "reuse_rounds": 32,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 64,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006037095910869539,
+          "draft_forward_rounds": 32,
+          "draft_rounds": 32,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 685,
+          "reuse_rounds": 32,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 64,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 32,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 685,
+          "reuse_rounds": 32,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 64,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      }
+    },
+    "control": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 6,
+          "draft_rounds": 6,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 148,
+          "reuse_rounds": 8,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 14,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 6,
+          "draft_rounds": 6,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 148,
+          "reuse_rounds": 8,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 14,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 6,
+          "draft_rounds": 6,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 148,
+          "reuse_rounds": 8,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 14,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 6,
+          "draft_rounds": 6,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 148,
+          "reuse_rounds": 8,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 14,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 6,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 148,
+          "reuse_rounds": 8,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 14,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      }
+    },
+    "edited-continuation": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0005591309163719416,
+          "draft_forward_rounds": 26,
+          "draft_rounds": 26,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 537,
+          "reuse_rounds": 24,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 50,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006140098907053471,
+          "draft_forward_rounds": 26,
+          "draft_rounds": 26,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 537,
+          "reuse_rounds": 24,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 50,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006078606937080622,
+          "draft_forward_rounds": 26,
+          "draft_rounds": 26,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 537,
+          "reuse_rounds": 24,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 50,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 1,
+          "alignment_candidates": 1,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.006037095910869539,
+          "draft_forward_rounds": 26,
+          "draft_rounds": 26,
+          "guided_lookups": 2,
+          "guided_no_match": 1,
+          "reuse_accepted_tokens": 537,
+          "reuse_rounds": 24,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 50,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 26,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 537,
+          "reuse_rounds": 24,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 50,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        }
+      }
+    }
+  },
+  "quality_seconds": {
+    "contract_correct": {
+      "Guided-Edit": 13.465951849124394,
+      "Risk-NoConfidence": 13.491914081969298,
+      "Risk-Splice": 13.482593881897628,
+      "Splice-Edit": 13.480641196016222,
+      "Suffix-R": 13.44192247861065
+    },
+    "contract_incorrect": {
+      "Guided-Edit": 0.6731522419722751,
+      "Risk-NoConfidence": 0.6753098149783909,
+      "Risk-Splice": 0.6728528180392459,
+      "Splice-Edit": 0.6737918639555573,
+      "Suffix-R": 0.668122265022248
+    }
+  },
+  "reference_source": {
+    "contract_correct": 11,
+    "historical_ar_seconds": 52.95598720817361,
+    "provenance_sha256": "615998ca8db31f28f5e93c8f657747ef7a7ba1a0fc7427e41f8de1afeee49927",
+    "reference_sha256": "29fa3bb21e31d18aef0f38014fae868c0eaf58e8416669ae27a4a7184fc1b2a0",
+    "references": 12,
+    "source_package_sha256": "ba8782a55669b9bf4647d99b729c1f5023bd7ea78a87165d0688f5c20986a943"
+  },
+  "switches": [],
+  "timing": {
+    "all": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 4,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.001143343048170209,
+          "draft_forward_rounds": 64,
+          "draft_rounds": 64,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1370,
+          "reuse_rounds": 64,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 128,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 14.13910409109667
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.012152125826105475,
+          "draft_forward_rounds": 64,
+          "draft_rounds": 64,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1370,
+          "reuse_rounds": 64,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 128,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 14.16722389694769
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.013425149023532867,
+          "draft_forward_rounds": 64,
+          "draft_rounds": 64,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1370,
+          "reuse_rounds": 64,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 128,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 14.155446699936874
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.012213845970109105,
+          "draft_forward_rounds": 64,
+          "draft_rounds": 64,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1370,
+          "reuse_rounds": 64,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 128,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 14.15443305997178
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 64,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 1370,
+          "reuse_rounds": 64,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 128,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 14.110044743632898
+      }
+    },
+    "control": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 12,
+          "draft_rounds": 12,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 296,
+          "reuse_rounds": 16,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 28,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 3.5471516699763015
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 12,
+          "draft_rounds": 12,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 296,
+          "reuse_rounds": 16,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 28,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 3.5464680230943486
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 12,
+          "draft_rounds": 12,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 296,
+          "reuse_rounds": 16,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 28,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 3.545844980981201
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.0,
+          "draft_forward_rounds": 12,
+          "draft_rounds": 12,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 296,
+          "reuse_rounds": 16,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 28,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 3.543136899941601
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 12,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 296,
+          "reuse_rounds": 16,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 28,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 3.5369800209300593
+      }
+    },
+    "edited-continuation": {
+      "Guided-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 4,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.001143343048170209,
+          "draft_forward_rounds": 52,
+          "draft_rounds": 52,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1074,
+          "reuse_rounds": 48,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 100,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 10.591952421120368
+      },
+      "Risk-NoConfidence": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.012152125826105475,
+          "draft_forward_rounds": 52,
+          "draft_rounds": 52,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1074,
+          "reuse_rounds": 48,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 100,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 10.62075587385334
+      },
+      "Risk-Splice": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.013425149023532867,
+          "draft_forward_rounds": 52,
+          "draft_rounds": 52,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1074,
+          "reuse_rounds": 48,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 100,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 10.609601718955673
+      },
+      "Splice-Edit": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 2,
+          "alignment_candidates": 2,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0.012213845970109105,
+          "draft_forward_rounds": 52,
+          "draft_rounds": 52,
+          "guided_lookups": 4,
+          "guided_no_match": 2,
+          "reuse_accepted_tokens": 1074,
+          "reuse_rounds": 48,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 100,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 10.611296160030179
+      },
+      "Suffix-R": {
+        "counters": {
+          "alignment_accepted_tokens": 0,
+          "alignment_calls": 0,
+          "alignment_candidates": 0,
+          "alignment_proposals": 0,
+          "alignment_seconds": 0,
+          "draft_forward_rounds": 0,
+          "draft_rounds": 52,
+          "guided_lookups": 0,
+          "guided_no_match": 0,
+          "reuse_accepted_tokens": 1074,
+          "reuse_rounds": 48,
+          "risk_evaluations": 0,
+          "risk_single_boundary": 0,
+          "risk_switches": 0,
+          "risk_unsafe_unchanged": 0,
+          "rounds": 100,
+          "splice_history_accepted_tokens": 0,
+          "splice_prefix_accepted_tokens": 0,
+          "splice_zero_history": 0
+        },
+        "seconds": 10.573064722702838
+      }
+    }
+  }
+}

@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — 风险续测12请求完成，补充分支覆盖检查（执行准备）
+
+- 执行冻结`41ecab699695c90653454c360516cbef816e3fd8`，729文件核验，源zip SHA`a429342d081f5477d1573b9ff023f9f28e40f21a4898d39d66630cfc68637dc1`，独立服务器`prefix-risk-continuation`。94相关测试通过/8.48s；流水PID2408502已完成，GPU双19MiB/0%。
+- 实际60/60机制、120/120交错计时全部严格匹配旧12AR，120计数路径一致；复用全部12参考，未重跑AR或排除任务错误例。五组机制均64轮/32实际Draft前向，风险评估和改选均0：唯一拼接池也没有合格候选，风险模型未被调用。全部时延Suffix14.110045s、Guided14.139104s、Splice14.154433s、NoConfidence14.167224s、Risk14.155447s。小差异无候选/路径变化，不能归因为风险提速。
+- 续测证据在`results/prefix-risk/continuation`；完整zip109037字节/SHA`b2af856cf52177ed7d624924b4afe1b84691911a9ebdee06a2f341856176f097`。初次打包忽略已压缩参考gz，补齐原字节后重建完整归档；生成结果未更改，无GPU重跑。主报告`PREFIX_RISK_CONTINUATION_RESULTS.md`，按全部12/主8/控制4及合同正确11/错误1分别报告。
+- 为覆盖风险分支，单独补旧payment-runbook:1、shipment-contract:1两个训练项目，10机制+20计时，不并入主12请求、不声称泛化。原系数CPU核对payment/15边界14存活0.109、边界7存活0.868会改选；shipment/22原边界6存活0.875应保留。协议`PREFIX_RISK_CONTROLS_PROTOCOL.md`事先冻结；不改阈值/权重/候选，不增加新随机案例。
+- 主报告首次跨进程重建因保存的diagnostic键排序导致描述性gate JSON行序不同，1 failed/7 passed；固定sort_keys，仅改报告渲染，不改结果或策略，失败XML保存。补充脚本py_compile通过；将冻结独立controls源码，原12请求数据按SHA保护。
+
 ## 2026-10-19 — 前缀风险续测（用户授权放宽评测停止条件，执行准备）
 
 - 用户明确要求继续，认为原停止条件过严。新增`--continue-evaluation`显式模式，任务质量标签不再阻断解码检查，Risk零改选也完成120计时以测开销；硬性token/prompt/snapshot/来源/计数检查仍保持。原strict模式和首次停止证据保留。
