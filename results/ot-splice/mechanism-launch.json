@@ -1,0 +1,17 @@
+{
+  "pid": 2185996,
+  "command": [
+    "../.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_splice_probe",
+    "--stage",
+    "mechanism",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/mechanism-v1"
+  ],
+  "cwd": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice",
+  "started_unix": 1792389909.2862365
+}

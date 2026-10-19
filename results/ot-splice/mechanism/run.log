@@ -1,0 +1,18 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.47s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.46s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.46s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.35s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.02s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.20s/it]
+completed parcel-queue:0
+completed parcel-queue:1
+completed payment-runbook:0
+completed payment-runbook:1
+completed short-settings:1
+completed confirm-schema-0:0
+completed confirm-schema-0:1
+completed copy
+completed edge-router:0
+completed edge-router:1
+completed inventory-query:0
+completed inventory-query:1
+completed image-worker:0
+completed image-worker:1
+completed shipment-contract:0
+completed shipment-contract:1

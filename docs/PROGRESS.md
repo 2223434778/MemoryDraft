@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — Draft内部锚点拼接（首轮完成，定位冷却缺陷）
+
+- 冻结执行提交`0000e5c9f78df0d762d2dba981daafa8a59bd2bb`，550个Git原始文件逐项SHA通过；源归档SHA`c09491b515eddd94b4895a0e5b6b1a8daf28e20c353a9ff51ff7482c1900fa96`。服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice`，执行前相关72 passed/7.52s。实际机制/计时package同为`44f733dea98734d16c18a3b447207a197fba1e7ec4e14255b36e4e376048cd1a`，runner/协议/全部旧证据SHA未变。
+- 16个已观察请求×6组一次机制96/96严格一致。三个Splice均在inventory-query两个请求各少1轮，达到预定小成本门槛；收益只有一个项目，不是独立场景确认。按同一提交进行192次未插桩交错计时，192/192输出token/prompt/snapshot严格一致，192/192轮数/接受量/候选与机制回放相同。实际命令见`OT_SPLICE_PROTOCOL.md`；机制PID2185996、计时PID2187541均完成，双GPU恢复19MiB/0%。
+- 总时延Suffix26.000739s、Guided-Edit25.018151s、Guided-OT25.153341s、Splice-Edit25.285204s、Splice-OT25.421422s、TailOT25.258074s。三个Splice分别比Guided-Edit慢1.07%/1.61%/0.96%。SQL项目两重复四观察：Guided-Edit3.221949s，Splice-Edit3.014994s；三种拼接都恢复32token，第二请求来源是当前prompt，不能归为历史独特价值。普通OT/Edit总轮/接受量相同，15/16请求完整候选token调用序列相同；TailOT在一个旧JSON请求少1轮，总轮119→118，但整体仍无净优势。
+- 逐轮定位退化：payment-runbook:1位置11保留11个Draft token但仅接受3；shipment-contract:1位置14保留9/15但仅接受7，均在Draft前缀内拒绝。原D也接受3/7，但Splice被记为R触发1轮冷却，跳过下一轮位置15/22的32token机会，各多1轮。保存首轮原始负结果，下一步只修复此反馈策略并检查5个既有关键请求，不改Target或调检索参数。
+- 证据`results/ot-splice`，报告`OT_SPLICE_RESULTS.md`；原始zip80948字节/SHA`cf741ecfd7088c84de6f319a405b6472b3bd9098b4b56d7d8fb913109ca7f17f`。报告/归因审计14 passed/5.41s，追加解释后纯报告6 passed/4.91s；完整272 passed/3 skipped和原始XML均保留。重建`.venv\Scripts\python.exe -m scripts.write_splice_report`。
+
 ## 2026-10-19 — Draft内部锚点拼接（小实验准备）
 
 - 用户授权小成本实验。新增`retrieval/splice.py`与`edit-splice`、`ot-splice`、`ot-tail-splice`显式选项，复用现有DFlash post-draft hook；保留Draft到内部4-token锚点的前缀，再拼原始历史尾部，最多32token。三个Splice使用同一Edit去重/top8池、4次查询预算、0.65阈值；TailOT仅末8位置加权，不声称单调OT。原检索/解码算法和默认suffix不改，独立infra版本保留。

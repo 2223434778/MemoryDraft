@@ -2,27 +2,69 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
 from memorydraft.evaluation.runtime_migration import file_hash, read_rows
-from memorydraft.evaluation.splice_probe import METHODS, audit, input_digest, inputs, mechanism_gate, protected_hashes
+from memorydraft.evaluation.splice_probe import METHODS, audit, input_digest, inputs, mechanism_gate, prefix_acceptance, protected_hashes
 from scripts.diagnose_transport_online import write
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def audit_calls(rows, tasks):
+    references = {t.request.id: t.reference["token_ids"] for t in tasks}
+    for row in rows:
+        rounds = {r["generated_before"]: r for r in row["rounds"]}
+        c = row["counters"]
+        if len(rounds) != c["rounds"] or sum(r["draft_forward"] for r in rounds.values()) != c.get("draft_forward_rounds", c["draft_rounds"]):
+            raise ValueError("Changed decode-round accounting")
+        prefix, historical, extension, internal, proposals = 0, 0, 0, 0, 0
+        for call in row["calls"]:
+            remaining = references[row["request_id"]][call["generated"]:]
+            p = call["proposal"]
+            if call["draft_oracle_accepted"] != prefix_acceptance(call["draft_tokens"], remaining):
+                raise ValueError("Changed post-hoc Draft acceptance")
+            if not p:
+                if call["accepted"] is not None or call["oracle_accepted"] is not None:
+                    raise ValueError("Acceptance without a proposal")
+                continue
+            r = rounds[call["generated"]]
+            if (call["oracle_accepted"] != prefix_acceptance(p["tokens"], remaining)
+                    or call["accepted"] != r["accepted"] or r["route"] != "R"
+                    or len(p["tokens"]) != r["proposed"]):
+                raise ValueError("Changed actual proposal or post-hoc acceptance")
+            if row["method"].startswith("Splice-"):
+                b, a = p["draft_prefix"], call["accepted"]
+                if (not 4 <= b <= len(call["draft_tokens"]) or p["tokens"][:b] != call["draft_tokens"][:b]
+                        or p["original_draft"] != len(call["draft_tokens"])):
+                    raise ValueError("Changed retained Draft prefix")
+                prefix += min(a, b)
+                historical += max(0, a - b)
+                extension += max(0, a - p["original_draft"])
+                internal += int(b > 4)
+                proposals += 1
+        if row["method"].startswith("Splice-") and (prefix, historical, extension, internal, proposals) != tuple(c[k] for k in
+                ("splice_prefix_accepted_tokens", "splice_history_accepted_tokens", "splice_extension_accepted_tokens",
+                 "splice_internal_proposals", "splice_proposals")):
+            raise ValueError("Changed historical vs Draft attribution")
+
+
 def load_stage(source, stage, tasks, events, manifest):
     directory = source / stage
     info = json.loads((directory / "provenance.json").read_text())
     instrumented = stage == "mechanism"
+    expected_files = {name.removeprefix("memorydraft/"): sha for name, sha in manifest["files"].items()
+                      if name.startswith("memorydraft/") and name.endswith((".py", ".json", ".txt"))}
     if (info["status"] != "complete" or info["stage"] != stage or info["instrumented"] != instrumented
             or info["inputs_sha256"] != input_digest(tasks, events) or info["original_sha256"] != protected_hashes(ROOT)
             or not info["original_unchanged"] or info["methods"] != list(METHODS)
             or info["runner_sha256"] != manifest["files"]["scripts/run_splice_probe.py"]
             or info["protocol_sha256"] != manifest["files"]["docs/OT_SPLICE_PROTOCOL.md"]
-            or any(manifest["files"].get("memorydraft/" + key) != sha for key, sha in info["source"]["files"].items())):
+            or info["source"]["files"] != expected_files
+            or info["source"]["sha256"] != hashlib.sha256(json.dumps(expected_files, sort_keys=True).encode()).hexdigest()):
         raise ValueError("Changed splice execution provenance")
     rows = read_rows(directory / "rows.jsonl")
     summary = audit(rows, tasks, 1 if instrumented else 2, instrumented=instrumented)
@@ -32,6 +74,8 @@ def load_stage(source, stage, tasks, events, manifest):
         raise ValueError("Wrong splice observation count")
     if instrumented and info["mechanism_gate"] != mechanism_gate(rows):
         raise ValueError("Changed mechanism gate")
+    if instrumented:
+        audit_calls(rows, tasks)
     return info, rows, summary
 
 
@@ -76,6 +120,18 @@ def build(source):
         for method in METHODS:
             seconds = timing["all"][method]["seconds"]
             lines.append(f"| {method} | {seconds:.6f} | {(seconds / timing['all']['Suffix-R']['seconds'] - 1) * 100:+.2f}% | {(seconds / timing['all']['Guided-Edit']['seconds'] - 1) * 100:+.2f}% |")
+        lines += ["", "| 项目 | " + " | ".join(METHODS) + " |", "|---|" + "---:|" * len(METHODS)]
+        for project in sorted({t.project_id for t in tasks}):
+            times = {m: sum(r["latency_seconds"] for r in timing_rows if r["project_id"] == project and r["method"] == m) for m in METHODS}
+            lines.append("| " + project + " | " + " | ".join(f"{times[m]:.6f}" for m in METHODS) + " |")
+        keyed = {(r["request_id"], r["method"]): r for r in rows}
+        keys = ("rounds", "draft_rounds", "reuse_rounds", "reuse_accepted_tokens", "draft_forward_rounds",
+                "alignment_calls", "alignment_candidates", "alignment_proposals", "alignment_accepted_tokens",
+                "splice_internal_proposals", "splice_history_accepted_tokens", "splice_extension_accepted_tokens")
+        same = all(all(r["counters"].get(k, 0) == keyed[r["request_id"], r["method"]]["counters"].get(k, 0)
+                       for k in keys) for r in timing_rows)
+        diagnostic["timing_counter_paths_match_mechanism"] = same
+        lines += ["", "未插桩重复与机制回放的轮数/接受量/候选及真实Draft前向计数：" + ("192/192相同。" if same else "存在差异，需结合逐行记录分析。")]
     pairs = 0
     for task in tasks:
         proposals = []
@@ -85,6 +141,11 @@ def build(source):
         pairs += int(proposals[0] == proposals[1])
     diagnostic["edit_ot_equal_proposal_sequences"] = pairs
     lines += ["", f"Splice-Edit与Splice-OT的完整引导调用候选token序列在{pairs}/16请求上相同；这描述实际路径，不等价于共同状态下的全候选排序能力。",
+              "", "解释与最小修复：", "",
+              "- inventory-query两请求在位置8/10将同状态原Draft接受13/15提升到32，各少1轮；第二个请求的接续来自当前prompt，不能归为历史独特价值。三种Splice均成功，尚无OT独有收益。",
+              "- payment-runbook:1在位置11保留11个Draft token但仅接受3；shipment-contract:1在位置14保留9或15个Draft token但仅接受7。两个位置原Draft也分别接受3/7，未尝试到历史尾部。现有R冷却仍被触发，跳过下一轮位置15/22可接受32token的原Guided机会，各多1轮。这是候选来源反馈策略缺陷，严格输出仍正确。",
+              "- TailOT在旧confirm-schema-0:0选到不同候选，当前位置接受28而非32，但后续路径总轮11→10；不能将单次接受最大化直接等同于全请求最优。普通OT/Edit总轮相同；TailOT整体仍慢于原Guided-Edit。",
+              "- 保存本轮负结果；最小修复只让保留Draft前缀内拒绝不触发历史检索冷却，然后对上述2负例、2 SQL正例及1旧JSON正例作事后开发复查，不扩大新场景。",
               "", "范围限制：作者受控任务、既有答案、固定8候选cheap预筛、相同数值阈值、短Draft桥接范围。不能据本轮判断自然工作负载泛化或OT最优能力。",
               "Target逐token验证、用户隔离、时间快照、全部在线成本口径不变，默认suffix和独立infra面试版保留。", "",
               f"执行提交：`{manifest['commit']}`。package SHA：`{info['source']['sha256']}`。", "",
