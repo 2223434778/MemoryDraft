@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-19 — OT-R 在线错误定位（执行准备）
+
+- 用户要求先定位错误。新增独立诊断模块/脚本和协议`OT_R_DIAGNOSIS_PROTOCOL.md`，只包装既有解码入口捕获实际提议与轮记录；生产检索/解码文件不改。范围为新验证五个实际触发请求、首轮两个局部正例及copy负例，八请求×Suffix/Edit/OT一次，共24次插桩运行，不作性能测量。
+- 输出先与已保存AR的token/prompt/snapshot严格核对，再离线重放同预算、阻塞状态下的实际提议；分开枚举合法原始span、合格端点及实际候选池。参考答案只用于事后评分，>=8 token是诊断分层而非收益阈值。
+- 本机命令`.venv\Scripts\python.exe -m pytest -q tests/test_transport_diagnosis.py tests/test_transport.py --basetemp .test-tmp-ot-diagnosis --junitxml=artifacts/ot-diagnosis-tests-local.xml`：22 passed/14.70s。服务器双A6000均19MiB/0%，将用新隔离目录运行；结果尚未产生。
+
 ## 2026-10-18 — OT-R新场景验证（完成，按门槛停止）
 
 - 修复后在`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-validation-v2`运行，冻结提交`45ec2ef995bd7521c579c2fe998fcd35c9c20c31`，PID1658928已结束，两GPU恢复19MiB/0%。24个新AR输入/快照核对、192/192计时逐token严格一致；两次24个AR的tokens/text/prompt/snapshot/finish_reason/contract逐项相同。任务22/24正确，两个格式控制失败；两个候选适用组均8/8正确，无截断，不剔除失败请求。

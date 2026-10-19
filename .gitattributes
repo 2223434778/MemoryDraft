@@ -81,8 +81,11 @@ results/ot-r/*.json whitespace=cr-at-eol
 results/ot-r/*.log -whitespace
 
 memorydraft/evaluation/transport_validation.py text eol=lf
+memorydraft/evaluation/transport_diagnosis.py text eol=lf
 data/research/ot-validation/** -text
 results/ot-validation/** -text
 results/ot-validation/*.json whitespace=cr-at-eol
 results/ot-validation/*.log -whitespace
 results/ot-validation/**/run.log -whitespace
+results/ot-diagnosis/** -text
+results/ot-diagnosis/*.log -whitespace
