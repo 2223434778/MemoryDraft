@@ -1,0 +1,24 @@
+{
+  "execution_commit": "ad231f712858868c418ce33494dd967d5de8230c",
+  "archive_sha256": "86cef10850e129a91230d6223d26a625d5dbfa5615578740a6f6dbf8585fb746",
+  "report_sha256": "b709db48ec7c2312bf284700dd11ab1aa977a5f6a7f17baa614186bf129f0f34",
+  "files": {
+    "diagnostic.json": "7a7d8a9ececef3e8bd6a1a0c74d5c20214a913eab61a1b041658edc748a62037",
+    "execution-audit.json": "1bd830ce53545eddf16bd23d3930d8f1da007aeab7f43be3120d3ebbb50cc6b0",
+    "mechanism/fresh-ar.jsonl.gz": "29fa3bb21e31d18aef0f38014fae868c0eaf58e8416669ae27a4a7184fc1b2a0",
+    "mechanism/provenance.json": "615998ca8db31f28f5e93c8f657747ef7a7ba1a0fc7427e41f8de1afeee49927",
+    "pipeline.log": "b2e4da9c5c17fbc962dbad6fe3cf4f37b8f90d355e87f793db24e2f0790c1971",
+    "run-pipeline.sh": "a936a6d2d02a478a6e8d54494741ee9a3ac75313926cbe46efe1dd3df579ad42",
+    "source-manifest.json": "005b79f59fa76bd36ecc56615049565e5777e05eda8f361a1d835f3974a3b837",
+    "tests-empty-fixture-failed-local.xml": "9ed9a9172755baaa94d9cf308ce8411e589b41e0c72dc63ac8f8ea1172f70f4f",
+    "tests-entropy-failed-local.xml": "630d0a514c5403039b13b8cd691e5e05c2ce34381283419cdee008e62bab01eb",
+    "tests-final-local.xml": "c044ed2aeb6992fd922a693b52957a8fcfb7413899dc8417a41aaf0f536bbb38",
+    "tests-full-before-freeze-local.xml": "a5472422f6ff810a4554da3751dc3fd12182a412904aa225c5d17d2874d117cf",
+    "tests-full-entropy-failed-local.xml": "17c56421df54ec6dc97d29bc7d94485ee1d19f5ad72c3bc3a341b87bb40a1b38",
+    "tests-placement-first-failed-local.xml": "9a0dc37330f0d3e87f6c605f4ec0411fec7363782187db974cad76f636847541",
+    "tests-placement-second-failed-local.xml": "22f5f340054324fb27a5e37c490a8f102e99473fac5420c7daf3d1df4de5c306",
+    "tests-related-local.xml": "e3b319f7877ae08e8f63474b7386ec079a0885e00b29440fbd306943bc10eb96",
+    "tests-report-local.xml": "f37994597a29381b2d2cdd564ee47d8a2b00baba65281410c8760eda40c132ce",
+    "tests-server.xml": "8855ea096e585327ba80a14895c13bdb44cedc39f4627fff9ce43b4a041ab482"
+  }
+}

@@ -137,3 +137,4 @@ docs/PREFIX_RISK*.md text eol=lf
 data/research/prefix-risk/** -text
 results/prefix-risk/** -text
 results/prefix-risk/**/*.log -whitespace
+results/prefix-risk/tests-*.xml -whitespace

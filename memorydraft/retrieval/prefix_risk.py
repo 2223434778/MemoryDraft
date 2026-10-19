@@ -17,7 +17,9 @@ def draft_confidence(logits):
     logp = logits.float().log_softmax(-1)
     probabilities = logp.exp()
     top = probabilities.topk(2, dim=-1).values
-    values = torch.stack((top[:, 0], -(probabilities * logp).sum(-1) / math.log(logp.shape[-1]),
+    # Float32 summation can put uniform normalized entropy slightly above one.
+    entropy = (-(probabilities * logp).sum(-1) / math.log(logp.shape[-1])).clamp(0., 1.)
+    values = torch.stack((top[:, 0], entropy,
                           top[:, 0] - top[:, 1]), dim=-1).cpu().tolist()
     if any(not math.isfinite(x) or not 0 <= x <= 1 for row in values for x in row):
         raise ValueError("Non-finite or invalid Draft confidence")

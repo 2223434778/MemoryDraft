@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-19 — 前缀风险辅助拼接（实现完成，独立检查止于Target合同）
+
+- 冻结执行`ad231f712858868c418ce33494dd967d5de8230c`，702个Git原始文件SHA核验，源zip SHA`315904bb2076b8ad328e04f44ac4b70de4b97111ef91eec91f0f10e9a0389255`，实际package SHA`ba8782a55669b9bf4647d99b729c1f5023bd7ea78a87165d0688f5c20986a943`。新独立服务器目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/prefix-risk`，部署即建立`models -> ../models`。
+- 服务器相关88 passed/8.18s。流水PID2393802完成，实际执行`run_prefix_risk_probe --stage mechanism --config configs/runtime-ot-benefit.json --output results/raw/prefix-risk/mechanism`；先生成新12AR，共52.955987s，11/12合同正确、12/12 EOS。vector-ingest:0要求返回完整配置，Target仅输出`batch_size = 224`、漏掉全部其余内容，非截断。按冻结协议`stopped_target_contract`，未执行60机制、未执行120计时，不挑11个成功请求继续、不改提示重跑。
+- 新策略尚无性能结论；没有把Target输出合同失败解释为风险策略无效。默认suffix/独立infra保留，三infra引用仍`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。GPU已恢复双19MiB/0%，无运行中的生成进程。
+- 源码执行前后全部702文件SHA一致，旧401证据在服务器执行前后SHA一致。紧凑原始zip65207字节/SHA`86cef10850e129a91230d6223d26a625d5dbfa5615578740a6f6dbf8585fb746`；证据`results/prefix-risk`不含DB/权重/完整logits，命令脚本与新AR失败输出保留。
+- 报告首次重建发现两份早期research-audit JSON本机CRLF与Git原始导出LF不同，报表仅对这两份只读核对规范Git blob，不改原文件或其他SHA检查；来源、输入、权重及协议准确核验。报告`PREFIX_RISK_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_prefix_risk_report`。
+- 追加风险改选/拒绝/KV的真实tiny Target组合测试；首版夹具空索引使候选分支未进入，1 failed/48 passed/2 skipped（输出仍严格一致），已提供非空测试历史，失败XML保留。此项是正确性测试，非GPU性能结果。
+- 非空夹具进一步暴露真实边界bug：均匀分布的FP32归一化熵可因求和舍入略大于1，被范围检查错误拒绝；新增熵clamp[0,1]及均匀logits回归。此修复不改Target接受规则；旧ad231f7实验停止现场不重写，本轮未进入在线风险路径，最终交付代码单独验证。
+- 修复后相关49 passed/2 skipped/10.17s；最终完整365 passed/3 skipped/39.69s，命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-prefix-risk-final-2 --junitxml=artifacts/prefix-risk-tests-final-local-2.xml`。此前完整回归1 failed/364 passed/3 skipped的熵边界现场保留。报告重建与归档6文件SHA核验通过；CI的dflash组补入全部prefix-risk测试。
+
 ## 2026-10-19 — 前缀风险辅助拼接（执行准备）
 
 - 用户授权执行一次小验证。新增`retrieval/prefix_risk.py`，原Edit候选边界生存<0.5且存在≥0.5候选时才按Edit顺序改选；同边界或单候选跳过置信度。固定原32上限、top8/4查询预算、严格Target及旧冷却，不预测尾部、不求解OT、不改动态长度。

@@ -301,3 +301,34 @@ def test_guided_matcher_receives_only_current_draft_logits(tiny):
     result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29, matcher=matcher)
     assert result.sequences.tolist() == tiny.reference.tolist()
     assert matcher.calls == len(result.rounds)
+
+
+def test_real_target_risk_handoff_switch_rejection_and_kv_recovery(tiny):
+    from memorydraft.retrieval.prefix_risk import PrefixRiskPolicy, PrefixRiskReuseMatcher
+    from memorydraft.retrieval.transport import AlignmentConfig
+
+    class ScriptedRisk(PrefixRiskReuseMatcher):
+        def propose(self, *args):
+            return None
+
+        def splice_shortlist(self, confirmed, draft_tokens, budget):
+            # Scripted, deliberately wrong proposals exercise strict verification;
+            # cached reference tokens here are test fixtures, never performance data.
+            if len(draft_tokens) < 2:
+                return []
+            n = min(6, budget)
+            a = [*draft_tokens, *([0] * n)][:n]
+            b = [draft_tokens[0], (draft_tokens[1] + 1) % 32, *([0] * n)][:n]
+            return [dict(tokens=tuple(a), prefix_length=len(draft_tokens), cheap=.95, position=0, end=100, source="test"),
+                    dict(tokens=tuple(b), prefix_length=1, cheap=.8, position=20, end=100, source="test")]
+
+    matcher = ScriptedRisk(SuffixArrayIndex(Snapshot("toy", 1, (MemoryEvent("toy", "fixture", 0, "1 2 3 4 5"),)), IntegerTokenizer()),
+                           policy=PrefixRiskPolicy([1.5, -15., 0., 0., 0., 0.]), hint_tokens=1,
+                           config=AlignmentConfig(min_context=1))
+    draft = CheckedDraft(tiny.features)
+    result = generate_reuse(tiny.target, draft, tiny.ids, max_new_tokens=29, matcher=matcher,
+                            config=ReuseConfig(max_tokens=8, cooldown_rounds=1))
+    assert result.sequences.tolist() == tiny.reference.tolist()
+    assert matcher.stats["risk_switches"] > 0
+    assert matcher.stats["splice_prefix_accepted_tokens"] + matcher.stats["splice_history_accepted_tokens"] == matcher.stats["alignment_accepted_tokens"]
+    assert len(draft.calls) == sum(r["draft_forward"] for r in result.rounds)

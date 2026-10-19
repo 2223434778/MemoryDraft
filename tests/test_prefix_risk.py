@@ -32,6 +32,7 @@ def test_confidence_matches_saved_feature_definition_without_mutating_logits():
     expected_entropy = -(probabilities * probabilities.log()).sum(-1) / np.log(97)
     np.testing.assert_allclose(np.asarray(values)[:, 1], expected_entropy.numpy(), rtol=1e-6)
     assert torch.equal(original, logits)
+    assert all(0 <= row[1] <= 1 and abs(row[1] - 1) < 1e-6 for row in draft_confidence(torch.zeros(3, 32)))
     with pytest.raises(ValueError, match="invalid"):
         draft_confidence(torch.full((15, 10), float("nan")))
 

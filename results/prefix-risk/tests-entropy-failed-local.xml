@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="2" tests="51" time="10.998" timestamp="2026-10-19T19:42:51.257660+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_prefix_risk" name="test_only_switches_unsafe_baseline_to_safe_existing_handoff" time="0.001" /><testcase classname="tests.test_prefix_risk" name="test_confidence_matches_saved_feature_definition_without_mutating_logits" time="0.004" /><testcase classname="tests.test_prefix_risk" name="test_matcher_single_boundary_skips_confidence_and_preserves_raw_splice" time="0.018" /><testcase classname="tests.test_prefix_risk" name="test_matcher_consumes_current_logits_and_filters_weak_history" time="0.002" /><testcase classname="tests.test_prefix_risk" name="test_runtime_requires_explicit_valid_frozen_policy" time="0.001" /><testcase classname="tests.test_prefix_risk_probe" name="test_frozen_new_projects_disjoint_from_old_calibration_and_legal_history" time="0.003" /><testcase classname="tests.test_prefix_risk_probe" name="test_no_candidate_change_stops_timing_without_cherry_picking_requests" time="0.000" /><testcase classname="tests.test_prefix_risk_probe" name="test_decision_audit_handles_live_tuple_proposals_and_rejects_changed_selection" time="0.001" /><testcase classname="tests.test_prefix_risk_report" name="test_contract_stop_is_reported_without_inventing_policy_measurements" time="0.215" /><testcase classname="tests.test_prefix_risk_report" name="test_report_refuses_timing_after_contract_stop" time="0.195" /><testcase classname="tests.test_dflash_reuse" name="test_draft_diagnostic_observer_preserves_generation_and_observes_only_proposals" time="0.102" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[None]" time="0.014" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[0]" time="0.043" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[2]" time="0.020" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[0]" time="0.001" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[1]" time="0.003" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[2]" time="0.005" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[9]" time="0.008" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[29]" time="0.018" /><testcase classname="tests.test_dflash_reuse" name="test_pending_feature_limit_forces_real_draft_catchup" time="0.015" /><testcase classname="tests.test_dflash_reuse" name="test_official_arctic_candidates_with_real_target" time="0.002"><skipped type="pytest.skip" message="Official Linux C++ candidate component not built in this environment">E:\PycharmProject\MemoryDraft\tests\test_dflash_reuse.py:136: Official Linux C++ candidate component not built in this environment</skipped></testcase><testcase classname="tests.test_dflash_reuse" name="test_cursor_realigns_after_one_changed_token_and_stays_in_snapshot" time="0.001" /><testcase classname="tests.test_dflash_reuse" name="test_invalid_controls_are_explicit" time="0.001" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[None]" time="0.012" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[0]" time="0.065" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[2]" time="0.025" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-None]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-0]" time="0.051" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-1]" time="0.026" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-2]" time="0.019" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-5]" time="0.011" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-None]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-0]" time="0.054" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-1]" time="0.029" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-2]" time="0.025" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-5]" time="0.016" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-0]" time="0.016" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-1]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-2]" time="0.007" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-5]" time="0.006" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-0]" time="0.016" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-1]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-2]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-5]" time="0.007" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[edit]" time="0.053" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[ot]" time="0.131" /><testcase classname="tests.test_dflash_reuse" name="test_actual_audited_dflash_forward_and_native_control" time="0.000"><skipped type="pytest.skip" message="Audited DFlash environment only">E:\PycharmProject\MemoryDraft\tests\test_dflash_reuse.py:253: Audited DFlash environment only</skipped></testcase><testcase classname="tests.test_dflash_reuse" name="test_guided_matcher_receives_only_current_draft_logits" time="0.059" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_risk_handoff_switch_rejection_and_kv_recovery" time="0.004"><failure message="ValueError: Non-finite or invalid Draft confidence">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....2359e+00],
+         [ 9.5407e-03, -3.5448e-02, -1.7163e-02,  ..., -2.1120e-01,
+          -4.0152e-01,  1.9563e+00]]]))
+
+    def test_real_target_risk_handoff_switch_rejection_and_kv_recovery(tiny):
+        from memorydraft.retrieval.prefix_risk import PrefixRiskPolicy, PrefixRiskReuseMatcher
+        from memorydraft.retrieval.transport import AlignmentConfig
+    
+        class ScriptedRisk(PrefixRiskReuseMatcher):
+            def propose(self, *args):
+                return None
+    
+            def splice_shortlist(self, confirmed, draft_tokens, budget):
+                # Scripted, deliberately wrong proposals exercise strict verification;
+                # cached reference tokens here are test fixtures, never performance data.
+                if len(draft_tokens) &lt; 2:
+                    return []
+                n = min(6, budget)
+                a = [*draft_tokens, *([0] * n)][:n]
+                b = [draft_tokens[0], (draft_tokens[1] + 1) % 32, *([0] * n)][:n]
+                return [dict(tokens=tuple(a), prefix_length=len(draft_tokens), cheap=.95, position=0, end=100, source="test"),
+                        dict(tokens=tuple(b), prefix_length=1, cheap=.8, position=20, end=100, source="test")]
+    
+        matcher = ScriptedRisk(SuffixArrayIndex(Snapshot("toy", 1, (MemoryEvent("toy", "fixture", 0, "1 2 3 4 5"),)), IntegerTokenizer()),
+                               policy=PrefixRiskPolicy([1.5, -15., 0., 0., 0., 0.]), hint_tokens=1,
+                               config=AlignmentConfig(min_context=1))
+        draft = CheckedDraft(tiny.features)
+&gt;       result = generate_reuse(tiny.target, draft, tiny.ids, max_new_tokens=29, matcher=matcher,
+                                config=ReuseConfig(max_tokens=8, cooldown_rounds=1))
+
+tests\test_dflash_reuse.py:329: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\torch\utils\_contextlib.py:116: in decorate_context
+    return func(*args, **kwargs)
+memorydraft\backends\dflash_reuse.py:163: in generate_reuse
+    proposal = guided(confirmed, block[0, 1:].tolist(),
+memorydraft\retrieval\prefix_risk.py:98: in propose_with_draft
+    values = draft_confidence(logits)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+logits = tensor([[0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+         0., ... 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+         0., 0., 0., 0., 0., 0., 0., 0.]])
+
+    def draft_confidence(logits):
+        import torch
+    
+        if logits.ndim != 2 or logits.shape[0] &lt; 1 or logits.shape[1] &lt; 2:
+            raise ValueError("Expected per-position Draft vocabulary logits")
+        logp = logits.float().log_softmax(-1)
+        probabilities = logp.exp()
+        top = probabilities.topk(2, dim=-1).values
+        values = torch.stack((top[:, 0], -(probabilities * logp).sum(-1) / math.log(logp.shape[-1]),
+                              top[:, 0] - top[:, 1]), dim=-1).cpu().tolist()
+        if any(not math.isfinite(x) or not 0 &lt;= x &lt;= 1 for row in values for x in row):
+&gt;           raise ValueError("Non-finite or invalid Draft confidence")
+E           ValueError: Non-finite or invalid Draft confidence
+
+memorydraft\retrieval\prefix_risk.py:23: ValueError</failure></testcase></testsuite></testsuites>
