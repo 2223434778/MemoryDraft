@@ -9,6 +9,7 @@
     "mechanism/summary.json": "68e7bc7d3fa4eee337221cfb5a7a49cf74006a928825ca530ad37b4345374bf9",
     "mechanism-launch.json": "3362c3a8914054abbd03cf9a2fec8d0a93f70306e124be66cfbef4837a2bf714",
     "tests-full-local.xml": "18551368f2c7c986aa033ef839ab9aa40221ca02b638544bfe3a574242585d1c",
+    "tests-rebuild-local.xml": "dcdb9ba8a503eaa74bef6453e83379a97f3fafae3868496bd54ca159604ad9e0",
     "tests-related-local.xml": "57865df29377656098c7bd8750eab2e29288aba522b61f6a9442b79e53c5a41c",
     "tests-report-local.xml": "365435d02992b8bd56cba931d291e7114c209005e0a57383f7a7a76e87c5aee3",
     "tests-server.xml": "ea9a252908af44288ce7a2bafe8d5ae545e8ae7d8b313ff23108fe36b01cc1cb",

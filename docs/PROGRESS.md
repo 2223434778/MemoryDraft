@@ -1,5 +1,10 @@
 # 项目进度
 
+## 2026-10-19 — 报告跨平台重建的字节保留修复
+
+- 首次最终交付在Linux重建首轮报告后，修复报告被旧证据SHA保护拒绝。确认诊断JSON语义完全相同，但字典键顺序变化：原SHA`cd81e60688775121a25ca2e4cffd57fa9557bd7b1f0acbf46303d4957e73b118`，重建SHA`bc3ab55d18d00ff1e68c7dac01ffd17d16e7662631e07c35e66938f7f047cd14`。不是模型输出或数值结果变化；原GPU目录和Git原证据不受影响。
+- 两个报告命令现在对语义相同的诊断保留已有原始字节，新文件采用固定排序JSON；不改历史出版物。增加实际CLI子进程、不同hash seed/等价JSON序列化的回归。`python -m pytest -q tests/test_splice_report.py tests/test_splice_cooldown_report.py --basetemp .test-tmp-splice-rebuild --junitxml=artifacts/splice-report-rebuild-tests.xml`：12 passed/15.24s。只修复报告写入，不改已计时package、runner或协议；无需重跑GPU实验。
+
 ## 2026-10-19 — 拼接冷却最小修复（五请求检查完成）
 
 - 修复执行提交`c98bb83e3e50a0ba1c01268317b074a2fcfcbbd4`，572个Git原始文件SHA全部通过，归档SHA`01568feab9c0d830900ec0bae95e8ac8f5b94feaa710e9645f50d803986bc545`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice-cooldown`，预执行90 passed/8.20s。实际package两阶段同为`89063c6e3007034cb72823d5a42494f26258baf35b7cbf9beaa74dbd0ee2513c`；全部旧证据含首轮拼接SHA保持不变，不覆盖原执行源码清单。

@@ -8,10 +8,18 @@ from pathlib import Path
 
 from memorydraft.evaluation.runtime_migration import file_hash, read_rows
 from memorydraft.evaluation.splice_probe import METHODS, audit, input_digest, inputs, mechanism_gate, prefix_acceptance, protected_hashes
-from scripts.diagnose_transport_online import write
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def preserve_diagnostic(path, value):
+    # Existing JSON is hashed evidence. Different process hash seeds can reorder
+    # equivalent dictionaries; a report rebuild must preserve those original bytes.
+    if path.exists() and json.loads(path.read_text(encoding="utf-8")) == value:
+        return
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True, allow_nan=False) + "\n",
+                    encoding="utf-8", newline="\n")
 
 
 def audit_calls(rows, tasks):
@@ -161,7 +169,7 @@ def main():
     args = parser.parse_args()
     report, diagnostic = build(args.source)
     args.report.write_text(report, encoding="utf-8", newline="\n")
-    write(args.source / "diagnostic.json", diagnostic)
+    preserve_diagnostic(args.source / "diagnostic.json", diagnostic)
 
 
 if __name__ == "__main__":

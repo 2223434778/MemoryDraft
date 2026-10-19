@@ -7,8 +7,7 @@ from pathlib import Path
 
 from memorydraft.evaluation.runtime_migration import read_rows
 from memorydraft.evaluation.splice_probe import COOLDOWN_IDS, METHODS, inputs
-from scripts.diagnose_transport_online import write
-from scripts.write_splice_report import ROOT, load_stage
+from scripts.write_splice_report import ROOT, load_stage, preserve_diagnostic
 
 
 def build(source):
@@ -83,7 +82,7 @@ def main():
     args = parser.parse_args()
     report, diagnostic = build(args.source)
     args.report.write_text(report, encoding="utf-8", newline="\n")
-    write(args.source / "diagnostic.json", diagnostic)
+    preserve_diagnostic(args.source / "diagnostic.json", diagnostic)
 
 
 if __name__ == "__main__":
