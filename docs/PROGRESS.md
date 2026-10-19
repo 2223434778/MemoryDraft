@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-19 — OT完整矩阵三个小改动（完成）
+
+- 冻结执行提交`81a0de103f95cf3c990f9fcbd4947276e70723c0`，601个Git原始文件SHA全通过；源归档SHA`7f89cbd431503d11d6c27feac409a6261456ae19b8f044b47447aae0db8445c0`，实际package SHA`a5e135401d0f7558a100d3cd1c4fa19a83e70c43c05e6099183c228df6011c33`。服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-matrix`，相关94 passed/8.26s；原始已发布结果含两轮拼接保持递归SHA不变。
+- CPU命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.probe_matrix_offline --tokenizer models/qwen3-8b --output artifacts/offline-v1`。135次旧调用及提议全部重现，14个去重可评分状态/39候选。相对原OT，B选择变化0，C4，组合2；同状态连续接受总和Edit344、OT318、Tail339、B318、C301、组合314。该总和不是在线新增token或速度，不作独立样本统计。
+- 按`OT_MATRIX_PROTOCOL.md`实际运行64次机制检查、128次未插桩交错开发计时，192/192输出token/prompt/snapshot严格匹配原AR；128/128计数路径与机制回放相同。流水PID2285057已完成，双GPU恢复19MiB/0%；CPU/GPU阶段相同package，未按新评分改参数。所有任务早已观察，不是新holdout。
+- 总时延Suffix14.164274s、Guided-Edit13.496111s、Splice-Edit13.627771s、原OT13.912373s、TailOT(A)13.609542s、OrderOT(B)14.088728s、PlanOT(C)14.051844s、All13.890790s。B相对原OT+1.27%、C+1.00%、All-0.16%；组合相对TailOT仍+2.07%、相对Guided-Edit+2.92%。新三个组没有超过已测TailOT，保留局部正负结果而不继续在本批换阈值。
+- B总轮与原OT同为67但多一次求解；C提议9→5、选中却未接受历史的状态4→1，却误放弃两处池内可用接续，总轮67→69。具体旧JSON可接受32的候选连续性0.469被0.5阈值拒。runbook正确32-token候选连续性0.397被拒，错误候选保留14个Draft但仅接受7、连续性反而0.704。既有未校准阈值误拒，也有上下文对齐与Target接受的排序错位，不能只靠降低阈值宣称解决。组合总轮66，仍高于Tail65；C在JSON负例减少部分浪费但未胜过便宜Edit。
+- 结果`results/ot-matrix`，报告`OT_MATRIX_RESULTS.md`。原始zip99659字节/SHA`f956951905b89cb2339117a45375d5324c1aba1fbfca4edbf6ea55b7f8dad532`，仅发布紧凑特征、调用与来源，不含大型矩阵/权重/数据库/私有历史。重建`.venv\Scripts\python.exe -m scripts.write_matrix_report`。
+- 本机完整314 passed/3 skipped/34.15s；追加报告/状态审计16 passed/13.83s；补充逐候选解释后最终报告8 passed/10.70s，含真实CLI跨hash-seed证据字节保留。默认suffix、独立infra保持原版本；本轮未实现预计收益调用或动态长度，不把固定启发评分称为接受概率。
+
 ## 2026-10-19 — OT完整矩阵三个小改动（执行准备）
 
 - 用户授权测试接续可靠性、完整矩阵与三个小改动。新增`retrieval/matrix.py`：A沿用已有尾部加权；B用初始正确匹配流的相邻行1–4步顺序支持修正真实token代价，再求解一次；C用锚点前末8行支持度/集中度/连续性/dustbin质量排序或放弃；组合A+B+C独立。均为固定词面OT启发，不是校准接受概率/硬单调约束/OPW复现。参数先写入`OT_MATRIX_PROTOCOL.md`，不按新评分结果调参。

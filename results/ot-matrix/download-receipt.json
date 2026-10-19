@@ -1,0 +1,70 @@
+{
+  "archive_bytes": 99659,
+  "archive_sha256": "f956951905b89cb2339117a45375d5324c1aba1fbfca4edbf6ea55b7f8dad532",
+  "files": {
+    "offline/provenance.json": {
+      "bytes": 21855,
+      "sha256": "b8181b3b9921f50681eee467dfee02c77148bc658c285888d06f908995ae126f"
+    },
+    "offline/summary.json": {
+      "bytes": 780,
+      "sha256": "61828e37277955c73ba6125eebb46d10b2cda3cad5a1503a5547c9fd6a266d81"
+    },
+    "offline/frames.jsonl": {
+      "bytes": 68440,
+      "sha256": "514efffe6c9fa5172d46d81254f74e6b75e41269cf9574dac3996b052973effb"
+    },
+    "offline/run.log": {
+      "bytes": 580,
+      "sha256": "bde41c5afb476729c2e31ab9dba4470ee98367e24f462aebe6babce6d340fea6"
+    },
+    "mechanism/provenance.json": {
+      "bytes": 23979,
+      "sha256": "6340692298227b4c2e3814f68c940e5e4c565d3cf6d817f477c89b35525814b6"
+    },
+    "mechanism/summary.json": {
+      "bytes": 24359,
+      "sha256": "768d45e8154357ab7d51349e1d0ad19ed46621414ca31bdf8c4cabcbd5e657a6"
+    },
+    "mechanism/rows.jsonl": {
+      "bytes": 318722,
+      "sha256": "9beea456306a22669ec488ffde29bc5e9d43615cb27e8e142b72d9a924fac999"
+    },
+    "mechanism/run.log": {
+      "bytes": 846,
+      "sha256": "5bbcf8ca97b2ddc42282c158472703fbd7503b63ea832f3446259c9cf5ae7654"
+    },
+    "mechanism-launch.json": {
+      "bytes": 433,
+      "sha256": "114ae963f046f6872ed5385c189798b46a4f3e08b0c45609f3f59d416e5a56e4"
+    },
+    "timing/provenance.json": {
+      "bytes": 23696,
+      "sha256": "9a14b9d6f3c15b95f9e10ba8eea3cd5049ca00e3c51e2c3567645c6cf130e918"
+    },
+    "timing/summary.json": {
+      "bytes": 25615,
+      "sha256": "525a6578ff89aa9d5967f4bab8ccb98b09f3044e0485a36977dde5adc3820f08"
+    },
+    "timing/rows.jsonl": {
+      "bytes": 240070,
+      "sha256": "149730d5a52b65c24ceb9d4a5b308dc2ebbf7398251ccf94758204ff93f7d4a8"
+    },
+    "timing/run.log": {
+      "bytes": 846,
+      "sha256": "b501b4596f8493ddb4a4dc1b4791fab5e73687f7f52179681dbf7c92d7bcf45b"
+    },
+    "timing-launch.json": {
+      "bytes": 475,
+      "sha256": "3cd7a51ceddd1f80d35c64cf8c6a082dbe7bdb377285bcee45e3e429eddd2a1b"
+    },
+    "execution-source.json": {
+      "bytes": 68627,
+      "sha256": "013d40fbf8798606624a934527ef568147986862eeacae4439585e208f107379"
+    },
+    "tests-server.xml": {
+      "bytes": 12641,
+      "sha256": "3d1f5b54d8fe4be6bb1570ed4a2d70d01b8c956daa6595fa460005452a228c57"
+    }
+  }
+}

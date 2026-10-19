@@ -1,0 +1,19 @@
+{
+  "pid": 2285058,
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_matrix_probe",
+    "--stage",
+    "mechanism",
+    "--offline",
+    "artifacts/offline-v1",
+    "--config",
+    "configs/runtime-dflash.json",
+    "--output",
+    "artifacts/mechanism-v1"
+  ],
+  "cwd": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-matrix",
+  "started_unix": 1792399469.6817396
+}
