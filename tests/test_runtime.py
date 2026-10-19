@@ -81,6 +81,19 @@ def test_cancel_releases_model_and_does_not_pollute_next_request(engine, method)
     assert engine.generate(request(), method).token_ids == reference.token_ids
 
 
+@pytest.mark.parametrize("retrieval", ["ot-budget-splice", "ot-gate-splice", "edit-budget-splice"])
+def test_benefit_runtime_keeps_target_and_empty_history_fallback(engine, retrieval):
+    from test_benefit import data
+
+    reference = engine.generate(request(), "AR")
+    engine.config = replace(engine.config, retrieval=retrieval, benefit=data())
+    actual = engine.generate(request(), "R+DFlash")
+    assert actual.token_ids == reference.token_ids
+    assert actual.prompt_sha256 == reference.prompt_sha256
+    assert actual.snapshot_id == reference.snapshot_id
+    assert actual.counters["benefit_ot_calls"] == actual.counters["benefit_decisions"] == 0
+
+
 def test_legal_snapshot_only_and_no_writeback(engine, tmp_path, monkeypatch):
     import memorydraft.runtime.engine as module
 

@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — 保留内部拼接，预计收益调用/动态长度（执行准备）
+
+- 用户决定舍去完整矩阵可靠性路线；旧实验不删除，新路由不使用矩阵特征。新增 `retrieval/benefit.py`，用历史已验证接受长度预测 Draft/Edit/TailOT 三个动作的推进量，并按实测成本比较预计rate；OT需要比最佳廉价动作高2%才调用，单候选不调用；拼接长度16/24/32。保留精确suffix优先与原始Draft/历史span、严格Target验证和预算。
+- 校准固定14个已观察状态；每次排除当前整个项目，其他每项目最多一个邻居，最近3项目加权。不读取当前答案作在线决策、不动态调参。因数据稀少且全部已观察，只是交叉项目开发验证，不称独立holdout。协议 `OT_BENEFIT_PROTOCOL.md` 写明局部rate/成本档/pending近似限制。
+- 新增成本微基准、离线检查、七组GPU runner，以及runtime显式可选入口；默认suffix和独立infra版本不变。首轮发现缺失校准抛TypeError及pytest默认临时目录不可写，已改明确配置检查/项目内basetemp。随后15 passed；相关86 passed/2 skipped/13.88s，命令 `.venv\Scripts\python.exe -m pytest -q tests/test_benefit.py tests/test_runtime.py tests/test_dflash_reuse.py tests/test_splice_reuse.py --basetemp .test-tmp-benefit-2`。
+- A6000双卡19MiB/0%，使用新独立 `ot-r-budget` 目录；先冻结源码、完整回归及成本测量，再固定八个旧请求×七组机制56次、交错计时112次。不用本轮结果反复换参数。
+- 冻结前完整回归334 passed/3 skipped/38.90s：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-benefit-full --junitxml=artifacts/benefit-tests-full-local.xml`。三份新runner通过py_compile；`git diff --check`通过。
+
 ## 2026-10-19 — OT完整矩阵三个小改动（完成）
 
 - 冻结执行提交`81a0de103f95cf3c990f9fcbd4947276e70723c0`，601个Git原始文件SHA全通过；源归档SHA`7f89cbd431503d11d6c27feac409a6261456ae19b8f044b47447aae0db8445c0`，实际package SHA`a5e135401d0f7558a100d3cd1c4fa19a83e70c43c05e6099183c228df6011c33`。服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-matrix`，相关94 passed/8.26s；原始已发布结果含两轮拼接保持递归SHA不变。
