@@ -1,0 +1,32 @@
+{
+  "files": {
+    "complete.txt": "d91a05818272478d807be242b3f696049285dcbe4bc45510d613e4d9c849ac19",
+    "cost/costs.json": "997c89b5d2a747a49cc4f7e2356821e63375fb8018a54cb159135f5c72ed388f",
+    "cost/measurements.json": "a97f95b81745da8603b396f450b2b7df688d5377ff9a627178c55d0274a39376",
+    "cost/provenance.json": "69e4e4d8765134fbdafa3609b173f8c5bf438879179076af0d48f1d1623f4ea9",
+    "diagnostic.json": "6931d90c0f3e27007dd36b55db61917ecae307da94a4cd563d85dd61a170faaa",
+    "download-receipt.json": "2cb8f1c43aa0ee4f6520dc4e427a6ea626010a67b3c7c35267bff87b07883cae",
+    "execution-source.json": "f4c8168d80f93738959defa5759ab25f69409b892ccaefb94beb9d7b9eaf613c",
+    "failed-attempt1/execution-source.json": "68eab0b9c8b2273a876a4458370c749ec418142e72628748e2721fdcda7907d6",
+    "failed-attempt1/pipeline.log": "dc7309bfd365b087941e1d76e58c9dbfa71d0bd6a3e391dc9de1e4eb70181c9d",
+    "failed-attempt1/provenance.json": "03760cf654dd2aa87bdc5e2fdaeb208d64d086404900d26859941b0649a574f8",
+    "failed-attempt1/rows.jsonl.gz": "2c2b35fc08607439c2dccb2e620c55226bff73adc7f87d6c5fd6f47949683087",
+    "mechanism/provenance.json": "161153554b4bfe94a2907a846bdb88716da18113c538d3eababbb8f5a0433751",
+    "mechanism/rows.jsonl.gz": "ca9e129bd73265395874fe35e25cf24875b87794d99ec09db89258bed515058d",
+    "mechanism/summary.json": "24d12f01cea0e17b912159d5cedc5b0ce6fd862cb5307a42d89bbca652eeffc4",
+    "offline/provenance.json": "8246c90e6240efb565c5788295c9baec1ff6093ae0f4c0b713f316660e8493ab",
+    "offline/rows.jsonl.gz": "3129b218033a26c4e04f81362688cdbbe59dc61fc58714d54ce38c798da2f8d4",
+    "offline/summary.json": "0eaff8ce23d7334c534d0c7b6d933e1705cad8aae307f3bdaeea0e06bd89cd09",
+    "pipeline.log": "540ad0e7bac24638a45051802c496946519944b5c83edab9bca007873e654fe3",
+    "tests-auditfix-local.xml": "25f3d7456e22b765eb45b444fb138e9d85d42aed45c717d26a34beb1c550a527",
+    "tests-full-local-before-fix.xml": "5c2c1720c59903e7f2774593acc709b062308cb3e53d7ea0c4628b15a3976a90",
+    "tests-full-local.xml": "66a50637463db591887385fc4abed2c18f0306a8efaaf8d7bd7b74fb29a57d09",
+    "tests-related-local-before-fixture-fix.xml": "056cd9e507e8b918e9d36c3a9ba05dbeabfe819d7d342c9ac4accc1b9e4a1c60",
+    "tests-report-local.xml": "ce0367db70b125999777df2d00511a947bf9a816332ce50ff397bbd3be5cc24b",
+    "tests-server.xml": "1a2d8d57e57c329107bd7398ea224e99afc4b18ffa2f01eadf389031637d04c5",
+    "timing/provenance.json": "3df84ecab59e06aca0e2b16ce41b61f4ba174271d4fbf812885606da72de8171",
+    "timing/rows.jsonl.gz": "584046dfdc0c062f0249194d0c9152f52d1d499dba473fdda3b802394cd4806d",
+    "timing/summary.json": "89e1dd6d0472bef7bce61d87c925212854ef8fec24c9649e4704f0949e7dc382"
+  },
+  "report_sha256": "1c48375e337d9c9c9ca7ad3a0a30901439f794567aa91d12dc8aaf270d96276d"
+}

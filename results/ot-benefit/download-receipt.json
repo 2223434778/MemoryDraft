@@ -1,0 +1,86 @@
+{
+  "archive_bytes": 170881,
+  "archive_sha256": "f2cac0ac41b755e5fb9ce62b67391b2579f481e8df2bedeaed05bce607a9298d",
+  "files": {
+    "execution-source.json": {
+      "bytes": 72398,
+      "sha256": "f4c8168d80f93738959defa5759ab25f69409b892ccaefb94beb9d7b9eaf613c"
+    },
+    "tests-server.xml": {
+      "bytes": 12360,
+      "sha256": "1a2d8d57e57c329107bd7398ea224e99afc4b18ffa2f01eadf389031637d04c5"
+    },
+    "pipeline.log": {
+      "bytes": 2818,
+      "sha256": "540ad0e7bac24638a45051802c496946519944b5c83edab9bca007873e654fe3"
+    },
+    "complete.txt": {
+      "bytes": 21,
+      "sha256": "d91a05818272478d807be242b3f696049285dcbe4bc45510d613e4d9c849ac19"
+    },
+    "cost/provenance.json": {
+      "bytes": 25851,
+      "sha256": "69e4e4d8765134fbdafa3609b173f8c5bf438879179076af0d48f1d1623f4ea9"
+    },
+    "cost/costs.json": {
+      "bytes": 810,
+      "sha256": "997c89b5d2a747a49cc4f7e2356821e63375fb8018a54cb159135f5c72ed388f"
+    },
+    "cost/measurements.json": {
+      "bytes": 13358,
+      "sha256": "a97f95b81745da8603b396f450b2b7df688d5377ff9a627178c55d0274a39376"
+    },
+    "offline/provenance.json": {
+      "bytes": 24409,
+      "sha256": "8246c90e6240efb565c5788295c9baec1ff6093ae0f4c0b713f316660e8493ab"
+    },
+    "offline/summary.json": {
+      "bytes": 178,
+      "sha256": "0eaff8ce23d7334c534d0c7b6d933e1705cad8aae307f3bdaeea0e06bd89cd09"
+    },
+    "offline/rows.jsonl": {
+      "bytes": 16349,
+      "sha256": "63e3f88b75e3aa2c7e056cef3976578e0bad8984254a564385fac7f70cd1c394"
+    },
+    "mechanism/provenance.json": {
+      "bytes": 32614,
+      "sha256": "161153554b4bfe94a2907a846bdb88716da18113c538d3eababbb8f5a0433751"
+    },
+    "mechanism/summary.json": {
+      "bytes": 24685,
+      "sha256": "24d12f01cea0e17b912159d5cedc5b0ce6fd862cb5307a42d89bbca652eeffc4"
+    },
+    "mechanism/rows.jsonl": {
+      "bytes": 304286,
+      "sha256": "1a282f0c106bb02dcb2c64f1da9f5209136156318000002eb186c3be1c725967"
+    },
+    "timing/provenance.json": {
+      "bytes": 32547,
+      "sha256": "3df84ecab59e06aca0e2b16ce41b61f4ba174271d4fbf812885606da72de8171"
+    },
+    "timing/summary.json": {
+      "bytes": 25795,
+      "sha256": "89e1dd6d0472bef7bce61d87c925212854ef8fec24c9649e4704f0949e7dc382"
+    },
+    "timing/rows.jsonl": {
+      "bytes": 213302,
+      "sha256": "6e191713da8baacf8723638ee1db8b0c5467e4d05e7650102bd3a9ac444b313d"
+    },
+    "failed-attempt1/execution-source.json": {
+      "bytes": 72291,
+      "sha256": "68eab0b9c8b2273a876a4458370c749ec418142e72628748e2721fdcda7907d6"
+    },
+    "failed-attempt1/pipeline.log": {
+      "bytes": 2760,
+      "sha256": "dc7309bfd365b087941e1d76e58c9dbfa71d0bd6a3e391dc9de1e4eb70181c9d"
+    },
+    "failed-attempt1/provenance.json": {
+      "bytes": 32563,
+      "sha256": "03760cf654dd2aa87bdc5e2fdaeb208d64d086404900d26859941b0649a574f8"
+    },
+    "failed-attempt1/rows.jsonl": {
+      "bytes": 304281,
+      "sha256": "b8047d9757f5b7100cf6560a0cc0bed97bd44c57f9bbd0e87dbccc3f31fed480"
+    }
+  }
+}

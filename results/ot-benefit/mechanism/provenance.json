@@ -1,0 +1,678 @@
+{
+  "version": "0.3.0",
+  "engine": {
+    "backend": "dflash",
+    "synthetic": false,
+    "methods": [
+      "AR",
+      "DFlash",
+      "R+DFlash"
+    ],
+    "torch": "2.5.1+cu124",
+    "transformers": "4.57.3",
+    "device": "cuda:0",
+    "dtype": "torch.float32",
+    "gpu": "NVIDIA RTX A6000",
+    "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "implementation": "DFlash uses the audited adapter with R disabled; native control remains in research scripts",
+    "config": {
+      "backend": "dflash",
+      "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget-v2/configs/../models/qwen3-8b",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget-v2/configs/../models/dflash-qwen3-8b",
+      "device": "cuda:0",
+      "dtype": "float32",
+      "attention": "eager",
+      "db": "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget-v2/results/raw/ot-benefit/mechanism/history.db",
+      "threads": 4,
+      "max_input_tokens": 8192,
+      "max_new_tokens": 1024,
+      "template_options": {
+        "enable_thinking": false
+      },
+      "reuse": {
+        "max_tokens": 32,
+        "min_match": 6,
+        "cooldown_rounds": 1,
+        "max_pending_tokens": 1024
+      },
+      "retrieval": "suffix",
+      "alignment": {},
+      "benefit": {}
+    }
+  },
+  "packages": {
+    "torch": "2.5.1",
+    "transformers": "4.57.3",
+    "numpy": "1.26.4",
+    "pydivsufsort": "0.0.19",
+    "fastapi": "0.111.1",
+    "uvicorn": "0.30.2"
+  },
+  "source": {
+    "sha256": "1d7947ea6371e8c54c63ff382f46f6eee9de413cd87531c3cf6ccbc6eabbdd43",
+    "files": {
+      "__init__.py": "3185d26a581cfcdeb72d8f1e9123f83a2c271f7548b5b6de6752277307ce545c",
+      "__main__.py": "1a3565f33ad614f398becd262556b74ae2ffe96f714b942886ea6e1741a7b1d6",
+      "assets/DFLASH_LICENSE.txt": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422",
+      "assets/dflash-manifest.json": "eb5e6b37ac58f40e31e8ba132eff2a15cea38a0f29577d9b22f8f2abdfb62c72",
+      "backends/__init__.py": "1c9e99ff6759449e444548914a0dffafe5b97a15eea774a418cbe4d45aae8e2b",
+      "backends/dflash_reuse.py": "c6cbed78697385d7153a3a07c1941032366e554ccd648b6e2028767944c82dce",
+      "backends/transformers.py": "7e9fd1bce07003610ee36816af82290a7393eeecba11bc6bf8023eb4b2b89f05",
+      "cli.py": "4959cf3a86fa06e01c21f954f5eb373d39b0dadc1b45fe824deda041a0b70d4e",
+      "drafters/__init__.py": "3d002b17238a3ebbbdb6ad39bd99b9fe4a667d8bd13b824ee5f38f21a0d1eb5c",
+      "drafters/candidates.py": "ab3f58f49776b1c7528c6f57b469bd42c6fe5a357dea2aba4e07940ffc84574c",
+      "evaluation/__init__.py": "6e42b1b2aeec9bdb515e27bdf7613fbfb599109baa09689c16e635bb367dca36",
+      "evaluation/benefit_probe.py": "bb383dce3b812da7e6f29c4b713b35345615784ec5c28d603d76b6b156a1365b",
+      "evaluation/config_revisions.py": "b8ea6cafd61ffd40c7fccd21e524bb5863c6778454b78a4d117f5c05e55f944e",
+      "evaluation/distillation.py": "e5989b6bfd3d98feaf601fc25305e82618939353e5c4632002574d6088f7479d",
+      "evaluation/guided_validation.py": "0cedea63939e43fe1d9df3ca912839bad62d21d42c5f66524723b85067e47bd6",
+      "evaluation/history_alignment.py": "b67c92f603b6ef0d5c8abc4ff1f5a0e7f8532009050be63f4ce1e3522494f704",
+      "evaluation/matrix_probe.py": "32cec17e58a0f69c41b370d713a9becb18d11c1cfcc795fb1a72584bdcb602ff",
+      "evaluation/prefixes.py": "ef00e6275d2487ad179794700bbedf08e1f7fc52b9d2442c6ce67cf53fe1c138",
+      "evaluation/release_triage.py": "ea36616bdc48672f8a4d8f1040cd5554501519c85da3b6ae56acf688360c03f7",
+      "evaluation/replay.py": "8128dc566578e329503b6fff9a668fb0a8ef0fb38e490c93dec170a46f7ce296",
+      "evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1",
+      "evaluation/reuse_cases.py": "1441e35eb4defffd13a7d21a124b216619baa4b1588a4279f71b80ec1470e202",
+      "evaluation/runtime_migration.py": "73c93ac51f2515dafaf59b94a1144aa5d659b2afa65a9e5ee885c5548c400965",
+      "evaluation/splice_probe.py": "6976663d25e54909af64525983f42d8dee9daf0efd5f70267b54a1a0652b9cef",
+      "evaluation/transport_diagnosis.py": "4d0502cccd2d7bc482a3a2b4aeeab7a2182278f37c25a1e5e3e73c69e3b26e3a",
+      "evaluation/transport_probe.py": "e86283f367c7cf149f90d2ffd911e5c746e011308885073027c18de6070c4296",
+      "evaluation/transport_validation.py": "460ee65d9ef8523a02d15083e80c27a4d03de21710d1d492253de8b89e98afab",
+      "memory/__init__.py": "dc0484a0f3716c35666080fc67f5429ebd09bb2f51e34753d71fe58a7a171731",
+      "memory/store.py": "25fd1cfe9394ed4f62d1a96f88cc36646901d57395a2878398c7bc8c694064fe",
+      "retrieval/__init__.py": "d773026ba0744602b956ba7cadd2075c9a031af302b3d43b30c599b208d64bd8",
+      "retrieval/arctic.py": "44c9d34c92d81392190e418f8081bb78d61c4630cd6549068fa6837745ffab6e",
+      "retrieval/benefit.py": "3a51e5bb8e118c498716e7cc02bf46cd8368b49a79f8a98c140982432db1e94e",
+      "retrieval/guided.py": "7ff9cba41845bc338e936ce11dfbbc1c1333296225fe1c5fd354c251954d66b6",
+      "retrieval/matrix.py": "eca8429456b2fec307aab930d065d2127925323ebfb7f73de1a6aa1648e7d335",
+      "retrieval/pool.py": "4f4333ca07fa30e8ed7ab9dcf9400156cc4785e133238628ef08997f7ee69146",
+      "retrieval/reuse.py": "acce3044fef35f44a41724e0c9ec169888798caf7c5ce3b5f887eedce33bc8b0",
+      "retrieval/splice.py": "f787ec85989750f849daeeb736cfc3616cf44d698c0c53971a5f05f917a6cbe8",
+      "retrieval/suffix.py": "b49a2edab03aeac462cacb59338fd89bcd695c9c2f5bc79580a2b00290598d57",
+      "retrieval/transport.py": "86db3b1b5c79ef184252019d03911038b5747a0583bf7d436b2d86d23ca2fdff",
+      "routing/__init__.py": "6af25601ead32f65b8895ef810f4756e8de73e4466a128ac51523f5c4b7b38db",
+      "routing/policy.py": "02b3428efd8e2246d30315e88bb7e9bc00a6b9604baf8f8454a2e514217649a9",
+      "runtime/__init__.py": "7dfa5205ea91fa64acd53a47d678278adf869be0819d699df9bc44e03d306fcd",
+      "runtime/benchmark.py": "c393cc7759a19c5f0662c544a4f638b8e2b920ea5bdc2ef0a8988ef3110cdd26",
+      "runtime/cli.py": "089b9c91d6cc8abc9f0bc5f1d40d9e6d128fcf92dbc809d4bcd16925fde6d404",
+      "runtime/config.py": "ac5713b953461b0a3027219b0dcb945264d2163ebf736189664aeaf327337935",
+      "runtime/contracts.py": "8e7e0f57938220734f0eda06d42f8ca86554238b3be2b58016310a3ea385c15a",
+      "runtime/demo.py": "8be2aa9a60cb5c6e641f3a1ac22d43bc3e23b9519d9498bba8b7d6f83df88da7",
+      "runtime/engine.py": "22601433c869a4ba8fa46301aa6cce73c99bce175a70e453fbb033392ef6a3ee",
+      "serving/__init__.py": "7b4d5d621027fad0c986aa4c0820c0f105aec807b1dc9872355dd00160486fda",
+      "serving/app.py": "4c69c22aa44156b159e3050590905781f3b20b86270b2599c5e790b2126aa69b",
+      "serving/loadtest.py": "5b5c786adbb7820b33a27e232bde8ad0ff2db91c3f2a8a51a39ac764d6d9b8a8",
+      "serving/worker.py": "d28659db45f66fd43da5125493c4c611bdaa8c3261e5739cb00041510acb526f"
+    }
+  },
+  "timing": "Synchronized engine latency includes snapshot, tokenization, indexing, generation and decode; load/warmup excluded",
+  "status": "complete",
+  "stage": "mechanism",
+  "methods": [
+    "Suffix-R",
+    "Guided-Edit",
+    "Splice-Edit",
+    "Splice-TailOT",
+    "Gate-OT",
+    "Budget-Edit",
+    "Budget-OT"
+  ],
+  "scope": "Eight known development requests; nearest-three-project empirical policy excludes current project",
+  "instrumented": true,
+  "load_seconds": 19.33485311095137,
+  "inputs_sha256": "53952e4c80464f857552a1fb331f4c1a8e9aaebc9ef67923b80787c0c3e14a36",
+  "runner_sha256": "a43898ab29d674e3d1277d12a0b41a2f1664410dc3c6499709d8f01dfac300a4",
+  "protocol_sha256": "bfbff8931cbe3810d955e980640292640937411c0e8dd4260fd7ea62d55bad15",
+  "original_sha256": {
+    "results/ot-r/diagnostic.json": "c84ae2a673686e547901aec192b5714ae1dbea2477624ac52db32cd25bfde832",
+    "results/ot-r/download-receipt.json": "418eb989278757598ac12a14849b61f4ac3636c5132acc3021bf3a8f329bc518",
+    "results/ot-r/environment-local.json": "d628bc6d059a25a59ec80487cf7bdfbe8ed0b6849bf0904eeb6baf002eae5e57",
+    "results/ot-r/execution-source.json": "372e86884f3173cb4bd6d6a0a58bf9787939868edf41d6dfd6a71ed74a6f7f2c",
+    "results/ot-r/fresh-ar.jsonl.gz": "5e0b2c6b4c2a7d7671bcd0684b0f6e204bcf33ef077f33b5f5b2cdb007d489d8",
+    "results/ot-r/infra-interview.json": "6a37db0700e8e90d22c235b81f6af786394e8d4615d70aa21340369c7416b63c",
+    "results/ot-r/offline-local-v1.json.gz": "c3e8040c81b3304352dd05fc82973b04dd91140a4a14fb35dfd5da910c319d1a",
+    "results/ot-r/provenance.json": "c7400af541adfd6ffdea35f12785443bc9358d4afe8c53af9df5fa6ff83ae2b5",
+    "results/ot-r/publication.json": "5224b6a1f5ee06fa9a13ea8ee6f15e104ca0b614d0e1b1ecfbd25a6d8e601c80",
+    "results/ot-r/rows.jsonl.gz": "07602d1988d42e08758ec106901c811d42f0f9f2a04224f4154d1b1814faacb4",
+    "results/ot-r/run.log": "f45494a0080886a7e96cf42565f91280e3d744543d0e834f61b64740080f3b27",
+    "results/ot-r/summary.json": "3a8f75f3d0f8a9399c3e96915ec5f0584533b3476457e528f92c9eb9b2a1b7e5",
+    "results/ot-r/tests-local.xml": "f37f1ec92ace77bb7f98865f3ee51ed5c10c338b13b097f749667a28cc7fadd7",
+    "results/ot-r/tests-report-local.xml": "7a81560d8b513a4e65b55b4b1609cb0b48c4ee79dc7bed922b421eec2f0d112f",
+    "results/ot-r/tests-report-server.xml": "ed91a38042cd5222ea1192d9445b9969ca90e97d410a081444fd77ef86d4f143",
+    "results/ot-r/tests-server-execution.xml": "12c2a6fbc15523afaff17d2200252d9f4131a17cec949140c841ec521336d8bd",
+    "results/ot-r/tests-server.xml": "98c16387c7d89553f4ec136a02f6653bb393d5639c90a69b07cadaf9b618c3dd",
+    "results/ot-r/validation.json": "4490909b3c15f53a3d6dfb082eb0b11d2ea84af9ee0988589b6aacdfb0ffb102",
+    "results/ot-r/verification.json": "67d5b8f88da9652cc49141a745215ad177fd8613d0c2b3f2c919c6cf34c81ca0",
+    "results/ot-validation/comparisons.json": "ccea006e72ddd50d5734f65c82a6d23f44a5ff9f34dadb6088014dc6c8d096fd",
+    "results/ot-validation/diagnostic.json": "7071844474062ce4c6f77f581e794feb43852e05fe586b317820e8001380c322",
+    "results/ot-validation/download-receipt.json": "dafb6de4a10e3094c22470bda2897fe0b9f0f902f19f049a51e6297caa4d166a",
+    "results/ot-validation/execution-source.json": "0c47e744e52c6d45692798b446aca0dab90f5b5f9f5b2f986ef9d1adaf414f7e",
+    "results/ot-validation/failed/execution-source.json": "fcfbf07bd4162e0d3944979bc3b8279051bc6d16a97c9b830ae431e552945bfb",
+    "results/ot-validation/failed/fresh-ar.jsonl.gz": "1368aeba66005e869f17cb702e439c7e3119eb3a1cc49f964893c0493b80dd35",
+    "results/ot-validation/failed/launch.json": "ffac8f046678ce1f5fb571adb8510b8571f1d38d151d1297722b3851a080fe3b",
+    "results/ot-validation/failed/provenance.json": "eeafb6828b8a07d52e89727f1d96baa383d5ac97f05e19dd3c6dc687e921c04b",
+    "results/ot-validation/failed/run.log": "040ea33afd94a5e22814c7abdaa3687067c2343566ee23130031577ec1c7ed7e",
+    "results/ot-validation/failed/tests-server-execution.xml": "628dc398cac82336e37f0c63f89b8b5174e0141d4f6b1b9eafd04249ae3b65fe",
+    "results/ot-validation/fresh-ar.jsonl.gz": "0c6ef6fc083dc33a1665afd9d1096d8de93057aeaca4c722f9f02049611c22ac",
+    "results/ot-validation/launch.json": "b87366d65296444d955c7755f39872967acf4f287aa8df88e127512a4ea342bb",
+    "results/ot-validation/provenance.json": "35fa22663b66e256c68c01a1ddf7e23575d3ae34978dc4f51b7bf305b470e69e",
+    "results/ot-validation/publication.json": "71dc8a08f82e078b4db0e1c3a94626927690e97ed5528e47c8d0066a7a40589d",
+    "results/ot-validation/rows.jsonl.gz": "bb60468c133b647ab328b29249594c8f2e197d27204365e12107546af6810577",
+    "results/ot-validation/run.log": "939345a819c2bed15713089b5935d398969334dd9a8422e5ae581ab848791c2b",
+    "results/ot-validation/summary.json": "98e6bcbabed286486adaca080008ffb50ee9d45f8cf81d77f51b18c1dc4fbf1d",
+    "results/ot-validation/tests-audit-local.xml": "6f77f9adfdc4242f1532a235b50cccb512a4085f1b81611552dc374854ca4365",
+    "results/ot-validation/tests-field-fix-local.xml": "b378132de857e171d3e1146fbe44e37ce6a885a2a9479c088bf69cb7426b72c1",
+    "results/ot-validation/tests-full-local.xml": "9d9e8bb98535a90ca093edc25a29fa45fbb2d31eb1328cf631d80d234e01656a",
+    "results/ot-validation/tests-report-local.xml": "7f57c0e72e6e318e738f4898e9739798532777afbe3aa570c1f9d0c868ed6cb6",
+    "results/ot-validation/tests-report-server.xml": "2ebb948997f5e0a3d7221a8bfc9713e9b3c22d220ef6e17787583fce9b42b0a2",
+    "results/ot-validation/tests-server-execution.xml": "ba129a2e505e2048429b453aaa2b23d598fa6f3bbe4f042e09eb969ad6f23aef",
+    "results/ot-validation/validation.json": "281325b007805c8d2bc636aba2c4521332c0ff9d06e7406a54aa55f551663517",
+    "results/ot-validation/verification.json": "26f428e9c6dacc5957d5abd7af54c370495121fdc22f458d4619b4412f3ef1b4",
+    "results/ot-diagnosis/comparisons.json": "5fbf1c58c08617f8e0181dd1c588b78892c8ef2229cbfa8bc03f834b21565ef1",
+    "results/ot-diagnosis/decisions.json.gz": "968b184100a846bb0a63d055c1ba54e45b6de8b794dc31a791f9f3fd3547447b",
+    "results/ot-diagnosis/diagnostic.json": "2019028e0829c1a946fb300d2e967d8b6f21f66cb8b0924a9a190c4b38442003",
+    "results/ot-diagnosis/download-receipt.json": "06ba7d880314fd66a5774a9358f39da154b6c975b64e209eb42d06d122115e05",
+    "results/ot-diagnosis/execution-source.json": "1b6c873cee790f289bcf567a29f8a3613e7c2b5681f1128c3be1de2566f4d652",
+    "results/ot-diagnosis/launch.json": "0449b8f5f8c085e9b44fc9a884136c51e8c15a3294cd2e19e8d5dc8103eb1e3b",
+    "results/ot-diagnosis/provenance.json": "8afcf2804406cb662167636c85095feeb59f78ab48d509682197a929cf1dea7a",
+    "results/ot-diagnosis/publication.json": "816f9c4f44662dfa51f8c2fbf0206dcf30bf0e6737941c4e4df94baa965d982f",
+    "results/ot-diagnosis/run.log": "3b80517ccb1d30e32edecaa4beb43849f2c0905c204f2877ddd26b4f290e799a",
+    "results/ot-diagnosis/shortlist-analysis.json": "605aeeb90939be8741c5f02d5ec85b4cf7aa77e8b14401955bd49e2e3927c135",
+    "results/ot-diagnosis/tests-full-local.xml": "0ad81822dbfed3d13a91e17642d1a35f44d8ed49239b544f557ee70dd5d3d7d8",
+    "results/ot-diagnosis/tests-ready-local.xml": "2d84dc48958cce1300632ed1241b7d8a631e1043474ba52b7b7fb792ca50a750",
+    "results/ot-diagnosis/tests-report-local.xml": "32401200473870782c662e48043b2e8fc1cc7f4392ee2651977a4c8aaa4126fb",
+    "results/ot-diagnosis/tests-server.xml": "2320c5d278763bebd999885048d926e2bf0fde095a73c6739fd3339a4b2b5b70",
+    "results/ot-guided/development/provenance.json": "340012afd91f4db4aa6c79b443a8a4ff3167f3f153c8d1f5fcda10644d9f24e3",
+    "results/ot-guided/development/rows.jsonl.gz": "66140b5912be8d1513a4ccbc4ffddbae2981bdf444ae16f306a8e52869fb4994",
+    "results/ot-guided/development/run.log": "8a14f94af87d1e31b42a9d1ef11ee8f69bf134396cac934d24c114180ec23b6b",
+    "results/ot-guided/development/summary.json": "0ad81ab6b0b9589c6d6ee0da6c71a9a836c1e7d290ba7c833f988877178685c2",
+    "results/ot-guided/development-launch.json": "525fa53c5b297959ca849ab923862eeeac4cba831abe5b8eb3d323fa56512505",
+    "results/ot-guided/diagnostic.json": "62a49d96532a105c940ca65c30d4af323104f3d2eb385b50f125246b5beb0aec",
+    "results/ot-guided/download-receipt.json": "4efef40a0be54f7a5c81c0ccce2614a8bf65fcc24da983b9783581a1946370a8",
+    "results/ot-guided/execution-source.json": "fcf0292d386d0be45414500e5088fd6ee2fa5b6e8d60702c319dd7ab9dfc3a61",
+    "results/ot-guided/holdout/fresh-ar.jsonl.gz": "8416440045e87e4ef494e43dbdec84b7759933300491634fbdcfc01b0a873645",
+    "results/ot-guided/holdout/provenance.json": "3b02c673f978e2057e03ccee0b5f6c349153ba29968345e45204a08888d31da4",
+    "results/ot-guided/holdout/rows.jsonl.gz": "697ad46b3641bfeea2a95cdd3e8d739f0b0cda9c451ddf469bea48800e19d344",
+    "results/ot-guided/holdout/run.log": "aa7e0ec3a7919ddfc05c8fc25319358de10f1046f5bbf754d2411bd48e2a4163",
+    "results/ot-guided/holdout/summary.json": "fb62ac5fd9e07e39b509176eb6be8926f8be3b50aeb0094c6accb30d53d9ffb9",
+    "results/ot-guided/holdout-launch.json": "26fb10c393c7fc4cdd41a4899f7ab4bc136efcf87d538f2f8c82ac2d0801a931",
+    "results/ot-guided/publication.json": "8a533973a53934eeef245b2e30c161a6c8628353ca8bd9510b5c248db2e96c95",
+    "results/ot-guided/tests-fixture-failed-local.xml": "28f9594a810fd1309fc9566adb55d5a252168423e22c8d4805a689c19bb4f0c2",
+    "results/ot-guided/tests-fixture-fixed-local.xml": "5f67a6597ac404ef75ba7a3b88f797abc2645b0a9354161f327ee8611e6dbb24",
+    "results/ot-guided/tests-full-local.xml": "36cb3c18154f0242163008114e2acd680700a5df7feb28eac1f6193dd78c913b",
+    "results/ot-guided/tests-initial-failed-local.xml": "98f5fcdf40141cbf4b1a29c4eaa108b245d01e97b264f054daa4059cacf28d38",
+    "results/ot-guided/tests-report-local.xml": "6ec374e1ac71a0044d75cb00a2101fa34ecb8e665c5e8281a14f990a7ee1f864",
+    "results/ot-guided/tests-server.xml": "12acddcabfadc3b987b21e298bd5c44b08bea77379ee0d469b34dc34ca272105",
+    "results/ot-guided/tests-source-fixed-local.xml": "dd1c875192eaf2aab0fe633d0c713f4bec587666b9f6d5f4377a57d39f6cb872",
+    "results/infra-v0.3/acceptance-v1.json": "198a1c9f4416c5b0917374e172f49cac9d74f46effe94947648a86fa8bd7d100",
+    "results/infra-v0.3/acceptance-v1.log": "2b0aad363294a2ba3ce3212dee673ea52c3ecb630f62a5ec7b332dee4c55e1ca",
+    "results/infra-v0.3/benchmark-provenance.json": "c5f70c7f371377f7a5d8aac7699ddcb4169fa35305efdd5ac306f9c8f42618ba",
+    "results/infra-v0.3/benchmark-rows.jsonl": "c463cd5b6b3a272a7097a80cbb4ec0e037c031f251f6a9f3d1103efd6d318270",
+    "results/infra-v0.3/benchmark-summary.json": "260ec499a661ae8ce34e9bd52e74f02b8bb5063d8eb48024c7262ee96b060f19",
+    "results/infra-v0.3/delivery.json": "a36e9a26e6f05f6287f5a57d63518a621a13ddca8e6be9219a59a8670b81eaf7",
+    "results/infra-v0.3/deployment-v1.json": "80899f12d5477a802ab0535d9115b12776fae6c00b0e371ede495168195a3af4",
+    "results/infra-v0.3/http-rows.jsonl": "a6a6712b8ce0f3cb086d231b88975d4f84ce07de4857a424d9acf014fd02b1c5",
+    "results/infra-v0.3/http-summary.json": "6afcdcd59bd143617aff79c944cc824244331e6340c9d91197bc49ba7b66b2ec",
+    "results/infra-v0.3/profile-operators.json": "a8b7876915b326262409bffe6d2cae424e3ca3394c806f0ceaf647a14e81a03a",
+    "results/infra-v0.3/profile-provenance.json": "91aef4a557ddc20e3f6bed0e3544e1a47a321aef656cfd59d31b00c9c05e11c9",
+    "results/infra-v0.3/publication.json": "1524655dd79672d83453fa77688442ae5e6f30dff9ba6b4127146d13c738d11b",
+    "results/reuse-confirmation/environment.json": "531705a66f9a67770a1b78d123e81e00ce14a65721c919bcad9b0433b27070af",
+    "results/reuse-confirmation/initial-history.json": "718d14f7d0e545a1711c3833a0a77ae8ec2cc81364423703df07f0c9425e4852",
+    "results/reuse-confirmation/past-generations.jsonl.gz": "42dce7d31326d3c94e2e9550162d116607b858d8f2e1b5f0074100e9bfbb3fcf",
+    "results/reuse-confirmation/projects.json": "4d1093c98e2998cd980293fbe31d33272e25d599397dd458f69eb48bf901663d",
+    "results/reuse-confirmation/provenance.json": "27db71ddf8c697954485619225a19fddbcf2f9cd3ff81ee75bf4729886bd115c",
+    "results/reuse-confirmation/references.jsonl.gz": "f741e90bfef00c38c081cbf020573303af594e1384cf82639f19cc473d894546",
+    "results/reuse-confirmation/replay.jsonl.gz": "617a2018167cca5ebfb8753265d768c98e3d120ba0abfa8e381d456e5380f7f3",
+    "results/reuse-confirmation/run.log": "4bd41dd2553e64201137b61d94498503c3acf3e845d3670ed40d8c4b35223255",
+    "results/reuse-confirmation/summary.json": "34bfee61016ab550a77463ceae01b7aacc145c875aa990e65b4f4c809772aee8",
+    "results/reuse-confirmation/tests-final.log": "399a7fe145bfa3725b5bc0372ce1ce893954e185119d68b390233d4f9b165f5c",
+    "results/reuse-confirmation/tests-source.json": "e691cc27893e050b7fe40c4086217dbc979b525f90d83ddf193611565e31f505",
+    "results/ot-splice/diagnostic.json": "cd81e60688775121a25ca2e4cffd57fa9557bd7b1f0acbf46303d4957e73b118",
+    "results/ot-splice/download-receipt.json": "b19250d63e9a052020aa2642a235cc348692f9ef88c524587837a407fb1c7a96",
+    "results/ot-splice/execution-source.json": "54c86bcc244aa9a5f23572384e48cf15a6a003613b3c3e850bc2943959f243c2",
+    "results/ot-splice/mechanism/provenance.json": "e68ce4fe04089a1229549b5c918623155bf020a6b3547b06fb95ad7ac54acf29",
+    "results/ot-splice/mechanism/rows.jsonl.gz": "2d54d7e86d7373a04bbb5343b4dd839f503856816f713309e27b13b50993beb9",
+    "results/ot-splice/mechanism/run.log": "27df2e0db45ec19395fb6a960c002de2df549e198d2dc426707d2d4784057783",
+    "results/ot-splice/mechanism/summary.json": "c0a38d4f1dc0f29a8337285b9400d5144ffbd5c8cdec2ab1eb7b250e01a231f9",
+    "results/ot-splice/mechanism-launch.json": "147da7b76ea04d78c6db0fd69d8f0c71aa970ec19651e9f8163bb0cd61405380",
+    "results/ot-splice/publication.json": "d5ef0b9e4ca6fd1a286181aaeebcdc21e596fcf6c9728741cddf002179cccd35",
+    "results/ot-splice/tests-full-local.xml": "1be2af5453bb7c7d744315d7bb8669c67971e965c30f3e86aa01640c64c09f9c",
+    "results/ot-splice/tests-related-local.xml": "96d2af1bf2b7287803599e747a28506ce4ec5f26bfbc870864c2cafee4ac0cc4",
+    "results/ot-splice/tests-report-local.xml": "6c004d95670213156275daeb191f64d67695c77b0523d6b0a9a3d199a168fef5",
+    "results/ot-splice/tests-server.xml": "58fa3b5989e206c66646111b881c60b9c8e286d8ef3a740d2eaec5313790c694",
+    "results/ot-splice/timing/provenance.json": "1d1bee8aba1433986dcfdb7ee7c97eb93585a1f021972eb1677b1e1a4b49bcb4",
+    "results/ot-splice/timing/rows.jsonl.gz": "c1d389aeaf26e4c2104ccf59673f0d09ed5c8b144d50bdbc1f49a29a5528d4e9",
+    "results/ot-splice/timing/run.log": "0ad2219526bc5fbcb0246cc54d76e429d7370f755d002378a307aaec4b178d6c",
+    "results/ot-splice/timing/summary.json": "cd58f3546be0b20680633ed28971014e16f37e4ef1bdeb07d19b877c5c3bf753",
+    "results/ot-splice/timing-launch.json": "0206f16414bb7da6598fd12ab8114988c7904aeacee96baf7f647f94b80e290f",
+    "results/ot-splice-cooldown/diagnostic.json": "0046becd44bf718a0990e1062c9b8c7e145310cd3e27b96b31df645096d78835",
+    "results/ot-splice-cooldown/download-receipt.json": "a90228768e641f1d99396b2c8083590b5e695b9892243faece810809ea6ba975",
+    "results/ot-splice-cooldown/execution-source.json": "b6e79c022829d7716e77bbcb42e599bb76517afeaa4ab669f59d17c1126d0fda",
+    "results/ot-splice-cooldown/mechanism/provenance.json": "2cd5827aa422e0d401059a21104e443ec9fef7f235dabe62d404175f51f773ce",
+    "results/ot-splice-cooldown/mechanism/rows.jsonl.gz": "45956353a143c4c997485a85a62dc3ff46974ca36d5813830132fed7035a706f",
+    "results/ot-splice-cooldown/mechanism/run.log": "786596f81b25180deef63c4b439e66bac96fee14d4c7de0f246db823a7c717fc",
+    "results/ot-splice-cooldown/mechanism/summary.json": "68e7bc7d3fa4eee337221cfb5a7a49cf74006a928825ca530ad37b4345374bf9",
+    "results/ot-splice-cooldown/mechanism-launch.json": "3362c3a8914054abbd03cf9a2fec8d0a93f70306e124be66cfbef4837a2bf714",
+    "results/ot-splice-cooldown/publication.json": "638c3d7029017cf0f18f8d20d26ce6b628e1715d5569775d7d0d3e32ddee5587",
+    "results/ot-splice-cooldown/tests-full-local.xml": "18551368f2c7c986aa033ef839ab9aa40221ca02b638544bfe3a574242585d1c",
+    "results/ot-splice-cooldown/tests-rebuild-local.xml": "dcdb9ba8a503eaa74bef6453e83379a97f3fafae3868496bd54ca159604ad9e0",
+    "results/ot-splice-cooldown/tests-related-local.xml": "57865df29377656098c7bd8750eab2e29288aba522b61f6a9442b79e53c5a41c",
+    "results/ot-splice-cooldown/tests-report-local.xml": "365435d02992b8bd56cba931d291e7114c209005e0a57383f7a7a76e87c5aee3",
+    "results/ot-splice-cooldown/tests-server.xml": "ea9a252908af44288ce7a2bafe8d5ae545e8ae7d8b313ff23108fe36b01cc1cb",
+    "results/ot-splice-cooldown/timing/provenance.json": "30c7117b791eaeb609a651cde67eec02a36a1b1dc4b1fe04a3146aa82428110a",
+    "results/ot-splice-cooldown/timing/rows.jsonl.gz": "57eddef38dfa839052ef715670dc52998ed699b0c083f58e0729e83a4bab4aa4",
+    "results/ot-splice-cooldown/timing/run.log": "6baab383eaa621afdbf36382465e21d303a6ca2da5105ac9bf3498717e571898",
+    "results/ot-splice-cooldown/timing/summary.json": "8909315c47e297e62b5cc8a1f3b3a42ac6cc3c982102acf0bfa50fcbcbc289c1",
+    "results/ot-splice-cooldown/timing-launch.json": "93a74644037b7642be034bd7adb41c106ad5b07673e3872aa8ab1100f0fece98",
+    "results/ot-matrix/diagnostic.json": "000e962ef9dd270e6bddabcb4666baaebb616e1b60c6b5896176b05a0b003c65",
+    "results/ot-matrix/download-receipt.json": "f5a7e4909fc8004e42e2aa15c657fda166c41695dc66256298cccf5425712a16",
+    "results/ot-matrix/execution-source.json": "013d40fbf8798606624a934527ef568147986862eeacae4439585e208f107379",
+    "results/ot-matrix/mechanism/provenance.json": "6340692298227b4c2e3814f68c940e5e4c565d3cf6d817f477c89b35525814b6",
+    "results/ot-matrix/mechanism/rows.jsonl.gz": "68b929e964a2aa18da3e853e89299d32e1a4951d47ddda70c451643c45d67840",
+    "results/ot-matrix/mechanism/run.log": "5bbcf8ca97b2ddc42282c158472703fbd7503b63ea832f3446259c9cf5ae7654",
+    "results/ot-matrix/mechanism/summary.json": "768d45e8154357ab7d51349e1d0ad19ed46621414ca31bdf8c4cabcbd5e657a6",
+    "results/ot-matrix/mechanism-launch.json": "114ae963f046f6872ed5385c189798b46a4f3e08b0c45609f3f59d416e5a56e4",
+    "results/ot-matrix/offline/frames.jsonl.gz": "67b3cae786b7803bec36faaf27704bd6dae0df2c4c191503a9fcd5aa02af73a9",
+    "results/ot-matrix/offline/provenance.json": "b8181b3b9921f50681eee467dfee02c77148bc658c285888d06f908995ae126f",
+    "results/ot-matrix/offline/run.log": "bde41c5afb476729c2e31ab9dba4470ee98367e24f462aebe6babce6d340fea6",
+    "results/ot-matrix/offline/summary.json": "61828e37277955c73ba6125eebb46d10b2cda3cad5a1503a5547c9fd6a266d81",
+    "results/ot-matrix/publication.json": "169e90db117eced523559aad679a309e38430f2623feed599a06869ae7a7c456",
+    "results/ot-matrix/tests-full-local.xml": "94ac5a9c95ef119fee9105d1f3bdede6181520ed73275723de3088cc87936196",
+    "results/ot-matrix/tests-related-local.xml": "ae6739e518017a3506d3045249e3b77f5fc68b21369fa1581a8b0281ce253938",
+    "results/ot-matrix/tests-report-local.xml": "e6df28569d51b80d6bc6e2ae8ddf51292b5f755dc59943c2e3a273a9c41f669d",
+    "results/ot-matrix/tests-server.xml": "3d1f5b54d8fe4be6bb1570ed4a2d70d01b8c956daa6595fa460005452a228c57",
+    "results/ot-matrix/timing/provenance.json": "9a14b9d6f3c15b95f9e10ba8eea3cd5049ca00e3c51e2c3567645c6cf130e918",
+    "results/ot-matrix/timing/rows.jsonl.gz": "04863ecce229126898f14f3320a34cf138cb82514bb6bf646f043878dabe46ce",
+    "results/ot-matrix/timing/run.log": "b501b4596f8493ddb4a4dc1b4791fab5e73687f7f52179681dbf7c92d7bcf45b",
+    "results/ot-matrix/timing/summary.json": "525a6578ff89aa9d5967f4bab8ccb98b09f3044e0485a36977dde5adc3820f08",
+    "results/ot-matrix/timing-launch.json": "3cd7a51ceddd1f80d35c64cf8c6a082dbe7bdb377285bcee45e3e429eddd2a1b"
+  },
+  "costs_sha256": "997c89b5d2a747a49cc4f7e2356821e63375fb8018a54cb159135f5c72ed388f",
+  "samples": [
+    {
+      "project": "parcel-queue",
+      "features": [
+        0.9375,
+        0.6682692307692307,
+        0.46875,
+        0.46875,
+        0.5,
+        0.28125
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "parcel-queue:0",
+      "generated": 17
+    },
+    {
+      "project": "parcel-queue",
+      "features": [
+        0.71875,
+        1.0,
+        0.40625,
+        0.46875,
+        0.125,
+        0.40625
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "parcel-queue:1",
+      "generated": 19
+    },
+    {
+      "project": "payment-runbook",
+      "features": [
+        0.967741935483871,
+        1.0,
+        0.375,
+        0.375,
+        0.125,
+        0.375
+      ],
+      "outcomes": {
+        "draft": [
+          12,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "payment-runbook:0",
+      "generated": 19
+    },
+    {
+      "project": "payment-runbook",
+      "features": [
+        0.7272727272727273,
+        1.0,
+        0.34375,
+        0.34375,
+        0.125,
+        0.34375
+      ],
+      "outcomes": {
+        "draft": [
+          3,
+          15
+        ],
+        "edit": [
+          3,
+          32
+        ],
+        "ot": [
+          3,
+          32
+        ]
+      },
+      "request_id": "payment-runbook:1",
+      "generated": 11
+    },
+    {
+      "project": "confirm-schema-0",
+      "features": [
+        0.9375,
+        0.03125,
+        0.125,
+        0.46875,
+        0.875,
+        0.125
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          28,
+          32
+        ]
+      },
+      "request_id": "confirm-schema-0:0",
+      "generated": 130
+    },
+    {
+      "project": "confirm-schema-0",
+      "features": [
+        0.96875,
+        0.0625,
+        0.125,
+        0.46875,
+        1.0,
+        0.125
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "confirm-schema-0:1",
+      "generated": 131
+    },
+    {
+      "project": "edge-router",
+      "features": [
+        0.21052631578947367,
+        1.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ],
+      "outcomes": {
+        "draft": [
+          7,
+          15
+        ],
+        "edit": [
+          7,
+          15
+        ],
+        "ot": [
+          7,
+          15
+        ]
+      },
+      "request_id": "edge-router:1",
+      "generated": 15
+    },
+    {
+      "project": "edge-router",
+      "features": [
+        0.8125,
+        1.0,
+        0.28125,
+        0.46875,
+        0.125,
+        0.28125
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "edge-router:1",
+      "generated": 23
+    },
+    {
+      "project": "inventory-query",
+      "features": [
+        0.9047619047619048,
+        1.0,
+        0.40625,
+        0.40625,
+        0.125,
+        0.40625
+      ],
+      "outcomes": {
+        "draft": [
+          13,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "inventory-query:0",
+      "generated": 8
+    },
+    {
+      "project": "inventory-query",
+      "features": [
+        0.8,
+        1.0,
+        0.46875,
+        0.46875,
+        0.125,
+        0.46875
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "inventory-query:1",
+      "generated": 10
+    },
+    {
+      "project": "shipment-contract",
+      "features": [
+        0.96875,
+        0.56875,
+        0.46875,
+        0.46875,
+        0.5,
+        0.1875
+      ],
+      "outcomes": {
+        "draft": [
+          15,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "shipment-contract:0",
+      "generated": 17
+    },
+    {
+      "project": "shipment-contract",
+      "features": [
+        0.782608695652174,
+        0.0929535232383808,
+        0.28125,
+        0.28125,
+        0.375,
+        0.125
+      ],
+      "outcomes": {
+        "draft": [
+          7,
+          15
+        ],
+        "edit": [
+          7,
+          32
+        ],
+        "ot": [
+          7,
+          32
+        ]
+      },
+      "request_id": "shipment-contract:1",
+      "generated": 14
+    },
+    {
+      "project": "payment-runbook",
+      "features": [
+        0.7931034482758621,
+        0.020376175548589393,
+        0.4375,
+        0.4375,
+        0.25,
+        0.21875
+      ],
+      "outcomes": {
+        "draft": [
+          7,
+          15
+        ],
+        "edit": [
+          7,
+          32
+        ],
+        "ot": [
+          32,
+          32
+        ]
+      },
+      "request_id": "payment-runbook:1",
+      "generated": 15
+    },
+    {
+      "project": "shipment-contract",
+      "features": [
+        0.7142857142857143,
+        0.014285714285714346,
+        0.1875,
+        0.1875,
+        0.5,
+        0.1875
+      ],
+      "outcomes": {
+        "draft": [
+          6,
+          15
+        ],
+        "edit": [
+          32,
+          32
+        ],
+        "ot": [
+          6,
+          32
+        ]
+      },
+      "request_id": "shipment-contract:1",
+      "generated": 22
+    }
+  ],
+  "timing_gate": {
+    "passed": true,
+    "decisions": 27
+  },
+  "rows": 56,
+  "original_unchanged": true
+}

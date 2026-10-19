@@ -1,0 +1,9 @@
+{
+  "states": 14,
+  "ot_calls": 2,
+  "short": 0,
+  "draft": 0,
+  "actual_accepted": 318,
+  "predicted_accepted": 376.5332398168489,
+  "mean_absolute_error": 10.472736059304792
+}

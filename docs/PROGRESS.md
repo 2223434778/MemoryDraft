@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-19 — 预计收益OT门控/动态长度（完成）
+
+- 按用户要求保留Draft内部拼接，停止完整矩阵可靠性路线，新策略只沿用既有TailOT标量排序。正式执行冻结`7c10c5dad39ffd0d909ae577b87a8026d39e2523`，635个Git原始文件SHA核验；源zip SHA`fa8e5f843b3956ed51b662ff8be0b9aa1905c5f6559b478b280b8f562ca48d44`，实际package SHA`1d7947ea6371e8c54c63ff382f46f6eee9de413cd87531c3cf6ccbc6eabbdd43`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget-v2`，流水PID2305668已结束，双GPU恢复19MiB/0%。旧结果含matrix全部递归SHA不变。
+- 实际依次运行`python -m scripts.profile_benefit_costs`、`probe_benefit_offline`、`run_benefit_probe --stage mechanism`、`run_benefit_probe --stage timing`，完整配置/命令见`OT_BENEFIT_PROTOCOL.md`与`artifacts/run-benefit-pipeline.sh`（服务器）；输出`results/raw/ot-benefit/{cost,offline,mechanism,timing}`。共享基础配置`configs/runtime-ot-benefit.json`；跨项目校准数据由runner注入，不自动启用旧训练数据。
+- context256/768/1536、候选15/16/24/32、2预热/7重复核测量；Draft约12.48–13.86ms，Target验证约59.64–89.97ms，共享shortlist/policy中位约3.368ms、每候选TailOT2.260ms。14状态/6项目的旧数据逐一排除当前整个项目：OT调用2，缩短0，回退Draft0；预计接受376.53，实际318，平均绝对误差10.47。策略/阈值/长度未按这些结果调参。
+- 正式56/56机制、112/112未插桩交错计时均严格匹配原AR token/prompt/snapshot，112/112计时路径与机制计数相同。总时延Suffix14.177480s、Guided-Edit13.515785s、Splice-Edit13.631645s、TailOT13.614736s、Gate-OT13.828701s、Budget-Edit13.633580s、Budget-OT13.828517s。Budget-OT比Suffix低2.46%，比TailOT高1.57%，比Guided-Edit高2.31%；不把基础拼接收益归因于新策略。
+- 门控OT候选求解31→7、调用9→2，但总验证65→67轮，实际Draft前向仍31；Budget-Edit与Edit相同66轮，三个收益组均没有真正缩短候选。shipment/22预测OT接受30.56实际6而Edit32；payment/15选Edit仅7，漏掉TailOT32。减少求解成立，条件收益预测不准；动态长度未体现额外收益。下一步应先补独立的廉价Draft前缀风险/接受生存预测校准，而非扩大当前邻居策略或在同批换阈值。
+- 证据`results/ot-benefit`，报告`OT_BENEFIT_RESULTS.md`。原始归档170881字节/SHA`f2cac0ac41b755e5fb9ce62b67391b2579f481e8df2bedeaed05bce607a9298d`，包括首版250ab31的56行汇总失败现场；不含权重、DB、大型矩阵或私有历史。报告重建`.venv\Scripts\python.exe -m scripts.write_benefit_report`。跨Python3.11/3.13浮点sum出现1e-14量级差异，报告统计重算采用1e-12容差并保留原始记录字节；路线、长度、token IDs仍精确检查，Target验证完全未放宽。
+- 正式服务器相关92 passed/8.16s；本机策略/报告15 passed/7.24s；最终完整340 passed/3 skipped/42.53s，命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-benefit-final --junitxml=artifacts/benefit-tests-final-full-local.xml`。首版审计失败与一次新增单测夹具错误均保存/说明，修复不改推理策略。
+- `main`、`codex/infra-interview-v0.3`与标签`infra-v0.3-interview^{}`仍为`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`；默认suffix不变。本轮为开发检查，未增加独立holdout或通用性能声明。
+
 ## 2026-10-19 — 收益路由汇总口径修复
 
 - 首版执行提交`250ab31a9f10dcf6f9c7ba470d3d5a9e5bc7c1bb`，服务器 `ot-r-budget`，634文件SHA核验；91项相关测试通过。成本/14状态离线阶段完成，56次生成均通过逐请求strict检查，但机制最终audit将拼接归因恒等式错误应用于Guided-Edit，抛 `Invalid benefit accounting`，未进入计时。

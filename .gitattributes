@@ -115,3 +115,11 @@ tests/test_matrix*.py text eol=lf
 docs/OT_MATRIX*.md text eol=lf
 results/ot-matrix/** -text
 results/ot-matrix/**/*.log -whitespace
+memorydraft/retrieval/benefit.py text eol=lf
+memorydraft/evaluation/benefit_probe.py text eol=lf
+scripts/*benefit*.py text eol=lf
+tests/test_benefit*.py text eol=lf
+docs/OT_BENEFIT*.md text eol=lf
+results/ot-benefit/** -text
+results/ot-benefit/**/*.log -whitespace
+results/ot-benefit/tests-related-local-before-fixture-fix.xml -whitespace

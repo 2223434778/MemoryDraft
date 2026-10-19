@@ -1,0 +1,31 @@
+........................................................................ [ 79%]
+...................                                                      [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget/artifacts/benefit-tests-server.xml -
+91 passed in 7.94s
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.50s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+profiled 256
+profiled 768
+profiled 1536
+{'states': 14, 'ot_calls': 2, 'short': 0, 'draft': 0, 'actual_accepted': 318, 'predicted_accepted': 376.5332398168489, 'mean_absolute_error': 10.472736059304792}
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.48s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.48s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+completed parcel-queue:0
+completed payment-runbook:1
+completed confirm-schema-0:0
+completed confirm-schema-0:1
+completed copy
+completed inventory-query:0
+completed inventory-query:1
+completed shipment-contract:1
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget/scripts/run_benefit_probe.py", line 135, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget/scripts/run_benefit_probe.py", line 120, in main
+    write(args.output / "summary.json", audit(rows, tasks, repeats, instrumented=args.stage == "mechanism"))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-budget/memorydraft/evaluation/benefit_probe.py", line 67, in audit
+    raise ValueError("Invalid benefit accounting")
+ValueError: Invalid benefit accounting
