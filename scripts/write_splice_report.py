@@ -59,10 +59,11 @@ def load_stage(source, stage, tasks, events, manifest):
     expected_files = {name.removeprefix("memorydraft/"): sha for name, sha in manifest["files"].items()
                       if name.startswith("memorydraft/") and name.endswith((".py", ".json", ".txt"))}
     if (info["status"] != "complete" or info["stage"] != stage or info["instrumented"] != instrumented
-            or info["inputs_sha256"] != input_digest(tasks, events) or info["original_sha256"] != protected_hashes(ROOT)
+            or info["inputs_sha256"] != input_digest(tasks, events)
+            or info["original_sha256"] != protected_hashes(ROOT, include_splice=info.get("cooldown_check", False))
             or not info["original_unchanged"] or info["methods"] != list(METHODS)
             or info["runner_sha256"] != manifest["files"]["scripts/run_splice_probe.py"]
-            or info["protocol_sha256"] != manifest["files"]["docs/OT_SPLICE_PROTOCOL.md"]
+            or info["protocol_sha256"] != manifest["files"]["docs/OT_SPLICE_COOLDOWN_PROTOCOL.md" if info.get("cooldown_check", False) else "docs/OT_SPLICE_PROTOCOL.md"]
             or info["source"]["files"] != expected_files
             or info["source"]["sha256"] != hashlib.sha256(json.dumps(expected_files, sort_keys=True).encode()).hexdigest()):
         raise ValueError("Changed splice execution provenance")

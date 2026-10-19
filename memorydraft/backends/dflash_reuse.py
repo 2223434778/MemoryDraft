@@ -172,7 +172,7 @@ guided R may replace a block after its draft forward has already run.
         result.feature_peak_tokens = max(result.feature_peak_tokens, pending_tokens)
         if proposal is not None:
             matcher.observe(proposal, accepted, [*confirmed, *proposal.tokens[:accepted]])
-            if accepted < len(proposal.tokens):
+            if getattr(proposal, "draft_prefix", 0) <= accepted < len(proposal.tokens):
                 blocked_until = step + config.cooldown_rounds + 1
         if trace:
             result.rounds.append(dict(route=route, generated_before=old_start - prompt + 1,

@@ -16,6 +16,7 @@ METHODS = ("Suffix-R", "Guided-Edit", "Guided-OT", "Splice-Edit", "Splice-OT", "
 RETRIEVAL = dict(zip(METHODS, ("suffix", "edit-guided", "ot-guided", "edit-splice", "ot-splice", "ot-tail-splice")))
 COUNTERS = (*GUIDED_COUNTERS, "splice_proposals", "splice_internal_proposals", "splice_prefix_accepted_tokens",
             "splice_history_accepted_tokens", "splice_extension_accepted_tokens", "splice_zero_history")
+COOLDOWN_IDS = ("payment-runbook:1", "shipment-contract:1", "inventory-query:0", "inventory-query:1", "confirm-schema-0:0")
 
 
 def inputs(root):
@@ -38,9 +39,10 @@ def input_digest(tasks, events):
     return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
 
 
-def protected_hashes(root):
+def protected_hashes(root, *, include_splice=False):
     return {p.relative_to(root).as_posix(): file_hash(p) for name in
-            ("ot-r", "ot-validation", "ot-diagnosis", "ot-guided", "infra-v0.3", "reuse-confirmation")
+            ("ot-r", "ot-validation", "ot-diagnosis", "ot-guided", "infra-v0.3", "reuse-confirmation",
+             *(("ot-splice",) if include_splice else ()))
             for p in sorted((root / "results" / name).rglob("*")) if p.is_file()}
 
 

@@ -181,9 +181,10 @@ def test_guided_replacement_after_real_draft_keeps_features_and_strict_output(ti
     assert any(r["route"] == "R" for r in result.rounds)
 
 
-@pytest.mark.parametrize("reject_at", [None, 0, 2, 5])
+@pytest.mark.parametrize("reject_at", [None, 0, 1, 2, 5])
+@pytest.mark.parametrize("cooldown", [0, 1])
 @pytest.mark.parametrize("stop", [False, True])
-def test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup(tiny, reject_at, stop):
+def test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup(tiny, reject_at, cooldown, stop):
     from memorydraft.retrieval.splice import SpliceProposal, SpliceReuseMatcher
 
     class TestOnlySplice(SpliceReuseMatcher):
@@ -204,9 +205,13 @@ def test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup(tiny
     commits = []
     result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29,
                             matcher=matcher, stop_token_ids=stops, on_tokens=commits.extend,
-                            config=ReuseConfig(max_tokens=8, cooldown_rounds=0))
+                            config=ReuseConfig(max_tokens=8, cooldown_rounds=cooldown))
     assert result.sequences[0, tiny.ids.shape[1]:].tolist() == commits == expected
     assert matcher.stats["splice_prefix_accepted_tokens"] + matcher.stats["splice_history_accepted_tokens"] == matcher.stats["alignment_accepted_tokens"]
+    if not stop and cooldown and reject_at in {0, 1}:
+        assert all(r["route"] == "R" for r in result.rounds)
+    if not stop and cooldown and reject_at == 2:
+        assert result.rounds[0]["accepted"] == 2 and result.rounds[1]["route"] == "D"
 
 
 @pytest.mark.parametrize("method", ["edit", "ot"])

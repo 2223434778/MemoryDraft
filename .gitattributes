@@ -106,3 +106,5 @@ tests/test_splice*.py text eol=lf
 docs/OT_SPLICE*.md text eol=lf
 results/ot-splice/** -text
 results/ot-splice/**/*.log -whitespace
+results/ot-splice-cooldown/** -text
+results/ot-splice-cooldown/**/*.log -whitespace

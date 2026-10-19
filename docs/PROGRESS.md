@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-19 — 拼接前缀拒绝的冷却修复（五请求检查准备）
+
+- 首轮代码/原始证据已独立提交`0000e5c`/`bc6b39e`。共享解码器只改一行冷却条件：`draft_prefix <= accepted < len(proposal.tokens)`时才冷却；尚未尝试历史的Draft前缀拒绝不触发冷却，普通R/原Guided默认prefix=0仍保持规则。匹配器此前已避免把前缀拒绝映射成历史端点失败。
+- 协议`OT_SPLICE_COOLDOWN_PROTOCOL.md`固定两个负例、两个SQL正例、一个旧JSON正例；runner新增`--cooldown-check`限定这5个已观察请求，六组30次机制/60次未插桩开发计时，不做新场景确认。首轮`results/ot-splice`也加入递归SHA保护；服务器新目录`ot-r-splice-cooldown`，证据独立`results/ot-splice-cooldown`。
+- 新增冷却0/1、Draft前缀0/1位拒绝、首个历史token拒绝、EOS等真实小Target回归，相关56 passed/2 skipped/10.78s；完整290 passed/3 skipped/25.00s。命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-splice-cooldown-full --junitxml=artifacts/splice-cooldown-tests-full-local.xml`。仅相关策略被修复，未改检索阈值或Target验证。
+
 ## 2026-10-19 — Draft内部锚点拼接（首轮完成，定位冷却缺陷）
 
 - 冻结执行提交`0000e5c9f78df0d762d2dba981daafa8a59bd2bb`，550个Git原始文件逐项SHA通过；源归档SHA`c09491b515eddd94b4895a0e5b6b1a8daf28e20c353a9ff51ff7482c1900fa96`。服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice`，执行前相关72 passed/7.52s。实际机制/计时package同为`44f733dea98734d16c18a3b447207a197fba1e7ec4e14255b36e4e376048cd1a`，runner/协议/全部旧证据SHA未变。

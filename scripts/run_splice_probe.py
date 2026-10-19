@@ -13,7 +13,7 @@ import ot
 
 from memorydraft.evaluation.runtime_migration import check_result, file_hash
 from memorydraft.evaluation.splice_probe import METHODS, RETRIEVAL, audit, input_digest, inputs, mechanism_gate
-from memorydraft.evaluation.splice_probe import prefix_acceptance, protected_hashes
+from memorydraft.evaluation.splice_probe import COOLDOWN_IDS, prefix_acceptance, protected_hashes
 from memorydraft.memory.store import MemoryStore
 from memorydraft.runtime.benchmark import provenance, source_digest
 from memorydraft.runtime.config import RuntimeConfig, load_engine
@@ -58,14 +58,21 @@ def main():
     parser.add_argument("--stage", choices=("mechanism", "timing"), required=True)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--mechanism", type=Path)
+    parser.add_argument("--cooldown-check", action="store_true", help="Post-hoc five-request feedback repair check")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     tasks, events = inputs(ROOT)
+    if args.cooldown_check:
+        tasks = [t for t in tasks if t.request.id in COOLDOWN_IDS]
+        events = [e for e in events if e.user_id in {t.request.user_id for t in tasks}]
+        if {t.request.id for t in tasks} != set(COOLDOWN_IDS):
+            raise ValueError("Changed five-request repair scope")
     if args.stage == "timing":
         if args.mechanism is None:
             parser.error("Timing requires the completed mechanism directory")
         prior = json.loads((args.mechanism / "provenance.json").read_text())
-        if (prior["status"] != "complete" or prior["stage"] != "mechanism" or prior["rows"] != 96
+        if (prior["status"] != "complete" or prior["stage"] != "mechanism" or prior["rows"] != len(tasks) * len(METHODS)
+                or prior.get("cooldown_check", False) != args.cooldown_check
                 or not prior["mechanism_gate"]["passed"] or prior["source"] != source_digest()
                 or prior["runner_sha256"] != file_hash(Path(__file__)) or prior["inputs_sha256"] != input_digest(tasks, events)):
             raise ValueError("Timing requires the identical checked implementation and a passed mechanism gate")
@@ -79,14 +86,15 @@ def main():
     if (config.backend != "dflash" or config.threads != 4 or config.template_options != {"enable_thinking": False}
             or config.reuse != {"max_tokens": 32, "min_match": 6, "cooldown_rounds": 1, "max_pending_tokens": 1024}):
         raise ValueError("Use the frozen FP32/eager DFlash profile")
-    hashes = protected_hashes(ROOT)
+    hashes = protected_hashes(ROOT, include_splice=args.cooldown_check)
     started = time.perf_counter()
     engine = load_engine(config)
     info = {**provenance(engine), "status": "started", "stage": args.stage, "POT": ot.__version__,
             "scope": "Post-hoc development replay only; all Target answers were previously observed",
-            "instrumented": args.stage == "mechanism", "methods": METHODS,
+            "instrumented": args.stage == "mechanism", "methods": METHODS, "cooldown_check": args.cooldown_check,
             "load_seconds": time.perf_counter() - started, "inputs_sha256": input_digest(tasks, events),
-            "runner_sha256": file_hash(Path(__file__)), "protocol_sha256": file_hash(ROOT / "docs/OT_SPLICE_PROTOCOL.md"),
+            "runner_sha256": file_hash(Path(__file__)),
+            "protocol_sha256": file_hash(ROOT / "docs" / ("OT_SPLICE_COOLDOWN_PROTOCOL.md" if args.cooldown_check else "OT_SPLICE_PROTOCOL.md")),
             "original_sha256": hashes}
     write(args.output / "provenance.json", info)
     rows = []
@@ -132,7 +140,7 @@ def main():
         if args.stage == "mechanism":
             info["mechanism_gate"] = mechanism_gate(rows)
         write(args.output / "summary.json", summary)
-        info.update(status="complete", rows=len(rows), original_unchanged=hashes == protected_hashes(ROOT))
+        info.update(status="complete", rows=len(rows), original_unchanged=hashes == protected_hashes(ROOT, include_splice=args.cooldown_check))
         if not info["original_unchanged"]:
             raise ValueError("Protected evidence changed")
     except Exception as error:
