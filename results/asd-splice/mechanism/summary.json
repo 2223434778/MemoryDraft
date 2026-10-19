@@ -1,0 +1,110 @@
+{
+  "DFlash": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 82,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "DFlash-ASD": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 82,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Suffix": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 57,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Suffix-ASD": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 57,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Guided": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 52,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Guided-ASD": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 52,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Splice": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 51,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Splice-ASD": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 51,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  },
+  "Splice-ASD-Run": {
+    "rows": 8,
+    "seconds": 0.0,
+    "tokens": 1043,
+    "strict_identity": 8,
+    "contract_correct": 8,
+    "rounds": 51,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 0,
+    "tps": null
+  }
+}

@@ -17,6 +17,10 @@
 
 **固定 Target 的推理优化、服务与正确性评测工具链。**
 
+ASD 近似解码实验独立位于 `codex/asd-splice`：[组合报告](docs/ASD_SPLICE_RESULTS.md)。
+旧8请求/9方法已完成360次机制及计时运行；自然EOS全部与AR一致，但ASD零例外、零减轮，Splice-ASD较Splice慢0.28%，连续后缀变体慢0.60%。
+关键拼接阻断的Target logit差距为26.8–53.9，未显示低差距例外释放长历史尾部的机会。默认CLI/服务仍严格验证；ASD实现允许改变输出，不作为无损加速。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

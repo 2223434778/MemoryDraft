@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-20 — ASD 与历史拼接（360次运行完成）
+
+- 执行提交 `112c18fb62a5e9aef984e2360ad34fa80f12f282`，773个Git原始文件在服务器执行前后SHA全通过；独立目录 `asd-splice`。源ZIP SHA `703b2c524624d3ab42b913e7a786752af762b24bf2d354347d029b2c91aaf51c`，runtime package `baca9c8119a1d08499d7e146b4e35ba13728d3acec25e2986d016a7a43a5b5a9`。
+- 8已观察请求/5项目、9方法，72机制+144自然EOS+144固定64token全部完成，无质量提前停止。自然EOS全部216输出匹配旧AR且任务合同正确；固定阶段每方法1024输出token，忽略EOS，仅作等工作量计时。两阶段均无近似例外，ASD未改变轮数。
+- 自然EOS两重复总秒：DFlash15.626821/ASD15.657451，Suffix12.146994/ASD12.162636，Guided11.593674/ASD11.597269，Splice11.652066/ASD11.685018/Run11.722166。Splice-ASD比Splice慢0.28%、Run慢0.60%；固定吞吐+0.03%/-0.25%不能归因于决策改善。
+- 首次阻断（排除已结束EOS之后）的最小regret9.058；局部regret/剩余长度最低1.071，仍高于g=0.25。三个失败桥段regret53.902、49.950、26.785。旧分数检查B=8也零可放行，不伪称重跑B=8；本批缺少ASD所需低差距例外机会，不提高阈值强造收益。
+- 本机完整测试387 passed/3 skipped/43.77s；服务器ASD/输入/真实tiny解码55 passed/5.92s；报告与预算篡改审计2 passed/6.44s。实际命令 `.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-full --junitxml=artifacts/asd-tests-full-local.xml`，服务器运行命令见 `results/asd-splice/run-pipeline.sh`。
+- 原始紧凑包117592字节/SHA `35c26a5639be5547e8e99a9a3718200d000cd2a945aede70e0d452000869f99b`，新证据 `results/asd-splice`、报告 `docs/ASD_SPLICE_RESULTS.md`；旧证据执行前后不变。GPU完成后双19MiB/0%。部署第一次使用系统旧Python缺少Path.is_relative_to，在解压/推理前停止；改用现成Python3.11虚拟环境完成部署，不改实验源码。
+- 重建：`.venv\Scripts\python.exe -m scripts.write_asd_splice_report`。初始模型/参数与原严格Target保持；非零ASD仅由实验runner显式接入，未启用到CLI/HTTP默认路径。
+
 ## 2026-10-20 — ASD 与历史拼接（执行准备）
 
 - 用户授权按合理机制直接实施，独立分支 `codex/asd-splice`，旧严格路径和 infra 引用保留。实现 ASD 请求级 B=2/g=0.25/M=2；唯一变体以实际连续 Target 匹配后缀替代剩余块长作为价值。近似输出单列，不宣称无损。

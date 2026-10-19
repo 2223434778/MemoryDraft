@@ -140,3 +140,9 @@ results/prefix-risk/** -text
 results/prefix-risk/**/*.log -whitespace
 results/prefix-risk/tests-*.xml -whitespace
 results/prefix-risk/continuation/tests-*.xml -whitespace
+memorydraft/backends/asd.py text eol=lf
+tests/test_asd*.py text eol=lf
+docs/ASD_SPLICE*.md text eol=lf
+results/asd-splice/** -text
+results/asd-splice/*.log -whitespace
+results/asd-splice/tests-*.xml -whitespace

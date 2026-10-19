@@ -1,0 +1,110 @@
+{
+  "DFlash": {
+    "rows": 16,
+    "seconds": 13.481578612932935,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 136,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 75.95549671146615
+  },
+  "DFlash-ASD": {
+    "rows": 16,
+    "seconds": 13.46277362422552,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 136,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 76.06159240153666
+  },
+  "Suffix": {
+    "rows": 16,
+    "seconds": 12.439228837145492,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 122,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.32021561836494
+  },
+  "Suffix-ASD": {
+    "rows": 16,
+    "seconds": 12.451328793889843,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 122,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.24021844981723
+  },
+  "Guided": {
+    "rows": 16,
+    "seconds": 12.342741490225308,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 118,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.96374033361592
+  },
+  "Guided-ASD": {
+    "rows": 16,
+    "seconds": 12.351687919930555,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 118,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.90364901040644
+  },
+  "Splice": {
+    "rows": 16,
+    "seconds": 12.398327908129431,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 116,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.591782342567
+  },
+  "Splice-ASD": {
+    "rows": 16,
+    "seconds": 12.394697109004483,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 116,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.61597608997528
+  },
+  "Splice-ASD-Run": {
+    "rows": 16,
+    "seconds": 12.429238380049355,
+    "tokens": 1024,
+    "strict_identity": 0,
+    "contract_correct": 0,
+    "rounds": 116,
+    "relaxed_tokens": 0,
+    "regret": 0.0,
+    "length_stops": 16,
+    "tps": 82.3863835167617
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "execution_commit": "112c18fb62a5e9aef984e2360ad34fa80f12f282",
+  "raw_archive_sha256": "35c26a5639be5547e8e99a9a3718200d000cd2a945aede70e0d452000869f99b",
+  "files": {
+    "docs/ASD_SPLICE_RESULTS.md": "e17ca82840f751e89f551b91a21ecb687ab7cb3e571cf594f8f04f0ad11349d3",
+    "results/asd-splice/analysis.json": "41d62a5202cf93527202402235a091a5446498c7bd6be5d13d1e9ac969201521",
+    "results/asd-splice/execution-verification.json": "c6029bba0a98c555316e5a6ed9211876cd2441d90be36c8db938e635cefe5ef5",
+    "results/asd-splice/fixed/rows.jsonl.gz": "2b650da858708d5901ce59117999c54105cebcb87629d55dd176615d10d1dbb0",
+    "results/asd-splice/fixed/summary.json": "b78a021d73c82b822b5fb97838c70ff43b2db20d433c0385d0bbabcd3b33fc40",
+    "results/asd-splice/mechanism/rows.jsonl.gz": "d6c88b234101c4c9a90d064f02e3d79e2f9687c39f16b3fee9bffae6cc3ae984",
+    "results/asd-splice/mechanism/summary.json": "4e6cca5d82fed06347815e66262f3cc528104869c515ea6b93fe8e4843f36ce6",
+    "results/asd-splice/natural/rows.jsonl.gz": "c035948834e5df6c877973742ddff515d5227851d323ceba060e36ad32a66935",
+    "results/asd-splice/natural/summary.json": "85dd79eebee963472c956dc193fdc2d979aa8d1d9bb10ec01999fb41b7fc30e3",
+    "results/asd-splice/pipeline.log": "ade23e3308c82d23a6934a85744ab82c8212487d49a6a0805bdcce7598ff85ef",
+    "results/asd-splice/provenance.json": "6262fa683a8a93ec181f5d5515d79f30ecb63bc52ba40a4411215e6696ff7a16",
+    "results/asd-splice/references.json": "6c81766f9789226cabe6e3ac69f46eae3e4d289e8ef397ec89f7717892979084",
+    "results/asd-splice/run-pipeline.sh": "e4a50051478f7c9d914f8bd4a7b7986e716d867092bf6ecbc384cc9fbfb6ab9f",
+    "results/asd-splice/source-manifest.json": "ee2498fa1aa7578d1aa7e3edddae99d877af8992a5c21a278dd3d594a38e394d",
+    "results/asd-splice/tests-full-local.xml": "456e6652aa3e2cf51702b05e6b7757663f4b22b401ce8f2f5a58b90bfa708ee5",
+    "results/asd-splice/tests-inputs-local.xml": "a2c05d5497f3d799af0bd5ea50385672bc18804e7b414f9ddb68828222d333b9",
+    "results/asd-splice/tests-related-local.xml": "0063cc5a383ae8fb3b029c6a7da70e45d8e31c847d8b133d43d1411f4a59b194",
+    "results/asd-splice/tests-report-local.xml": "b67b2dc3424587a9f913917079cfacd2c91ae1fdf598f11c2ed43c6466b99d45",
+    "results/asd-splice/tests-server.xml": "e1f356adb413824465c6a1ece6db683da1e4bb1037eb5e05e5a5bda88c7df1ad",
+    "scripts/write_asd_splice_report.py": "212f7444643e3769b6506ce5c78043ecd6ab7f63545763f27b3d761121530236"
+  }
+}
