@@ -181,6 +181,34 @@ def test_guided_replacement_after_real_draft_keeps_features_and_strict_output(ti
     assert any(r["route"] == "R" for r in result.rounds)
 
 
+@pytest.mark.parametrize("reject_at", [None, 0, 2, 5])
+@pytest.mark.parametrize("stop", [False, True])
+def test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup(tiny, reject_at, stop):
+    from memorydraft.retrieval.splice import SpliceProposal, SpliceReuseMatcher
+
+    class TestOnlySplice(SpliceReuseMatcher):
+        def propose(self, confirmed, max_tokens):
+            return None
+
+        def propose_with_draft(self, confirmed, draft_tokens, max_tokens):
+            # Gold proposals only exercise verification/feedback, never a benchmark.
+            p = ScriptedMatcher(tiny.reference[0, tiny.ids.shape[1]:].tolist(), reject_at).propose(confirmed, max_tokens)
+            return SpliceProposal(p.tokens, p.source, 0, p.position, p.end, "edit-splice", True,
+                                  min(2, len(p.tokens)), len(draft_tokens))
+
+    matcher = TestOnlySplice(SuffixArrayIndex(Snapshot("toy", 1, ()), IntegerTokenizer()), method="edit")
+    expected = tiny.reference[0, tiny.ids.shape[1]:].tolist()
+    stops = [expected[8]] if stop else []
+    if stop:
+        expected = expected[:expected.index(stops[0]) + 1]
+    commits = []
+    result = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29,
+                            matcher=matcher, stop_token_ids=stops, on_tokens=commits.extend,
+                            config=ReuseConfig(max_tokens=8, cooldown_rounds=0))
+    assert result.sequences[0, tiny.ids.shape[1]:].tolist() == commits == expected
+    assert matcher.stats["splice_prefix_accepted_tokens"] + matcher.stats["splice_history_accepted_tokens"] == matcher.stats["alignment_accepted_tokens"]
+
+
 @pytest.mark.parametrize("method", ["edit", "ot"])
 def test_aligned_candidates_still_obey_real_target_rejection_and_kv(tiny, method):
     if method == "ot":

@@ -99,3 +99,10 @@ results/ot-guided/** -text
 results/ot-guided/**/*.log -whitespace
 # Preserve the original Windows pytest failure tracebacks and their hashes.
 results/ot-guided/tests-*-failed-local.xml -whitespace
+memorydraft/retrieval/splice.py text eol=lf
+memorydraft/evaluation/splice_probe.py text eol=lf
+scripts/*splice*.py text eol=lf
+tests/test_splice*.py text eol=lf
+docs/OT_SPLICE*.md text eol=lf
+results/ot-splice/** -text
+results/ot-splice/**/*.log -whitespace

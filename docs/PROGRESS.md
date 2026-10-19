@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-19 — Draft内部锚点拼接（小实验准备）
+
+- 用户授权小成本实验。新增`retrieval/splice.py`与`edit-splice`、`ot-splice`、`ot-tail-splice`显式选项，复用现有DFlash post-draft hook；保留Draft到内部4-token锚点的前缀，再拼原始历史尾部，最多32token。三个Splice使用同一Edit去重/top8池、4次查询预算、0.65阈值；TailOT仅末8位置加权，不声称单调OT。原检索/解码算法和默认suffix不改，独立infra版本保留。
+- `OT_SPLICE_PROTOCOL.md`预定16个已观察请求×6组一次插桩机制检查；同一个Splice至少2请求比两个Guided基线都少轮且存在内部连续接受增益，才运行相同实现的两重复未插桩开发计时。无新holdout，不据此宣称泛化。参考仅生成后评分，全部旧证据递归SHA保护，不写回答案。
+- 相关测试首批62 passed/2 skipped/35.00s；加入真实小Target拼接反馈、EOS/KV及来源/归因审计后70 passed/2 skipped/13.21s。命令`.venv\Scripts\python.exe -m pytest -q tests/test_splice_reuse.py tests/test_splice_probe.py tests/test_dflash_reuse.py tests/test_runtime.py --basetemp .test-tmp-splice-final --junitxml=artifacts/splice-tests-final-local.xml`。
+- 服务器已连通，双A6000各19MiB/0%。将部署独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-splice`，沿用父目录模型和`.venv-dflash`，先完整测试再冻结执行源码。尚无本轮GPU结果。
+- 冻结前完整回归272 passed/3 skipped/25.25s，命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-splice-full --junitxml=artifacts/splice-tests-full-local.xml`；新增模块/脚本compileall与`git diff --check`通过。
+
 ## 2026-10-19 — DFlash前缀引导的OT/Edit（完成）
 
 - 执行提交`6f9303625ddf01b1c82938b2f1184a08e7c83141`，517个Git原始文件部署SHA逐项通过；原始归档SHA`3799e0d8649a8e0d85dbe0b3010afbbef7dbea965955ba8e515fe5572dbdb9de`。服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/ot-r-guided`；开发/新验证实际package同为`58dc6fdbd73ca3d404b521147ad3e8227df5f05bc022fda79084fe79ae88a466`，runner相同，未在新答案上调参。任务SHA`0097a10eaa102db6c866326ca145c3842657103ee400c892c110b99e4cf2c2b4`，协议SHA`0f1eca2375b6e5bf19023cabd87d403913565d541597445b33b569eb4a1cdc80`。

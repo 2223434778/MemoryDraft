@@ -41,7 +41,7 @@ class InferenceEngine:
         self.methods = ("AR", "DFlash", "R+DFlash") if draft is not None else ("AR",)
         self.lock = threading.Lock()
         self.reuse = ReuseConfig(**config.reuse)
-        if config.retrieval in {"ot", "ot-guided"}:
+        if config.retrieval.startswith("ot"):
             # Import optional solver libraries during load, before request timing.
             from ot import sinkhorn
         eos = target.generation_config.eos_token_id
@@ -136,6 +136,13 @@ class InferenceEngine:
                                              prompt_text="\n".join(m["content"] for m in request.messages))
                     if self.config.retrieval == "suffix":
                         matcher = ReuseMatcher(index, cursor=False)
+                    elif self.config.retrieval.endswith("-splice"):
+                        from memorydraft.retrieval.splice import SpliceReuseMatcher
+                        from memorydraft.retrieval.transport import AlignmentConfig
+                        matcher = SpliceReuseMatcher(index, method=self.config.retrieval.split("-")[0],
+                                                     tail_weighted=self.config.retrieval == "ot-tail-splice",
+                                                     exact_min_match=self.reuse.min_match,
+                                                     config=AlignmentConfig(**self.config.alignment))
                     elif self.config.retrieval.endswith("-guided"):
                         from memorydraft.retrieval.guided import GuidedReuseMatcher
                         from memorydraft.retrieval.transport import AlignmentConfig
@@ -184,7 +191,7 @@ class InferenceEngine:
                             "index_bytes": index.bytes_used if index else 0,
                             "feature_peak_tokens": detail.feature_peak_tokens, "buffer_flushes": detail.buffer_flushes}
                 counters.update(getattr(matcher, "stats", {}))
-                if self.config.retrieval.endswith("-guided"):
+                if self.config.retrieval.endswith(("-guided", "-splice")):
                     counters["draft_forward_rounds"] = sum(r["draft_forward"] for r in detail.rounds)
             self.synchronize()
             check()

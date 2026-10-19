@@ -20,7 +20,7 @@ jobs:
       - if: matrix.profile == 'research'
         run: python -m pytest -q --basetemp .test-tmp-ci
       - if: matrix.profile == 'dflash'
-        run: python -m pytest -q tests/test_runtime.py tests/test_runtime_migration.py tests/test_transport.py tests/test_transport_probe.py tests/test_transport_validation.py tests/test_transport_diagnosis.py tests/test_guided_reuse.py tests/test_guided_validation.py tests/test_guided_report.py tests/test_serving.py tests/test_dflash_reuse.py --basetemp .test-tmp-ci
+        run: python -m pytest -q tests/test_runtime.py tests/test_runtime_migration.py tests/test_transport.py tests/test_transport_probe.py tests/test_transport_validation.py tests/test_transport_diagnosis.py tests/test_guided_reuse.py tests/test_guided_validation.py tests/test_guided_report.py tests/test_splice_reuse.py tests/test_splice_probe.py tests/test_serving.py tests/test_dflash_reuse.py --basetemp .test-tmp-ci
       - run: python -m build
       - run: python -m memorydraft benchmark --config configs/runtime-demo.json --requests examples/requests.jsonl --methods AR --repeats 1 --output artifacts/ci-demo
       - name: Installed wheel without inference dependencies
