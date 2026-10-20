@@ -1,0 +1,1493 @@
+{
+  "execution_commit": "e7ec17b5f3b832b91f1c68cceb74395ac7607f85",
+  "runtime_sha256": "4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f",
+  "counts": {
+    "mechanism": 28,
+    "natural": 56,
+    "prefix": 56,
+    "branches": 16
+  },
+  "tables": {
+    "math500": {
+      "main": {
+        "DFlash": {
+          "seconds": 41.27149718697183,
+          "tokens": 4420,
+          "tps": 107.09570287639725,
+          "timed_rounds": 528,
+          "rounds_per_token": 0.11945701357466064,
+          "seconds_per_round": 0.07816571436926482,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 0.0,
+          "exceptions": 0
+        },
+        "ASD": {
+          "seconds": 41.246308486908674,
+          "tokens": 4662,
+          "tps": 113.02829685909201,
+          "timed_rounds": 522,
+          "rounds_per_token": 0.11196911196911197,
+          "seconds_per_round": 0.0790159166415875,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 23.434349060058594,
+          "exceptions": 34
+        },
+        "ASD-Run": {
+          "seconds": 34.77563727123197,
+          "tokens": 4262,
+          "tps": 122.55706392261358,
+          "timed_rounds": 438,
+          "rounds_per_token": 0.1027686532144533,
+          "seconds_per_round": 0.0793964321261004,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 6.309940338134766,
+          "exceptions": 23
+        },
+        "ASD-Utility": {
+          "seconds": 35.44012952991761,
+          "tokens": 4376,
+          "tps": 123.4758466756138,
+          "timed_rounds": 446,
+          "rounds_per_token": 0.10191956124314443,
+          "seconds_per_round": 0.07946217383389599,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 20.375410079956055,
+          "exceptions": 34
+        },
+        "Utility-Price1": {
+          "seconds": 38.69135950889904,
+          "tokens": 4572,
+          "tps": 118.16591761135808,
+          "timed_rounds": 488,
+          "rounds_per_token": 0.10673665791776028,
+          "seconds_per_round": 0.07928557276413738,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 23.347063064575195,
+          "exceptions": 37
+        },
+        "Utility-Price3": {
+          "seconds": 34.899001763085835,
+          "tokens": 4204,
+          "tps": 120.46189826686535,
+          "timed_rounds": 440,
+          "rounds_per_token": 0.10466222645099905,
+          "seconds_per_round": 0.07931591309792235,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 14.67422103881836,
+          "exceptions": 32
+        },
+        "Confidence-Utility": {
+          "seconds": 34.10598832310643,
+          "tokens": 4010,
+          "tps": 117.57466055552682,
+          "timed_rounds": 428,
+          "rounds_per_token": 0.10673316708229426,
+          "seconds_per_round": 0.07968688860538886,
+          "correct": 3,
+          "requests": 3,
+          "truncated": 0,
+          "regret": 23.02958106994629,
+          "exceptions": 34
+        }
+      },
+      "prefix": {
+        "DFlash": {
+          "seconds": 10.985623923246749,
+          "tokens": 768,
+          "tps": 69.90954772944943,
+          "timed_rounds": 132,
+          "rounds_per_token": 0.171875,
+          "seconds_per_round": 0.08322442366096022
+        },
+        "ASD": {
+          "seconds": 9.32710956595838,
+          "tokens": 768,
+          "tps": 82.3406216651521,
+          "timed_rounds": 108,
+          "rounds_per_token": 0.140625,
+          "seconds_per_round": 0.08636212561072575
+        },
+        "ASD-Run": {
+          "seconds": 8.432862950023264,
+          "tokens": 768,
+          "tps": 91.07227338467315,
+          "timed_rounds": 96,
+          "rounds_per_token": 0.125,
+          "seconds_per_round": 0.08784232239607566
+        },
+        "ASD-Utility": {
+          "seconds": 8.726646266877651,
+          "tokens": 768,
+          "tps": 88.00631726244892,
+          "timed_rounds": 100,
+          "rounds_per_token": 0.13020833333333334,
+          "seconds_per_round": 0.08726646266877651
+        },
+        "Utility-Price1": {
+          "seconds": 8.314390833955258,
+          "tokens": 768,
+          "tps": 92.36996616319189,
+          "timed_rounds": 94,
+          "rounds_per_token": 0.12239583333333333,
+          "seconds_per_round": 0.08845096631867296
+        },
+        "Utility-Price3": {
+          "seconds": 9.637994360993616,
+          "tokens": 768,
+          "tps": 79.68462848538377,
+          "timed_rounds": 112,
+          "rounds_per_token": 0.14583333333333334,
+          "seconds_per_round": 0.08605352108030015
+        },
+        "Confidence-Utility": {
+          "seconds": 9.361886219936423,
+          "tokens": 768,
+          "tps": 82.0347504720278,
+          "timed_rounds": 108,
+          "rounds_per_token": 0.140625,
+          "seconds_per_round": 0.086684131666078
+        }
+      },
+      "equal_prefix_ids": [
+        "math500:1",
+        "math500:4",
+        "math500:7"
+      ],
+      "comparisons": {
+        "DFlash": {
+          "length_ratio": 1.010054844606947,
+          "round_density_ratio": 1.1720715053872532,
+          "round_cost_ratio": 0.9836845708834845,
+          "latency_ratio": 1.1645413753956946
+        },
+        "ASD": {
+          "length_ratio": 1.0653564899451553,
+          "round_density_ratio": 1.0986027667642018,
+          "round_cost_ratio": 0.9943840299002978,
+          "latency_ratio": 1.1638306358922768
+        },
+        "ASD-Run": {
+          "length_ratio": 0.9739488117001828,
+          "round_density_ratio": 1.0083310010458468,
+          "round_cost_ratio": 0.999172666633397,
+          "latency_ratio": 0.9812502869628427
+        },
+        "ASD-Utility": {
+          "length_ratio": 1.0,
+          "round_density_ratio": 1.0,
+          "round_cost_ratio": 1.0,
+          "latency_ratio": 1.0
+        },
+        "Utility-Price1": {
+          "length_ratio": 1.0447897623400366,
+          "round_density_ratio": 1.0472637108702219,
+          "round_cost_ratio": 0.9977775454503954,
+          "latency_ratio": 1.0917386595959484
+        },
+        "Utility-Price3": {
+          "length_ratio": 0.9606946983546618,
+          "round_density_ratio": 1.0269100962994884,
+          "round_cost_ratio": 0.9981593665398661,
+          "latency_ratio": 0.9847312136267737
+        },
+        "Confidence-Utility": {
+          "length_ratio": 0.9163619744058501,
+          "round_density_ratio": 1.047229459982331,
+          "round_cost_ratio": 1.0028279464385483,
+          "latency_ratio": 0.9623550696764543
+        }
+      }
+    },
+    "gsm8k": {
+      "main": {
+        "DFlash": {
+          "seconds": 5.165532072889619,
+          "tokens": 320,
+          "tps": 61.949087816038045,
+          "timed_rounds": 68,
+          "rounds_per_token": 0.2125,
+          "seconds_per_round": 0.0759637069542591,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 0.0,
+          "exceptions": 0
+        },
+        "ASD": {
+          "seconds": 5.366238532937132,
+          "tokens": 458,
+          "tps": 85.34842370290991,
+          "timed_rounds": 70,
+          "rounds_per_token": 0.15283842794759825,
+          "seconds_per_round": 0.07666055047053046,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 7.93617057800293,
+          "exceptions": 9
+        },
+        "ASD-Run": {
+          "seconds": 4.198692428064533,
+          "tokens": 308,
+          "tps": 73.35617106442314,
+          "timed_rounds": 54,
+          "rounds_per_token": 0.17532467532467533,
+          "seconds_per_round": 0.07775356348267654,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 1.5773506164550781,
+          "exceptions": 2
+        },
+        "ASD-Utility": {
+          "seconds": 6.700870292028412,
+          "tokens": 480,
+          "tps": 71.632486390764,
+          "timed_rounds": 88,
+          "rounds_per_token": 0.18333333333333332,
+          "seconds_per_round": 0.07614625331850468,
+          "correct": 0,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 6.373401641845703,
+          "exceptions": 9
+        },
+        "Utility-Price1": {
+          "seconds": 6.705945204012096,
+          "tokens": 522,
+          "tps": 77.84137569267534,
+          "timed_rounds": 88,
+          "rounds_per_token": 0.1685823754789272,
+          "seconds_per_round": 0.07620392277286472,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 6.949182510375977,
+          "exceptions": 12
+        },
+        "Utility-Price3": {
+          "seconds": 4.343506016070023,
+          "tokens": 316,
+          "tps": 72.7522878593627,
+          "timed_rounds": 56,
+          "rounds_per_token": 0.17721518987341772,
+          "seconds_per_round": 0.07756260742982184,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 2.8811168670654297,
+          "exceptions": 3
+        },
+        "Confidence-Utility": {
+          "seconds": 6.7250932740280405,
+          "tokens": 522,
+          "tps": 77.61974127792945,
+          "timed_rounds": 88,
+          "rounds_per_token": 0.1685823754789272,
+          "seconds_per_round": 0.07642151447759137,
+          "correct": 1,
+          "requests": 1,
+          "truncated": 0,
+          "regret": 5.553153991699219,
+          "exceptions": 10
+        }
+      },
+      "prefix": {
+        "DFlash": {
+          "seconds": 3.8609504299238324,
+          "tokens": 256,
+          "tps": 66.30491757052947,
+          "timed_rounds": 50,
+          "rounds_per_token": 0.1953125,
+          "seconds_per_round": 0.07721900859847665
+        },
+        "ASD": {
+          "seconds": 2.864902729052119,
+          "tokens": 256,
+          "tps": 89.35730955329855,
+          "timed_rounds": 36,
+          "rounds_per_token": 0.140625,
+          "seconds_per_round": 0.07958063136255886
+        },
+        "ASD-Run": {
+          "seconds": 3.151963768992573,
+          "tokens": 256,
+          "tps": 81.21920769470724,
+          "timed_rounds": 40,
+          "rounds_per_token": 0.15625,
+          "seconds_per_round": 0.07879909422481432
+        },
+        "ASD-Utility": {
+          "seconds": 3.4503649569815025,
+          "tokens": 256,
+          "tps": 74.19504985465584,
+          "timed_rounds": 44,
+          "rounds_per_token": 0.171875,
+          "seconds_per_round": 0.07841738538594324
+        },
+        "Utility-Price1": {
+          "seconds": 3.4514581970870495,
+          "tokens": 256,
+          "tps": 74.17154877206916,
+          "timed_rounds": 44,
+          "rounds_per_token": 0.171875,
+          "seconds_per_round": 0.0784422317519784
+        },
+        "Utility-Price3": {
+          "seconds": 3.15755371900741,
+          "tokens": 256,
+          "tps": 81.07542191886276,
+          "timed_rounds": 40,
+          "rounds_per_token": 0.15625,
+          "seconds_per_round": 0.07893884297518525
+        },
+        "Confidence-Utility": {
+          "seconds": 3.4636669310275465,
+          "tokens": 256,
+          "tps": 73.91010888106783,
+          "timed_rounds": 44,
+          "rounds_per_token": 0.171875,
+          "seconds_per_round": 0.07871970297789878
+        }
+      },
+      "equal_prefix_ids": [
+        "gsm8k:21"
+      ],
+      "comparisons": {
+        "DFlash": {
+          "length_ratio": 0.6666666666666666,
+          "round_density_ratio": 1.1590909090909092,
+          "round_cost_ratio": 0.9976026875087074,
+          "latency_ratio": 0.7708748039840011
+        },
+        "ASD": {
+          "length_ratio": 0.9541666666666667,
+          "round_density_ratio": 0.8336641524414451,
+          "round_cost_ratio": 1.0067540703529374,
+          "latency_ratio": 0.8008271014171092
+        },
+        "ASD-Run": {
+          "length_ratio": 0.6416666666666667,
+          "round_density_ratio": 0.9563164108618655,
+          "round_cost_ratio": 1.0211081976344758,
+          "latency_ratio": 0.626589121275701
+        },
+        "ASD-Utility": {
+          "length_ratio": 1.0,
+          "round_density_ratio": 1.0,
+          "round_cost_ratio": 1.0,
+          "latency_ratio": 1.0
+        },
+        "Utility-Price1": {
+          "length_ratio": 1.0875,
+          "round_density_ratio": 0.9195402298850576,
+          "round_cost_ratio": 1.0007573511741783,
+          "latency_ratio": 1.0007573511741783
+        },
+        "Utility-Price3": {
+          "length_ratio": 0.6583333333333333,
+          "round_density_ratio": 0.9666283084004603,
+          "round_cost_ratio": 1.0186004438772953,
+          "latency_ratio": 0.6482002824673697
+        },
+        "Confidence-Utility": {
+          "length_ratio": 1.0875,
+          "round_density_ratio": 0.9195402298850576,
+          "round_cost_ratio": 1.003614900892567,
+          "latency_ratio": 1.0036149008925668
+        }
+      }
+    }
+  },
+  "requests": {
+    "math500:1": {
+      "DFlash": {
+        "seconds": 10.631471954053268,
+        "tokens": 722,
+        "rounds": 68,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 0.0,
+        "trajectory_equal_confidence": false
+      },
+      "ASD": {
+        "seconds": 11.332564762909897,
+        "tokens": 806,
+        "rounds": 72,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.70805549621582,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Run": {
+        "seconds": 9.352640315075405,
+        "tokens": 707,
+        "rounds": 59,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 2.7385520935058594,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Utility": {
+        "seconds": 10.602599287987687,
+        "tokens": 794,
+        "rounds": 67,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.197429656982422,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price1": {
+        "seconds": 12.48259080783464,
+        "tokens": 864,
+        "rounds": 79,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.508054733276367,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price3": {
+        "seconds": 9.642652887152508,
+        "tokens": 703,
+        "rounds": 61,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 4.620750427246094,
+        "trajectory_equal_confidence": false
+      },
+      "Confidence-Utility": {
+        "seconds": 9.521803183131851,
+        "tokens": 664,
+        "rounds": 60,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "p - q",
+          "expected_answer": "p - q",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.081727981567383,
+        "trajectory_equal_confidence": true
+      }
+    },
+    "math500:4": {
+      "DFlash": {
+        "seconds": 15.542460316908546,
+        "tokens": 653,
+        "rounds": 96,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 0.0,
+        "trajectory_equal_confidence": false
+      },
+      "ASD": {
+        "seconds": 17.964083894039504,
+        "tokens": 700,
+        "rounds": 111,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.890525817871094,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Run": {
+        "seconds": 12.68762990704272,
+        "tokens": 586,
+        "rounds": 77,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 1.5698966979980469,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Utility": {
+        "seconds": 13.016513242037036,
+        "tokens": 601,
+        "rounds": 79,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.647499084472656,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price1": {
+        "seconds": 13.607841039076447,
+        "tokens": 588,
+        "rounds": 83,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.897214889526367,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price3": {
+        "seconds": 12.973817846970633,
+        "tokens": 575,
+        "rounds": 79,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 6.094795227050781,
+        "trajectory_equal_confidence": false
+      },
+      "Confidence-Utility": {
+        "seconds": 13.636790798045695,
+        "tokens": 576,
+        "rounds": 83,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "\\text{Evelyn}",
+          "expected_answer": "\\text{Evelyn}",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.994537353515625,
+        "trajectory_equal_confidence": true
+      }
+    },
+    "math500:7": {
+      "DFlash": {
+        "seconds": 15.097564916010015,
+        "tokens": 835,
+        "rounds": 100,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 0.0,
+        "trajectory_equal_confidence": false
+      },
+      "ASD": {
+        "seconds": 11.949659829959273,
+        "tokens": 825,
+        "rounds": 78,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.83576774597168,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Run": {
+        "seconds": 12.735367049113847,
+        "tokens": 838,
+        "rounds": 83,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 2.0014915466308594,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Utility": {
+        "seconds": 11.82101699989289,
+        "tokens": 793,
+        "rounds": 77,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 5.530481338500977,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price1": {
+        "seconds": 12.600927661987953,
+        "tokens": 834,
+        "rounds": 82,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.941793441772461,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price3": {
+        "seconds": 12.282531028962694,
+        "tokens": 824,
+        "rounds": 80,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 3.9586753845214844,
+        "trajectory_equal_confidence": false
+      },
+      "Confidence-Utility": {
+        "seconds": 10.947394341928884,
+        "tokens": 765,
+        "rounds": 71,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "90^\\circ",
+          "expected_answer": "90^\\circ",
+          "metric": "normalized boxed exact match, not general symbolic equivalence",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.953315734863281,
+        "trajectory_equal_confidence": true
+      }
+    },
+    "gsm8k:21": {
+      "DFlash": {
+        "seconds": 5.165532072889619,
+        "tokens": 160,
+        "rounds": 34,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 0.0,
+        "trajectory_equal_confidence": false
+      },
+      "ASD": {
+        "seconds": 5.366238532937132,
+        "tokens": 229,
+        "rounds": 35,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 7.93617057800293,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Run": {
+        "seconds": 4.198692428064533,
+        "tokens": 154,
+        "rounds": 27,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 1.5773506164550781,
+        "trajectory_equal_confidence": false
+      },
+      "ASD-Utility": {
+        "seconds": 6.700870292028412,
+        "tokens": 240,
+        "rounds": 44,
+        "quality": {
+          "correct": false,
+          "parsed_answer": "23",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 6.373401641845703,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price1": {
+        "seconds": 6.705945204012096,
+        "tokens": 261,
+        "rounds": 44,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 6.949182510375977,
+        "trajectory_equal_confidence": false
+      },
+      "Utility-Price3": {
+        "seconds": 4.343506016070023,
+        "tokens": 158,
+        "rounds": 28,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 2.8811168670654297,
+        "trajectory_equal_confidence": false
+      },
+      "Confidence-Utility": {
+        "seconds": 6.7250932740280405,
+        "tokens": 261,
+        "rounds": 44,
+        "quality": {
+          "correct": true,
+          "parsed_answer": "14",
+          "expected_answer": "14",
+          "error": null
+        },
+        "finish_reason": "eos",
+        "regret": 5.553153991699219,
+        "trajectory_equal_confidence": true
+      }
+    }
+  },
+  "interventions": [
+    {
+      "request_id": "math500:1",
+      "matched": true,
+      "state": {
+        "block": 12,
+        "index": 7,
+        "position": 142,
+        "pair_mass": 0.5343672633171082,
+        "regret": 0.26689910888671875,
+        "run": 3,
+        "candidate": 12209,
+        "recovery": 1654
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 790,
+      "recovery_tokens": 746,
+      "proposal_rounds": 66,
+      "recovery_rounds": 64,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "math500:1",
+      "matched": true,
+      "state": {
+        "block": 43,
+        "index": 8,
+        "position": 459,
+        "pair_mass": 0.9999982118606567,
+        "regret": 0.3926811218261719,
+        "run": 1,
+        "candidate": 532,
+        "recovery": 92
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 809,
+      "recovery_tokens": 873,
+      "proposal_rounds": 31,
+      "recovery_rounds": 33,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "math500:4",
+      "matched": false,
+      "state": {
+        "block": 2,
+        "index": 1,
+        "position": 20,
+        "pair_mass": 0.3196895122528076,
+        "regret": 1.7225627899169922,
+        "run": 2,
+        "candidate": 315,
+        "recovery": 3897
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 692,
+      "recovery_tokens": 680,
+      "proposal_rounds": 115,
+      "recovery_rounds": 126,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "math500:4",
+      "matched": false,
+      "state": {
+        "block": 6,
+        "index": 3,
+        "position": 45,
+        "pair_mass": 0.9978540539741516,
+        "regret": 2.611001968383789,
+        "run": 2,
+        "candidate": 7089,
+        "recovery": 4771
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 683,
+      "recovery_tokens": 692,
+      "proposal_rounds": 123,
+      "recovery_rounds": 110,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "math500:7",
+      "matched": true,
+      "state": {
+        "block": 16,
+        "index": 3,
+        "position": 130,
+        "pair_mass": 0.5025335550308228,
+        "regret": 0.5862197875976562,
+        "run": 3,
+        "candidate": 4416,
+        "recovery": 3830
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 737,
+      "recovery_tokens": 783,
+      "proposal_rounds": 59,
+      "recovery_rounds": 62,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "math500:7",
+      "matched": true,
+      "state": {
+        "block": 23,
+        "index": 11,
+        "position": 204,
+        "pair_mass": 0.9975131750106812,
+        "regret": 0.487030029296875,
+        "run": 1,
+        "candidate": 8,
+        "recovery": 340
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 794,
+      "recovery_tokens": 758,
+      "proposal_rounds": 52,
+      "recovery_rounds": 49,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "gsm8k:21",
+      "matched": false,
+      "state": {
+        "block": 2,
+        "index": 0,
+        "position": 17,
+        "pair_mass": 0.881259560585022,
+        "regret": 0.8822593688964844,
+        "run": 2,
+        "candidate": 198,
+        "recovery": 323
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 229,
+      "recovery_tokens": 232,
+      "proposal_rounds": 43,
+      "recovery_rounds": 42,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    },
+    {
+      "request_id": "gsm8k:21",
+      "matched": false,
+      "state": {
+        "block": 7,
+        "index": 5,
+        "position": 67,
+        "pair_mass": 0.9999899864196777,
+        "regret": 1.4159088134765625,
+        "run": 1,
+        "candidate": 13,
+        "recovery": 1635
+      },
+      "stable": true,
+      "proposal_correct": true,
+      "recovery_correct": true,
+      "proposal_tokens": 236,
+      "recovery_tokens": 238,
+      "proposal_rounds": 30,
+      "recovery_rounds": 32,
+      "finish": {
+        "proposal": "eos",
+        "recovery": "eos"
+      }
+    }
+  ],
+  "shadow": {
+    "math500:1": {
+      "ASD": {
+        "DFlash": {
+          "equal": 64,
+          "more": 0,
+          "less": 8
+        },
+        "ASD": {
+          "equal": 68,
+          "more": 4,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 70,
+          "more": 0,
+          "less": 2
+        },
+        "ASD-Utility": {
+          "equal": 72,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 70,
+          "more": 2,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 70,
+          "more": 0,
+          "less": 2
+        },
+        "Confidence-Utility": {
+          "equal": 71,
+          "more": 1,
+          "less": 0
+        }
+      },
+      "ASD-Utility": {
+        "DFlash": {
+          "equal": 56,
+          "more": 0,
+          "less": 11
+        },
+        "ASD": {
+          "equal": 61,
+          "more": 6,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 61,
+          "more": 0,
+          "less": 6
+        },
+        "ASD-Utility": {
+          "equal": 67,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 63,
+          "more": 4,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 65,
+          "more": 0,
+          "less": 2
+        },
+        "Confidence-Utility": {
+          "equal": 64,
+          "more": 3,
+          "less": 0
+        }
+      },
+      "Confidence-Utility": {
+        "DFlash": {
+          "equal": 50,
+          "more": 0,
+          "less": 10
+        },
+        "ASD": {
+          "equal": 52,
+          "more": 8,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 57,
+          "more": 0,
+          "less": 3
+        },
+        "ASD-Utility": {
+          "equal": 60,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 56,
+          "more": 4,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 60,
+          "more": 0,
+          "less": 0
+        },
+        "Confidence-Utility": {
+          "equal": 58,
+          "more": 2,
+          "less": 0
+        }
+      }
+    },
+    "math500:4": {
+      "ASD": {
+        "DFlash": {
+          "equal": 108,
+          "more": 0,
+          "less": 3
+        },
+        "ASD": {
+          "equal": 107,
+          "more": 4,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 111,
+          "more": 0,
+          "less": 0
+        },
+        "ASD-Utility": {
+          "equal": 111,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 109,
+          "more": 2,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 111,
+          "more": 0,
+          "less": 0
+        },
+        "Confidence-Utility": {
+          "equal": 110,
+          "more": 1,
+          "less": 0
+        }
+      },
+      "ASD-Utility": {
+        "DFlash": {
+          "equal": 71,
+          "more": 0,
+          "less": 8
+        },
+        "ASD": {
+          "equal": 76,
+          "more": 3,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 72,
+          "more": 0,
+          "less": 7
+        },
+        "ASD-Utility": {
+          "equal": 79,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 77,
+          "more": 2,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 76,
+          "more": 0,
+          "less": 3
+        },
+        "Confidence-Utility": {
+          "equal": 77,
+          "more": 2,
+          "less": 0
+        }
+      },
+      "Confidence-Utility": {
+        "DFlash": {
+          "equal": 76,
+          "more": 0,
+          "less": 7
+        },
+        "ASD": {
+          "equal": 78,
+          "more": 5,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 80,
+          "more": 0,
+          "less": 3
+        },
+        "ASD-Utility": {
+          "equal": 83,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 79,
+          "more": 4,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 82,
+          "more": 0,
+          "less": 1
+        },
+        "Confidence-Utility": {
+          "equal": 80,
+          "more": 3,
+          "less": 0
+        }
+      }
+    },
+    "math500:7": {
+      "ASD": {
+        "DFlash": {
+          "equal": 67,
+          "more": 0,
+          "less": 11
+        },
+        "ASD": {
+          "equal": 75,
+          "more": 3,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 75,
+          "more": 0,
+          "less": 3
+        },
+        "ASD-Utility": {
+          "equal": 78,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 77,
+          "more": 1,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 76,
+          "more": 0,
+          "less": 2
+        },
+        "Confidence-Utility": {
+          "equal": 78,
+          "more": 0,
+          "less": 0
+        }
+      },
+      "ASD-Utility": {
+        "DFlash": {
+          "equal": 65,
+          "more": 0,
+          "less": 12
+        },
+        "ASD": {
+          "equal": 67,
+          "more": 10,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 74,
+          "more": 0,
+          "less": 3
+        },
+        "ASD-Utility": {
+          "equal": 77,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 74,
+          "more": 3,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 76,
+          "more": 0,
+          "less": 1
+        },
+        "Confidence-Utility": {
+          "equal": 75,
+          "more": 2,
+          "less": 0
+        }
+      },
+      "Confidence-Utility": {
+        "DFlash": {
+          "equal": 66,
+          "more": 0,
+          "less": 5
+        },
+        "ASD": {
+          "equal": 67,
+          "more": 4,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 69,
+          "more": 0,
+          "less": 2
+        },
+        "ASD-Utility": {
+          "equal": 71,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 68,
+          "more": 3,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 70,
+          "more": 0,
+          "less": 1
+        },
+        "Confidence-Utility": {
+          "equal": 69,
+          "more": 2,
+          "less": 0
+        }
+      }
+    },
+    "gsm8k:21": {
+      "ASD": {
+        "DFlash": {
+          "equal": 30,
+          "more": 0,
+          "less": 5
+        },
+        "ASD": {
+          "equal": 33,
+          "more": 2,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 33,
+          "more": 0,
+          "less": 2
+        },
+        "ASD-Utility": {
+          "equal": 35,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 35,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 33,
+          "more": 0,
+          "less": 2
+        },
+        "Confidence-Utility": {
+          "equal": 35,
+          "more": 0,
+          "less": 0
+        }
+      },
+      "ASD-Utility": {
+        "DFlash": {
+          "equal": 37,
+          "more": 0,
+          "less": 7
+        },
+        "ASD": {
+          "equal": 38,
+          "more": 6,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 40,
+          "more": 0,
+          "less": 4
+        },
+        "ASD-Utility": {
+          "equal": 44,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 43,
+          "more": 1,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 41,
+          "more": 0,
+          "less": 3
+        },
+        "Confidence-Utility": {
+          "equal": 43,
+          "more": 1,
+          "less": 0
+        }
+      },
+      "Confidence-Utility": {
+        "DFlash": {
+          "equal": 38,
+          "more": 0,
+          "less": 6
+        },
+        "ASD": {
+          "equal": 36,
+          "more": 8,
+          "less": 0
+        },
+        "ASD-Run": {
+          "equal": 42,
+          "more": 0,
+          "less": 2
+        },
+        "ASD-Utility": {
+          "equal": 44,
+          "more": 0,
+          "less": 0
+        },
+        "Utility-Price1": {
+          "equal": 41,
+          "more": 3,
+          "less": 0
+        },
+        "Utility-Price3": {
+          "equal": 42,
+          "more": 0,
+          "less": 2
+        },
+        "Confidence-Utility": {
+          "equal": 42,
+          "more": 2,
+          "less": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.41s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.41s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.43s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.32s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.17s/it]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/scripts/run_asd_confidence_probe.py", line 279, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/scripts/run_asd_confidence_probe.py", line 233, in main
+    old = next(r for r in read_rows(previous / "mechanism/rows.jsonl")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/memorydraft/evaluation/runtime_migration.py", line 31, in read_rows
+    data = path.read_bytes() if path.exists() else gzip.decompress(Path(str(path) + ".gz").read_bytes())
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/results/asd-completion/math500/mechanism/rows.jsonl.gz'

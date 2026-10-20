@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-20 — ASD 置信度小检查（156次完成）
+
+- 冻结四道已观察开发题math500:1/4/7、gsm8k:21；七组含原四组、固定价格1/3与alpha=.5的Confidence-Utility。28机制+56完整自然计时+56遵守EOS的128前缀计时+16单例外干预分支全部完成，无错答/截断剔除。四个旧策略在旧未裁短块之前的前缀保留，机制/计时轨迹、账本与计数完全一致；1901机制块通过独立标量重算，完整proposal/EOS观测通过核对。
+- 三道MATH所有七组均3/3正确并EOS。Utility35.440130s/4376token，Confidence34.105988s/4010token（两重复）：时延−3.76%、输出−8.36%、自然TPS−4.78%、每token轮密度+4.72%、每轮成本+0.28%。等128前缀Confidence9.361886s、Utility8.726646s（+7.28%），不支持总体吞吐增量。单题math7有轮密度改善（77/793→71/765），math4则退化（79/601→83/576）。
+- gsm8k:21的Utility仍真实错答，Confidence答对；固定价格1/3及其他基线也答对。Confidence6.725093s，Utility6.700870s（+0.36%），价格3为4.343506s（Confidence比其慢54.83%）。不是置信度独有纠错证据。
+- 8个干预状态/16分支全部答对且同状态Target回放通过。math1/7满足预定regret/run配对，math4/gsm21无匹配对、按协议标记unmatched；没有有害/无害质量标签差异，无法验证风险预测能力，也未定位Utility错答轨迹的致错例外。严格分支均重prefill，未跨分支使用旧logits，诊断时延不作线上加速。
+- 指标局限实例：原ASD math4/45的Target首选概率0.9296、proposal0.0683，pair_mass0.9979、regret2.611。集中度高不代表Target犹豫或认可proposal；一律降价会削弱原regret惩罚。这是指标定义局限，未称其为置信度组退化的唯一因果源。阶段决定停止扩大此简单定价规则，保留采集/干预资产；不在四题扫描alpha，不否定所有置信度方法。
+- 正式执行commit`e7ec17b5f3b832b91f1c68cceb74395ac7607f85`；服务器独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence-v2`，933文件执行前后SHA核验。源码ZIP SHA`9c55a0f1c40d567c7618fae7a4d9d1918042a22e476621a7a55e0c4cb5af6c9e`、source文件清单SHA`aea26518d2dd031aa4432bc7c7c738cf78a8a8819dea460384ef0aa6fc2dd489`；runtime package `4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f`。正式回传ZIP1117088字节/SHA`aea5ad867f7108e7361162387aa16481af964eeb453f7faff610ed877d224ed6`。
+- 首次路径失败保留在`results/asd-confidence/failed-v1`，失败ZIP SHA`91584aaeca4900ce506fa3e7616b18e5e2808328e52b13cea9b4992c6975ff50`；不计入有效140计时/机制生成。正式服务器39 passed/4.75s；本地修复39 passed/9.97s；发布审计15 passed/7.92s。最终完整命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-confidence-final --junitxml=artifacts/asd-confidence-tests-final-local.xml`：471 passed/3 skipped/49.19s，仅既有multipart弃用提醒。GPU完成后双19MiB/0%。
+- 准确GPU命令见冻结协议`docs/ASD_CONFIDENCE_PROTOCOL.md`、源码`results/asd-confidence/scripts/run_asd_confidence_pipeline.py`及pipeline.log；原始证据`results/asd-confidence`，可重建报告`docs/ASD_CONFIDENCE_RESULTS.md`，命令`.venv\Scripts\python.exe -m scripts.write_asd_confidence_report`。面试infra分支与tag未改。
+
 ## 2026-10-20 — ASD 置信度小检查（执行准备）
 
 - 用户授权代码与小规模检查。冻结4道已观察开发题math500:1/4/7、gsm8k:21；七组含原四组、固定价格1/3与alpha=.5的Confidence-Utility。请求预算按原regret扣除，不按概率价格打折；原ASD可行域不变。协议`docs/ASD_CONFIDENCE_PROTOCOL.md`。

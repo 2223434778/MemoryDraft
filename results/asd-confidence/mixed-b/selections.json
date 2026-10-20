@@ -1,0 +1,54 @@
+{
+  "math500:7": {
+    "matched": true,
+    "candidates": 12,
+    "states": [
+      {
+        "block": 16,
+        "index": 3,
+        "position": 130,
+        "pair_mass": 0.5025335550308228,
+        "regret": 0.5862197875976562,
+        "run": 3,
+        "candidate": 4416,
+        "recovery": 3830
+      },
+      {
+        "block": 23,
+        "index": 11,
+        "position": 204,
+        "pair_mass": 0.9975131750106812,
+        "regret": 0.487030029296875,
+        "run": 1,
+        "candidate": 8,
+        "recovery": 340
+      }
+    ]
+  },
+  "gsm8k:21": {
+    "matched": false,
+    "candidates": 6,
+    "states": [
+      {
+        "block": 2,
+        "index": 0,
+        "position": 17,
+        "pair_mass": 0.881259560585022,
+        "regret": 0.8822593688964844,
+        "run": 2,
+        "candidate": 198,
+        "recovery": 323
+      },
+      {
+        "block": 7,
+        "index": 5,
+        "position": 67,
+        "pair_mass": 0.9999899864196777,
+        "regret": 1.4159088134765625,
+        "run": 1,
+        "candidate": 13,
+        "recovery": 1635
+      }
+    ]
+  }
+}

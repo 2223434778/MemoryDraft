@@ -39,6 +39,11 @@ MATH完整结束5题的自然TPS几乎持平，总体TPS收益主要来自3道�
 MATH答案等价审计后严格DFlash/原ASD/Run/Utility/保守ASD为12/9/13/14/11（共16题，原保守主评分均少1题）。
 局部支出选择改善仍存在，但未确认新增后缀门控的稳定吞吐优势；当前端到端正结果主要伴随输出路径变化，继续保留实验选项，不进入默认严格运行时。
 
+[置信度动态定价小检查](docs/ASD_CONFIDENCE_RESULTS.md)完成4道已观察开发题、140生成及16同前缀干预分支。
+Confidence-Utility在三道MATH上比Utility自然时延低3.76%，但输出缩短8.36%、自然TPS低4.78%、等128token前缀慢7.28%。
+旧GSM8K错误题答对，但固定价格1/3也答对，价格3更快；16干预分支均答对，未获得质量风险标签差异。
+概率集中不代表Target认可Draft，停止扩大该简单pair_mass价格规则；采集、干预工具与负结果保留，默认严格运行时不启用。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

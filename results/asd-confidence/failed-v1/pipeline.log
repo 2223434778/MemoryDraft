@@ -1,0 +1,31 @@
+......................................                                   [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/artifacts/tests-server.xml -
+38 passed in 4.80s
+START 0 START 1 mixed-b ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_confidence_probe", "--config", "configs/runtime-dflash.json", "--task-ids", "math500:7", "gsm8k:21", "--output", "results/raw/asd-confidence/mixed-b"]math-a
+ ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_confidence_probe", "--config", "configs/runtime-dflash.json", "--task-ids", "math500:1", "math500:4", "--output", "results/raw/asd-confidence/math-a"]
+FINISH 0 math-a 1
+FINISH 1 mixed-b 1
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/scripts/run_asd_confidence_pipeline.py", line 60, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/scripts/run_asd_confidence_pipeline.py", line 35, in main
+    list(pool.map(worker, [0, 1]))
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence/scripts/run_asd_confidence_pipeline.py", line 32, in worker
+    raise RuntimeError(part + " failed " + str(result.returncode))
+RuntimeError: math-a failed 1
