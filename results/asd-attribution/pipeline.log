@@ -1,0 +1,12 @@
+................................                                         [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-attribution/artifacts/tests-server.xml -
+32 passed in 4.81s
+START 0 math-a ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_budget_probe", "--config", "configs/runtime-ot-benefit.json", "--data", "data/research/asd-attribution/records.json", "--policies", "configs/asd-attribution-policies.json", "--benchmark", "math500", "--task-ids", "math500:8", "math500:9", "math500:10", "math500:11", "math500:12", "math500:13", "math500:14", "math500:15", "--max-new-tokens", "2048", "--prefix-tokens", "128", "--protocol", "docs/ASD_ATTRIBUTION_PROTOCOL.md", "--output", "results/raw/asd-attribution/math-a"]
+START 1 math-b ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_budget_probe", "--config", "configs/runtime-ot-benefit.json", "--data", "data/research/asd-attribution/records.json", "--policies", "configs/asd-attribution-policies.json", "--benchmark", "math500", "--task-ids", "math500:16", "math500:17", "math500:18", "math500:19", "math500:20", "math500:21", "math500:22", "math500:23", "--max-new-tokens", "2048", "--prefix-tokens", "128", "--protocol", "docs/ASD_ATTRIBUTION_PROTOCOL.md", "--output", "results/raw/asd-attribution/math-b"]
+FINISH 1 math-b 0
+START 1 gsm-b ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_budget_probe", "--config", "configs/runtime-ot-benefit.json", "--data", "data/research/asd-attribution/records.json", "--policies", "configs/asd-attribution-policies.json", "--benchmark", "gsm8k", "--task-ids", "gsm8k:28", "gsm8k:29", "gsm8k:30", "gsm8k:31", "--max-new-tokens", "2048", "--prefix-tokens", "128", "--protocol", "docs/ASD_ATTRIBUTION_PROTOCOL.md", "--output", "results/raw/asd-attribution/gsm-b"]
+FINISH 0 math-a 0
+START 0 gsm-a ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_budget_probe", "--config", "configs/runtime-ot-benefit.json", "--data", "data/research/asd-attribution/records.json", "--policies", "configs/asd-attribution-policies.json", "--benchmark", "gsm8k", "--task-ids", "gsm8k:24", "gsm8k:25", "gsm8k:26", "gsm8k:27", "--max-new-tokens", "2048", "--prefix-tokens", "128", "--protocol", "docs/ASD_ATTRIBUTION_PROTOCOL.md", "--output", "results/raw/asd-attribution/gsm-a"]
+FINISH 1 gsm-b 0
+FINISH 0 gsm-a 0
+PIPELINE COMPLETE

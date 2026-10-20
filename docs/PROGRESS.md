@@ -1,5 +1,19 @@
 # 项目进度
 
+## 2026-10-20 — ASD 新题收益归因（600次完成）
+
+- 固定GSM8K test24..31（8题）、MATH-500 8..23（16题），原四组加固定gate0.0625的Conservative。120机制+240完整自然EOS计时+240遵守EOS的128前缀计时全部完成；不按质量/截断剔题，不扫描新题参数。四分片math-a/b、gsm-a/b分别同题同卡交错，精确命令见`results/asd-attribution/run-pipeline.py`与`pipeline.log`，冻结协议`docs/ASD_ATTRIBUTION_PROTOCOL.md`。
+- 新MATH原ASD293.699300s、Run254.355233s（−13.40%）、Utility264.796971s（−9.84%）、Conservative262.111812s（−10.76%），两重复。Run自然TPS反而−2.10%，Utility−2.20%；Run输出token−15.22%、每token验证轮+1.73%、每轮成本+0.42%。主要自然时延收益伴随输出路径缩短，未复现每token执行效率增量。Run/ASD跨题配对bootstrap时延比区间[0.6668,1.0492]含1。
+- 严格DFlash260.130839s；Run相对它仅−2.22%时延/−1.29%自然TPS，Utility+1.79%时延。Run与Conservative实际总regret75.527/76.270、例外233/229接近；Run相对该对照时延−2.96%、输出−7.02%、TPS−4.19%，跨题区间也含1，不支持实际后缀门控独有稳定吞吐收益。
+- MATH五组保守主评分依次DFlash/ASD/Run/Utility/Conservative为11/8/12/13/10（共16题）。math500:23五组均输出5，与参考x=5等价，单列`quality-audit.json`后为12/9/13/14/11，不修改raw或主评分。截断依次2/3/2/2/2；12题五组均EOS、1题均length、3题mixed。全EOS12题Run时延仍−8.80%，但全题和终止分组不可互相替代。旧Utility gsm8k:21真实错误继续保留。
+- 新GSM全部五组8/8正确、无截断。ASD45.560562s，Run49.213269s（+8.02%、自然TPS−7.65%），Utility45.568200s（+0.02%基本持平）。Conservative56.544874s（+24.11%）；原ASD相对严格DFlash时延−16.09%、自然TPS+14.24%。后缀选择的增量没有跨任务复现，ASD本身仍有本切片收益。
+- 所有24题五组均达到128前缀，共同等token集合即全部新题。MATH Run比ASD慢3.65%、Utility慢0.67%；GSM Run慢4.11%、Utility快0.18%。全部短上限裁短块之前与完整轨迹一致，两次前缀输出一致；没有越过EOS续写。
+- 同状态诊断最初漏考虑被拒绝的proposal EOS：gsm8k:30/Utility event32可行上限因EOS裁到3，策略只接受2并继续生成。修正独立标量审计，新增专门测试；原推理/账本/输出/计时不改。因旧trace没有保存未接受proposal EOS位置，反事实比较收窄为原ASD非终止状态（MATH1838/GSM288块）；Run和Conservative都更严，其前缀不会跨越源ASD实际可行上限。其他四条源轨迹不报告不安全的无界后缀收益。门槛开发校准同样只是近似启发式，保持冻结值，不事后重选。
+- 在MATH相同原ASD状态/剩余账本上，Run局部348额外proposal/23.679 regret，Conservative324/28.709；存在局部支出效率信号。但独立块重算不推进替代账本/模型轨迹，不能当成全请求节省验证轮。这与完整计时的吞吐负结果分列。
+- 执行commit`38a87cef2d37192719c2fefe282eb574d19ca09e`，独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-attribution`，889源码文件执行前后SHA一致。源码ZIP SHA`e3bb035680481abdec9d019b2193e065ab448e0bee06492011cf37b2ee7bf441`、清单source SHA`47ebcf7da57984861de94af4ce0432a09cf304c3f8554e0a4bd71a846e764392`；runtime package仍`8924a107833ad260fb0dac41a3ebdfb73c4b747dc5fdfcdf11aa4a09cc200e67`，与旧预算/三题补全相同。回传ZIP1587598字节/SHA`4812684cf2e118d4ccaf0e3911304e780cb02d6babc088df7d8cbef8c4a4833b`。
+- 本机相关32 passed/10.22s，服务器32 passed/4.81s；发布后相关18 passed/10.98s。最终完整命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-attribution-final --junitxml=artifacts/asd-attribution-tests-final-local.xml`：455 passed/3 skipped/47.68s，仅既有multipart弃用提醒。报告重建`.venv\Scripts\python.exe -m scripts.write_asd_attribution_report`，数据与报告`results/asd-attribution/`、`docs/ASD_ATTRIBUTION_RESULTS.md`。
+- 阶段判断收紧：旧三题输出缩短和轮密度改善均真实存在，新24题未显示Run/Utility对原ASD稳定每token增量。保留实验资产，不接默认严格运行时；不在新题继续扫参数。若继续，先在旧开发集建立原ASD门槛/预算的速度—质量对照，再做独立任务验证，不优先增加复杂预测器。两GPU收尾均19MiB/0%；main、infra冻结分支和tag仍为`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。
+
 ## 2026-10-20 — ASD 新题收益归因（执行准备）
 
 - 用户授权继续，重点区分实际后缀信息、保守门槛和输出长度。新题固定GSM8K test24..31、MATH-500 8..23，五组包含原四组及只收紧原ASD gate的Conservative；完整自然EOS/2048上限，并做遵守EOS的128短前缀，不强制越过EOS。协议`docs/ASD_ATTRIBUTION_PROTOCOL.md`，计划120机制+240完整计时+240前缀计时=600生成。

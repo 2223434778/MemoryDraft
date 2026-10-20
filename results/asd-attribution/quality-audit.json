@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "scope": "Final-answer equivalence audit of all primary-failed MATH mechanism outputs; not an audit of every reasoning step",
+  "mechanism_sha256": {
+    "math-a": "04c6ad9d2dd3feb487304b16ba0e841ea23b0a34c0fef58aa00d01c4a43de8c7",
+    "math-b": "076be52d2923dafd56ff5572e412086d1be1edf3cc62de6271ff89f86813c297"
+  },
+  "equivalent_answers": [
+    {
+      "request_id": "math500:23",
+      "method": "DFlash",
+      "parsed_answer": "5",
+      "expected_answer": "x=5",
+      "rationale": "x=5 is the only valid root: x>=4; squaring gives x^2-6x+5=0 with roots 1 and 5, and 1 violates x>=4. A boxed value 5 answers the requested solution set."
+    },
+    {
+      "request_id": "math500:23",
+      "method": "ASD-Run",
+      "parsed_answer": "5",
+      "expected_answer": "x=5",
+      "rationale": "x=5 is the only valid root: x>=4; squaring gives x^2-6x+5=0 with roots 1 and 5, and 1 violates x>=4. A boxed value 5 answers the requested solution set."
+    },
+    {
+      "request_id": "math500:23",
+      "method": "ASD-Conservative",
+      "parsed_answer": "5",
+      "expected_answer": "x=5",
+      "rationale": "x=5 is the only valid root: x>=4; squaring gives x^2-6x+5=0 with roots 1 and 5, and 1 violates x>=4. A boxed value 5 answers the requested solution set."
+    },
+    {
+      "request_id": "math500:23",
+      "method": "ASD",
+      "parsed_answer": "5",
+      "expected_answer": "x=5",
+      "rationale": "x=5 is the only valid root: x>=4; squaring gives x^2-6x+5=0 with roots 1 and 5, and 1 violates x>=4. A boxed value 5 answers the requested solution set."
+    },
+    {
+      "request_id": "math500:23",
+      "method": "ASD-Utility",
+      "parsed_answer": "5",
+      "expected_answer": "x=5",
+      "rationale": "x=5 is the only valid root: x>=4; squaring gives x^2-6x+5=0 with roots 1 and 5, and 1 violates x>=4. A boxed value 5 answers the requested solution set."
+    }
+  ],
+  "notes": [
+    "math500:9: 3 and 2 differ from the four possible values 121,122,126,144.",
+    "math500:12: 234 differs from 284; proper-divisor sums are 284 -> 220 -> 284.",
+    "math500:17: -pi violates the explicitly positive constant c; the smallest positive representative is pi.",
+    "math500:18: 124 differs from the requested angle 28 degrees.",
+    "math500:21: 13536 differs from the greatest integer strictly below the expression, 13535.",
+    "Length-stopped outputs without a parsed final answer stay incomplete; this does not assert that every intermediate reasoning step is wrong."
+  ]
+}

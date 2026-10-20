@@ -33,6 +33,12 @@ MATH完整结束5题的自然TPS几乎持平，总体TPS收益主要来自3道�
 实际后缀/收益选择相对原ASD自然时延下降15.83%/14.16%，自然TPS提高8.61%/9.35%；全部保留旧512前缀。
 实际后缀仍有一题时延退化6.26%；这是已观察题的补全诊断，尚未证明新题泛化，旧GSM8K质量退化记录继续保留。
 
+[24道新题的收益归因](docs/ASD_ATTRIBUTION_RESULTS.md)已完成600次生成，新增固定保守ASD对照和遵守EOS的等128token前缀。
+新MATH上Run/Utility相对原ASD自然时延下降13.40%/9.84%，但自然TPS下降2.10%/2.20%；Run输出缩短15.22%，每token验证轮反增1.73%。
+等128token前缀Run比原ASD慢3.65%；新GSM8K上Run慢8.02%、Utility持平，五组均8/8正确。
+MATH答案等价审计后严格DFlash/原ASD/Run/Utility/保守ASD为12/9/13/14/11（共16题，原保守主评分均少1题）。
+局部支出选择改善仍存在，但未确认新增后缀门控的稳定吞吐优势；当前端到端正结果主要伴随输出路径变化，继续保留实验选项，不进入默认严格运行时。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。
