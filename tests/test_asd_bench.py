@@ -26,6 +26,9 @@ def test_published_reference_answers_pass_the_small_quality_checker(record):
 def test_numeric_normalization_and_missing_answer():
     assert numeric_answer("reason 12\n#### $1,200.50") == numeric_answer(r"\boxed{1200.5}")
     assert numeric_answer("unfinished reasoning 1200") is None
+    assert numeric_answer("#### <answer>18</answer>") == numeric_answer("#### 18")
+    assert numeric_answer("#### <answer>\n20") == numeric_answer("#### 20")
+    assert numeric_answer(r"\boxed{\$70,000}") == numeric_answer("#### 70000")
 
 
 def test_mbpp_rejects_wrong_code_and_unrelated_process_access():

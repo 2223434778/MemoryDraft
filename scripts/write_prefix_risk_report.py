@@ -21,6 +21,8 @@ def check_provenance(info, manifest, *, protected_hashes=None, runner="scripts/r
     files = {n.removeprefix("memorydraft/"): h for n, h in manifest["files"].items()
              if n.startswith("memorydraft/") and n.endswith((".py", ".json", ".txt"))}
     old = protected(ROOT) if protected_hashes is None else protected_hashes
+    # Later published experiments were not part of this execution's evidence.
+    old = {name: digest for name, digest in old.items() if name in manifest["files"]}
     if set(old) != set(info["original_sha256"]):
         raise ValueError("Changed protected evidence coverage")
     for name, digest in info["original_sha256"].items():

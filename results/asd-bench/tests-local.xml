@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="9" skipped="0" tests="32" time="31.831" timestamp="2026-10-20T09:51:05.191793+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_asd_bench" name="test_frozen_slices_separate_labels_from_model_inputs" time="0.001" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:0]" time="0.029" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:1]" time="0.001" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:2]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:3]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:4]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:5]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:6]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[gsm8k:7]" time="0.000" /><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:11]" time="0.055"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-jf0med4e'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-jf0med4e'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A1FF60&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-jf0med4e'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': ['assert remove_Occ("hellolloll","l") == "helollol"', 'assert remove_Occ(...f (s[i] == ch): \r\n            s = s[0 : i] + s[i + 1:] \r\n            break\r\n    return s ', 'id': 'mbpp:11', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-jf0med4e'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-jf0med4e'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:12]" time="0.053"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-fu5rqyki'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-fu5rqyki'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A90900&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-fu5rqyki'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': 'def sort_matrix(M):\r\n    result = sorted(M, key=sum)\r\n    return result', 'id': 'mbpp:12', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-fu5rqyki'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-fu5rqyki'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:13]" time="0.059"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-rmy6guab'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-rmy6guab'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A907C0&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-rmy6guab'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': 'from collections import Counter\r\ndef count_common(words):\...d_counts = Counter(words)\r\n  top_four = word_counts.most_common(4)\r\n  return (top_four)\r\n', 'id': 'mbpp:13', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-rmy6guab'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-rmy6guab'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:14]" time="0.051"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-52fgq0pu'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-52fgq0pu'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB60088720&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-52fgq0pu'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': 'def find_Volume(l,b,h) : \r\n    return ((l * b * h) / 2) ', 'id': 'mbpp:14', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-52fgq0pu'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-52fgq0pu'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:15]" time="0.067"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-f0tdj6bz'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-f0tdj6bz'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A1F7E0&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-f0tdj6bz'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': "import re\r\ndef split_lowerstring(text):\r\n return (re.findall('[a-z][^a-z]*', text))", 'id': 'mbpp:15', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-f0tdj6bz'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-f0tdj6bz'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:16]" time="0.068"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yxwvcomw'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yxwvcomw'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A911C0&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yxwvcomw'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': ['assert text_lowercase_underscore("aab-cbbbc")==(\'Not matched!\')'], 'c...             return 'Found a match!'\r\n        else:\r\n                return('Not matched!')", 'id': 'mbpp:16', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yxwvcomw'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yxwvcomw'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:17]" time="0.051"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-swuoeuo8'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-swuoeuo8'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A913A0&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-swuoeuo8'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': 'def square_perimeter(a):\r\n  perimeter=4*a\r\n  return perimeter', 'id': 'mbpp:17', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-swuoeuo8'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-swuoeuo8'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_published_reference_answers_pass_the_small_quality_checker[mbpp:18]" time="0.052"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yezwuxto'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yezwuxto'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB383920C0&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yezwuxto'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+record = {'benchmark': 'mbpp', 'challenge_test_list': [], 'code': 'NO_OF_CHARS = 256\r\ndef str_to_list(string): \r\n\ttemp = [...ip_ind] \r\n\t\t\tres_ind += 1\r\n\t\tip_ind+=1\r\n\treturn lst_to_string(str_list[0:res_ind]) ', 'id': 'mbpp:18', ...}
+
+    @pytest.mark.parametrize("record", load_tasks(SOURCE), ids=lambda r: r["id"])
+    def test_published_reference_answers_pass_the_small_quality_checker(record):
+        text = record["answer"] if record["benchmark"] == "gsm8k" else record["code"]
+&gt;       assert score(record, text)["correct"]
+
+tests\test_asd_bench.py:23: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yezwuxto'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-yezwuxto'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd_bench" name="test_numeric_normalization_and_missing_answer" time="0.001" /><testcase classname="tests.test_asd_bench" name="test_mbpp_rejects_wrong_code_and_unrelated_process_access" time="0.092"><failure message="PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-cohlnajy'">path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-cohlnajy'
+onexc = &lt;function TemporaryDirectory._rmtree.&lt;locals&gt;.onexc at 0x000001DB62A1FF60&gt;
+
+    def _rmtree_unsafe(path, onexc):
+        def onerror(err):
+            if not isinstance(err, FileNotFoundError):
+                onexc(os.scandir, err.filename, err)
+        results = os.walk(path, topdown=False, onerror=onerror, followlinks=os._walk_symlinks_as_files)
+        for dirpath, dirnames, filenames in results:
+            for name in dirnames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.rmdir(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.rmdir, fullname, err)
+            for name in filenames:
+                fullname = os.path.join(dirpath, name)
+                try:
+                    os.unlink(fullname)
+                except FileNotFoundError:
+                    continue
+                except OSError as err:
+                    onexc(os.unlink, fullname, err)
+        try:
+&gt;           os.rmdir(path)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-cohlnajy'
+
+E:\Software\Anaconda\Lib\shutil.py:631: PermissionError
+
+During handling of the above exception, another exception occurred:
+
+    def test_mbpp_rejects_wrong_code_and_unrelated_process_access():
+        record = next(r for r in load_tasks(SOURCE) if r["id"] == "mbpp:17")
+&gt;       assert not score(record, "def square_perimeter(n):\n return n*3")["correct"]
+
+tests\test_asd_bench.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+memorydraft\evaluation\asd_bench.py:90: in score
+    with tempfile.TemporaryDirectory(prefix="md-asd-mbpp-") as directory:
+E:\Software\Anaconda\Lib\tempfile.py:950: in __exit__
+    self.cleanup()
+E:\Software\Anaconda\Lib\tempfile.py:954: in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+E:\Software\Anaconda\Lib\tempfile.py:934: in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+E:\Software\Anaconda\Lib\shutil.py:790: in rmtree
+    return _rmtree_unsafe(path, onexc)
+E:\Software\Anaconda\Lib\shutil.py:635: in _rmtree_unsafe
+    onexc(os.rmdir, path, err)
+E:\Software\Anaconda\Lib\tempfile.py:906: in onexc
+    _resetperms(path)
+E:\Software\Anaconda\Lib\tempfile.py:286: in _resetperms
+    _dont_follow_symlinks(_os.chmod, path, 0o700)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+func = &lt;built-in function chmod&gt;
+path = 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-cohlnajy'
+args = (448,)
+
+    def _dont_follow_symlinks(func, path, *args):
+        # Pass follow_symlinks=False, unless not supported on this platform.
+        if func in _os.supports_follow_symlinks:
+&gt;           func(path, *args, follow_symlinks=False)
+E           PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\TaiShangLaoJun\\AppData\\Local\\Packages\\sandbox.{fca98737-a892-4e02-acb6-b851ad7d5222}\\AC\\Temp\\md-asd-mbpp-cohlnajy'
+
+E:\Software\Anaconda\Lib\tempfile.py:275: PermissionError</failure></testcase><testcase classname="tests.test_asd" name="test_disabled_mode_rejects_distinct_tied_tokens[config0]" time="0.003" /><testcase classname="tests.test_asd" name="test_disabled_mode_rejects_distinct_tied_tokens[config1]" time="0.001" /><testcase classname="tests.test_asd" name="test_disabled_mode_rejects_distinct_tied_tokens[config2]" time="0.001" /><testcase classname="tests.test_asd" name="test_budget_persists_across_blocks_and_unaccepted_cost_is_not_charged" time="0.001" /><testcase classname="tests.test_asd" name="test_block_cap_cannot_skip_an_unaffordable_token" time="0.001" /><testcase classname="tests.test_asd" name="test_actual_run_distinguishes_long_good_tail_from_merely_long_block" time="0.002" /><testcase classname="tests.test_asd" name="test_eos_caps_emitted_prefix_and_charges_no_discarded_exceptions" time="0.001" /><testcase classname="tests.test_asd" name="test_invalid_configuration[kwargs0]" time="0.000" /><testcase classname="tests.test_asd" name="test_invalid_configuration[kwargs1]" time="0.000" /><testcase classname="tests.test_asd" name="test_invalid_configuration[kwargs2]" time="0.000" /><testcase classname="tests.test_asd" name="test_invalid_configuration[kwargs3]" time="0.000" /><testcase classname="tests.test_asd" name="test_nonfinite_target_scores_fail_without_spending" time="0.001" /><testcase classname="tests.test_asd" name="test_approximate_real_target_features_follow_realized_prefix_and_stream" time="24.818" /></testsuite></testsuites>

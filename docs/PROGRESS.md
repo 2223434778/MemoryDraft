@@ -1,5 +1,23 @@
 # 项目进度
 
+## 2026-10-20 — ASD 论文任务迁移（320次完成）
+
+- 64机制+128自然EOS+128固定128token全部完成。GSM8K strict/ASD最终答案均8/8；MBPP公开测试均5/8；全部自然运行无截断、计时输出与对应机制一致。非零ASD允许轨迹变化，GSM8K 8/8轨迹改变，MBPP 3/8改变。
+- GSM8K自然EOS总秒 DFlash66.675068、ASD54.463856（−18.31%），固定128token同为2048输出，TPS62.537677→69.167596（+10.60%）；输出2250→1986、轮436→353、例外53。Splice-ASD55.464486秒，比单独ASD慢1.84%，内部拼接0提议。
+- MBPP自然EOS DFlash10.718594、ASD10.466526秒（−2.35%），轮55→53、例外5。固定吞吐26.265640→66.631536看似+153.68%，但约71.8%/72.3%为自然EOS后强制续写，64/64固定前缀与对应自然输出一致；该大增幅不当作正常代码任务收益。
+- 原评分有48条机制/重复记录漏解析`<answer>`/boxed货币数字，离线quality-v2仅修正明确输出数字；原rows与评分不改，数据、prompt、模型、阈值不改。新grader SHA与原执行package双列，score修正不能冒充Target质量改善。
+- 802个源码文件执行后SHA全通过，runtime package `4d92d736d78a5c1962022922443853282ad661edddc9582d91b453b0a8a19e0e`，原证据SHA不变。紧凑结果ZIP338559字节/SHA `fab077b022d4bd0377c75d919741a3bd7707c310185b02b7b261616ad5a6e27d`；结果 `results/asd-bench/`，报告 `docs/ASD_BENCH_RESULTS.md`。
+- 服务器32 passed/4.18s；本机完整可用409 passed/3 skipped/40.44s，新报告评分保真/预算篡改2项另测。报告重建命令 `.venv\Scripts\python.exe -m scripts.write_asd_bench_report`；GPU已恢复双19MiB/0%，无后续模型进程。
+- 本轮支持ASD在该数学小切片上的收益，不支持内部拼接增量或长期历史独有价值；未重启OT/旧风险预测器，未按新结果筛题或加大预算。
+
+## 2026-10-20 — ASD 论文任务迁移（机制完成与评分修正）
+
+- 执行冻结 `129e6193b37fb2e0bd74a8ef4adf18ed010c0b67`，独立服务器 `asd-bench`，802文件SHA核验，ZIP SHA `4dc27209a4cacb17971fca1c3a1ad295356b30e693ea12d6548bfdff347395c9`。服务器32 passed/4.18s；计划320运行未因质量提前停止。
+- 64机制完成：ASD在GSM8K放行53例外、验证436→353轮、输出2250→1986token；MBPP放行5例外、55→53轮、289→284token。内部拼接0提议，少量普通R另计，不把ASD收益归因于拼接。
+- 初版GSM数值解析漏识别实际输出的 `<answer>` 标签/boxed货币数字，造成格式假失败。只修正离线评分，原rows/原评分保留，报告以quality-v2修正为准，不改提示、输出、标准答案或ASD门槛。新解析下GSM strict/ASD均8/8；MBPP原始公开测试均5/8。
+- 完整回归首次402 passed/6 failed/3 skipped：旧风险报告把后来新增ASD结果也算入历史覆盖，非模型/解码失败。改为只检查当时source-manifest中存在的证据，仍逐文件核验全部旧记录，新增“未来结果不影响旧报告、缺旧证据仍拒绝”回归。相关27 passed/10.05s。
+- 修复后完整可用回归（仅待GPU数据的本轮report测试单独执行）：`.venv\Scripts\python.exe -m pytest -q --ignore=tests/test_asd_bench_report.py --basetemp .test-tmp-asd-bench-regression-final --junitxml=artifacts/asd-bench-tests-regression-final-local.xml`，409 passed/3 skipped/40.44s。失败XML保留。
+
 ## 2026-10-20 — ASD 论文任务迁移（执行准备）
 
 - 用户建议使用ASD论文任务，选官方GSM8K test前8条、MBPP官方test编号11–18；来源提交与MIT/Apache-2.0许可保存 `data/research/asd-bench/`。数据在本批模型生成前固定。

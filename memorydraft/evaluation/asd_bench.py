@@ -37,9 +37,9 @@ def request_for(record, *, max_new_tokens=512):
 
 
 def numeric_answer(text):
-    candidates = re.findall(r"####\s*\$?\s*(-?[\d,]+(?:\.\d+)?)", text)
+    candidates = re.findall(r"####\s*(?:<answer>\s*)?(?:\*\*)?\\?\$?\s*(-?[\d,]+(?:\.\d+)?)", text, re.I)
     if not candidates:
-        candidates = re.findall(r"\\boxed\{\s*(-?[\d,]+(?:\.\d+)?)\s*\}", text)
+        candidates = re.findall(r"\\boxed\{\s*(?:\\?\$)?\s*(-?[\d,]+(?:\.\d+)?)\s*\}", text)
     if not candidates:
         return None
     try:

@@ -51,6 +51,7 @@ def summarize(rows):
                                  quality_correct=sum(r["quality"]["correct"] for r in selected),
                                  strict_identity=sum(r["strict_identity"] for r in selected),
                                  rounds=sum(r["counters"]["rounds"] for r in selected),
+                                 reuse_rounds=sum(r["counters"]["reuse_rounds"] for r in selected),
                                  relaxed_tokens=sum(r["asd"]["relaxed_tokens"] for r in selected),
                                  regret=sum(r["asd"]["spent"] for r in selected),
                                  length_stops=sum(r["finish_reason"] == "length" for r in selected),

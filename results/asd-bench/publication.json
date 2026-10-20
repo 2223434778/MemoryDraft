@@ -1,0 +1,32 @@
+{
+  "execution_commit": "129e6193b37fb2e0bd74a8ef4adf18ed010c0b67",
+  "raw_archive_sha256": "fab077b022d4bd0377c75d919741a3bd7707c310185b02b7b261616ad5a6e27d",
+  "score_version": 2,
+  "files": {
+    "data/research/asd-bench/records.json": "a5da267371c7f1c41142bdce6e6a0cecc5cfb21facf12c9d2957ac7ee6b217d0",
+    "docs/ASD_BENCH_RESULTS.md": "72b0ba5f6057843090e22de8191f1aa1cab6895064da83671d021bc743a37be2",
+    "memorydraft/evaluation/asd_bench.py": "56dab84b122f38fc1d6ce2eeb49b21c3a50342d258bc9d494349580b30d1bb94",
+    "results/asd-bench/analysis.json": "5baf6c82247f4069caf5b69608104c8e92c0dfa1388e79257d26ea38b0a69e5d",
+    "results/asd-bench/execution-verification.json": "5c11d3199f7bfee4ad086199d7a33ab2d6195dda14188cd88fdb7011b687b0b0",
+    "results/asd-bench/fixed/rows.jsonl.gz": "ed34212cf3cd5c1b7e74584ddbf36026e8f496c9e3d93afb55c69288358c2b74",
+    "results/asd-bench/fixed/summary.json": "1bd7ac09e6f270fb4808a85c26ad3c1ecf8dea7b414756c3bf34e2cd58ef4367",
+    "results/asd-bench/mechanism/rows.jsonl.gz": "9d21a7e2e556384e358d61d503e9240bb0ce1ee1fd4f9b8b9118fc18ba6b919f",
+    "results/asd-bench/mechanism/summary.json": "4fec8b06d80ba4c956f6c79d1f008365d0a95ecfa3371947736f4a02adbaa2ed",
+    "results/asd-bench/natural/rows.jsonl.gz": "03547f4db2aa1ad605c0f2bf483a685d612089dfe978ae9e87d91d3024b06e36",
+    "results/asd-bench/natural/summary.json": "8be844f6022e1f14b6ca05a9069f8d4920ba4e97d376f16bfe9e5c4ba9f6b574",
+    "results/asd-bench/pipeline.log": "ae6195b5678c77e22d8f8a2b4097fb70d0fe994c74b540787b0a5cb047add554",
+    "results/asd-bench/provenance.json": "aff530f1df70745c2a5739dbf40838e620eb58d33b0576c30100fdf28ef63675",
+    "results/asd-bench/quality-v2.json": "392e2257a66f17d0edc9b1daee24d755a66fd45445b9ee9f08cca8a7418ca0c3",
+    "results/asd-bench/references.json": "36fcd0870899c823b44a79a45fd66abe5a8bda498fdde36a5995781a41e91993",
+    "results/asd-bench/run-pipeline.sh": "e0883f45d7426fcb7037b0de5ce9dd592cd6ff6cdddfe70760256beffbed330d",
+    "results/asd-bench/source-manifest.json": "bbb38aaf05a05f883d239ce803ca9b14a1563e6800d4bcc8bbb8b7c321c405f2",
+    "results/asd-bench/tests-full-local.xml": "1a7f6035134c0a833c3cb1f9b9627a13dfb611ebd2b63fbc268efffa7e72de00",
+    "results/asd-bench/tests-grader-local.xml": "222caa19d66fc089ece99b1d4d83466c16a3f1834d5ac3058a97b82543e62636",
+    "results/asd-bench/tests-local-fixed.xml": "8522dbb61171aaf43366aeca200a2bcdca06bfa58e6e56f3bfeb003dfe6ec2ff",
+    "results/asd-bench/tests-local.xml": "f975236257287f05d2106c8020422a552f1a391b41fd24abd4386d4cbafdc240",
+    "results/asd-bench/tests-regression-final-local.xml": "3b9b618f5736a5380493bf0d7336d1a78f637a84fa07ff411e4960acb796a2e9",
+    "results/asd-bench/tests-report-final-local.xml": "d887808a1b9baee92782b0cfdfad1cc066f4240e78f59b87f8f1ad3073021b3b",
+    "results/asd-bench/tests-server.xml": "3e8959030d09b00e1577df11c1f7d42aa6877c918bcda8e945663c68aa4c33f6",
+    "scripts/write_asd_bench_report.py": "e3555d1a2aad5619f7d0bd5511ce483ca6378e0f685042f8d38fb05bdb4fd0d3"
+  }
+}

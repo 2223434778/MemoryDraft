@@ -1,0 +1,866 @@
+[
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:0",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:0",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:1",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:1",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:2",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:2",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:3",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:3",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:3",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:3",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:4",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:4",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:5",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:5",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:6",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  },
+  {
+    "stage": "mechanism",
+    "request_id": "gsm8k:6",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:0",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:0",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:0",
+    "method": "DFlash",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:0",
+    "method": "Splice",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "18",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:1",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:1",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:1",
+    "method": "DFlash",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:1",
+    "method": "Splice",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "3",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:2",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:2",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:2",
+    "method": "DFlash",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:2",
+    "method": "Splice",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "70000",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "70000",
+      "expected_answer": "70000",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "DFlash",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "Splice",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "Splice-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "Splice",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "DFlash-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:3",
+    "method": "DFlash",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "540",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "540",
+      "expected_answer": "540",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:4",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:4",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:4",
+    "method": "DFlash-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:4",
+    "method": "Splice-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "20",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:5",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:5",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:5",
+    "method": "Splice-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:5",
+    "method": "DFlash-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "64",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "64",
+      "expected_answer": "64",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:6",
+    "method": "Splice-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:6",
+    "method": "DFlash-ASD",
+    "repeat": 0,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:6",
+    "method": "Splice-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  },
+  {
+    "stage": "natural",
+    "request_id": "gsm8k:6",
+    "method": "DFlash-ASD",
+    "repeat": 1,
+    "original": {
+      "correct": false,
+      "parsed_answer": null,
+      "expected_answer": "260",
+      "error": "missing final numeric answer"
+    },
+    "corrected": {
+      "correct": true,
+      "parsed_answer": "260",
+      "expected_answer": "260",
+      "error": null
+    }
+  }
+]

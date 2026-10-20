@@ -25,3 +25,18 @@ def test_report_refuses_timing_after_contract_stop(tmp_path):
     (source / "timing").mkdir()
     with pytest.raises(ValueError, match="continued"):
         build(source)
+
+
+def test_later_publications_do_not_change_historical_evidence_coverage():
+    import json
+    from scripts.write_prefix_risk_report import check_provenance
+    from memorydraft.evaluation.prefix_risk_probe import protected
+
+    info = json.loads((SOURCE / "mechanism/provenance.json").read_text())
+    manifest = json.loads((SOURCE / "source-manifest.json").read_text())
+    hashes = protected(ROOT)
+    hashes["results/future-experiment/summary.json"] = "0" * 64
+    check_provenance(info, manifest, protected_hashes=hashes)
+    hashes.pop(next(iter(info["original_sha256"])))
+    with pytest.raises(ValueError, match="coverage"):
+        check_provenance(info, manifest, protected_hashes=hashes)
