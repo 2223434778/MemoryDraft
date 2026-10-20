@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-20 — ASD 论文任务迁移（执行准备）
+
+- 用户建议使用ASD论文任务，选官方GSM8K test前8条、MBPP官方test编号11–18；来源提交与MIT/Apache-2.0许可保存 `data/research/asd-bench/`。数据在本批模型生成前固定。
+- 仍用现成Qwen3-8B/DFlash、FP32/eager、非思考；使用ASD官方stable B=8/g=0.25/M=2。四方法DFlash、DFlash-ASD、Splice、Splice-ASD；每题独立空历史，R只查当前输入，不放入答案或其他题目的生成。本轮不作DSpark复现或长期记忆价值声明。
+- 计划64机制+128自然EOS（最多512token）+128固定128token，共320生成，质量错误不提前停止。GSM8K数值答案评分，MBPP执行公开3测试，评分不计入生成时延；来源、模式与成本分别记录。
+- 新评分模块 `memorydraft/evaluation/asd_bench.py`、runner `scripts/run_asd_bench_probe.py`、协议 `docs/ASD_BENCH_PROTOCOL.md`。相关32 passed/8.52s：`.venv\Scripts\python.exe -m pytest -q tests/test_asd_bench.py tests/test_asd.py --basetemp .test-tmp-asd-bench-fixed --junitxml=artifacts/asd-bench-tests-local-fixed.xml`。
+- 初次测试9 failed/23 passed，Windows受限系统temp目录清理失败；改用项目artifacts/mbpp-eval临时目录后全部通过，失败XML保留。没有根据模型表现改题目/提示/阈值。
+- GPU命令：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_bench_probe --config configs/runtime-ot-benefit.json --output results/raw/asd-bench`，隔离目录 `/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-bench`。
+
 ## 2026-10-20 — ASD 与历史拼接（360次运行完成）
 
 - 执行提交 `112c18fb62a5e9aef984e2360ad34fa80f12f282`，773个Git原始文件在服务器执行前后SHA全通过；独立目录 `asd-splice`。源ZIP SHA `703b2c524624d3ab42b913e7a786752af762b24bf2d354347d029b2c91aaf51c`，runtime package `baca9c8119a1d08499d7e146b4e35ba13728d3acec25e2986d016a7a43a5b5a9`。

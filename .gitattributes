@@ -147,3 +147,11 @@ results/asd-splice/** -text
 results/asd-splice/*.json whitespace=cr-at-eol
 results/asd-splice/*.log -whitespace
 results/asd-splice/tests-*.xml -whitespace
+memorydraft/evaluation/asd_bench.py text eol=lf
+scripts/*asd_bench*.py text eol=lf
+docs/ASD_BENCH*.md text eol=lf
+data/research/asd-bench/** -text
+results/asd-bench/** -text
+results/asd-bench/*.json whitespace=cr-at-eol
+results/asd-bench/*.log -whitespace
+results/asd-bench/tests-*.xml -whitespace
