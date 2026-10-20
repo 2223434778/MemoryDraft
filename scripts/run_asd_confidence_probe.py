@@ -40,6 +40,17 @@ def make_policy(method, *, record=False):
     return ASDVerifier(POLICIES[method], record=record)
 
 
+def previous_references():
+    directories = [ROOT / "results/asd-budget/gsm8k",
+                   ROOT / "results/asd-completion/part-a", ROOT / "results/asd-completion/part-b"]
+    rows = [r for directory in directories for r in read_rows(directory / "mechanism/rows.jsonl")]
+    references = {(r["request_id"], r["method"]): r for r in rows}
+    required = {(q, m) for q in TASK_IDS for m in OLD_POLICIES}
+    if not required <= references.keys():
+        raise ValueError("Missing previous published development references")
+    return references
+
+
 class ObservedVerifier:
     """Mechanism-only observer; timed policies do not compute these diagnostics."""
     def __init__(self, policy):
@@ -166,6 +177,7 @@ def main():
         parser.error("Only unique frozen development IDs are allowed")
     records = {r["id"]: r for r in load_tasks(ROOT / "data/research/asd-budget/records.json")}
     selected = [records[i] for i in TASK_IDS if i in args.task_ids]
+    previous = previous_references()
     args.output.mkdir(parents=True, exist_ok=False)
     config = replace(RuntimeConfig.load(args.config), max_new_tokens=2048, db=None,
                      retrieval="suffix", prefix_risk={})
@@ -228,11 +240,7 @@ def main():
                             row.update(events=policy.events, rounds=detail.rounds)
                             row["instrumented_latency_seconds"] = row.pop("latency_seconds")
                             if method in OLD_POLICIES:
-                                previous = (ROOT / "results/asd-budget/gsm8k" if record["benchmark"] == "gsm8k"
-                                            else ROOT / "results/asd-completion/math500")
-                                old = next(r for r in read_rows(previous / "mechanism/rows.jsonl")
-                                           if (r["request_id"], r["method"]) == key)
-                                row["previous_prefix"] = compare_previous(result, old)
+                                row["previous_prefix"] = compare_previous(result, previous[key])
                             references[key] = row
                         else:
                             ref = references[key]

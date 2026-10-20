@@ -6,6 +6,8 @@
 - 新增Utility可覆写代价入口、`asd_confidence.py`、独立runner/pipeline和行为测试。机制记录完整proposal/EOS、Target/Draft概率，修复旧trace无法还原未接受EOS的观测限制；默认严格运行时不启用。
 - 上限140次机制/自然/128前缀生成，加最多16同前缀单例外干预分支。两GPU独立目录执行，不按质量筛结果，分支重算缓存，不跨分支复用旧suffix。
 - 本机首次相关检查：`.venv\Scripts\python.exe -m pytest -q tests/test_asd.py tests/test_asd_confidence.py --basetemp .test-tmp-asd-confidence --junitxml=artifacts/asd-confidence-tests-first-local.xml`：25 passed/35.23s。服务器双A6000均19MiB/0%，尚无本轮GPU结论。
+- 首次冻结`405040e0106efcce485905791ebfd488546848cc`，933文件核验；服务器38 passed/4.80s。runner错误假定旧补全参考在math500目录，实际为part-a/part-b，两个worker在机制读取参考时失败、尚未自然计时；保留`asd-confidence`目录与失败日志。修正为加载前读取真实三目录，并加参考覆盖测试；新目录`asd-confidence-v2`重新执行，策略/任务/参数不变。
+- 首次完整本机回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-confidence-full --junitxml=artifacts/asd-confidence-tests-full-local.xml`：466 passed/3 skipped/56.61s（在参考路径修复前）；仅既有multipart弃用提醒。
 
 ## 2026-10-20 — ASD 新题收益归因（600次完成）
 

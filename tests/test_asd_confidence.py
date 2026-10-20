@@ -7,7 +7,13 @@ import torch
 
 from memorydraft.backends.asd import ASDConfig, ASDVerifier
 from memorydraft.backends.asd_confidence import ConfidenceUtilityVerifier, token_confidence
-from scripts.run_asd_confidence_probe import branch_prefix, select_states
+from scripts.run_asd_confidence_probe import TASK_IDS, branch_prefix, previous_references, select_states
+
+
+def test_published_reference_locations_are_read_before_model_load():
+    refs = previous_references()
+    assert all((q, method) in refs for q in TASK_IDS for method in ("DFlash", "ASD", "ASD-Run", "ASD-Utility"))
+    assert all(refs[q, "ASD"]["finish_reason"] == "eos" for q in TASK_IDS[:3])
 
 
 def test_probability_normalization_shift_invariance_and_matching_mass():

@@ -34,7 +34,7 @@
 - Calibration: https://aclanthology.org/2021.tacl-1.57/ （概率不自动校准）
 - DFlash: https://arxiv.org/html/2602.06036 （并行Draft置信度不能直接当AR链概率）
 
-独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence`，环境`../.venv-dflash/bin/python`。入口：
+独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-confidence-v2`，环境`../.venv-dflash/bin/python`。首版目录保留参考路径读取失败日志，策略参数不变。入口：
 
 ```bash
 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. CUDA_VISIBLE_DEVICES=0 ../.venv-dflash/bin/python -u -m scripts.run_asd_confidence_probe --config configs/runtime-dflash.json --task-ids math500:1 math500:4 --output results/raw/asd-confidence/math-a
