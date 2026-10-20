@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "development_files": {
+    "results/asd-budget/gsm8k/mechanism/rows.jsonl.gz": "c6587ac2caf618484a551867c1ce506887a6ca3a988d639fd542d5006816009a",
+    "results/asd-budget/math500/mechanism/rows.jsonl.gz": "51d182fa0e8a045ba763e94ca87f68bbbf2f3ba17d0c5005d45d7562e0d9242f"
+  },
+  "development": "Published GSM8K 8..23 and MATH-500 0..7 ASD-Run states, excluding terminal blocks",
+  "objective": "Match aggregate charged regret on identical states and identical available ledger; tie by exception distance then smaller gate",
+  "limitation": "Borrowed Run ledgers and states; shadow decisions are not an on-policy control rollout or speed estimate",
+  "states": 1115,
+  "target_regret": 47.58560752868652,
+  "target_exceptions": 107,
+  "candidates": [
+    {
+      "gate": 0.01,
+      "regret": 1.2824821472167969,
+      "exceptions": 24,
+      "cost_distance": 46.30312538146973,
+      "exception_distance": 83
+    },
+    {
+      "gate": 0.02,
+      "regret": 5.515035629272461,
+      "exceptions": 46,
+      "cost_distance": 42.07057189941406,
+      "exception_distance": 61
+    },
+    {
+      "gate": 0.04,
+      "regret": 22.6591739654541,
+      "exceptions": 93,
+      "cost_distance": 24.926433563232422,
+      "exception_distance": 14
+    },
+    {
+      "gate": 0.0625,
+      "regret": 50.556339263916016,
+      "exceptions": 141,
+      "cost_distance": 2.970731735229492,
+      "exception_distance": 34
+    },
+    {
+      "gate": 0.1,
+      "regret": 127.69271278381348,
+      "exceptions": 220,
+      "cost_distance": 80.10710525512695,
+      "exception_distance": 113
+    },
+    {
+      "gate": 0.125,
+      "regret": 180.87830352783203,
+      "exceptions": 261,
+      "cost_distance": 133.2926959991455,
+      "exception_distance": 154
+    },
+    {
+      "gate": 0.1875,
+      "regret": 368.8304920196533,
+      "exceptions": 364,
+      "cost_distance": 321.2448844909668,
+      "exception_distance": 257
+    },
+    {
+      "gate": 0.25,
+      "regret": 548.9532794952393,
+      "exceptions": 436,
+      "cost_distance": 501.36767196655273,
+      "exception_distance": 329
+    }
+  ],
+  "selected_gate": 0.0625
+}

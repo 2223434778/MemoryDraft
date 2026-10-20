@@ -24,13 +24,14 @@ POLICIES = {"DFlash": ASDConfig(budget=0), "ASD": ASDConfig(budget=8),
 
 
 class BudgetHook:
-    def __init__(self, generate, method, mechanism):
+    def __init__(self, generate, method, mechanism, policies=None):
         self.generate, self.method, self.mechanism = generate, method, mechanism
+        self.policies = POLICIES if policies is None else policies
         self.policy, self.detail = None, None
 
     def __call__(self, *args, **kwargs):
         if self.method != "DFlash" or self.mechanism:
-            self.policy = ASDVerifier(POLICIES[self.method], record=self.mechanism)
+            self.policy = ASDVerifier(self.policies[self.method], record=self.mechanism)
             kwargs["verifier"] = self.policy
         self.detail = self.generate(*args, **kwargs)
         if self.mechanism:
@@ -80,21 +81,35 @@ def main():
     parser.add_argument("--task-ids", nargs="+")
     parser.add_argument("--max-new-tokens", type=int, default=512)
     parser.add_argument("--previous", type=Path)
+    parser.add_argument("--data", type=Path)
+    parser.add_argument("--policies", type=Path)
+    parser.add_argument("--prefix-tokens", type=int)
     parser.add_argument("--protocol", type=Path, default=ROOT / "docs/ASD_BUDGET_PROTOCOL.md")
     args = parser.parse_args()
     if not 1 <= args.max_new_tokens <= 4096:
         parser.error("max-new-tokens must be in [1, 4096]")
+    if args.prefix_tokens is not None and not 16 <= args.prefix_tokens < args.max_new_tokens:
+        parser.error("prefix-tokens must be at least 16 and below max-new-tokens")
+    policies = POLICIES
+    if args.policies:
+        from scripts.prepare_asd_attribution import load_policies
+        policies = load_policies(args.policies)
     args.output.mkdir(parents=True, exist_ok=False)
-    data = ROOT / "data/research/asd-budget/records.json"
-    records = select_records(load_tasks(data), args.benchmark, args.task_ids)
+    data = args.data or ROOT / "data/research/asd-budget/records.json"
+    if args.data:
+        from scripts.prepare_asd_attribution import load_tasks as load_attribution_tasks
+        records = load_attribution_tasks(data)
+    else:
+        records = load_tasks(data)
+    records = select_records(records, args.benchmark, args.task_ids)
     previous, previous_info, previous_hash = {}, None, None
     if args.previous:
         directory = args.previous / args.benchmark
         previous = {(r["request_id"],r["method"]):r for r in read_rows(directory / "mechanism/rows.jsonl")}
-        if any((r["id"],m) not in previous for r in records for m in POLICIES):
+        if any((r["id"],m) not in previous for r in records for m in policies):
             raise ValueError("Missing previous mechanism references")
         previous_info = json.loads((directory / "provenance.json").read_text(encoding="utf-8"))
-        if previous_info["status"] != "complete" or previous_info["policies"] != {m:asdict(c) for m,c in POLICIES.items()}:
+        if previous_info["status"] != "complete" or previous_info["policies"] != {m:asdict(c) for m,c in policies.items()}:
             raise ValueError("Incomplete previous probe or changed policies")
         path = directory / "mechanism/rows.jsonl"
         previous_hash = file_hash(path if path.exists() else path.with_suffix(".jsonl.gz"))
@@ -106,7 +121,9 @@ def main():
     info = {**provenance(engine), "status": "started", "benchmark": args.benchmark,
             "runner_sha256": file_hash(Path(__file__)), "data_sha256": file_hash(data),
             "protocol_sha256": file_hash(args.protocol),
-            "original_sha256": original, "policies": {k: asdict(v) for k,v in POLICIES.items()},
+            "original_sha256": original, "policies": {k: asdict(v) for k,v in policies.items()},
+            "policies_sha256": file_hash(args.policies) if args.policies else None,
+            "prefix_tokens": args.prefix_tokens,
             "selection": "Frozen task IDs and controls; no threshold search",
             "task_ids": [r["id"] for r in records], "max_new_tokens": args.max_new_tokens,
             "previous_rows_sha256": previous_hash,
@@ -122,7 +139,7 @@ def main():
     native = runtime_module.generate_reuse
 
     def execute(request, method, mechanism=False):
-        hook = BudgetHook(native, method, mechanism)
+        hook = BudgetHook(native, method, mechanism, policies)
         with patch.object(runtime_module, "generate_reuse", hook):
             result = engine.generate(request, "DFlash")
         return result, hook
@@ -131,20 +148,25 @@ def main():
     try:
         warm = GenerationRequest("__warmup__", "__warmup__", 0,
                                  ({"role": "user", "content": "What is 3 plus 4?"},), 32)
-        for method in POLICIES:
+        for method in policies:
             execute(warm, method)
-        for stage, repeats in (("mechanism", 1), ("natural", 2)):
+        stages = [("mechanism", 1), ("natural", 2)]
+        if args.prefix_tokens:
+            stages.append(("prefix", 2))
+        prefix_outputs = {}
+        for stage, repeats in stages:
             directory = args.output / stage
             directory.mkdir()
             count = 0
             for record in records:
                 for repeat in range(repeats):
-                    order = list(POLICIES)
+                    order = list(policies)
                     random.Random(f"asd-budget:{stage}:{record['id']}:{repeat}").shuffle(order)
                     if stage == "mechanism":
                         order = ["DFlash", *(m for m in order if m != "DFlash")]
                     for method in order:
-                        request = replace(request_for(record), max_new_tokens=args.max_new_tokens)
+                        limit = args.prefix_tokens if stage == "prefix" else args.max_new_tokens
+                        request = replace(request_for(record), max_new_tokens=limit)
                         result, hook = execute(request, method, stage == "mechanism")
                         if stage == "mechanism" and method == "DFlash":
                             references[record["id"]] = asdict(result)
@@ -153,15 +175,25 @@ def main():
                             raise ValueError("Changed Target prompt or isolated history")
                         key = record["id"], method
                         if stage == "mechanism":
-                            outputs[key] = result.token_ids
-                        elif result.token_ids != outputs[key]:
+                            outputs[key] = asdict(result)
+                        elif stage == "natural" and result.token_ids != outputs[key]["token_ids"]:
                             raise ValueError("Instrumented and timed outputs differ")
+                        elif stage == "prefix":
+                            if key in prefix_outputs and prefix_outputs[key] != result.token_ids:
+                                raise ValueError("Repeated prefix trajectories differ")
+                            prefix_outputs[key] = result.token_ids
                         state = hook.policy.summary() if hook.policy else dict(budget=0., spent=0., relaxed_tokens=0,
                                     blocks=result.counters["rounds"], value="strict", selection="strict", regret_price=0.,
                                     shortened_blocks=0, foregone_proposal_tokens=0, approximate=False)
                         row = {**asdict(result), "method": method, "benchmark": args.benchmark, "repeat": repeat,
                                "strict_identity": result.token_ids == ref["token_ids"], "asd": state,
                                "quality": score(record, result.text)}
+                        if stage == "prefix":
+                            from types import SimpleNamespace
+                            row["rounds"] = hook.detail.rounds
+                            row["full_prefix"] = compare_previous(SimpleNamespace(**outputs[key]), row)
+                            # The reference has a different length cap in this stage.
+                            row["strict_identity"] = None
                         if previous:
                             row["previous_prefix"] = compare_previous(result, previous[key])
                         if stage == "mechanism":

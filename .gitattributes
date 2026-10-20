@@ -169,3 +169,10 @@ docs/ASD_COMPLETION*.md text eol=lf
 results/asd-completion/** -text
 results/asd-completion/**/*.log -whitespace
 results/asd-completion/tests-*.xml -whitespace
+
+scripts/*asd_attribution*.py text eol=lf
+docs/ASD_ATTRIBUTION*.md text eol=lf
+data/research/asd-attribution/** -text
+results/asd-attribution/** -text
+results/asd-attribution/**/*.log -whitespace
+results/asd-attribution/tests-*.xml -whitespace

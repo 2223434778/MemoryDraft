@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "gate": 0.0625,
+  "policies": {
+    "DFlash": {
+      "budget": 0,
+      "gate": 0.25,
+      "cap": 2,
+      "value": "remaining",
+      "selection": "longest",
+      "regret_price": 2.0
+    },
+    "ASD": {
+      "budget": 8,
+      "gate": 0.25,
+      "cap": 2,
+      "value": "remaining",
+      "selection": "longest",
+      "regret_price": 2.0
+    },
+    "ASD-Run": {
+      "budget": 8,
+      "gate": 0.25,
+      "cap": 2,
+      "value": "exact-run",
+      "selection": "longest",
+      "regret_price": 2.0
+    },
+    "ASD-Utility": {
+      "budget": 8,
+      "gate": 0.25,
+      "cap": 2,
+      "value": "remaining",
+      "selection": "utility",
+      "regret_price": 2
+    },
+    "ASD-Conservative": {
+      "budget": 8,
+      "gate": 0.0625,
+      "cap": 2,
+      "value": "remaining",
+      "selection": "longest",
+      "regret_price": 2.0
+    }
+  }
+}

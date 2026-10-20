@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-20 — ASD 新题收益归因（执行准备）
+
+- 用户授权继续，重点区分实际后缀信息、保守门槛和输出长度。新题固定GSM8K test24..31、MATH-500 8..23，五组包含原四组及只收紧原ASD gate的Conservative；完整自然EOS/2048上限，并做遵守EOS的128短前缀，不强制越过EOS。协议`docs/ASD_ATTRIBUTION_PROTOCOL.md`，计划120机制+240完整计时+240前缀计时=600生成。
+- 仅用旧24题1115个Run非终止状态，在相同状态、相同剩余账本上匹配总regret选择固定gate0.0625：Run47.585608/107例外，对照50.556339/141例外。网格及全部候选保存在`data/research/asd-attribution/calibration.json`；这是离线开发校准，不能当真实rollout或新题预算精确匹配。
+- runner新增显式data/policies/prefix参数，默认旧四组路径不变；独立配置`configs/asd-attribution-policies.json`。使用原评分器，MATH保守精确匹配之外的等价性审计单列，不修改原输出。推理core、默认CLI/服务与infra冻结版本保持。
+- 公开GSM源749738字节/SHA`3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14`，沿用已固定source commit；MATH完整源既有446564字节/SHA`35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132`。准备命令与相关测试见协议；目前尚无本轮GPU性能结论。
+
 ## 2026-10-20 — ASD 截断MATH补全（36次完成）
 
 - 用户授权下一步，预先固定上一轮math500:1/4/7三个截断请求。保留四组与B8/g0.25/M2、Utility价格2；输出上限改为2048，不在这些已观察题上调整阈值。36次正式生成，另计预热；协议`docs/ASD_COMPLETION_PROTOCOL.md`。
