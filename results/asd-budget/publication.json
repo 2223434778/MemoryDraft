@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "execution_commit": "88d8143f6ece7316942d03efdea7d3221161ad64",
+  "source_archive_sha256": "9b744c2400c46657248d704eb74f32313d937d2fc3675692c99986b21c00cf46",
+  "export_archive_sha256": "579ec36622bea055ca764fcabb3ddc2dd371f0f3e2d15866116a83de4ae56278",
+  "runtime_package_sha256": "8924a107833ad260fb0dac41a3ebdfb73c4b747dc5fdfcdf11aa4a09cc200e67",
+  "data_sha256": "94b932e34aea533787d662eb4c5cce6fe5bd4b5213f58eca59bba68c917aebfb",
+  "files": {
+    "results/asd-budget/analysis.json": "454cd8b12aa3b6fabbf83e7bd816a2a49bc2ea2dae8cde7110807f1e596297eb",
+    "results/asd-budget/ASD_BUDGET_SOURCE_MANIFEST.json": "aa2144999ed7ca3d929a371f671dec9901b76e680c15ee2b5ae131aa68dd2016",
+    "results/asd-budget/execution-verification.json": "d554a92c9015a0f641439da137a3180b8dfaab054eda24cd6aed9d1095b2dc9d",
+    "results/asd-budget/gsm8k/mechanism/rows.jsonl.gz": "c6587ac2caf618484a551867c1ce506887a6ca3a988d639fd542d5006816009a",
+    "results/asd-budget/gsm8k/natural/rows.jsonl.gz": "9a2d6f3195556c4f616f449e4cbda345b2a96efa85fc7f82a592206566693a55",
+    "results/asd-budget/gsm8k/provenance.json": "bd41edd5ba4ca831ef17b86f6dd2d259b58b3e283777b79c00765414f92ea025",
+    "results/asd-budget/gsm8k/references.json": "35aadb09981eaf047f8774216e7cb6fe9314c6206b59fdf70614adfee5362287",
+    "results/asd-budget/gsm8k.log": "fea31a75e9a1a50578b7b507c257e48ee6937525f111c13e0f4ad83cfbfece1e",
+    "results/asd-budget/math500/mechanism/rows.jsonl.gz": "51d182fa0e8a045ba763e94ca87f68bbbf2f3ba17d0c5005d45d7562e0d9242f",
+    "results/asd-budget/math500/natural/rows.jsonl.gz": "f3642181d04944ee0433f0a18c14e5a724119d4dcf14658363854654e1a2185c",
+    "results/asd-budget/math500/provenance.json": "195ce724ae0d455d47a160e781d809a19276a541adf8c04fb47536856b39df5d",
+    "results/asd-budget/math500/references.json": "255547a67b44d10c22df01ab8732b8f4386ab6657a9b79a8e9539546f48ef399",
+    "results/asd-budget/math500.log": "8ae4c1a7c7e31af0a449f03d292ef937991f0130eb84dfa2fe10f63663cb8732",
+    "results/asd-budget/pipeline.log": "c79ca501f10c6c8690e7edfe7c8f4cbb881b8994982ea5d38559899974a9e728",
+    "results/asd-budget/run-pipeline.py": "99dd8c091e111208b5fe7fd9f3443233bb253ab7875bf5dcdbeac8df5881678c",
+    "results/asd-budget/tests-final-regression-local.xml": "6d0d676911de1096481df620004c7c997de55f792117f1c6bdefffa0f8bcd7d3",
+    "results/asd-budget/tests-publication-local.xml": "99302bf8a424b7fecf9c35463fb16574205ed4c35c59bbe102aea7ca33c3362a",
+    "results/asd-budget/tests-regression-local.xml": "ba5777a9ed3e15c4e09097012a73647331d0898cdc937ca43ee54893cc589582",
+    "results/asd-budget/tests-server.xml": "5474efee5a1964d0d73a604e8597666aa51f51bc19690b23b95aa39d9c18995f",
+    "docs/ASD_BUDGET_RESULTS.md": "9e961568c830cf208ff2792108aefe41cd8ef1febd1d84cf54b61091fa43391d"
+  }
+}

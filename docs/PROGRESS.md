@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-20 — ASD 实际前缀收益预算验证（288次完成）
+
+- 冻结执行提交`88d8143f6ece7316942d03efdea7d3221161ad64`，独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-budget`。833个Git原始文件执行前后SHA全一致；源码ZIP SHA`9b744c2400c46657248d704eb74f32313d937d2fc3675692c99986b21c00cf46`，清单source SHA`942be35c802b6c4d1d3edd84b95e66c83d06d0c6745970429fdabed74b58fe58`，运行package SHA`8924a107833ad260fb0dac41a3ebdfb73c4b747dc5fdfcdf11aa4a09cc200e67`。
+- 24个新请求、DFlash/ASD/ASD-Run/ASD-Utility四组，96机制+192自然EOS计时全部完成。ASD B8/g0.25/M2；Utility价格2在新生成前冻结。全部计时输出与机制一致，输入/快照/预算检查通过，旧发布证据SHA不变。GSM8K16题GPU0、MATH8题GPU1；不跨卡混算任务质量。
+- GSM8K原ASD118.929300s、Run119.216686s（+0.24%）、Utility113.728458s（−4.37%）；正确数15/16、15/16、14/16。Utility轮772→735、regret123.831→80.204（−35.23%）、129块主动缩短，但gsm8k:21把应算37−23=14的答案输出为23，人工核对为真实推理错误，不修评分、不排除该题。
+- MATH原ASD63.230965s、Run56.771632s（−10.22%）、Utility56.953907s（−9.93%）；均5/8，三道全组上限截断。轮411→367/368；regret60.822→16.105/34.640。四组均完整结束的5题，Run/Utility时延−7.26%/−9.00%，自然TPS仅+0.03%/+0.25%，耗时下降伴随输出缩短；总体TPS收益主要来自3道512token截断题，未验证完整长解答的稳定每token加速。
+- 实际命令保存在`results/asd-budget/run-pipeline.py`及`docs/ASD_BUDGET_PROTOCOL.md`；两个进程分别设置`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. CUDA_VISIBLE_DEVICES=0/1`，调用`../.venv-dflash/bin/python -u -m scripts.run_asd_budget_probe --config configs/runtime-ot-benefit.json --benchmark gsm8k/math500 --output results/raw/asd-budget/gsm8k或math500`。输出上限512，自然EOS，没有强制续写吞吐阶段。
+- 服务器相关23 passed/4.28s。本地完整回归命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-budget-regression-network --junitxml=artifacts/asd-budget-tests-regression-network-local.xml`：426 passed/3 skipped/43.31s；需允许本机回环的服务测试，沙箱内的首轮在服务测试附近停滞后中断。真实结果发布后相关审计56 passed/12.40s；终止原因拆分报告6 passed/6.95s。最终完整命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-budget-final-regression --junitxml=artifacts/asd-budget-tests-final-regression-local.xml`：427 passed/3 skipped/43.10s，含真实报告重建审计；仅有既有python_multipart弃用提醒。
+- 回传ZIP797360字节/SHA`579ec36622bea055ca764fcabb3ddc2dd371f0f3e2d15866116a83de4ae56278`；结果`results/asd-budget/`，报告`docs/ASD_BUDGET_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_asd_budget_report`。两GPU已恢复19MiB/0%。当前保留实验实现，Utility不进入默认运行时，不在本批继续扫描价格；研究结论是局部预算效率改善，尚无稳定质量下的完整长解答每token优势。
+
 ## 2026-10-20 — ASD 论文任务迁移（320次完成）
 
 - 64机制+128自然EOS+128固定128token全部完成。GSM8K strict/ASD最终答案均8/8；MBPP公开测试均5/8；全部自然运行无截断、计时输出与对应机制一致。非零ASD允许轨迹变化，GSM8K 8/8轨迹改变，MBPP 3/8改变。

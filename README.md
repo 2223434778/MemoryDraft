@@ -25,6 +25,10 @@ ASD 近似解码实验独立位于 `codex/asd-splice`：[组合报告](docs/ASD_
 GSM8K自然时延降低18.31%、固定工作量吞吐提高10.60%，两组最终答案均8/8；MBPP自然时延降低2.35%，公开测试均5/8。
 内部拼接未触发，当前正结果归于ASD；本轮不是DSpark复现。MBPP固定128token的大吞吐增幅包含约72%自然EOS后的强制续写，不等同正常代码请求加速。
 
+[ASD实际前缀收益预算验证](docs/ASD_BUDGET_RESULTS.md)已完成：新GSM8K 16题/MATH-500 8题，共288生成。
+收益选择组相对原ASD自然时延下降4.37%/9.93%，但GSM8K正确数15/16→14/16；实际后缀组在MATH下降10.22%、GSM8K基本持平。
+MATH完整结束5题的自然TPS几乎持平，总体TPS收益主要来自3道上限截断题；尚无稳定质量下的完整长解答每token增益结论。近似策略继续作为独立研究选项。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

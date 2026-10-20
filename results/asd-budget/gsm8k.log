@@ -1,0 +1,34 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:03,  1.50s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.39s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.06s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.24s/it]
+completed mechanism gsm8k:8
+completed mechanism gsm8k:9
+completed mechanism gsm8k:10
+completed mechanism gsm8k:11
+completed mechanism gsm8k:12
+completed mechanism gsm8k:13
+completed mechanism gsm8k:14
+completed mechanism gsm8k:15
+completed mechanism gsm8k:16
+completed mechanism gsm8k:17
+completed mechanism gsm8k:18
+completed mechanism gsm8k:19
+completed mechanism gsm8k:20
+completed mechanism gsm8k:21
+completed mechanism gsm8k:22
+completed mechanism gsm8k:23
+completed natural gsm8k:8
+completed natural gsm8k:9
+completed natural gsm8k:10
+completed natural gsm8k:11
+completed natural gsm8k:12
+completed natural gsm8k:13
+completed natural gsm8k:14
+completed natural gsm8k:15
+completed natural gsm8k:16
+completed natural gsm8k:17
+completed natural gsm8k:18
+completed natural gsm8k:19
+completed natural gsm8k:20
+completed natural gsm8k:21
+completed natural gsm8k:22
+completed natural gsm8k:23
