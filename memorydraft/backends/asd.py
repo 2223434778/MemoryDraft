@@ -19,10 +19,14 @@ class ASDConfig:
     gate: float = .25
     cap: int = 2
     value: str = "remaining"
+    selection: str = "longest"
+    regret_price: float = 2.0
 
     def __post_init__(self):
-        if (any(type(v) not in (int, float) or not math.isfinite(v) or v < 0 for v in (self.budget, self.gate))
-                or type(self.cap) is not int or self.cap < 0 or self.value not in {"remaining", "exact-run"}):
+        if (any(type(v) not in (int, float) or not math.isfinite(v) or v < 0
+                for v in (self.budget, self.gate, self.regret_price))
+                or type(self.cap) is not int or self.cap < 0 or self.value not in {"remaining", "exact-run"}
+                or self.selection not in {"longest", "utility"}):
             raise ValueError("Invalid ASD budget, gate, cap or suffix value")
 
 
@@ -52,6 +56,7 @@ class ASDVerifier:
     def __init__(self, config=ASDConfig(), *, record=False):
         self.config, self.record = config, record
         self.spent, self.relaxed, self.blocks = 0., 0, 0
+        self.shortened, self.foregone = 0, 0
         self.events = []
 
     def decide(self, tokens, logits, *, stop_token_ids=()):
@@ -73,29 +78,48 @@ class ASDVerifier:
             feasible &= cumulative <= max(0., self.config.budget - self.spent)
         accepted = feasible.long().cumprod(0).sum()
         positions = torch.arange(tokens.numel(), device=tokens.device)
+        first_stop = tokens.new_tensor(tokens.numel() + 1)
         if stop_token_ids:
             stop = torch.zeros_like(mismatch)
             for token in stop_token_ids:
                 stop |= tokens == token
-            first_stop = torch.where(stop, positions + 1, tokens.numel()).min()
+            first_stop = torch.where(stop, positions + 1, tokens.numel() + 1).min()
             accepted = torch.minimum(accepted, first_stop)
+        longest = accepted
+        if self.config.selection == "utility":
+            lengths = torch.arange(tokens.numel() + 1, device=tokens.device)
+            prefix_cost = torch.cat((costs.new_zeros(1), cumulative))
+            baseline = torch.minimum(strict, first_stop)
+            # Include recovery/bonus, but never count tokens beyond proposal EOS.
+            gain = torch.minimum(lengths + 1, first_stop) - torch.minimum(baseline + 1, first_stop)
+            utility = gain - self.config.regret_price * prefix_cost
+            allowed = (lengths >= baseline) & (lengths <= longest)
+            best = torch.where(allowed, utility, -torch.inf).max()
+            tied = allowed & (utility == best)
+            least_cost = torch.where(tied, prefix_cost, torch.inf).min()
+            accepted = torch.where(tied & (prefix_cost == least_cost), lengths, 0).max()
         selected = positions < accepted
         charge = torch.where(selected, costs, 0.).sum()
         relaxed = (selected & mismatch).sum()
         finite = torch.isfinite(top).all() & torch.isfinite(proposed).all()
-        a, s, n, amount, valid = torch.stack((accepted.double(), strict.double(), relaxed.double(), charge, finite.double())).tolist()
+        a, s, n, amount, valid, ceiling = torch.stack((accepted.double(), strict.double(), relaxed.double(), charge,
+                                                      finite.double(), longest.double())).tolist()
         if not valid or not math.isfinite(amount) or self.spent + amount > self.config.budget + 1e-9:
             raise ValueError("Non-finite Target scores or exceeded ASD request budget")
         self.spent += amount
         self.relaxed += int(n)
         self.blocks += 1
+        self.shortened += int(a < ceiling)
+        self.foregone += int(ceiling - a)
         decision = ASDDecision(int(a), int(s), int(n), amount)
         if self.record:
             self.events.append(dict(accepted=int(a), strict_accepted=int(s), relaxed=int(n), regret=amount,
                                     spent=self.spent, mismatch=mismatch.tolist(), regrets=regret.tolist(),
-                                    values=values.tolist()))
+                                    values=values.tolist(), feasible_accepted=int(ceiling)))
         return decision
 
     def summary(self):
         return dict(budget=self.config.budget, spent=self.spent, relaxed_tokens=self.relaxed,
-                    blocks=self.blocks, value=self.config.value, approximate=self.config.budget > 0)
+                    blocks=self.blocks, value=self.config.value, selection=self.config.selection,
+                    regret_price=self.config.regret_price, shortened_blocks=self.shortened,
+                    foregone_proposal_tokens=self.foregone, approximate=self.config.budget > 0)

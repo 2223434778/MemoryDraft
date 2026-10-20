@@ -155,3 +155,11 @@ results/asd-bench/** -text
 results/asd-bench/*.json whitespace=cr-at-eol
 results/asd-bench/*.log -whitespace
 results/asd-bench/tests-*.xml -whitespace
+
+memorydraft/evaluation/asd_budget.py text eol=lf
+scripts/*asd_budget*.py text eol=lf
+docs/ASD_BUDGET*.md text eol=lf
+data/research/asd-budget/** -text
+results/asd-budget/** -text
+results/asd-budget/**/*.log -whitespace
+results/asd-budget/tests-*.xml -whitespace

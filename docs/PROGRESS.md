@@ -587,3 +587,9 @@ OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python -u scripts/run_
 - 同批 AR=81.172s，D=69.858s，D_native=69.446s，RD=56.956s；H 未缓存/缓存为 73.331/71.414s，RHD 为 59.944/57.923s。缓存使 H 约快 1.027×、RHD 约快 1.035×；但缓存 H 仍比同指令 D 慢约 2.23%，缓存 RHD 仍比 RD 慢约 1.70%。候选增益不足的问题没有被缓存掩盖。
 - H/RHD 检索累计分别从 2.980/3.000s 降到 1.008/1.015s；两个独立缓存均命中 63 次、新编码 9 个片段。逐轮路线、来源、提议数、接受数和推进量在各自 18/18 个缓存配对中相同。第一次编码也计入，没有把离线预处理当零成本。
 - 完整报告由已完成结果重建，缓存为看过测试后的工程消融；对应 provenance/缓存访问记录/测试日志一并保留。已有主证据提交 `4bf7010` 已推送。新增 `.gitattributes` 固定发布文件原始字节，并用 `git show HEAD:<path>` 确认全部已提交文件与发布 SHA 相符，避免换行转换破坏核查。
+# 2026-10-20 ASD 实际前缀收益预算验证（执行准备）
+
+- 用户授权验证第一方向。新增`ASDConfig.selection=utility/regret_price=2`，在原ASD可行前缀中比较额外推进与regret支出；EOS后的尾部不计收益，请求预算不重置。原最长前缀默认保留。
+- 新任务冻结为GSM8K test8..23及MATH-500 0..7，共24题；来源commit/SHA与许可说明在`data/research/asd-budget/records.json`。旧GSM8K0..7仅作已观察开发依据，不用新结果扫描价格。
+- 四组DFlash/ASD/ASD-Run/ASD-Utility；96机制+192自然EOS计时，总288生成。两物理A6000各跑一个benchmark，组内同卡交错。协议`docs/ASD_BUDGET_PROTOCOL.md`，输出`results/raw/asd-budget/{gsm8k,math500}`。
+- 首次本地命令`.venv\Scripts\python.exe -m pytest -q tests/test_asd.py tests/test_asd_budget.py --basetemp .test-tmp-asd-budget --junitxml=artifacts/asd-budget-tests-first-local.xml`：21 passed/8.13s。随后增加utility真实小Target/KV路径参数覆盖，将再跑相关检查；尚无本轮GPU性能结论。
