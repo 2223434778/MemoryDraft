@@ -62,7 +62,7 @@ def test_nonfinite_target_scores_fail_without_spending():
     assert verifier.spent == 0
 
 
-@pytest.mark.parametrize("selection", ["longest", "utility"])
+@pytest.mark.parametrize("selection", ["longest", "utility", "confidence"])
 def test_approximate_real_target_features_follow_realized_prefix_and_stream(selection):
     from transformers import Qwen3Config, Qwen3ForCausalLM
     from memorydraft.backends.dflash_reuse import ReuseConfig, generate_reuse
@@ -99,7 +99,10 @@ def test_approximate_real_target_features_follow_realized_prefix_and_stream(sele
         def observe(self, *args):
             pass
 
-    policy = ASDVerifier(ASDConfig(budget=100, gate=100, cap=8, selection=selection))
+    from memorydraft.backends.asd_confidence import ConfidenceUtilityVerifier
+    policy_type = ConfidenceUtilityVerifier if selection == "confidence" else ASDVerifier
+    policy = policy_type(ASDConfig(budget=100, gate=100, cap=8,
+                                  selection="utility" if selection == "confidence" else selection))
     with torch.inference_mode():
         result = generate_reuse(target, Draft(), ids, max_new_tokens=25, matcher=Matcher(), verifier=policy,
                                 route_sequence=("R", "D"), config=ReuseConfig(max_tokens=5, cooldown_rounds=0),

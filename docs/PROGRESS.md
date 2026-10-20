@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-20 — ASD 置信度小检查（执行准备）
+
+- 用户授权代码与小规模检查。冻结4道已观察开发题math500:1/4/7、gsm8k:21；七组含原四组、固定价格1/3与alpha=.5的Confidence-Utility。请求预算按原regret扣除，不按概率价格打折；原ASD可行域不变。协议`docs/ASD_CONFIDENCE_PROTOCOL.md`。
+- 新增Utility可覆写代价入口、`asd_confidence.py`、独立runner/pipeline和行为测试。机制记录完整proposal/EOS、Target/Draft概率，修复旧trace无法还原未接受EOS的观测限制；默认严格运行时不启用。
+- 上限140次机制/自然/128前缀生成，加最多16同前缀单例外干预分支。两GPU独立目录执行，不按质量筛结果，分支重算缓存，不跨分支复用旧suffix。
+- 本机首次相关检查：`.venv\Scripts\python.exe -m pytest -q tests/test_asd.py tests/test_asd_confidence.py --basetemp .test-tmp-asd-confidence --junitxml=artifacts/asd-confidence-tests-first-local.xml`：25 passed/35.23s。服务器双A6000均19MiB/0%，尚无本轮GPU结论。
+
 ## 2026-10-20 — ASD 新题收益归因（600次完成）
 
 - 固定GSM8K test24..31（8题）、MATH-500 8..23（16题），原四组加固定gate0.0625的Conservative。120机制+240完整自然EOS计时+240遵守EOS的128前缀计时全部完成；不按质量/截断剔题，不扫描新题参数。四分片math-a/b、gsm-a/b分别同题同卡交错，精确命令见`results/asd-attribution/run-pipeline.py`与`pipeline.log`，冻结协议`docs/ASD_ATTRIBUTION_PROTOCOL.md`。

@@ -59,6 +59,10 @@ class ASDVerifier:
         self.shortened, self.foregone = 0, 0
         self.events = []
 
+    def utility_costs(self, tokens, logits, costs):
+        """Selection prices may differ from the unchanged request regret ledger."""
+        return costs
+
     def decide(self, tokens, logits, *, stop_token_ids=()):
         if tokens.ndim != 1 or logits.ndim != 2 or logits.shape[0] != tokens.numel() or not tokens.numel():
             raise ValueError("Expected nonempty [K] proposals and aligned [K,V] Target logits")
@@ -88,7 +92,8 @@ class ASDVerifier:
         longest = accepted
         if self.config.selection == "utility":
             lengths = torch.arange(tokens.numel() + 1, device=tokens.device)
-            prefix_cost = torch.cat((costs.new_zeros(1), cumulative))
+            priced = self.utility_costs(tokens, logits, costs)
+            prefix_cost = torch.cat((costs.new_zeros(1), priced.cumsum(0)))
             baseline = torch.minimum(strict, first_stop)
             # Include recovery/bonus, but never count tokens beyond proposal EOS.
             gain = torch.minimum(lengths + 1, first_stop) - torch.minimum(baseline + 1, first_stop)

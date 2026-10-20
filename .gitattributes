@@ -176,3 +176,9 @@ data/research/asd-attribution/** -text
 results/asd-attribution/** -text
 results/asd-attribution/**/*.log -whitespace
 results/asd-attribution/tests-*.xml -whitespace
+
+scripts/*asd_confidence*.py text eol=lf
+docs/ASD_CONFIDENCE*.md text eol=lf
+results/asd-confidence/** -text
+results/asd-confidence/**/*.log -whitespace
+results/asd-confidence/tests-*.xml -whitespace
