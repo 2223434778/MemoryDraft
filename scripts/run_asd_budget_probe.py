@@ -3,13 +3,14 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import asdict, replace
+import json
 from pathlib import Path
 import random
 from unittest.mock import patch
 
 from memorydraft.backends.asd import ASDConfig, ASDVerifier
 from memorydraft.evaluation.asd_budget import load_tasks, request_for, score
-from memorydraft.evaluation.runtime_migration import file_hash
+from memorydraft.evaluation.runtime_migration import file_hash, read_rows
 from memorydraft.runtime.benchmark import provenance
 from memorydraft.runtime.config import RuntimeConfig, load_engine
 from memorydraft.runtime.contracts import GenerationRequest
@@ -42,7 +43,33 @@ class BudgetHook:
 
 def protected(root):
     return {p.relative_to(root).as_posix(): file_hash(p) for p in sorted((root / "results").rglob("*"))
-            if p.is_file() and p.relative_to(root / "results").parts[0] not in {"raw", "asd-budget"}}
+            if p.is_file() and p.relative_to(root / "results").parts[0] != "raw"}
+
+
+def select_records(records, benchmark, task_ids=None):
+    selected = [r for r in records if r["benchmark"] == benchmark]
+    if task_ids is not None:
+        available = {r["id"] for r in selected}
+        if not task_ids or len(set(task_ids)) != len(task_ids) or set(task_ids) - available:
+            raise ValueError("Task IDs must be nonempty, unique and belong to the selected benchmark")
+        selected = [r for r in selected if r["id"] in task_ids]
+    return selected
+
+
+def compare_previous(result, previous):
+    if (result.prompt_sha256, result.snapshot_id) != (previous["prompt_sha256"], previous["snapshot_id"]):
+        raise ValueError("Previous probe has a different Target prompt or history")
+    old, new = previous["token_ids"], result.token_ids
+    common = next((i for i,(a,b) in enumerate(zip(old,new)) if a != b), min(len(old),len(new)))
+    normal = max(r["proposed"] for r in previous["rounds"])
+    # A shorter final verification block changes ASD's remaining-length gate.
+    # Only the prefix preceding that block must be identical across limits.
+    affected = min((r["generated_before"] for r in previous["rounds"] if r["proposed"] < normal), default=len(old))
+    required = affected if previous["finish_reason"] == "length" else len(old)
+    if common < required:
+        raise ValueError("Trajectory changed before the previous length-dependent block")
+    return dict(previous_tokens=len(old), previous_finish_reason=previous["finish_reason"],
+                common_prefix_tokens=common, required_prefix_tokens=required, exact_previous_prefix=common==len(old))
 
 
 def main():
@@ -50,21 +77,46 @@ def main():
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--benchmark", choices=("gsm8k", "math500"), required=True)
+    parser.add_argument("--task-ids", nargs="+")
+    parser.add_argument("--max-new-tokens", type=int, default=512)
+    parser.add_argument("--previous", type=Path)
+    parser.add_argument("--protocol", type=Path, default=ROOT / "docs/ASD_BUDGET_PROTOCOL.md")
     args = parser.parse_args()
+    if not 1 <= args.max_new_tokens <= 4096:
+        parser.error("max-new-tokens must be in [1, 4096]")
     args.output.mkdir(parents=True, exist_ok=False)
     data = ROOT / "data/research/asd-budget/records.json"
-    records = [r for r in load_tasks(data) if r["benchmark"] == args.benchmark]
-    config = replace(RuntimeConfig.load(args.config), db=None, retrieval="suffix", prefix_risk={})
+    records = select_records(load_tasks(data), args.benchmark, args.task_ids)
+    previous, previous_info, previous_hash = {}, None, None
+    if args.previous:
+        directory = args.previous / args.benchmark
+        previous = {(r["request_id"],r["method"]):r for r in read_rows(directory / "mechanism/rows.jsonl")}
+        if any((r["id"],m) not in previous for r in records for m in POLICIES):
+            raise ValueError("Missing previous mechanism references")
+        previous_info = json.loads((directory / "provenance.json").read_text(encoding="utf-8"))
+        if previous_info["status"] != "complete" or previous_info["policies"] != {m:asdict(c) for m,c in POLICIES.items()}:
+            raise ValueError("Incomplete previous probe or changed policies")
+        path = directory / "mechanism/rows.jsonl"
+        previous_hash = file_hash(path if path.exists() else path.with_suffix(".jsonl.gz"))
+    base_config = RuntimeConfig.load(args.config)
+    config = replace(base_config, db=None, retrieval="suffix", prefix_risk={},
+                     max_new_tokens=max(base_config.max_new_tokens,args.max_new_tokens))
     engine = load_engine(config)
     original = protected(ROOT)
     info = {**provenance(engine), "status": "started", "benchmark": args.benchmark,
             "runner_sha256": file_hash(Path(__file__)), "data_sha256": file_hash(data),
-            "protocol_sha256": file_hash(ROOT / "docs/ASD_BUDGET_PROTOCOL.md"),
+            "protocol_sha256": file_hash(args.protocol),
             "original_sha256": original, "policies": {k: asdict(v) for k,v in POLICIES.items()},
-            "selection": "Frozen new slices; price=2 chosen before these generations, no threshold search",
+            "selection": "Frozen task IDs and controls; no threshold search",
+            "task_ids": [r["id"] for r in records], "max_new_tokens": args.max_new_tokens,
+            "previous_rows_sha256": previous_hash,
             "quality": "GSM8K numeric; MATH-500 normalized boxed exact match, no symbolic equivalence",
             "memory": "All requests isolated, no retrieval or generated answers indexed",
-            "eos": "Natural EOS, maximum 512 tokens; no forced continuation stage"}
+            "eos": f"Natural EOS, maximum {args.max_new_tokens} tokens; no forced continuation stage"}
+    if previous_info and (previous_info["source"]["sha256"] != info["source"]["sha256"]
+                          or previous_info["data_sha256"] != info["data_sha256"]):
+        engine.close()
+        raise ValueError("Previous runtime package or task data changed")
     write(args.output / "provenance.json", info)
     from memorydraft.runtime import engine as runtime_module
     native = runtime_module.generate_reuse
@@ -92,7 +144,8 @@ def main():
                     if stage == "mechanism":
                         order = ["DFlash", *(m for m in order if m != "DFlash")]
                     for method in order:
-                        result, hook = execute(request_for(record), method, stage == "mechanism")
+                        request = replace(request_for(record), max_new_tokens=args.max_new_tokens)
+                        result, hook = execute(request, method, stage == "mechanism")
                         if stage == "mechanism" and method == "DFlash":
                             references[record["id"]] = asdict(result)
                         ref = references[record["id"]]
@@ -109,6 +162,8 @@ def main():
                         row = {**asdict(result), "method": method, "benchmark": args.benchmark, "repeat": repeat,
                                "strict_identity": result.token_ids == ref["token_ids"], "asd": state,
                                "quality": score(record, result.text)}
+                        if previous:
+                            row["previous_prefix"] = compare_previous(result, previous[key])
                         if stage == "mechanism":
                             row.update(events=hook.policy.events, rounds=hook.detail.rounds)
                             row["instrumented_latency_seconds"] = row.pop("latency_seconds")

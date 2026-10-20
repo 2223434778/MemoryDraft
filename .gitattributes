@@ -163,3 +163,9 @@ data/research/asd-budget/** -text
 results/asd-budget/** -text
 results/asd-budget/**/*.log -whitespace
 results/asd-budget/tests-*.xml -whitespace
+
+scripts/*asd_completion*.py text eol=lf
+docs/ASD_COMPLETION*.md text eol=lf
+results/asd-completion/** -text
+results/asd-completion/**/*.log -whitespace
+results/asd-completion/tests-*.xml -whitespace

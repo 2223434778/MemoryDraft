@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-20 — ASD 截断MATH补全（执行准备）
+
+- 用户授权下一步，预先固定上一轮math500:1/4/7三个截断请求。保留四组与B8/g0.25/M2、Utility价格2；输出上限改为2048，不在这些已观察题上调整阈值。36次正式生成，另计预热；协议`docs/ASD_COMPLETION_PROTOCOL.md`。
+- 复用runner增加任务选择/输出上限/旧前缀核对。旧上限裁短最后验证块可能改变局部门槛，因此核对首次裁短块以前的完整前缀，并保存实际512前缀是否相同；固定Target输入和runtime package。旧budget发布证据也加入执行前后SHA保护。
+- 预计命令与分卡在协议保存，原始新输出为`results/raw/asd-completion/part-a`和`part-b`；不覆盖旧512结果。尚无本轮GPU结果。
+
 ## 2026-10-20 — ASD 实际前缀收益预算验证（288次完成）
 
 - 冻结执行提交`88d8143f6ece7316942d03efdea7d3221161ad64`，独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-budget`。833个Git原始文件执行前后SHA全一致；源码ZIP SHA`9b744c2400c46657248d704eb74f32313d937d2fc3675692c99986b21c00cf46`，清单source SHA`942be35c802b6c4d1d3edd84b95e66c83d06d0c6745970429fdabed74b58fe58`，运行package SHA`8924a107833ad260fb0dac41a3ebdfb73c4b747dc5fdfcdf11aa4a09cc200e67`。
