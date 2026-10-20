@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-20 — 实际计算收益预测（执行准备）
+
+- 按用户授权停止继续优化置信度定价，检查有限动作oracle空间与廉价计算特征的可预测性。4道旧开发题，每题4个不同源验证块；按源位置/源长度和等间隔索引冻结，不按新分支结果筛选。
+- 新runner `scripts/run_asd_compute_probe.py` 从原prompt重放到同一个Target验证块，在实际KV上比较原Utility完整接受动作与当前严格截断；之后均严格续写。原始账本保留，未来regret为零；不重prefill，不用改token后的旧suffix logits。4 baseline+32自然+64等范围，两次重复，共100生成。
+- 128token范围从共同验证块边界开始，计入本轮缓存多推进；局部计时在共同验证/原选择/源核查之后，包含KV提交与后续，排除重放与预测器，因此只是乐观计算空间，不作线上加速结论。协议 `docs/ASD_COMPUTE_PROTOCOL.md`。
+- 冻结四项非置信度特征和alpha=1的按题留出岭回归；先检验oracle能否比最好固定动作省>=5%未来验证轮，再判断预测器是否优于固定动作与Run。质量/长度/EOS全部单列；不扫超参、不增加样本或特征。
+- 首次检查命令`.venv\Scripts\python.exe -m pytest -q tests/test_asd_compute.py tests/test_asd_utility_causal.py tests/test_asd.py --basetemp .test-tmp-asd-compute-first --junitxml=artifacts/asd-compute-tests-first-local.xml`。
+- 首次28 passed/9.45s，覆盖真实tiny Target/KV上两动作与各自实际前缀的严格AR续写一致、后续零regret、原始账本保留、按题留出无本题标签泄漏、质量/EOS过滤及oracle最好固定对照。没有修改生产推理模块。
+
 ## 2026-10-20 — Utility 错误轨迹与计算收益（62次完成）
 
 - 冻结执行提交`80f4a001671c409d0fdf93728b4b54fc7d3f71a1`，服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-utility-causal`，PID3313804已正常完成。975个Git原始文件在执行前后SHA一致；源码ZIP SHA`2747fc75d2b16c580a3e5959d61f83ff3fdd452535f51d338f97afe37c067f55`、source SHA`229f38b015414d5ef81fece9a4c759be46fa3cbb9ab5a5b2b807d26160f8a9fe`。runtime package未改，继续为`4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f`。

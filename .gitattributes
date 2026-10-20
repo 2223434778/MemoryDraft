@@ -1,4 +1,11 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/asd-compute/** -text
+results/asd-compute/*.log -whitespace
+results/asd-compute/*.xml -whitespace
+scripts/run_asd_compute*.py text eol=lf
+scripts/write_asd_compute_report.py text eol=lf
+tests/test_asd_compute*.py text eol=lf
+docs/ASD_COMPUTE*.md text eol=lf
 results/asd-utility-causal/** -text
 results/asd-utility-causal/*.log -whitespace
 # Keep raw pytest failure excerpts, including native CRLF and terminal spaces.
