@@ -1,0 +1,8 @@
+...............................                                          [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-utility-causal/artifacts/tests-server.xml -
+31 passed in 4.91s
+START 0 gsmSTART 1  math ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_utility_causal_probe", "--config", "configs/runtime-dflash.json", "--task-id", "math500:7", "--output", "results/raw/asd-utility-causal/math"]
+["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_utility_causal_probe", "--config", "configs/runtime-dflash.json", "--task-id", "gsm8k:21", "--output", "results/raw/asd-utility-causal/gsm"]
+FINISH 1 math 0
+FINISH 0 gsm 0
+PIPELINE COMPLETE

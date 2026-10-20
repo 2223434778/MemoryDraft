@@ -44,6 +44,10 @@ Confidence-Utility在三道MATH上比Utility自然时延低3.76%，但输出缩�
 旧GSM8K错误题答对，但固定价格1/3也答对，价格3更快；16干预分支均答对，未获得质量风险标签差异。
 概率集中不代表Target认可Draft，停止扩大该简单pair_mass价格规则；采集、干预工具与负结果保留，默认严格运行时不启用。
 
+[Utility错误轨迹因果诊断](docs/ASD_UTILITY_CAUSAL_RESULTS.md)完成2道旧开发题、62次生成，751策略块通过独立标量审计。
+gsm8k:21的9次单独拒绝有8次修复错答，但严格同前缀分支只有位置211出现质量差异：Draft直接收尾，Target继续计算后答对。
+该位置已有高regret/Run信号，预算未耗尽；尚无置信度独立价值。6对等128后续token中，接受例外后验证轮更少/更多/相同为3/2/1，局部Run不等于未来计算收益。无新增在线加速结论。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

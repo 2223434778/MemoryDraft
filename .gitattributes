@@ -1,7 +1,10 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
 results/asd-utility-causal/** -text
 results/asd-utility-causal/*.log -whitespace
+# Keep raw pytest failure excerpts, including native CRLF and terminal spaces.
+results/asd-utility-causal/*.xml -whitespace
 scripts/run_asd_utility_causal*.py text eol=lf
+scripts/export_asd_utility_context.py text eol=lf
 scripts/write_asd_utility_causal_report.py text eol=lf
 tests/test_asd_utility_causal*.py text eol=lf
 docs/ASD_UTILITY_CAUSAL*.md text eol=lf

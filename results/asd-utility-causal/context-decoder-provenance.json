@@ -1,0 +1,19 @@
+{
+  "stage": "Post-experiment offline tokenizer decode, no model forward",
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-m",
+    "scripts.export_asd_utility_context",
+    "--tokenizer",
+    "models/qwen3-8b",
+    "--output",
+    "semantic-context-rebuilt.json"
+  ],
+  "script_sha256": "0a95302217ba942b87c238245e7ce521a0ae3fd512dd75e92e24bd451aeba429",
+  "output_sha256": "544f4f681ddec3364f879d175b802c3a0c0f05c23c7b33f8a51ef4f4bbe57201",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "tokenizer_files": {
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+  }
+}

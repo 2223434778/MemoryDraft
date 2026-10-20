@@ -1,5 +1,18 @@
 # 项目进度
 
+## 2026-10-20 — Utility 错误轨迹与计算收益（62次完成）
+
+- 冻结执行提交`80f4a001671c409d0fdf93728b4b54fc7d3f71a1`，服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-utility-causal`，PID3313804已正常完成。975个Git原始文件在执行前后SHA一致；源码ZIP SHA`2747fc75d2b16c580a3e5959d61f83ff3fdd452535f51d338f97afe37c067f55`、source SHA`229f38b015414d5ef81fece9a4c759be46fa3cbb9ab5a5b2b807d26160f8a9fe`。runtime package未改，继续为`4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f`。
+- 2次完整Utility基线、12次完整单次拒绝、48次同前缀严格自然/128续写分支，共62生成全部完成。gsm8k:21全部9个实际例外（包含块内第二个）与math500:7固定3状态；两个baseline精确重现旧token/账本，全部完整自然分支EOS，无自然上限截断。独立标量重算751策略块的原可行域/Utility最优选择、单次干预、原始预算/EOS/前缀/计数通过。
+- gsm旧错答23有8/9个单次拒绝恢复14；这些是完整策略轨迹效应，不能把8处都标为单token有害。严格自然proposal/recovery为11/12与12/12正确，只有gsm位置211直接出现质量差异：proposal分隔符让模型进入Final Answer，recovery为`$$`，继续算37−23=14。该源状态regret1.8164、Run6，r/Run0.3027>0.25，已有Run局部门控会拒绝；仅同状态计算，不冒充完整Run轨迹重跑。
+- 位置211之前已花4.5570、剩余3.4430，足以支付1.8164，原完整Utility最终6.3734<8；本例不支持预算耗尽解释。没有同题regret差<=.25/Run差<=2且proposal质量不同的状态对，尚无新增置信度独立信号，不上线新置信度门控或训练头。
+- 6对均达128 continuation token的分支，proposal后续轮更少3/更多2/相同1。math7位置10的Run仅2，后续128轮18对30；gsm14/17同为Run2却为24对20/24对22。局部Run不是未来验证效率的直接估计。不同文本/重prefill且每条件仅一次，不发布时延加速比。
+- 回传ZIP565052字节/SHA`5ba09867dcec9ff69346f79ca444cb94dcc7497f8268844ce1b10f9278402bb9`；原始公开证据`results/asd-utility-causal/`，报告`docs/ASD_UTILITY_CAUSAL_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_asd_utility_causal_report`。两GPU完成后均19MiB/0%，旧证据未变；infra的main/面试分支/tag仍指向`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。
+- 准确GPU命令见冻结协议与`results/asd-utility-causal/scripts/run_asd_utility_causal_pipeline.py`、pipeline.log：GPU0跑gsm8k:21、GPU1跑math500:7，`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_utility_causal_probe --config configs/runtime-dflash.json --task-id ... --output results/raw/asd-utility-causal/{gsm,math}`。GPU完成后仅用冻结Target tokenizer离线解码追加semantic-context.json，重建入口`scripts/export_asd_utility_context.py`，不把事后文本观察当预定在线特征。
+- 本地首次相关30 passed/9.34s，增加真实tiny Target/KV/流式干预覆盖后31 passed/9.28s；服务器31 passed/4.91s。发布初审14 passed/10.44s。语义解码包含Unicode，Windows报告曾因默认GBK读取失败；已显式UTF-8读取，修复后含预算重置/重复分支篡改审计16 passed/11.18s。GPU数据未重跑，失败XML保留。
+- 完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-utility-causal-full --junitxml=artifacts/asd-utility-causal-tests-full-local.xml`：483 passed/3 skipped/49.32s，仅既有python_multipart弃用提醒。正确性沿用最终答案评分；位置211恢复分支保留前缀旧错误陈述，不能称为整段推理无错误。报告显式UTF-8/LF导出，避免Windows换行改变发布SHA。
+- 离线decoder按公开冻结tokenizer重建semantic-context字节一致，SHA`544f4f681ddec3364f879d175b802c3a0c0f05c23c7b33f8a51ef4f4bbe57201`，脚本/命令/tokenizer文件SHA记录在context-decoder-provenance.json；追加报告来源审计7 passed/7.00s。26个发布证据/协议/报告的原始SHA在publication.json；607个旧证据核验，只有两个既有Windows CRLF文件需按旧规则归一化核对（manifest明确列出），无旧结果内容修改。
+
 ## 2026-10-20 — Utility 错误轨迹与计算收益（执行准备）
 
 - 用户授权落实置信度/Utility后续验证。先验证已知Utility错误中的关键例外，暂不盲目增加新在线价格规则；原严格运行时与infra冻结引用不改。

@@ -25,7 +25,7 @@ jobs:
       - if: matrix.profile == 'dflash'
         run: python -m pytest -q tests/test_asd.py tests/test_asd_budget.py tests/test_asd_budget_report.py tests/test_asd_completion.py tests/test_asd_completion_report.py tests/test_asd_probe.py tests/test_asd_report.py tests/test_asd_bench.py tests/test_asd_bench_report.py --basetemp .test-tmp-asd-ci
       - if: matrix.profile == 'dflash'
-        run: python -m pytest -q tests/test_asd_attribution.py tests/test_asd_attribution_report.py tests/test_asd_confidence.py tests/test_asd_confidence_report.py tests/test_asd_utility_causal.py --basetemp .test-tmp-asd-attribution-ci
+        run: python -m pytest -q tests/test_asd_attribution.py tests/test_asd_attribution_report.py tests/test_asd_confidence.py tests/test_asd_confidence_report.py tests/test_asd_utility_causal.py tests/test_asd_utility_causal_report.py --basetemp .test-tmp-asd-attribution-ci
       - if: matrix.profile == 'dflash'
         run: python -m pytest -q tests/test_prefix_risk_continuation.py tests/test_prefix_risk_continuation_report.py tests/test_prefix_risk_controls_report.py --basetemp .test-tmp-continuation-ci
       - run: python -m memorydraft benchmark --config configs/runtime-demo.json --requests examples/requests.jsonl --methods AR --repeats 1 --output artifacts/ci-demo
