@@ -1,10 +1,16 @@
 # 项目进度
 
-## 2026-10-20 — ASD 截断MATH补全（执行准备）
+## 2026-10-20 — ASD 截断MATH补全（36次完成）
 
 - 用户授权下一步，预先固定上一轮math500:1/4/7三个截断请求。保留四组与B8/g0.25/M2、Utility价格2；输出上限改为2048，不在这些已观察题上调整阈值。36次正式生成，另计预热；协议`docs/ASD_COMPLETION_PROTOCOL.md`。
 - 复用runner增加任务选择/输出上限/旧前缀核对。旧上限裁短最后验证块可能改变局部门槛，因此核对首次裁短块以前的完整前缀，并保存实际512前缀是否相同；固定Target输入和runtime package。旧budget发布证据也加入执行前后SHA保护。
-- 预计命令与分卡在协议保存，原始新输出为`results/raw/asd-completion/part-a`和`part-b`；不覆盖旧512结果。尚无本轮GPU结果。
+- 12机制+24自然EOS计时全部完成，三题四组全部正常结束并通过评分，无截断，输出586–838token；12/12机制和24/24计时保留各自旧512输出完整前缀，计时轨迹与机制完全一致。旧512结果不改。
+- 原ASD41.070915s/4662token（两重复）、自然TPS113.511；Run34.570983s/4262token，时延−15.83%、自然TPS+8.61%；Utility35.255236s/4376token，时延−14.16%、自然TPS+9.35%。严格DFlash41.016759s，两新组相对严格DFlash时延分别−15.71%/−14.05%。质量均3/3；仍有输出长度变化，不能把全部时延收益解释为等工作量执行效率。
+- 机制验证轮ASD261、Run219、Utility223；regret23.434→6.310/20.375。Run在math500:1/4时延−17.69%/−29.34%，math500:7反而+6.26%；Utility三题均改善。收益具有逐题差异，不宣称通用加速。旧gsm8k:21的Utility真实错误继续保留，不升级默认策略。
+- 冻结提交`07663d23117f122a620d417fadc483b85abb2015`，服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-completion`，858源码文件执行前后SHA一致。源码ZIP SHA`3f26a3bba1e8df54be7ddaed756e31e34e95a78f2632ee138f75cd9929ff7325`、清单source SHA`3f06e4cdc497acc41c7cafd3709da5eea4c169468220b612fc72a7c36b3303ba`；runtime package继续为`8924a107833ad260fb0dac41a3ebdfb73c4b747dc5fdfcdf11aa4a09cc200e67`，与原512实验一致。
+- 准确命令在`docs/ASD_COMPLETION_PROTOCOL.md`和`results/asd-completion/run-pipeline.py`：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. CUDA_VISIBLE_DEVICES=0/1 ../.venv-dflash/bin/python -u -m scripts.run_asd_budget_probe --config configs/runtime-ot-benefit.json --benchmark math500 --task-ids math500:1 math500:4`（另卡`math500:7`）`--max-new-tokens 2048 --previous results/asd-budget --protocol docs/ASD_COMPLETION_PROTOCOL.md --output results/raw/asd-completion/part-a`（另卡`part-b`）。新进程从原始prompt生成，没有中途重置预算。
+- 本地相关33 passed/15.52s；服务器相关27 passed/4.28s。本地完整命令`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-completion-regression --junitxml=artifacts/asd-completion-tests-regression-local.xml`：431 passed/3 skipped/48.42s，仅既有python_multipart弃用提醒。真实结果发布后相关审计16 passed/7.55s；最终报告审计6 passed/7.34s，覆盖缺失/重复、预算、前缀、轨迹和政策篡改。
+- 回传ZIP228192字节/SHA`e7010f384f8736523625230f83c13772e8606580ff45f8d333763041311421f3`；原始结果`results/asd-completion/`、报告`docs/ASD_COMPLETION_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_asd_completion_report`。执行结束两GPU均19MiB/0%，旧结果SHA不变。完整解答下总体正结果保留，但仅3道已观察题，不作为新题泛化或质量非劣性证明。
 
 ## 2026-10-20 — ASD 实际前缀收益预算验证（288次完成）
 
