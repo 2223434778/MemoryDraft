@@ -19,6 +19,16 @@ def require(ok, message):
         raise ValueError(message)
 
 
+def strict_future_ok(row, source_block):
+    for i, r in enumerate(row["rounds"][source_block + 1:], source_block + 1):
+        expected = r["strict_accepted"]
+        if row["finish_reason"] == "eos" and i == len(row["rounds"]) - 1:
+            expected = min(expected, len(row["token_ids"]) - r["generated_before"])
+        if r["accepted"] != expected or r["regret"] != 0:
+            return False
+    return row["strict_future_regret"] == 0
+
+
 def predict(entries):
     """No same-question labels or preprocessing; fixed ridge, including an intercept."""
     predictions = {}
@@ -146,8 +156,7 @@ def analyze(directory):
                         rds = row["rounds"]
                         require(row["future_rounds"] == len(rds) - b - 1 and rds[b]["accepted"] == a, "Future round count")
                         require(all(r["accepted"] == ref["rounds"][i]["accepted"] for i, r in enumerate(rds[:b])), "Pre-fork actions")
-                        require(all(r["accepted"] == r["strict_accepted"] and r["regret"] == 0 for r in rds[b + 1:])
-                                and row["strict_future_regret"] == 0, "Strict future")
+                        require(strict_future_ok(row, b), "Strict future")
                         require(math.isfinite(row["post_decision_seconds"]) and row["post_decision_seconds"] > 0, "Compute timing")
                     natural, p0, p1 = group
                     require(p0["token_ids"] == p1["token_ids"] and p0["action"] == p1["action"]
@@ -163,7 +172,9 @@ def analyze(directory):
                                     correct=[g[0]["quality"]["correct"] for g in chosen],
                                     finish=[g[0]["finish_reason"] for g in chosen],
                                     natural_tokens=[len(g[0]["token_ids"]) for g in chosen]))
-    return dict(commit=manifest["commit"], generations=count, entries=entries, summary=summarize(entries))
+    return dict(commit=manifest["commit"], generations=count,
+                original_baseline_correct={q: refs[q]["quality"]["correct"] for q in TASK_IDS},
+                entries=entries, summary=summarize(entries))
 
 
 def render(result):
@@ -186,6 +197,10 @@ def render(result):
                   f"预定样本覆盖达标={s['enough']}；oracle >=5%门槛通过={s['oracle_pass']}；"
                   f"固定特征留题预测器门槛通过={s['predictor_pass']}。",
                   f"留题未来轮差MAE={s['mae_round_difference']}，fallback状态={s['fallback_states']}。", "",
+                  f"原完整Utility基线正确{sum(result['original_baseline_correct'].values())}/4；"
+                  f"本轮分叉后严格续写的32条自然分支正确{sum(sum(e['correct']) for e in result['entries'])}/32。"
+                  "表中Utility仅表示当前动作A，之后都严格续写，不能解释为原完整Utility已经纠错。"
+                  "Run列是首例外的局部二选一规则，不是完整ASD-Run在线基线。", "",
                   "预测使用当前动作多推进、原始regret差、Run、此前4轮平均推进；不使用置信度。"
                   "固定岭回归alpha=1，各题的训练/标准化只用其他题；训练仅按等128筛选，不用正确答案筛选。"
                   "这是4道已观察题的可行性诊断，没有调参或独立新题验证。", "",
@@ -194,6 +209,10 @@ def render(result):
                   "两次局部测量不支持线上端到端加速或显著性结论。", "",
                   "各状态是独立二选一，不能将oracle收益直接相加解释为完整近似策略收益；"
                   "自然长度、EOS及最终答案须同时评估，最终答案正确也不保证整段推理一致。", "",
+                  ("阶段决定：主要样本覆盖足够，但oracle未达预定5%门槛。停止继续这条128token、二选一的未来计算预测路线；"
+                   "不扫描岭回归参数、不增加复杂预测头、不扩大同类开发题。现有Utility作为简单实验选项保留。"
+                   if s["enough"] and not s["oracle_pass"] else
+                   "阶段决定：证据边界依照上述冻结覆盖/收益/预测器门槛，不据开发题直接部署预测器。"), "",
                   f"冻结执行commit `{result['commit']}`。原始证据results/asd-compute；协议ASD_COMPUTE_PROTOCOL.md。",
                   "重建：`python -m scripts.write_asd_compute_report`。", ""])
     return "\n".join(lines)

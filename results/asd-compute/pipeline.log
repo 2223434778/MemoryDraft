@@ -1,0 +1,8 @@
+............................                                             [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-compute/artifacts/tests-server.xml -
+28 passed in 4.95s
+START 0 math-a ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_compute_probe", "--config", "configs/runtime-dflash.json", "--task-ids", "math500:1", "math500:4", "--output", "results/raw/asd-compute/math-a"]
+START 1 mixed-b ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_compute_probe", "--config", "configs/runtime-dflash.json", "--task-ids", "math500:7", "gsm8k:21", "--output", "results/raw/asd-compute/mixed-b"]
+FINISH 1 mixed-b 0
+FINISH 0 math-a 0
+PIPELINE COMPLETE

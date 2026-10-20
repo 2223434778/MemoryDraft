@@ -1,0 +1,37 @@
+{
+  "execution_commit": "3132838503d0130d78726c5e52b1d28c6bcafa13",
+  "archive_bytes": 349568,
+  "archive_sha256": "16917117766f9fe84f0aa137941a7343a6528ce8a938b9ff159ae7c5eff11604",
+  "previous_results_verified": 632,
+  "legacy_checkout_crlf_only": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "files": {
+    "docs/ASD_COMPUTE_PROTOCOL.md": "e6a620099d904e4175cf6279d096aa6b189d25124cbd5a72c97fee0a6936cb97",
+    "docs/ASD_COMPUTE_RESULTS.md": "45f8c09d9d8b5c26b70aca8f7e4137078cadd0127b2c4da44b617b6852110061",
+    "results/asd-compute/analysis.json": "52cecdaf832bcf4a221225512b12d0883bd5ce28b40d46f771c02d0681eee75a",
+    "results/asd-compute/asd-compute-tests-first-local.xml": "7d3110fbb692efc876679a40149284be59a3da314419cc1ac13ad29f1b1b0f8c",
+    "results/asd-compute/asd-compute-tests-full-local.xml": "c932428eb21c9c61ccfb8a8c3b6778c7c0495d9dbf4e95f0411d06fefacdfa29",
+    "results/asd-compute/asd-compute-tests-published-local.xml": "d10c5f412b5643be65c13f0803ac9c39b6be396110195813b4e67741ebbaa283",
+    "results/asd-compute/ASD_COMPUTE_SOURCE_MANIFEST.json": "95298a69a087d27dd9d359437a08b1971c0e6fbf07262edf9256a48ec1c07ef3",
+    "results/asd-compute/execution-verification.json": "933782b684b4c8528e2597db659cbd6c53dc562f20c7bfa6bc99a7b90e24077b",
+    "results/asd-compute/math-a/baselines.jsonl.gz": "545f7da30dab689084c504b153be2f519a33a8d8bf2bd8e485eada7f0c36ccaa",
+    "results/asd-compute/math-a/branches.jsonl.gz": "fb96e7d5eb0c989771a68d6019127b414c6986bec74a90f23c55a7751f00edf9",
+    "results/asd-compute/math-a/provenance.json": "696ea7c7b0a0f20f438e56d4060e32281315169c64610e2c1d39d2b62a1fe43e",
+    "results/asd-compute/math-a.log": "ab9c5bc406846b79381f25d6acd84f62fe425d72029ba9c8189329554ae434c3",
+    "results/asd-compute/mixed-b/baselines.jsonl.gz": "1d0af0e98570e613b75fbd6aceb8c4ff2db21dd54d83ab07073abfab527511a9",
+    "results/asd-compute/mixed-b/branches.jsonl.gz": "600b095cec8f4d43512199dd65a32b0cf6b66ce82046b1517abf04e948b07f92",
+    "results/asd-compute/mixed-b/provenance.json": "ee48b7dbbd53dbb339f2fdd244207b0e6ea6ac036fb5a3619b8e757e1ebf080f",
+    "results/asd-compute/mixed-b.log": "a4d61904add712f7619d4e0b64d5831bbd8a0de0eacdfe409c89d58693ee81cf",
+    "results/asd-compute/pipeline.log": "3c2c00908b5604ae7368a37952701183649cb2ff6f97d2d838b0f6d1e7a93d60",
+    "results/asd-compute/postrun-audit.json": "63b0bb9a11735a81f498812f30e77c25b56fb6378f252d9bd56cf1d45fcd8041",
+    "results/asd-compute/scripts/run_asd_compute_pipeline.py": "b5d7b5689961abc7818bfa4f438ff5406e99622251024d28238604ded6d9b831",
+    "results/asd-compute/tests-server.xml": "c79ad6601b70d138567a5a2a2ed01ee713c5fd416403719781f2f0396948092e",
+    "scripts/run_asd_compute_pipeline.py": "b5d7b5689961abc7818bfa4f438ff5406e99622251024d28238604ded6d9b831",
+    "scripts/run_asd_compute_probe.py": "672997598a0dfcf7c5b7061ba7ecf8c3cf7d0760c66945dcb9cc8792aac4a411",
+    "scripts/write_asd_compute_report.py": "6f6438dcf13bbeacbb3fe2d3ec67002b43976a1fad28117a3ebb3739d2dc26be",
+    "tests/test_asd_compute.py": "7129d5e6a563f56050d9b704044770624e9277c9cf6b3af781a5bddb8a349acc",
+    "tests/test_asd_compute_report.py": "15260420e6a5dcbabf6b26d8097be6df30e53edac98da314bb2c5775593be22b"
+  }
+}

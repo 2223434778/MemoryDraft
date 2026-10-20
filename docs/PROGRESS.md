@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-20 — 实际计算收益预测（100次完成，停止扩大）
+
+- 冻结执行`3132838503d0130d78726c5e52b1d28c6bcafa13`，独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-compute`，PID3335336已完成；1010个Git原始文件执行前后SHA一致。源码ZIP SHA`fdcfc1020d1fe7402a24fc26330a29a9a0739d682058ea929a2683eca60f007f`、source SHA`9ffdff87763d40ffe300cc9b2c441de1b675b32810640abc8021121ec286eea7`，推理package未改，仍为`4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f`。
+- 4完整baseline精确重现原Utility输出/账本；16个不同源块、32自然分支、64范围分支，两次重复的token/动作/验证轮完全一致，共100生成。分叉保留真实KV，A保留当前Utility接受，B截到首例外前恢复Target，后续均严格；旧原完整Utility的gsm8k:21错误仍保留。新32自然分支最终答案均正确并EOS，不是原完整Utility质量已改善。
+- 15个双方均达128token且自然答案均正确的状态、覆盖4题，符合预定覆盖门槛；gsm107的B提前EOS单列排除等范围统计，原数据不删。固定A未来255轮/局部18.979368s，固定B278/20.647496，首例外Run二选一规则262/19.523525，有限二选一oracle249/18.509340，固定四特征留题岭回归259/19.276312。
+- oracle相对最好固定动作只省6轮（2.35%），局部秒数约降2.48%，未达运行前冻结的5%轮数门槛；预测器反而多4轮（+1.57%）、局部秒数+1.56%，MAE轮差2.845。计时排除共同验证/前缀重放/当前选择核查及预测器，已经是乐观局部空间，不能发布端到端加速比。Run规则不是完整ASD-Run在线对照。
+- 阶段决定：停止继续这条128token/有限二选一未来收益预测路线，不扫参数、不加复杂value head、不扩大同类开发题。仅有4旧题，不能证明所有ASD/其他工作负载无优化空间；现有Utility与infra保留。置信度方向继续停止投入。
+- 初版离线审计把strict_accepted（EOS裁短前）与实际接受长度直接等同，导致Strict future报错；逐条核实全部为最后EOS轮裁短、后续regret0。修正审计为只在最后EOS处裁短，加回归；不重跑GPU、不改原数据/预测器/门槛。发布相关13 passed/9.51s，预测函数会与冻结Git源码逐函数核验。
+- 回传ZIP349568字节/SHA`16917117766f9fe84f0aa137941a7343a6528ce8a938b9ff159ae7c5eff11604`；原始证据`results/asd-compute/`、报告`docs/ASD_COMPUTE_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_asd_compute_report`。准确GPU命令见冻结协议及pipeline.log、run_asd_compute_pipeline.py。服务器相关28 passed/4.95s，本地首次28 passed/9.45s；结束后两卡均19MiB/0%。
+- 完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-compute-full --junitxml=artifacts/asd-compute-tests-full-local.xml`：496 passed/3 skipped/49.61s，仅既有python_multipart弃用提醒。96分支/4631轮另做推进/真实缓存前缀核对；`predict`/`summarize`与冻结Git源码逐函数完全一致，记录于postrun-audit.json。632个旧证据全部核验，两个既有Windows CRLF例外按原规则归一化且明确列出，旧内容未改。
+
 ## 2026-10-20 — 实际计算收益预测（执行准备）
 
 - 按用户授权停止继续优化置信度定价，检查有限动作oracle空间与廉价计算特征的可预测性。4道旧开发题，每题4个不同源验证块；按源位置/源长度和等间隔索引冻结，不按新分支结果筛选。

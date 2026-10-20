@@ -1,0 +1,12 @@
+{
+  "execution_commit": "3132838503d0130d78726c5e52b1d28c6bcafa13",
+  "frozen_analyzer_sha256": "216a6724c1a04d60393271952f841dc531b2d3b704413f67e31baf1deea7ea5b",
+  "published_analyzer_sha256": "6f6438dcf13bbeacbb3fe2d3ec67002b43976a1fad28117a3ebb3739d2dc26be",
+  "unchanged_predictor_function_sha256": {
+    "predict": "d3ec80057e94228fb1d68ed5e69abc3e617762b63fc3de304448dd39cf911197",
+    "summarize": "aedc39bb5df93618e0947a51783a669d1ffee85bdfb7785cbb428b30bd8406ad"
+  },
+  "branch_rows_verified": 96,
+  "round_traces_verified": 4631,
+  "correction": "Post-run auditor handles final EOS clipping; prediction functions, thresholds, features and execution entrypoints unchanged"
+}

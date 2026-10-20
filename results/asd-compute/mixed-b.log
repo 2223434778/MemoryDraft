@@ -1,0 +1,12 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.41s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.43s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.43s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.32s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.18s/it]
+reproduced math500:7
+completed math500:7 10
+completed math500:7 89
+completed math500:7 188
+completed math500:7 483
+reproduced gsm8k:21
+completed gsm8k:21 9
+completed gsm8k:21 17
+completed gsm8k:21 94
+completed gsm8k:21 107
