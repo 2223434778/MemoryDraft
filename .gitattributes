@@ -1,4 +1,10 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/asd-utility-causal/** -text
+results/asd-utility-causal/*.log -whitespace
+scripts/run_asd_utility_causal*.py text eol=lf
+scripts/write_asd_utility_causal_report.py text eol=lf
+tests/test_asd_utility_causal*.py text eol=lf
+docs/ASD_UTILITY_CAUSAL*.md text eol=lf
 results/qwen3-pilot/** -text
 results/qwen3-inherited-defaults/** -text
 results/research-old-bounded/** -text

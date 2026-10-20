@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-20 — Utility 错误轨迹与计算收益（执行准备）
+
+- 用户授权落实置信度/Utility后续验证。先验证已知Utility错误中的关键例外，暂不盲目增加新在线价格规则；原严格运行时与infra冻结引用不改。
+- 新runner `scripts/run_asd_utility_causal_probe.py`：覆盖gsm8k:21全部9个实际接受例外，含块内第二例外；math500:7按第一个/最大regret/最后一个取3状态。先复现原Utility，再从原prompt单次截断接受并正确恢复原始请求账本，之后继续原Utility；另做同前缀proposal/recovery严格续写的自然EOS与128 continuation两范围。
+- 协议 `docs/ASD_UTILITY_CAUSAL_PROTOCOL.md` 固定62次生成、2旧开发题，不训练预测器、不扫描参数。全部质量/截断保留；插桩与重prefill时延仅诊断，不作为在线加速。原结果SHA和执行源码执行前后核验。
+- 首次命令 `.venv\Scripts\python.exe -m pytest -q tests/test_asd_utility_causal.py tests/test_asd_confidence.py tests/test_asd.py --basetemp .test-tmp-asd-utility-causal-first --junitxml=artifacts/asd-utility-causal-tests-first-local.xml`，后续增加真实tiny Target/KV流式干预覆盖后再冻结执行。
+
 ## 2026-10-20 — ASD 置信度小检查（156次完成）
 
 - 冻结四道已观察开发题math500:1/4/7、gsm8k:21；七组含原四组、固定价格1/3与alpha=.5的Confidence-Utility。28机制+56完整自然计时+56遵守EOS的128前缀计时+16单例外干预分支全部完成，无错答/截断剔除。四个旧策略在旧未裁短块之前的前缀保留，机制/计时轨迹、账本与计数完全一致；1901机制块通过独立标量重算，完整proposal/EOS观测通过核对。
