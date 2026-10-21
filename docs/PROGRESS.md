@@ -2,6 +2,7 @@
 
 ## 2026-10-21 — RMSNorm冻结候选独立验证（执行准备）
 
+- 已启动：冻结2c8c51106cd01208756de5458abb9e46889f59be/1417 blobs，source SHA27188c05eb8a7f0b609f22b9109d43712a82627aba0bf4790c3b3458af2b0c5b，source ZIP SHAbe33ae68cf30d2da16419e7a24f17f885a418864f46d56099aa3cdcab12ee999。服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-validation，PID4169165，2026-10-21 11:53:36 UTC。最终结果尚待完成，不提前宣称通过。
 - 用户授权持续推进。候选固定e958532的RegionalRMSNorm/CPU接受/模型配置/输入及评分11核心文件SHA，新增validation runner/pipeline/report。共用自然EOS框架增加可选新题对照与split钩子，开发默认行为保持；旧48题analysis内存逐字段复现，旧结果未改。
 - 协议docs/ASD_RMSNORM_VALIDATION_PROTOCOL.md生成前登记：原validation48六类各8，reserve96不生成；1152相邻配对计时+96 AR质量对照，另20短warmup，4096上限。无旧答案，逐profile重复自身首轮；输入与本轮匹配eager/AR一致。首次编译计线上，不筛错答或截断。
 - 候选源码校验通过；本地初始隔离扫763结果文件/15521生成载荷，validation与reserve命中0，服务器生成前再查。ID集合SHA及扫描范围/限制见协议；不声称外部预训练数据隔离。未读取验证生成结果来改参数。
