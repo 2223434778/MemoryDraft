@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-21 — 真实长块完整48开发题（执行准备）
+
+- 用户授权下一步，保留六类各8题及D/ASD/Run/Utility三长度全部对照，再加AR。自然三次/遵守EOS前128两次，共3120计时，另144机制；验证48/保留96不生成模型答案。两卡空闲且磁盘405GB，继续只读使用原模型，无新增下载/训练。
+- 新独立runner/pipeline复用原experimental_block/run/execute，不改旧预检或生产推理源码；全部16块继续与第一阶段输入/轨迹/账本/质量重现。记录完整候选及Target top IDs，只在额外机制运行开启，独立标量检查使用实际EOS而非缺失位置枚举。
+- 协议docs/ASD_BLOCK_SUITE_PROTOCOL.md在GPU前冻结，3120次不是3120独立题。各类别、截断/错答、长度/调用密度/摊销成本、128有效样本、重叠六题与其余42题均分开报告，不据本批选择最终赢家或扫描参数。
+- 本地最先检查`.venv\Scripts\python.exe -m pytest -q tests/test_asd_block_suite.py --basetemp .test-tmp-asd-block-suite --junitxml=artifacts/asd-block-suite-tests-first-local.xml`；通过相关检查后再冻结提交/部署，尚无本轮GPU结论。
+- 首批15 passed/22.57s；加入独立完整候选审计、EOS/预算/矩阵篡改及重叠分组检查后，相关30 passed/1 skipped/11.07s。配对估计复用原5000次题级bootstrap，并在GPU前冻结Utility24/ASD16及Utility32/ASD16跨块强参照；短答案不强制续写。
+- 完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-block-suite-full --junitxml=artifacts/asd-block-suite-tests-full-local.xml`：574 passed/5 skipped/61.97s，只有既有python_multipart提醒。GPU部署将复查固定DFlash真实tiny KV/位置边界及新审计。
+
 ## 2026-10-21 — 真实更长Draft预检完成（228次，继续完整开发集）
 
 - 冻结`852a08e0112252799021a4e50319c3f140437deb`/1184个blob，源码ZIP SHA`f2e2a37fe2bbe65c6376703c04070e2aaba0218916505e720c1cf1d80d29cfe2`，source SHA`77fdea7117fca6d3b97912b38376cd7e4783eb9425e753ba4671cc8092e064a5`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-preflight` PID3852852，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_block_pipeline`。两卡各3题/114行，228全部完成，结束各19MiB/0%。

@@ -33,6 +33,8 @@ jobs:
       - if: matrix.profile == 'dflash'
         run: python -m pytest -q tests/test_asd_suite.py tests/test_asd_suite_report.py tests/test_asd_block_probe.py tests/test_asd_block_report.py --basetemp .test-tmp-asd-suite-ci
       - if: matrix.profile == 'dflash'
+        run: python -m pytest -q tests/test_asd_block_suite.py tests/test_asd_block_suite_report.py --basetemp .test-tmp-asd-block-suite-ci
+      - if: matrix.profile == 'dflash'
         run: python -m pytest -q tests/test_prefix_risk_continuation.py tests/test_prefix_risk_continuation_report.py tests/test_prefix_risk_controls_report.py --basetemp .test-tmp-continuation-ci
       - run: python -m memorydraft benchmark --config configs/runtime-demo.json --requests examples/requests.jsonl --methods AR --repeats 1 --output artifacts/ci-demo
       - name: Installed wheel without inference dependencies

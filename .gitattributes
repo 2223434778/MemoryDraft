@@ -222,3 +222,7 @@ results/asd-block-preflight/** -text
 results/asd-block-preflight/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-block-preflight/**/*.log -whitespace
 results/asd-block-preflight/**/*.xml -whitespace
+results/asd-block-suite/** -text
+results/asd-block-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-block-suite/**/*.log -whitespace
+results/asd-block-suite/**/*.xml -whitespace
