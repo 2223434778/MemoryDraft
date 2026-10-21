@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-21 — Target/Draft MLP区域编译（执行准备）
+
+- 用户授权进入主要模型执行优化。新增可撤销RegionalMLP，只torch.compile现有Qwen3MLP.forward，Target/Draft共享按类编译入口；fullgraph/dynamic、关闭CUDA Graph/max-autotune、FP32 highest和原eager attention。原解码/默认infra不改，四策略近似组三者均沿用相同CPUASDVerifier。依据PyTorch2.5区域编译说明及v2.5.1源码，服务器Triton3.1.0/Inductor配置可用，不新增依赖/权重下载。
+- 协议docs/ASD_COMPILE_PROTOCOL.md先冻结：六类各前两题，120预检（含24AR）、288正式相邻配对计时、12独立DFlash诊断/36实际MLP输入，另20短warmup。保持每profile自己的重复轨迹，跨profile输入相同、token/账本差异如实报告，不能因编译数值变化删题或称无损。策略构造及切换成本加回线上；正式重编译也计入且标记。
+- 每worker最多8图/backend300s、总1800s、allocated46GiB、准备cache4GiB，独立缓存/两编译线程；超时仅终止新建worker进程组，保留失败。准备wall含推理与编译，backend和outer计时不相加。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_regional_compile.py --basetemp .test-tmp-regional-compile --junitxml=artifacts/asd-compile-tests-first-local.xml`：5 passed/9.82s；新统计/轨迹/计时边界检查相关16 passed/13.21s。多个真实MLP实例的Dynamo/eager图捕获/参数不复制/恢复通过，但这不是CUDA Inductor性能证据。
+- 冻结前完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-compile-full --junitxml=artifacts/asd-compile-tests-full-local.xml`：645 passed/5 skipped/69.61s，只有既有python_multipart提醒。将源码/协议/统计一起提交，再导出Git原始blob在授权服务器独立目录执行。
+
 ## 2026-10-21 — 短块CPU判定完成（420计时/430影子块/77状态）
 
 - 冻结`c75328fa8e03da09a262754a2e9e9207d6bdc5e2`/1285 blobs，source SHA`9df10dd95a6fbfcfbc7b31730635bd36358a73b59fb3c6059a2e1197d39506c1`、源码ZIP SHA`3ecc20f11788fb82bb53c5286307ff511e32a559408df2c1bb330cff7ca4bd2c`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-cpu` PID4004961，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_cpu_pipeline`；两worker均0退出、CPU VERIFIER COMPLETE，运行前后1285源码SHA相同，两卡最后19MiB/0%。
