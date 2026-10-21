@@ -1,0 +1,25 @@
+........................................................................ [ 90%]
+........                                                                 [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/artifacts/tests-server.xml -
+80 passed in 6.74s
+START development-fp32-eager-0 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-eager", "--task-ids", "math500:1", "math500:4", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-fp32-eager-0"]
+START development-fp32-eager-1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-eager", "--task-ids", "math500:7", "gsm8k:21", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-fp32-eager-1"]
+FINISH development-fp32-eager-1 0
+FINISH development-fp32-eager-0 0
+STARTSTART  development-fp32-sdpa-1development-fp32-sdpa-0  ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-sdpa", "--task-ids", "math500:1", "math500:4", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-fp32-sdpa-0"]["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-sdpa", "--task-ids", "math500:7", "gsm8k:21", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-fp32-sdpa-1"]
+
+FINISH development-fp32-sdpa-1 0
+FINISH development-fp32-sdpa-0 0
+START development-bf16-sdpa-0 START ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:1", "math500:4", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-bf16-sdpa-0"]development-bf16-sdpa-1 
+["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:7", "gsm8k:21", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/development-bf16-sdpa-1"]
+FINISH development-bf16-sdpa-0 0
+FINISH development-bf16-sdpa-1 0
+START transfer-fp32-eager-0START transfer-fp32-eager-1  ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-eager", "--task-ids", "math500:9", "gsm8k:25", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/transfer-fp32-eager-1", "--transfer", "--arms", "D-fast", "ASD-fast", "U-fast"]["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "fp32-eager", "--task-ids", "math500:8", "gsm8k:24", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/transfer-fp32-eager-0", "--transfer", "--arms", "D-fast", "ASD-fast", "U-fast"]
+
+FINISH transfer-fp32-eager-0 0
+FINISH transfer-fp32-eager-1 0
+START START transfer-bf16-sdpa-0transfer-bf16-sdpa-1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:9", "gsm8k:25", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/transfer-bf16-sdpa-1", "--transfer", "--arms", "D-fast", "ASD-fast", "U-fast"]
+ ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:8", "gsm8k:24", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization/results/raw/asd-optimization/transfer-bf16-sdpa-0", "--transfer", "--arms", "D-fast", "ASD-fast", "U-fast"]
+FINISH transfer-bf16-sdpa-0 0
+FINISH transfer-bf16-sdpa-1 0
+PIPELINE COMPLETE

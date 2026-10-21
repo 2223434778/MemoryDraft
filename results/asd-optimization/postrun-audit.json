@@ -1,0 +1,53 @@
+{
+  "status": "complete",
+  "frozen_functions": [
+    {
+      "path": "scripts/write_asd_optimization_report.py",
+      "function": "summarize",
+      "frozen_commit": "37f15d0ff9842f87e87cb208c621f38c2dac2bec",
+      "sha256": "54b6c4b8e7971769c0ce931c1aa98018b028f628305f8335e127b9103824bedd"
+    },
+    {
+      "path": "scripts/write_asd_optimization_report.py",
+      "function": "draft_summary",
+      "frozen_commit": "37f15d0ff9842f87e87cb208c621f38c2dac2bec",
+      "sha256": "272c73e1529063278df6f82e3ba19ebd2da3ee08bdf7b20ad66101066b11ed32"
+    },
+    {
+      "path": "scripts/run_asd_optimization_pipeline.py",
+      "function": "select_transfer",
+      "frozen_commit": "37f15d0ff9842f87e87cb208c621f38c2dac2bec",
+      "sha256": "2d7364375395f8123a1942af4cb7534c28a0ddc210c659cac6ea027d052311ce"
+    },
+    {
+      "path": "scripts/run_asd_optimization_extension.py",
+      "function": "choose_lengths",
+      "frozen_commit": "389737323d5e88e3284be979f8cd4203f784d2ac",
+      "sha256": "14f2b2e68c813ae9aefbdeefd890547cdcb32b2953da3f71b414f8f0df08e242"
+    }
+  ],
+  "old_evidence_verified": 651,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "provenance_parts": 14,
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "source_freezes": [
+    "37f15d0ff9842f87e87cb208c621f38c2dac2bec",
+    "389737323d5e88e3284be979f8cd4203f784d2ac"
+  ],
+  "first_result_zip": {
+    "bytes": 709963,
+    "sha256": "e4ab854b6491907ad25931a525bd2641e8e60e30ee77eb118080b70af65b8650"
+  },
+  "extension_result_zip": {
+    "bytes": 351383,
+    "sha256": "881cdf4a1c893cf07485d22ea920727c2bcb0ea569f35bfe37e08134fe0235a1"
+  },
+  "report_changes": "Post-execution presentation, exact matrix identity/final-answer scoring/old baseline audits strengthened; frozen summaries and selection gates unchanged"
+}

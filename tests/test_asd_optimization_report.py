@@ -58,3 +58,30 @@ def test_bf16_extension_keeps_matched_baseline_and_quality_gate():
                                  quality=dict(correct=arm != "U-verify7"), finish_reason="eos"))
     choice = choose_lengths(rows)
     assert "D-verify7" in choice["arms"] and "U-verify7" not in choice["arms"]
+
+
+def test_published_matrix_rebuild_and_quality_tamper_rejection(tmp_path):
+    from pathlib import Path
+    import gzip
+    import json
+    import shutil
+    from scripts.write_asd_optimization_report import audit_part, main
+
+    root = Path(__file__).resolve().parents[1]
+    base = root / "results/asd-optimization"
+    if not base.exists():
+        pytest.skip("Published optimization evidence not present yet")
+    main()
+    result = json.loads((base / "analysis.json").read_text(encoding="utf-8"))
+    assert result["rows"]["development"] == 204 and result["rows"]["transfer"] == 72
+    assert result["previous_baselines_reproduced"] == 8
+    assert not result["draft"]["training_gate"]
+    source = base / "development-fp32-eager-0"
+    target = tmp_path / "part"
+    shutil.copytree(source, target)
+    path = target / "rows.jsonl.gz"
+    rows = [json.loads(s) for s in gzip.decompress(path.read_bytes()).decode().splitlines()]
+    rows[0]["quality"]["correct"] = not rows[0]["quality"]["correct"]
+    path.write_bytes(gzip.compress("\n".join(json.dumps(r) for r in rows).encode(), mtime=0))
+    with pytest.raises(ValueError, match="final-answer scoring"):
+        audit_part(target)

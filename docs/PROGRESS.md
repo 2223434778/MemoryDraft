@@ -1,5 +1,19 @@
 # 项目进度
 
+## 2026-10-21 — ASD剩余优化排查完成（420主生成，执行组合有收益）
+
+- 首轮冻结`37f15d0ff9842f87e87cb208c621f38c2dac2bec`/1035文件，追加归因冻结`389737323d5e88e3284be979f8cd4203f784d2ac`/1038文件，均执行前后逐blob SHA一致。首轮独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization` PID3777460、追加`.../asd-optimization-extension` PID3787125均结束，两卡19MiB/0%。
+- 8道已观察任务，A204、冻结迁移72、看到BF16正信号后另立协议的归因144，共420主生成；另32单token严格分支、28AR128、6独立profiler，短warmup单列不计主结果。自然每臂每题仅1次，前128两次，不能作稳定性或质量非劣结论。追加不是原预注册，不把重复旧题当新增样本。
+- 执行组合：BF16/SDPA的D-fast等128秒较FP32/eager下降38.30%（开发4题，14.876269→9.178037）、41.19%（迁移4题，15.669007→9.215361）。同BF16基础ASD较严格D另降11.73%/21.11%；这些属于组合执行与基础ASD，不能当作新增长度或Utility独有收益。
+- FP32与BF16各6个长度臂全部未达冻结门槛。BF16同轮固定短验证慢15%–19%、短Draft慢25%–29%、近期/预算动态长度约慢1%，停止参数搜索。增量EOS逐ID/账本保持、无确认时间收益，默认仍旧路径。Utility相对基础ASD等128开发快2.82%、迁移慢4.18%，新增规则无稳定独立增益。
+- BF16/eager归因的D/ASD/U等128秒9.636287/7.633023/8.531475；同轮BF16/SDPA9.071516/8.028093/7.820026，轮数与自然轨迹可随attention改变，不作纯内核因果分解。BF16/eager自身已明显快于原FP32，支持精度变化是执行收益的重要来源。
+- 主BF16-SDPA数值检查6/8题与同profile AR128逐ID相同；math500:7第118、gsm8k:25第9出现分歧。追加BF16/eager math500:4第63也有分歧，短验证还可改变数值轨迹；全部保留，不作为无损profile晋升生产。生产RuntimeConfig、默认严格FP32/eager与面试infra引用保持。
+- Draft检查16对/15等128对：第一块严格接受92/88，后续轮268/281，未见近似前缀退化，不追加训练。8条原FP32完整D/Utility基线的token、输入及Utility账本重现；651旧证据SHA核验，只有两个既有Windows CRLF例外按旧规则归一化。冻结`summarize/draft_summary/select_transfer/choose_lengths`源码逐函数一致，记录postrun-audit.json。
+- 首轮结果ZIP709963字节/SHA`e4ab854b6491907ad25931a525bd2641e8e60e30ee77eb118080b70af65b8650`；追加351383字节/SHA`881cdf4a1c893cf07485d22ea920727c2bcb0ea569f35bfe37e08134fe0235a1`。追加源码ZIP SHA`ff5d0f87f093409f17f2ee8adef68d43bfbd466f62cd78e7c99756224b6d8f79`，source SHA`f3b0b4ca4350a2a3f4805e3aeceaf26f1b7e5b0d05f3c87ac6473777c84b5141`。
+- 服务器首轮80 passed/6.74s、追加28 passed/5.34s；最终本地`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-optimization-final --junitxml=artifacts/asd-optimization-tests-final-local.xml`：524 passed/4 skipped/51.02s，仅既有python_multipart提醒。发布审计重算评分、矩阵完整身份、EOS/重复/预算、原基线与选择规则；测试拒绝质量字段篡改。
+- 结果`results/asd-optimization/`及`extension/`；报告`docs/ASD_OPTIMIZATION_RESULTS.md`，重建`.venv\Scripts\python.exe -m scripts.write_asd_optimization_report`。准确GPU入口分别为原目录`../.venv-dflash/bin/python -u -m scripts.run_asd_optimization_pipeline`、追加目录`../.venv-dflash/bin/python -u -m scripts.run_asd_optimization_extension`，均`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=.`；完整argv、GPU划分、配置见各pipeline.log和冻结协议。
+- 阶段决定：保留基础ASD/简单Utility与执行优化证据；停止本轮长度/预算调度及ASD前缀适配训练投入。未穷尽其他模型、大并发引擎或所有训练方法，不宣称全局无优化空间。
+
 ## 2026-10-21 — ASD优化排查追加归因（执行准备）
 
 - 原执行冻结`37f15d0ff9842f87e87cb208c621f38c2dac2bec`，1035文件，ZIP SHA`0cd5dfe87089923c08e5b742b4100284236cf5e6f083894b7a44628811c8e8e9`、source SHA`4b0a0aa3c3e7c2ee405d46236cd6320141dcf9313e3cca123997a05cfdcebafa`，独立pipeline PID3777460。服务器80 passed/6.74s；本地完整回归522 passed/4 skipped/50.18s（服务测试需允许loopback，沙箱内停滞运行已终止，相关XML均保存）。

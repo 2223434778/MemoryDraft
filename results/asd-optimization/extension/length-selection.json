@@ -1,0 +1,45 @@
+{
+  "arms": [
+    "D-fast",
+    "ASD-fast",
+    "U-fast"
+  ],
+  "gates": {
+    "D-verify7": {
+      "passed": false,
+      "prefix_ratio": 1.1886116239879772,
+      "correct": 4,
+      "reference_correct": 4
+    },
+    "U-verify7": {
+      "passed": false,
+      "prefix_ratio": 1.1518176858024363,
+      "correct": 4,
+      "reference_correct": 4
+    },
+    "D-draft8": {
+      "passed": false,
+      "prefix_ratio": 1.2877748869019012,
+      "correct": 4,
+      "reference_correct": 4
+    },
+    "U-draft8": {
+      "passed": false,
+      "prefix_ratio": 1.2455819093969536,
+      "correct": 4,
+      "reference_correct": 4
+    },
+    "U-recent": {
+      "passed": false,
+      "prefix_ratio": 1.0094844065842388,
+      "correct": 4,
+      "reference_correct": 4
+    },
+    "U-budget": {
+      "passed": false,
+      "prefix_ratio": 1.0119963865262844,
+      "correct": 4,
+      "reference_correct": 4
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "instrumented": true,
+  "events": [
+    {
+      "key": "memorydraft::snapshot",
+      "cpu_us": 195.8159999999998,
+      "device_us": 0,
+      "count": 1
+    },
+    {
+      "key": "memorydraft::tokenize",
+      "cpu_us": 1031.4990000000003,
+      "device_us": 2.463999999999942,
+      "count": 1
+    },
+    {
+      "key": "memorydraft::tokenize",
+      "cpu_us": 0,
+      "device_us": 75.29599999999982,
+      "count": 1
+    },
+    {
+      "key": "memorydraft::target_prefill",
+      "cpu_us": 61916.263,
+      "device_us": 32719.69399999981,
+      "count": 1
+    },
+    {
+      "key": "memorydraft::target_prefill",
+      "cpu_us": 0,
+      "device_us": 62984.674000000006,
+      "count": 1
+    },
+    {
+      "key": "memorydraft::draft_forward",
+      "cpu_us": 183345.23099999997,
+      "device_us": 110812.00700000282,
+      "count": 18
+    },
+    {
+      "key": "memorydraft::draft_forward",
+      "cpu_us": 0,
+      "device_us": 214381.2450000004,
+      "count": 18
+    },
+    {
+      "key": "memorydraft::target_verify",
+      "cpu_us": 1290979.4939999997,
+      "device_us": 544158.9670000075,
+      "count": 18
+    },
+    {
+      "key": "memorydraft::target_verify",
+      "cpu_us": 0,
+      "device_us": 1290726.518,
+      "count": 18
+    }
+  ]
+}

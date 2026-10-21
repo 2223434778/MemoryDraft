@@ -1,0 +1,12 @@
+............................                                             [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension/artifacts/tests-server.xml -
+28 passed in 5.34s
+START attribution-bf16-sdpa-0 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:1", "math500:4", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension/results/raw/asd-optimization-extension/attribution-bf16-sdpa-0", "--arms", "D-fast", "ASD-fast", "U-fast", "D-verify7", "U-verify7", "D-draft8", "U-draft8", "U-recent", "U-budget", "--attribution"]
+START attribution-bf16-sdpa-1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-sdpa", "--task-ids", "math500:7", "gsm8k:21", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension/results/raw/asd-optimization-extension/attribution-bf16-sdpa-1", "--arms", "D-fast", "ASD-fast", "U-fast", "D-verify7", "U-verify7", "D-draft8", "U-draft8", "U-recent", "U-budget", "--attribution"]
+FINISH attribution-bf16-sdpa-1 0
+FINISH attribution-bf16-sdpa-0 0
+START attribution-bf16-eager-0 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-eager", "--task-ids", "math500:1", "math500:4", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension/results/raw/asd-optimization-extension/attribution-bf16-eager-0", "--arms", "D-fast", "ASD-fast", "U-fast", "--attribution"]
+START attribution-bf16-eager-1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_optimization_probe", "--config", "configs/runtime-dflash.json", "--profile", "bf16-eager", "--task-ids", "math500:7", "gsm8k:21", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension/results/raw/asd-optimization-extension/attribution-bf16-eager-1", "--arms", "D-fast", "ASD-fast", "U-fast", "--attribution"]
+FINISH attribution-bf16-eager-1 0
+FINISH attribution-bf16-eager-0 0
+EXTENSION COMPLETE

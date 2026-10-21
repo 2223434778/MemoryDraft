@@ -52,6 +52,11 @@ gsm8k:21的9次单独拒绝有8次修复错答，但严格同前缀分支只有�
 15个共同质量、等128token状态，保留当前Utility动作255未来验证轮，有限二选一oracle249轮（仅省2.35%，未达预定5%门槛）；固定特征留题预测器259轮，反而多1.57%。
 32自然分支均最终答对，但这些分支在当前动作后都严格续写，原完整Utility的旧GSM错答仍保留。停止扩大这条未来计算预测路线，不增加复杂预测头；无新的线上加速结论。
 
+[ASD剩余优化排查](docs/ASD_OPTIMIZATION_RESULTS.md)完成8道已观察题、420主生成及32单token分支，另有AR/profiler控制。
+BF16/SDPA使严格DFlash的等128token时间较原FP32/eager下降38.30%/41.19%（开发/迁移）；同BF16下基础ASD额外下降11.73%/21.11%。
+这些是执行组合和基础ASD的结果；全部6个长度变体在FP32和BF16均未通过继续门槛，未见ASD前缀导致Draft退化，不进入适配训练。
+BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长度/截断单列，默认严格FP32/eager配置继续保留。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

@@ -1,0 +1,100 @@
+{
+  "selected_profile": "bf16-sdpa",
+  "fp32_arms": [
+    "D-fast",
+    "ASD-fast",
+    "U-fast"
+  ],
+  "length_gates": {
+    "D-verify7": {
+      "passed": false,
+      "metrics": {
+        "seconds": 16.985958668985404,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 14.876268737949431,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      }
+    },
+    "U-verify7": {
+      "passed": false,
+      "metrics": {
+        "seconds": 14.415604698820971,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 12.192387679941021,
+        "complete": true,
+        "correct": 3,
+        "truncated": 0
+      }
+    },
+    "D-draft8": {
+      "passed": false,
+      "metrics": {
+        "seconds": 18.056905004079454,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 14.876268737949431,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      }
+    },
+    "U-draft8": {
+      "passed": false,
+      "metrics": {
+        "seconds": 16.374390495941043,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 12.192387679941021,
+        "complete": true,
+        "correct": 3,
+        "truncated": 0
+      }
+    },
+    "U-recent": {
+      "passed": false,
+      "metrics": {
+        "seconds": 12.336245801998302,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 12.192387679941021,
+        "complete": true,
+        "correct": 3,
+        "truncated": 0
+      }
+    },
+    "U-budget": {
+      "passed": false,
+      "metrics": {
+        "seconds": 12.315707666915841,
+        "complete": true,
+        "correct": 4,
+        "truncated": 0
+      },
+      "reference": {
+        "seconds": 12.192387679941021,
+        "complete": true,
+        "correct": 3,
+        "truncated": 0
+      }
+    }
+  }
+}

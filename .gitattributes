@@ -204,3 +204,4 @@ docs/ASD_OPTIMIZATION*.md text eol=lf
 results/asd-optimization/** -text
 results/asd-optimization/**/*.log -whitespace
 results/asd-optimization/tests-*.xml -whitespace
+results/asd-optimization/**/*.xml -whitespace
