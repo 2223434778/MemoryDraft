@@ -9,6 +9,7 @@
 - profiler膨胀中位1.124倍，不进入速度统计；23份含30个未关联CPU设备事件，共343.868us，单份最大约0.0204%。事后仅修正报表硬等号检查，显式保留unlinked残差及测试；GPU执行/样本/回放/协议未改。报告与解释docs/ASD_EXECUTION_RESULTS.md、ASD_EXECUTION_FINDINGS.md；重建`.venv\Scripts\python.exe -m scripts.write_asd_execution_report`。
 - 结果ZIP317827字节/SHA`a6785cc0fea5a808f55077d85dc9959dd523f28bd73c61bd37cf57ab116c6eef`，小型原始结果results/asd-execution。后审计`.venv\Scripts\python.exe -m artifacts.audit_asd_execution_postrun`：819旧结果SHA、原三批118发布文件、10冻结执行/协议文件及infra三引用均通过；去mark后解码AST与d72f6b6完全一致。没有上传完整logits/大trace/权重。
 - 服务器69 passed/10.71s；报表残差相关13 passed/9.93s；最终完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-execution-final --junitxml=artifacts/asd-execution-tests-final-local.xml`：588 passed/5 skipped/63.00s，既有python_multipart提醒。后续先做一次小成本验证器精简；主要执行投入转Target/Draft编译融合，训练/多候选方向仍未完成。
+- 发布逐Git blob审计发现Windows生成Markdown的CRLF与Git LF字节不同；报告写出改为显式UTF-8/LF，重建原审计及发布SHA。只改生成文件换行方式，不改统计结果；追加`tests/test_asd_execution.py`发布检查13 passed/9.31s，33个发布文件按最终Git blob逐字节核验后推送。
 
 ## 2026-10-21 — 原生16块执行成本诊断（执行准备）
 

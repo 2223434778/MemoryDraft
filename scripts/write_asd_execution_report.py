@@ -155,7 +155,7 @@ def main():
     lines += ["", "## 完整性", "", json.dumps(result["audit"], ensure_ascii=False), "",
               "全部正式/插桩/捕获轨迹、prompt SHA、snapshot、预算和轮次与冻结前阶段16块前128记录一致。CUDA annotation排除，直接kernel链接的事件数/耗时不得超过原始device总数；没有CPU关联的设备事件另列unlinked_device，不强行归属。完整逐题数据、profiler膨胀比例、同步控制与回放样本见analysis.json及压缩原始记录。", "",
               "复现：`.venv\\Scripts\\python.exe -m scripts.write_asd_execution_report`。机制解释与后续取舍见ASD_EXECUTION_FINDINGS.md。", ""]
-    (ROOT / "docs/ASD_EXECUTION_RESULTS.md").write_text("\n".join(lines), encoding="utf-8")
+    (ROOT / "docs/ASD_EXECUTION_RESULTS.md").write_bytes("\n".join(lines).encode("utf-8"))
     print(json.dumps(result["audit"]))
 
 
