@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-21 — 显式RMSNorm运行时接入（隔离准备）
+
+- 独立验证仍在运行，冻结候选/协议未改；未提前宣称准入。另建artifacts/rmsnorm-runtime-worktree，分支codex/rmsnorm-runtime，候选655e70082ee4ec11b553897655789db13774d129；仅当validation预登记admission全部通过才合并。原main/infra面试分支与标签保持27e3619。
+- 新execution_profile默认eager，显式rmsnorm-inductor限已测Linux/torch2.5.1/Transformers4.57.3/CUDA FP32；不支持明确拒绝。加载时绑定原norm forward，close恢复；lazy编译计原请求时钟，元数据分列加载setup和编译子阶段。单owner锁内校验关闭/改profile，保留stream提交与取消清理；benchmark拒绝跨数值profile回归比较。
+- 修正validate_infra生命周期：原TestClient关闭后曾复用同一engine，现将SSE移到末尾实际HTTP服务唯一lifespan。新增空缓存冷调用记录、真实R接受/历史不变断言；复用既有benchmark/cancel/CUDA profiler/HTTP负载。run_rmsnorm_runtime_pipeline先查validation门槛和源码SHA、单卡串行验收与新进程CLI，独立缓存、每进程1800秒；不在两卡验证运行时叠加GPU作业。
+- 相关runtime/serving检查72 passed/11.25s（新增pipeline反例前）；完整命令在隔离工作树：`E:\PycharmProject\MemoryDraft\.venv\Scripts\python.exe -m pytest -q --basetemp E:\PycharmProject\MemoryDraft\.test-tmp-rmsnorm-runtime-full-fixed --junitxml=E:\PycharmProject\MemoryDraft\artifacts\rmsnorm-runtime-tests-full-local-fixed.xml -x --tb=short`，711 passed/5 skipped/106.19s。新测试覆盖配置兼容/拒绝、取消/关闭、冷编译、失败释放、profile比较及六类无效验收记录；是CPU语义证据，不是Inductor GPU性能。
+- 首次完整检查36 passed后因新工作树configs/asd-attribution-policies.json被Windows转CRLF触发旧报告SHA审计；核实Git blob正确后恢复未改文件为Git原始字节，未改旧报告或放宽审计，并补configs/*.json LF规则。失败XML保留artifacts/rmsnorm-runtime-tests-full-local.xml；仅提交11个实际修改文件，旧证据内容不变。真实GPU验收待验证门槛和卡释放后进行。
+
 ## 2026-10-21 — RMSNorm冻结候选独立验证（执行准备）
 
 - 已启动：冻结2c8c51106cd01208756de5458abb9e46889f59be/1417 blobs，source SHA27188c05eb8a7f0b609f22b9109d43712a82627aba0bf4790c3b3458af2b0c5b，source ZIP SHAbe33ae68cf30d2da16419e7a24f17f885a418864f46d56099aa3cdcab12ee999。服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-validation，PID4169165，2026-10-21 11:53:36 UTC。最终结果尚待完成，不提前宣称通过。
