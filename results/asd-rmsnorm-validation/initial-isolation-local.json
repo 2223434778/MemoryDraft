@@ -1,0 +1,24 @@
+{
+  "candidate": {
+    "commit": "e958532bb4dc7544692011115895f90df2bd3f43",
+    "files": {
+      "memorydraft/backends/regional_compile.py": "a96509554f3891ee625d618aa1a4ee51927ae3595876379286a8c09636dbbd5e",
+      "memorydraft/backends/asd_cpu.py": "588edb3fd70b519391cff05fa091681cdb66780dd02524d6e702d8405d0f33c8",
+      "memorydraft/backends/asd.py": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84",
+      "memorydraft/backends/dflash_reuse.py": "f9989b6239ff3fdb4afc5e939feea5ad33c95e262308c23050c06b04e26f4891",
+      "memorydraft/runtime/engine.py": "adafb9191bdfb8070e4d56daaf5d9861ba590663e00e757cae4ffe239ce33f2e",
+      "memorydraft/runtime/config.py": "bbcf05d7430d9c01cf263294a7c94ece2627e7e57e7df5e093897d7f8ea70800",
+      "configs/runtime-dflash.json": "13444cd758dc8793fc92e42c1b5331affd31f5666bfed42c683df23f94754f65",
+      "scripts/run_asd_suite.py": "8d854524078f2736f003b8eb3dd5abe54ad87cb92fef4b0f91af5e33fe4fc9ba",
+      "scripts/run_asd_budget_probe.py": "fbfd0b1005a5b8cc0ebaf608ec6a3f026bb35e9b09337b94ad9abaa5e05766d8",
+      "memorydraft/evaluation/asd_suite.py": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b",
+      "data/research/asd-suite/manifest.json": "957b67af7223aee63e360ad0f8b6eb195c1143726fb724c1c90837e4fce4c136"
+    }
+  },
+  "validation_ids_sha256": "5b565c98b8998f962b6ef321091dd92de5a572d8fefbb62ec11fb9d92b3b3c67",
+  "reserve_ids_sha256": "d2eb4fd0e42674faf02ace144b35788d0ab48f0460ec309d41bbb72e55eefbfc",
+  "result_files_scanned": 763,
+  "generation_payloads_checked": 15521,
+  "protected_generation_matches": 0,
+  "scope": "Repository result JSON/JSONL token payloads; current validation raw directory excluded"
+}

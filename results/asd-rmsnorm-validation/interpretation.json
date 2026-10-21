@@ -1,0 +1,126 @@
+{
+  "stage": "postrun-descriptive-only",
+  "workers": [
+    {
+      "shard": 0,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "warmup_wall_seconds": 13.09255015407689,
+      "controller_seconds": 0.003561264951713383,
+      "outer_compile_seconds": 3.734204053878784,
+      "backend_seconds": 3.346360140130855,
+      "graphs_after_warmup": 4,
+      "final_graphs": 4,
+      "online_compile_events": 0,
+      "cache_bytes": 416796,
+      "mean_paired_saving_seconds": 0.07196705346763742,
+      "conditional_amortization_requests": 51.93717317482393
+    },
+    {
+      "shard": 1,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "warmup_wall_seconds": 13.0591622289503,
+      "controller_seconds": 0.0035385149531066418,
+      "outer_compile_seconds": 3.6836111545562744,
+      "backend_seconds": 3.2977216209983453,
+      "graphs_after_warmup": 4,
+      "final_graphs": 4,
+      "online_compile_events": 0,
+      "cache_bytes": 416796,
+      "mean_paired_saving_seconds": 0.0639868640363501,
+      "conditional_amortization_requests": 57.62354078510177
+    }
+  ],
+  "output_changes": [],
+  "quality_changes": [],
+  "cross_profile_pairs": 240,
+  "text_matches": 240,
+  "finish_reason_matches": 240,
+  "ledger_matches": 182,
+  "rounds_equal_without_regret": 240,
+  "eager_rounds": 5318,
+  "max_spent_difference": 5.14984130859375e-05,
+  "truncations": [
+    {
+      "request_id": "math500:232",
+      "method": "AR",
+      "profile": "rmsnorm-inductor",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1997}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    },
+    {
+      "request_id": "math500:232",
+      "method": "AR",
+      "profile": "eager",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1997}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    },
+    {
+      "request_id": "math500:232",
+      "method": "DFlash",
+      "profile": "rmsnorm-inductor",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1997}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    },
+    {
+      "request_id": "math500:232",
+      "method": "DFlash",
+      "profile": "eager",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1997}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    }
+  ],
+  "peak_allocated_bytes": {
+    "eager": 38575525888,
+    "rmsnorm-inductor": 38575525888
+  },
+  "compiled_switch_median_seconds": 0.0003549639950506389,
+  "cpu_calls": {
+    "eager": {
+      "fast_calls": 11319,
+      "fallback_calls": 0
+    },
+    "rmsnorm-inductor": {
+      "fast_calls": 11319,
+      "fallback_calls": 0
+    }
+  },
+  "note": "Descriptive, not new independent samples. Amortization is only estimated for unchanged outputs and zero online recompiles; outer includes backend, warmup wall includes inference. No production ROI or universal losslessness claim."
+}

@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm48独立验证完成
+
+- 冻结2c8c51106cd01208756de5458abb9e46889f59be/1417 blobs，source SHA27188c05eb8a7f0b609f22b9109d43712a82627aba0bf4790c3b3458af2b0c5b；服务器asd-rmsnorm-validation PID4169165于11:53:36–12:30:37 UTC完成，REGIONAL RMSNORM_VALIDATION COMPLETE，两worker0退出、两卡19MiB/0%，源码前后1417 SHA相同。
+- validation48六类各8、1152配对计时+96 AR，另20短warmup；reserve96不生成。四方法自然时延比D0.973216 [0.971616,0.975672]、ASD0.972030 [0.971376,0.972684]、Run0.972200 [0.971696,0.972704]、U0.971433 [0.969198,0.972971]，低2.68%–2.86%；六类均<1，D47/48、其余48/48更快。D唯一慢题的一次0.2984s对0.2615s保留，不筛除、不重复追求全赢。
+- 240完整输出token/text/EOS全同、每profile重复精确，两profile严格D/AR各48/48，无新增主/secondary/F1/未评估/截断变化；全部7工程门槛True。数学原AR/D在math500:232仍4096截断，近似ASD有GSM/MBPP/SQuAD相对AR质量下降，不作norm改进或全答对声明。58账本末位差/max5.14984e-5，5318轮除regret外相同。
+- 每卡167norm/4图，正式/AR无新编译，outer3.734/3.684s、backend3.346/3.298s嵌套，cache416796B、peak35.926GiB、CPU各11319fast/0fallback；平均配对省71.97/63.99ms，条件摊销约52/58请求。8个codegen摘要仍各单融合norm/无GEMM，不新增微回放。
+- ZIP911053B/SHAdbf7c7f183fcecf35f15e760f0cefbbd1fb0580fad96e075c547031e306936a1，results/asd-rmsnorm-validation；报告ASD_RMSNORM_VALIDATION_RESULTS/FINDINGS.md。25冻结文件/946旧结果SHA/8批297发布文件/infra引用审计通过。服务器130 passed/48.40s，本地完整688 passed/5 skipped/107.24s。
+- 本地重建完整评分因Python3.13给3条mbpp:124 NameError附加导入建议而失败；与服务器3.11的正确性/代码SHA完全相同，差异保存scoring-portability.json。未改原评分器或审计规则，改在原服务器环境运行`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -m scripts.write_asd_rmsnorm_validation_report`成功，重评105唯一文本。本地另复核纯统计/解释；GPU后冻结执行/统计代码未改。下一步合并已隔离测试的显式runtime profile并做单卡真实服务验收，默认eager/面试版保持。
+
 ## 2026-10-21 — 显式RMSNorm运行时接入（隔离准备）
 
 - 独立验证仍在运行，冻结候选/协议未改；未提前宣称准入。另建artifacts/rmsnorm-runtime-worktree，分支codex/rmsnorm-runtime，候选655e70082ee4ec11b553897655789db13774d129；仅当validation预登记admission全部通过才合并。原main/infra面试分支与标签保持27e3619。

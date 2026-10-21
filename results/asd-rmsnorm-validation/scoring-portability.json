@@ -1,0 +1,53 @@
+{
+  "unique": 105,
+  "differences": [
+    {
+      "request_id": "mbpp:124",
+      "method": "AR",
+      "original": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined",
+        "metric": "provided tests",
+        "code_sha256": "e9751877ecf4d4480fa105f21f41fb7c76b645460b066054fc8c65dfdd35c197"
+      },
+      "local": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined. Did you forget to import 'math'?",
+        "metric": "provided tests",
+        "code_sha256": "e9751877ecf4d4480fa105f21f41fb7c76b645460b066054fc8c65dfdd35c197"
+      }
+    },
+    {
+      "request_id": "mbpp:124",
+      "method": "ASD",
+      "original": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined",
+        "metric": "provided tests",
+        "code_sha256": "80eff3ba2c470ea03fa60c5c143175916296ade3eb6087bbb0e6dd41c0f8699d"
+      },
+      "local": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined. Did you forget to import 'math'?",
+        "metric": "provided tests",
+        "code_sha256": "80eff3ba2c470ea03fa60c5c143175916296ade3eb6087bbb0e6dd41c0f8699d"
+      }
+    },
+    {
+      "request_id": "mbpp:124",
+      "method": "ASD-Utility",
+      "original": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined",
+        "metric": "provided tests",
+        "code_sha256": "d904b57ef86bb023e02e1827705a5ba3fb8e4bca29e4676a98f0e7ee429c9420"
+      },
+      "local": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined. Did you forget to import 'math'?",
+        "metric": "provided tests",
+        "code_sha256": "d904b57ef86bb023e02e1827705a5ba3fb8e4bca29e4676a98f0e7ee429c9420"
+      }
+    }
+  ]
+}

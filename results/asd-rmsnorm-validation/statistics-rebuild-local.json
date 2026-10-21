@@ -1,0 +1,68 @@
+{
+  "status": "complete",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "all_summary_fields_equal_at_1e_minus12": true,
+  "exact": false,
+  "differences": [
+    {
+      "path": "families.mbpp.ASD-Run.ci95[1]",
+      "server": 0.9749507632698603,
+      "local": 0.9749507632698602
+    },
+    {
+      "path": "families.squad.ASD.ratio",
+      "server": 0.979690971419089,
+      "local": 0.9796909714190891
+    },
+    {
+      "path": "cases[47].ratio",
+      "server": 0.969002362837445,
+      "local": 0.9690023628374451
+    },
+    {
+      "path": "cases[47].amortized_cost_ratio",
+      "server": 0.969002362837445,
+      "local": 0.9690023628374451
+    },
+    {
+      "path": "cases[108].ratio",
+      "server": 0.9713990780315568,
+      "local": 0.9713990780315569
+    },
+    {
+      "path": "cases[108].amortized_cost_ratio",
+      "server": 0.9713990780315568,
+      "local": 0.9713990780315569
+    },
+    {
+      "path": "cases[142].ratio",
+      "server": 0.978653356006493,
+      "local": 0.9786533560064931
+    },
+    {
+      "path": "cases[142].amortized_cost_ratio",
+      "server": 0.978653356006493,
+      "local": 0.9786533560064931
+    },
+    {
+      "path": "cases[184].ratio",
+      "server": 0.9694889729682197,
+      "local": 0.9694889729682198
+    },
+    {
+      "path": "cases[184].amortized_cost_ratio",
+      "server": 0.9694889729682197,
+      "local": 0.9694889729682198
+    }
+  ],
+  "keys": [
+    "overall",
+    "families",
+    "quality",
+    "cases",
+    "subsets",
+    "AR",
+    "note"
+  ],
+  "scoring": "Unchanged server Python3.11 audit; local Python3.13 error-message difference recorded separately"
+}
