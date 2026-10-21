@@ -103,7 +103,7 @@ def prepare(sources, output):
         name=source_manifest[b]["license_file"]; shutil.copyfile(sources/name,output/name)
     shutil.copyfile(ROOT/"data/research/asd-attribution/MATH_SOURCE_LICENSE.txt",output/"MATH_SOURCE_LICENSE.txt")
     shutil.copyfile(ROOT/"data/research/asd-attribution/GSM8K_LICENSE.txt",output/"GSM8K_LICENSE.txt")
-    (output/"ATTRIBUTION.md").write_text("# Selected benchmark records\n\nGSM8K and HumanEval: MIT. MBPP source repository: Apache-2.0. MATH-500: retain original-source MIT notice and existing provenance qualification. SQuAD records: CC BY-SA 4.0, https://rajpurkar.github.io/SQuAD-explorer/ ; selected and reformatted from the pinned source, original article titles retained. JSON fixtures are project-authored synthetic data. These notices apply to their respective records and do not grant a new license to the whole repository.\n",encoding="utf-8")
+    (output/"ATTRIBUTION.md").write_bytes("# Selected benchmark records\n\nGSM8K and HumanEval: MIT. MBPP source repository: Apache-2.0. MATH-500: retain original-source MIT notice and existing provenance qualification. SQuAD records: CC BY-SA 4.0, https://rajpurkar.github.io/SQuAD-explorer/ ; selected and reformatted from the pinned source, original article titles retained. JSON fixtures are project-authored synthetic data. These notices apply to their respective records and do not grant a new license to the whole repository.\n".encode("utf-8"))
     print(json.dumps(dict(records=192,development=48,validation=48,reserve=96,ids=ids),ensure_ascii=False))
 
 
