@@ -86,10 +86,11 @@ def audit(rows, references, records, previous, stops):
             for p in PROFILES:
                 row = refs[q, p] if m == "AR" else timed[q, m, p, 0]
                 first[q, m, p] = row
-                if row["profile"] == "eager":
+                baseline = previous[q, m] if previous is not None else (refs[q, "eager"] if m == "AR" else timed[q, m, "eager", 0])
+                if previous is not None and row["profile"] == "eager":
                     require_same(row, previous[q, m])
                 else:
-                    trajectory_comparison(previous[q, m], row)
+                    trajectory_comparison(baseline, row)
                 # Every method/profile sees the SAME request, not only its old arm.
                 trajectory_comparison(dict(row, method="AR"), refs[q, "eager"])
                 sk = q, row["text"]
@@ -97,7 +98,7 @@ def audit(rows, references, records, previous, stops):
                     scored[sk] = score(record, row["text"])
                 if row["quality"] != scored[sk]:
                     raise ValueError("Changed natural quality scoring")
-                if p == "eager" and row["quality"] != previous[q, m]["quality"]:
+                if previous is not None and p == "eager" and row["quality"] != previous[q, m]["quality"]:
                     raise ValueError("Changed old natural quality")
                 if m != "AR":
                     for i in range(REPEATS):
@@ -109,7 +110,7 @@ def audit(rows, references, records, previous, stops):
              for q in records for m in ("AR", *METHODS)]
     strict = {p: sum(first[q, "DFlash", p]["token_ids"] == first[q, "AR", p]["token_ids"] for q in records) for p in PROFILES}
     return dict(questions=len(records), timed=len(rows), references=len(references), quality_rows=len(first),
-                eager_old_trajectory_checks=len(records)*5, unique_texts_rescored=len(scored),
+                eager_old_trajectory_checks=len(records)*5 if previous is not None else 0, unique_texts_rescored=len(scored),
                 compiled_token_matches=sum(x["token_equal"] for x in pairs),
                 compiled_ledger_matches=sum(x["ledger_equal"] for x in pairs), strict_matches_AR=strict,
                 compile_events_during_formal=sum(r["graphs_after"]-r["graphs_before"] for r in rows),
@@ -128,7 +129,7 @@ def stratified(cases, seed):
                 ci95=[samples[125], samples[4874]], faster=sum(c["ratio"] < 1 for c in cases))
 
 
-def summarize(rows, references, records):
+def summarize(rows, references, records, *, seed="rmsnorm-suite", development_subsets=True):
     timed = {(r["request_id"], r["method"], r["profile"], r["repeat"]): r for r in rows}
     first = {(r["request_id"], r["method"], r["profile"]): r for r in (*references, *[r for r in rows if r["repeat"] == 0])}
     cases = []
@@ -153,11 +154,13 @@ def summarize(rows, references, records):
     overall, families, quality, subsets = {}, {}, {}, {}
     for m in METHODS:
         selected = [c for c in cases if c["method"] == m]
-        overall[m] = stratified(selected, "rmsnorm-suite:overall:"+m)
+        overall[m] = stratified(selected, seed+":overall:"+m)
         same = [c["ratio"] for c in selected if c["comparison"]["token_equal"]]
-        subsets[m] = dict(old12=stratified([c for c in selected if c["seen_in_small_compile"]], "rmsnorm-suite:old12:"+m),
-                          new36=stratified([c for c in selected if not c["seen_in_small_compile"]], "rmsnorm-suite:new36:"+m),
-                          same_tokens_descriptive=dict(n=len(same), ratio=math.exp(statistics.mean(map(math.log, same))) if same else None))
+        subsets[m] = {}
+        if development_subsets:
+            subsets[m].update(old12=stratified([c for c in selected if c["seen_in_small_compile"]], seed+":old12:"+m),
+                              new36=stratified([c for c in selected if not c["seen_in_small_compile"]], seed+":new36:"+m))
+        subsets[m]["same_tokens_descriptive"] = dict(n=len(same), ratio=math.exp(statistics.mean(map(math.log, same))) if same else None)
     for b in BENCHMARKS:
         families[b], quality[b] = {}, {}
         for m in ("AR", *METHODS):
@@ -172,15 +175,15 @@ def summarize(rows, references, records):
                     f1_mean=statistics.mean(r["quality"]["f1"] for r in selected) if b == "squad" else None)
             if m != "AR":
                 selected = [c for c in cases if c["benchmark"] == b and c["method"] == m]
-                families[b][m] = dict(**paired([c["ratio"] for c in selected], f"rmsnorm-suite:family:{b}:{m}"),
+                families[b][m] = dict(**paired([c["ratio"] for c in selected], f"{seed}:family:{b}:{m}"),
                     token_matches=sum(c["comparison"]["token_equal"] for c in selected),
                     quality_improved=sum(c["quality_change"] == 1 for c in selected),
                     quality_lost=sum(c["quality_change"] == -1 for c in selected),
                     quality_unassessed=sum(c["quality_change"] is None for c in selected))
     ar = [dict(request_id=q, benchmark=r["benchmark"], comparison=trajectory_comparison(first[q, "AR", "eager"], first[q, "AR", PROFILES[1]]),
                quality_eager=first[q, "AR", "eager"]["quality"], quality_compiled=first[q, "AR", PROFILES[1]]["quality"]) for q, r in records.items()]
-    return dict(overall=overall, families=families, quality=quality, cases=cases, subsets=subsets, AR=ar,
-                note="All primary natural cases retained. Paired repeats collapse per question; eight per family, 48 development questions. Old12/new36 are both development data. Same-token subset is descriptive. Amortized cost includes all online work, not pure Target kernels.")
+    note = "All primary natural cases retained. Paired repeats collapse per question; eight per family, 48 development questions. Old12/new36 are both development data. Same-token subset is descriptive. Amortized cost includes all online work, not pure Target kernels." if development_subsets else "All 48 validation questions retained; frozen candidate and metrics, paired repeats collapse per question. Same-token subset is descriptive. Amortized cost includes all online work, not pure Target kernels."
+    return dict(overall=overall, families=families, quality=quality, cases=cases, subsets=subsets, AR=ar, note=note)
 
 
 def main():

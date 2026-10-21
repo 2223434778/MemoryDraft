@@ -52,17 +52,19 @@ def run_question(engine, compiler, record, previous, output):
     q = record["id"]
     seen, quality_cache = {}, {}
 
-    def finish(row, stage, repeat, slot):
+    def finish(row, stage, repeat, slot, eager):
         key = row["method"], row["profile"]
         if repeat == 0:
-            if row["profile"] == "eager":
+            if previous is None:
+                trajectory_comparison(eager, row)
+            elif row["profile"] == "eager":
                 require_same(row, previous[q, row["method"]])
             else:
                 trajectory_comparison(previous[q, row["method"]], row)
             if row["text"] not in quality_cache:
                 quality_cache[row["text"]] = score(record, row["text"])
             row["quality"] = quality_cache[row["text"]]
-            if row["profile"] == "eager" and row["quality"] != previous[q, row["method"]]["quality"]:
+            if previous is not None and row["profile"] == "eager" and row["quality"] != previous[q, row["method"]]["quality"]:
                 raise ValueError("Eager natural baseline quality changed")
             seen[key] = row
         else:
@@ -78,8 +80,9 @@ def run_question(engine, compiler, record, previous, output):
         for index in range(0, len(order), 2):
             pair = [(slot, execute(engine, compiler, record, method, profile, LIMIT))
                     for slot, (method, profile) in enumerate(order[index:index+2], index)]
+            eager = next(row for _, row in pair if row["profile"] == "eager")
             for slot, row in pair:
-                finish(row, stage, repeat, slot)
+                finish(row, stage, repeat, slot, eager)
     return dict(reference=2, timed=2*len(METHODS)*REPEATS, quality_rows=2*(len(METHODS)+1),
                 unique_texts_scored=len(quality_cache))
 
@@ -91,27 +94,34 @@ def cache_bytes(directories):
     return size
 
 
-def main():
+def main(*, record_loader=records_and_positions, prior_loader=previous_rows, split="development",
+         protocol="docs/ASD_RMSNORM_SUITE_PROTOCOL.md", worker_timeout=WORKER_TIMEOUT,
+         entrypoint=None, precheck=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--shard", type=int, choices=(0, 1), required=True)
     args = parser.parse_args()
-    records, positions = records_and_positions()
+    records, positions = record_loader()
+    if split not in {"development", "validation"} or len(records) != 48 or any(r["split"] != split for r in records):
+        raise ValueError("Expected exactly the frozen development or validation split")
     records = [r for r in records if positions[r["id"]]%2 == args.shard]
-    previous = previous_rows()
+    previous = prior_loader() if prior_loader is not None else None
     before = protected(ROOT)
     args.output.mkdir(parents=True, exist_ok=False)
-    info = dict(status="started", split="development", shard=args.shard, task_ids=[r["id"] for r in records],
+    info = dict(status="started", split=split, shard=args.shard, task_ids=[r["id"] for r in records],
                 original_sha256=before, max_new_tokens=LIMIT, repeats=REPEATS,
-                runner_sha256=file_hash(Path(__file__)), data_manifest_sha256=file_hash(ROOT/"data/research/asd-suite/manifest.json"),
-                protocol_sha256=file_hash(ROOT/"docs/ASD_RMSNORM_SUITE_PROTOCOL.md"),
-                backend_graph_budget=8, backend_seconds_budget=300, worker_timeout_seconds=WORKER_TIMEOUT,
+                runner_sha256=file_hash(Path(entrypoint or __file__)), data_manifest_sha256=file_hash(ROOT/"data/research/asd-suite/manifest.json"),
+                protocol_sha256=file_hash(ROOT/protocol),
+                backend_graph_budget=8, backend_seconds_budget=300, worker_timeout_seconds=worker_timeout,
                 cache_dirs={k: os.environ[k] for k in ("TORCHINDUCTOR_CACHE_DIR", "TRITON_CACHE_DIR")})
     counts = dict(warmup=0, reference=0, timed=0, quality_rows=0, unique_texts_scored=0)
     compiler = None
     write(args.output/"provenance.json", info)
     try:
+        if precheck is not None:
+            info["initial_isolation"] = precheck(ROOT)
+            write(args.output/"provenance.json", info)
         checks = [dict(request_id=r["id"], quality=score(r, canonical(r))) for r in records]
         write(args.output/"canonical-preflight.json", checks)
         if not all(c["quality"]["correct"] for c in checks):

@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm冻结候选独立验证（执行准备）
+
+- 用户授权持续推进。候选固定e958532的RegionalRMSNorm/CPU接受/模型配置/输入及评分11核心文件SHA，新增validation runner/pipeline/report。共用自然EOS框架增加可选新题对照与split钩子，开发默认行为保持；旧48题analysis内存逐字段复现，旧结果未改。
+- 协议docs/ASD_RMSNORM_VALIDATION_PROTOCOL.md生成前登记：原validation48六类各8，reserve96不生成；1152相邻配对计时+96 AR质量对照，另20短warmup，4096上限。无旧答案，逐profile重复自身首轮；输入与本轮匹配eager/AR一致。首次编译计线上，不筛错答或截断。
+- 候选源码校验通过；本地初始隔离扫763结果文件/15521生成载荷，validation与reserve命中0，服务器生成前再查。ID集合SHA及扫描范围/限制见协议；不声称外部预训练数据隔离。未读取验证生成结果来改参数。
+- 显式profile工程门槛冻结：240完整输出对全部token/text/EOS相同，无新增主/secondary/F1/未评估/截断退化，两profile严格D/AR均48/48，四方法整体95%时延比上界<1及六类点估计<1，并通过资源/源代码/隔离/重复审计。未通过保留研究工具，不在validation调参；通过也不称任意输入无损或统计质量非劣。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_asd_rmsnorm_validation.py tests/test_asd_rmsnorm_suite.py --basetemp .test-tmp-asd-rmsnorm-validation-first --junitxml=artifacts/asd-rmsnorm-validation-tests-first-local.xml -x --tb=short`：33 passed/35.95s。完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-rmsnorm-validation-full --junitxml=artifacts/asd-rmsnorm-validation-tests-full-local.xml`：688 passed/5 skipped/107.24s，只有既有python_multipart提醒。提交并导出Git blobs。
+- 独立/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-validation，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_validation_pipeline`；每worker7200秒，图8/backend300秒/allocated46GiB/cache4GiB。根据结果决定后续显式运行时配置及stream/cancel/检索路径工程检查，默认infra保持。
+
 ## 2026-10-21 — RMSNorm完整48开发题自然EOS完成
 
 - 源码冻结ca51a6338b039b557b80cb919be4ec15c98a9dd3/1383 blobs，source SHA9502d8b40a9229d6fd105d97ea8b5ff049e0f2c489e14bf311103809779f4c86、source ZIP SHAfeeb0faa047a386668c605af7e809c02e4cd8fe81702f66dcbc9e11755cdcdd0；服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite，PID4069094。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_suite_pipeline`；09:10:55 UTC启动，完成日志最后写入09:41:59。两worker0退出，REGIONAL RMSNORM_SUITE COMPLETE，前后1383源码SHA相同，两卡恢复19MiB/0%。用户额度中断期间后台继续完成，没有重跑。

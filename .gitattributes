@@ -264,3 +264,8 @@ results/asd-rmsnorm-suite/** -text
 results/asd-rmsnorm-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-rmsnorm-suite/**/*.log -whitespace
 results/asd-rmsnorm-suite/**/*.xml -whitespace
+tests/test_asd_rmsnorm_validation.py text eol=lf
+results/asd-rmsnorm-validation/** -text
+results/asd-rmsnorm-validation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-rmsnorm-validation/**/*.log -whitespace
+results/asd-rmsnorm-validation/**/*.xml -whitespace
