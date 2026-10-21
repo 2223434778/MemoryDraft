@@ -61,6 +61,7 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 严格D在各类均快于AR；基础ASD在数学等128前缀有计算收益，Run/Utility尚无进一步稳定增益；短问答/JSON近似规则未触发，代码有质量提升和输出变长并存的例子。
 完整记录见[跨任务结果](docs/ASD_SUITE_RESULTS.md)，[研究路线表](docs/ASD_RESEARCH_ROADMAP.md)逐项标明未做方向；不把旧4/8题诊断当作整条路线的最终否决。
 [真实更长Draft预检](docs/ASD_BLOCK_RESULTS.md)另完成六类各1题/228生成：16块重现、24/32能执行且严格D与AR一致；Utility24在两道数学题有信号，严格D长块较慢，继续完整开发集检查，尚不作泛化结论。
+[完整48题长块比较](docs/ASD_BLOCK_SUITE_FINDINGS.md)已完成3120计时/144机制：Utility24相对基础ASD16六类自然时延均更慢约2.9%–16.4%，基础ASD32还出现两个额外质量失败。保留16块，停止当前b16权重直接扩块扫参，下一项量化执行开销；验证48及保留96仍未生成模型答案。
 
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 

@@ -1,0 +1,9 @@
+........................................................................ [ 82%]
+...............                                                          [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite/artifacts/tests-server.xml -
+87 passed in 8.87s
+START 0 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_block_suite", "--config", "configs/runtime-dflash.json", "--shard", "0", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite/results/raw/asd-block-suite/part-0"]
+START 1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_block_suite", "--config", "configs/runtime-dflash.json", "--shard", "1", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite/results/raw/asd-block-suite/part-1"]
+FINISH 1 0
+FINISH 0 0
+BLOCK SUITE COMPLETE

@@ -1,5 +1,17 @@
 # 项目进度
 
+## 2026-10-21 — 真实长块完整48题完成（3120计时/144机制）
+
+- 用户额度恢复后接回原实验，没有重启：双worker均正常结束，各1560计时/72机制；冻结`b107e53213137268415d44bab0e954ae704fd727`/1216文件前后SHA一致。原目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite` PID3884160，pipeline.log结束BLOCK SUITE COMPLETE，两卡各19MiB/0%。仍是六类各8开发题，验证48/保留96没有模型生成。
+- Utility24/ASD16自然时延题级几何平均变化：GSM+4.07%、MATH+8.68%、MBPP+16.41%、HumanEval+2.86%、SQuAD+4.18%、合成JSON+8.29%。共同等128的GSM7题/MATH8题/JSON6题分别慢4.14%/15.89%/13.29%；短代码和问答无共同128，不强制续写。每类仅8题，部分自然区间含1，保留全部原始比较，不宣称所有差异都已统计确认。
+- 预检正例保留：GSM885 Utility24/Utility16等128仍快13.68%；MATH329快23.31%，但该题Utility24/ASD16慢10.88%。另外42道非预检开发题的Utility24/ASD16六类自然点估计均更慢，约+2.72%至+21.27%。它们不是独立验证数据，不能把重复或方法数算成更多题。
+- 长块未持续减少调用，还增加摊销成本。Utility24/ASD16在GSM密度-0.97%但摊销+4.77%；MATH密度+2.75%/摊销+5.48%；MBPP密度+14.68%。独立同token前缀探索：24块773状态中更早拒绝190/更晚82；32块724中更早226/更晚76。机制记录可观察的共同候选ID改变149/164及145/158；状态相关、隐藏特征未逐位核对，不唯一归因训练长度外推。
+- Utility24最终主正确数与ASD16各类相同；基础ASD32额外错MATH448（49而非44，17*49 mod83=3）及MBPP504（sum_of_series而非测试请求的sum_Of_Series）。MATH444全13组错误表达式以k=3辅助复核，Utility16仍截断；不重命名输出、不改主评分。代码无受限未评估项，所有预算守恒。
+- 重建`.venv\Scripts\python.exe -m scripts.write_asd_block_suite_report`通过：全部3120矩阵/重复/质量重算，16块含AR1200行重现，严格D三长度自然/128共288对与AR一致，自然/前缀裁短前无分歧；144机制3294块完整候选/真实EOS独立标量核验。3264行输入SHA/token数/隔离空snapshot经服务器CPU重新tokenize一致。17冻结执行/统计函数未改，791旧结果核验（两个已知CRLF例外），前两批83发布文件按发布提交重核，infra三引用仍27e3619。
+- 首批15 passed/22.57s、相关30 passed/1 skipped/11.07s、完整574 passed/5 skipped/61.97s；服务器87 passed/8.87s。GPU后只有解释文档与独立离线诊断，没有修改执行、评分或冻结统计函数，不重复同一性能复验。
+- 结果ZIP2302258字节/SHA`f6473e15fabfad055bf051fd54cbb79cc11009ded5de0c98678a0e59b58115bb`，原始trace/输入与源码审计/质量复核位于results/asd-block-suite；完整表docs/ASD_BLOCK_SUITE_RESULTS.md，解释docs/ASD_BLOCK_SUITE_FINDINGS.md。预览GSM与最终汇总一致，192比较成本恒等式通过。后加diagnostics为运行后探索，与预注册主分析分开保存。
+- 当前b16权重直接外推24/32不升级，不继续长度/价格扫描，也不消费验证池确认负候选。下一阶段先用独立短profile和非插桩对照量化执行开销再设计优化；专用训练、多候选、调度与并发仍未完成，不能据此否定整条方向。
+
 ## 2026-10-21 — 真实长块完整48开发题（执行准备）
 
 - 用户授权下一步，保留六类各8题及D/ASD/Run/Utility三长度全部对照，再加AR。自然三次/遵守EOS前128两次，共3120计时，另144机制；验证48/保留96不生成模型答案。两卡空闲且磁盘405GB，继续只读使用原模型，无新增下载/训练。
@@ -8,6 +20,7 @@
 - 本地最先检查`.venv\Scripts\python.exe -m pytest -q tests/test_asd_block_suite.py --basetemp .test-tmp-asd-block-suite --junitxml=artifacts/asd-block-suite-tests-first-local.xml`；通过相关检查后再冻结提交/部署，尚无本轮GPU结论。
 - 首批15 passed/22.57s；加入独立完整候选审计、EOS/预算/矩阵篡改及重叠分组检查后，相关30 passed/1 skipped/11.07s。配对估计复用原5000次题级bootstrap，并在GPU前冻结Utility24/ASD16及Utility32/ASD16跨块强参照；短答案不强制续写。
 - 完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-block-suite-full --junitxml=artifacts/asd-block-suite-tests-full-local.xml`：574 passed/5 skipped/61.97s，只有既有python_multipart提醒。GPU部署将复查固定DFlash真实tiny KV/位置边界及新审计。
+- 已部署并运行：冻结`b107e53213137268415d44bab0e954ae704fd727`/1216 blobs，source SHA`cdf22b442b5aff8c98059b480b36eb8047daa5e7aa9c71eed646c3d19ea3d481`、源码ZIP SHA`21c8c0d730af72fef5ad5b416cae96354ba3cb48f75a1e6afe9c9a80f30c9c7f`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite` PID3884160，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_block_suite_pipeline`。服务器87 passed/8.87s后双卡启动；每卡1560计时/72机制，完成后取父目录asd-block-suite-results.zip及pipeline.log。当前仍在运行，不重启或覆盖目录。
 
 ## 2026-10-21 — 真实更长Draft预检完成（228次，继续完整开发集）
 

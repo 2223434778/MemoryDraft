@@ -1,0 +1,1271 @@
+{
+  "scope": "Postrun initial-block policy comparison only; no causal attribution of later latency",
+  "sources": {
+    "results\\asd-block-suite\\part-0\\rows.jsonl.gz": "43520ba7bfcfb2b37a51b73caa5d24e571119f3740a36213fcc0978ad81ae0d8",
+    "results\\asd-block-suite\\part-0\\mechanism.jsonl.gz": "c8886f11605cfb1bc1f2689ca0096e21ec7b2f367a46f1174cca7f411c3dae37",
+    "results\\asd-block-suite\\part-1\\rows.jsonl.gz": "bd2598efbcccdfed191c00d81ca3aed6ed3041e90e72aaafa22d0a60d759a06b",
+    "results\\asd-block-suite\\part-1\\mechanism.jsonl.gz": "73d36f2714604193b38f56a5b96ecd5c5f1c0143460188146e11ff11fb4eee43"
+  },
+  "states": [
+    {
+      "request_id": "gsm8k:885",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 3,
+          "strict_accepted": 2,
+          "feasible_accepted": 3,
+          "relaxed": 1,
+          "regret": 0.642913818359375
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 3,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 9,
+          "strict_accepted": 6,
+          "feasible_accepted": 9,
+          "relaxed": 1,
+          "regret": 1.8663520812988281
+        },
+        "ASD-Run": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 9,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 9,
+          "strict_accepted": 5,
+          "feasible_accepted": 9,
+          "relaxed": 1,
+          "regret": 1.6285934448242188
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 9,
+          "strict_accepted": 5,
+          "feasible_accepted": 9,
+          "relaxed": 1,
+          "regret": 1.6285934448242188
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 9,
+          "strict_accepted": 5,
+          "feasible_accepted": 9,
+          "relaxed": 1,
+          "regret": 1.6285934448242188
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 9,
+          "strict_accepted": 5,
+          "feasible_accepted": 9,
+          "relaxed": 1,
+          "regret": 1.6285934448242188
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 0,
+          "strict_accepted": 0,
+          "feasible_accepted": 0,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 0,
+          "strict_accepted": 0,
+          "feasible_accepted": 0,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 0,
+          "strict_accepted": 0,
+          "feasible_accepted": 0,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 0,
+          "strict_accepted": 0,
+          "feasible_accepted": 0,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:52",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 3,
+          "strict_accepted": 3,
+          "feasible_accepted": 3,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 4,
+          "strict_accepted": 3,
+          "feasible_accepted": 4,
+          "relaxed": 1,
+          "regret": 0.19919586181640625
+        },
+        "ASD-Run": {
+          "accepted": 4,
+          "strict_accepted": 3,
+          "feasible_accepted": 4,
+          "relaxed": 1,
+          "regret": 0.19919586181640625
+        },
+        "ASD-Utility": {
+          "accepted": 4,
+          "strict_accepted": 3,
+          "feasible_accepted": 4,
+          "relaxed": 1,
+          "regret": 0.19919586181640625
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:52",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 1,
+          "feasible_accepted": 2,
+          "relaxed": 1,
+          "regret": 0.3508415222167969
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 1,
+          "feasible_accepted": 2,
+          "relaxed": 1,
+          "regret": 0.3508415222167969
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:52",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 1,
+          "feasible_accepted": 2,
+          "relaxed": 1,
+          "regret": 0.3508415222167969
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 1,
+          "feasible_accepted": 2,
+          "relaxed": 1,
+          "regret": 0.3508415222167969
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 6,
+          "strict_accepted": 6,
+          "feasible_accepted": 6,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 9,
+          "strict_accepted": 9,
+          "feasible_accepted": 9,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 9,
+          "strict_accepted": 9,
+          "feasible_accepted": 9,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 9,
+          "strict_accepted": 9,
+          "feasible_accepted": 9,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 9,
+          "strict_accepted": 9,
+          "feasible_accepted": 9,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 1,
+          "strict_accepted": 1,
+          "feasible_accepted": 1,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 10,
+          "strict_accepted": 10,
+          "feasible_accepted": 10,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 5,
+          "strict_accepted": 5,
+          "feasible_accepted": 5,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 2,
+          "strict_accepted": 2,
+          "feasible_accepted": 2,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "size": 16,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "size": 24,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "size": 32,
+      "matched_proposals_top_and_regrets": true,
+      "choices": {
+        "DFlash": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Run": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        },
+        "ASD-Utility": {
+          "accepted": 7,
+          "strict_accepted": 7,
+          "feasible_accepted": 7,
+          "relaxed": 0,
+          "regret": 0.0
+        }
+      }
+    }
+  ]
+}

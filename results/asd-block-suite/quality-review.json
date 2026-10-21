@@ -1,0 +1,203 @@
+{
+  "scope": "Postrun model-assisted manual review, primary scores unchanged",
+  "sources": {
+    "results\\asd-block-suite\\part-0\\rows.jsonl.gz": "43520ba7bfcfb2b37a51b73caa5d24e571119f3740a36213fcc0978ad81ae0d8",
+    "results\\asd-block-suite\\part-0\\mechanism.jsonl.gz": "c8886f11605cfb1bc1f2689ca0096e21ec7b2f367a46f1174cca7f411c3dae37",
+    "results\\asd-block-suite\\part-1\\rows.jsonl.gz": "bd2598efbcccdfed191c00d81ca3aed6ed3041e90e72aaafa22d0a60d759a06b",
+    "results\\asd-block-suite\\part-1\\mechanism.jsonl.gz": "73d36f2714604193b38f56a5b96ecd5c5f1c0143460188146e11ff11fb4eee43"
+  },
+  "reference_data_sha256": {
+    "math500": "bfb5fce7e68f4fba09a1ac067d5ad0e6da338abe62518b52ab9b7c89a7a73410",
+    "mbpp": "583a37de1945f5b11dc78873234c884c44fe61eb931af37a5a061df161cdc7eb"
+  },
+  "primary_scores_unchanged": true,
+  "math444": {
+    "reference_argument": "Four congruent corner rectangles; half-turn in each swaps O and its nearest original vertex, so probability is 1/2 for every positive k.",
+    "counterexample_rule": "Explicit algebraic substitution at k=3 for the six observed expression forms; no arbitrary symbolic evaluator.",
+    "checks": [
+      {
+        "method": "ASD-Run",
+        "size": 32,
+        "parsed_answer": "\\frac{(k^2 + 1)^2}{8k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "25/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD-Utility",
+        "size": 24,
+        "parsed_answer": "\\frac{k^2 + 1}{2k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/3",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD-Run",
+        "size": 16,
+        "parsed_answer": "\\frac{1}{k(1 + k^2)}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "1/30",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD-Run",
+        "size": 24,
+        "parsed_answer": "\\frac{k}{4}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "3/4",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD",
+        "size": 32,
+        "parsed_answer": "\\frac{(k^2 + 1)^2}{8k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "25/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD",
+        "size": 24,
+        "parsed_answer": " \\frac{k^2 + 1}{8k} ",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/12",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "DFlash",
+        "size": 32,
+        "parsed_answer": "\\frac{k^2 + 1}{4k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "DFlash",
+        "size": 16,
+        "parsed_answer": "\\frac{k^2 + 1}{4k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD",
+        "size": 16,
+        "parsed_answer": "\\frac{k^2 + 1}{8k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/12",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD-Utility",
+        "size": 32,
+        "parsed_answer": "\\frac{k^2 + 1}{8k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/12",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "DFlash",
+        "size": 24,
+        "parsed_answer": "\\frac{k^2 + 1}{4k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "AR",
+        "size": 16,
+        "parsed_answer": "\\frac{k^2 + 1}{4k}",
+        "finish_reason": "eos",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": {
+          "k": 3,
+          "expression_value": "5/6",
+          "expected": "1/2"
+        }
+      },
+      {
+        "method": "ASD-Utility",
+        "size": 16,
+        "parsed_answer": null,
+        "finish_reason": "length",
+        "primary_correct": false,
+        "reviewed_correct": false,
+        "counterexample": null
+      }
+    ]
+  },
+  "extra_asd32_failures": [
+    {
+      "request_id": "math500:448",
+      "expected": 44,
+      "actual": 49,
+      "expected_modulo": 1,
+      "actual_modulo": 3,
+      "reason": "Actual residue gives remainder3, not required1; not a formatting equivalence."
+    },
+    {
+      "request_id": "mbpp:504",
+      "expected_function": "sum_Of_Series",
+      "actual_functions": [
+        "sum_of_series"
+      ],
+      "reason": "Provided tests call a case-sensitive function name that the output does not define. Contract failure; no renaming or relaxed grading applied."
+    }
+  ]
+}

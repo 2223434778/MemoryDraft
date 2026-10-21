@@ -1,0 +1,121 @@
+{
+  "status": "complete",
+  "source_commit": "b107e53213137268415d44bab0e954ae704fd727",
+  "source_sha256": "cdf22b442b5aff8c98059b480b36eb8047daa5e7aa9c71eed646c3d19ea3d481",
+  "execution_files": 1216,
+  "frozen_functions": [
+    {
+      "path": "scripts/run_asd_block_suite.py",
+      "function": "RecordedVerifier",
+      "sha256": "d5cbdee588df1fe7b0946195cb19b18301258656edbdf304816328fb002179ca"
+    },
+    {
+      "path": "scripts/run_asd_block_suite.py",
+      "function": "records_and_positions",
+      "sha256": "59e65a8004be4f3be1a615cb2fdf8dc63f689e9f7c8963719f0ce37ed4f9278d"
+    },
+    {
+      "path": "scripts/run_asd_block_suite.py",
+      "function": "record_mechanism",
+      "sha256": "97d7b6a274bd678256a9c5850bf70180fe623f0373b8b020401b3043a63159f3"
+    },
+    {
+      "path": "scripts/run_asd_block_suite.py",
+      "function": "run_question",
+      "sha256": "cc195ebb425666b33e978ed56779075b87804cac07786078749abc8a7aec1311"
+    },
+    {
+      "path": "scripts/run_asd_block_suite.py",
+      "function": "main",
+      "sha256": "78daf9f757a525d55c44302e437e44112f4b3072a4fd143d77a2ea30aaf42653"
+    },
+    {
+      "path": "scripts/run_asd_block_suite_pipeline.py",
+      "function": "main",
+      "sha256": "41cca004766ec1864c53b0ad6cd05dd9b3aac6289734a54ed9e3dc7fc282e8fe"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "audit_events",
+      "sha256": "1e2ff4bc26cc1d56cb252824b033beba570bcacfb1f73beb3c332a42ab10b86a"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "audit",
+      "sha256": "968bbff4bc28809d35bf7e38b995d8c0ab30ec874db3699d779404e7f1728f92"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "aggregate",
+      "sha256": "5c5085fd0f5c6129736d68074c872907d1ca253a797e8c9e81d3fae45601f76d"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "estimate",
+      "sha256": "fae0bc0b16504b63d7c26b8a11302b43334465c0e52c1bb3c84b2a059783da06"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "compare",
+      "sha256": "7bb30bb74ce4e90fa720e5dfccb4b242a2100ff8511f8da30e9d3d44055d7ef7"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "function": "summarize",
+      "sha256": "1838aeb6b41817e79fa5053c2b72472018286ad7c7a074c18b0f8ff35b893770"
+    },
+    {
+      "path": "scripts/write_asd_suite_report.py",
+      "function": "paired",
+      "sha256": "074568eb76bedcfea39b20e6e3f286b425c8cfddbc9c32ffcdea53177b9b3d88"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "experimental_block",
+      "sha256": "cece33195dd25b5db35eaf77ecf782720675075ad4fd3fff91c0a3121ae8b766"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "run",
+      "sha256": "6dbe01a5f91de7d64ae66588117ce201d8396028bf13f391f23aa12a5058e6d2"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "prefix_check",
+      "sha256": "9c5847b064827865e6034933ea4dd9bed2e2769081a7f6c0bf138753fa16380f"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "check_native",
+      "sha256": "4cfa46ca3d998f17348d0434a87965880857925b9e9312dd456eb5a8d8a3235b"
+    }
+  ],
+  "frozen_dataset_files_verified": 13,
+  "protected_results_verified": 791,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files_verified": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files_verified": 29
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "result_zip": {
+    "bytes": 2302258,
+    "sha256": "f6473e15fabfad055bf051fd54cbb79cc11009ded5de0c98678a0e59b58115bb"
+  },
+  "note": "Execution and predeclared statistics/policy/quality functions unchanged. Human-readable interpretation is postrun. Live roadmap is checked at each prior publication commit."
+}
