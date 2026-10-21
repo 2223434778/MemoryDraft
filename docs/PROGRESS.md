@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-21 — 显式RMSNorm运行时真实接入验收（执行中）
+
+- 独立验证发布9b8176e78e3463b0573782dd570eb71045691022；50发布文件在Git及工作区逐SHA一致。通过7项门槛后cherry-pick隔离655e700为96952d31927bf4184b53911d9f5db0931e30bb70，默认eager保持。候选先前本地711 passed/5 skipped，未在合并时重复GPU性能。
+- 接入源码96952d3/1453 blobs，source SHAe0f3ea6f4b5bf8d7c9c650800a5b52433aeda0d059142023128e9a86fc0a9bfd，ZIP18695322B/SHA625d6ae67bdc10afb85e4bfbafac751f61d40d161f9b7a3354a35bb82060be05。首次上传仅收到14450688B，SHA阻止部署；改10块传输后重组总SHA通过，原partial保留，不用不完整源启动。
+- 独立服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/rmsnorm-runtime，PID9062，2026-10-21 12:42:42 UTC启动；两卡确认<100MiB后运行，正式使用GPU0。命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_rmsnorm_runtime_pipeline`。先原runtime/serving/regional测试，再空cache冷调用、12示例计时及R/cancel/CUDA profiler/6 HTTP/三路SSE，最后前进程退出后新进程CLI。每子进程1800s、测试300s，仅终止自己创建的会话。
+- 原研究验证数据、准入与源码固定；本轮只工程验收，不将示例性能等同约2.8%研究收益。结果待完成保存results/rmsnorm-runtime，完整trace/DB/cache/权重排除发布。原infra三引用仍27e3619，reserve96未生成。
+
 ## 2026-10-21 — RMSNorm48独立验证完成
 
 - 冻结2c8c51106cd01208756de5458abb9e46889f59be/1417 blobs，source SHA27188c05eb8a7f0b609f22b9109d43712a82627aba0bf4790c3b3458af2b0c5b；服务器asd-rmsnorm-validation PID4169165于11:53:36–12:30:37 UTC完成，REGIONAL RMSNORM_VALIDATION COMPLETE，两worker0退出、两卡19MiB/0%，源码前后1417 SHA相同。
