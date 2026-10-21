@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm完整48开发题自然EOS（执行准备）
+
+- 用户授权进入下一步。新增scripts/run_asd_rmsnorm_suite_probe.py、pipeline及report，复用RegionalRMSNorm、CPU接受和原评分器，不叠加MLP、不改原规则/输入。48开发题六类各8，原偶/奇GPU分配，validation/reserve不运行。协议docs/ASD_RMSNORM_SUITE_PROTOCOL.md冻结自然上限4096、三次配对；96 AR质量对照+1152正式计时=1248主要生成，另20短warmup。首重复同时评分，不能再额外加算或扣掉编译成本。
+- 全部跨profile输出/质量变化保留；eager首轮精确重现旧完整48题原16块自然轨迹及质量，每profile后两次精确重现。评分在一对两次生成之后、engine时钟外，相同题/文本缓存；480质量条目是已有生成，非额外推理。单列质量主/secondary/待复核/未评估/F1与长度、轮数、成本分解；整体48/各类8题bootstrap，旧12/新增profile评估36预先登记为开发子集，不称独立验证。
+- 按旧自然记录估算每卡约1813/1696秒，固定worker5400秒；图8/backend300秒/allocated46GiB/cache4GiB保持前轮，正式新编译仍计线上。独立/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite；入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_suite_pipeline`。
+- 先`.venv\Scripts\python.exe -m pytest -q tests/test_asd_rmsnorm_suite.py tests/test_asd_rmsnorm.py tests/test_asd_compile.py --basetemp .test-tmp-asd-rmsnorm-suite-first-fixed --junitxml=artifacts/asd-rmsnorm-suite-tests-first-local.xml -x --tb=short`：37 passed/29.32s。首版测试发现原生DFlash轮记录不含regret字段，审计器改为按原native结构读取，解码/接受不改。之前RMSNorm实际analysis在内存逐字段复现，旧文件未改。
+- 完整回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-rmsnorm-suite-full --junitxml=artifacts/asd-rmsnorm-suite-tests-full-local.xml`：671 passed/5 skipped/90.12s，只有既有python_multipart提醒。提交源码、协议与统计，导出Git blob到独立服务器目录执行。结果、准确源码SHA和审计完成后另补。
+
 ## 2026-10-21 — RMSNorm-only完成（120预检/288计时/192同输入状态）
 
 - 冻结39f99df5352796f7c2d02bc2b1d030cc19bd5657/1349 blobs；source SHA bbb852bff12a23779e7a1cad658396c5ae0c62c14ea38417faaf0c116e688d90，source ZIP SHA de57293d2ba00b1005cc42d1b62c72946e3670d865e6162998270b31b552dd54。服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm，PID4048957，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_pipeline`；两worker0退出、REGIONAL RMSNORM COMPLETE，执行前后1349文件SHA一致，两卡恢复19MiB/0%。

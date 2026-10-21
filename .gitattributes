@@ -257,3 +257,10 @@ results/asd-rmsnorm/** -text
 results/asd-rmsnorm/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-rmsnorm/**/*.log -whitespace
 results/asd-rmsnorm/**/*.xml -whitespace
+scripts/*asd_rmsnorm_suite*.py text eol=lf
+tests/test_asd_rmsnorm_suite.py text eol=lf
+docs/ASD_RMSNORM_SUITE*.md text eol=lf
+results/asd-rmsnorm-suite/** -text
+results/asd-rmsnorm-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-rmsnorm-suite/**/*.log -whitespace
+results/asd-rmsnorm-suite/**/*.xml -whitespace

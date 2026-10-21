@@ -10,11 +10,12 @@ import subprocess
 import zipfile
 
 
-def main(*, study="compile", extra_tests=()):
+def main(*, study="compile", extra_tests=(), folder=None, worker_timeout_seconds=1800):
     root = Path.cwd()
+    folder = folder or "asd-"+study
     name = "ASD_"+study.upper()+"_SOURCE_MANIFEST.json"
     manifest = json.loads((root/name).read_text(encoding="utf-8"))
-    dest = root/"results/raw"/("asd-"+study)
+    dest = root/"results/raw"/folder
     dest.mkdir(parents=True, exist_ok=False)
     (root/"artifacts").mkdir(exist_ok=True)
 
@@ -24,7 +25,7 @@ def main(*, study="compile", extra_tests=()):
                 raise ValueError("Execution source changed: "+path)
         return len(manifest["files"])
 
-    info = dict(status="started", commit=manifest["commit"], files_verified_before=verify(), worker_timeout_seconds=1800)
+    info = dict(status="started", commit=manifest["commit"], files_verified_before=verify(), worker_timeout_seconds=worker_timeout_seconds)
     exe = str(root.parent/".venv-dflash/bin/python")
     env = dict(os.environ, OMP_NUM_THREADS="4", HF_HUB_OFFLINE="1", PYTHONPATH=".")
 
@@ -41,7 +42,7 @@ def main(*, study="compile", extra_tests=()):
                                        TORCHINDUCTOR_COMPILE_THREADS="2"), stdout=log, stderr=subprocess.STDOUT,
                                        stdin=subprocess.DEVNULL, start_new_session=True)
             try:
-                code = process.wait(timeout=1800)
+                code = process.wait(timeout=worker_timeout_seconds)
             except subprocess.TimeoutExpired:
                 # Only terminate the new session created for this worker.
                 if process.poll() is None:
@@ -52,7 +53,7 @@ def main(*, study="compile", extra_tests=()):
                     except subprocess.TimeoutExpired:
                         os.killpg(process.pid, signal.SIGKILL)
                         process.wait()
-                raise RuntimeError(f"Compiler worker {shard} exceeded 1800 seconds")
+                raise RuntimeError(f"Compiler worker {shard} exceeded {worker_timeout_seconds} seconds")
         print("FINISH", shard, code, flush=True)
         if code:
             raise RuntimeError(f"Compiler worker {shard} failed: {code}")
@@ -69,7 +70,7 @@ def main(*, study="compile", extra_tests=()):
         raise
     finally:
         (dest/"execution-verification.json").write_bytes((json.dumps(info, indent=2)+"\n").encode())
-        with zipfile.ZipFile(root.parent/("asd-"+study+"-results.zip"), "w", zipfile.ZIP_DEFLATED) as archive:
+        with zipfile.ZipFile(root.parent/(folder+"-results.zip"), "w", zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(dest.rglob("*")):
                 if path.is_file():
                     relative = path.relative_to(dest).as_posix()
