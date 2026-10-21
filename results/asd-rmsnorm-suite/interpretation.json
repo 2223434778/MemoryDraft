@@ -1,0 +1,96 @@
+{
+  "stage": "postrun-descriptive-only",
+  "workers": [
+    {
+      "shard": 0,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "warmup_wall_seconds": 13.217366205062717,
+      "controller_seconds": 0.0035894480533897877,
+      "outer_compile_seconds": 3.829481601715088,
+      "backend_seconds": 3.4337364009115845,
+      "graphs_after_warmup": 4,
+      "final_graphs": 4,
+      "online_compile_events": 0,
+      "cache_bytes": 414736,
+      "mean_paired_saving_seconds": 0.07173010228426493,
+      "conditional_amortization_requests": 53.43741229558122
+    },
+    {
+      "shard": 1,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "warmup_wall_seconds": 13.223561540944502,
+      "controller_seconds": 0.003858759067952633,
+      "outer_compile_seconds": 3.8392274379730225,
+      "backend_seconds": 3.4524791670264676,
+      "graphs_after_warmup": 4,
+      "final_graphs": 4,
+      "online_compile_events": 0,
+      "cache_bytes": 414736,
+      "mean_paired_saving_seconds": 0.06087778556280278,
+      "conditional_amortization_requests": 63.12789076528364
+    }
+  ],
+  "output_changes": [],
+  "quality_changes": [],
+  "cross_profile_pairs": 240,
+  "text_matches": 240,
+  "finish_reason_matches": 240,
+  "ledger_matches": 186,
+  "rounds_equal_without_regret": 240,
+  "eager_rounds": 5058,
+  "max_spent_difference": 9.5367431640625e-05,
+  "truncations": [
+    {
+      "request_id": "math500:444",
+      "method": "ASD-Utility",
+      "profile": "rmsnorm-inductor",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    },
+    {
+      "request_id": "math500:444",
+      "method": "ASD-Utility",
+      "profile": "eager",
+      "quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "\\frac{1}{2}",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      }
+    }
+  ],
+  "peak_allocated_bytes": {
+    "eager": 38615600128,
+    "rmsnorm-inductor": 38615600128
+  },
+  "compiled_switch_median_seconds": 0.00034464901546016335,
+  "cpu_calls": {
+    "eager": {
+      "fast_calls": 11361,
+      "fallback_calls": 0
+    },
+    "rmsnorm-inductor": {
+      "fast_calls": 11361,
+      "fallback_calls": 0
+    }
+  },
+  "note": "Descriptive, not new independent samples. Amortization is only estimated for unchanged outputs and zero online recompiles; outer includes backend, warmup wall includes inference. No production ROI or universal losslessness claim."
+}

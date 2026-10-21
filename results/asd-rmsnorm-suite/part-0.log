@@ -1,0 +1,27 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.49s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.38s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+completed gsm8k:885 {'warmup': 10, 'reference': 2, 'timed': 24, 'quality_rows': 10, 'unique_texts_scored': 4} graphs 4
+completed gsm8k:1150 {'warmup': 10, 'reference': 4, 'timed': 48, 'quality_rows': 20, 'unique_texts_scored': 7} graphs 4
+completed gsm8k:374 {'warmup': 10, 'reference': 6, 'timed': 72, 'quality_rows': 30, 'unique_texts_scored': 10} graphs 4
+completed gsm8k:924 {'warmup': 10, 'reference': 8, 'timed': 96, 'quality_rows': 40, 'unique_texts_scored': 14} graphs 4
+completed math500:329 {'warmup': 10, 'reference': 10, 'timed': 120, 'quality_rows': 50, 'unique_texts_scored': 16} graphs 4
+completed math500:444 {'warmup': 10, 'reference': 12, 'timed': 144, 'quality_rows': 60, 'unique_texts_scored': 20} graphs 4
+completed math500:261 {'warmup': 10, 'reference': 14, 'timed': 168, 'quality_rows': 70, 'unique_texts_scored': 24} graphs 4
+completed math500:359 {'warmup': 10, 'reference': 16, 'timed': 192, 'quality_rows': 80, 'unique_texts_scored': 28} graphs 4
+completed mbpp:262 {'warmup': 10, 'reference': 18, 'timed': 216, 'quality_rows': 90, 'unique_texts_scored': 30} graphs 4
+completed mbpp:378 {'warmup': 10, 'reference': 20, 'timed': 240, 'quality_rows': 100, 'unique_texts_scored': 32} graphs 4
+completed mbpp:398 {'warmup': 10, 'reference': 22, 'timed': 264, 'quality_rows': 110, 'unique_texts_scored': 33} graphs 4
+completed mbpp:504 {'warmup': 10, 'reference': 24, 'timed': 288, 'quality_rows': 120, 'unique_texts_scored': 34} graphs 4
+completed humaneval:82 {'warmup': 10, 'reference': 26, 'timed': 312, 'quality_rows': 130, 'unique_texts_scored': 35} graphs 4
+completed humaneval:137 {'warmup': 10, 'reference': 28, 'timed': 336, 'quality_rows': 140, 'unique_texts_scored': 38} graphs 4
+completed humaneval:60 {'warmup': 10, 'reference': 30, 'timed': 360, 'quality_rows': 150, 'unique_texts_scored': 40} graphs 4
+completed humaneval:115 {'warmup': 10, 'reference': 32, 'timed': 384, 'quality_rows': 160, 'unique_texts_scored': 41} graphs 4
+completed squad:5734025d4776f419006616c6 {'warmup': 10, 'reference': 34, 'timed': 408, 'quality_rows': 170, 'unique_texts_scored': 42} graphs 4
+completed squad:5727c94bff5b5019007d954b {'warmup': 10, 'reference': 36, 'timed': 432, 'quality_rows': 180, 'unique_texts_scored': 43} graphs 4
+completed squad:57286fa83acd2414000df9e8 {'warmup': 10, 'reference': 38, 'timed': 456, 'quality_rows': 190, 'unique_texts_scored': 44} graphs 4
+completed squad:5727311d5951b619008f86ab {'warmup': 10, 'reference': 40, 'timed': 480, 'quality_rows': 200, 'unique_texts_scored': 45} graphs 4
+completed json:12 {'warmup': 10, 'reference': 42, 'timed': 504, 'quality_rows': 210, 'unique_texts_scored': 46} graphs 4
+completed json:27 {'warmup': 10, 'reference': 44, 'timed': 528, 'quality_rows': 220, 'unique_texts_scored': 47} graphs 4
+completed json:28 {'warmup': 10, 'reference': 46, 'timed': 552, 'quality_rows': 230, 'unique_texts_scored': 48} graphs 4
+completed json:29 {'warmup': 10, 'reference': 48, 'timed': 576, 'quality_rows': 240, 'unique_texts_scored': 49} graphs 4

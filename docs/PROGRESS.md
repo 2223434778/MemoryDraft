@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm完整48开发题自然EOS完成
+
+- 源码冻结ca51a6338b039b557b80cb919be4ec15c98a9dd3/1383 blobs，source SHA9502d8b40a9229d6fd105d97ea8b5ff049e0f2c489e14bf311103809779f4c86、source ZIP SHAfeeb0faa047a386668c605af7e809c02e4cd8fe81702f66dcbc9e11755cdcdd0；服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite，PID4069094。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_suite_pipeline`；09:10:55 UTC启动，完成日志最后写入09:41:59。两worker0退出，REGIONAL RMSNORM_SUITE COMPLETE，前后1383源码SHA相同，两卡恢复19MiB/0%。用户额度中断期间后台继续完成，没有重跑。
+- 六类各8开发题，原FP32最高精度/TF32关闭、eager attention、16块、相同CPU接受；只RMSNorm编译，MLP仍eager。1152正式相邻配对+96 AR质量对照=1248主要生成，另20短warmup；首重复同时评分，480质量条目不再加算生成。实际97唯一题/文本重新评分；validation48/reserve96未运行模型。
+- 自然编译/eager题级时延比：D0.972056 [0.971392,0.972712]、ASD0.972249 [0.971607,0.972898]、Run0.972017 [0.971337,0.972641]、U0.971827 [0.971221,0.972385]，时延低2.78%–2.82%，各48/48题更快。新增profile评估36题分别0.972071/0.972108/0.971823/0.971673；两组都属开发，未称独立验证。六类点估计均改善，SQuAD约1.8%，其他约2.8%–3.3%。
+- 240跨profile完整输出全部逐token/文本相同；eager240首轮重现旧完整48题轨迹/评分，所有重复精确重现；两profile D/AR各48/48。54对账本浮点不同，最大spent差9.5367431640625e-5；5058轮除regret外一致，长度/调用密度不变。无主/secondary/F1新增变化，仍有原MATH待复核和Utility math500:444到4096截断，不宣称全答对或全输入无损。
+- 167norm（Target145/Draft22）每卡4图，warmup至结束不变，正式及AR对照0新增编译。outer3.829/3.839秒、backend3.434/3.452秒（嵌套），controller约0.0036/0.0039秒；warmup wall13.22秒另含推理。cache各414736字节/0.396MiB，峰值allocated两profile均35.964GiB；切换中位0.345ms计在线。CPU各11361 fast/fallback0。当前自然混合平均省71.73/60.88ms，条件摊销outer+controller约54/64请求，不作通用ROI保证。
+- 运行后只读8个生成文件各一次融合norm kernel、无外部GEMM，未重复微回放；解释与前轮192状态相符，不虚构纯kernel占比。收益是DFlash/ASD共同执行选项，不相加前轮CPU/MLP百分比、不改旧策略结论。冻结当前候选，下一步预登记进入未生成答案的48验证题；默认infra保持原实现。
+- 结果ZIP863831字节/SHA6eeef14c8bc0ded8683acf1e4b2d2b62d6ccf17d153ce5c26b13b21ba5fb7bd2；results/asd-rmsnorm-suite，表docs/ASD_RMSNORM_SUITE_RESULTS.md，解释docs/ASD_RMSNORM_SUITE_FINDINGS.md。重建`.venv\Scripts\python.exe -m scripts.write_asd_rmsnorm_suite_report`；后描述`.venv\Scripts\python.exe -m results.asd-rmsnorm-suite.inspect_results`；后审计`.venv\Scripts\python.exe -m results.asd-rmsnorm-suite.audit_postrun`。21冻结文件/919旧SHA/7批254发布文件/7旧runtime与infra引用通过，仅两个既有CRLF例外。
+- 本地相关37 passed/29.32s，完整671 passed/5 skipped/90.12s；服务器113 passed/30.19s。GPU后执行/主统计/评分源码未改，旧RMSNorm实际analysis内存逐字段重现，不重复已通过测试或GPU计时。只发布小型记录/报告，排除模型、hidden/logits及缓存。
+
 ## 2026-10-21 — RMSNorm完整48开发题自然EOS（执行准备）
 
 - 已启动：源码ca51a6338b039b557b80cb919be4ec15c98a9dd3/1383 blobs，source SHA9502d8b40a9229d6fd105d97ea8b5ff049e0f2c489e14bf311103809779f4c86，source ZIP SHAfeeb0faa047a386668c605af7e809c02e4cd8fe81702f66dcbc9e11755cdcdd0。服务器独立目录/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite，PID4069094，2026-10-21 09:10:55 UTC启动。服务器113 passed/30.19s后启动两worker；warmup各10，开始完整自然输出。最终数据尚待完成，不能以局部计时宣称收益。

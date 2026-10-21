@@ -1,0 +1,168 @@
+{
+  "status": "complete",
+  "source_commit": "ca51a6338b039b557b80cb919be4ec15c98a9dd3",
+  "source_sha256": "9502d8b40a9229d6fd105d97ea8b5ff049e0f2c489e14bf311103809779f4c86",
+  "execution_files": 1383,
+  "frozen_files": [
+    {
+      "path": "memorydraft/backends/regional_compile.py",
+      "sha256": "a96509554f3891ee625d618aa1a4ee51927ae3595876379286a8c09636dbbd5e"
+    },
+    {
+      "path": "scripts/run_asd_compile_probe.py",
+      "sha256": "bcc5623ee4062890afc2c06ea5b08a255ffa57da5a3fa629dbfb3eb19c23e64a"
+    },
+    {
+      "path": "scripts/run_asd_compile_pipeline.py",
+      "sha256": "80f9c09ce2841548cbf700ac3555740cd0797ad84dab09978d1a8b9c0ca2670e"
+    },
+    {
+      "path": "scripts/run_asd_rmsnorm_probe.py",
+      "sha256": "a663d6397cba9b4905b5abcfc862ee1028bd90c688f1ed327e8c3976a8356304"
+    },
+    {
+      "path": "scripts/run_asd_rmsnorm_pipeline.py",
+      "sha256": "d7018cb0c06acbdea88fae2c1b73ae7989eebe221749a08bbbb629414d8f9e24"
+    },
+    {
+      "path": "scripts/write_asd_rmsnorm_report.py",
+      "sha256": "970765a474d0be28b64a78b88193f77f9622e968e1d8009405c91d9cc5c5396b"
+    },
+    {
+      "path": "tests/test_asd_rmsnorm.py",
+      "sha256": "9f2823d29730cdb2e1e48e7e8db8aac604c7c3e1914002e65591e607471379c0"
+    },
+    {
+      "path": "scripts/run_asd_rmsnorm_suite_probe.py",
+      "sha256": "b1502213f9c90f7824e05f8fc492d7ccdd8141576e0e572f388998a90aeab845"
+    },
+    {
+      "path": "scripts/run_asd_rmsnorm_suite_pipeline.py",
+      "sha256": "2ceb1b1c47db75e1c9f5769e5641ae0046d8422015d5cc6a30fc011a0c4b09ff"
+    },
+    {
+      "path": "scripts/write_asd_rmsnorm_suite_report.py",
+      "sha256": "2a4ca290b7722ed46fcf2e7d23cab84612e4827493fa2345daab215931aa4cd9"
+    },
+    {
+      "path": "tests/test_asd_rmsnorm_suite.py",
+      "sha256": "1e3d74feedfa6bb6c5fff24538a286484238efd0ffc2db50a521311c877d8d16"
+    },
+    {
+      "path": "scripts/write_asd_compile_report.py",
+      "sha256": "4ac601cb9506ce62f508967d434c26c36317d6b28827fe52234996860c64cd1d"
+    },
+    {
+      "path": "docs/ASD_RMSNORM_SUITE_PROTOCOL.md",
+      "sha256": "b13b6ad82a291699266553f1aef57c83cef1bc7e7344d8f0b92efdfc685d9819"
+    },
+    {
+      "path": "memorydraft/backends/asd_cpu.py",
+      "sha256": "588edb3fd70b519391cff05fa091681cdb66780dd02524d6e702d8405d0f33c8"
+    },
+    {
+      "path": "memorydraft/backends/asd.py",
+      "sha256": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84"
+    },
+    {
+      "path": "memorydraft/backends/dflash_reuse.py",
+      "sha256": "f9989b6239ff3fdb4afc5e939feea5ad33c95e262308c23050c06b04e26f4891"
+    },
+    {
+      "path": "memorydraft/runtime/engine.py",
+      "sha256": "adafb9191bdfb8070e4d56daaf5d9861ba590663e00e757cae4ffe239ce33f2e"
+    },
+    {
+      "path": "memorydraft/runtime/config.py",
+      "sha256": "bbcf05d7430d9c01cf263294a7c94ece2627e7e57e7df5e093897d7f8ea70800"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "sha256": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "sha256": "8d854524078f2736f003b8eb3dd5abe54ad87cb92fef4b0f91af5e33fe4fc9ba"
+    },
+    {
+      "path": "scripts/write_asd_cpu_report.py",
+      "sha256": "53c1bc3d31b0947c33ca03491b398f851c63fe60f19cac13b5304400caa2d3ff"
+    }
+  ],
+  "prior_runtime_unchanged": [
+    "memorydraft/backends/asd_cpu.py",
+    "memorydraft/backends/asd.py",
+    "memorydraft/backends/dflash_reuse.py",
+    "memorydraft/runtime/engine.py",
+    "memorydraft/runtime/config.py",
+    "memorydraft/evaluation/asd_suite.py",
+    "scripts/run_asd_suite.py"
+  ],
+  "protected_results_verified": 919,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files_verified": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files_verified": 29
+    },
+    {
+      "path": "results/asd-block-suite/publication.json",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files_verified": 35
+    },
+    {
+      "path": "results/asd-execution/publication.json",
+      "commit": "1e56ecbe071ec305fb2982c467099d98a725c079",
+      "files_verified": 33
+    },
+    {
+      "path": "results/asd-cpu/publication.json",
+      "commit": "38ce3b393dcf724d5e51a8a33a46765b25f8c6e9",
+      "files_verified": 30
+    },
+    {
+      "path": "results/asd-compile/publication.json",
+      "commit": "4f3aa2ab92391f0ee5211f4563fd5d64010a92e3",
+      "files_verified": 34
+    },
+    {
+      "path": "results/asd-rmsnorm/publication.json",
+      "commit": "841e0e5fc1bb0322dd4cbe8d3913c699e93c02cc",
+      "files_verified": 39
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "counts": [
+    {
+      "warmup": 10,
+      "reference": 48,
+      "timed": 576,
+      "quality_rows": 240,
+      "unique_texts_scored": 49
+    },
+    {
+      "warmup": 10,
+      "reference": 48,
+      "timed": 576,
+      "quality_rows": 240,
+      "unique_texts_scored": 48
+    }
+  ],
+  "result_zip": {
+    "bytes": 863831,
+    "sha256": "6eeef14c8bc0ded8683acf1e4b2d2b62d6ccf17d153ce5c26b13b21ba5fb7bd2"
+  }
+}
