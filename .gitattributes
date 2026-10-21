@@ -198,3 +198,9 @@ docs/ASD_CONFIDENCE*.md text eol=lf
 results/asd-confidence/** -text
 results/asd-confidence/**/*.log -whitespace
 results/asd-confidence/tests-*.xml -whitespace
+scripts/*asd_optimization*.py text eol=lf
+tests/test_asd_optimization*.py text eol=lf
+docs/ASD_OPTIMIZATION*.md text eol=lf
+results/asd-optimization/** -text
+results/asd-optimization/**/*.log -whitespace
+results/asd-optimization/tests-*.xml -whitespace

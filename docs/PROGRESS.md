@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-21 — ASD剩余优化空间排查（执行准备）
+
+- 用户授权尝试剩余方向。冻结执行成本/验证长度/Draft前缀适应三个检查轴；不重新扫描置信度、价格或未来二选一模型。协议`docs/ASD_OPTIMIZATION_PROTOCOL.md`，独立服务器目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization`。
+- 显式可选`draft_block_size`/`verify_length`/`incremental_stop`保留默认路径。增量EOS只扫描新提交token；分别测试缩短实际Draft和仅截短Target验证，不能退还已付Draft成本。生产RuntimeConfig继续只允许FP32/eager，其他精度/attention由独立实验loader启用并记录实际配置。
+- A固定4旧题、11/3/3臂、自然1/128两次共204次，另AR128及独立profiler；冻结规则决定是否迁移4道其他既有题，不使用迁移结果调参。32单token严格分支检查Draft是否有明确前缀适应退化，未通过门槛则不训练。
+- 首次相关测试75 passed/2 skipped/1 failed：新测试错误假定ASD加入EOS后与无EOS轨迹相同，实际Utility会按EOS调整收益。修正为同EOS配置下旧/增量输出与流式逐ID一致；保留失败XML，不改GPU数据（尚未执行）。
+- 本地命令`.venv\Scripts\python.exe -m pytest -q tests/test_asd_optimization.py tests/test_dflash_reuse.py tests/test_asd.py --basetemp .test-tmp-asd-optimization-second --junitxml=artifacts/asd-optimization-tests-second-local.xml`。模型配置确认原Draft块16，服务端支持BF16，两卡空闲。
+
 ## 2026-10-20 — 实际计算收益预测（100次完成，停止扩大）
 
 - 冻结执行`3132838503d0130d78726c5e52b1d28c6bcafa13`，独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-compute`，PID3335336已完成；1010个Git原始文件执行前后SHA一致。源码ZIP SHA`fdcfc1020d1fe7402a24fc26330a29a9a0739d682058ea929a2683eca60f007f`、source SHA`9ffdff87763d40ffe300cc9b2c441de1b675b32810640abc8021121ec286eea7`，推理package未改，仍为`4097fa46857e96b785fd4a9d2b88ef94dfd9dd0d700d4fe42d83ac537d1c934f`。

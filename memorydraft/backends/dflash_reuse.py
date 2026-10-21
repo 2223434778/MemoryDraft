@@ -51,7 +51,10 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    should_stop: Callable[[], bool] | None = None,
                    on_draft: Callable[[list[int], list[int], torch.Tensor, int], None] | None = None,
                    verifier=None,
-                   profile: bool = False) -> ReuseGeneration:
+                   profile: bool = False,
+                   draft_block_size: int | None = None,
+                   verify_length: Callable[[int], int] | None = None,
+                   incremental_stop: bool = False) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -68,13 +71,14 @@ guided R may replace a block after its draft forward has already run.
     if should_stop and should_stop():
         from memorydraft.runtime.contracts import RequestCancelled
         raise RequestCancelled("Request cancelled before prefill")
-    if draft.block_size < 2:
+    block_size = draft.block_size if draft_block_size is None else draft_block_size
+    if type(block_size) is not int or not 2 <= block_size <= draft.block_size:
         raise ValueError("DFlash requires an anchor and at least one proposal")
     target.eval()
     draft.eval()
     prompt = input_ids.shape[1]
     limit = prompt + max_new_tokens
-    extra = max(config.max_tokens + 1, draft.block_size) + 1
+    extra = max(config.max_tokens + 1, block_size) + 1
     ids = torch.full((1, limit + extra), draft.mask_token_id, device=input_ids.device, dtype=torch.long)
     ids[:, :prompt] = input_ids
     positions = torch.arange(ids.shape[1], device=ids.device).unsqueeze(0)
@@ -136,15 +140,15 @@ guided R may replace a block after its draft forward has already run.
             block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
         else:
             route = "D"
-            block = ids[:, start:start + draft.block_size].clone()
+            block = ids[:, start:start + block_size].clone()
             # Clear stale proposals left in the output workspace by previous rounds.
             block[:, 1:] = draft.mask_token_id
             context = pending[0] if len(pending) == 1 else torch.cat(pending, dim=1)
             with mark("draft_forward"):
                 hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
-                               position_ids=positions[:, before_draft:start + draft.block_size],
+                               position_ids=positions[:, before_draft:start + block_size],
                                past_key_values=draft_cache, use_cache=True, is_causal=False)
-                logits = target.lm_head(hidden[:, -draft.block_size + 1:, :])
+                logits = target.lm_head(hidden[:, -block_size + 1:, :])
                 block[:, 1:] = logits.argmax(dim=-1)
             draft_cache.crop(start)
             pending.clear()
@@ -166,6 +170,11 @@ guided R may replace a block after its draft forward has already run.
                 if proposal is not None:
                     route = "R"
                     block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
+        if verify_length is not None:
+            length = verify_length(block.shape[1] - 1)
+            if type(length) is not int or not 1 <= length < block.shape[1]:
+                raise ValueError("Verification length must select a nonempty proposal prefix")
+            block = block[:, :length + 1]
         with mark("target_verify"):
             output = target(block, position_ids=positions[:, start:start + block.shape[1]],
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True)
@@ -206,10 +215,13 @@ guided R may replace a block after its draft forward has already run.
         available = min(start + 1, limit)
         publish(available)
         if stops:
-            generated = ids[0, prompt:available].tolist()
+            # The confirmed prefix was already checked. Scan only newly committed
+            # proposals and the recovery/bonus; the old anchor is checked earlier.
+            checked_from = old_start + 1 if incremental_stop else prompt
+            generated = ids[0, checked_from:available].tolist()
             ended = next((i for i, token in enumerate(generated) if token in stops), None)
             if ended is not None:
-                result.sequences = ids[:, :prompt + ended + 1].clone()
+                result.sequences = ids[:, :checked_from + ended + 1].clone()
                 return result
     result.sequences = ids[:, :min(start + 1, limit)].clone()
     return result
