@@ -85,7 +85,8 @@ def summarize(rows, methods, *, baseline="AR", synthetic=False):
 
 def compare(result, reference):
     return (result.token_ids == reference.token_ids and result.prompt_sha256 == reference.prompt_sha256
-            and result.snapshot_id == reference.snapshot_id)
+            and result.snapshot_id == reference.snapshot_id
+            and getattr(result, "execution_profile", "eager") == getattr(reference, "execution_profile", "eager"))
 
 
 def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
@@ -189,6 +190,8 @@ def check_regression(current, baseline, *, max_slowdown=.10):
     for key in ("backend", "torch", "transformers", "gpu", "device", "dtype", "target_revision"):
         if key not in new[0]["engine"] or new[0]["engine"][key] != old[0]["engine"].get(key):
             raise ValueError("Incomparable regression environment: " + key)
+    if new[0]["engine"].get("execution_profile", "eager") != old[0]["engine"].get("execution_profile", "eager"):
+        raise ValueError("Incomparable regression environment: execution_profile")
     if not new[0]["engine"]["target_revision"]:
         raise ValueError("Regression requires a pinned Target revision")
 

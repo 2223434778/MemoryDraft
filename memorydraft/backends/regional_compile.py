@@ -108,3 +108,16 @@ class RegionalRMSNorm(_RegionalCompiler):
     def summary(self):
         return dict(super().summary(), inventory=[dict(region=n, type=type(m).__name__,
                     weight_shape=list(m.weight.shape), eps=m.variance_epsilon) for n, m in self.regions])
+
+
+def runtime_rmsnorm(target, draft):
+    """Fail explicitly outside the measured runtime stack; never fall back."""
+    import sys
+    import transformers
+    if (not sys.platform.startswith("linux") or torch.__version__.split("+")[0] != "2.5.1"
+            or transformers.__version__ != "4.57.3"):
+        raise RuntimeError("rmsnorm-inductor requires Linux, PyTorch 2.5.1 and Transformers 4.57.3; use eager on other stacks")
+    if (target.device.type != "cuda" or target.dtype != torch.float32 or draft is None
+            or draft.device != target.device or draft.dtype != torch.float32):
+        raise ValueError("rmsnorm-inductor requires CUDA FP32 Target and audited Draft")
+    return RegionalRMSNorm(target, draft)

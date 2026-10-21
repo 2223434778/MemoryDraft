@@ -46,6 +46,17 @@ class InferenceEngine:
             from ot import sinkhorn
         eos = target.generation_config.eos_token_id
         self.stops = [eos] if isinstance(eos, int) else list(eos or [])
+        self.execution_profile = config.execution_profile
+        self._closed = False
+        self._regional = self._regional_context = None
+        self._regional_setup_seconds = 0.
+        if self.execution_profile != "eager":
+            from memorydraft.backends.regional_compile import runtime_rmsnorm
+            started = time.perf_counter()
+            self._regional = runtime_rmsnorm(target, draft)
+            self._regional_context = self._regional.activate(self.execution_profile)
+            self._regional_context.__enter__()
+            self._regional_setup_seconds = time.perf_counter()-started
 
     @classmethod
     def load(cls, config: RuntimeConfig):
@@ -75,6 +86,13 @@ class InferenceEngine:
                 "device": str(self.target.device), "dtype": str(self.target.dtype),
                 "gpu": torch.cuda.get_device_name(self.target.device) if self.target.device.type == "cuda" else None,
                 "target_revision": self.config.target_revision,
+                "execution_profile": self.execution_profile,
+                "regional_compilation": None if self._regional is None else {
+                    "backend": self._regional.backend.name, "graphs": len(self._regional.backend.events),
+                    "max_graphs": self._regional.backend.max_graphs,
+                    "max_backend_seconds": self._regional.backend.max_seconds,
+                    "setup_seconds": self._regional_setup_seconds,
+                    "binding_lifetime": "engine; lazy compilation is charged inside generate"},
                 "implementation": "DFlash uses the audited adapter with R disabled; native control remains in research scripts",
                 "config": self.config.as_dict()}
 
@@ -91,10 +109,15 @@ class InferenceEngine:
         if not self.lock.acquire(blocking=False):
             raise RuntimeError("InferenceEngine requires a single owner; use the serving worker")
         try:
+            if self._closed:
+                raise RuntimeError("InferenceEngine is closed")
+            if self.config.execution_profile != self.execution_profile:
+                raise ValueError("Reload the engine to change execution_profile")
             self.synchronize()
             if self.target.device.type == "cuda":
                 torch.cuda.reset_peak_memory_stats(self.target.device)
             started = time.perf_counter()
+            compile_before = len(self._regional.backend.events) if self._regional is not None else 0
             first = None
 
             def check():
@@ -218,10 +241,15 @@ class InferenceEngine:
             check()
             tokens = output[0, prompt_tokens:].tolist()
             text = self.tokenizer.decode(tokens, skip_special_tokens=True)
+            if self._regional is not None:
+                events = self._regional.backend.events
+                counters.update(compile_graphs_before=compile_before, compile_graphs_after=len(events),
+                                compile_backend_seconds=sum(e.get("backend_seconds", 0.) for e in events[compile_before:]))
             latency = time.perf_counter() - started
             peak = torch.cuda.max_memory_allocated(self.target.device) if self.target.device.type == "cuda" else 0
             return GenerationResult(request.id, method, tokens, text, prompt_tokens, prompt_sha, snapshot.snapshot_id,
-                                    latency, first, "eos" if tokens and tokens[-1] in self.stops else "length", peak, counters)
+                                    latency, first, "eos" if tokens and tokens[-1] in self.stops else "length", peak, counters,
+                                    execution_profile=self.execution_profile)
         finally:
             try:
                 self.synchronize()
@@ -229,4 +257,17 @@ class InferenceEngine:
                 self.lock.release()
 
     def close(self):
-        self.synchronize()
+        if not self.lock.acquire(blocking=False):
+            raise RuntimeError("Cannot close InferenceEngine while a request owns it")
+        try:
+            if self._closed:
+                return
+            try:
+                self.synchronize()
+            finally:
+                if self._regional_context is not None:
+                    self._regional_context.__exit__(None, None, None)
+                    self._regional_context = None
+                self._closed = True
+        finally:
+            self.lock.release()
