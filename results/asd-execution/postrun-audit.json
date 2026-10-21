@@ -1,0 +1,81 @@
+{
+  "status": "complete",
+  "source_commit": "4290e2b7a6277709f8c8b90517ea2bdbe93cbabe",
+  "source_sha256": "6f36eda11a904354000cc50f50e58c211e1b146bcf9fdf1e92c5c71350a13eaf",
+  "execution_files": 1251,
+  "frozen_files": [
+    {
+      "path": "scripts/run_asd_execution_probe.py",
+      "sha256": "b065df6ffb84eb452ae1e9141348199ddb317e853eec892448d36ad3ac3755f0"
+    },
+    {
+      "path": "scripts/run_asd_execution_pipeline.py",
+      "sha256": "2f990ba0ce5fba3cb3ee28ed21d8d775309ca475ecb2305886c72c510d594f3d"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "sha256": "8d854524078f2736f003b8eb3dd5abe54ad87cb92fef4b0f91af5e33fe4fc9ba"
+    },
+    {
+      "path": "scripts/run_asd_budget_probe.py",
+      "sha256": "fbfd0b1005a5b8cc0ebaf608ec6a3f026bb35e9b09337b94ad9abaa5e05766d8"
+    },
+    {
+      "path": "memorydraft/backends/asd.py",
+      "sha256": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84"
+    },
+    {
+      "path": "memorydraft/backends/dflash_reuse.py",
+      "sha256": "f9989b6239ff3fdb4afc5e939feea5ad33c95e262308c23050c06b04e26f4891"
+    },
+    {
+      "path": "memorydraft/runtime/engine.py",
+      "sha256": "adafb9191bdfb8070e4d56daaf5d9861ba590663e00e757cae4ffe239ce33f2e"
+    },
+    {
+      "path": "memorydraft/runtime/config.py",
+      "sha256": "bbcf05d7430d9c01cf263294a7c94ece2627e7e57e7df5e093897d7f8ea70800"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "sha256": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b"
+    },
+    {
+      "path": "docs/ASD_EXECUTION_PROTOCOL.md",
+      "sha256": "b63c0018274e6c43ca63ac0c4d5a443a1b996ee57e77e77b1cb90f701375f78a"
+    }
+  ],
+  "backend_only_added_profiler_scopes": true,
+  "postrun_report_correction": "Explicitly retain CUPTI device events without CPU links; do not force equal event counts. Timing, selection, scopes and resident replay execution unchanged.",
+  "protected_results_verified": 819,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files_verified": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files_verified": 29
+    },
+    {
+      "path": "results/asd-block-suite/publication.json",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files_verified": 35
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "result_zip": {
+    "bytes": 317827,
+    "sha256": "a6785cc0fea5a808f55077d85dc9959dd523f28bd73c61bd37cf57ab116c6eef"
+  }
+}

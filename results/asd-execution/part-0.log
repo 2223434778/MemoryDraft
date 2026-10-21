@@ -1,0 +1,8 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:06,  1.51s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.51s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:03,  1.50s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.39s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.24s/it]
+completed gsm8k gsm8k:885 {"timed": 12, "profile": 4, "capture": 3, "replay_states": 9}
+completed math500 math500:329 {"timed": 24, "profile": 8, "capture": 6, "replay_states": 18}
+completed mbpp mbpp:262 {"timed": 36, "profile": 12, "capture": 9, "replay_states": 23}
+completed humaneval humaneval:82 {"timed": 48, "profile": 16, "capture": 12, "replay_states": 29}
+completed squad squad:5734025d4776f419006616c6 {"timed": 60, "profile": 20, "capture": 15, "replay_states": 32}
+completed json json:12 {"timed": 72, "profile": 24, "capture": 18, "replay_states": 38}

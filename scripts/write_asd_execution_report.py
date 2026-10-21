@@ -48,10 +48,12 @@ def audit(timed, profiles, captures, previous):
                     if p["scopes"][name]["calls"] != len(row["rounds"]):
                         raise ValueError("Missing per-round scope")
                 linked = sum(s["linked_device_us"] for s in p["scopes"].values())
-                if not math.isclose(linked, p["device_duration_sum_us"], rel_tol=.001, abs_tol=1.):
-                    raise ValueError("Device kernel attribution does not conserve duration")
-                if p["linked_kernel_count"] != p["device_event_count"]:
-                    raise ValueError("Device kernel attribution does not conserve event count")
+                # CUPTI can retain device events with no frontend correlation.
+                # Keep this residual explicitly, rather than inventing an owner.
+                if linked > p["device_duration_sum_us"] + 1.:
+                    raise ValueError("Device kernel attribution exceeds raw duration")
+                if not 0 < p["linked_kernel_count"] <= p["device_event_count"]:
+                    raise ValueError("Device kernel attribution exceeds raw event count")
                 if not 0 < p["device_active_union_us"] <= p["device_duration_sum_us"] + 1.:
                     raise ValueError("Invalid active device union")
             else:
@@ -77,7 +79,8 @@ def audit(timed, profiles, captures, previous):
             raise ValueError("Duplicate/missing instrumented identity")
     return dict(timed=len(timed), profile=len(profiles), capture=len(captures),
                 replay_states=sum(len(r["resident_replays"]) for r in captures),
-                baseline_trajectory_checks=len(timed)+len(profiles)+len(captures), device_attribution_conserved=True)
+                baseline_trajectory_checks=len(timed)+len(profiles)+len(captures),
+                profiles_with_unlinked_events=sum(r["profile"]["linked_kernel_count"] < r["profile"]["device_event_count"] for r in profiles))
 
 
 def summarize(timed, profiles, captures):
@@ -98,6 +101,8 @@ def summarize(timed, profiles, captures):
                     median_latency_seconds=measured[key], latency_samples_seconds=cells[key],
                     profiler_dilation=row["instrumented_latency_seconds"]/measured[key],
                     device_active_fraction_of_span=p["device_active_union_us"]/p["device_span_us"],
+                    unlinked_device_events=p["device_event_count"]-p["linked_kernel_count"],
+                    unlinked_device_us=max(0., total_gpu-sum(v["linked_device_us"] for v in scopes.values())),
                     scopes={name: dict(**values, device_fraction=values["linked_device_us"]/total_gpu)
                             for name, values in scopes.items()})
         if key in replay:
@@ -148,7 +153,7 @@ def main():
         for method, cell in methods.items():
             lines.append("|"+b+"|"+method+"|"+"|".join(f"{v:.2%}" for v in cell["mean_device_fractions"].values())+"|")
     lines += ["", "## 完整性", "", json.dumps(result["audit"], ensure_ascii=False), "",
-              "全部正式/插桩/捕获轨迹、prompt SHA、snapshot、预算和轮次与冻结前阶段16块前128记录一致。CUDA annotation排除后原始device事件数及耗时与直接kernel归属守恒。完整逐题数据、profiler膨胀比例、同步控制与回放样本见analysis.json及压缩原始记录。", "",
+              "全部正式/插桩/捕获轨迹、prompt SHA、snapshot、预算和轮次与冻结前阶段16块前128记录一致。CUDA annotation排除，直接kernel链接的事件数/耗时不得超过原始device总数；没有CPU关联的设备事件另列unlinked_device，不强行归属。完整逐题数据、profiler膨胀比例、同步控制与回放样本见analysis.json及压缩原始记录。", "",
               "复现：`.venv\\Scripts\\python.exe -m scripts.write_asd_execution_report`。机制解释与后续取舍见ASD_EXECUTION_FINDINGS.md。", ""]
     (ROOT / "docs/ASD_EXECUTION_RESULTS.md").write_text("\n".join(lines), encoding="utf-8")
     print(json.dumps(result["audit"]))

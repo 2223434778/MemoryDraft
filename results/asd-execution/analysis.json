@@ -1,0 +1,5799 @@
+{
+  "audit": {
+    "timed": 144,
+    "profile": 48,
+    "capture": 36,
+    "replay_states": 77,
+    "baseline_trajectory_checks": 228,
+    "profiles_with_unlinked_events": 23
+  },
+  "cases": [
+    {
+      "request_id": "gsm8k:885",
+      "method": "DFlash",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 28,
+      "median_latency_seconds": 2.1157840960659087,
+      "latency_samples_seconds": [
+        2.1063311640173197,
+        2.1157840960659087,
+        2.1216563059715554
+      ],
+      "profiler_dilation": 1.1586234874510621,
+      "device_active_fraction_of_span": 0.8257393919215016,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2453083.4159999997,
+          "linked_device_us": 110.688000000373,
+          "linked_kernels": 67,
+          "sync_calls": 6,
+          "sync_host_us": 32.69199999964712,
+          "device_fraction": 5.470685178199771e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 153.5340000000001,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 899.7050000000002,
+          "linked_device_us": 1.9840000000003783,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 5.269999999999527,
+          "device_fraction": 9.805795925045028e-07
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 68100.86399999999,
+          "linked_device_us": 126723.62800000032,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.449999999999818,
+          "device_fraction": 0.06263236063755485
+        },
+        "draft_forward": {
+          "calls": 28,
+          "host_elapsed_us": 283569.516000001,
+          "linked_device_us": 336112.7579999834,
+          "linked_kernels": 10075,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1661216286668979
+        },
+        "target_verify": {
+          "calls": 28,
+          "host_elapsed_us": 1880516.94,
+          "linked_device_us": 1559064.1120000156,
+          "linked_kernels": 62896,
+          "sync_calls": 28,
+          "sync_host_us": 89853.04199999978,
+          "device_fraction": 0.7705576873150597
+        },
+        "accept_decision": {
+          "calls": 28,
+          "host_elapsed_us": 119105.62900000034,
+          "linked_device_us": 979.3669999979902,
+          "linked_kernels": 224,
+          "sync_calls": 28,
+          "sync_host_us": 110810.99200000003,
+          "device_fraction": 0.00048404601500514293
+        },
+        "commit_kv": {
+          "calls": 28,
+          "host_elapsed_us": 22668.548000000796,
+          "linked_device_us": 229.120000000461,
+          "linked_kernels": 112,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011324112713459722
+        },
+        "publish_stop": {
+          "calls": 28,
+          "host_elapsed_us": 3474.5749999991676,
+          "linked_device_us": 71.52099999980419,
+          "linked_kernels": 56,
+          "sync_calls": 56,
+          "sync_host_us": 88.85400000121444,
+          "device_fraction": 3.534880697344212e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6999999997206032,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "method": "ASD",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 27,
+      "median_latency_seconds": 2.0631574610015377,
+      "latency_samples_seconds": [
+        2.0576132119167596,
+        2.0631574610015377,
+        2.0682335579767823
+      ],
+      "profiler_dilation": 1.1673862351821258,
+      "device_active_fraction_of_span": 0.8225422944491148,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 2.3283064365386963e-10,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2409375.205,
+          "linked_device_us": 109.14999999907377,
+          "linked_kernels": 65,
+          "sync_calls": 6,
+          "sync_host_us": 35.81199999962587,
+          "device_fraction": 5.5519569622119406e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 40.39199999999994,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18334.829999999998,
+          "linked_device_us": 2.144000000003871,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 80.49199999999837,
+          "device_fraction": 1.0905538916266514e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 71873.91,
+          "linked_device_us": 130117.4819999999,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.360000000000582,
+          "device_fraction": 0.06618476043073902
+        },
+        "draft_forward": {
+          "calls": 27,
+          "host_elapsed_us": 276761.54999999906,
+          "linked_device_us": 323457.37999999244,
+          "linked_kernels": 9703,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16452784726385986
+        },
+        "target_verify": {
+          "calls": 27,
+          "host_elapsed_us": 1801412.6549999996,
+          "linked_device_us": 1507625.1970000388,
+          "linked_kernels": 60858,
+          "sync_calls": 27,
+          "sync_host_us": 86332.09300000031,
+          "device_fraction": 0.7668593869868569
+        },
+        "accept_decision": {
+          "calls": 27,
+          "host_elapsed_us": 142235.07100000055,
+          "linked_device_us": 4366.513000000763,
+          "linked_kernels": 1998,
+          "sync_calls": 54,
+          "sync_host_us": 91058.75000000058,
+          "device_fraction": 0.002221043724337966
+        },
+        "commit_kv": {
+          "calls": 27,
+          "host_elapsed_us": 21931.671000000468,
+          "linked_device_us": 226.01600000119652,
+          "linked_kernels": 108,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011496391248635686
+        },
+        "publish_stop": {
+          "calls": 27,
+          "host_elapsed_us": 3449.9259999991045,
+          "linked_device_us": 69.57099999967613,
+          "linked_kernels": 54,
+          "sync_calls": 54,
+          "sync_host_us": 85.26499999861699,
+          "device_fraction": 3.538755820609496e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 22.069999999832362,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0011273115524090827,
+        "strict_core": 0.0001349734957329929,
+        "sync_control": 6.794987712055445e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.014752830305191401
+    },
+    {
+      "request_id": "gsm8k:885",
+      "method": "ASD-Run",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 26,
+      "median_latency_seconds": 1.9916055699577555,
+      "latency_samples_seconds": [
+        1.9883232839638367,
+        1.9916055699577555,
+        1.9991728760069236
+      ],
+      "profiler_dilation": 1.162164092548814,
+      "device_active_fraction_of_span": 0.8225367304892821,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 3.6149999999906868,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2315448.233,
+          "linked_device_us": 103.93300000053932,
+          "linked_kernels": 63,
+          "sync_calls": 6,
+          "sync_host_us": 37.60999999945284,
+          "device_fraction": 5.5038422377330815e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.441999999999894,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18731.981000000003,
+          "linked_device_us": 1.7920000000012806,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 52.81100000000151,
+          "device_fraction": 9.489657077130026e-07
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 67909.89,
+          "linked_device_us": 125127.20099999955,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.889999999999418,
+          "device_fraction": 0.0662619547159748
+        },
+        "draft_forward": {
+          "calls": 26,
+          "host_elapsed_us": 261758.293999999,
+          "linked_device_us": 311677.41400001565,
+          "linked_kernels": 9364,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16505088044334376
+        },
+        "target_verify": {
+          "calls": 26,
+          "host_elapsed_us": 1718198.262,
+          "linked_device_us": 1446713.5540000445,
+          "linked_kernels": 58458,
+          "sync_calls": 26,
+          "sync_host_us": 84169.72199999998,
+          "device_fraction": 0.7661169372927815
+        },
+        "accept_decision": {
+          "calls": 26,
+          "host_elapsed_us": 154021.99699999965,
+          "linked_device_us": 4465.865999997768,
+          "linked_kernels": 2106,
+          "sync_calls": 78,
+          "sync_host_us": 97468.70700000005,
+          "device_fraction": 0.002364929514082751
+        },
+        "commit_kv": {
+          "calls": 26,
+          "host_elapsed_us": 20022.018000000797,
+          "linked_device_us": 212.0999999998894,
+          "linked_kernels": 104,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011231898806120484
+        },
+        "publish_stop": {
+          "calls": 26,
+          "host_elapsed_us": 3052.3139999990235,
+          "linked_device_us": 66.23899999973946,
+          "linked_kernels": 52,
+          "sync_calls": 52,
+          "sync_host_us": 82.86200000080862,
+          "device_fraction": 3.50773099960432e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.580000000074506,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001217629062011838,
+        "strict_core": 0.0001301885349676013,
+        "sync_control": 6.745511200278997e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.01589589630088216
+    },
+    {
+      "request_id": "gsm8k:885",
+      "method": "ASD-Utility",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 28,
+      "median_latency_seconds": 2.1341917030513287,
+      "latency_samples_seconds": [
+        2.1281034169951454,
+        2.1341917030513287,
+        2.1407606520224363
+      ],
+      "profiler_dilation": 1.1911475119116672,
+      "device_active_fraction_of_span": 0.8065550856416459,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2543021.502,
+          "linked_device_us": 108.51400000016656,
+          "linked_kernels": 67,
+          "sync_calls": 6,
+          "sync_host_us": 38.671000000048934,
+          "device_fraction": 5.331777822514189e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.490999999999985,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18827.804,
+          "linked_device_us": 1.7920000000049185,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 50.832000000002154,
+          "device_fraction": 8.804896933074982e-07
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 80574.593,
+          "linked_device_us": 137409.98200000005,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 5.870000000002619,
+          "device_fraction": 0.0675156656854
+        },
+        "draft_forward": {
+          "calls": 28,
+          "host_elapsed_us": 289758.6060000006,
+          "linked_device_us": 335242.4839999918,
+          "linked_kernels": 10086,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16471961602677818
+        },
+        "target_verify": {
+          "calls": 28,
+          "host_elapsed_us": 1886066.1940000004,
+          "linked_device_us": 1556367.1829999604,
+          "linked_kernels": 62968,
+          "sync_calls": 28,
+          "sync_host_us": 87041.27999999895,
+          "device_fraction": 0.7647127587219469
+        },
+        "accept_decision": {
+          "calls": 28,
+          "host_elapsed_us": 162604.48799999972,
+          "linked_device_us": 5798.29299999756,
+          "linked_kernels": 2884,
+          "sync_calls": 56,
+          "sync_host_us": 90480.33300000094,
+          "device_fraction": 0.002848960505167887
+        },
+        "commit_kv": {
+          "calls": 28,
+          "host_elapsed_us": 24931.091999999626,
+          "linked_device_us": 231.836999998166,
+          "linked_kernels": 112,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011391188003635901
+        },
+        "publish_stop": {
+          "calls": 28,
+          "host_elapsed_us": 3366.0640000002168,
+          "linked_device_us": 71.00699999945937,
+          "linked_kernels": 56,
+          "sync_calls": 56,
+          "sync_host_us": 88.82300000046962,
+          "device_fraction": 3.488891275225329e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5200000000186265,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014848015271127224,
+        "strict_core": 0.00012979400344192982,
+        "sync_control": 6.680493243038654e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.019480181981644754
+    },
+    {
+      "request_id": "math500:329",
+      "method": "DFlash",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 22,
+      "median_latency_seconds": 1.6525945919565856,
+      "latency_samples_seconds": [
+        1.651918361079879,
+        1.6525945919565856,
+        1.6577597309369594
+      ],
+      "profiler_dilation": 1.141677475023335,
+      "device_active_fraction_of_span": 0.8306004130697057,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 3.935999999754131,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1887696.917,
+          "linked_device_us": 88.86400000011736,
+          "linked_kernels": 55,
+          "sync_calls": 6,
+          "sync_host_us": 39.17100000002597,
+          "device_fraction": 5.674783434848954e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.072,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1334.377,
+          "linked_device_us": 1.8239999999998417,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 5.149999999999864,
+          "device_fraction": 1.1647917025060683e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65186.355,
+          "linked_device_us": 68742.52100000007,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.019999999999527,
+          "device_fraction": 0.043898419994603165
+        },
+        "draft_forward": {
+          "calls": 22,
+          "host_elapsed_us": 221760.0679999999,
+          "linked_device_us": 263945.2690000063,
+          "linked_kernels": 7909,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16855332195557357
+        },
+        "target_verify": {
+          "calls": 22,
+          "host_elapsed_us": 1467460.3210000002,
+          "linked_device_us": 1232104.598000003,
+          "linked_kernels": 49586,
+          "sync_calls": 22,
+          "sync_host_us": 70159.38699999997,
+          "device_fraction": 0.7868120681853634
+        },
+        "accept_decision": {
+          "calls": 22,
+          "host_elapsed_us": 93641.82100000017,
+          "linked_device_us": 813.1239999985264,
+          "linked_kernels": 176,
+          "sync_calls": 22,
+          "sync_host_us": 87770.27300000025,
+          "device_fraction": 0.0005192544343787884
+        },
+        "commit_kv": {
+          "calls": 22,
+          "host_elapsed_us": 17718.543000000762,
+          "linked_device_us": 187.99900000088383,
+          "linked_kernels": 88,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0001200546465353546
+        },
+        "publish_stop": {
+          "calls": 22,
+          "host_elapsed_us": 2743.514999999985,
+          "linked_device_us": 57.08600000018487,
+          "linked_kernels": 44,
+          "sync_calls": 44,
+          "sync_host_us": 67.86099999936414,
+          "device_fraction": 3.6454659610461906e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.580000000074506,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "method": "ASD",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 15,
+      "median_latency_seconds": 1.158955035964027,
+      "latency_samples_seconds": [
+        1.1519586659269407,
+        1.1591418080497533,
+        1.158955035964027
+      ],
+      "profiler_dilation": 1.1615336912813645,
+      "device_active_fraction_of_span": 0.8164639345635285,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 6.11200000019744,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1347196.75,
+          "linked_device_us": 70.3360000003413,
+          "linked_kernels": 41,
+          "sync_calls": 6,
+          "sync_host_us": 40.681999999923505,
+          "device_fraction": 6.495186179266698e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 47.321000000000026,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 19770.001,
+          "linked_device_us": 1.7599999999983993,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 50.81200000000172,
+          "device_fraction": 1.625274066686124e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65462.034,
+          "linked_device_us": 67119.84100000028,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.7999999999992724,
+          "device_fraction": 0.06198189598721347
+        },
+        "draft_forward": {
+          "calls": 15,
+          "host_elapsed_us": 151296.0619999999,
+          "linked_device_us": 179768.8530000021,
+          "linked_kernels": 5415,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16600775839720408
+        },
+        "target_verify": {
+          "calls": 15,
+          "host_elapsed_us": 1006067.533,
+          "linked_device_us": 833338.5750000089,
+          "linked_kernels": 33737,
+          "sync_calls": 15,
+          "sync_host_us": 46041.454000000114,
+          "device_fraction": 0.7695474856351795
+        },
+        "accept_decision": {
+          "calls": 15,
+          "host_elapsed_us": 77284.08600000007,
+          "linked_device_us": 2420.679999996035,
+          "linked_kernels": 1110,
+          "sync_calls": 30,
+          "sync_host_us": 49172.14800000031,
+          "device_fraction": 0.0022353797884902844
+        },
+        "commit_kv": {
+          "calls": 15,
+          "host_elapsed_us": 10220.39300000007,
+          "linked_device_us": 129.15300000002026,
+          "linked_kernels": 60,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011926648950848682
+        },
+        "publish_stop": {
+          "calls": 15,
+          "host_elapsed_us": 1829.532999999763,
+          "linked_device_us": 38.97599999999511,
+          "linked_kernels": 30,
+          "sync_calls": 30,
+          "sync_host_us": 46.55099999977392,
+          "device_fraction": 3.599243296773184e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.4799999999813735,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010742999729700387,
+        "strict_core": 0.00012869894271716475,
+        "sync_control": 6.575020961463451e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.013904335452622995
+    },
+    {
+      "request_id": "math500:329",
+      "method": "ASD-Run",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 22,
+      "median_latency_seconds": 1.6742332860594615,
+      "latency_samples_seconds": [
+        1.671231749933213,
+        1.6742332860594615,
+        1.677078788052313
+      ],
+      "profiler_dilation": 1.15448760163677,
+      "device_active_fraction_of_span": 0.8147288540538236,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.3439999998081475,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1933892.739,
+          "linked_device_us": 86.84800000024552,
+          "linked_kernels": 55,
+          "sync_calls": 6,
+          "sync_host_us": 40.260999999781575,
+          "device_fraction": 5.5688436254497824e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 47.341999999999985,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18622.639,
+          "linked_device_us": 1.8559999999997672,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 52.36199999999735,
+          "device_fraction": 1.190099227248098e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65561.69699999999,
+          "linked_device_us": 67295.26900000015,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.079999999998108,
+          "device_fraction": 0.04315088773403184
+        },
+        "draft_forward": {
+          "calls": 22,
+          "host_elapsed_us": 223089.5280000001,
+          "linked_device_us": 262914.8840000003,
+          "linked_kernels": 7909,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16858556049593906
+        },
+        "target_verify": {
+          "calls": 22,
+          "host_elapsed_us": 1462297.4460000002,
+          "linked_device_us": 1225150.286999998,
+          "linked_kernels": 49587,
+          "sync_calls": 22,
+          "sync_host_us": 67935.24000000009,
+          "device_fraction": 0.7855875052918457
+        },
+        "accept_decision": {
+          "calls": 22,
+          "host_elapsed_us": 128184.77400000041,
+          "linked_device_us": 3841.8309999996272,
+          "linked_kernels": 1782,
+          "sync_calls": 66,
+          "sync_host_us": 80813.05599999975,
+          "device_fraction": 0.0024634483320678433
+        },
+        "commit_kv": {
+          "calls": 22,
+          "host_elapsed_us": 16572.364999999583,
+          "linked_device_us": 184.63999999960652,
+          "linked_kernels": 88,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011839435415875434
+        },
+        "publish_stop": {
+          "calls": 22,
+          "host_elapsed_us": 2645.19500000024,
+          "linked_device_us": 56.865999999659834,
+          "linked_kernels": 44,
+          "sync_calls": 44,
+          "sync_host_us": 68.15199999982724,
+          "device_fraction": 3.646346048291702e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5600000000558794,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012069734511896968,
+        "strict_core": 0.00012861855793744326,
+        "sync_control": 6.59044599160552e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.015860045399449945
+    },
+    {
+      "request_id": "math500:329",
+      "method": "ASD-Utility",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 22,
+      "median_latency_seconds": 1.6724175449926406,
+      "latency_samples_seconds": [
+        1.6722066780785099,
+        1.6724175449926406,
+        1.675443421001546
+      ],
+      "profiler_dilation": 1.17066404549632,
+      "device_active_fraction_of_span": 0.8057725336564965,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 6.623000000137836,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1958788.956,
+          "linked_device_us": 86.62699999984761,
+          "linked_kernels": 55,
+          "sync_calls": 6,
+          "sync_host_us": 40.50300000047798,
+          "device_fraction": 5.562550944436138e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.28100000000006,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 25051.999,
+          "linked_device_us": 1.7599999999983993,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 50.60199999999895,
+          "device_fraction": 1.1301429880078868e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 67938.364,
+          "linked_device_us": 66998.02499999988,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.040000000000873,
+          "device_fraction": 0.04302122054783854
+        },
+        "draft_forward": {
+          "calls": 22,
+          "host_elapsed_us": 224069.2880000003,
+          "linked_device_us": 262374.72200000077,
+          "linked_kernels": 7909,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16847781380630067
+        },
+        "target_verify": {
+          "calls": 22,
+          "host_elapsed_us": 1479285.338,
+          "linked_device_us": 1222994.6909999994,
+          "linked_kernels": 49586,
+          "sync_calls": 22,
+          "sync_host_us": 68891.06099999996,
+          "device_fraction": 0.7853175422760106
+        },
+        "accept_decision": {
+          "calls": 22,
+          "host_elapsed_us": 126893.91799999963,
+          "linked_device_us": 4619.481000008236,
+          "linked_kernels": 2266,
+          "sync_calls": 44,
+          "sync_host_us": 69753.60400000034,
+          "device_fraction": 0.0029662920797725663
+        },
+        "commit_kv": {
+          "calls": 22,
+          "host_elapsed_us": 16822.311000000045,
+          "linked_device_us": 186.973999999027,
+          "linked_kernels": 88,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00012006099718118135
+        },
+        "publish_stop": {
+          "calls": 22,
+          "host_elapsed_us": 2703.093999999517,
+          "linked_device_us": 56.160000000469154,
+          "linked_kernels": 44,
+          "sync_calls": 44,
+          "sync_host_us": 70.07400000028429,
+          "device_fraction": 3.606183534494935e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5700000000651926,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014782309881411493,
+        "strict_core": 0.0001295484835281968,
+        "sync_control": 6.60051591694355e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.01944555164257643
+    },
+    {
+      "request_id": "mbpp:262",
+      "method": "DFlash",
+      "benchmark": "mbpp",
+      "tokens": 24,
+      "rounds": 5,
+      "median_latency_seconds": 0.5545287739951164,
+      "latency_samples_seconds": [
+        0.5536502189934254,
+        0.5547112879576162,
+        0.5545287739951164
+      ],
+      "profiler_dilation": 1.095838871666709,
+      "device_active_fraction_of_span": 0.8719468161685533,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 1.1641532182693481e-10,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 608617.222,
+          "linked_device_us": 79.64999999986412,
+          "linked_kernels": 20,
+          "sync_calls": 6,
+          "sync_host_us": 37.781999999832124,
+          "device_fraction": 0.0001507801441322716
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 48.230999999999995,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1845.232,
+          "linked_device_us": 2.11200000000008,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.919999999999618,
+          "device_fraction": 3.998087437638581e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 96237.023,
+          "linked_device_us": 180656.53100000016,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.100000000000364,
+          "device_fraction": 0.341988923825018
+        },
+        "draft_forward": {
+          "calls": 5,
+          "host_elapsed_us": 50160.12799999997,
+          "linked_device_us": 63399.7640000009,
+          "linked_kernels": 1794,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.12001789772615754
+        },
+        "target_verify": {
+          "calls": 5,
+          "host_elapsed_us": 340624.70900000003,
+          "linked_device_us": 283872.5389999985,
+          "linked_kernels": 11270,
+          "sync_calls": 5,
+          "sync_host_us": 15602.675000000017,
+          "device_fraction": 0.5373803182132665
+        },
+        "accept_decision": {
+          "calls": 5,
+          "host_elapsed_us": 21020.467999999993,
+          "linked_device_us": 185.3759999999893,
+          "linked_kernels": 40,
+          "sync_calls": 5,
+          "sync_host_us": 19596.766000000003,
+          "device_fraction": 0.0003509230382763346
+        },
+        "commit_kv": {
+          "calls": 5,
+          "host_elapsed_us": 4081.4029999998747,
+          "linked_device_us": 42.719000000099186,
+          "linked_kernels": 20,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 8.086851195495862e-05
+        },
+        "publish_stop": {
+          "calls": 5,
+          "host_elapsed_us": 653.3589999999385,
+          "linked_device_us": 13.887999999977183,
+          "linked_kernels": 11,
+          "sync_calls": 10,
+          "sync_host_us": 15.98999999993248,
+          "device_fraction": 2.62904537565489e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.64000000001397,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "method": "ASD",
+      "benchmark": "mbpp",
+      "tokens": 18,
+      "rounds": 4,
+      "median_latency_seconds": 0.4835936550516635,
+      "latency_samples_seconds": [
+        0.48303242994006723,
+        0.4835936550516635,
+        0.48488529201131314
+      ],
+      "profiler_dilation": 1.0886591179185943,
+      "device_active_fraction_of_span": 0.8768865302766542,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 527420.519,
+          "linked_device_us": 75.52000000011685,
+          "linked_kernels": 18,
+          "sync_calls": 6,
+          "sync_host_us": 38.571000000048684,
+          "device_fraction": 0.00016425924072009134
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 47.40100000000007,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2159.3999999999996,
+          "linked_device_us": 1.8559999999997672,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.6520000000005,
+          "device_fraction": 4.036879644809051e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 97738.145,
+          "linked_device_us": 180418.55100000015,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.930000000000291,
+          "device_fraction": 0.39241809055923255
+        },
+        "draft_forward": {
+          "calls": 4,
+          "host_elapsed_us": 40802.72700000001,
+          "linked_device_us": 51271.06100000083,
+          "linked_kernels": 1444,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1115167578225714
+        },
+        "target_verify": {
+          "calls": 4,
+          "host_elapsed_us": 269045.61399999994,
+          "linked_device_us": 227281.0370000017,
+          "linked_kernels": 9016,
+          "sync_calls": 4,
+          "sync_host_us": 13373.563000000053,
+          "device_fraction": 0.4943460085757084
+        },
+        "accept_decision": {
+          "calls": 4,
+          "host_elapsed_us": 20650.456000000006,
+          "linked_device_us": 666.6219999995083,
+          "linked_kernels": 296,
+          "sync_calls": 8,
+          "sync_host_us": 12981.80099999992,
+          "device_fraction": 0.0014499314561316012
+        },
+        "commit_kv": {
+          "calls": 4,
+          "host_elapsed_us": 3230.268999999971,
+          "linked_device_us": 34.87599999981467,
+          "linked_kernels": 16,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 7.585679660109372e-05
+        },
+        "publish_stop": {
+          "calls": 4,
+          "host_elapsed_us": 490.4329999999027,
+          "linked_device_us": 11.521000000066124,
+          "linked_kernels": 9,
+          "sync_calls": 8,
+          "sync_host_us": 12.439999999827705,
+          "device_fraction": 2.50586693901497e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.400000000023283,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010821299511007965,
+        "strict_core": 0.0001288880594074726,
+        "sync_control": 6.575020961463451e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.008950737378762256
+    },
+    {
+      "request_id": "mbpp:262",
+      "method": "ASD-Run",
+      "benchmark": "mbpp",
+      "tokens": 24,
+      "rounds": 5,
+      "median_latency_seconds": 0.5596771970158443,
+      "latency_samples_seconds": [
+        0.5603663659421727,
+        0.5575722079956904,
+        0.5596771970158443
+      ],
+      "profiler_dilation": 1.1039706017890751,
+      "device_active_fraction_of_span": 0.855342567279426,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.271999999997206,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 618838.7289999999,
+          "linked_device_us": 78.55900000033944,
+          "linked_kernels": 20,
+          "sync_calls": 6,
+          "sync_host_us": 41.41100000002325,
+          "device_fraction": 0.00014917172059934397
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.58100000000002,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2155.97,
+          "linked_device_us": 1.8559999999997672,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.04299999999967,
+          "device_fraction": 3.5242647364547845e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 95920.845,
+          "linked_device_us": 179228.22400000022,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.4200000000000728,
+          "device_fraction": 0.3403274297525319
+        },
+        "draft_forward": {
+          "calls": 5,
+          "host_elapsed_us": 52276.987999999896,
+          "linked_device_us": 63150.40500000032,
+          "linked_kernels": 1794,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.11991311715213737
+        },
+        "target_verify": {
+          "calls": 5,
+          "host_elapsed_us": 340510.627,
+          "linked_device_us": 283231.20899999916,
+          "linked_kernels": 11269,
+          "sync_calls": 5,
+          "sync_host_us": 16117.759999999951,
+          "device_fraction": 0.5378134494301063
+        },
+        "accept_decision": {
+          "calls": 5,
+          "host_elapsed_us": 30141.392999999982,
+          "linked_device_us": 886.0810000001802,
+          "linked_kernels": 405,
+          "sync_calls": 15,
+          "sync_host_us": 18116.805000000168,
+          "device_fraction": 0.0016825344945816912
+        },
+        "commit_kv": {
+          "calls": 5,
+          "host_elapsed_us": 4072.7350000001024,
+          "linked_device_us": 42.23999999969965,
+          "linked_kernels": 20,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 8.020740434634174e-05
+        },
+        "publish_stop": {
+          "calls": 5,
+          "host_elapsed_us": 608.0970000000088,
+          "linked_device_us": 13.82500000006985,
+          "linked_kernels": 11,
+          "sync_calls": 10,
+          "sync_host_us": 15.530999999900814,
+          "device_fraction": 2.6251594817747672e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.599999999976717,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012223240046296269,
+        "strict_core": 0.00012949874508194625,
+        "sync_control": 6.537768058478832e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.010919901785770122
+    },
+    {
+      "request_id": "mbpp:262",
+      "method": "ASD-Utility",
+      "benchmark": "mbpp",
+      "tokens": 24,
+      "rounds": 5,
+      "median_latency_seconds": 0.5585820659762248,
+      "latency_samples_seconds": [
+        0.5575546480249614,
+        0.5585820659762248,
+        0.5607440270250663
+      ],
+      "profiler_dilation": 1.1005175666887403,
+      "device_active_fraction_of_span": 0.8637216611426773,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 615695.263,
+          "linked_device_us": 78.14400000012665,
+          "linked_kernels": 20,
+          "sync_calls": 6,
+          "sync_host_us": 39.210000000032665,
+          "device_fraction": 0.0001476966799720751
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 46.09100000000001,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2190.541,
+          "linked_device_us": 1.856000000000222,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.21200000000044,
+          "device_fraction": 3.507947353958843e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 97298.984,
+          "linked_device_us": 181060.353,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.399999999999636,
+          "device_fraction": 0.34221453998552165
+        },
+        "draft_forward": {
+          "calls": 5,
+          "host_elapsed_us": 50800.63599999994,
+          "linked_device_us": 63182.9900000006,
+          "linked_kernels": 1794,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.11941950570349336
+        },
+        "target_verify": {
+          "calls": 5,
+          "host_elapsed_us": 338535.01099999994,
+          "linked_device_us": 283626.42800000065,
+          "linked_kernels": 11270,
+          "sync_calls": 5,
+          "sync_host_us": 15786.079999999958,
+          "device_fraction": 0.5360703543185785
+        },
+        "accept_decision": {
+          "calls": 5,
+          "host_elapsed_us": 28817.985000000044,
+          "linked_device_us": 1077.5729999996256,
+          "linked_kernels": 515,
+          "sync_calls": 10,
+          "sync_host_us": 16225.81400000013,
+          "device_fraction": 0.002036675298516017
+        },
+        "commit_kv": {
+          "calls": 5,
+          "host_elapsed_us": 4020.920999999973,
+          "linked_device_us": 43.138000000151806,
+          "linked_kernels": 20,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 8.153331517003825e-05
+        },
+        "publish_stop": {
+          "calls": 5,
+          "host_elapsed_us": 604.0559999999241,
+          "linked_device_us": 13.854999999690335,
+          "linked_kernels": 11,
+          "sync_calls": 10,
+          "sync_host_us": 15.642000000283588,
+          "device_fraction": 2.6186751394400686e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5300000000279397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014846812409814447,
+        "strict_core": 0.00012948375660926104,
+        "sync_control": 6.567715900018811e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.013289732444118943
+    },
+    {
+      "request_id": "humaneval:82",
+      "method": "DFlash",
+      "benchmark": "humaneval",
+      "tokens": 66,
+      "rounds": 7,
+      "median_latency_seconds": 0.6271015329984948,
+      "latency_samples_seconds": [
+        0.6253895149566233,
+        0.6271015329984948,
+        0.6279990780167282
+      ],
+      "profiler_dilation": 1.1223213882200214,
+      "device_active_fraction_of_span": 0.8488901164195286,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.8479999999981374,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 704780.24,
+          "linked_device_us": 64.57599999999547,
+          "linked_kernels": 24,
+          "sync_calls": 6,
+          "sync_host_us": 38.4119999998785,
+          "device_fraction": 0.0001083457596403067
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 51.92100000000005,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1634.4560000000001,
+          "linked_device_us": 1.8240000000000691,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.619999999999891,
+          "device_fraction": 3.06031134762049e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65557.089,
+          "linked_device_us": 115170.02000000016,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.0900000000001455,
+          "device_fraction": 0.19323252144279932
+        },
+        "draft_forward": {
+          "calls": 7,
+          "host_elapsed_us": 69976.2720000001,
+          "linked_device_us": 85678.6460000005,
+          "linked_kernels": 2527,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14375182708473164
+        },
+        "target_verify": {
+          "calls": 7,
+          "host_elapsed_us": 471667.58799999993,
+          "linked_device_us": 394757.7930000011,
+          "linked_kernels": 15777,
+          "sync_calls": 7,
+          "sync_host_us": 22336.68499999988,
+          "device_fraction": 0.6623255227409419
+        },
+        "accept_decision": {
+          "calls": 7,
+          "host_elapsed_us": 29681.2680000001,
+          "linked_device_us": 260.99299999995856,
+          "linked_kernels": 56,
+          "sync_calls": 7,
+          "sync_host_us": 27730.89200000011,
+          "device_fraction": 0.00043789464887574424
+        },
+        "commit_kv": {
+          "calls": 7,
+          "host_elapsed_us": 5282.749000000069,
+          "linked_device_us": 61.66400000019348,
+          "linked_kernels": 28,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010345999941899938
+        },
+        "publish_stop": {
+          "calls": 7,
+          "host_elapsed_us": 912.695999999909,
+          "linked_device_us": 19.42399999985355,
+          "linked_kernels": 15,
+          "sync_calls": 14,
+          "sync_host_us": 22.239999999990687,
+          "device_fraction": 3.258963136827301e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.3800000000046566,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "method": "ASD",
+      "benchmark": "humaneval",
+      "tokens": 66,
+      "rounds": 7,
+      "median_latency_seconds": 0.6309119689976797,
+      "latency_samples_seconds": [
+        0.6309119689976797,
+        0.6307783640222624,
+        0.6324473420390859
+      ],
+      "profiler_dilation": 1.1273226662857887,
+      "device_active_fraction_of_span": 0.8369345654776421,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 712243.191,
+          "linked_device_us": 63.712000000216904,
+          "linked_kernels": 24,
+          "sync_calls": 6,
+          "sync_host_us": 40.6310000001165,
+          "device_fraction": 0.0001073112421622
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.531999999999925,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1782.31,
+          "linked_device_us": 1.8240000000000691,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 81.42199999999957,
+          "device_fraction": 3.0721952803740873e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65368.573000000004,
+          "linked_device_us": 112809.62999999968,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.399999999999636,
+          "device_fraction": 0.19000724389623516
+        },
+        "draft_forward": {
+          "calls": 7,
+          "host_elapsed_us": 71245.98700000005,
+          "linked_device_us": 85565.86100000404,
+          "linked_kernels": 2527,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14412008460819498
+        },
+        "target_verify": {
+          "calls": 7,
+          "host_elapsed_us": 474247.161,
+          "linked_device_us": 394022.43600000546,
+          "linked_kernels": 15778,
+          "sync_calls": 7,
+          "sync_host_us": 22050.525000000023,
+          "device_fraction": 0.6636589189915963
+        },
+        "accept_decision": {
+          "calls": 7,
+          "host_elapsed_us": 36332.84299999988,
+          "linked_device_us": 1167.100000000908,
+          "linked_kernels": 518,
+          "sync_calls": 14,
+          "sync_host_us": 22011.564000000013,
+          "device_fraction": 0.0019657670568680105
+        },
+        "commit_kv": {
+          "calls": 7,
+          "host_elapsed_us": 4431.044000000082,
+          "linked_device_us": 62.20699999984936,
+          "linked_kernels": 28,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010477634419175482
+        },
+        "publish_stop": {
+          "calls": 7,
+          "host_elapsed_us": 864.7839999998978,
+          "linked_device_us": 19.4890000000305,
+          "linked_kernels": 15,
+          "sync_calls": 14,
+          "sync_host_us": 21.91100000005099,
+          "device_fraction": 3.282566547110857e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.7299999999813735,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010794152331072837,
+        "strict_core": 0.00012914626859128475,
+        "sync_control": 6.555026629939675e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.0119761662530431
+    },
+    {
+      "request_id": "humaneval:82",
+      "method": "ASD-Run",
+      "benchmark": "humaneval",
+      "tokens": 66,
+      "rounds": 7,
+      "median_latency_seconds": 0.6333076760638505,
+      "latency_samples_seconds": [
+        0.6324906219961122,
+        0.6333076760638505,
+        0.6349047509720549
+      ],
+      "profiler_dilation": 1.1262608774962513,
+      "device_active_fraction_of_span": 0.8331127284501638,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 121.11999999987893,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 714232.916,
+          "linked_device_us": 64.03099999979077,
+          "linked_kernels": 24,
+          "sync_calls": 6,
+          "sync_host_us": 39.900999999984606,
+          "device_fraction": 0.00010802554869734518
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 50.002000000000066,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1715.148,
+          "linked_device_us": 1.7919999999999163,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.37300000000005,
+          "device_fraction": 3.023250976343741e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65540.44799999999,
+          "linked_device_us": 112197.46699999982,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.059999999999491,
+          "device_fraction": 0.18928632904635043
+        },
+        "draft_forward": {
+          "calls": 7,
+          "host_elapsed_us": 70911.46900000014,
+          "linked_device_us": 85399.60499999918,
+          "linked_kernels": 2526,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14407613794398963
+        },
+        "target_verify": {
+          "calls": 7,
+          "host_elapsed_us": 473027.78699999995,
+          "linked_device_us": 393627.6780000033,
+          "linked_kernels": 15778,
+          "sync_calls": 7,
+          "sync_host_us": 21536.831000000122,
+          "device_fraction": 0.6640821773602038
+        },
+        "accept_decision": {
+          "calls": 7,
+          "host_elapsed_us": 40609.38299999997,
+          "linked_device_us": 1246.7259999989474,
+          "linked_kernels": 567,
+          "sync_calls": 21,
+          "sync_host_us": 25732.418000000238,
+          "device_fraction": 0.0021033290160324333
+        },
+        "commit_kv": {
+          "calls": 7,
+          "host_elapsed_us": 4491.975000000064,
+          "linked_device_us": 61.15200000023469,
+          "linked_kernels": 28,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010316843956813093
+        },
+        "publish_stop": {
+          "calls": 7,
+          "host_elapsed_us": 869.2449999999953,
+          "linked_device_us": 19.83899999994901,
+          "linked_kernels": 15,
+          "sync_calls": 14,
+          "sync_host_us": 21.829999999783468,
+          "device_fraction": 3.347002015598891e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5300000000279397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001215711556142196,
+        "strict_core": 0.0001295687397941947,
+        "sync_control": 6.517715519294143e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.013437356303474507
+    },
+    {
+      "request_id": "humaneval:82",
+      "method": "ASD-Utility",
+      "benchmark": "humaneval",
+      "tokens": 66,
+      "rounds": 7,
+      "median_latency_seconds": 0.6344093868974596,
+      "latency_samples_seconds": [
+        0.63351102208253,
+        0.6344093868974596,
+        0.6354534350102767
+      ],
+      "profiler_dilation": 1.1225280626862892,
+      "device_active_fraction_of_span": 0.8366110729741105,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 713110.816,
+          "linked_device_us": 63.869999999936226,
+          "linked_kernels": 24,
+          "sync_calls": 6,
+          "sync_host_us": 40.251000000000545,
+          "device_fraction": 0.00010748423317609635
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.041000000000054,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1781.159,
+          "linked_device_us": 1.7919999999999163,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.12199999999984,
+          "device_fraction": 3.0156841373375292e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65272.77100000001,
+          "linked_device_us": 113195.62999999987,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.899999999999636,
+          "device_fraction": 0.19049233582976768
+        },
+        "draft_forward": {
+          "calls": 7,
+          "host_elapsed_us": 71392.89099999995,
+          "linked_device_us": 85553.56200000033,
+          "linked_kernels": 2527,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14397462043311152
+        },
+        "target_verify": {
+          "calls": 7,
+          "host_elapsed_us": 470750.94299999997,
+          "linked_device_us": 393817.9060000059,
+          "linked_kernels": 15778,
+          "sync_calls": 7,
+          "sync_host_us": 22217.518999999942,
+          "device_fraction": 0.662740185336917
+        },
+        "accept_decision": {
+          "calls": 7,
+          "host_elapsed_us": 40545.64100000006,
+          "linked_device_us": 1511.7519999990182,
+          "linked_kernels": 721,
+          "sync_calls": 14,
+          "sync_host_us": 23041.604000000167,
+          "device_fraction": 0.002544066141733
+        },
+        "commit_kv": {
+          "calls": 7,
+          "host_elapsed_us": 4427.48299999992,
+          "linked_device_us": 62.81700000009732,
+          "linked_kernels": 28,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010571218217379124
+        },
+        "publish_stop": {
+          "calls": 7,
+          "host_elapsed_us": 880.334000000119,
+          "linked_device_us": 19.359999999869615,
+          "linked_kernels": 15,
+          "sync_calls": 14,
+          "sync_host_us": 21.702000000077533,
+          "device_fraction": 3.258015898351791e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.4699999999720603,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001487839239416644,
+        "strict_core": 0.0001298287243116647,
+        "sync_control": 6.585265509784222e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.016416646555073557
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "method": "DFlash",
+      "benchmark": "squad",
+      "tokens": 2,
+      "rounds": 1,
+      "median_latency_seconds": 0.2956997510045767,
+      "latency_samples_seconds": [
+        0.2961550729814917,
+        0.29491489997599274,
+        0.2956997510045767
+      ],
+      "profiler_dilation": 1.0402274329751902,
+      "device_active_fraction_of_span": 0.9399955630848225,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 5.820766091346741e-11,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 308504.44899999996,
+          "linked_device_us": 71.10400000004302,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 38.240999999948485,
+          "device_fraction": 0.00024758127485422805
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 48.06200000000001,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2098.989,
+          "linked_device_us": 1.856000000000222,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.690000000000055,
+          "device_fraction": 6.46251752544476e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 114150.366,
+          "linked_device_us": 213596.7499999996,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.911000000000058,
+          "device_fraction": 0.7437353126362475
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10387.98000000001,
+          "linked_device_us": 15499.20099999968,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.05396759595521385
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 69077.03699999998,
+          "linked_device_us": 57975.26899999942,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3969.609999999986,
+          "device_fraction": 0.201867560320488
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 4249.058000000019,
+          "linked_device_us": 37.98399999999674,
+          "linked_kernels": 8,
+          "sync_calls": 1,
+          "sync_host_us": 3966.880999999994,
+          "device_fraction": 0.00013225876383967853
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 820.8430000000517,
+          "linked_device_us": 8.446999999985565,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 2.941211505244185e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 158.52399999997579,
+          "linked_device_us": 3.9680000000516884,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.25099999998929,
+          "device_fraction": 1.3816416778715397e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.2100000000209548,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "method": "ASD",
+      "benchmark": "squad",
+      "tokens": 2,
+      "rounds": 1,
+      "median_latency_seconds": 0.2956502200104296,
+      "latency_samples_seconds": [
+        0.2956502200104296,
+        0.294536288944073,
+        0.29655778501182795
+      ],
+      "profiler_dilation": 1.039673459663579,
+      "device_active_fraction_of_span": 0.9372065310954463,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 5.820766091346741e-11,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 308317.293,
+          "linked_device_us": 69.85700000004272,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 39.652999999957615,
+          "device_fraction": 0.0002441492336215531
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.561000000000035,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2112.2690000000002,
+          "linked_device_us": 1.6959999999999127,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 5.2199999999998,
+          "device_fraction": 5.927496173925012e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 113216.739,
+          "linked_device_us": 212507.8020000002,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.360000000000582,
+          "device_fraction": 0.7427117825968632
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10385.350000000006,
+          "linked_device_us": 15384.281000000308,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.05376784597057416
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 68879.32200000001,
+          "linked_device_us": 57974.30799999871,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4363.380999999994,
+          "device_fraction": 0.2026193920141275
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5237.105999999971,
+          "linked_device_us": 173.56699999945704,
+          "linked_kernels": 74,
+          "sync_calls": 2,
+          "sync_host_us": 3269.140999999945,
+          "device_fraction": 0.0006066142266606587
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 823.7729999999865,
+          "linked_device_us": 8.704000000027008,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 3.0420357722880926e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 150.2050000000163,
+          "linked_device_us": 3.9679999999934807,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.0699999999487773,
+          "device_fraction": 1.3868104255953427e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.3699999999953434,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001078675501048565,
+        "strict_core": 0.00012901303125545382,
+        "sync_control": 6.520014721900225e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.003648485365613841
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "method": "ASD-Run",
+      "benchmark": "squad",
+      "tokens": 2,
+      "rounds": 1,
+      "median_latency_seconds": 0.2960733219515532,
+      "latency_samples_seconds": [
+        0.2949576609535143,
+        0.2960733219515532,
+        0.29735140793491155
+      ],
+      "profiler_dilation": 1.036240749421743,
+      "device_active_fraction_of_span": 0.9355139317084171,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 5.820766091346741e-11,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 307736.067,
+          "linked_device_us": 70.52899999996225,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 37.411000000003355,
+          "device_fraction": 0.00024768815405024704
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.22199999999998,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2444.6679999999997,
+          "linked_device_us": 1.6960000000003674,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.49200000000019,
+          "device_fraction": 5.956118891087848e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 113974.481,
+          "linked_device_us": 211117.96100000016,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.0,
+          "device_fraction": 0.7414172616508113
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10427.331000000006,
+          "linked_device_us": 15442.49900000036,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.05423193397375437
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 68761.55900000001,
+          "linked_device_us": 57919.79399999947,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4403.622999999992,
+          "device_fraction": 0.20340635566700396
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5832.581999999995,
+          "linked_device_us": 184.4499999997206,
+          "linked_kernels": 81,
+          "sync_calls": 3,
+          "sync_host_us": 3670.331999999995,
+          "device_fraction": 0.000647763048030219
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 798.2519999999786,
+          "linked_device_us": 8.3200000001234,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 2.9218696447273082e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 149.10399999999208,
+          "linked_device_us": 3.9359999999869615,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.070000000006985,
+          "device_fraction": 1.382269101134377e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.4799999999813735,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001211003982461989,
+        "strict_core": 0.00012956850696355104,
+        "sync_control": 6.554997526109219e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.0040902164858343665
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "method": "ASD-Utility",
+      "benchmark": "squad",
+      "tokens": 2,
+      "rounds": 1,
+      "median_latency_seconds": 0.2967423000372946,
+      "latency_samples_seconds": [
+        0.29656679602339864,
+        0.2967423000372946,
+        0.2977490379707888
+      ],
+      "profiler_dilation": 1.0398611218737324,
+      "device_active_fraction_of_span": 0.9301139356936066,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 5.820766091346741e-11,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 309538.51800000004,
+          "linked_device_us": 70.56100000003335,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 41.992000000037024,
+          "device_fraction": 0.0002476872452267613
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 47.61099999999999,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2759.977,
+          "linked_device_us": 1.7599999999997635,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.819999999999709,
+          "device_fraction": 6.178052346180401e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 112684.60399999999,
+          "linked_device_us": 211218.299,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.699999999999818,
+          "device_fraction": 0.741430515734863
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10415.350000000006,
+          "linked_device_us": 15437.850000000413,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.05419082125710027
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 69205.31199999998,
+          "linked_device_us": 57917.161999997916,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4392.752999999997,
+          "device_fraction": 0.203304124192185
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5817.0229999999865,
+          "linked_device_us": 221.4089999999851,
+          "linked_kernels": 103,
+          "sync_calls": 2,
+          "sync_host_us": 3192.2189999999828,
+          "device_fraction": 0.0007772024954065614
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 804.4619999999995,
+          "linked_device_us": 8.5120000000461,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 2.987930771078378e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 147.25400000001537,
+          "linked_device_us": 3.8719999999157153,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.020000000076834,
+          "device_fraction": 1.3591715161302847e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.39000000001397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014801259967498481,
+        "strict_core": 0.00012980855535715818,
+        "sync_control": 6.525020580738783e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.004987917113818373
+    },
+    {
+      "request_id": "json:12",
+      "method": "DFlash",
+      "benchmark": "json",
+      "tokens": 115,
+      "rounds": 10,
+      "median_latency_seconds": 0.9140252369688824,
+      "latency_samples_seconds": [
+        0.9122243380406871,
+        0.9140252369688824,
+        0.918011529953219
+      ],
+      "profiler_dilation": 1.116379926691401,
+      "device_active_fraction_of_span": 0.8570464338355805,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 118.91199999989476,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1021436.557,
+          "linked_device_us": 85.72799999999552,
+          "linked_kernels": 30,
+          "sync_calls": 6,
+          "sync_host_us": 39.41999999991731,
+          "device_fraction": 9.822521626825275e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 50.922000000000025,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1996.4260000000002,
+          "linked_device_us": 1.8240000000000691,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.589999999999691,
+          "device_fraction": 2.0898982184736513e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 90177.09599999999,
+          "linked_device_us": 177826.22800000015,
+          "linked_kernels": 2146,
+          "sync_calls": 1,
+          "sync_host_us": 4.109999999999673,
+          "device_fraction": 0.20374929665300195
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 99571.56000000014,
+          "linked_device_us": 124213.8189999978,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14232140298130164
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 681571.039,
+          "linked_device_us": 570030.3340000125,
+          "linked_kernels": 22539,
+          "sync_calls": 10,
+          "sync_host_us": 33115.854999999894,
+          "device_fraction": 0.653127949288663
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 41801.25699999981,
+          "linked_device_us": 375.29699999978766,
+          "linked_kernels": 80,
+          "sync_calls": 10,
+          "sync_host_us": 38848.28299999988,
+          "device_fraction": 0.0004300068704484827
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 6241.274999999907,
+          "linked_device_us": 90.40200000000186,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010358058045309856
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1523.2820000001811,
+          "linked_device_us": 27.232000000134576,
+          "linked_kernels": 21,
+          "sync_calls": 20,
+          "sync_host_us": 31.179999999934807,
+          "device_fraction": 3.120181375315437e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6800000000512227,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "method": "ASD",
+      "benchmark": "json",
+      "tokens": 115,
+      "rounds": 10,
+      "median_latency_seconds": 0.9213583120144904,
+      "latency_samples_seconds": [
+        0.9191401699790731,
+        0.9213583120144904,
+        0.9227158409776166
+      ],
+      "profiler_dilation": 1.1217883787809486,
+      "device_active_fraction_of_span": 0.8448185367323626,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.2480000000214204,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1034589.425,
+          "linked_device_us": 84.0329999999758,
+          "linked_kernels": 30,
+          "sync_calls": 6,
+          "sync_host_us": 41.59099999989053,
+          "device_fraction": 9.64227317965139e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 48.69099999999992,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1905.8029999999999,
+          "linked_device_us": 1.7280000000005202,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.61200000000008,
+          "device_fraction": 1.9827743927323093e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 90200.398,
+          "linked_device_us": 177545.34499999983,
+          "linked_kernels": 2146,
+          "sync_calls": 1,
+          "sync_host_us": 3.5,
+          "device_fraction": 0.2037224326474057
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 101215.18599999993,
+          "linked_device_us": 123778.92699999962,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1420287539441014
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 683637.642,
+          "linked_device_us": 568298.501999998,
+          "linked_kernels": 22539,
+          "sync_calls": 10,
+          "sync_host_us": 31816.566000000195,
+          "device_fraction": 0.6520877993017291
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 51903.978999999876,
+          "linked_device_us": 1678.1530000019702,
+          "linked_kernels": 740,
+          "sync_calls": 20,
+          "sync_host_us": 32728.5560000001,
+          "device_fraction": 0.0019255780066491943
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 6322.7179999999935,
+          "linked_device_us": 91.06899999995949,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010449611178912267
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1238.63400000002,
+          "linked_device_us": 27.105999999970663,
+          "linked_kernels": 21,
+          "sync_calls": 20,
+          "sync_host_us": 31.29999999969732,
+          "device_fraction": 3.110247840817571e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.490000000107102,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001079179986845702,
+        "strict_core": 0.0001289309875573963,
+        "sync_control": 6.552989361807704e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.011712923981617366
+    },
+    {
+      "request_id": "json:12",
+      "method": "ASD-Run",
+      "benchmark": "json",
+      "tokens": 115,
+      "rounds": 10,
+      "median_latency_seconds": 0.9251757090678439,
+      "latency_samples_seconds": [
+        0.9204415760468692,
+        0.9251757090678439,
+        0.9264413850614801
+      ],
+      "profiler_dilation": 1.1159618533600832,
+      "device_active_fraction_of_span": 0.8436895462845755,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.9519999999320135,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1033440.3960000001,
+          "linked_device_us": 83.8400000001293,
+          "linked_kernels": 30,
+          "sync_calls": 6,
+          "sync_host_us": 40.92099999997413,
+          "device_fraction": 9.64325373992099e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 47.90199999999993,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1906.163,
+          "linked_device_us": 1.6970000000001164,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 83.16300000000001,
+          "device_fraction": 1.951884732421494e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 88648.65400000001,
+          "linked_device_us": 175813.12099999996,
+          "linked_kernels": 2146,
+          "sync_calls": 1,
+          "sync_host_us": 3.930000000000291,
+          "device_fraction": 0.20221976820226822
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 102477.10000000012,
+          "linked_device_us": 123825.9910000005,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.14242431426626148
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 675678.4510000001,
+          "linked_device_us": 567775.9629999902,
+          "linked_kernels": 22539,
+          "sync_calls": 10,
+          "sync_host_us": 32090.91399999999,
+          "device_fraction": 0.6530543509814473
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 59263.51400000026,
+          "linked_device_us": 1797.3690000024508,
+          "linked_kernels": 810,
+          "sync_calls": 30,
+          "sync_host_us": 36862.00899999996,
+          "device_fraction": 0.002067328880160419
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 6312.984999999928,
+          "linked_device_us": 89.28099999960978,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010269076063320553
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1243.0329999999958,
+          "linked_device_us": 26.87999999988824,
+          "linked_kernels": 21,
+          "sync_calls": 20,
+          "sync_host_us": 31.709999999962747,
+          "device_fraction": 3.0917302066746035e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.559999999939464,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012161740160081536,
+        "strict_core": 0.0001291112566832453,
+        "sync_control": 6.502494215965271e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.013145330169049764
+    },
+    {
+      "request_id": "json:12",
+      "method": "ASD-Utility",
+      "benchmark": "json",
+      "tokens": 115,
+      "rounds": 10,
+      "median_latency_seconds": 0.9245845819823444,
+      "latency_samples_seconds": [
+        0.9245845819823444,
+        0.925076917046681,
+        0.9244982909876853
+      ],
+      "profiler_dilation": 1.1194543183068901,
+      "device_active_fraction_of_span": 0.8413185279127376,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1036015.01,
+          "linked_device_us": 83.93500000009044,
+          "linked_kernels": 30,
+          "sync_calls": 6,
+          "sync_host_us": 57.64199999989853,
+          "device_fraction": 9.657662951064387e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 49.80099999999993,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1938.054,
+          "linked_device_us": 1.7280000000000655,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.70299999999997,
+          "device_fraction": 1.9882577684424745e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 89201.46,
+          "linked_device_us": 175760.87199999968,
+          "linked_kernels": 2146,
+          "sync_calls": 1,
+          "sync_host_us": 3.4700000000002547,
+          "device_fraction": 0.20223259209618608
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 104485.07900000014,
+          "linked_device_us": 123654.29500000045,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1422781323119323
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 677609.5550000003,
+          "linked_device_us": 567314.6269999982,
+          "linked_kernels": 22540,
+          "sync_calls": 10,
+          "sync_host_us": 32420.924000000115,
+          "device_fraction": 0.6527590939142064
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 57844.24599999993,
+          "linked_device_us": 2169.1600000000326,
+          "linked_kernels": 1030,
+          "sync_calls": 20,
+          "sync_host_us": 32809.586999999825,
+          "device_fraction": 0.0024958618177051963
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 6244.331999999937,
+          "linked_device_us": 90.7840000000433,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010445717201988477
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1256.6830000001355,
+          "linked_device_us": 27.201000000117347,
+          "linked_kernels": 21,
+          "sync_calls": 20,
+          "sync_host_us": 30.900999999954365,
+          "device_fraction": 3.129780067108508e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.64000000001397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014868665020912886,
+        "strict_core": 0.00012984374188818038,
+        "sync_control": 6.560207111760974e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.016081454645321798
+    },
+    {
+      "request_id": "gsm8k:52",
+      "method": "DFlash",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 24,
+      "median_latency_seconds": 1.83496354194358,
+      "latency_samples_seconds": [
+        1.8328727020416409,
+        1.83496354194358,
+        1.8400253989966586
+      ],
+      "profiler_dilation": 1.1554875268799785,
+      "device_active_fraction_of_span": 0.8302636584051617,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 3.9679999998770654,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2121901.1610000003,
+          "linked_device_us": 102.2070000003605,
+          "linked_kernels": 59,
+          "sync_calls": 6,
+          "sync_host_us": 32.63099999990436,
+          "device_fraction": 5.8091002987326623e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 150.5250000000001,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 962.4770000000001,
+          "linked_device_us": 1.9200000000000728,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 5.160000000000309,
+          "device_fraction": 1.0912630811517602e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 69331.07800000001,
+          "linked_device_us": 128717.85500000017,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.300000000000182,
+          "device_fraction": 0.07315887658673977
+        },
+        "draft_forward": {
+          "calls": 24,
+          "host_elapsed_us": 243707.29799999995,
+          "linked_device_us": 287809.553000001,
+          "linked_kernels": 8620,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16358121853733332
+        },
+        "target_verify": {
+          "calls": 24,
+          "host_elapsed_us": 1609321.215,
+          "linked_device_us": 1341656.4880000015,
+          "linked_kernels": 54094,
+          "sync_calls": 24,
+          "sync_host_us": 77215.10300000015,
+          "device_fraction": 0.7625521838239977
+        },
+        "accept_decision": {
+          "calls": 24,
+          "host_elapsed_us": 102273.71600000045,
+          "linked_device_us": 876.6429999995453,
+          "linked_kernels": 192,
+          "sync_calls": 24,
+          "sync_host_us": 95447.98900000032,
+          "device_fraction": 0.0004982542402341614
+        },
+        "commit_kv": {
+          "calls": 24,
+          "host_elapsed_us": 18628.898000000074,
+          "linked_device_us": 200.54200000030687,
+          "linked_kernels": 96,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011398129209409524
+        },
+        "publish_stop": {
+          "calls": 24,
+          "host_elapsed_us": 2942.401000000071,
+          "linked_device_us": 59.90500000005704,
+          "linked_kernels": 48,
+          "sync_calls": 48,
+          "sync_host_us": 82.40200000038021,
+          "device_fraction": 3.404797649815415e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.790000000037253,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:52",
+      "method": "ASD",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 21,
+      "median_latency_seconds": 1.630892077111639,
+      "latency_samples_seconds": [
+        1.630892077111639,
+        1.6285859730560333,
+        1.6311603300273418
+      ],
+      "profiler_dilation": 1.1617896411114614,
+      "device_active_fraction_of_span": 0.8270037141018368,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1895577.7040000001,
+          "linked_device_us": 94.013999999941,
+          "linked_kernels": 53,
+          "sync_calls": 6,
+          "sync_host_us": 34.15100000043276,
+          "device_fraction": 6.059007720682942e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.18100000000004,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18485.113999999998,
+          "linked_device_us": 1.7600000000020373,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 52.21200000000317,
+          "device_fraction": 1.1342835735551101e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 68658.76,
+          "linked_device_us": 127159.03499999999,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.900000000001455,
+          "device_fraction": 0.0819513662667343
+        },
+        "draft_forward": {
+          "calls": 21,
+          "host_elapsed_us": 213643.91199999957,
+          "linked_device_us": 252523.87200000093,
+          "linked_kernels": 7570,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1627464090567061
+        },
+        "target_verify": {
+          "calls": 21,
+          "host_elapsed_us": 1396636.0829999999,
+          "linked_device_us": 1168295.5619999978,
+          "linked_kernels": 47190,
+          "sync_calls": 21,
+          "sync_host_us": 67488.75600000037,
+          "device_fraction": 0.7529423096774996
+        },
+        "accept_decision": {
+          "calls": 21,
+          "host_elapsed_us": 108427.17800000025,
+          "linked_device_us": 3336.7190000038536,
+          "linked_kernels": 1554,
+          "sync_calls": 42,
+          "sync_host_us": 70564.5320000007,
+          "device_fraction": 0.0021504463359484226
+        },
+        "commit_kv": {
+          "calls": 21,
+          "host_elapsed_us": 15499.229999999545,
+          "linked_device_us": 176.44600000069477,
+          "linked_kernels": 84,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011371579512503487
+        },
+        "publish_stop": {
+          "calls": 21,
+          "host_elapsed_us": 2446.470000000263,
+          "linked_device_us": 52.799999999202555,
+          "linked_kernels": 42,
+          "sync_calls": 42,
+          "sync_host_us": 66.32200000013108,
+          "device_fraction": 3.402850720609998e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6499999999068677,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001074999978300184,
+        "strict_core": 0.0001281839795410633,
+        "sync_control": 6.351037882268429e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.013842117367008671
+    },
+    {
+      "request_id": "gsm8k:52",
+      "method": "ASD-Run",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 23,
+      "median_latency_seconds": 1.780169902020134,
+      "latency_samples_seconds": [
+        1.776523242937401,
+        1.780169902020134,
+        1.786632245988585
+      ],
+      "profiler_dilation": 1.1560430752294322,
+      "device_active_fraction_of_span": 0.8266812978470228,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.8880000000353903,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2058794.0010000002,
+          "linked_device_us": 99.1709999988725,
+          "linked_kernels": 57,
+          "sync_calls": 6,
+          "sync_host_us": 34.6700000002503,
+          "device_fraction": 5.860091131639316e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.48199999999997,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 10787.47,
+          "linked_device_us": 1.8240000000005239,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 54.40200000000186,
+          "device_fraction": 1.0778157146983197e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 69445.883,
+          "linked_device_us": 128156.5119999998,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.90099999999984,
+          "device_fraction": 0.07572867465706354
+        },
+        "draft_forward": {
+          "calls": 23,
+          "host_elapsed_us": 231572.5940000004,
+          "linked_device_us": 276217.74000000936,
+          "linked_kernels": 8291,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1632192000276202
+        },
+        "target_verify": {
+          "calls": 23,
+          "host_elapsed_us": 1520509.632,
+          "linked_device_us": 1283635.442999988,
+          "linked_kernels": 51842,
+          "sync_calls": 23,
+          "sync_host_us": 73087.62100000019,
+          "device_fraction": 0.758510116452154
+        },
+        "accept_decision": {
+          "calls": 23,
+          "host_elapsed_us": 133724.0219999999,
+          "linked_device_us": 3950.6030000050378,
+          "linked_kernels": 1863,
+          "sync_calls": 69,
+          "sync_host_us": 86475.40399999873,
+          "device_fraction": 0.0023344418837382306
+        },
+        "commit_kv": {
+          "calls": 23,
+          "host_elapsed_us": 17435.860000000073,
+          "linked_device_us": 190.52699999994365,
+          "linked_kernels": 92,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011258387865910473
+        },
+        "publish_stop": {
+          "calls": 23,
+          "host_elapsed_us": 2683.334999999992,
+          "linked_device_us": 57.85800000024028,
+          "linked_kernels": 46,
+          "sync_calls": 46,
+          "sync_host_us": 71.833000000217,
+          "device_fraction": 3.418873992393445e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6899999999441206,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012655150494538248,
+        "strict_core": 0.00013600895181298256,
+        "sync_control": 6.535032298415899e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.0163506000772216
+    },
+    {
+      "request_id": "gsm8k:52",
+      "method": "ASD-Utility",
+      "benchmark": "gsm8k",
+      "tokens": 128,
+      "rounds": 21,
+      "median_latency_seconds": 1.6382339539704844,
+      "latency_samples_seconds": [
+        1.6315507319523022,
+        1.6382339539704844,
+        1.638903244980611
+      ],
+      "profiler_dilation": 1.1858305342956619,
+      "device_active_fraction_of_span": 0.8065869291025319,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1943505.699,
+          "linked_device_us": 93.6989999999787,
+          "linked_kernels": 53,
+          "sync_calls": 6,
+          "sync_host_us": 34.48999999955879,
+          "device_fraction": 6.038107575076452e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 42.551000000000045,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18827.874,
+          "linked_device_us": 1.9199999999982538,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 51.72099999999773,
+          "device_fraction": 1.237277510340439e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 72904.21900000001,
+          "linked_device_us": 127735.46800000011,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 5.600000000002183,
+          "device_fraction": 0.08231469886945557
+        },
+        "draft_forward": {
+          "calls": 21,
+          "host_elapsed_us": 215175.65900000028,
+          "linked_device_us": 252321.91000000032,
+          "linked_kernels": 7570,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16260011698407742
+        },
+        "target_verify": {
+          "calls": 21,
+          "host_elapsed_us": 1422261.07,
+          "linked_device_us": 1167081.442999964,
+          "linked_kernels": 47190,
+          "sync_calls": 21,
+          "sync_host_us": 65958.50600000028,
+          "device_fraction": 0.7520852198754353
+        },
+        "accept_decision": {
+          "calls": 21,
+          "host_elapsed_us": 121826.03900000048,
+          "linked_device_us": 4331.580999997503,
+          "linked_kernels": 2163,
+          "sync_calls": 42,
+          "sync_host_us": 68944.82000000015,
+          "device_fraction": 0.002791337372666528
+        },
+        "commit_kv": {
+          "calls": 21,
+          "host_elapsed_us": 16238.980999999825,
+          "linked_device_us": 175.80599999875994,
+          "linked_kernels": 84,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011329208853207018
+        },
+        "publish_stop": {
+          "calls": 21,
+          "host_elapsed_us": 2513.048999999737,
+          "linked_device_us": 52.32099999990896,
+          "linked_kernels": 42,
+          "sync_calls": 42,
+          "sync_host_us": 66.47200000062003,
+          "device_fraction": 3.371645657211893e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5300000000279397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014823509845882654,
+        "strict_core": 0.00012839853297919035,
+        "sync_control": 6.360001862049103e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.019001785795555805
+    },
+    {
+      "request_id": "math500:448",
+      "method": "DFlash",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 20,
+      "median_latency_seconds": 1.576008818927221,
+      "latency_samples_seconds": [
+        1.5687468119431287,
+        1.576008818927221,
+        1.578555871034041
+      ],
+      "profiler_dilation": 1.1458458242098097,
+      "device_active_fraction_of_span": 0.8263414570757798,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.8479999999981374,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1806707.8069999998,
+          "linked_device_us": 92.16000000025633,
+          "linked_kernels": 51,
+          "sync_calls": 6,
+          "sync_host_us": 32.62099999972611,
+          "device_fraction": 6.180229556315245e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.990999999999985,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1206.1129999999998,
+          "linked_device_us": 1.6000000000001364,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.190000000000055,
+          "device_fraction": 1.072956520190726e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 69498.176,
+          "linked_device_us": 129340.00600000004,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.8799999999991996,
+          "device_fraction": 0.08673512672449739
+        },
+        "draft_forward": {
+          "calls": 20,
+          "host_elapsed_us": 203671.16299999965,
+          "linked_device_us": 241211.80500000034,
+          "linked_kernels": 7198,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.16175611182606392
+        },
+        "target_verify": {
+          "calls": 20,
+          "host_elapsed_us": 1354198.6539999999,
+          "linked_device_us": 1119623.7909999972,
+          "linked_kernels": 45007,
+          "sync_calls": 20,
+          "sync_host_us": 61482.04400000014,
+          "device_fraction": 0.750817279196252
+        },
+        "accept_decision": {
+          "calls": 20,
+          "host_elapsed_us": 84850.27400000021,
+          "linked_device_us": 715.3960000002116,
+          "linked_kernels": 160,
+          "sync_calls": 20,
+          "sync_host_us": 79366.94799999974,
+          "device_fraction": 0.0004797430016990789
+        },
+        "commit_kv": {
+          "calls": 20,
+          "host_elapsed_us": 17643.71199999994,
+          "linked_device_us": 168.61100000017905,
+          "linked_kernels": 80,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011307016989128449
+        },
+        "publish_stop": {
+          "calls": 20,
+          "host_elapsed_us": 2512.17899999948,
+          "linked_device_us": 50.52799999914714,
+          "linked_kernels": 40,
+          "sync_calls": 40,
+          "sync_host_us": 63.012999999686144,
+          "device_fraction": 3.388396690704831e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.7700000000186265,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "method": "ASD",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 15,
+      "median_latency_seconds": 1.2173669300973415,
+      "latency_samples_seconds": [
+        1.2165656259749085,
+        1.2173669300973415,
+        1.2178523049224168
+      ],
+      "profiler_dilation": 1.176072271693824,
+      "device_active_fraction_of_span": 0.8164268325304718,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 3.1040000000502914,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1432559.946,
+          "linked_device_us": 87.61499999990701,
+          "linked_kernels": 41,
+          "sync_calls": 6,
+          "sync_host_us": 35.20300000011014,
+          "device_fraction": 7.614872661629925e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 40.591999999999985,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 22369.553000000004,
+          "linked_device_us": 2.0159999999996217,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 175.76499999999942,
+          "device_fraction": 1.752163817366814e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 74746.96299999999,
+          "linked_device_us": 134702.96100000027,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.259999999998399,
+          "device_fraction": 0.11707423331171521
+        },
+        "draft_forward": {
+          "calls": 15,
+          "host_elapsed_us": 153799.2740000001,
+          "linked_device_us": 180918.8660000009,
+          "linked_kernels": 5415,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.157241810954512
+        },
+        "target_verify": {
+          "calls": 15,
+          "host_elapsed_us": 1020261.9699999997,
+          "linked_device_us": 832312.926999996,
+          "linked_kernels": 33593,
+          "sync_calls": 15,
+          "sync_host_us": 46814.66599999985,
+          "device_fraction": 0.7233872001073081
+        },
+        "accept_decision": {
+          "calls": 15,
+          "host_elapsed_us": 77000.62199999992,
+          "linked_device_us": 2384.258999997779,
+          "linked_kernels": 1110,
+          "sync_calls": 30,
+          "sync_host_us": 48846.830000000075,
+          "device_fraction": 0.0020722283487242437
+        },
+        "commit_kv": {
+          "calls": 15,
+          "host_elapsed_us": 10840.532000000007,
+          "linked_device_us": 127.93600000016158,
+          "linked_kernels": 60,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011119287209274103
+        },
+        "publish_stop": {
+          "calls": 15,
+          "host_elapsed_us": 1801.4520000001066,
+          "linked_device_us": 37.66500000070664,
+          "linked_kernels": 30,
+          "sync_calls": 30,
+          "sync_host_us": 46.9120000001858,
+          "device_fraction": 3.2735739177763687e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.4500000001862645,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010795299313031137,
+        "strict_core": 0.00012820347910746932,
+        "sync_control": 6.354996003210545e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.013301617260337363
+    },
+    {
+      "request_id": "math500:448",
+      "method": "ASD-Run",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 18,
+      "median_latency_seconds": 1.4465442310320213,
+      "latency_samples_seconds": [
+        1.4405847929883748,
+        1.4465442310320213,
+        1.4485393509967253
+      ],
+      "profiler_dilation": 1.159670628781943,
+      "device_active_fraction_of_span": 0.814813259103636,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.112999999895692,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1678385.912,
+          "linked_device_us": 86.90899999926842,
+          "linked_kernels": 47,
+          "sync_calls": 6,
+          "sync_host_us": 35.54200000040703,
+          "device_fraction": 6.432292906503119e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.93100000000004,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 19232.005,
+          "linked_device_us": 2.0159999999996217,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 68.90299999999843,
+          "device_fraction": 1.492078208196736e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 70913.086,
+          "linked_device_us": 129152.41299999974,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.18999999999869,
+          "device_fraction": 0.0955880461177384
+        },
+        "draft_forward": {
+          "calls": 18,
+          "host_elapsed_us": 186169.185,
+          "linked_device_us": 216804.03900001006,
+          "linked_kernels": 6498,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1604606061711364
+        },
+        "target_verify": {
+          "calls": 18,
+          "host_elapsed_us": 1211425.96,
+          "linked_device_us": 1001818.786000008,
+          "linked_kernels": 40499,
+          "sync_calls": 18,
+          "sync_host_us": 56170.31299999982,
+          "device_fraction": 0.7414642753735128
+        },
+        "accept_decision": {
+          "calls": 18,
+          "host_elapsed_us": 103909.79299999963,
+          "linked_device_us": 3075.6719999953348,
+          "linked_kernels": 1458,
+          "sync_calls": 54,
+          "sync_host_us": 66480.3819999994,
+          "device_fraction": 0.0022763606977950256
+        },
+        "commit_kv": {
+          "calls": 18,
+          "host_elapsed_us": 13312.618999999715,
+          "linked_device_us": 148.70199999999022,
+          "linked_kernels": 72,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011005705045401691
+        },
+        "publish_stop": {
+          "calls": 18,
+          "host_elapsed_us": 2155.830000000162,
+          "linked_device_us": 44.9599999995844,
+          "linked_kernels": 36,
+          "sync_calls": 36,
+          "sync_host_us": 56.702999999863096,
+          "device_fraction": 3.327571242059411e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.640000000130385,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001272420515306294,
+        "strict_core": 0.00013607897562906146,
+        "sync_control": 6.620015483349562e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.01583330034725104
+    },
+    {
+      "request_id": "math500:448",
+      "method": "ASD-Utility",
+      "benchmark": "math500",
+      "tokens": 128,
+      "rounds": 15,
+      "median_latency_seconds": 1.2328558720182627,
+      "latency_samples_seconds": [
+        1.2314884029328823,
+        1.2328558720182627,
+        1.2336082439869642
+      ],
+      "profiler_dilation": 1.1639217775549775,
+      "device_active_fraction_of_span": 0.8199369344130112,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 33.88699999987148,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1435801.392,
+          "linked_device_us": 78.40200000036202,
+          "linked_kernels": 41,
+          "sync_calls": 6,
+          "sync_host_us": 36.28100000014081,
+          "device_fraction": 6.752399157759518e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.51099999999997,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18800.444,
+          "linked_device_us": 1.9199999999982538,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 52.33100000000195,
+          "device_fraction": 1.6536065894781533e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 77129.469,
+          "linked_device_us": 138467.4639999998,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.349999999998545,
+          "device_fraction": 0.1192555785931963
+        },
+        "draft_forward": {
+          "calls": 15,
+          "host_elapsed_us": 153339.6739999998,
+          "linked_device_us": 180651.06100000037,
+          "linked_kernels": 5404,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.15558634628442297
+        },
+        "target_verify": {
+          "calls": 15,
+          "host_elapsed_us": 1013871.9940000003,
+          "linked_device_us": 838528.3779999824,
+          "linked_kernels": 33808,
+          "sync_calls": 15,
+          "sync_host_us": 47750.47999999995,
+          "device_fraction": 0.7221854433991979
+        },
+        "accept_decision": {
+          "calls": 15,
+          "host_elapsed_us": 86356.98600000047,
+          "linked_device_us": 3169.8870000020834,
+          "linked_kernels": 1545,
+          "sync_calls": 30,
+          "sync_host_us": 48999.98300000033,
+          "device_fraction": 0.002730076057869452
+        },
+        "commit_kv": {
+          "calls": 15,
+          "host_elapsed_us": 10991.796000000031,
+          "linked_device_us": 130.36599999960163,
+          "linked_kernels": 60,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011227816491846159
+        },
+        "publish_stop": {
+          "calls": 15,
+          "host_elapsed_us": 1795.3770000000077,
+          "linked_device_us": 37.05600000018603,
+          "linked_kernels": 30,
+          "sync_calls": 30,
+          "sync_host_us": 47.61100000003353,
+          "device_fraction": 3.1914607177117605e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.659999999916181,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014863565447740257,
+        "strict_core": 0.00012924353359267116,
+        "sync_control": 6.369955372065306e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.018084310321782784
+    },
+    {
+      "request_id": "mbpp:217",
+      "method": "DFlash",
+      "benchmark": "mbpp",
+      "tokens": 39,
+      "rounds": 4,
+      "median_latency_seconds": 0.4038479559822008,
+      "latency_samples_seconds": [
+        0.4038382370490581,
+        0.4038479559822008,
+        0.40609797998331487
+      ],
+      "profiler_dilation": 1.1277666462864018,
+      "device_active_fraction_of_span": 0.843306192110434,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 5.820766091346741e-11,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 456264.358,
+          "linked_device_us": 53.08800000003521,
+          "linked_kernels": 18,
+          "sync_calls": 6,
+          "sync_host_us": 55.38199999993901,
+          "device_fraction": 0.00013864487902933955
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 44.19100000000003,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1353.237,
+          "linked_device_us": 1.7920000000001437,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.110000000000127,
+          "device_fraction": 4.6799959165994495e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65115.995,
+          "linked_device_us": 108974.91500000015,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.010000000000218,
+          "device_fraction": 0.284599418086904
+        },
+        "draft_forward": {
+          "calls": 4,
+          "host_elapsed_us": 40862.968999999925,
+          "linked_device_us": 49251.69900000043,
+          "linked_kernels": 1444,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1286259766772147
+        },
+        "target_verify": {
+          "calls": 4,
+          "host_elapsed_us": 275340.4270000001,
+          "linked_device_us": 224431.86300000147,
+          "linked_kernels": 9016,
+          "sync_calls": 4,
+          "sync_host_us": 12844.45700000001,
+          "device_fraction": 0.5861273450863448
+        },
+        "accept_decision": {
+          "calls": 4,
+          "host_elapsed_us": 16956.85400000002,
+          "linked_device_us": 147.07199999995646,
+          "linked_kernels": 32,
+          "sync_calls": 4,
+          "sync_host_us": 15836.610999999946,
+          "device_fraction": 0.00038409395058362463
+        },
+        "commit_kv": {
+          "calls": 4,
+          "host_elapsed_us": 3275.14300000004,
+          "linked_device_us": 34.78399999989779,
+          "linked_kernels": 16,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.084206359514724e-05
+        },
+        "publish_stop": {
+          "calls": 4,
+          "host_elapsed_us": 531.8660000000382,
+          "linked_device_us": 11.10399999996298,
+          "linked_kernels": 9,
+          "sync_calls": 8,
+          "sync_host_us": 13.079999999987194,
+          "device_fraction": 2.899926041168687e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.3999999999650754,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "method": "ASD",
+      "benchmark": "mbpp",
+      "tokens": 39,
+      "rounds": 4,
+      "median_latency_seconds": 0.40636773698497564,
+      "latency_samples_seconds": [
+        0.4060882789781317,
+        0.4070916670607403,
+        0.40636773698497564
+      ],
+      "profiler_dilation": 1.126967335894687,
+      "device_active_fraction_of_span": 0.839928792565401,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 458793.358,
+          "linked_device_us": 52.57700000003251,
+          "linked_kernels": 18,
+          "sync_calls": 6,
+          "sync_host_us": 37.62099999999225,
+          "device_fraction": 0.0001371775307552204
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.831999999999994,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1582.364,
+          "linked_device_us": 1.9519999999997708,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 83.1319999999996,
+          "device_fraction": 5.092921620366189e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 64981.101,
+          "linked_device_us": 109026.01000000008,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.369999999999891,
+          "device_fraction": 0.28445744032342524
+        },
+        "draft_forward": {
+          "calls": 4,
+          "host_elapsed_us": 42123.98299999995,
+          "linked_device_us": 49254.140000000174,
+          "linked_kernels": 1444,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.12850792750951512
+        },
+        "target_verify": {
+          "calls": 4,
+          "host_elapsed_us": 272618.7679999999,
+          "linked_device_us": 224234.4409999975,
+          "linked_kernels": 9016,
+          "sync_calls": 4,
+          "sync_host_us": 12056.507000000012,
+          "device_fraction": 0.5850453035859365
+        },
+        "accept_decision": {
+          "calls": 4,
+          "host_elapsed_us": 20747.57699999999,
+          "linked_device_us": 660.8600000000442,
+          "linked_kernels": 296,
+          "sync_calls": 8,
+          "sync_host_us": 13270.528999999922,
+          "device_fraction": 0.0017242357489937606
+        },
+        "commit_kv": {
+          "calls": 4,
+          "host_elapsed_us": 3207.378000000026,
+          "linked_device_us": 35.619000000093365,
+          "linked_kernels": 16,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.293277417844268e-05
+        },
+        "publish_stop": {
+          "calls": 4,
+          "host_elapsed_us": 495.49300000001676,
+          "linked_device_us": 11.456000000063796,
+          "linked_kernels": 9,
+          "sync_calls": 8,
+          "sync_host_us": 12.690000000060536,
+          "device_fraction": 2.9889605575433825e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.3999999999650754,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.00108413549605757,
+        "strict_core": 0.00012843403965234756,
+        "sync_control": 6.299989763647318e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.010671472140984982
+    },
+    {
+      "request_id": "mbpp:217",
+      "method": "ASD-Run",
+      "benchmark": "mbpp",
+      "tokens": 39,
+      "rounds": 4,
+      "median_latency_seconds": 0.4086504310835153,
+      "latency_samples_seconds": [
+        0.40847515501081944,
+        0.41001748794224113,
+        0.4086504310835153
+      ],
+      "profiler_dilation": 1.1167241908544998,
+      "device_active_fraction_of_span": 0.8442308860563599,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 457169.21400000004,
+          "linked_device_us": 52.640999999993255,
+          "linked_kernels": 18,
+          "sync_calls": 6,
+          "sync_host_us": 36.13000000004604,
+          "device_fraction": 0.00013717002093674996
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 45.351999999999975,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1678.487,
+          "linked_device_us": 1.7599999999997635,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.87199999999984,
+          "device_fraction": 4.586144580245027e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 66601.857,
+          "linked_device_us": 109086.62199999996,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.449999999999818,
+          "device_fraction": 0.28425398878557095
+        },
+        "draft_forward": {
+          "calls": 4,
+          "host_elapsed_us": 40984.78099999999,
+          "linked_device_us": 49299.85799999947,
+          "linked_kernels": 1444,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1284637935077144
+        },
+        "target_verify": {
+          "calls": 4,
+          "host_elapsed_us": 269554.1440000001,
+          "linked_device_us": 224568.36699999697,
+          "linked_kernels": 9016,
+          "sync_calls": 4,
+          "sync_host_us": 12101.536999999997,
+          "device_fraction": 0.5851721586429832
+        },
+        "accept_decision": {
+          "calls": 4,
+          "host_elapsed_us": 23188.646999999997,
+          "linked_device_us": 709.285000000149,
+          "linked_kernels": 324,
+          "sync_calls": 12,
+          "sync_host_us": 14808.404000000097,
+          "device_fraction": 0.0018482292946592125
+        },
+        "commit_kv": {
+          "calls": 4,
+          "host_elapsed_us": 3225.100999999995,
+          "linked_device_us": 34.97599999996601,
+          "linked_kernels": 16,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.113920047642937e-05
+        },
+        "publish_stop": {
+          "calls": 4,
+          "host_elapsed_us": 494.13300000003073,
+          "linked_device_us": 11.103999999904772,
+          "linked_kernels": 9,
+          "sync_calls": 8,
+          "sync_host_us": 12.690000000031432,
+          "device_fraction": 2.8934403078756185e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.830000000016298,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012224639649502933,
+        "strict_core": 0.00012927898205816746,
+        "sync_control": 6.32554292678833e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.011965864924786634
+    },
+    {
+      "request_id": "mbpp:217",
+      "method": "ASD-Utility",
+      "benchmark": "mbpp",
+      "tokens": 39,
+      "rounds": 4,
+      "median_latency_seconds": 0.4083406920544803,
+      "latency_samples_seconds": [
+        0.40825285902246833,
+        0.4083406920544803,
+        0.4088439360493794
+      ],
+      "profiler_dilation": 1.1173546938511498,
+      "device_active_fraction_of_span": 0.8419562778057917,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 457105.69299999997,
+          "linked_device_us": 52.447000000013304,
+          "linked_kernels": 18,
+          "sync_calls": 6,
+          "sync_host_us": 45.989999999986026,
+          "device_fraction": 0.0001370074989630021
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 67.16199999999992,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1545.4830000000002,
+          "linked_device_us": 1.8239999999996144,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 83.51200000000017,
+          "device_fraction": 4.764842185604508e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 65164.55700000001,
+          "linked_device_us": 108365.64399999997,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.9200000000000728,
+          "device_fraction": 0.28308398684293257
+        },
+        "draft_forward": {
+          "calls": 4,
+          "host_elapsed_us": 41123.84599999999,
+          "linked_device_us": 49223.17999999966,
+          "linked_kernels": 1444,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1285859016302917
+        },
+        "target_verify": {
+          "calls": 4,
+          "host_elapsed_us": 270077.789,
+          "linked_device_us": 224257.46400000164,
+          "linked_kernels": 9016,
+          "sync_calls": 4,
+          "sync_host_us": 12035.275999999983,
+          "device_fraction": 0.5858286320746261
+        },
+        "accept_decision": {
+          "calls": 4,
+          "host_elapsed_us": 23160.33599999998,
+          "linked_device_us": 856.2649999996065,
+          "linked_kernels": 412,
+          "sync_calls": 8,
+          "sync_host_us": 13158.817000000068,
+          "device_fraction": 0.0022368243388462892
+        },
+        "commit_kv": {
+          "calls": 4,
+          "host_elapsed_us": 3217.5400000000373,
+          "linked_device_us": 35.64799999992829,
+          "linked_kernels": 16,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.312340692550642e-05
+        },
+        "publish_stop": {
+          "calls": 4,
+          "host_elapsed_us": 512.4830000000075,
+          "linked_device_us": 11.391999999963446,
+          "linked_kernels": 9,
+          "sync_calls": 8,
+          "sync_host_us": 12.790000000008149,
+          "device_fraction": 2.975936522930036e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.4600000000209548,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014901420217938721,
+        "strict_core": 0.00012875854736194015,
+        "sync_control": 6.345042493194342e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.014597046542645906
+    },
+    {
+      "request_id": "humaneval:134",
+      "method": "DFlash",
+      "benchmark": "humaneval",
+      "tokens": 82,
+      "rounds": 19,
+      "median_latency_seconds": 1.5727313219103962,
+      "latency_samples_seconds": [
+        1.570167017984204,
+        1.5727313219103962,
+        1.5769697519717738
+      ],
+      "profiler_dilation": 1.1307030725712046,
+      "device_active_fraction_of_span": 0.843904699069209,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.888000000268221,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1779195.923,
+          "linked_device_us": 108.9600000003893,
+          "linked_kernels": 48,
+          "sync_calls": 6,
+          "sync_host_us": 33.700999999999794,
+          "device_fraction": 7.267969634216614e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 45.801000000000045,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1754.679,
+          "linked_device_us": 1.856000000000222,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.279999999999745,
+          "device_fraction": 1.2380095118446633e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 98697.39199999999,
+          "linked_device_us": 183900.05900000056,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.9399999999996,
+          "device_fraction": 0.12266703786140531
+        },
+        "draft_forward": {
+          "calls": 19,
+          "host_elapsed_us": 195159.2110000001,
+          "linked_device_us": 232959.30699999636,
+          "linked_kernels": 6837,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.15539107647559378
+        },
+        "target_verify": {
+          "calls": 19,
+          "host_elapsed_us": 1286126.534,
+          "linked_device_us": 1081286.1300000215,
+          "linked_kernels": 42825,
+          "sync_calls": 19,
+          "sync_host_us": 61410.612999999605,
+          "device_fraction": 0.7212513545073124
+        },
+        "accept_decision": {
+          "calls": 19,
+          "host_elapsed_us": 80897.34399999981,
+          "linked_device_us": 710.3069999995641,
+          "linked_kernels": 152,
+          "sync_calls": 19,
+          "sync_host_us": 75679.56200000015,
+          "device_fraction": 0.00047379677927219963
+        },
+        "commit_kv": {
+          "calls": 19,
+          "host_elapsed_us": 16072.057000000263,
+          "linked_device_us": 162.30200000025798,
+          "linked_kernels": 76,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010826046324984262
+        },
+        "publish_stop": {
+          "calls": 19,
+          "host_elapsed_us": 2419.2250000005006,
+          "linked_device_us": 49.91800000087824,
+          "linked_kernels": 39,
+          "sync_calls": 38,
+          "sync_host_us": 59.69999999954598,
+          "device_fraction": 3.32968528089126e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6100000001024455,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "method": "ASD",
+      "benchmark": "humaneval",
+      "tokens": 100,
+      "rounds": 23,
+      "median_latency_seconds": 1.8807624210603535,
+      "latency_samples_seconds": [
+        1.8791547230212018,
+        1.8818082188954577,
+        1.8807624210603535
+      ],
+      "profiler_dilation": 1.1491043099265372,
+      "device_active_fraction_of_span": 0.8306589037017178,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 9.43999999994412,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2162011.6969999997,
+          "linked_device_us": 126.42899999936344,
+          "linked_kernels": 56,
+          "sync_calls": 6,
+          "sync_host_us": 35.16199999940716,
+          "device_fraction": 7.104895318076683e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 40.88099999999997,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18911.357,
+          "linked_device_us": 2.2409999999981665,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 174.8849999999984,
+          "device_fraction": 1.2593685315771687e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 108339.21100000001,
+          "linked_device_us": 191591.61599999998,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.300999999999476,
+          "device_fraction": 0.10766820709710584
+        },
+        "draft_forward": {
+          "calls": 23,
+          "host_elapsed_us": 241364.24099999986,
+          "linked_device_us": 280343.4439999969,
+          "linked_kernels": 8281,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.15754382481385595
+        },
+        "target_verify": {
+          "calls": 23,
+          "host_elapsed_us": 1554870.102,
+          "linked_device_us": 1303310.6370000273,
+          "linked_kernels": 51840,
+          "sync_calls": 23,
+          "sync_host_us": 70642.54500000036,
+          "device_fraction": 0.7324178505617902
+        },
+        "accept_decision": {
+          "calls": 23,
+          "host_elapsed_us": 119441.84900000063,
+          "linked_device_us": 3822.8869999965536,
+          "linked_kernels": 1702,
+          "sync_calls": 46,
+          "sync_host_us": 76014.40100000065,
+          "device_fraction": 0.002148337165361467
+        },
+        "commit_kv": {
+          "calls": 23,
+          "host_elapsed_us": 18591.45800000039,
+          "linked_device_us": 196.96000000130152,
+          "linked_kernels": 92,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00011068506290998714
+        },
+        "publish_stop": {
+          "calls": 23,
+          "host_elapsed_us": 2790.9299999992945,
+          "linked_device_us": 59.57999999978347,
+          "linked_kernels": 47,
+          "sync_calls": 46,
+          "sync_host_us": 72.67999999993481,
+          "device_fraction": 3.348200674304168e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6299999998882413,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010842149495147169,
+        "strict_core": 0.00012891902588307858,
+        "sync_control": 6.365531589835882e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.013258954751328617
+    },
+    {
+      "request_id": "humaneval:134",
+      "method": "ASD-Run",
+      "benchmark": "humaneval",
+      "tokens": 82,
+      "rounds": 19,
+      "median_latency_seconds": 1.5918493149802089,
+      "latency_samples_seconds": [
+        1.5839034989476204,
+        1.5918493149802089,
+        1.5978810960659757
+      ],
+      "profiler_dilation": 1.1653112310985907,
+      "device_active_fraction_of_span": 0.8225123863151689,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.3039999997708946,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1855819.097,
+          "linked_device_us": 106.17699999953038,
+          "linked_kernels": 48,
+          "sync_calls": 6,
+          "sync_host_us": 36.081000000059134,
+          "device_fraction": 7.03106088235539e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 41.73199999999997,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 18976.089,
+          "linked_device_us": 1.7599999999983993,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 51.911999999996624,
+          "device_fraction": 1.1654753056677967e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 120262.845,
+          "linked_device_us": 202990.0080000003,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.3400000000001455,
+          "device_fraction": 0.1344203645576841
+        },
+        "draft_forward": {
+          "calls": 19,
+          "host_elapsed_us": 196883.17200000025,
+          "linked_device_us": 231428.37799999854,
+          "linked_kernels": 6837,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.153252306585225
+        },
+        "target_verify": {
+          "calls": 19,
+          "host_elapsed_us": 1294851.881,
+          "linked_device_us": 1072042.8829999838,
+          "linked_kernels": 42825,
+          "sync_calls": 19,
+          "sync_host_us": 61210.405999999755,
+          "device_fraction": 0.7099088106559822
+        },
+        "accept_decision": {
+          "calls": 19,
+          "host_elapsed_us": 111152.02399999998,
+          "linked_device_us": 3335.655000000843,
+          "linked_kernels": 1539,
+          "sync_calls": 57,
+          "sync_host_us": 68908.83399999922,
+          "device_fraction": 0.002208877006097632
+        },
+        "commit_kv": {
+          "calls": 19,
+          "host_elapsed_us": 15349.558000000543,
+          "linked_device_us": 157.9220000008354,
+          "linked_kernels": 76,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0001045762450129607
+        },
+        "publish_stop": {
+          "calls": 19,
+          "host_elapsed_us": 2322.494999999646,
+          "linked_device_us": 48.41899999999441,
+          "linked_kernels": 39,
+          "sync_calls": 38,
+          "sync_host_us": 59.99099999997998,
+          "device_fraction": 3.2063152741576055e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.3700000001117587,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012203140067867935,
+        "strict_core": 0.00012876902474090457,
+        "sync_control": 6.399990525096655e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.014565427714015344
+    },
+    {
+      "request_id": "humaneval:134",
+      "method": "ASD-Utility",
+      "benchmark": "humaneval",
+      "tokens": 107,
+      "rounds": 22,
+      "median_latency_seconds": 1.8141823320183903,
+      "latency_samples_seconds": [
+        1.8097850170452148,
+        1.8141823320183903,
+        1.8205772649962455
+      ],
+      "profiler_dilation": 1.154647939726451,
+      "device_active_fraction_of_span": 0.8207017113266294,
+      "unlinked_device_events": 2,
+      "unlinked_device_us": 8.957999999867752,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 2095603.2859999998,
+          "linked_device_us": 122.2370000000119,
+          "linked_kernels": 54,
+          "sync_calls": 6,
+          "sync_host_us": 34.730999999869596,
+          "device_fraction": 7.175790757574914e-05
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.62099999999998,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 19075.252,
+          "linked_device_us": 2.2079999999950815,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 163.47399999999834,
+          "device_fraction": 1.2961824973362055e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 107962.042,
+          "linked_device_us": 189081.7100000003,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 6.099999999998545,
+          "device_fraction": 0.11099837095513883
+        },
+        "draft_forward": {
+          "calls": 22,
+          "host_elapsed_us": 226643.61200000014,
+          "linked_device_us": 267553.056999995,
+          "linked_kernels": 7909,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.15706412572145026
+        },
+        "target_verify": {
+          "calls": 22,
+          "host_elapsed_us": 1498173.1099999994,
+          "linked_device_us": 1241774.2739999848,
+          "linked_kernels": 49586,
+          "sync_calls": 22,
+          "sync_host_us": 70227.3320000007,
+          "device_fraction": 0.7289701447485232
+        },
+        "accept_decision": {
+          "calls": 22,
+          "host_elapsed_us": 126580.81100000016,
+          "linked_device_us": 4677.553999994474,
+          "linked_kernels": 2266,
+          "sync_calls": 44,
+          "sync_host_us": 70575.33799999987,
+          "device_fraction": 0.0027459074389272193
+        },
+        "commit_kv": {
+          "calls": 22,
+          "host_elapsed_us": 18079.08499999967,
+          "linked_device_us": 187.2249999999185,
+          "linked_kernels": 88,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.00010990840944936866
+        },
+        "publish_stop": {
+          "calls": 22,
+          "host_elapsed_us": 2690.555000000051,
+          "linked_device_us": 56.60599999985425,
+          "linked_kernels": 45,
+          "sync_calls": 44,
+          "sync_host_us": 69.8410000007716,
+          "device_fraction": 3.32299395127662e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.75,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014882715186104178,
+        "strict_core": 0.00012912845704704523,
+        "sync_control": 6.390037015080452e-06
+      },
+      "sampled_states": 3,
+      "resident_amortized_proxy_fraction": 0.018047785402585042
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "method": "DFlash",
+      "benchmark": "squad",
+      "tokens": 4,
+      "rounds": 1,
+      "median_latency_seconds": 0.7093020739266649,
+      "latency_samples_seconds": [
+        0.7078227220335975,
+        0.7093020739266649,
+        0.7098770609591156
+      ],
+      "profiler_dilation": 1.0129807135723694,
+      "device_active_fraction_of_span": 0.9789932074830231,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 719288.513,
+          "linked_device_us": 185.02499999995143,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 33.35199999995427,
+          "device_fraction": 0.00026449043380228
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 45.811000000000035,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 4795.474,
+          "linked_device_us": 2.144000000000233,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.621000000000095,
+          "device_fraction": 3.064815511808127e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 326855.661,
+          "linked_device_us": 614618.2789999994,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.050000000001091,
+          "device_fraction": 0.8785875164737914
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10405.560999999987,
+          "linked_device_us": 22783.144000000088,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.032568159113316675
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 76696.7109999999,
+          "linked_device_us": 61912.79200000211,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 11749.907999999938,
+          "device_fraction": 0.08850339799483954
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 4236.528000000049,
+          "linked_device_us": 38.62400000018533,
+          "linked_kernels": 8,
+          "sync_calls": 1,
+          "sync_host_us": 3959.0010000000475,
+          "device_fraction": 5.521242272790684e-05
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 820.8530000000028,
+          "linked_device_us": 8.735999999917112,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 1.2487979622620735e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 160.1940000000177,
+          "linked_device_us": 3.9669999999459833,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.2910000000847504,
+          "device_fraction": 5.670766387675358e-06
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6300000000046566,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "method": "ASD",
+      "benchmark": "squad",
+      "tokens": 4,
+      "rounds": 1,
+      "median_latency_seconds": 0.7083954480476677,
+      "latency_samples_seconds": [
+        0.7083954480476677,
+        0.7079304150538519,
+        0.7113832019967958
+      ],
+      "profiler_dilation": 1.012525530673534,
+      "device_active_fraction_of_span": 0.9786912900691742,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 718186.692,
+          "linked_device_us": 184.0650000000869,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 37.98100000003251,
+          "device_fraction": 0.0002638353742260596
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 40.680999999999926,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 4573.868,
+          "linked_device_us": 2.016000000000531,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 82.99200000000019,
+          "device_fraction": 2.889697196314482e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 324910.97699999996,
+          "linked_device_us": 612527.064999999,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.7399999999997817,
+          "device_fraction": 0.8779849912682388
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10445.341999999946,
+          "linked_device_us": 22917.445000000764,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.032849442739670685
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 76827.64400000009,
+          "linked_device_us": 61832.358000001404,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 11870.670999999973,
+          "device_fraction": 0.08862936088991584
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5181.133999999962,
+          "linked_device_us": 175.13799999956973,
+          "linked_kernels": 74,
+          "sync_calls": 2,
+          "sync_host_us": 3254.899999999907,
+          "device_fraction": 0.0002510395771660462
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 815.4020000000019,
+          "linked_device_us": 8.767999999923632,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 1.2567889393381955e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 150.34400000004098,
+          "linked_device_us": 4.09699999995064,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.2600000000093132,
+          "device_fraction": 5.8725641930330744e-06
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5299999999115244,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0011182110174559057,
+        "strict_core": 0.00013370404485613108,
+        "sync_control": 6.310467142611742e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.001578512426269376
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "method": "ASD-Run",
+      "benchmark": "squad",
+      "tokens": 4,
+      "rounds": 1,
+      "median_latency_seconds": 0.7098890810739249,
+      "latency_samples_seconds": [
+        0.7089545639464632,
+        0.7098890810739249,
+        0.713379887980409
+      ],
+      "profiler_dilation": 1.010177818121381,
+      "device_active_fraction_of_span": 0.9768709190002646,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 1.1641532182693481e-10,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 718002.668,
+          "linked_device_us": 183.55199999976685,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 36.84199999992643,
+          "device_fraction": 0.0002636542865913676
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 42.051000000000045,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 4546.547,
+          "linked_device_us": 1.9840000000003783,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.959999999999127,
+          "device_fraction": 2.8498196946807306e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 324798.414,
+          "linked_device_us": 610989.5109999994,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.110000000000582,
+          "device_fraction": 0.877625978674806
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10466.551999999909,
+          "linked_device_us": 22832.13499999966,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.03279610281985678
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 76591.13699999999,
+          "linked_device_us": 61978.84699999634,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 11721.847000000067,
+          "device_fraction": 0.08902648126721754
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5872.283999999985,
+          "linked_device_us": 185.79100000078324,
+          "linked_kernels": 81,
+          "sync_calls": 3,
+          "sync_host_us": 3717.094000000041,
+          "device_fraction": 0.00026687038855673323
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 802.0729999999749,
+          "linked_device_us": 8.543000000179745,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 1.2271174219841272e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 151.05400000000373,
+          "linked_device_us": 4.032000000006519,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.0799999999580905,
+          "device_fraction": 5.791569056940068e-06
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.7700000000186265,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.001263665035367012,
+        "strict_core": 0.00013364845653995872,
+        "sync_control": 6.370479241013527e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.0017800880011498855
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "method": "ASD-Utility",
+      "benchmark": "squad",
+      "tokens": 4,
+      "rounds": 1,
+      "median_latency_seconds": 0.7107602750184014,
+      "latency_samples_seconds": [
+        0.7059267190052196,
+        0.7107602750184014,
+        0.711621958995238
+      ],
+      "profiler_dilation": 1.0033417131645959,
+      "device_active_fraction_of_span": 0.977963074760298,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 714015.276,
+          "linked_device_us": 184.1600000001381,
+          "linked_kernels": 12,
+          "sync_calls": 6,
+          "sync_host_us": 38.27099999994971,
+          "device_fraction": 0.00026567129028501525
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.44100000000003,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 4490.265,
+          "linked_device_us": 2.0479999999997744,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.270000000001346,
+          "device_fraction": 2.9544678676327284e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 321134.963,
+          "linked_device_us": 607991.2570000001,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.059999999999491,
+          "device_fraction": 0.8770950354532863
+        },
+        "draft_forward": {
+          "calls": 1,
+          "host_elapsed_us": 10376.029999999912,
+          "linked_device_us": 22917.159000001033,
+          "linked_kernels": 361,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.03306055170065464
+        },
+        "target_verify": {
+          "calls": 1,
+          "host_elapsed_us": 76747.46199999994,
+          "linked_device_us": 61852.166999996174,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 11902.802000000025,
+          "device_fraction": 0.0892286327856261
+        },
+        "accept_decision": {
+          "calls": 1,
+          "host_elapsed_us": 5828.103000000003,
+          "linked_device_us": 227.80999999993946,
+          "linked_kernels": 103,
+          "sync_calls": 2,
+          "sync_host_us": 3287.5019999999786,
+          "device_fraction": 0.0003286412719361851
+        },
+        "commit_kv": {
+          "calls": 1,
+          "host_elapsed_us": 813.7129999999888,
+          "linked_device_us": 8.832999999867752,
+          "linked_kernels": 4,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 1.2742585290240255e-05
+        },
+        "publish_stop": {
+          "calls": 1,
+          "host_elapsed_us": 171.99399999994785,
+          "linked_device_us": 4.0,
+          "linked_kernels": 3,
+          "sync_calls": 2,
+          "sync_host_us": 3.2399999999906868,
+          "device_fraction": 5.770445053970808e-06
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6199999999953434,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0015234474558383226,
+        "strict_core": 0.00013122352538630366,
+        "sync_control": 6.360525730997324e-06
+      },
+      "sampled_states": 1,
+      "resident_amortized_proxy_fraction": 0.0021434054622690903
+    },
+    {
+      "request_id": "json:7",
+      "method": "DFlash",
+      "benchmark": "json",
+      "tokens": 128,
+      "rounds": 10,
+      "median_latency_seconds": 0.9703677638899535,
+      "latency_samples_seconds": [
+        0.9692763229832053,
+        0.9703677638899535,
+        0.9720399720827118
+      ],
+      "profiler_dilation": 1.108510271019743,
+      "device_active_fraction_of_span": 0.8652190182306387,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 2.0479999999515712,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1076544.588,
+          "linked_device_us": 105.63199999979224,
+          "linked_kernels": 31,
+          "sync_calls": 6,
+          "sync_host_us": 33.96999999980096,
+          "device_fraction": 0.00011370343908220514
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.551000000000045,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1895.273,
+          "linked_device_us": 1.9200000000005275,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 4.650000000000091,
+          "device_fraction": 2.0667089805960618e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 118697.32299999999,
+          "linked_device_us": 225737.347999999,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.180000000000291,
+          "device_fraction": 0.24298614810802513
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 101827.34200000024,
+          "linked_device_us": 125981.05199999904,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.135607381017326
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 687057.3670000001,
+          "linked_device_us": 576694.4490000068,
+          "linked_kernels": 22539,
+          "sync_calls": 10,
+          "sync_host_us": 33849.87500000009,
+          "device_fraction": 0.620760206670773
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 42497.606000000145,
+          "linked_device_us": 375.7449999998789,
+          "linked_kernels": 80,
+          "sync_calls": 10,
+          "sync_host_us": 39757.10900000011,
+          "device_fraction": 0.00040445602391333527
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 5731.911000000255,
+          "linked_device_us": 90.49700000038138,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.741195969673887e-05
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1278.0750000000116,
+          "linked_device_us": 24.545999999914784,
+          "linked_kernels": 20,
+          "sync_calls": 20,
+          "sync_host_us": 31.260999999998603,
+          "device_fraction": 2.6421582623708793e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.6200000001117587,
+          "device_fraction": 0.0
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "method": "ASD",
+      "benchmark": "json",
+      "tokens": 128,
+      "rounds": 10,
+      "median_latency_seconds": 0.9750619439873844,
+      "latency_samples_seconds": [
+        0.9738463399698958,
+        0.9750619439873844,
+        0.9778709938982502
+      ],
+      "profiler_dilation": 1.102883763979569,
+      "device_active_fraction_of_span": 0.8566740334211367,
+      "unlinked_device_events": 1,
+      "unlinked_device_us": 1.440000000060536,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1076300.433,
+          "linked_device_us": 104.4169999997639,
+          "linked_kernels": 31,
+          "sync_calls": 6,
+          "sync_host_us": 36.151999999896134,
+          "device_fraction": 0.00011355252958621674
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 43.561000000000035,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1944.285,
+          "linked_device_us": 1.9519999999997708,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 83.99200000000064,
+          "device_fraction": 2.1227820925018938e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 114035.913,
+          "linked_device_us": 217962.19200000004,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.2999999999992724,
+          "device_fraction": 0.23703188423161575
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 105071.18300000005,
+          "linked_device_us": 125329.13500000007,
+          "linked_kernels": 3609,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1362942845526556
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 681860.792,
+          "linked_device_us": 574352.7840000032,
+          "linked_kernels": 22540,
+          "sync_calls": 10,
+          "sync_host_us": 32060.874000000098,
+          "device_fraction": 0.6246033835317409
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 51979.15100000001,
+          "linked_device_us": 1679.616999999911,
+          "linked_kernels": 740,
+          "sync_calls": 20,
+          "sync_host_us": 33019.11200000014,
+          "device_fraction": 0.0018265680788227372
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 5671.798000000243,
+          "linked_device_us": 91.93700000009267,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.998064407713435e-05
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1210.3430000000517,
+          "linked_device_us": 24.512999999977183,
+          "linked_kernels": 20,
+          "sync_calls": 20,
+          "sync_host_us": 31.540000000211876,
+          "device_fraction": 2.6657662619598665e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.5300000000279397,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0010903982620220631,
+        "strict_core": 0.00012870325008407235,
+        "sync_control": 6.3177431002259254e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.011182861445325477
+    },
+    {
+      "request_id": "json:7",
+      "method": "ASD-Run",
+      "benchmark": "json",
+      "tokens": 128,
+      "rounds": 10,
+      "median_latency_seconds": 0.9796804229263216,
+      "latency_samples_seconds": [
+        0.978921102010645,
+        0.9796804229263216,
+        0.9813684209948406
+      ],
+      "profiler_dilation": 1.1058018682705604,
+      "device_active_fraction_of_span": 0.851176880467881,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1084225.307,
+          "linked_device_us": 103.77700000006371,
+          "linked_kernels": 31,
+          "sync_calls": 6,
+          "sync_host_us": 34.91100000004894,
+          "device_fraction": 0.00011274761015233706
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 44.791000000000054,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 1924.9840000000002,
+          "linked_device_us": 1.8239999999996144,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 84.36200000000008,
+          "device_fraction": 1.9816687793797574e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 117170.05099999999,
+          "linked_device_us": 220548.4569999998,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 4.020000000000437,
+          "device_fraction": 0.23961293397882175
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 104563.69800000009,
+          "linked_device_us": 125120.58100000105,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.13593615626404087
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 680762.8040000002,
+          "linked_device_us": 572764.1829999968,
+          "linked_kernels": 22540,
+          "sync_calls": 10,
+          "sync_host_us": 31678.276999999944,
+          "device_fraction": 0.622274615898184
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 58270.535999999964,
+          "linked_device_us": 1783.81300000177,
+          "linked_kernels": 810,
+          "sync_calls": 30,
+          "sync_host_us": 37147.09700000024,
+          "device_fraction": 0.0019380079662039463
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 5690.579000000027,
+          "linked_device_us": 89.11900000018068,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.682255479711621e-05
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1223.2040000000852,
+          "linked_device_us": 24.606999999610707,
+          "linked_kernels": 20,
+          "sync_calls": 20,
+          "sync_host_us": 31.451000000117347,
+          "device_fraction": 2.6734059020524425e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.800000000046566,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0012279442162252963,
+        "strict_core": 0.0001287082559429109,
+        "sync_control": 6.292480975389481e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.012534130390779951
+    },
+    {
+      "request_id": "json:7",
+      "method": "ASD-Utility",
+      "benchmark": "json",
+      "tokens": 128,
+      "rounds": 10,
+      "median_latency_seconds": 0.9785463711014017,
+      "latency_samples_seconds": [
+        0.9739970540395007,
+        0.9785463711014017,
+        0.98050611699
+      ],
+      "profiler_dilation": 1.1063260423623076,
+      "device_active_fraction_of_span": 0.8498363945305505,
+      "unlinked_device_events": 0,
+      "unlinked_device_us": 0.0,
+      "scopes": {
+        "request": {
+          "calls": 1,
+          "host_elapsed_us": 1083525.969,
+          "linked_device_us": 103.77600000001621,
+          "linked_kernels": 31,
+          "sync_calls": 6,
+          "sync_host_us": 34.86100000003955,
+          "device_fraction": 0.00011301408011515336
+        },
+        "snapshot": {
+          "calls": 1,
+          "host_elapsed_us": 44.430999999999926,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.0
+        },
+        "tokenize": {
+          "calls": 1,
+          "host_elapsed_us": 2041.2270000000003,
+          "linked_device_us": 1.9200000000000728,
+          "linked_kernels": 2,
+          "sync_calls": 2,
+          "sync_host_us": 84.01299999999992,
+          "device_fraction": 2.0909173009276593e-06
+        },
+        "target_prefill": {
+          "calls": 1,
+          "host_elapsed_us": 115976.468,
+          "linked_device_us": 218568.73000000045,
+          "linked_kernels": 2254,
+          "sync_calls": 1,
+          "sync_host_us": 3.4000000000005457,
+          "device_fraction": 0.238025593228526
+        },
+        "draft_forward": {
+          "calls": 10,
+          "host_elapsed_us": 104726.05600000022,
+          "linked_device_us": 125069.87700000216,
+          "linked_kernels": 3610,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 0.1362035258563484
+        },
+        "target_verify": {
+          "calls": 10,
+          "host_elapsed_us": 682705.7790000002,
+          "linked_device_us": 572246.2679999839,
+          "linked_kernels": 22540,
+          "sync_calls": 10,
+          "sync_host_us": 33488.244000000064,
+          "device_fraction": 0.6231873032043787
+        },
+        "accept_decision": {
+          "calls": 10,
+          "host_elapsed_us": 58076.323999999964,
+          "linked_device_us": 2151.5280000023777,
+          "linked_kernels": 1030,
+          "sync_calls": 20,
+          "sync_host_us": 31814.08899999992,
+          "device_fraction": 0.002343055790955774
+        },
+        "commit_kv": {
+          "calls": 10,
+          "host_elapsed_us": 5791.581000000122,
+          "linked_device_us": 90.55799999972805,
+          "linked_kernels": 40,
+          "sync_calls": 0,
+          "sync_host_us": 0.0,
+          "device_fraction": 9.861942132126624e-05
+        },
+        "publish_stop": {
+          "calls": 10,
+          "host_elapsed_us": 1215.0130000001518,
+          "linked_device_us": 24.606999999727122,
+          "linked_kernels": 20,
+          "sync_calls": 20,
+          "sync_host_us": 31.65100000007078,
+          "device_fraction": 2.6797501053830416e-05
+        },
+        "unscoped": {
+          "calls": 0,
+          "host_elapsed_us": 0.0,
+          "linked_device_us": 0.0,
+          "linked_kernels": 0,
+          "sync_calls": 1,
+          "sync_host_us": 2.769999999785796,
+          "device_fraction": 0.0
+        }
+      },
+      "resident_median_seconds": {
+        "policy": 0.0014997372345533222,
+        "strict_core": 0.00012937327846884727,
+        "sync_control": 6.3324987422674894e-06
+      },
+      "sampled_states": 2,
+      "resident_amortized_proxy_fraction": 0.01532617440362376
+    }
+  ],
+  "families": {
+    "gsm8k": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.06789561861214731,
+          "draft_forward": 0.1648514236021156,
+          "target_verify": 0.7665549355695287,
+          "accept_decision": 0.0004911501276196521,
+          "commit_kv": 0.00011361120961434623,
+          "publish_stop": 3.4698391735798136e-05
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.9309565347386605,
+        "mean_device_fractions": {
+          "target_prefill": 0.07406806334873667,
+          "draft_forward": 0.16363712816028297,
+          "target_verify": 0.7599008483321783,
+          "accept_decision": 0.0021857450301431946,
+          "commit_kv": 0.00011433985380569587,
+          "publish_stop": 3.470803270609747e-05
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.9556150899684592,
+        "mean_device_fractions": {
+          "target_prefill": 0.07099531468651918,
+          "draft_forward": 0.16413504023548198,
+          "target_verify": 0.7623135268724678,
+          "accept_decision": 0.002349685698910491,
+          "commit_kv": 0.00011245143336015479,
+          "publish_stop": 3.463302495998883e-05
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.9489761133262518,
+        "mean_device_fractions": {
+          "target_prefill": 0.07491518227742779,
+          "draft_forward": 0.1636598665054278,
+          "target_verify": 0.7583989892986911,
+          "accept_decision": 0.0028201489389172076,
+          "commit_kv": 0.0001136019842842146,
+          "publish_stop": 3.4302684662186115e-05
+        }
+      }
+    },
+    "math500": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.06531677335955027,
+          "draft_forward": 0.16515471689081873,
+          "target_verify": 0.7688146736908077,
+          "accept_decision": 0.0004994987180389337,
+          "commit_kv": 0.00011656240821331955,
+          "publish_stop": 3.5169313258755105e-05
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.7360063446737195,
+        "mean_device_fractions": {
+          "target_prefill": 0.08952806464946433,
+          "draft_forward": 0.16162478467585806,
+          "target_verify": 0.7464673428712438,
+          "accept_decision": 0.002153804068607264,
+          "commit_kv": 0.00011522968080061393,
+          "publish_stop": 3.4364086072747764e-05
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.9642982076877156,
+        "mean_device_fractions": {
+          "target_prefill": 0.06936946692588512,
+          "draft_forward": 0.1645230833335377,
+          "target_verify": 0.7635258903326793,
+          "accept_decision": 0.0023699045149314342,
+          "commit_kv": 0.00011422570230638563,
+          "publish_stop": 3.486958645175557e-05
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.8897459631009588,
+        "mean_device_fractions": {
+          "target_prefill": 0.08113839957051741,
+          "draft_forward": 0.16203208004536182,
+          "target_verify": 0.7537514928376042,
+          "accept_decision": 0.002848184068821009,
+          "commit_kv": 0.00011616958104982146,
+          "publish_stop": 3.3988221261033476e-05
+        }
+      }
+    },
+    "mbpp": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.313294170955961,
+          "draft_forward": 0.12432193720168612,
+          "target_verify": 0.5617538316498056,
+          "accept_decision": 0.0003675084944299796,
+          "commit_kv": 8.585528777505293e-05,
+          "publish_stop": 2.7644857084117886e-05
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.93676125466337,
+        "mean_device_fractions": {
+          "target_prefill": 0.33843776544132886,
+          "draft_forward": 0.12001234266604326,
+          "target_verify": 0.5396956560808225,
+          "accept_decision": 0.001587083602562681,
+          "commit_kv": 8.43947853897682e-05,
+          "publish_stop": 2.747413748279176e-05
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0105872144537194,
+        "mean_device_fractions": {
+          "target_prefill": 0.31229070926905145,
+          "draft_forward": 0.12418845532992588,
+          "target_verify": 0.5614928040365448,
+          "accept_decision": 0.0017653818946204518,
+          "commit_kv": 8.567330241138556e-05,
+          "publish_stop": 2.7592998948251927e-05
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0092153247430158,
+        "mean_device_fractions": {
+          "target_prefill": 0.3126492634142271,
+          "draft_forward": 0.12400270366689253,
+          "target_verify": 0.5609494931966024,
+          "accept_decision": 0.002136749818681153,
+          "commit_kv": 8.732836104777234e-05,
+          "publish_stop": 2.7973058311850524e-05
+        }
+      }
+    },
+    "humaneval": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.15794977965210233,
+          "draft_forward": 0.1495714517801627,
+          "target_verify": 0.6917884386241271,
+          "accept_decision": 0.0004558457140739719,
+          "commit_kv": 0.000105860231334421,
+          "publish_stop": 3.2943242088592804e-05
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0968699869918992,
+        "mean_device_fractions": {
+          "target_prefill": 0.14883772549667051,
+          "draft_forward": 0.15083195471102545,
+          "target_verify": 0.6980383847766933,
+          "accept_decision": 0.0020570521111147387,
+          "commit_kv": 0.00010773070355087099,
+          "publish_stop": 3.315383610707512e-05
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0110256040014236,
+        "mean_device_fractions": {
+          "target_prefill": 0.16185334680201727,
+          "draft_forward": 0.14866422226460732,
+          "target_verify": 0.686995494008093,
+          "accept_decision": 0.002156103011065033,
+          "commit_kv": 0.00010387234229054581,
+          "publish_stop": 3.2766586448782485e-05
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.080261920637842,
+        "mean_device_fractions": {
+          "target_prefill": 0.15074535339245326,
+          "draft_forward": 0.1505193730772809,
+          "target_verify": 0.69585516504272,
+          "accept_decision": 0.0026449867903301097,
+          "commit_kv": 0.00010781029581157994,
+          "publish_stop": 3.2905049248142054e-05
+        }
+      }
+    },
+    "squad": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.8111614145550194,
+          "draft_forward": 0.04326787753426527,
+          "target_verify": 0.14518547915766378,
+          "accept_decision": 9.373559328379268e-05,
+          "commit_kv": 2.0950047337531292e-05,
+          "publish_stop": 9.743591583195377e-06
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 0.9992769963523171,
+        "mean_device_fractions": {
+          "target_prefill": 0.810348386932551,
+          "draft_forward": 0.043308644355122425,
+          "target_verify": 0.14562437645202167,
+          "accept_decision": 0.0004288269019133524,
+          "commit_kv": 2.149412355813144e-05,
+          "publish_stop": 9.87033422449325e-06
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0010454411043381,
+        "mean_device_fractions": {
+          "target_prefill": 0.8095216201628086,
+          "draft_forward": 0.043514018396805576,
+          "target_verify": 0.14621641846711075,
+          "accept_decision": 0.0004573167182934761,
+          "commit_kv": 2.0744935333557178e-05,
+          "publish_stop": 9.807130034141918e-06
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0027904940054388,
+        "mean_device_fractions": {
+          "target_prefill": 0.8092627755940747,
+          "draft_forward": 0.043625686478877455,
+          "target_verify": 0.14626637848890556,
+          "accept_decision": 0.0005529218836713733,
+          "commit_kv": 2.1310946500512018e-05,
+          "publish_stop": 9.681080107636827e-06
+        }
+      }
+    },
+    "json": {
+      "DFlash": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0,
+        "mean_device_fractions": {
+          "target_prefill": 0.22336772238051356,
+          "draft_forward": 0.13896439199931382,
+          "target_verify": 0.636944077979718,
+          "accept_decision": 0.00041723144718090895,
+          "commit_kv": 0.00010049627007491872,
+          "publish_stop": 2.881169818843158e-05
+        }
+      },
+      "ASD": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0064289215018745,
+        "mean_device_fractions": {
+          "target_prefill": 0.22037715843951072,
+          "draft_forward": 0.1391615192483785,
+          "target_verify": 0.6383455914167351,
+          "accept_decision": 0.0018760730427359656,
+          "commit_kv": 0.00010223837793312851,
+          "publish_stop": 2.888007051388719e-05
+        }
+      },
+      "ASD-Run": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0108973352632469,
+        "mean_device_fractions": {
+          "target_prefill": 0.22091635109054497,
+          "draft_forward": 0.13918023526515116,
+          "target_verify": 0.6376644834398156,
+          "accept_decision": 0.002002668423182183,
+          "commit_kv": 9.975665771516087e-05,
+          "publish_stop": 2.882568054363523e-05
+        }
+      },
+      "ASD-Utility": {
+        "n": 2,
+        "latency_ratio_to_DFlash": 1.0099892585859347,
+        "mean_device_fractions": {
+          "target_prefill": 0.22012909266235603,
+          "draft_forward": 0.13924082908414034,
+          "target_verify": 0.6379731985592925,
+          "accept_decision": 0.0024194588043304852,
+          "commit_kv": 0.0001015382966705755,
+          "publish_stop": 2.904765086245775e-05
+        }
+      }
+    }
+  },
+  "note": "Two already-observed development tasks per family. Profile, sync wait and GPU durations are overlapping clocks; resident proxy is not a predicted speedup or an upper bound."
+}

@@ -132,10 +132,18 @@ def test_report_audit_rejects_corruption(report_fixture, change):
     elif change == "mixed-timing":
         profiles[0]["latency_seconds"] = 1.
     elif change == "duplicate-device":
-        profiles[0]["profile"]["device_duration_sum_us"] *= 2
+        profiles[0]["profile"]["scopes"]["draft_forward"]["linked_device_us"] += 10
     elif change == "budget":
         captures[0]["resident_replays"][0]["spent_before"] += 1
     else:
         captures[0]["resident_replays"][0]["samples_seconds"]["policy"].pop()
     with pytest.raises(ValueError):
         audit(timed, profiles, captures, previous)
+
+
+def test_report_keeps_device_events_without_frontend_links(report_fixture):
+    from scripts.write_asd_execution_report import audit
+    timed, profiles, captures, previous = report_fixture
+    profiles[0]["profile"]["device_duration_sum_us"] += .5
+    profiles[0]["profile"]["device_event_count"] += 2
+    assert audit(timed, profiles, captures, previous)["profiles_with_unlinked_events"] == 1

@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-21 — 原生16块执行成本诊断完成（144计时/48profile/77状态）
+
+- 冻结`4290e2b7a6277709f8c8b90517ea2bdbe93cbabe`/1251 blobs，source SHA`6f36eda11a904354000cc50f50e58c211e1b146bcf9fdf1e92c5c71350a13eaf`、源码ZIP SHA`01ce9e139edf76608260c9b9ed46c1ec12dd5bea90f832a02c18617ce89e1f33`。服务器独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-execution` PID3983505，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_execution_pipeline`；两worker均退出0，EXECUTION COMPLETE，运行前后全部部署SHA相同。
+- 六类各前两道development，原四策略/16块/FP32/eager/EOS前128；144正式计时、48独立CUPTI、36捕获，共77真实状态（worker0/1各38/39）。每状态5warmup后策略/严格核心/空同步各30回放；8短生成warmup另计。228生成全量重现前阶段16块输入SHA、snapshot、文本/token、轮次、预算及停止原因。短回答不补轮、不续写，本轮未重做自然质量，验证/保留题仍未生成模型答案。
+- 模型三范围占观测GPU活动99.6817%–99.9659%，不是总时延占比。ASD/Run/Utility resident跨题中位约1.081/1.221/1.487ms，严格核心约0.129ms；按样本轮数摊销proxy中位1.185%/1.329%/1.625%，全范围0.158%–1.948%，不是可兑现速度预测或上限。在线decision host约5–6ms包含约3.3–3.7ms前序GPU同步等待，不能直接归给判定算法。
+- 基础ASD数学GPU验证约75%；两道SQuAD预填充约81%，只输出2/4 token各一轮，解释接受策略收益小。HumanEval134的ASD/U轨迹100/107 token、23/22轮，对D的82 token/19轮，精简验证器不能消除这部分增长。12题只用于定位，48题自然结论继续作为主依据。
+- profiler膨胀中位1.124倍，不进入速度统计；23份含30个未关联CPU设备事件，共343.868us，单份最大约0.0204%。事后仅修正报表硬等号检查，显式保留unlinked残差及测试；GPU执行/样本/回放/协议未改。报告与解释docs/ASD_EXECUTION_RESULTS.md、ASD_EXECUTION_FINDINGS.md；重建`.venv\Scripts\python.exe -m scripts.write_asd_execution_report`。
+- 结果ZIP317827字节/SHA`a6785cc0fea5a808f55077d85dc9959dd523f28bd73c61bd37cf57ab116c6eef`，小型原始结果results/asd-execution。后审计`.venv\Scripts\python.exe -m artifacts.audit_asd_execution_postrun`：819旧结果SHA、原三批118发布文件、10冻结执行/协议文件及infra三引用均通过；去mark后解码AST与d72f6b6完全一致。没有上传完整logits/大trace/权重。
+- 服务器69 passed/10.71s；报表残差相关13 passed/9.93s；最终完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-execution-final --junitxml=artifacts/asd-execution-tests-final-local.xml`：588 passed/5 skipped/63.00s，既有python_multipart提醒。后续先做一次小成本验证器精简；主要执行投入转Target/Draft编译融合，训练/多候选方向仍未完成。
+
 ## 2026-10-21 — 原生16块执行成本诊断（执行准备）
 
 - 下一阶段固定原四策略与六类开发题前两题，共12题；原生16块、FP32/eager、EOS前128。144次非插桩重复计时、48次独立CUPTI profile、36次独立状态捕获（至多108状态），验证/保留题不生成答案。协议docs/ASD_EXECUTION_PROTOCOL.md，接受判定/KV/发布与停止新增范围仅在profile=True启用，默认规则未改。

@@ -1,0 +1,8 @@
+.....................................................................    [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-execution/artifacts/tests-server.xml -
+69 passed in 10.71s
+START 0 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_execution_probe", "--config", "configs/runtime-dflash.json", "--shard", "0", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-execution/results/raw/asd-execution/part-0"]
+START 1 ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_execution_probe", "--config", "configs/runtime-dflash.json", "--shard", "1", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-execution/results/raw/asd-execution/part-1"]
+FINISH 0 0
+FINISH 1 0
+EXECUTION COMPLETE
