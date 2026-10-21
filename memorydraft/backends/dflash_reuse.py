@@ -178,22 +178,24 @@ guided R may replace a block after its draft forward has already run.
         with mark("target_verify"):
             output = target(block, position_ids=positions[:, start:start + block.shape[1]],
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True)
-        posterior = output.logits.argmax(dim=-1)
-        decision = None
-        if verifier is None:
-            accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
-        else:
-            decision = verifier.decide(block[0, 1:], output.logits[0, :-1], stop_token_ids=stop_token_ids)
-            accepted = decision.accepted
-        advance = accepted + 1
-        ids[:, start:start + advance] = block[:, :advance]
-        ids[:, start + advance] = posterior[:, accepted]
-        old_start = start
-        start += advance
-        target_cache.crop(start)
-        pending.append(_features(output, draft.target_layer_ids)[:, :advance, :].clone())
-        pending_tokens += advance
-        result.feature_peak_tokens = max(result.feature_peak_tokens, pending_tokens)
+        with mark("accept_decision"):
+            posterior = output.logits.argmax(dim=-1)
+            decision = None
+            if verifier is None:
+                accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
+            else:
+                decision = verifier.decide(block[0, 1:], output.logits[0, :-1], stop_token_ids=stop_token_ids)
+                accepted = decision.accepted
+        with mark("commit_kv"):
+            advance = accepted + 1
+            ids[:, start:start + advance] = block[:, :advance]
+            ids[:, start + advance] = posterior[:, accepted]
+            old_start = start
+            start += advance
+            target_cache.crop(start)
+            pending.append(_features(output, draft.target_layer_ids)[:, :advance, :].clone())
+            pending_tokens += advance
+            result.feature_peak_tokens = max(result.feature_peak_tokens, pending_tokens)
         if proposal is not None:
             matcher.observe(proposal, accepted, [*confirmed, *proposal.tokens[:accepted]])
             if getattr(proposal, "draft_prefix", 0) <= accepted < len(proposal.tokens):
@@ -213,15 +215,16 @@ guided R may replace a block after its draft forward has already run.
                                          draft_prefix=getattr(proposal, "draft_prefix", None))
         step += 1
         available = min(start + 1, limit)
-        publish(available)
-        if stops:
-            # The confirmed prefix was already checked. Scan only newly committed
-            # proposals and the recovery/bonus; the old anchor is checked earlier.
-            checked_from = old_start + 1 if incremental_stop else prompt
-            generated = ids[0, checked_from:available].tolist()
-            ended = next((i for i, token in enumerate(generated) if token in stops), None)
-            if ended is not None:
-                result.sequences = ids[:, :checked_from + ended + 1].clone()
-                return result
+        with mark("publish_stop"):
+            publish(available)
+            if stops:
+                # The confirmed prefix was already checked. Scan only newly committed
+                # proposals and the recovery/bonus; the old anchor is checked earlier.
+                checked_from = old_start + 1 if incremental_stop else prompt
+                generated = ids[0, checked_from:available].tolist()
+                ended = next((i for i, token in enumerate(generated) if token in stops), None)
+                if ended is not None:
+                    result.sequences = ids[:, :checked_from + ended + 1].clone()
+                    return result
     result.sequences = ids[:, :min(start + 1, limit)].clone()
     return result

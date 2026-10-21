@@ -226,3 +226,10 @@ results/asd-block-suite/** -text
 results/asd-block-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-block-suite/**/*.log -whitespace
 results/asd-block-suite/**/*.xml -whitespace
+scripts/*asd_execution*.py text eol=lf
+tests/test_asd_execution*.py text eol=lf
+docs/ASD_EXECUTION*.md text eol=lf
+results/asd-execution/** -text
+results/asd-execution/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-execution/**/*.log -whitespace
+results/asd-execution/**/*.xml -whitespace

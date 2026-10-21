@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-21 — 原生16块执行成本诊断（执行准备）
+
+- 下一阶段固定原四策略与六类开发题前两题，共12题；原生16块、FP32/eager、EOS前128。144次非插桩重复计时、48次独立CUPTI profile、36次独立状态捕获（至多108状态），验证/保留题不生成答案。协议docs/ASD_EXECUTION_PROTOCOL.md，接受判定/KV/发布与停止新增范围仅在profile=True启用，默认规则未改。
+- 本地相关命令`.venv\Scripts\python.exe -m pytest -q tests/test_asd_execution.py tests/test_asd.py tests/test_dflash_reuse.py --basetemp .test-tmp-asd-execution --junitxml=artifacts/asd-execution-tests-local.xml`：61 passed/2 skipped/11.82s。覆盖真实tiny Target插桩轨迹一致、设备annotation去重、直接kernel归属、重叠区间并集、缺CUPTI失败、捕获预算与数量边界。
+- Windows3090 profiler烟测缺少CUPTI kernel链接，按预定检查明确失败，不报告零GPU成本；Linux A6000同一烟测取得真实kernel和DtoH事件/链接、CUDA annotation与同步事件。正式诊断仅在Linux原运行时进行；两卡初始19MiB/0%。没有新的模型下载或算法性能结论。
+- 全回归`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-execution-full --junitxml=artifacts/asd-execution-tests-full-local.xml`：581 passed/5 skipped/65.02s，既有python_multipart提醒；随后补报告审计篡改测试并运行`tests/test_asd_execution.py`：12 passed/9.15s。部署冻结包含统计/审计脚本，不以插桩延迟宣传提速。
+
 ## 2026-10-21 — 真实长块完整48题完成（3120计时/144机制）
 
 - 用户额度恢复后接回原实验，没有重启：双worker均正常结束，各1560计时/72机制；冻结`b107e53213137268415d44bab0e954ae704fd727`/1216文件前后SHA一致。原目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-suite` PID3884160，pipeline.log结束BLOCK SUITE COMPLETE，两卡各19MiB/0%。仍是六类各8开发题，验证48/保留96没有模型生成。

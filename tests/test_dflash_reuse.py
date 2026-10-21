@@ -18,6 +18,17 @@ class IntegerTokenizer:
         return [int(token) for token in text.split()]
 
 
+def test_execution_scopes_preserve_real_target_trajectory(tiny):
+    baseline = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids, max_new_tokens=29)
+    with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU]) as prof:
+        observed = generate_reuse(tiny.target, CheckedDraft(tiny.features), tiny.ids,
+                                  max_new_tokens=29, profile=True, stop_token_ids=[31])
+    assert observed.sequences.tolist() == baseline.sequences.tolist()
+    assert observed.rounds == baseline.rounds
+    scopes = {e.name for e in prof.events() if e.name.startswith("memorydraft::")}
+    assert {"memorydraft::accept_decision", "memorydraft::commit_kv", "memorydraft::publish_stop"} <= scopes
+
+
 class CheckedDraft(torch.nn.Module):
     """Check every catch-up feature against a real tiny Target's correct prefix."""
     block_size = 4
