@@ -65,6 +65,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [原生16块执行成本诊断](docs/ASD_EXECUTION_FINDINGS.md)已完成12题/144计时/48独立profile及77真实状态回放。模型前向占GPU活动99.68%–99.97%；resident接受策略的请求摊销proxy约0.16%–1.95%，不是可兑现提速或理论上限。优先做一次轻量验证器精简检查，主要执行优化转向Target/Draft编译融合；插桩延迟不计速度，全部228生成轨迹/预算重现。
 
+[CPU摘要判定小检查](docs/ASD_CPU_FINDINGS.md)已完成420计时/430影子块/77状态回放：保持原策略轨迹与预算，ASD/Run/Utility时延降低0.30%/0.67%/0.64%；resident成本降低约80%–85%不能当作生成倍速。保留显式CPU实验选项，默认infra不改，主要优化进入模型编译/融合；未新增自然完整答案或验证池评测。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

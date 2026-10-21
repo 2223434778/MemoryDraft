@@ -1,0 +1,970 @@
+{
+  "audit": {
+    "timed": 420,
+    "capture": 36,
+    "shadow_blocks": 430,
+    "resident_states": 77,
+    "old_trajectory_checks": 456
+  },
+  "cases": [
+    {
+      "request_id": "gsm8k:885",
+      "benchmark": "gsm8k",
+      "method": "ASD",
+      "tokens": 128,
+      "rounds": 27,
+      "paired_ratios": [
+        0.9953918765187759,
+        0.9933650185423267,
+        0.9939092946696669,
+        0.9926748361650559,
+        0.9934069863377387
+      ],
+      "ratio": 0.993749185751583,
+      "median_seconds": {
+        "tensor": 2.0857338199857622,
+        "cpu": 2.073030229890719
+      },
+      "resident_seconds": {
+        "tensor": 0.0007625549915246665,
+        "cpu": 0.00015613599680364132
+      },
+      "resident_ratio": 0.20475375355088835,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "gsm8k:52",
+      "benchmark": "gsm8k",
+      "method": "ASD",
+      "tokens": 128,
+      "rounds": 21,
+      "paired_ratios": [
+        0.9941114777859387,
+        0.9951638356924727,
+        0.9947458227967207,
+        0.995181092477877,
+        0.9971068053597245
+      ],
+      "ratio": 0.9952613037850178,
+      "median_seconds": {
+        "tensor": 1.6423117619706318,
+        "cpu": 1.6336827649502084
+      },
+      "resident_seconds": {
+        "tensor": 0.0007738110143691301,
+        "cpu": 0.00015683099627494812
+      },
+      "resident_ratio": 0.20267351247618093,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:329",
+      "benchmark": "math500",
+      "method": "ASD",
+      "tokens": 128,
+      "rounds": 15,
+      "paired_ratios": [
+        0.9966514598735279,
+        0.9946673096112698,
+        0.9928726312424112,
+        0.9983442798438006,
+        0.9956539524892483
+      ],
+      "ratio": 0.9956362250241412,
+      "median_seconds": {
+        "tensor": 1.1723189209587872,
+        "cpu": 1.1660673071164638
+      },
+      "resident_seconds": {
+        "tensor": 0.0007669844781048596,
+        "cpu": 0.00015619094483554363
+      },
+      "resident_ratio": 0.20364290190262457,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:448",
+      "benchmark": "math500",
+      "method": "ASD",
+      "tokens": 128,
+      "rounds": 15,
+      "paired_ratios": [
+        0.9940355184679907,
+        0.997381707956463,
+        0.9934059060377138,
+        0.994662031585829,
+        0.9962338031329088
+      ],
+      "ratio": 0.9951427209134787,
+      "median_seconds": {
+        "tensor": 1.2155137651134282,
+        "cpu": 1.209653524798341
+      },
+      "resident_seconds": {
+        "tensor": 0.0007779055740684271,
+        "cpu": 0.00015699095092713833
+      },
+      "resident_ratio": 0.20181234864545256,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:262",
+      "benchmark": "mbpp",
+      "method": "ASD",
+      "tokens": 18,
+      "rounds": 4,
+      "paired_ratios": [
+        0.9927389445383749,
+        0.998665714618579,
+        1.0004662190710416,
+        0.990764324679425,
+        0.9918329896450077
+      ],
+      "ratio": 0.9948859728275412,
+      "median_seconds": {
+        "tensor": 0.49250248388852924,
+        "cpu": 0.48971150792203844
+      },
+      "resident_seconds": {
+        "tensor": 0.0007684995071031153,
+        "cpu": 0.00015635101590305567
+      },
+      "resident_ratio": 0.2034497282794963,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:217",
+      "benchmark": "mbpp",
+      "method": "ASD",
+      "tokens": 39,
+      "rounds": 4,
+      "paired_ratios": [
+        0.9998751595580614,
+        0.9975891142728878,
+        0.9943235176537368,
+        0.9971513515830572,
+        0.9998160523727065
+      ],
+      "ratio": 0.9977489418969201,
+      "median_seconds": {
+        "tensor": 0.40867099701426923,
+        "cpu": 0.40834690106566995
+      },
+      "resident_seconds": {
+        "tensor": 0.0007766799535602331,
+        "cpu": 0.0001578310038894415
+      },
+      "resident_ratio": 0.20321240836197452,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:82",
+      "benchmark": "humaneval",
+      "method": "ASD",
+      "tokens": 66,
+      "rounds": 7,
+      "paired_ratios": [
+        1.0002905214446547,
+        0.9966752256437031,
+        0.9926923174713546,
+        0.9976676839353146,
+        0.9980982920251357
+      ],
+      "ratio": 0.9970816850726612,
+      "median_seconds": {
+        "tensor": 0.6428853110410273,
+        "cpu": 0.640067275846377
+      },
+      "resident_seconds": {
+        "tensor": 0.0007677267130929977,
+        "cpu": 0.00015679100761190057
+      },
+      "resident_ratio": 0.20422763066329291,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:134",
+      "benchmark": "humaneval",
+      "method": "ASD",
+      "tokens": 100,
+      "rounds": 23,
+      "paired_ratios": [
+        0.9937417276487532,
+        0.9941570648766375,
+        0.9961447120926303,
+        0.9946513411695367,
+        0.9960925702778274
+      ],
+      "ratio": 0.994956989739052,
+      "median_seconds": {
+        "tensor": 1.8713444259483367,
+        "cpu": 1.862814023043029
+      },
+      "resident_seconds": {
+        "tensor": 0.0007741595036350191,
+        "cpu": 0.00015662593068554997
+      },
+      "resident_ratio": 0.2023173906024823,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "benchmark": "squad",
+      "method": "ASD",
+      "tokens": 2,
+      "rounds": 1,
+      "paired_ratios": [
+        0.9931121318885141,
+        1.0020667138349866,
+        1.0069204176975595,
+        1.0095164852515308,
+        1.0088340573702224
+      ],
+      "ratio": 1.00407150972587,
+      "median_seconds": {
+        "tensor": 0.30315934296231717,
+        "cpu": 0.3049473640276119
+      },
+      "resident_seconds": {
+        "tensor": 0.0007686690660193563,
+        "cpu": 0.000156301015522331
+      },
+      "resident_ratio": 0.20333980178460193,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "benchmark": "squad",
+      "method": "ASD",
+      "tokens": 4,
+      "rounds": 1,
+      "paired_ratios": [
+        1.002904602101968,
+        0.9986003952914354,
+        0.9997910466361318,
+        0.9932592725695458,
+        0.9971526204239727
+      ],
+      "ratio": 0.9983365534252756,
+      "median_seconds": {
+        "tensor": 0.7295031010871753,
+        "cpu": 0.727810584125109
+      },
+      "resident_seconds": {
+        "tensor": 0.0007778089493513107,
+        "cpu": 0.0001571005559526384
+      },
+      "resident_ratio": 0.20197833424732328,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:12",
+      "benchmark": "json",
+      "method": "ASD",
+      "tokens": 115,
+      "rounds": 10,
+      "paired_ratios": [
+        1.0049185044004558,
+        1.0026575816962353,
+        0.9991918186591763,
+        1.0004075959283643,
+        0.9953215023990699
+      ],
+      "ratio": 1.0004941287227544,
+      "median_seconds": {
+        "tensor": 0.935460168053396,
+        "cpu": 0.9354812470264733
+      },
+      "resident_seconds": {
+        "tensor": 0.0007657359528820962,
+        "cpu": 0.00015647595864720643
+      },
+      "resident_ratio": 0.20434714872438506,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:7",
+      "benchmark": "json",
+      "method": "ASD",
+      "tokens": 128,
+      "rounds": 10,
+      "paired_ratios": [
+        0.9941769307207599,
+        0.9969071604264658,
+        0.995894030528518,
+        0.997098784544674,
+        0.9971059968092574
+      ],
+      "ratio": 0.9962359468943385,
+      "median_seconds": {
+        "tensor": 0.9730461880099028,
+        "cpu": 0.9691704659489915
+      },
+      "resident_seconds": {
+        "tensor": 0.0007792437390889972,
+        "cpu": 0.0001577607763465494
+      },
+      "resident_ratio": 0.20245369764662502,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "gsm8k:885",
+      "benchmark": "gsm8k",
+      "method": "ASD-Run",
+      "tokens": 128,
+      "rounds": 26,
+      "paired_ratios": [
+        0.9907577625866206,
+        0.9931160574538038,
+        0.9914182551860075,
+        0.9927302898856614,
+        0.9921684580290308
+      ],
+      "ratio": 0.9920377934640581,
+      "median_seconds": {
+        "tensor": 2.0083603489911184,
+        "cpu": 1.9911251129815355
+      },
+      "resident_seconds": {
+        "tensor": 0.0008649490191601217,
+        "cpu": 0.00016487151151522994
+      },
+      "resident_ratio": 0.19061413778504843,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "gsm8k:52",
+      "benchmark": "gsm8k",
+      "method": "ASD-Run",
+      "tokens": 128,
+      "rounds": 23,
+      "paired_ratios": [
+        0.9924410427507576,
+        0.9931746947762603,
+        0.9934473248527924,
+        0.9926584992527157,
+        0.9899467970022918
+      ],
+      "ratio": 0.992332888769131,
+      "median_seconds": {
+        "tensor": 1.7949484180426225,
+        "cpu": 1.783186704153195
+      },
+      "resident_seconds": {
+        "tensor": 0.0008751349523663521,
+        "cpu": 0.0001652469509281218
+      },
+      "resident_ratio": 0.188824535554541,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:329",
+      "benchmark": "math500",
+      "method": "ASD-Run",
+      "tokens": 128,
+      "rounds": 22,
+      "paired_ratios": [
+        0.9899344920214592,
+        0.9916530081237909,
+        0.9905812945630538,
+        0.9936291646161318,
+        0.9926916104989715
+      ],
+      "ratio": 0.9916969988872447,
+      "median_seconds": {
+        "tensor": 1.694557759910822,
+        "cpu": 1.6804133000550792
+      },
+      "resident_seconds": {
+        "tensor": 0.0008652834803797305,
+        "cpu": 0.0001642709830775857
+      },
+      "resident_ratio": 0.1898464339172351,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:448",
+      "benchmark": "math500",
+      "method": "ASD-Run",
+      "tokens": 128,
+      "rounds": 18,
+      "paired_ratios": [
+        0.992369168355377,
+        0.9917807575708208,
+        0.9925430205348131,
+        0.9913517865403721,
+        0.990178967131601
+      ],
+      "ratio": 0.9916443784143696,
+      "median_seconds": {
+        "tensor": 1.4403688280144706,
+        "cpu": 1.4279122109292075
+      },
+      "resident_seconds": {
+        "tensor": 0.000877164478879422,
+        "cpu": 0.00016558653442189097
+      },
+      "resident_ratio": 0.18877478330338668,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:262",
+      "benchmark": "mbpp",
+      "method": "ASD-Run",
+      "tokens": 24,
+      "rounds": 5,
+      "paired_ratios": [
+        1.0025535922775255,
+        0.9835277218335426,
+        0.9878485150373789,
+        0.9990804174816024,
+        0.9973597052457437
+      ],
+      "ratio": 0.9940480182127318,
+      "median_seconds": {
+        "tensor": 0.5686164980288595,
+        "cpu": 0.5645453410688788
+      },
+      "resident_seconds": {
+        "tensor": 0.000866093032527715,
+        "cpu": 0.00016397651052102447
+      },
+      "resident_ratio": 0.18932898010096533,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:217",
+      "benchmark": "mbpp",
+      "method": "ASD-Run",
+      "tokens": 39,
+      "rounds": 4,
+      "paired_ratios": [
+        0.9901459762419451,
+        0.99039238258767,
+        0.9949956335041783,
+        0.9911350364851063,
+        0.9931672043543049
+      ],
+      "ratio": 0.991965523986506,
+      "median_seconds": {
+        "tensor": 0.4101867729332298,
+        "cpu": 0.4073742689797655
+      },
+      "resident_seconds": {
+        "tensor": 0.0008792935404926538,
+        "cpu": 0.00016546098049730062
+      },
+      "resident_ratio": 0.1881749073291219,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:82",
+      "benchmark": "humaneval",
+      "method": "ASD-Run",
+      "tokens": 66,
+      "rounds": 7,
+      "paired_ratios": [
+        0.99487098369086,
+        0.987818875455299,
+        0.992883906427265,
+        0.9910236627519929,
+        0.9968720181800448
+      ],
+      "ratio": 0.9926889720370016,
+      "median_seconds": {
+        "tensor": 0.6437811740906909,
+        "cpu": 0.6396243048366159
+      },
+      "resident_seconds": {
+        "tensor": 0.0008662179752718657,
+        "cpu": 0.00016490096459165215
+      },
+      "resident_ratio": 0.19036890170732992,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:134",
+      "benchmark": "humaneval",
+      "method": "ASD-Run",
+      "tokens": 82,
+      "rounds": 19,
+      "paired_ratios": [
+        0.9920979446749801,
+        0.9918905642471916,
+        0.9918717628065316,
+        0.9924434582567225,
+        0.9928630159353911
+      ],
+      "ratio": 0.9922332779213662,
+      "median_seconds": {
+        "tensor": 1.5831060770433396,
+        "cpu": 1.5706814840668812
+      },
+      "resident_seconds": {
+        "tensor": 0.0008750830311328173,
+        "cpu": 0.00016477645840495825
+      },
+      "resident_ratio": 0.18829808434480888,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "benchmark": "squad",
+      "method": "ASD-Run",
+      "tokens": 2,
+      "rounds": 1,
+      "paired_ratios": [
+        0.9980495989257776,
+        0.9971469838211833,
+        0.9890399427095775,
+        1.0088881941806727,
+        1.0078726566044172
+      ],
+      "ratio": 1.0001721738292566,
+      "median_seconds": {
+        "tensor": 0.30340627301484346,
+        "cpu": 0.303680237964727
+      },
+      "resident_seconds": {
+        "tensor": 0.0008683219784870744,
+        "cpu": 0.00016404641792178154
+      },
+      "resident_ratio": 0.18892348919649452,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "benchmark": "squad",
+      "method": "ASD-Run",
+      "tokens": 4,
+      "rounds": 1,
+      "paired_ratios": [
+        0.991640715600432,
+        0.9965220286901774,
+        1.0074340024134105,
+        0.9867070416123377,
+        0.9920266179896682
+      ],
+      "ratio": 0.9948414738731367,
+      "median_seconds": {
+        "tensor": 0.7315769840497524,
+        "cpu": 0.7269015710335225
+      },
+      "resident_seconds": {
+        "tensor": 0.0008794480236247182,
+        "cpu": 0.00016513100126758218
+      },
+      "resident_ratio": 0.18776664092891018,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:12",
+      "benchmark": "json",
+      "method": "ASD-Run",
+      "tokens": 115,
+      "rounds": 10,
+      "paired_ratios": [
+        0.9894116324465446,
+        0.9868468513625528,
+        0.9996722289581254,
+        0.9924575515004637,
+        0.9892375042590393
+      ],
+      "ratio": 0.9915152142565179,
+      "median_seconds": {
+        "tensor": 0.9401417139451951,
+        "cpu": 0.9302522939397022
+      },
+      "resident_seconds": {
+        "tensor": 0.0008653902332298458,
+        "cpu": 0.00016483376384712756
+      },
+      "resident_ratio": 0.1904733350547857,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:7",
+      "benchmark": "json",
+      "method": "ASD-Run",
+      "tokens": 128,
+      "rounds": 10,
+      "paired_ratios": [
+        0.994931022225368,
+        0.9920891785231449,
+        0.9932445725569183,
+        0.9935938767391828,
+        0.9961080810457658
+      ],
+      "ratio": 0.9939923708087536,
+      "median_seconds": {
+        "tensor": 0.9757241288898513,
+        "cpu": 0.9692974389763549
+      },
+      "resident_seconds": {
+        "tensor": 0.0008807354897726327,
+        "cpu": 0.00016574596520513296
+      },
+      "resident_ratio": 0.18819040123831196,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "gsm8k:885",
+      "benchmark": "gsm8k",
+      "method": "ASD-Utility",
+      "tokens": 128,
+      "rounds": 28,
+      "paired_ratios": [
+        0.991922486715635,
+        0.9916143673780057,
+        0.991921765629551,
+        0.9913092428677243,
+        0.994052352423477
+      ],
+      "ratio": 0.9921635681198647,
+      "median_seconds": {
+        "tensor": 2.1555814259918407,
+        "cpu": 2.138168134028092
+      },
+      "resident_seconds": {
+        "tensor": 0.0010489620035514235,
+        "cpu": 0.00015912152593955398
+      },
+      "resident_ratio": 0.1516942705272673,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "gsm8k:52",
+      "benchmark": "gsm8k",
+      "method": "ASD-Utility",
+      "tokens": 128,
+      "rounds": 21,
+      "paired_ratios": [
+        0.992893565329612,
+        0.9913396071634376,
+        0.992339010690891,
+        0.989630867647503,
+        0.9925920070776899
+      ],
+      "ratio": 0.9917583029998507,
+      "median_seconds": {
+        "tensor": 1.6440270328894258,
+        "cpu": 1.6302177399629727
+      },
+      "resident_seconds": {
+        "tensor": 0.0010556969791650772,
+        "cpu": 0.0001611560001038015
+      },
+      "resident_ratio": 0.15265365278515383,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:329",
+      "benchmark": "math500",
+      "method": "ASD-Utility",
+      "tokens": 128,
+      "rounds": 22,
+      "paired_ratios": [
+        0.9921187375335951,
+        0.9927260866028309,
+        0.9918485234680552,
+        0.9927666788478967,
+        0.990195063638161
+      ],
+      "ratio": 0.9919305755648978,
+      "median_seconds": {
+        "tensor": 1.6937910311389714,
+        "cpu": 1.6813735750038177
+      },
+      "resident_seconds": {
+        "tensor": 0.0010466754902154207,
+        "cpu": 0.0001599509851075709
+      },
+      "resident_ratio": 0.15281812424465074,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "math500:448",
+      "benchmark": "math500",
+      "method": "ASD-Utility",
+      "tokens": 128,
+      "rounds": 15,
+      "paired_ratios": [
+        0.988652236689169,
+        0.9918561699115441,
+        0.9903328001530535,
+        0.9916782224069755,
+        0.9909517807185477
+      ],
+      "ratio": 0.9906935667819293,
+      "median_seconds": {
+        "tensor": 1.229422708041966,
+        "cpu": 1.2177439810475335
+      },
+      "resident_seconds": {
+        "tensor": 0.0010583309922367334,
+        "cpu": 0.00016039196634665132
+      },
+      "resident_ratio": 0.1515517995061926,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:262",
+      "benchmark": "mbpp",
+      "method": "ASD-Utility",
+      "tokens": 24,
+      "rounds": 5,
+      "paired_ratios": [
+        0.9931895128767186,
+        0.9952335965363539,
+        0.9982840704851735,
+        0.9892379830276529,
+        0.9998741390639571
+      ],
+      "ratio": 0.9951567262719998,
+      "median_seconds": {
+        "tensor": 0.5681888851104304,
+        "cpu": 0.5670916640665382
+      },
+      "resident_seconds": {
+        "tensor": 0.0010474549781065434,
+        "cpu": 0.0001599562237970531
+      },
+      "resident_ratio": 0.15270940244725528,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "mbpp:217",
+      "benchmark": "mbpp",
+      "method": "ASD-Utility",
+      "tokens": 39,
+      "rounds": 4,
+      "paired_ratios": [
+        1.0008843085894759,
+        0.9953924324606179,
+        0.9944838890404967,
+        0.9952979836981093,
+        0.9963611292640155
+      ],
+      "ratio": 0.99648134677121,
+      "median_seconds": {
+        "tensor": 0.4099525109631941,
+        "cpu": 0.40849682909902185
+      },
+      "resident_seconds": {
+        "tensor": 0.0010594810009934008,
+        "cpu": 0.00016036105807870626
+      },
+      "resident_ratio": 0.15135812527864773,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:82",
+      "benchmark": "humaneval",
+      "method": "ASD-Utility",
+      "tokens": 66,
+      "rounds": 7,
+      "paired_ratios": [
+        0.9924007809191219,
+        0.9966027699245827,
+        0.9908006718063107,
+        0.9915934347802168,
+        0.993976348479324
+      ],
+      "ratio": 0.993072680480579,
+      "median_seconds": {
+        "tensor": 0.6446253339527175,
+        "cpu": 0.641094603925012
+      },
+      "resident_seconds": {
+        "tensor": 0.001047734753228724,
+        "cpu": 0.00016052124556154013
+      },
+      "resident_ratio": 0.15320790406815665,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "humaneval:134",
+      "benchmark": "humaneval",
+      "method": "ASD-Utility",
+      "tokens": 107,
+      "rounds": 22,
+      "paired_ratios": [
+        0.9922018446132954,
+        0.9912703534167441,
+        0.9926214280421243,
+        0.9937588927896411,
+        0.9913194727846558
+      ],
+      "ratio": 0.992233971000205,
+      "median_seconds": {
+        "tensor": 1.8028798000887036,
+        "cpu": 1.7894710348919034
+      },
+      "resident_seconds": {
+        "tensor": 0.0010609604651108384,
+        "cpu": 0.00016036099987104535
+      },
+      "resident_ratio": 0.1511470079653651,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "benchmark": "squad",
+      "method": "ASD-Utility",
+      "tokens": 2,
+      "rounds": 1,
+      "paired_ratios": [
+        1.0011846044614496,
+        0.9944094566185205,
+        1.0057646936445757,
+        1.0077634537069828,
+        0.9871594286235508
+      ],
+      "ratio": 0.9992274115730412,
+      "median_seconds": {
+        "tensor": 0.3037968879798427,
+        "cpu": 0.3035412048920989
+      },
+      "resident_seconds": {
+        "tensor": 0.0010498444898985326,
+        "cpu": 0.00015911093214526772
+      },
+      "resident_ratio": 0.1515566673695128,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "benchmark": "squad",
+      "method": "ASD-Utility",
+      "tokens": 4,
+      "rounds": 1,
+      "paired_ratios": [
+        0.9957808416878323,
+        1.0030966004269881,
+        1.0018989784078374,
+        0.9918780494668625,
+        0.9869156327359726
+      ],
+      "ratio": 0.9958954616270381,
+      "median_seconds": {
+        "tensor": 0.7324667900102213,
+        "cpu": 0.7265177309745923
+      },
+      "resident_seconds": {
+        "tensor": 0.0010606449213810265,
+        "cpu": 0.00015956605784595013
+      },
+      "resident_ratio": 0.15044248516099532,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:12",
+      "benchmark": "json",
+      "method": "ASD-Utility",
+      "tokens": 115,
+      "rounds": 10,
+      "paired_ratios": [
+        0.9887340334704192,
+        0.99646038708722,
+        0.9871429972929311,
+        0.995813343041663,
+        0.9888685282756583
+      ],
+      "ratio": 0.9913961259231001,
+      "median_seconds": {
+        "tensor": 0.9396772680338472,
+        "cpu": 0.9316851149778813
+      },
+      "resident_seconds": {
+        "tensor": 0.0010478667099960148,
+        "cpu": 0.00015988346422091126
+      },
+      "resident_ratio": 0.15257996336339316,
+      "fallback_calls": 0
+    },
+    {
+      "request_id": "json:7",
+      "benchmark": "json",
+      "method": "ASD-Utility",
+      "tokens": 128,
+      "rounds": 10,
+      "paired_ratios": [
+        0.9952676257181149,
+        0.9929771158759993,
+        0.9941559261059655,
+        0.9911231664955609,
+        0.9949367537447714
+      ],
+      "ratio": 0.9936909738881691,
+      "median_seconds": {
+        "tensor": 0.9765443020733073,
+        "cpu": 0.9697340249549598
+      },
+      "resident_seconds": {
+        "tensor": 0.0010631167970132083,
+        "cpu": 0.00016039100592024624
+      },
+      "resident_ratio": 0.1508686593710677,
+      "fallback_calls": 0
+    }
+  ],
+  "overall": {
+    "ASD": {
+      "n": 12,
+      "ratio": 0.9969628995988346,
+      "ci95": [
+        0.9960067965578555,
+        0.9978995817557885
+      ]
+    },
+    "ASD-Run": {
+      "n": 12,
+      "ratio": 0.993261374881075,
+      "ci95": [
+        0.9925925035569276,
+        0.9939350919754223
+      ]
+    },
+    "ASD-Utility": {
+      "n": 12,
+      "ratio": 0.9936387387772417,
+      "ci95": [
+        0.9931301600880397,
+        0.9941475349003818
+      ]
+    }
+  },
+  "families": {
+    "gsm8k": {
+      "ASD": 0.994504957376493,
+      "ASD-Run": 0.9921853301457058,
+      "ASD-Utility": 0.9919609148635009
+    },
+    "math500": {
+      "ASD": 0.9953894423845113,
+      "ASD-Run": 0.9916706883017857,
+      "ASD-Utility": 0.9913118782232162
+    },
+    "mbpp": {
+      "ASD": 0.9963164290007303,
+      "ASD-Run": 0.9930062251839815,
+      "ASD-Utility": 0.9958188162732972
+    },
+    "humaneval": {
+      "ASD": 0.9960187708591823,
+      "ASD-Run": 0.9924610988248685,
+      "ASD-Utility": 0.9926532371604209
+    },
+    "squad": {
+      "ASD": 1.0011999252957613,
+      "ASD-Run": 0.997503262921579,
+      "ASD-Utility": 0.9975600454704089
+    },
+    "json": {
+      "ASD": 0.9983627675801715,
+      "ASD-Run": 0.9927530198955757,
+      "ASD-Utility": 0.9925428866691269
+    }
+  },
+  "note": "Ratios CPU/tensor. Five adjacent pairs collapse within each question; bootstrap resamples questions within the six fixed families, not repeats/states. Observed development subset, not independent validation."
+}

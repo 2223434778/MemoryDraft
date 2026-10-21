@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-21 — 短块CPU判定完成（420计时/430影子块/77状态）
+
+- 冻结`c75328fa8e03da09a262754a2e9e9207d6bdc5e2`/1285 blobs，source SHA`9df10dd95a6fbfcfbc7b31730635bd36358a73b59fb3c6059a2e1197d39506c1`、源码ZIP SHA`3ecc20f11788fb82bb53c5286307ff511e32a559408df2c1bb330cff7ca4bd2c`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-cpu` PID4004961，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_cpu_pipeline`；两worker均0退出、CPU VERIFIER COMPLETE，运行前后1285源码SHA相同，两卡最后19MiB/0%。
+- 原六类前两道开发题，7组/5重复/EOS前128，共420正式计时；36独立生成的430实际块逐轮持久CPU影子decision/summary精确相等，77真实0/4/12轮resident状态各Tensor/CPU 5warmup+30次；14生成warmup单列。456生成全量重现旧输入/轨迹/预算/停止原因。2150次正式CPU判定及430影子块均fast，fallback0，真实候选EOS独立标量审计通过。
+- CPU/原Tensor题级配对几何比：ASD0.996963 [0.996007,0.997900]、Run0.993261 [0.992593,0.993935]、Utility0.993639 [0.993130,0.994148]，下降0.304%/0.674%/0.636%。区间为固定六类各2题的分层bootstrap，不视为独立验证或生产保证。每类两题只列点估计；SQuAD基础ASD略慢0.120%，其他多数小幅改善。构造成本另测并计入主时延，全部摘要复制/精确性检查/判定在线计入。
+- 同轮resident原Tensor约0.771/0.872/1.053ms，CPU约0.157/0.165/0.160ms，约80%–85%成本下降；不是生成快5–7倍。原版跨轮绝对成本较前阶段低，未做单因素归因，收益仅采用本轮交错配对。生成主要成本及验证轮数没变，与上一阶段约百分之一量级空间一致。
+- 原验证器、Target/Draft、解码/评分/默认infra均未改，CPU为显式实验模块，边界回退单元覆盖。未生成新的4096自然质量/验证/保留答案，不把128相同推广为全输入或无损ASD。保留这个小幅执行选项，停止验证器扫参，下一阶段主要做模型编译/融合；专用训练/多候选仍未实现。
+- 结果ZIP323902字节/SHA`5396f837f69a94d3c004f4cdabcd139a9ce1f8baf97d4dc197318f51d0a7786f`，结果results/asd-cpu，完整表docs/ASD_CPU_RESULTS.md，解释docs/ASD_CPU_FINDINGS.md。重建`.venv\Scripts\python.exe -m scripts.write_asd_cpu_report`，后审计`.venv\Scripts\python.exe -m artifacts.audit_asd_cpu_postrun`：13冻结文件、844旧结果SHA、原四批151发布文件及infra三引用通过，只有两个既有CRLF例外。
+- 本地完整629 passed/5 skipped/70.22s；服务器98 passed/9.46s。GPU后执行/统计/评分源码未改，不重复已通过性能复验；小型原始计时、完整候选trace、测试和源码审计发布，不上传完整词表logits/权重。
+
 ## 2026-10-21 — 短块ASD CPU判定精简（执行准备）
 
 - 用户授权继续上一阶段的小成本检查。新增显式CPUASDVerifier：一次传输4K FP32摘要，CPU完成原ASD/Run/Utility规则；整数ID范围、FP64精确求和格点检查及不支持设置回退原Tensor。Target、解码、默认验证器与infra不改，不新增预算/接受容差。

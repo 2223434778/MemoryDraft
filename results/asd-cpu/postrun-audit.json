@@ -1,0 +1,118 @@
+{
+  "status": "complete",
+  "source_commit": "c75328fa8e03da09a262754a2e9e9207d6bdc5e2",
+  "source_sha256": "9df10dd95a6fbfcfbc7b31730635bd36358a73b59fb3c6059a2e1197d39506c1",
+  "execution_files": 1285,
+  "frozen_files": [
+    {
+      "path": "memorydraft/backends/asd_cpu.py",
+      "sha256": "588edb3fd70b519391cff05fa091681cdb66780dd02524d6e702d8405d0f33c8"
+    },
+    {
+      "path": "scripts/run_asd_cpu_probe.py",
+      "sha256": "a206a43d853f4f0b3d70cca40858e6530e20536a9d7bc4c071d30bc1341fefe9"
+    },
+    {
+      "path": "scripts/run_asd_cpu_pipeline.py",
+      "sha256": "e71c4b2f6fa2fac6af8fdd1748383c146eb69db698898c73dd3591ccb20dd1e2"
+    },
+    {
+      "path": "scripts/write_asd_cpu_report.py",
+      "sha256": "53c1bc3d31b0947c33ca03491b398f851c63fe60f19cac13b5304400caa2d3ff"
+    },
+    {
+      "path": "docs/ASD_CPU_PROTOCOL.md",
+      "sha256": "4e90cbe2c88258ab6142c21e27645b20fb655ef2135167623b7af9b69786ff67"
+    },
+    {
+      "path": "memorydraft/backends/asd.py",
+      "sha256": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84"
+    },
+    {
+      "path": "memorydraft/backends/dflash_reuse.py",
+      "sha256": "f9989b6239ff3fdb4afc5e939feea5ad33c95e262308c23050c06b04e26f4891"
+    },
+    {
+      "path": "memorydraft/runtime/engine.py",
+      "sha256": "adafb9191bdfb8070e4d56daaf5d9861ba590663e00e757cae4ffe239ce33f2e"
+    },
+    {
+      "path": "memorydraft/runtime/config.py",
+      "sha256": "bbcf05d7430d9c01cf263294a7c94ece2627e7e57e7df5e093897d7f8ea70800"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "sha256": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "sha256": "8d854524078f2736f003b8eb3dd5abe54ad87cb92fef4b0f91af5e33fe4fc9ba"
+    },
+    {
+      "path": "scripts/run_asd_execution_probe.py",
+      "sha256": "b065df6ffb84eb452ae1e9141348199ddb317e853eec892448d36ad3ac3755f0"
+    },
+    {
+      "path": "scripts/write_asd_block_suite_report.py",
+      "sha256": "75b7e360a453f9a1c5977c4a9feeea6feba6da80eab9edc72adcf01311078696"
+    }
+  ],
+  "prior_runtime_unchanged": [
+    "memorydraft/backends/asd.py",
+    "memorydraft/backends/dflash_reuse.py",
+    "memorydraft/runtime/engine.py",
+    "memorydraft/runtime/config.py",
+    "memorydraft/evaluation/asd_suite.py",
+    "scripts/run_asd_suite.py"
+  ],
+  "protected_results_verified": 844,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files_verified": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files_verified": 29
+    },
+    {
+      "path": "results/asd-block-suite/publication.json",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files_verified": 35
+    },
+    {
+      "path": "results/asd-execution/publication.json",
+      "commit": "1e56ecbe071ec305fb2982c467099d98a725c079",
+      "files_verified": 33
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "counts": [
+    {
+      "timed": 210,
+      "capture": 18,
+      "shadow_blocks": 208,
+      "replay_states": 38
+    },
+    {
+      "timed": 210,
+      "capture": 18,
+      "shadow_blocks": 222,
+      "replay_states": 39
+    }
+  ],
+  "result_zip": {
+    "bytes": 323902,
+    "sha256": "5396f837f69a94d3c004f4cdabcd139a9ce1f8baf97d4dc197318f51d0a7786f"
+  }
+}
