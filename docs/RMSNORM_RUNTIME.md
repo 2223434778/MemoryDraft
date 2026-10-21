@@ -1,6 +1,6 @@
-# RMSNorm显式运行时profile接入候选
+# RMSNorm显式运行时profile
 
-状态：48题独立验证已通过，显式选项已合入研究分支，真实GPU接入验收中。首次服务器前置测试发现延迟导入测试夹具引用旧模块，已修复后准备新源码重试；尚不声称接入验收通过。默认配置仍eager。
+状态：48题独立验证及真实GPU工程验收均通过，显式选项已合入研究分支。使用结果和保留的前置测试失败见[RMSNORM_RUNTIME_RESULTS.md](RMSNORM_RUNTIME_RESULTS.md)。默认配置仍eager。
 
 配置字段execution_profile默认eager；configs/runtime-dflash-rmsnorm.json显式选择rmsnorm-inductor。该数值profile只对原Qwen3RMSNorm编译，不改变precision/attention、Target输入、接受规则或检索。使用已测Linux/PyTorch2.5.1/Transformers4.57.3、CUDA FP32 Target和Draft；不支持的环境明确拒绝，不静默回退。
 
@@ -8,7 +8,16 @@
 
 引擎保持单owner，stream只提交已确认token；取消清理后下一请求仍使用同一固定profile。关闭只在无请求拥有锁时恢复所有绑定，异常同步也尝试恢复。改变profile需要重启worker进程；不提供请求级切换。依然没有连续批处理/采样支持。
 
-完整输出及质量一致只针对被评测数据，FP32归约末位仍可能变化。默认配置及独立infra面试版保持原样。CLI/HTTP性能不能直接引用研究runner的约2.8%数值；接入后的冷调用、stream/cancel及R路径需另做小规模真实GPU检查。
+完整输出及质量一致只针对被评测数据，FP32归约末位仍可能变化。默认配置及独立infra面试版保持原样。CLI/HTTP性能不能直接引用研究runner的约2.8%数值；已完成的示例接入验收只说明功能兼容，R只实际接受2个历史token，不代表长历史R覆盖充分或提速。
+
+已有本地模型及独立Linux依赖环境时，在项目根目录执行：
+
+```bash
+python -m memorydraft infer --config configs/runtime-dflash-rmsnorm.json --request examples/request.json --method DFlash --output artifacts/rmsnorm-infer.json
+python -m memorydraft serve --config configs/runtime-dflash-rmsnorm.json --host 127.0.0.1 --port 8000
+```
+
+模型路径相对于配置文件；可复制配置后填写已有本地模型位置。运行时不下载模型，产物输出路径须未存在。当前仅支持batch1/greedy/单owner排队。首次空缓存AR请求实测4.787秒，backend编译3.492秒已计在内；即使磁盘cache已存在，新CLI进程仍有图建立/编译开销，不能承诺零冷启动。更多环境与安装见[INFRA_GUIDE.md](INFRA_GUIDE.md)。
 
 ## 接入验收安排
 

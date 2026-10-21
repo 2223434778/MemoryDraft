@@ -1,0 +1,51 @@
+...F.................................................................... [ 85%]
+............                                                             [100%]
+=================================== FAILURES ===================================
+_____ test_unsupported_runtime_stack_fails_without_fallback[transformers] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f6dd647a390>
+wrong = 'transformers'
+
+    @pytest.mark.parametrize("wrong", ["platform", "torch", "transformers", "device", "dtype", "draft"])
+    def test_unsupported_runtime_stack_fails_without_fallback(monkeypatch, wrong):
+        monkeypatch.setattr(sys, "platform", "linux")
+        monkeypatch.setattr(torch, "__version__", "2.5.1+cu124")
+        monkeypatch.setattr(transformers, "__version__", "4.57.3")
+        target = SimpleNamespace(device=torch.device("cuda:0"), dtype=torch.float32)
+        draft = SimpleNamespace(device=target.device, dtype=target.dtype)
+        if wrong == "platform":
+            monkeypatch.setattr(sys, "platform", "win32")
+        elif wrong == "torch":
+            monkeypatch.setattr(torch, "__version__", "2.6.0")
+        elif wrong == "transformers":
+            monkeypatch.setattr(transformers, "__version__", "4.52.2")
+        elif wrong == "device":
+            target.device = torch.device("cpu")
+        elif wrong == "dtype":
+            draft.dtype = torch.bfloat16
+        else:
+            draft = None
+        with pytest.raises((ValueError, RuntimeError), match="rmsnorm-inductor"):
+>           region.runtime_rmsnorm(target, draft)
+
+tests/test_runtime_rmsnorm.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+memorydraft/backends/regional_compile.py:123: in runtime_rmsnorm
+    return RegionalRMSNorm(target, draft)
+memorydraft/backends/regional_compile.py:106: in __init__
+    super().__init__(target, draft, Qwen3RMSNorm, "rmsnorm-inductor", **kwargs)
+memorydraft/backends/regional_compile.py:48: in __init__
+    self.regions = [(owner+"."+name, module) for owner, model in (("target", target), ("draft", draft))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x7f6dd6414ca0>
+
+    self.regions = [(owner+"."+name, module) for owner, model in (("target", target), ("draft", draft))
+>                   for name, module in model.named_modules() if isinstance(module, region_type)]
+E   AttributeError: 'types.SimpleNamespace' object has no attribute 'named_modules'
+
+memorydraft/backends/regional_compile.py:49: AttributeError
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/rmsnorm-runtime/results/raw/rmsnorm-runtime/tests-server.xml -
+=========================== short test summary info ============================
+FAILED tests/test_runtime_rmsnorm.py::test_unsupported_runtime_stack_fails_without_fallback[transformers]
+1 failed, 83 passed in 8.92s

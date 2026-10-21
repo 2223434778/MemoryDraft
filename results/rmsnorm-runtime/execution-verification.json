@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "commit": "52fe5be256a9982d4201c24a92b498a5e9cc0e2f",
+  "files_verified_before": 1453,
+  "process_timeout_seconds": 1800,
+  "initial_cache_files": 0,
+  "validation_admission": {
+    "eligible_for_explicit_profile": true,
+    "checks": {
+      "all_240_full_outputs_identical": true,
+      "no_observed_quality_or_completion_regression": true,
+      "strict_DFlash_matches_AR_in_both_profiles": true,
+      "all_four_overall_ci_upper_below_one": true,
+      "no_family_point_regression": true,
+      "resource_bounds": true,
+      "frozen_source_and_initial_isolation": true
+    },
+    "scope": "Engineering gate for an explicit numerical profile, not a universal lossless or statistical quality-noninferiority proof. Reserve remains ungenerated; failures are retained, not retuned on validation."
+  },
+  "checks": {
+    "benchmark_rows": 12,
+    "all_rows_correct": true,
+    "warmed_benchmark_new_graphs": 0,
+    "cli_tokens": 45,
+    "graphs": 4,
+    "cache_bytes": 417641
+  },
+  "files_verified_after": 1453
+}

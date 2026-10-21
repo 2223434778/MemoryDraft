@@ -1,0 +1,74 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.50s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.50s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+{
+  "request_id": "hello",
+  "method": "DFlash",
+  "token_ids": [
+    8327,
+    22160,
+    47116,
+    374,
+    264,
+    14762,
+    1483,
+    304,
+    4128,
+    4119,
+    311,
+    6923,
+    1467,
+    803,
+    29720,
+    553,
+    1667,
+    264,
+    9155,
+    11,
+    10596,
+    1614,
+    311,
+    7023,
+    279,
+    2550,
+    1573,
+    279,
+    8131,
+    1614,
+    11364,
+    432,
+    13,
+    1096,
+    8609,
+    7949,
+    54480,
+    7049,
+    1393,
+    20337,
+    1550,
+    22092,
+    3059,
+    13,
+    151645
+  ],
+  "text": "Speculative decoding is a technique used in language models to generate text more efficiently by using a smaller, faster model to predict the output before the larger model processes it. This helps reduce computational costs while maintaining high-quality results.",
+  "prompt_tokens": 21,
+  "prompt_sha256": "35bebe6816ae747f8e2e13821de0f23d0914c2faaa7256fa3fe3e4d24d464a3e",
+  "snapshot_id": "402cc7c3b989a80c296d4aa9f8d003ef11b922613e653988dbd88b8e25e151ed",
+  "latency_seconds": 3.9986430460121483,
+  "ttft_seconds": 2.204556898912415,
+  "finish_reason": "eos",
+  "peak_gpu_bytes": 37041083904,
+  "counters": {
+    "rounds": 25,
+    "reuse_rounds": 0,
+    "reuse_accepted_tokens": 0,
+    "draft_rounds": 25,
+    "index_bytes": 0,
+    "feature_peak_tokens": 21,
+    "buffer_flushes": 0,
+    "compile_graphs_before": 0,
+    "compile_graphs_after": 3,
+    "compile_backend_seconds": 1.6565358790103346
+  },
+  "execution_profile": "rmsnorm-inductor"
+}

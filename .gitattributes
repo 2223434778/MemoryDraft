@@ -274,7 +274,7 @@ configs/*.json text eol=lf
 scripts/validate_infra.py text eol=lf
 scripts/run_rmsnorm_runtime_pipeline.py text eol=lf
 tests/test_runtime_rmsnorm.py text eol=lf
-docs/RMSNORM_RUNTIME.md text eol=lf
+docs/RMSNORM_RUNTIME*.md text eol=lf
 results/rmsnorm-runtime/** -text
 results/rmsnorm-runtime/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/rmsnorm-runtime/**/*.log -whitespace

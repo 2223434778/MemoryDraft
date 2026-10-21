@@ -1,0 +1,65 @@
+[
+  {
+    "request_id": "__cold__",
+    "method": "AR",
+    "token_ids": [
+      9707,
+      0,
+      2585,
+      646,
+      358,
+      7789,
+      498,
+      3351
+    ],
+    "text": "Hello! How can I assist you today",
+    "prompt_tokens": 15,
+    "prompt_sha256": "3f79716a493e8c8924db01d949d84e93ea6eaaec66157a5cc94134711ee54a91",
+    "snapshot_id": "20367630a18183569733f47724826714037ca8b076b3241ad9196cf7e4d76298",
+    "latency_seconds": 4.78660463297274,
+    "ttft_seconds": 3.6525688420515507,
+    "finish_reason": "length",
+    "peak_gpu_bytes": 37227073024,
+    "counters": {
+      "compile_graphs_before": 0,
+      "compile_graphs_after": 4,
+      "compile_backend_seconds": 3.4920164371142164
+    },
+    "execution_profile": "rmsnorm-inductor"
+  },
+  {
+    "request_id": "__cold__",
+    "method": "DFlash",
+    "token_ids": [
+      9707,
+      0,
+      2585,
+      646,
+      358,
+      7789,
+      498,
+      3351
+    ],
+    "text": "Hello! How can I assist you today",
+    "prompt_tokens": 15,
+    "prompt_sha256": "3f79716a493e8c8924db01d949d84e93ea6eaaec66157a5cc94134711ee54a91",
+    "snapshot_id": "20367630a18183569733f47724826714037ca8b076b3241ad9196cf7e4d76298",
+    "latency_seconds": 0.1994062770390883,
+    "ttft_seconds": 0.05774067901074886,
+    "finish_reason": "length",
+    "peak_gpu_bytes": 37004042240,
+    "counters": {
+      "rounds": 2,
+      "reuse_rounds": 0,
+      "reuse_accepted_tokens": 0,
+      "draft_rounds": 2,
+      "index_bytes": 0,
+      "feature_peak_tokens": 15,
+      "buffer_flushes": 0,
+      "compile_graphs_before": 4,
+      "compile_graphs_after": 4,
+      "compile_backend_seconds": 0
+    },
+    "execution_profile": "rmsnorm-inductor"
+  }
+]

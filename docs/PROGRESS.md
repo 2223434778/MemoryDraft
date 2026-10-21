@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-21 — 显式RMSNorm运行时真实验收完成
+
+- 冻结52fe5be256a9982d4201c24a92b498a5e9cc0e2f/1453 blobs，source SHA59b878abbab371be65d061898812483c3c18aa220a2f575ae69f0d0802d72627；rmsnorm-runtime-v2/PID12263于12:47:08–12:49:01 UTC运行同一pipeline，RMSNORM RUNTIME ACCEPTANCE COMPLETE，前后1453 SHA相同，两卡结束19MiB/0%。旧完整ZIP+delta重建记录见deployment-delta.json，原目录/失败结果保留。
+- 服务器84 passed/8.93s后实际单卡：2公开示例×3方法×2重复=12计时token/prompt/snapshot全同同profile AR；R接受2历史token、快照未变；直接取消后恢复、实际Uvicorn 6请求并发2全成功、三路SSE token/profile正确。独立profile记录13527 CUDA kernel/10阶段，原大trace/DB不上传。前进程退出后新CLI进程45token成功。
+- 空cache首次AR4.78660s/TTFT3.65257s，图0→4/backend3.49202s计请求内，outer3.87917s嵌套；加载setup0.00402s另列。紧接DFlash0.19941s无新图，不能当独立空cacheD冷启动。新CLI已有磁盘cache仍3.99864s/图0→3/backend1.65654s；不声称cache存在即零编译。正式benchmark无新图，验收4图/cache417641B/peak allocated34.6704GiB。
+- warmed示例AR/D/R+D总8.9742/4.3535/4.8169s、均186token；R+D比D慢10.64%，仅证明R确实触发兼容，不作新增R提速或norm服务性能消融结论。研究性能仍用独立48题约2.7%–2.9%；默认eager/原面试版保持，reserve96未生成。
+- 结果ZIP98910B/SHA825e38ae8e3ea608f8479d6330df8c02960e2ce530782281a57d8676cc38eb4c；原失败72760B/SHAb4b0d6b8fea3f3bdeee486d81508f182e77cc0790a5dbb7dee0312617b11dd25。results/rmsnorm-runtime及docs/RMSNORM_RUNTIME_RESULTS.md；1453 Git blob/9核心文件/9批347旧发布文件/infra引用核验通过。本地完整711 passed/5 skipped（仅后改测试夹具，23相关再过），服务器84通过；不重复无关性能测试。
+- 最小修复为测试获取当前Transformers延迟导入模块，生产guard未改；validate_infra生命周期统一到末尾实际HTTP单lifespan。未放宽数值/质量条件，未覆盖旧失败。复现入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_rmsnorm_runtime_pipeline`，后审计`python -m results.rmsnorm-runtime.audit_postrun`需Git历史及两个原ZIP。新增使用说明列真实infer/serve命令和冷成本。
+
 ## 2026-10-21 — 显式RMSNorm运行时真实接入验收（执行中）
 
 - 修复版52fe5be256a9982d4201c24a92b498a5e9cc0e2f/1453 blobs，source SHA59b878abbab371be65d061898812483c3c18aa220a2f575ae69f0d0802d72627；本地完整canonical ZIP SHAd34e475b67b7ede5354bff2324e1863c214a2cb48266af5bcdfada08c5a96d53。使用已校验旧完整ZIP+161138B delta（SHA1f2766979b88b1a7dd452cb1ee84d9e0a5f903a9cbc79a3492da11b0beb9410d）在新rmsnorm-runtime-v2重建，1453目标blob逐SHA核验；不是声称服务器收到了新完整ZIP。DEPLOYMENT_DELTA.json列出仅三个变化文件。2026-10-21 12:47:08 UTC/PID12263启动同一pipeline；原失败ZIP服务器另存rmsnorm-runtime-failed-tests-results.zip，新目录/空缓存，无生产代码变更。

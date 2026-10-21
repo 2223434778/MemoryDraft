@@ -1,0 +1,103 @@
+{
+  "status": "complete",
+  "source_commit": "52fe5be256a9982d4201c24a92b498a5e9cc0e2f",
+  "source_files": 1453,
+  "core_files": [
+    "memorydraft/backends/regional_compile.py",
+    "memorydraft/runtime/engine.py",
+    "memorydraft/runtime/config.py",
+    "memorydraft/runtime/contracts.py",
+    "memorydraft/runtime/benchmark.py",
+    "configs/runtime-dflash-rmsnorm.json",
+    "scripts/validate_infra.py",
+    "scripts/run_rmsnorm_runtime_pipeline.py",
+    "tests/test_runtime_rmsnorm.py"
+  ],
+  "checks": {
+    "benchmark_rows": 12,
+    "all_rows_correct": true,
+    "warmed_benchmark_new_graphs": 0,
+    "cli_tokens": 45,
+    "graphs": 4,
+    "cache_bytes": 417641
+  },
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files": 29
+    },
+    {
+      "path": "results/asd-block-suite/publication.json",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files": 35
+    },
+    {
+      "path": "results/asd-execution/publication.json",
+      "commit": "1e56ecbe071ec305fb2982c467099d98a725c079",
+      "files": 33
+    },
+    {
+      "path": "results/asd-cpu/publication.json",
+      "commit": "38ce3b393dcf724d5e51a8a33a46765b25f8c6e9",
+      "files": 30
+    },
+    {
+      "path": "results/asd-compile/publication.json",
+      "commit": "4f3aa2ab92391f0ee5211f4563fd5d64010a92e3",
+      "files": 34
+    },
+    {
+      "path": "results/asd-rmsnorm/publication.json",
+      "commit": "841e0e5fc1bb0322dd4cbe8d3913c699e93c02cc",
+      "files": 39
+    },
+    {
+      "path": "results/asd-rmsnorm-suite/publication.json",
+      "commit": "e958532bb4dc7544692011115895f90df2bd3f43",
+      "files": 43
+    },
+    {
+      "path": "results/asd-rmsnorm-validation/publication.json",
+      "commit": "9b8176e78e3463b0573782dd570eb71045691022",
+      "files": 50
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "archives": [
+    {
+      "path": "rmsnorm-runtime-results.zip",
+      "bytes": 98910,
+      "sha256": "825e38ae8e3ea608f8479d6330df8c02960e2ce530782281a57d8676cc38eb4c"
+    },
+    {
+      "path": "rmsnorm-runtime-failed-tests-results.zip",
+      "bytes": 72760,
+      "sha256": "b4b0d6b8fea3f3bdeee486d81508f182e77cc0790a5dbb7dee0312617b11dd25"
+    }
+  ],
+  "peak_allocated_bytes": 37227073024,
+  "server_tests": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "84",
+      "time": "8.929",
+      "timestamp": "2026-10-21T20:47:09.033571",
+      "hostname": "a6000-Super-Server"
+    }
+  ],
+  "preserved_preflight_failure": true,
+  "scope": "Engineering acceptance only; research performance remains the separate independent validation."
+}

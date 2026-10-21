@@ -1,0 +1,16 @@
+{
+  "synthetic": false,
+  "mode": "closed_loop",
+  "requests": 6,
+  "concurrency": 2,
+  "successful": 6,
+  "failed": 0,
+  "wall_seconds": 2.8624855980742723,
+  "successful_requests_per_second": 2.096080414880159,
+  "completed_tokens_per_second": 33.53728663808254,
+  "p50_seconds": 0.9477974219480529,
+  "p95_seconds": null,
+  "p99_seconds": null,
+  "p50_ttft_seconds": 0.5387733769603074,
+  "note": "Client wall time includes queue and HTTP/SSE transport; percentiles cover successful requests only"
+}

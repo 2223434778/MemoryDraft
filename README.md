@@ -75,6 +75,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [RMSNorm独立48题验证](docs/ASD_RMSNORM_VALIDATION_FINDINGS.md)完成1152计时+96 AR对照：四方法自然时延下降2.68%–2.86%，240对完整输出全同，六类均改善，全部预登记工程门槛通过。DFlash一题计时退化和原有质量问题保留；reserve96未生成。继续显式profile的CLI/服务接入验收，默认eager不变。
 
+[显式RMSNorm运行时](docs/RMSNORM_RUNTIME.md)已完成[真实GPU接入验收](docs/RMSNORM_RUNTIME_RESULTS.md)：`configs/runtime-dflash-rmsnorm.json`选择数值profile，12示例配对、取消恢复、三路SSE、HTTP队列和新进程CLI通过。默认eager/原面试版不变；冷编译计请求时间，R示例仅证明触发兼容，未显示额外提速，不以小样本代替独立性能结果。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

@@ -1,0 +1,11 @@
+{
+  "base_source_zip_sha256": "625d6ae67bdc10afb85e4bfbafac751f61d40d161f9b7a3354a35bb82060be05",
+  "canonical_full_zip_sha256": "d34e475b67b7ede5354bff2324e1863c214a2cb48266af5bcdfada08c5a96d53",
+  "target_source_sha256": "59b878abbab371be65d061898812483c3c18aa220a2f575ae69f0d0802d72627",
+  "changed": [
+    "docs/PROGRESS.md",
+    "docs/RMSNORM_RUNTIME.md",
+    "tests/test_runtime_rmsnorm.py"
+  ],
+  "scope": "Reconstruct a fresh tree from canonical base/delta blobs; verify every target file against the new Git manifest"
+}

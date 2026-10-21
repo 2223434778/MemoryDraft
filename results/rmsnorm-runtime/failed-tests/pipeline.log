@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/rmsnorm-runtime/scripts/run_rmsnorm_runtime_pipeline.py", line 115, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/rmsnorm-runtime/scripts/run_rmsnorm_runtime_pipeline.py", line 89, in main
+    run_owned([exe, "-m", "pytest", "-q", "tests/test_runtime_rmsnorm.py", "tests/test_runtime.py",
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/rmsnorm-runtime/scripts/run_rmsnorm_runtime_pipeline.py", line 29, in run_owned
+    raise RuntimeError(f"Runtime acceptance process failed ({code}); see {log.name}")
+RuntimeError: Runtime acceptance process failed (1); see tests.log

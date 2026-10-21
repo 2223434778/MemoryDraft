@@ -1,0 +1,21 @@
+{
+  "status": "failed",
+  "commit": "96952d31927bf4184b53911d9f5db0931e30bb70",
+  "files_verified_before": 1453,
+  "process_timeout_seconds": 1800,
+  "initial_cache_files": 0,
+  "validation_admission": {
+    "eligible_for_explicit_profile": true,
+    "checks": {
+      "all_240_full_outputs_identical": true,
+      "no_observed_quality_or_completion_regression": true,
+      "strict_DFlash_matches_AR_in_both_profiles": true,
+      "all_four_overall_ci_upper_below_one": true,
+      "no_family_point_regression": true,
+      "resource_bounds": true,
+      "frozen_source_and_initial_isolation": true
+    },
+    "scope": "Engineering gate for an explicit numerical profile, not a universal lossless or statistical quality-noninferiority proof. Reserve remains ungenerated; failures are retained, not retuned on validation."
+  },
+  "error": "RuntimeError: Runtime acceptance process failed (1); see tests.log"
+}
