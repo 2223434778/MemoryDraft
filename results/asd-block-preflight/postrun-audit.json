@@ -1,0 +1,58 @@
+{
+  "status": "complete",
+  "source_commit": "852a08e0112252799021a4e50319c3f140437deb",
+  "source_sha256": "77fdea7117fca6d3b97912b38376cd7e4783eb9425e753ba4671cc8092e064a5",
+  "execution_files": 1184,
+  "frozen_runner_functions": [
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "experimental_block",
+      "sha256": "cece33195dd25b5db35eaf77ecf782720675075ad4fd3fff91c0a3121ae8b766"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "selected_records",
+      "sha256": "2017b25c868964946f6a7fa42e6280c2b26b08a10a658f906136f7fc7d6fa5c1"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "run",
+      "sha256": "6dbe01a5f91de7d64ae66588117ce201d8396028bf13f391f23aa12a5058e6d2"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "check_native",
+      "sha256": "4cfa46ca3d998f17348d0434a87965880857925b9e9312dd456eb5a8d8a3235b"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "prefix_check",
+      "sha256": "9c5847b064827865e6034933ea4dd9bed2e2769081a7f6c0bf138753fa16380f"
+    },
+    {
+      "path": "scripts/run_asd_block_probe.py",
+      "function": "main",
+      "sha256": "b9b6c14a6b6717dec0b573a590de2f482f903c4834811fa7a134c8f5d8a6d9e5"
+    }
+  ],
+  "protected_results_verified": 768,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "previous_publication": {
+    "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+    "files_verified": 54,
+    "note": "Roadmap is a live status file updated for the next stage; prior SHA is checked at its publication commit."
+  },
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "result_zip": {
+    "bytes": 192974,
+    "sha256": "ab9bde15246e55f548411d0f8604c2e3d7511ec6a316d039632e00f5b2d69835"
+  },
+  "note": "Reporter and presentation audits added after execution; runner, prompts, scoring, production runtime and policies unchanged."
+}

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="3" skipped="1" tests="12" time="9.859" timestamp="2026-10-21T11:20:41.830849+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_asd_block_probe" name="test_experimental_attribute_restored_on_exception_without_rewriting_config" time="0.001" /><testcase classname="tests.test_asd_block_probe" name="test_selection_is_first_per_family_and_native_check_rejects_changed_budget" time="0.003" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[None-16]" time="0.222" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[None-24]" time="0.119" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[None-32]" time="0.133" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy1-16]" time="0.135" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy1-24]" time="0.131" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy1-32]" time="0.135" /><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy2-16]" time="0.005"><failure message="AssertionError: Tensor-likes are not close!&#10;&#10;Mismatched elements: 128 / 192 (66.7%)&#10;Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)&#10;Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....7388e+00],
+         [-2.8788e-03, -1.4864e-02,  4.5518e-02,  ..., -1.1683e+00,
+           9.2727e-01, -1.0281e+00]]]))
+size = 16
+policy = ASDConfig(budget=8, gate=0.25, cap=2, value='exact-run', selection='longest', regret_price=2.0)
+
+    @pytest.mark.parametrize("size",[16,24,32])
+    @pytest.mark.parametrize("policy",[None,ASDConfig(budget=0),ASDConfig(budget=8,value="exact-run")])
+    def test_larger_actual_blocks_keep_target_features_kv_stream_and_eos(tiny,size,policy):
+        class Draft(torch.nn.Module):
+            block_size,mask_token_id,target_layer_ids=16,31,[0,1]
+            config=SimpleNamespace(block_size=16)
+            calls=[]
+    
+            def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+                cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+                torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+                assert noise_embedding.shape[1]==size and position_ids.shape[1]==n+size
+                self.calls.append(size)
+                values=noise_embedding.new_zeros((1,1,n+size,8));past_key_values.update(values,values,0)
+                return torch.zeros_like(noise_embedding)
+    
+        draft=Draft();commits=[]
+        with experimental_block(draft,size):
+&gt;           result=generate_reuse(tiny.target,draft,tiny.ids,max_new_tokens=65,on_tokens=commits.extend,
+                                  verifier=None if policy is None else ASDVerifier(policy))
+
+tests\test_asd_block_probe.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\torch\utils\_contextlib.py:116: in decorate_context
+    return func(*args, **kwargs)
+memorydraft\backends\dflash_reuse.py:148: in generate_reuse
+    hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
+.venv\Lib\site-packages\torch\nn\modules\module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv\Lib\site-packages\torch\nn\modules\module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Draft()
+target_hidden = tensor([[[ 1.2944e-02, -5.8299e-03, -3.3419e-02,  7.8920e-03,  2.8073e-02,
+           3.5234e-03,  4.1849e-02,  2.3272...1, -6.0455e-01,  1.4533e-01, -1.7073e-01, -5.8311e-01,
+          -4.4859e-01, -3.4553e-01, -1.5531e+00,  2.6008e-01]]])
+noise_embedding = tensor([[[-0.0235,  0.0131, -0.0154, -0.0002,  0.0006, -0.0324, -0.0108,
+           0.0394,  0.0246,  0.0246, -0.0235,...         0.0086,  0.0100, -0.0271, -0.0047, -0.0079,  0.0140, -0.0078,
+           0.0030,  0.0566, -0.0047, -0.0255]]])
+position_ids = tensor([[ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+         21]])
+past_key_values = &lt;transformers.cache_utils.DynamicCache object at 0x00000209A482F5F0&gt;
+kwargs = {'is_causal': False, 'use_cache': True}, cached = 3, n = 3
+
+    def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+        cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+&gt;       torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+E       AssertionError: Tensor-likes are not close!
+E       
+E       Mismatched elements: 128 / 192 (66.7%)
+E       Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)
+E       Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)
+
+tests\test_asd_block_probe.py:64: AssertionError</failure></testcase><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy2-24]" time="0.005"><failure message="AssertionError: Tensor-likes are not close!&#10;&#10;Mismatched elements: 128 / 192 (66.7%)&#10;Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)&#10;Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....7388e+00],
+         [-2.8788e-03, -1.4864e-02,  4.5518e-02,  ..., -1.1683e+00,
+           9.2727e-01, -1.0281e+00]]]))
+size = 24
+policy = ASDConfig(budget=8, gate=0.25, cap=2, value='exact-run', selection='longest', regret_price=2.0)
+
+    @pytest.mark.parametrize("size",[16,24,32])
+    @pytest.mark.parametrize("policy",[None,ASDConfig(budget=0),ASDConfig(budget=8,value="exact-run")])
+    def test_larger_actual_blocks_keep_target_features_kv_stream_and_eos(tiny,size,policy):
+        class Draft(torch.nn.Module):
+            block_size,mask_token_id,target_layer_ids=16,31,[0,1]
+            config=SimpleNamespace(block_size=16)
+            calls=[]
+    
+            def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+                cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+                torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+                assert noise_embedding.shape[1]==size and position_ids.shape[1]==n+size
+                self.calls.append(size)
+                values=noise_embedding.new_zeros((1,1,n+size,8));past_key_values.update(values,values,0)
+                return torch.zeros_like(noise_embedding)
+    
+        draft=Draft();commits=[]
+        with experimental_block(draft,size):
+&gt;           result=generate_reuse(tiny.target,draft,tiny.ids,max_new_tokens=65,on_tokens=commits.extend,
+                                  verifier=None if policy is None else ASDVerifier(policy))
+
+tests\test_asd_block_probe.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\torch\utils\_contextlib.py:116: in decorate_context
+    return func(*args, **kwargs)
+memorydraft\backends\dflash_reuse.py:148: in generate_reuse
+    hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
+.venv\Lib\site-packages\torch\nn\modules\module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv\Lib\site-packages\torch\nn\modules\module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Draft()
+target_hidden = tensor([[[ 1.2944e-02, -5.8299e-03, -3.3419e-02,  7.8920e-03,  2.8073e-02,
+           3.5234e-03,  4.1849e-02,  2.3272...1, -6.0455e-01,  1.4533e-01, -1.7073e-01, -5.8311e-01,
+          -4.4859e-01, -3.4553e-01, -1.5531e+00,  2.6008e-01]]])
+noise_embedding = tensor([[[-0.0235,  0.0131, -0.0154, -0.0002,  0.0006, -0.0324, -0.0108,
+           0.0394,  0.0246,  0.0246, -0.0235,...         0.0086,  0.0100, -0.0271, -0.0047, -0.0079,  0.0140, -0.0078,
+           0.0030,  0.0566, -0.0047, -0.0255]]])
+position_ids = tensor([[ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+         21, 22, 23, 24, 25, 26, 27, 28, 29]])
+past_key_values = &lt;transformers.cache_utils.DynamicCache object at 0x00000209A6AD1A90&gt;
+kwargs = {'is_causal': False, 'use_cache': True}, cached = 3, n = 3
+
+    def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+        cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+&gt;       torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+E       AssertionError: Tensor-likes are not close!
+E       
+E       Mismatched elements: 128 / 192 (66.7%)
+E       Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)
+E       Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)
+
+tests\test_asd_block_probe.py:64: AssertionError</failure></testcase><testcase classname="tests.test_asd_block_probe" name="test_larger_actual_blocks_keep_target_features_kv_stream_and_eos[policy2-32]" time="0.005"><failure message="AssertionError: Tensor-likes are not close!&#10;&#10;Mismatched elements: 128 / 192 (66.7%)&#10;Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)&#10;Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....7388e+00],
+         [-2.8788e-03, -1.4864e-02,  4.5518e-02,  ..., -1.1683e+00,
+           9.2727e-01, -1.0281e+00]]]))
+size = 32
+policy = ASDConfig(budget=8, gate=0.25, cap=2, value='exact-run', selection='longest', regret_price=2.0)
+
+    @pytest.mark.parametrize("size",[16,24,32])
+    @pytest.mark.parametrize("policy",[None,ASDConfig(budget=0),ASDConfig(budget=8,value="exact-run")])
+    def test_larger_actual_blocks_keep_target_features_kv_stream_and_eos(tiny,size,policy):
+        class Draft(torch.nn.Module):
+            block_size,mask_token_id,target_layer_ids=16,31,[0,1]
+            config=SimpleNamespace(block_size=16)
+            calls=[]
+    
+            def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+                cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+                torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+                assert noise_embedding.shape[1]==size and position_ids.shape[1]==n+size
+                self.calls.append(size)
+                values=noise_embedding.new_zeros((1,1,n+size,8));past_key_values.update(values,values,0)
+                return torch.zeros_like(noise_embedding)
+    
+        draft=Draft();commits=[]
+        with experimental_block(draft,size):
+&gt;           result=generate_reuse(tiny.target,draft,tiny.ids,max_new_tokens=65,on_tokens=commits.extend,
+                                  verifier=None if policy is None else ASDVerifier(policy))
+
+tests\test_asd_block_probe.py:72: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\torch\utils\_contextlib.py:116: in decorate_context
+    return func(*args, **kwargs)
+memorydraft\backends\dflash_reuse.py:148: in generate_reuse
+    hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
+.venv\Lib\site-packages\torch\nn\modules\module.py:1739: in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+.venv\Lib\site-packages\torch\nn\modules\module.py:1750: in _call_impl
+    return forward_call(*args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Draft()
+target_hidden = tensor([[[ 1.2944e-02, -5.8299e-03, -3.3419e-02,  7.8920e-03,  2.8073e-02,
+           3.5234e-03,  4.1849e-02,  2.3272...1, -6.0455e-01,  1.4533e-01, -1.7073e-01, -5.8311e-01,
+          -4.4859e-01, -3.4553e-01, -1.5531e+00,  2.6008e-01]]])
+noise_embedding = tensor([[[-0.0235,  0.0131, -0.0154,  ...,  0.0173,  0.0151,  0.0233],
+         [ 0.0078,  0.0028, -0.0309,  ...,  0.0...28, -0.0309,  ...,  0.0566, -0.0047, -0.0255],
+         [ 0.0078,  0.0028, -0.0309,  ...,  0.0566, -0.0047, -0.0255]]])
+position_ids = tensor([[ 3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+         21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]])
+past_key_values = &lt;transformers.cache_utils.DynamicCache object at 0x00000209A6BE5E50&gt;
+kwargs = {'is_causal': False, 'use_cache': True}, cached = 3, n = 3
+
+    def forward(self,*,target_hidden,noise_embedding,position_ids,past_key_values,**kwargs):
+        cached=past_key_values.get_seq_length();n=target_hidden.shape[1]
+&gt;       torch.testing.assert_close(target_hidden,tiny.features[:,cached:cached+n],atol=2e-5,rtol=2e-5)
+E       AssertionError: Tensor-likes are not close!
+E       
+E       Mismatched elements: 128 / 192 (66.7%)
+E       Greatest absolute difference: 2.8908629417419434 at index (0, 2, 49) (up to 2e-05 allowed)
+E       Greatest relative difference: 1240.9737548828125 at index (0, 2, 13) (up to 2e-05 allowed)
+
+tests\test_asd_block_probe.py:64: AssertionError</failure></testcase><testcase classname="tests.test_asd_block_probe" name="test_actual_audited_dflash_forward_accepts_extrapolated_positions_and_cropped_kv" time="0.001"><skipped type="pytest.skip" message="Audited server model assets/profile only">E:\PycharmProject\MemoryDraft\tests\test_asd_block_probe.py:88: Audited server model assets/profile only</skipped></testcase></testsuite></testsuites>

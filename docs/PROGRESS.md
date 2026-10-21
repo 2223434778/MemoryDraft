@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-21 — 真实更长Draft预检完成（228次，继续完整开发集）
+
+- 冻结`852a08e0112252799021a4e50319c3f140437deb`/1184个blob，源码ZIP SHA`f2e2a37fe2bbe65c6376703c04070e2aaba0218916505e720c1cf1d80d29cfe2`，source SHA`77fdea7117fca6d3b97912b38376cd7e4783eb9425e753ba4671cc8092e064a5`。独立服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-block-preflight` PID3852852，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_block_pipeline`。两卡各3题/114行，228全部完成，结束各19MiB/0%。
+- 六类各首个开发题，真实16/24/32、四原策略，自然1次/前128两次、AR自然/128各1次。全部78条自然输出答对并EOS；这批原本就容易、每类只有1题，不能证明质量非劣，也不作为适用场景确认。16块含重复84行与第一阶段相同；严格D三长度自然/128共36对均与同轮AR逐ID相同，自然/前缀在裁短块之前无分歧。
+- 长块并非统一变好：严格D24/32在本批六题自然时延均更慢；GSM885的Target调用38→40/41，JSON12为11→12/13。Utility24在GSM885/MATH329等128时间相对自身16低14.12%/23.05%；Run24在两题一退一进，基础ASD24为快10.76%/慢55.89%。长块同时改变预测及近似门控/路径，不能直接解释为Draft预测变准；完整数值由报告重建，不由1题/类选赢家或否定方向。
+- 服务器69 passed/8.76s，包括固定DFlash源码的tiny结构前向16/24/32及eager/SDPA；这不冒充真实8B预测质量。最终本地`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-block-final --junitxml=artifacts/asd-block-tests-final-local.xml`：556 passed/5 skipped/58.75s；报告审计2 passed/6.34s。初始测试参考错误的失败XML保留，之后按实际近似前缀重prefill核验。
+- 执行前后源码SHA一致、768旧结果核验、原执行6函数未改；第一阶段54发布文件按其发布提交dcfc01d重核，路线表为后续更新的活状态文档。infra三引用仍27e3619。结果ZIP192974字节/SHA`ab9bde15246e55f548411d0f8604c2e3d7511ec6a316d039632e00f5b2d69835`。
+- 原始压缩trace/provenance/测试和审计在results/asd-block-preflight，报告docs/ASD_BLOCK_RESULTS.md，重建`.venv\Scripts\python.exe -m scripts.write_asd_block_report`。新报告为执行后分析，原runner/Target输入/评分/生产路径未改变。
+- 下一阶段保留16/24/32和全部四策略，将比较扩到同样六类48道开发题并增加自然计时重复；验证48及保留96继续留出。暂不根据当前两道数学题筛选类别、改预算或选24赢家。设备账本、调度、多候选、训练和并发仍未完成，按路线表逐项继续。
+
 ## 2026-10-21 — 继续阶段1：真实16/24/32 Draft预检（准备）
 
 - 第一阶段已推送`dcfc01d`，继续更长真实Draft单因素方向。协议ASD_BLOCK_PROTOCOL.md固定六类各第一个开发题/三长度/原四策略，自然1次/前128两次，另AR自然/128各1次，共228生成；每类1题仅结构和成本预检，不作为方向否决或新适用场景确认。

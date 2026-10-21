@@ -1,0 +1,260 @@
+{
+  "rows": 228,
+  "questions": 6,
+  "native_b16_cases": 84,
+  "numeric": [
+    {
+      "request_id": "gsm8k:885",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 179
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 179
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 179
+    },
+    {
+      "request_id": "gsm8k:885",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "math500:329",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 207
+    },
+    {
+      "request_id": "math500:329",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "math500:329",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 207
+    },
+    {
+      "request_id": "math500:329",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "math500:329",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 207
+    },
+    {
+      "request_id": "math500:329",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 128
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "mbpp:262",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 24
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "humaneval:82",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 66
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 2
+    },
+    {
+      "request_id": "json:12",
+      "size": 16,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 115
+    },
+    {
+      "request_id": "json:12",
+      "size": 16,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 115
+    },
+    {
+      "request_id": "json:12",
+      "size": 24,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 115
+    },
+    {
+      "request_id": "json:12",
+      "size": 24,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 115
+    },
+    {
+      "request_id": "json:12",
+      "size": 32,
+      "stage": "natural",
+      "exact": true,
+      "common_prefix": 115
+    },
+    {
+      "request_id": "json:12",
+      "size": 32,
+      "stage": "prefix",
+      "exact": true,
+      "common_prefix": 115
+    }
+  ],
+  "prefix_disagreements": []
+}
