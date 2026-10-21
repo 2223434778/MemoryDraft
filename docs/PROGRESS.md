@@ -2,6 +2,8 @@
 
 ## 2026-10-21 — 显式RMSNorm运行时真实接入验收（执行中）
 
+- 修复版52fe5be256a9982d4201c24a92b498a5e9cc0e2f/1453 blobs，source SHA59b878abbab371be65d061898812483c3c18aa220a2f575ae69f0d0802d72627；本地完整canonical ZIP SHAd34e475b67b7ede5354bff2324e1863c214a2cb48266af5bcdfada08c5a96d53。使用已校验旧完整ZIP+161138B delta（SHA1f2766979b88b1a7dd452cb1ee84d9e0a5f903a9cbc79a3492da11b0beb9410d）在新rmsnorm-runtime-v2重建，1453目标blob逐SHA核验；不是声称服务器收到了新完整ZIP。DEPLOYMENT_DELTA.json列出仅三个变化文件。2026-10-21 12:47:08 UTC/PID12263启动同一pipeline；原失败ZIP服务器另存rmsnorm-runtime-failed-tests-results.zip，新目录/空缓存，无生产代码变更。
+
 - 首次前置检查83 passed/1 failed/8.92s，GPU尚未启动：Transformers延迟导入后sys.modules对象与测试顶层旧引用不同，模拟版本修改落在旧对象，运行时正确读取新对象4.57.3而进入伪模型。单例复现相同。仅test_runtime_rmsnorm.py改用import_module获取当前对象，生产guard/执行/验收门槛未改；本地`python -m pytest -q tests/test_runtime_rmsnorm.py --basetemp .test-tmp-rmsnorm-runtime-lazy-fix --junitxml=artifacts/rmsnorm-runtime-tests-lazy-fix-local.xml -x --tb=short`：23 passed/9.36s。失败ZIP及pipeline.log保留artifacts/rmsnorm-runtime-failed-tests-*，后续新目录/新manifest重试，不覆盖原目录。
 
 - 独立验证发布9b8176e78e3463b0573782dd570eb71045691022；50发布文件在Git及工作区逐SHA一致。通过7项门槛后cherry-pick隔离655e700为96952d31927bf4184b53911d9f5db0931e30bb70，默认eager保持。候选先前本地711 passed/5 skipped，未在合并时重复GPU性能。
