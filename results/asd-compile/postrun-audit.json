@@ -1,0 +1,126 @@
+{
+  "status": "complete",
+  "source_commit": "5aa8c79336656a6447f0f6b9b5e22b53e3fc0f77",
+  "source_sha256": "585549eb91372b7dd2c432881e3412b1e60de5b7638b33883ceb10ab27ac414e",
+  "execution_files": 1316,
+  "frozen_files": [
+    {
+      "path": "memorydraft/backends/regional_compile.py",
+      "sha256": "08c4ea321cbcadbb4088bc3e08afbe13eacfbbf32dc1cffa1e5d223904d55eaf"
+    },
+    {
+      "path": "scripts/run_asd_compile_probe.py",
+      "sha256": "8e6c3d13af569b21affcd26c48e09653a2676dea979c2841f6f5b391fe2e8195"
+    },
+    {
+      "path": "scripts/run_asd_compile_pipeline.py",
+      "sha256": "bc32f7e848a61286c894de79649c19dc5cfa46e2efdb8a69809623de483d99fd"
+    },
+    {
+      "path": "scripts/write_asd_compile_report.py",
+      "sha256": "3c81c87d12a8c04a40602b6a8de4dd3570d858e20399c8d80635da62cbd914a7"
+    },
+    {
+      "path": "docs/ASD_COMPILE_PROTOCOL.md",
+      "sha256": "4b8842ba1fc3723ae332808fa2bcdb4436212bd41fc6f17ba6dcdc0dfe8328f6"
+    },
+    {
+      "path": "memorydraft/backends/asd_cpu.py",
+      "sha256": "588edb3fd70b519391cff05fa091681cdb66780dd02524d6e702d8405d0f33c8"
+    },
+    {
+      "path": "memorydraft/backends/asd.py",
+      "sha256": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84"
+    },
+    {
+      "path": "memorydraft/backends/dflash_reuse.py",
+      "sha256": "f9989b6239ff3fdb4afc5e939feea5ad33c95e262308c23050c06b04e26f4891"
+    },
+    {
+      "path": "memorydraft/runtime/engine.py",
+      "sha256": "adafb9191bdfb8070e4d56daaf5d9861ba590663e00e757cae4ffe239ce33f2e"
+    },
+    {
+      "path": "memorydraft/runtime/config.py",
+      "sha256": "bbcf05d7430d9c01cf263294a7c94ece2627e7e57e7df5e093897d7f8ea70800"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "sha256": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "sha256": "8d854524078f2736f003b8eb3dd5abe54ad87cb92fef4b0f91af5e33fe4fc9ba"
+    },
+    {
+      "path": "scripts/write_asd_cpu_report.py",
+      "sha256": "53c1bc3d31b0947c33ca03491b398f851c63fe60f19cac13b5304400caa2d3ff"
+    }
+  ],
+  "prior_runtime_unchanged": [
+    "memorydraft/backends/asd_cpu.py",
+    "memorydraft/backends/asd.py",
+    "memorydraft/backends/dflash_reuse.py",
+    "memorydraft/runtime/engine.py",
+    "memorydraft/runtime/config.py",
+    "memorydraft/evaluation/asd_suite.py",
+    "scripts/run_asd_suite.py"
+  ],
+  "protected_results_verified": 866,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "path": "results/asd-suite-stage1/publication.json",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files_verified": 54
+    },
+    {
+      "path": "results/asd-block-preflight/publication.json",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files_verified": 29
+    },
+    {
+      "path": "results/asd-block-suite/publication.json",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files_verified": 35
+    },
+    {
+      "path": "results/asd-execution/publication.json",
+      "commit": "1e56ecbe071ec305fb2982c467099d98a725c079",
+      "files_verified": 33
+    },
+    {
+      "path": "results/asd-cpu/publication.json",
+      "commit": "38ce3b393dcf724d5e51a8a33a46765b25f8c6e9",
+      "files_verified": 30
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "counts": [
+    {
+      "warmup": 10,
+      "preflight": 60,
+      "timed": 144,
+      "diagnostics": 6,
+      "mlp_states": 18
+    },
+    {
+      "warmup": 10,
+      "preflight": 60,
+      "timed": 144,
+      "diagnostics": 6,
+      "mlp_states": 18
+    }
+  ],
+  "result_zip": {
+    "bytes": 275781,
+    "sha256": "07cf61ae4a6016a1ec0476714f1314a57df7757e6f3797b17db72c382d2394bd"
+  }
+}

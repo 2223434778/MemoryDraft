@@ -1,0 +1,50 @@
+[
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/ou/couso6hfp7wnd5o7vclmypwgclz4lzy76w6hgt6tzfy76g4xdjke.py",
+    "sha256": "876a4a68d377305f571294b1c259d9e322f0ce76c2ce30128010da053f174ffe",
+    "triton_kernels": [
+      {
+        "name": "triton_poi_fused_mul_silu_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 3
+  },
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/jy/cjywakuibfdw6xvjasmo4z4hnwnnm7krnlo5hwsdv7462zposnsp.py",
+    "sha256": "98a78068e239a001c604f71336b8cd056603b6113ed308d9f662d26f48aeb7e7",
+    "triton_kernels": [
+      {
+        "name": "triton_poi_fused_mul_silu_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 3
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/bj/cbjkq2rh72gbqzcoj6afsxzzbqsdlgxnrhgwq4d6f63u6h3n3m2j.py",
+    "sha256": "ab9949ea9305293d2e0ef990bf0a4033b92a3f5df9ba7e32d24840629af4b232",
+    "triton_kernels": [
+      {
+        "name": "triton_poi_fused_mul_silu_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 3
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/g6/cg6m2qdkl6tw6gtyukuhnphf74yerxxjpnaproy5cbu5vaqywetf.py",
+    "sha256": "84286c44aac775d2a49cecddba903b74b8a246a8af407b4634da4c2e5cc0c29b",
+    "triton_kernels": [
+      {
+        "name": "triton_poi_fused_mul_silu_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 3
+  }
+]

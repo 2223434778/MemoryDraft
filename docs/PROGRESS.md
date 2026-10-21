@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-21 — MLP区域编译完成（120预检/288计时/36同输入状态）
+
+- 冻结`5aa8c79336656a6447f0f6b9b5e22b53e3fc0f77`/1316 blobs，source SHA`585549eb91372b7dd2c432881e3412b1e60de5b7638b33883ceb10ab27ac414e`、源码ZIP SHA`47c07f3af4ad01c6f745eac790626d3e36ffbb862acf49c279cbb33f31914842`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-compile` PID4026974，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_compile_pipeline`；两worker0退出，REGIONAL COMPILE COMPLETE，前后1316文件SHA相同。
+- 六类前两道已观察开发题，原FP32 highest/TF32关闭、eager attention/16块、相同CPU接受。120预检（含24 AR）+288正式计时+12独立DFlash诊断，共420生成，另20短warmup；捕获Target首层prefill/首验证及Draft首层首起草36输入，同一clone各5warmup+20次回放。不生成自然4096/验证/保留答案。
+- 编译/eager题级时延比：DFlash0.997100 [0.996158,0.998072]、ASD0.997401 [0.996232,0.998572]、Run0.997976 [0.997406,0.998552]、U0.998262 [0.997497,0.999027]，下降0.290%/0.260%/0.202%/0.174%。固定开发子集的分层bootstrap，不是通用生产保证。各11/12题更快，48非AR案例输出长度/调用密度不变，581轮除regret外相同；构造与切换/恢复均计在线。
+- 60跨profile预检对全部token相同，严格D/同profile AR各12/12，eager重现旧轨迹、每profile重复精确重现；13近似账本浮点数不同，最大spent差6.103515625e-5，36模块输出均非逐位相同，最大绝对差4.8828125e-4/RMS4.46e-6。未放宽接受规则，不升级默认infra或宣称全输入无损。
+- 每卡37模块共享2图，正式计时0新增编译；outer3.183/3.562秒，backend2.849/3.232秒（嵌套不相加），controller约0.0035秒，完整准备wall108/121秒另含推理。独立缓存各195032字节，编译组正式峰值allocated35.140GiB；预算均满足，两卡结束19MiB/0%。按当前混合请求平均省时粗估1276/1811请求摊销outer+controller，不作生产ROI保证。
+- 同输入MLP回放prefill/验证/Draft编译/eager分别1.0032/1.0255/1.0242，没有模块本体显著变快的证据。运行后只读codegen-inspection确认每图仅SiLU*mul融合、3次GEMM仍在；这解释有限空间但不唯一归因带宽，异步流水/内存与包装因素未单独干预。不继续MLP-only扫参，下一项单独检查RMSNorm，其他执行/精度/训练方向仍未做完。
+- 结果ZIP275781字节/SHA`07cf61ae4a6016a1ec0476714f1314a57df7757e6f3797b17db72c382d2394bd`；结果results/asd-compile，完整表docs/ASD_COMPILE_RESULTS.md、解释docs/ASD_COMPILE_FINDINGS.md。重建`.venv\Scripts\python.exe -m scripts.write_asd_compile_report`；后审计`.venv\Scripts\python.exe -m artifacts.audit_asd_compile_postrun`通过13冻结文件、866旧SHA、此前181发布文件、7原运行时/验证文件和infra引用，两个既有CRLF例外单列。codegen为主运行后附加，不改冻结统计。
+- 本地完整645 passed/5 skipped/69.61s；服务器87 passed/13.74s。GPU后执行/统计源码未改，不重复性能复验；发布小型trace/测试/报告，排除模型、完整hidden/logits及编译缓存。
+
 ## 2026-10-21 — Target/Draft MLP区域编译（执行准备）
 
 - 用户授权进入主要模型执行优化。新增可撤销RegionalMLP，只torch.compile现有Qwen3MLP.forward，Target/Draft共享按类编译入口；fullgraph/dynamic、关闭CUDA Graph/max-autotune、FP32 highest和原eager attention。原解码/默认infra不改，四策略近似组三者均沿用相同CPUASDVerifier。依据PyTorch2.5区域编译说明及v2.5.1源码，服务器Triton3.1.0/Inductor配置可用，不新增依赖/权重下载。

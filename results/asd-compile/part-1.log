@@ -1,0 +1,17 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.43s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.42s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.42s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.33s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.18s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/_inductor/compile_fx.py:167: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.
+  warnings.warn(
+prepared gsm8k:52 2
+prepared math500:448 2
+prepared mbpp:217 2
+prepared humaneval:134 2
+prepared squad:572651f9f1498d1400e8dbef 2
+prepared json:7 2
+timed gsm8k:52 {"warmup": 10, "preflight": 60, "timed": 24, "diagnostics": 0, "mlp_states": 0}
+timed math500:448 {"warmup": 10, "preflight": 60, "timed": 48, "diagnostics": 0, "mlp_states": 0}
+timed mbpp:217 {"warmup": 10, "preflight": 60, "timed": 72, "diagnostics": 0, "mlp_states": 0}
+timed humaneval:134 {"warmup": 10, "preflight": 60, "timed": 96, "diagnostics": 0, "mlp_states": 0}
+timed squad:572651f9f1498d1400e8dbef {"warmup": 10, "preflight": 60, "timed": 120, "diagnostics": 0, "mlp_states": 0}
+timed json:7 {"warmup": 10, "preflight": 60, "timed": 144, "diagnostics": 0, "mlp_states": 0}
