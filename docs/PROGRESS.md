@@ -2,6 +2,7 @@
 
 ## 2026-10-21 — RMSNorm完整48开发题自然EOS（执行准备）
 
+- 已启动：源码ca51a6338b039b557b80cb919be4ec15c98a9dd3/1383 blobs，source SHA9502d8b40a9229d6fd105d97ea8b5ff049e0f2c489e14bf311103809779f4c86，source ZIP SHAfeeb0faa047a386668c605af7e809c02e4cd8fe81702f66dcbc9e11755cdcdd0。服务器独立目录/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite，PID4069094，2026-10-21 09:10:55 UTC启动。服务器113 passed/30.19s后启动两worker；warmup各10，开始完整自然输出。最终数据尚待完成，不能以局部计时宣称收益。
 - 用户授权进入下一步。新增scripts/run_asd_rmsnorm_suite_probe.py、pipeline及report，复用RegionalRMSNorm、CPU接受和原评分器，不叠加MLP、不改原规则/输入。48开发题六类各8，原偶/奇GPU分配，validation/reserve不运行。协议docs/ASD_RMSNORM_SUITE_PROTOCOL.md冻结自然上限4096、三次配对；96 AR质量对照+1152正式计时=1248主要生成，另20短warmup。首重复同时评分，不能再额外加算或扣掉编译成本。
 - 全部跨profile输出/质量变化保留；eager首轮精确重现旧完整48题原16块自然轨迹及质量，每profile后两次精确重现。评分在一对两次生成之后、engine时钟外，相同题/文本缓存；480质量条目是已有生成，非额外推理。单列质量主/secondary/待复核/未评估/F1与长度、轮数、成本分解；整体48/各类8题bootstrap，旧12/新增profile评估36预先登记为开发子集，不称独立验证。
 - 按旧自然记录估算每卡约1813/1696秒，固定worker5400秒；图8/backend300秒/allocated46GiB/cache4GiB保持前轮，正式新编译仍计线上。独立/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm-suite；入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_suite_pipeline`。
