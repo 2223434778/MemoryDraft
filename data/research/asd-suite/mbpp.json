@@ -1,0 +1,482 @@
+[
+  {
+    "text": "Write a function to split a given list into two parts where the length of the first part of the list is given.",
+    "code": "def split_two_parts(list1, L):\r\n    return list1[:L], list1[L:]",
+    "task_id": 262,
+    "test_setup_code": "",
+    "test_list": [
+      "assert split_two_parts([1,1,2,3,4,4,5,1],3)==([1, 1, 2], [3, 4, 4, 5, 1])",
+      "assert split_two_parts(['a', 'b', 'c', 'd'],2)==(['a', 'b'], ['c', 'd'])",
+      "assert split_two_parts(['p', 'y', 't', 'h', 'o', 'n'],4)==(['p', 'y', 't', 'h'], ['o', 'n'])"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:262",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a python function to find the first repeated character in a given string.",
+    "code": "def first_Repeated_Char(str): \r\n    h = {}\r\n    for ch in str:\r\n        if ch in h: \r\n            return ch;\r\n        else: \r\n            h[ch] = 0\r\n    return '\\0'",
+    "task_id": 217,
+    "test_setup_code": "",
+    "test_list": [
+      "assert first_Repeated_Char(\"Google\") == \"o\"",
+      "assert first_Repeated_Char(\"data\") == \"a\"",
+      "assert first_Repeated_Char(\"python\") == '\\0'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:217",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a python function to shift last element to first position in the given list.",
+    "code": "def move_first(test_list):\r\n  test_list = test_list[-1:] + test_list[:-1]  \r\n  return test_list",
+    "task_id": 378,
+    "test_setup_code": "",
+    "test_list": [
+      "assert move_first([1,2,3,4]) == [4,1,2,3]",
+      "assert move_first([0,1,2,3]) == [3,0,1,2]",
+      "assert move_first([9,8,7,1]) == [1,9,8,7]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:378",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a function to substaract two lists using map and lambda function.",
+    "code": "def sub_list(nums1,nums2):\r\n  result = map(lambda x, y: x - y, nums1, nums2)\r\n  return list(result)",
+    "task_id": 282,
+    "test_setup_code": "",
+    "test_list": [
+      "assert sub_list([1, 2, 3],[4,5,6])==[-3,-3,-3]",
+      "assert sub_list([1,2],[3,4])==[-2,-2]",
+      "assert sub_list([90,120],[50,70])==[40,50]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:282",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a function to compute the sum of digits of each number of a given list.",
+    "code": "def sum_of_digits(nums):\r\n    return sum(int(el) for n in nums for el in str(n) if el.isdigit())",
+    "task_id": 398,
+    "test_setup_code": "",
+    "test_list": [
+      "assert sum_of_digits([10,2,56])==14",
+      "assert sum_of_digits([[10,20,4,5,'b',70,'a']])==19",
+      "assert sum_of_digits([10,20,-4,5,-70])==19"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:398",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a function to find the difference between two consecutive numbers in a given list.",
+    "code": "def diff_consecutivenums(nums):\r\n    result = [b-a for a, b in zip(nums[:-1], nums[1:])]\r\n    return result",
+    "task_id": 345,
+    "test_setup_code": "",
+    "test_list": [
+      "assert diff_consecutivenums([1, 1, 3, 4, 4, 5, 6, 7])==[0, 2, 1, 0, 1, 1, 1]",
+      "assert diff_consecutivenums([4, 5, 8, 9, 6, 10])==[1, 3, 1, -3, 4]",
+      "assert diff_consecutivenums([0, 1, 2, 3, 4, 4, 4, 4, 5, 7])==[1, 1, 1, 1, 0, 0, 0, 1, 2]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:345",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a python function to find the cube sum of first n natural numbers.",
+    "code": "def sum_Of_Series(n): \r\n    sum = 0\r\n    for i in range(1,n + 1): \r\n        sum += i * i*i       \r\n    return sum",
+    "task_id": 504,
+    "test_setup_code": "",
+    "test_list": [
+      "assert sum_Of_Series(5) == 225",
+      "assert sum_Of_Series(2) == 9",
+      "assert sum_Of_Series(3) == 36"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:504",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string.",
+    "code": "def find_length(string, n): \r\n\tcurrent_sum = 0\r\n\tmax_sum = 0\r\n\tfor i in range(n): \r\n\t\tcurrent_sum += (1 if string[i] == '0' else -1) \r\n\t\tif current_sum < 0: \r\n\t\t\tcurrent_sum = 0\r\n\t\tmax_sum = max(current_sum, max_sum) \r\n\treturn max_sum if max_sum else 0",
+    "task_id": 125,
+    "test_setup_code": "",
+    "test_list": [
+      "assert find_length(\"11000010001\", 11) == 6",
+      "assert find_length(\"10111\", 5) == 1",
+      "assert find_length(\"11011101100101\", 14) == 2 "
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:125",
+    "benchmark": "mbpp",
+    "split": "development"
+  },
+  {
+    "text": "Write a function to get the angle of a complex number.",
+    "code": "import cmath\r\ndef angle_complex(a,b):\r\n  cn=complex(a,b)\r\n  angle=cmath.phase(a+b)\r\n  return angle",
+    "task_id": 124,
+    "test_setup_code": "",
+    "test_list": [
+      "assert angle_complex(0,1j)==1.5707963267948966 ",
+      "assert angle_complex(2,1j)==0.4636476090008061",
+      "assert angle_complex(0,2j)==1.5707963267948966"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:124",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to find tuples which have all elements divisible by k from the given list of tuples.",
+    "code": "def find_tuples(test_list, K):\r\n  res = [sub for sub in test_list if all(ele % K == 0 for ele in sub)]\r\n  return (str(res)) ",
+    "task_id": 75,
+    "test_setup_code": "",
+    "test_list": [
+      "assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == '[(6, 24, 12)]'",
+      "assert find_tuples([(5, 25, 30), (4, 2, 3), (7, 8, 9)], 5) == '[(5, 25, 30)]'",
+      "assert find_tuples([(7, 9, 16), (8, 16, 4), (19, 17, 18)], 4) == '[(8, 16, 4)]'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:75",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to verify validity of a string of parentheses.",
+    "code": "def is_valid_parenthese( str1):\r\n        stack, pchar = [], {\"(\": \")\", \"{\": \"}\", \"[\": \"]\"}\r\n        for parenthese in str1:\r\n            if parenthese in pchar:\r\n                stack.append(parenthese)\r\n            elif len(stack) == 0 or pchar[stack.pop()] != parenthese:\r\n                return False\r\n        return len(stack) == 0",
+    "task_id": 175,
+    "test_setup_code": "",
+    "test_list": [
+      "assert is_valid_parenthese(\"(){}[]\")==True",
+      "assert is_valid_parenthese(\"()[{)}\")==False",
+      "assert is_valid_parenthese(\"()\")==True"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:175",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to find the n'th star number.",
+    "code": "def find_star_num(n): \r\n\treturn (6 * n * (n - 1) + 1) ",
+    "task_id": 268,
+    "test_setup_code": "",
+    "test_list": [
+      "assert find_star_num(3) == 37",
+      "assert find_star_num(4) == 73",
+      "assert find_star_num(5) == 121"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:268",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to find all the values in a list that are greater than a specified number.",
+    "code": "def greater_specificnum(list,num):\r\n greater_specificnum=all(x >= num for x in list)\r\n return greater_specificnum",
+    "task_id": 184,
+    "test_setup_code": "",
+    "test_list": [
+      "assert greater_specificnum([220, 330, 500],200)==True",
+      "assert greater_specificnum([12, 17, 21],20)==False",
+      "assert greater_specificnum([1,2,3,4],10)==False"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:184",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to remove a specified column from a given nested list.",
+    "code": "def remove_column(list1, n):\r\n   for i in list1: \r\n    del i[n] \r\n   return list1",
+    "task_id": 353,
+    "test_setup_code": "",
+    "test_list": [
+      "assert remove_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]],0)==[[2, 3], [4, 5], [1, 1]]",
+      "assert remove_column([[1, 2, 3], [-2, 4, -5], [1, -1, 1]],2)==[[1, 2], [-2, 4], [1, -1]]",
+      "assert remove_column([[1, 3], [5, 7], [1, 3], [13, 15, 17], [5, 7], [9, 11]],0)==[[3], [7], [3], [15, 17], [7], [11]]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:353",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to find the surface area of a cube.",
+    "code": "def surfacearea_cube(l):\r\n  surfacearea= 6*l*l\r\n  return surfacearea",
+    "task_id": 441,
+    "test_setup_code": "",
+    "test_list": [
+      "assert surfacearea_cube(5)==150",
+      "assert surfacearea_cube(3)==54",
+      "assert surfacearea_cube(10)==600"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:441",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a function to find the list with maximum length using lambda function.",
+    "code": "def max_length_list(input_list):\r\n    max_length = max(len(x) for x in input_list )   \r\n    max_list = max(input_list, key = lambda i: len(i))    \r\n    return(max_length, max_list)",
+    "task_id": 393,
+    "test_setup_code": "",
+    "test_list": [
+      "assert max_length_list([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])",
+      "assert max_length_list([[1,2,3,4,5],[1,2,3,4],[1,2,3],[1,2],[1]])==(5,[1,2,3,4,5])",
+      "assert max_length_list([[3,4,5],[6,7,8,9],[10,11,12]])==(4,[6,7,8,9])"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:393",
+    "benchmark": "mbpp",
+    "split": "validation"
+  },
+  {
+    "text": "Write a python function to count hexadecimal numbers for a given range.",
+    "code": "def count_Hexadecimal(L,R) :  \r\n    count = 0;  \r\n    for i in range(L,R + 1) : \r\n        if (i >= 10 and i <= 15) : \r\n            count += 1;  \r\n        elif (i > 15) : \r\n            k = i;  \r\n            while (k != 0) :  \r\n                if (k % 16 >= 10) : \r\n                    count += 1;  \r\n                k = k // 16;  \r\n    return count;  ",
+    "task_id": 107,
+    "test_setup_code": "",
+    "test_list": [
+      "assert count_Hexadecimal(10,15) == 6",
+      "assert count_Hexadecimal(2,4) == 0",
+      "assert count_Hexadecimal(15,16) == 1"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:107",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find nth centered hexagonal number.",
+    "code": "def centered_hexagonal_number(n):\r\n  return 3 * n * (n - 1) + 1",
+    "task_id": 86,
+    "test_setup_code": "",
+    "test_list": [
+      "assert centered_hexagonal_number(10) == 271",
+      "assert centered_hexagonal_number(2) == 7",
+      "assert centered_hexagonal_number(9) == 217"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:86",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a python function to find the sum of the three lowest positive numbers from a given list of numbers.",
+    "code": "def sum_three_smallest_nums(lst):\r\n\treturn sum(sorted([x for x in lst if x > 0])[:3])",
+    "task_id": 340,
+    "test_setup_code": "",
+    "test_list": [
+      "assert sum_three_smallest_nums([10,20,30,40,50,60,7]) == 37",
+      "assert sum_three_smallest_nums([1,2,3,4,5]) == 6",
+      "assert sum_three_smallest_nums([0,1,2,3,4,5]) == 6"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:340",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find t-nth term of geometric series.",
+    "code": "import math\r\ndef tn_gp(a,n,r):\r\n  tn = a * (math.pow(r, n - 1))\r\n  return tn",
+    "task_id": 55,
+    "test_setup_code": "",
+    "test_list": [
+      "assert tn_gp(1,5,2)==16",
+      "assert tn_gp(1,5,4)==256",
+      "assert tn_gp(2,6,3)==486"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:55",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to sort the given array by using shell sort.",
+    "code": "def shell_sort(my_list):\r\n    gap = len(my_list) // 2\r\n    while gap > 0:\r\n        for i in range(gap, len(my_list)):\r\n            current_item = my_list[i]\r\n            j = i\r\n            while j >= gap and my_list[j - gap] > current_item:\r\n                my_list[j] = my_list[j - gap]\r\n                j -= gap\r\n            my_list[j] = current_item\r\n        gap //= 2\r\n\r\n    return my_list",
+    "task_id": 428,
+    "test_setup_code": "",
+    "test_list": [
+      "assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]",
+      "assert shell_sort([24, 22, 39, 34, 87, 73, 68]) == [22, 24, 34, 39, 68, 73, 87]",
+      "assert shell_sort([32, 30, 16, 96, 82, 83, 74]) == [16, 30, 32, 74, 82, 83, 96]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:428",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a python function to find the minimum operations required to make two numbers equal.",
+    "code": "import math   \r\ndef min_Operations(A,B):  \r\n    if (A > B): \r\n        swap(A,B)  \r\n    B = B // math.gcd(A,B);  \r\n    return B - 1",
+    "task_id": 218,
+    "test_setup_code": "",
+    "test_list": [
+      "assert min_Operations(2,4) == 1",
+      "assert min_Operations(4,10) == 4",
+      "assert min_Operations(1,4) == 3"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:218",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find the number of ways to partition a set of bell numbers.",
+    "code": "def bell_number(n):   \r\n    bell = [[0 for i in range(n+1)] for j in range(n+1)] \r\n    bell[0][0] = 1\r\n    for i in range(1, n+1): \r\n        bell[i][0] = bell[i-1][i-1]  \r\n        for j in range(1, i+1): \r\n            bell[i][j] = bell[i-1][j-1] + bell[i][j-1]   \r\n    return bell[n][0] ",
+    "task_id": 67,
+    "test_setup_code": "",
+    "test_list": [
+      "assert bell_number(2)==2",
+      "assert bell_number(10)==115975",
+      "assert bell_number(56)==6775685320645824322581483068371419745979053216268760300"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:67",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find all possible combinations of the elements of a given list.",
+    "code": "def combinations_list(list1):\r\n    if len(list1) == 0:\r\n        return [[]]\r\n    result = []\r\n    for el in combinations_list(list1[1:]):\r\n        result += [el, el+[list1[0]]]\r\n    return result",
+    "task_id": 462,
+    "test_setup_code": "",
+    "test_list": [
+      "assert combinations_list(['orange', 'red', 'green', 'blue'])==[[], ['orange'], ['red'], ['red', 'orange'], ['green'], ['green', 'orange'], ['green', 'red'], ['green', 'red', 'orange'], ['blue'], ['blue', 'orange'], ['blue', 'red'], ['blue', 'red', 'orange'], ['blue', 'green'], ['blue', 'green', 'orange'], ['blue', 'green', 'red'], ['blue', 'green', 'red', 'orange']]",
+      "assert combinations_list(['red', 'green', 'blue', 'white', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['blue'], ['blue', 'red'], ['blue', 'green'], ['blue', 'green', 'red'], ['white'], ['white', 'red'], ['white', 'green'], ['white', 'green', 'red'], ['white', 'blue'], ['white', 'blue', 'red'], ['white', 'blue', 'green'], ['white', 'blue', 'green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['black', 'blue'], ['black', 'blue', 'red'], ['black', 'blue', 'green'], ['black', 'blue', 'green', 'red'], ['black', 'white'], ['black', 'white', 'red'], ['black', 'white', 'green'], ['black', 'white', 'green', 'red'], ['black', 'white', 'blue'], ['black', 'white', 'blue', 'red'], ['black', 'white', 'blue', 'green'], ['black', 'white', 'blue', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'blue'], ['orange', 'blue', 'red'], ['orange', 'blue', 'green'], ['orange', 'blue', 'green', 'red'], ['orange', 'white'], ['orange', 'white', 'red'], ['orange', 'white', 'green'], ['orange', 'white', 'green', 'red'], ['orange', 'white', 'blue'], ['orange', 'white', 'blue', 'red'], ['orange', 'white', 'blue', 'green'], ['orange', 'white', 'blue', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red'], ['orange', 'black', 'blue'], ['orange', 'black', 'blue', 'red'], ['orange', 'black', 'blue', 'green'], ['orange', 'black', 'blue', 'green', 'red'], ['orange', 'black', 'white'], ['orange', 'black', 'white', 'red'], ['orange', 'black', 'white', 'green'], ['orange', 'black', 'white', 'green', 'red'], ['orange', 'black', 'white', 'blue'], ['orange', 'black', 'white', 'blue', 'red'], ['orange', 'black', 'white', 'blue', 'green'], ['orange', 'black', 'white', 'blue', 'green', 'red']]",
+      "assert combinations_list(['red', 'green', 'black', 'orange'])==[[], ['red'], ['green'], ['green', 'red'], ['black'], ['black', 'red'], ['black', 'green'], ['black', 'green', 'red'], ['orange'], ['orange', 'red'], ['orange', 'green'], ['orange', 'green', 'red'], ['orange', 'black'], ['orange', 'black', 'red'], ['orange', 'black', 'green'], ['orange', 'black', 'green', 'red']]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:462",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a python function to find the most significant bit number which is also a set bit.",
+    "code": "def set_Bit_Number(n): \r\n    if (n == 0): \r\n        return 0; \r\n    msb = 0; \r\n    n = int(n / 2); \r\n    while (n > 0): \r\n        n = int(n / 2); \r\n        msb += 1; \r\n    return (1 << msb)",
+    "task_id": 302,
+    "test_setup_code": "",
+    "test_list": [
+      "assert set_Bit_Number(6) == 4",
+      "assert set_Bit_Number(10) == 8",
+      "assert set_Bit_Number(18) == 16"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:302",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order.",
+    "code": "def tuple_intersection(test_list1, test_list2):\r\n  res = set([tuple(sorted(ele)) for ele in test_list1]) & set([tuple(sorted(ele)) for ele in test_list2])\r\n  return (res)",
+    "task_id": 473,
+    "test_setup_code": "",
+    "test_list": [
+      "assert tuple_intersection([(3, 4), (5, 6), (9, 10), (4, 5)] , [(5, 4), (3, 4), (6, 5), (9, 11)]) == {(4, 5), (3, 4), (5, 6)}",
+      "assert tuple_intersection([(4, 1), (7, 4), (11, 13), (17, 14)] , [(1, 4), (7, 4), (16, 12), (10, 13)]) == {(4, 7), (1, 4)}",
+      "assert tuple_intersection([(2, 1), (3, 2), (1, 3), (1, 4)] , [(11, 2), (2, 3), (6, 2), (1, 3)]) == {(1, 3), (2, 3)}"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:473",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to calculate the value of 'a' to the power 'b'.",
+    "code": "def power(a,b):\r\n\tif b==0:\r\n\t\treturn 1\r\n\telif a==0:\r\n\t\treturn 0\r\n\telif b==1:\r\n\t\treturn a\r\n\telse:\r\n\t\treturn a*power(a,b-1)",
+    "task_id": 93,
+    "test_setup_code": "",
+    "test_list": [
+      "assert power(3,4) == 81",
+      "assert power(2,3) == 8",
+      "assert power(5,5) == 3125"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:93",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to extract the elementwise and tuples from the given two tuples.",
+    "code": "def and_tuples(test_tup1, test_tup2):\r\n  res = tuple(ele1 & ele2 for ele1, ele2 in zip(test_tup1, test_tup2))\r\n  return (res) ",
+    "task_id": 429,
+    "test_setup_code": "",
+    "test_list": [
+      "assert and_tuples((10, 4, 6, 9), (5, 2, 3, 3)) == (0, 0, 2, 1)",
+      "assert and_tuples((1, 2, 3, 4), (5, 6, 7, 8)) == (1, 2, 3, 0)",
+      "assert and_tuples((8, 9, 11, 12), (7, 13, 14, 17)) == (0, 9, 10, 0)"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:429",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to concatenate each element of tuple by the delimiter.",
+    "code": "def concatenate_tuple(test_tup):\r\n    delim = \"-\"\r\n    res = ''.join([str(ele) + delim for ele in test_tup])\r\n    res = res[ : len(res) - len(delim)]\r\n    return (str(res)) ",
+    "task_id": 421,
+    "test_setup_code": "",
+    "test_list": [
+      "assert concatenate_tuple((\"ID\", \"is\", 4, \"UTS\") ) == 'ID-is-4-UTS'",
+      "assert concatenate_tuple((\"QWE\", \"is\", 4, \"RTY\") ) == 'QWE-is-4-RTY'",
+      "assert concatenate_tuple((\"ZEN\", \"is\", 4, \"OP\") ) == 'ZEN-is-4-OP'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:421",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find common elements in given nested lists. * list item * list item * list item * list item",
+    "code": "def common_in_nested_lists(nestedlist):\r\n    result = list(set.intersection(*map(set, nestedlist)))\r\n    return result",
+    "task_id": 111,
+    "test_setup_code": "",
+    "test_list": [
+      "assert common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]])==[18, 12]",
+      "assert common_in_nested_lists([[12, 5, 23, 25, 45], [7, 11, 5, 23, 28], [1, 5, 8, 18, 23, 16]])==[5,23]",
+      "assert common_in_nested_lists([[2, 3,4, 1], [4, 5], [6,4, 8],[4, 5], [6, 8,4]])==[4]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:111",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a python function to check whether the triangle is valid or not if sides are given.",
+    "code": "def check_Validity(a,b,c):  \r\n    if (a + b <= c) or (a + c <= b) or (b + c <= a) : \r\n        return False\r\n    else: \r\n        return True        ",
+    "task_id": 334,
+    "test_setup_code": "",
+    "test_list": [
+      "assert check_Validity(1,2,3) == False",
+      "assert check_Validity(2,3,5) == False",
+      "assert check_Validity(7,10,5) == True"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:334",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  },
+  {
+    "text": "Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array.",
+    "code": "def max_product(arr, n ): \r\n\tmpis =[0] * (n) \r\n\tfor i in range(n): \r\n\t\tmpis[i] = arr[i] \r\n\tfor i in range(1, n): \r\n\t\tfor j in range(i): \r\n\t\t\tif (arr[i] > arr[j] and\r\n\t\t\t\t\tmpis[i] < (mpis[j] * arr[i])): \r\n\t\t\t\t\t\tmpis[i] = mpis[j] * arr[i] \r\n\treturn max(mpis)",
+    "task_id": 468,
+    "test_setup_code": "",
+    "test_list": [
+      "assert max_product([3, 100, 4, 5, 150, 6], 6) == 45000 ",
+      "assert max_product([4, 42, 55, 68, 80], 5) == 50265600",
+      "assert max_product([10, 22, 9, 33, 21, 50, 41, 60], 8) == 21780000 "
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:468",
+    "benchmark": "mbpp",
+    "split": "reserve"
+  }
+]

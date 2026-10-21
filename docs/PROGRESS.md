@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-21 — 按用户要求建立跨任务研究基线（执行准备）
+
+- 用户要求更丰富数据、细致逐项评估，允许慢慢推进。新增ASD_RESEARCH_ROADMAP.md逐项区分未做/仅诊断/局部初测，不再把4/8旧题负结果当整个方法已否决。第一阶段仅补六类基线，下一阶段按单因素推进更长Draft、GPU执行、调度、候选结构、训练和并发。
+- 固定新池192：GSM8K/MATH-500/MBPP/HumanEval/SQuAD/合成JSON各32，8开发/8验证/16保留；仅开发48进入本轮GPU。GSM排除旧0..31，MATH排除0..23并覆盖7学科，MBPP test19..510，HumanEval保守排除0..15且核对旧Spec-Bench未见相同函数签名，SQuAD每文章一题。数据来源/提交/哈希与各源许可记录在data/research/asd-suite。
+- 获取新源时GitHub API公开限流403，改用git ls-remote固定HumanEval b9453e8f1865df0a0057a1383767caa400acfbcf、SQuAD eee5fdbf62f8613a7812b03419e6b29617b74fd1后下载原blob。MBPP沿用f82046ba5aabbbb427dbfd38a254d26bff08b533。原文件位于artifacts/asd-evaluation-sources，不上传整库/权重。
+- 新评分模块asd_suite.py：代码提供测试、SQuAD EM/F1、严格类型JSON、MATH保守主评分及有限标量等价。原192参考预检191通过，MBPP124因cmath被白名单阻挡；补齐普通算法模块后全参考通过，不删题，初始失败JSON保留。旧评分器/旧结果不改。
+- 冻结协议ASD_SUITE_PROTOCOL.md：原模型FP32/eager、greedy、batch1、非思考，AR/DFlash/ASD/Run/Utility五组；48题自然3次/遵守EOS前128两次=1200主生成，另48机制，全部自然上限4096，两个物理GPU按每类奇偶分片。AR也完整生成，不拿短AR对照完整D；统计按题、不把重复当更多质量样本。
+- 本地准备`.venv\Scripts\python.exe -m scripts.prepare_asd_suite --sources artifacts/asd-evaluation-sources --output data/research/asd-suite`；评分/隔离测试`.venv\Scripts\python.exe -m pytest -q tests/test_asd_suite.py --basetemp .test-tmp-asd-suite-first --junitxml=artifacts/asd-suite-tests-first-local.xml`：11 passed/4.31s。后续相关检查加入bootstrap、重复合并及最后裁短块边界审计。
+
 ## 2026-10-21 — ASD剩余优化排查完成（420主生成，执行组合有收益）
 
 - 首轮冻结`37f15d0ff9842f87e87cb208c621f38c2dac2bec`/1035文件，追加归因冻结`389737323d5e88e3284be979f8cd4203f784d2ac`/1038文件，均执行前后逐blob SHA一致。首轮独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization` PID3777460、追加`.../asd-optimization-extension` PID3787125均结束，两卡19MiB/0%。

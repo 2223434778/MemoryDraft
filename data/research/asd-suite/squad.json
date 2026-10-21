@@ -1,0 +1,368 @@
+[
+  {
+    "id": "squad:5734025d4776f419006616c6",
+    "benchmark": "squad",
+    "group_id": "French_and_Indian_War",
+    "context": "The British failures in North America, combined with other failures in the European theater, led to the fall from power of Newcastle and his principal military advisor, the Duke of Cumberland. Newcastle and Pitt joined in an uneasy coalition in which Pitt dominated the military planning. He embarked on a plan for the 1758 campaign that was largely developed by Loudoun. He had been replaced by Abercrombie as commander in chief after the failures of 1757. Pitt's plan called for three major offensive actions involving large numbers of regular troops, supported by the provincial militias, aimed at capturing the heartlands of New France. Two of the expeditions were successful, with Fort Duquesne and Louisbourg falling to sizable British forces.",
+    "question": "How many of the Pitt's planned expeditions were successful?",
+    "answers": [
+      "Two of the expeditions were successful, with Fort Duquesne and Louisbourg",
+      "Two"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:572651f9f1498d1400e8dbef",
+    "benchmark": "squad",
+    "group_id": "European_Union_law",
+    "context": "While the Commission has a monopoly on initiating legislation, the European Parliament and the Council of the European Union have powers of amendment and veto during the legislative process. According to the Treaty on European Union articles 9 and 10, the EU observes \"the principle of equality of its citizens\" and is meant to be founded on \"representative democracy\". In practice, equality and democracy are deficient because the elected representatives in the Parliament cannot initiate legislation against the Commission's wishes, citizens of smallest countries have ten times the voting weight in Parliament as citizens of the largest countries, and \"qualified majorities\" or consensus of the Council are required to legislate. The justification for this \"democratic deficit\" under the Treaties is usually thought to be that completion integration of the European economy and political institutions required the technical coordination of experts, while popular understanding of the EU developed and nationalist sentiments declined post-war. Over time, this has meant the Parliament gradually assumed more voice: from being an unelected assembly, to its first direct elections in 1979, to having increasingly more rights in the legislative process. Citizens' rights are therefore limited compared to the democratic polities within all European member states: under TEU article 11 citizens and associations have the rights such as publicising their views and submit an initiative that must be considered by the Commission with one million signatures. TFEU article 227 contains a further right for citizens to petition the Parliament on issues which affect them. Parliament elections, take place every five years, and votes for Members of the European Parliament in member states must be organised by proportional representation or a single transferable vote. There are 750 MEPs and their numbers are \"degressively proportional\" according to member state size. This means - although the Council is meant to be the body representing member states - in the Parliament citizens of smaller member states have more voice than citizens in larger member states. MEPs divide, as they do in national Parliaments, along political party lines: the conservative European People's Party is currently the largest, and the Party of European Socialists leads the opposition. Parties do not receive public funds from the EU, as the Court of Justice held in Parti écologiste \"Les Verts\" v Parliament that this was entirely an issue to be regulated by the member states. The Parliament's powers include calling inquiries into maladministration or appoint an Ombudsman pending any court proceedings. It can require the Commission respond to questions and by a two-thirds majority can censure the whole Commission (as happened to the Santer Commission in 1999). In some cases, the Parliament has explicit consultation rights, which the Commission must genuinely follow. However its role participation in the legislative process still remains limited because no member can actually or pass legislation without the Commission and Council, meaning power (\"kratia\") is not in the hands of directly elected representatives of the people (\"demos\"): in the EU it is not yet true that \"the administration is in the hands of the many and not of the few.\"",
+    "question": "What can't Parliament do that causes equality and democracy to be deficient?",
+    "answers": [
+      "cannot initiate legislation against the Commission's wishes",
+      "Parliament cannot initiate legislation against the Commission's wishes",
+      "initiate legislation against the Commission's wishes"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:5727c94bff5b5019007d954b",
+    "benchmark": "squad",
+    "group_id": "Jacksonville,_Florida",
+    "context": "Jacksonville is the largest city by population in the U.S. state of Florida, and the largest city by area in the contiguous United States. It is the county seat of Duval County, with which the city government consolidated in 1968. Consolidation gave Jacksonville its great size and placed most of its metropolitan population within the city limits; with an estimated population of 853,382 in 2014, it is the most populous city proper in Florida and the Southeast, and the 12th most populous in the United States. Jacksonville is the principal city in the Jacksonville metropolitan area, with a population of 1,345,596 in 2010.",
+    "question": "What was the population Jacksonville city as of 2010?",
+    "answers": [
+      "1,345,596"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:572872dd2ca10214002da382",
+    "benchmark": "squad",
+    "group_id": "University_of_Chicago",
+    "context": "Notable faculty in physics have included the speed of light calculator A. A. Michelson, elementary charge calculator Robert A. Millikan, discoverer of the Compton Effect Arthur H. Compton, the creator of the first nuclear reactor Enrico Fermi, \"the father of the hydrogen bomb\" Edward Teller, \"one of the most brilliant and productive experimental physicists of the twentieth century\" Luis Walter Alvarez, Murray Gell-Mann who introduced the quark, second female Nobel laureate Maria Goeppert-Mayer, the youngest American winner of the Nobel Prize Tsung-Dao Lee, and astrophysicist Subrahmanyan Chandrasekhar.",
+    "question": "Who was the second female Nobel laureate ?",
+    "answers": [
+      "Maria Goeppert-Mayer"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:57286fa83acd2414000df9e8",
+    "benchmark": "squad",
+    "group_id": "Yuan_dynasty",
+    "context": "Emperor Gegeen Khan, Ayurbarwada's son and successor, ruled for only two years, from 1321 to 1323. He continued his father's policies to reform the government based on the Confucian principles, with the help of his newly appointed grand chancellor Baiju. During his reign, the Da Yuan Tong Zhi (Chinese: 大元通制, \"the comprehensive institutions of the Great Yuan\"), a huge collection of codes and regulations of the Yuan dynasty begun by his father, was formally promulgated. Gegeen was assassinated in a coup involving five princes from a rival faction, perhaps steppe elite opposed to Confucian reforms. They placed Yesün Temür (or Taidingdi) on the throne, and, after an unsuccessful attempt to calm the princes, he also succumbed to regicide.",
+    "question": "What did 'Da Yuan Tong Zhi' mean?",
+    "answers": [
+      "\"the comprehensive institutions of the Great Yuan\"",
+      "the comprehensive institutions of the Great Yuan"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:572776e85951b619008f8a80",
+    "benchmark": "squad",
+    "group_id": "American_Broadcasting_Company",
+    "context": "In 1968, ABC took advantage of new FCC ownership regulations that allowed broadcasting companies to own a maximum of seven radio stations nationwide in order to purchase Houston radio stations KXYZ and KXYZ-FM for $1 million in shares and $1.5 million in bonds. That year, Roone Arledge was named president of ABC Sports; the company also founded ABC Pictures, a film production company which released its first picture that year, the Ralph Nelson-directed Charly. It was renamed ABC Motion Pictures in 1979; the unit was dissolved in 1985. The studio also operated two subsidiaries, Palomar Pictures International and Selmur Pictures. In July 1968, ABC continued its acquisitions in the amusement parks sector with the opening of ABC Marine World in Redwood City, California; that park was sold in 1972 and demolished in 1986, with the land that occupied the park later becoming home to the headquarters of Oracle Corporation.",
+    "question": "What was the first picture released by ABC Pictures?",
+    "answers": [
+      "Charly"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:5727311d5951b619008f86ab",
+    "benchmark": "squad",
+    "group_id": "Genghis_Khan",
+    "context": "Jochi died in 1226, during his father's lifetime. Some scholars, notably Ratchnevsky, have commented on the possibility that Jochi was secretly poisoned by an order from Genghis Khan. Rashid al-Din reports that the great Khan sent for his sons in the spring of 1223, and while his brothers heeded the order, Jochi remained in Khorasan. Juzjani suggests that the disagreement arose from a quarrel between Jochi and his brothers in the siege of Urgench. Jochi had attempted to protect Urgench from destruction, as it belonged to territory allocated to him as a fief. He concludes his story with the clearly apocryphal statement by Jochi: \"Genghis Khan is mad to have massacred so many people and laid waste so many lands. I would be doing a service if I killed my father when he is hunting, made an alliance with Sultan Muhammad, brought this land to life and gave assistance and support to the Muslims.\" Juzjani claims that it was in response to hearing of these plans that Genghis Khan ordered his son secretly poisoned; however, as Sultan Muhammad was already dead in 1223, the accuracy of this story is questionable.",
+    "question": "Jochi's death occurred in what year?",
+    "answers": [
+      "1226"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:5726e834dd62a815002e94a4",
+    "benchmark": "squad",
+    "group_id": "Victoria_and_Albert_Museum",
+    "context": "There are a set of beautiful inlaid doors, dated 1580 from Antwerp City Hall, attributed to Hans Vredeman de Vries. One of the finest pieces of continental furniture in the collection is the Rococo Augustus Rex Bureau Cabinet dated c1750 from Germany, with especially fine marquetry and ormolu mounts. One of the grandest pieces of 19th-century furniture is the highly elaborate French Cabinet dated 1861–1867 made by M. Fourdinois, made from ebony inlaid with box, lime, holly, pear, walnut and mahogany woods as well as marble with gilded carvings. Furniture designed by Ernest Gimson, Edward William Godwin, Charles Voysey, Adolf Loos and Otto Wagner are among the late 19th-century and early 20th-century examples in the collection. The work of modernists in the collection include Le Corbusier, Marcel Breuer, Charles and Ray Eames, and Giò Ponti.",
+    "question": "To which year has the Antwerp City Hall doors in the V&A collection been dated?",
+    "answers": [
+      "1580"
+    ],
+    "split": "development"
+  },
+  {
+    "id": "squad:5725d16aec44d21400f3d61b",
+    "benchmark": "squad",
+    "group_id": "Amazon_rainforest",
+    "context": "The region is home to about 2.5 million insect species, tens of thousands of plants, and some 2,000 birds and mammals. To date, at least 40,000 plant species, 2,200 fishes, 1,294 birds, 427 mammals, 428 amphibians, and 378 reptiles have been scientifically classified in the region. One in five of all the bird species in the world live in the rainforests of the Amazon, and one in five of the fish species live in Amazonian rivers and streams. Scientists have described between 96,660 and 128,843 invertebrate species in Brazil alone.",
+    "question": "How many species of insects are known in the region?",
+    "answers": [
+      "2.5 million"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:5710e8c8a58dae1900cd6b26",
+    "benchmark": "squad",
+    "group_id": "Huguenot",
+    "context": "After this, Huguenots (with estimates ranging from 200,000 to 1,000,000) fled to surrounding Protestant countries: England, the Netherlands, Switzerland, Norway, Denmark, and Prussia — whose Calvinist Great Elector Frederick William welcomed them to help rebuild his war-ravaged and underpopulated country. Following this exodus, Huguenots remained in large numbers in only one region of France: the rugged Cévennes region in the south. In the early 18th century, a regional group known as the Camisards who were Huguenots rioted against the Catholic Church in the region, burning churches and killing clergy. It took French troops years to hunt down and destroy all the bands of Camisards, between 1702 and 1709.",
+    "question": "Which central European country had a Calvinist ruler?",
+    "answers": [
+      "Prussia",
+      "Great Elector Frederick William"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:5726e3c4dd62a815002e9404",
+    "benchmark": "squad",
+    "group_id": "Pharmacy",
+    "context": "Pharmacists provide direct patient care services that optimizes the use of medication and promotes health, wellness, and disease prevention. Clinical pharmacists care for patients in all health care settings, but the clinical pharmacy movement initially began inside hospitals and clinics. Clinical pharmacists often collaborate with physicians and other healthcare professionals to improve pharmaceutical care. Clinical pharmacists are now an integral part of the interdisciplinary approach to patient care. They often participate in patient care rounds drug product selection.",
+    "question": "What do the services given by pharmacists provide?",
+    "answers": [
+      "optimizes the use of medication and promotes health, wellness, and disease prevention",
+      "direct patient care services that optimizes the use of medication and promotes health, wellness, and disease prevention"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:57293d116aef051400154bca",
+    "benchmark": "squad",
+    "group_id": "Intergovernmental_Panel_on_Climate_Change",
+    "context": "The IPCC does not carry out research nor does it monitor climate related data. Lead authors of IPCC reports assess the available information about climate change based on published sources. According to IPCC guidelines, authors should give priority to peer-reviewed sources. Authors may refer to non-peer-reviewed sources (the \"grey literature\"), provided that they are of sufficient quality. Examples of non-peer-reviewed sources include model results, reports from government agencies and non-governmental organizations, and industry journals. Each subsequent IPCC report notes areas where the science has improved since the previous report and also notes areas where further research is required.",
+    "question": "What is 'grey literature'?",
+    "answers": [
+      "non-peer-reviewed sources"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:56bec0353aeaaa14008c9351",
+    "benchmark": "squad",
+    "group_id": "Super_Bowl_50",
+    "context": "In addition to the Vince Lombardi Trophy that all Super Bowl champions receive, the winner of Super Bowl 50 will also receive a large, 18-karat gold-plated \"50\". Each digit will weigh 33 lb (15 kg) for a total of 66 lb (30 kg). Like the Lombardi Trophy, the \"50\" will be designed by Tiffany & Co.",
+    "question": "Who designed the Vince Lombardi Trophy?",
+    "answers": [
+      "Tiffany & Co.",
+      "Tiffany & Co"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:5725f46289a1e219009ac0fc",
+    "benchmark": "squad",
+    "group_id": "Fresno,_California",
+    "context": "Formed in 1946, Sierra Sky Park Airport is a residential airport community born of a unique agreement in transportation law to allow personal aircraft and automobiles to share certain roads. Sierra Sky Park was the first aviation community to be built[citation needed] and there are now numerous such communities across the United States and around the world. Developer William Smilie created the nation's first planned aviation community. Still in operation today, the public use airport provides a unique neighborhood that spawned interest and similar communities nationwide.",
+    "question": "What is the name of the first aviation community built?",
+    "answers": [
+      "Sierra Sky Park"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:5727478cf1498d1400e8f59a",
+    "benchmark": "squad",
+    "group_id": "Private_school",
+    "context": "The secondary level includes schools offering years 7 through 12 (year twelve is known as lower sixth) and year 13 (upper sixth). This category includes university-preparatory schools or \"prep schools\", boarding schools and day schools. Tuition at private secondary schools varies from school to school and depends on many factors, including the location of the school, the willingness of parents to pay, peer tuitions and the school's financial endowment. High tuition, schools claim, is used to pay higher salaries for the best teachers and also used to provide enriched learning environments, including a low student to teacher ratio, small class sizes and services, such as libraries, science laboratories and computers. Some private schools are boarding schools and many military academies are privately owned or operated as well.",
+    "question": "What is another term for year 12 of education?",
+    "answers": [
+      "lower sixth"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:572fe4a304bcaa1900d76e57",
+    "benchmark": "squad",
+    "group_id": "Rhine",
+    "context": "The mouth of the Rhine into Lake Constance forms an inland delta. The delta is delimited in the West by the Alter Rhein (\"Old Rhine\") and in the East by a modern canalized section. Most of the delta is a nature reserve and bird sanctuary. It includes the Austrian towns of Gaißau, Höchst and Fußach. The natural Rhine originally branched into at least two arms and formed small islands by precipitating sediments. In the local Alemannic dialect, the singular is pronounced \"Isel\" and this is also the local pronunciation of Esel (\"Donkey\"). Many local fields have an official name containing this element.",
+    "question": "What delimits the delta of the Rhine in the west?",
+    "answers": [
+      "Alter Rhein"
+    ],
+    "split": "validation"
+  },
+  {
+    "id": "squad:5733638fd058e614000b59eb",
+    "benchmark": "squad",
+    "group_id": "Warsaw",
+    "context": "Exceptional examples of the bourgeois architecture of the later periods were not restored by the communist authorities after the war (like mentioned Kronenberg Palace and Insurance Company Rosja building) or they were rebuilt in socialist realism style (like Warsaw Philharmony edifice originally inspired by Palais Garnier in Paris). Despite that the Warsaw University of Technology building (1899–1902) is the most interesting of the late 19th-century architecture. Some 19th-century buildings in the Praga district (the Vistula’s right bank) have been restored although many have been poorly maintained. Warsaw’s municipal government authorities have decided to rebuild the Saxon Palace and the Brühl Palace, the most distinctive buildings in prewar Warsaw.",
+    "question": "What building is the most interesting of the late 19th-century architecture?",
+    "answers": [
+      "Warsaw University of Technology building",
+      "Warsaw University of Technology"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:571ccd9b5efbb31900334df8",
+    "benchmark": "squad",
+    "group_id": "Oxygen",
+    "context": "The other major method of producing O\n2 gas involves passing a stream of clean, dry air through one bed of a pair of identical zeolite molecular sieves, which absorbs the nitrogen and delivers a gas stream that is 90% to 93% O\n2. Simultaneously, nitrogen gas is released from the other nitrogen-saturated zeolite bed, by reducing the chamber operating pressure and diverting part of the oxygen gas from the producer bed through it, in the reverse direction of flow. After a set cycle time the operation of the two beds is interchanged, thereby allowing for a continuous supply of gaseous oxygen to be pumped through a pipeline. This is known as pressure swing adsorption. Oxygen gas is increasingly obtained by these non-cryogenic technologies (see also the related vacuum swing adsorption).",
+    "question": "What mechanism can be used to make oxygen?",
+    "answers": [
+      "zeolite molecular sieves",
+      "passing a stream of clean, dry air through one bed of a pair of identical zeolite molecular sieves",
+      "passing a stream of clean, dry air through one bed of a pair of identical zeolite molecular sieves, which absorbs the nitrogen"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:572646655951b619008f6ec3",
+    "benchmark": "squad",
+    "group_id": "Ctenophora",
+    "context": "Ctenophores form an animal phylum that is more complex than sponges, about as complex as cnidarians (jellyfish, sea anemones, etc.), and less complex than bilaterians (which include almost all other animals). Unlike sponges, both ctenophores and cnidarians have: cells bound by inter-cell connections and carpet-like basement membranes; muscles; nervous systems; and some have sensory organs. Ctenophores are distinguished from all other animals by having colloblasts, which are sticky and adhere to prey, although a few ctenophore species lack them.",
+    "question": "Ctenophores are less complex than what other group?",
+    "answers": [
+      "bilaterians"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:572966626aef051400154e15",
+    "benchmark": "squad",
+    "group_id": "Chloroplast",
+    "context": "Members of the genus Dinophysis have a phycobilin-containing chloroplast taken from a cryptophyte. However, the cryptophyte is not an endosymbiont—only the chloroplast seems to have been taken, and the chloroplast has been stripped of its nucleomorph and outermost two membranes, leaving just a two-membraned chloroplast. Cryptophyte chloroplasts require their nucleomorph to maintain themselves, and Dinophysis species grown in cell culture alone cannot survive, so it is possible (but not confirmed) that the Dinophysis chloroplast is a kleptoplast—if so, Dinophysis chloroplasts wear out and Dinophysis species must continually engulf cryptophytes to obtain new chloroplasts to replace the old ones.",
+    "question": "What is left of the Dinophysis chloroplasts?",
+    "answers": [
+      "a two-membraned chloroplast"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:5726642f5951b619008f7157",
+    "benchmark": "squad",
+    "group_id": "Newcastle_upon_Tyne",
+    "context": "Newcastle upon Tyne (RP: i/ˌnjuːkɑːsəl əˌpɒn ˈtaɪn/; Locally: i/njuːˌkæsəl əˌpən ˈtaɪn/), commonly known as Newcastle, is a city in Tyne and Wear, North East England, 103 miles (166 km) south of Edinburgh and 277 miles (446 km) north of London on the northern bank of the River Tyne, 8.5 mi (13.7 km) from the North Sea. Newcastle is the most populous city in the North East and Tyneside the eighth most populous conurbation in the United Kingdom. Newcastle is a member of the English Core Cities Group and is a member of the Eurocities network of European cities. Newcastle was part of the county of Northumberland until 1400, when it became a county itself, a status it retained until becoming part of Tyne and Wear in 1974.[not in citation given] The regional nickname and dialect for people from Newcastle and the surrounding area is Geordie.",
+    "question": "How many miles south of Edinburgh is Newcastle?",
+    "answers": [
+      "103 miles"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:5725c7f5271a42140099d1a3",
+    "benchmark": "squad",
+    "group_id": "Apollo_program",
+    "context": "Wiesner kept up the pressure, even making the disagreement public during a two-day September visit by the President to Marshall Space Flight Center. Wiesner blurted out \"No, that's no good\" in front of the press, during a presentation by von Braun. Webb jumped in and defended von Braun, until Kennedy ended the squabble by stating that the matter was \"still subject to final review\". Webb held firm, and issued a request for proposal to candidate Lunar Excursion Module (LEM) contractors. Wiesner finally relented, unwilling to settle the dispute once and for all in Kennedy's office, because of the President's involvement with the October Cuban missile crisis, and fear of Kennedy's support for Webb. NASA announced the selection of Grumman as the LEM contractor in November 1962.",
+    "question": "What does the acronym LEM stand for?",
+    "answers": [
+      "Lunar Excursion Module"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:5730b4282461fd1900a9cfc8",
+    "benchmark": "squad",
+    "group_id": "Imperialism",
+    "context": "Trotsky, and others, believed that the revolution could only succeed in Russia as part of a world revolution. Lenin wrote extensively on the matter and famously declared that Imperialism was the highest stage of capitalism. However, after Lenin's death, Joseph Stalin established 'socialism in one country' for the Soviet Union, creating the model for subsequent inward looking Stalinist states and purging the early Internationalist elements. The internationalist tendencies of the early revolution would be abandoned until they returned in the framework of a client state in competition with the Americans during the Cold War. With the beginning of the new era, the after Stalin period called the \"thaw\", in the late 1950s, the new political leader Nikita Khrushchev put even more pressure on the Soviet-American relations starting a new wave of anti-imperialist propaganda. In his speech on the UN conference in 1960, he announced the continuation of the war on imperialism, stating that soon the people of different countries will come together and overthrow their imperialist leaders. Although the Soviet Union declared itself anti-imperialist, critics argue that it exhibited tendencies common to historic empires. Some scholars hold that the Soviet Union was a hybrid entity containing elements common to both multinational empires and nation states. It has also been argued that the USSR practiced colonialism as did other imperial powers and was carrying on the old Russian tradition of expansion and control. Mao Zedong once argued that the Soviet Union had itself become an imperialist power while maintaining a socialist façade. Moreover, the ideas of imperialism were widely spread in action on the higher levels of government. Non Russian Marxists within the Russian Federation and later the USSR, like Sultan Galiev and Vasyl Shakhrai, considered the Soviet Regime a renewed version of the Russian imperialism and colonialism.",
+    "question": "Who was the leader of Russia in the 1960's?",
+    "answers": [
+      "Nikita Khrushchev",
+      "Khrushchev"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:571163172419e314009555e8",
+    "benchmark": "squad",
+    "group_id": "Steam_engine",
+    "context": "The steam engine contributed much to the development of thermodynamic theory; however, the only applications of scientific theory that influenced the steam engine were the original concepts of harnessing the power of steam and atmospheric pressure and knowledge of properties of heat and steam. The experimental measurements made by Watt on a model steam engine led to the development of the separate condenser. Watt independently discovered latent heat, which was confirmed by the original discoverer Joseph Black, who also advised Watt on experimental procedures. Watt was also aware of the change in the boiling point of water with pressure. Otherwise, the improvements to the engine itself were more mechanical in nature. The thermodynamic concepts of the Rankine cycle did give engineers the understanding needed to calculate efficiency which aided the development of modern high-pressure and -temperature boilers and the steam turbine.",
+    "question": "Who made experimental measurements on a model steam engine?",
+    "answers": [
+      "Watt"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:573028fa04bcaa1900d77287",
+    "benchmark": "squad",
+    "group_id": "Islamism",
+    "context": "In Afghanistan, the mujahideen's victory against the Soviet Union in the 1980s did not lead to justice and prosperity, due to a vicious and destructive civil war between political and tribal warlords, making Afghanistan one of the poorest countries on earth. In 1992, the Democratic Republic of Afghanistan ruled by communist forces collapsed, and democratic Islamist elements of mujahdeen founded the Islamic State of Afghanistan. In 1996, a more conservative and anti-democratic Islamist movement known as the Taliban rose to power, defeated most of the warlords and took over roughly 80% of Afghanistan.",
+    "question": "Unsurprisingly, the mujahideen's victory against the Soviets in the 1980s failed to produce what?",
+    "answers": [
+      "justice and prosperity"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:5728231fff5b5019007d9dd7",
+    "benchmark": "squad",
+    "group_id": "Doctor_Who",
+    "context": "Only four episodes have ever had their premiere showings on channels other than BBC One. The 1983 20th anniversary special The Five Doctors had its début on 23 November (the actual date of the anniversary) on a number of PBS stations two days prior to its BBC One broadcast. The 1988 story Silver Nemesis was broadcast with all three episodes airing back to back on TVNZ in New Zealand in November, after the first episode had been shown in the UK but before the final two instalments had aired there. Finally, the 1996 television film premièred on 12 May 1996 on CITV in Edmonton, Canada, 15 days before the BBC One showing, and two days before it aired on Fox in the United States.[citation needed]",
+    "question": "How many days was the 1996 film shown ahead of the BBC showing?",
+    "answers": [
+      "15 days",
+      "15"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:5727cd0f4b864d1900163d73",
+    "benchmark": "squad",
+    "group_id": "Harvard_University",
+    "context": "Harvard has purchased tracts of land in Allston, a walk across the Charles River from Cambridge, with the intent of major expansion southward. The university now owns approximately fifty percent more land in Allston than in Cambridge. Proposals to connect the Cambridge campus with the new Allston campus include new and enlarged bridges, a shuttle service and/or a tram. Plans also call for sinking part of Storrow Drive (at Harvard's expense) for replacement with park land and pedestrian access to the Charles River, as well as the construction of bike paths, and buildings throughout the Allston campus. The institution asserts that such expansion will benefit not only the school, but surrounding community, pointing to such features as the enhanced transit infrastructure, possible shuttles open to the public, and park space which will also be publicly accessible.",
+    "question": "What are some proposals to connect campuses?",
+    "answers": [
+      "new and enlarged bridges, a shuttle service and/or a tram.",
+      "new and enlarged bridges, a shuttle service and/or a tram"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:572a058aaf94a219006aa752",
+    "benchmark": "squad",
+    "group_id": "Immune_system",
+    "context": "When a T-cell encounters a foreign pathogen, it extends a vitamin D receptor. This is essentially a signaling device that allows the T-cell to bind to the active form of vitamin D, the steroid hormone calcitriol. T-cells have a symbiotic relationship with vitamin D. Not only does the T-cell extend a vitamin D receptor, in essence asking to bind to the steroid hormone version of vitamin D, calcitriol, but the T-cell expresses the gene CYP27B1, which is the gene responsible for converting the pre-hormone version of vitamin D, calcidiol into the steroid hormone version, calcitriol. Only after binding to calcitriol can T-cells perform their intended function. Other immune system cells that are known to express CYP27B1 and thus activate vitamin D calcidiol, are dendritic cells, keratinocytes and macrophages.",
+    "question": "What is the active form of vitamin D known as?",
+    "answers": [
+      "calcitriol",
+      "steroid hormone calcitriol"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:56f8b9839e9bad19000a03c2",
+    "benchmark": "squad",
+    "group_id": "Martin_Luther",
+    "context": "At the heart of scholars' debate about Luther's influence is whether it is anachronistic to view his work as a precursor of the racial antisemitism of the Nazis. Some scholars see Luther's influence as limited, and the Nazis' use of his work as opportunistic. Biographer Martin Brecht points out that \"There is a world of difference between his belief in salvation and a racial ideology. Nevertheless, his misguided agitation had the evil result that Luther fatefully became one of the 'church fathers' of anti-Semitism and thus provided material for the modern hatred of the Jews, cloaking it with the authority of the Reformer.\" Johannes Wallmann argues that Luther's writings against the Jews were largely ignored in the 18th and 19th centuries, and that there was no continuity between Luther's thought and Nazi ideology. Uwe Siemon-Netto agreed, arguing that it was because the Nazis were already anti-Semites that they revived Luther's work. Hans J. Hillerbrand agreed that to focus on Luther was to adopt an essentially ahistorical perspective of Nazi antisemitism that ignored other contributory factors in German history. Similarly, Roland Bainton, noted church historian and Luther biographer, wrote \"One could wish that Luther had died before ever [On the Jews and Their Lies] was written. His position was entirely religious and in no respect racial.\"",
+    "question": "When was Luther's writings about the Jews ignored, according to Johannes Wallmann?",
+    "answers": [
+      "18th and 19th centuries"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:56e0fe85e3433e1400422a6a",
+    "benchmark": "squad",
+    "group_id": "Nikola_Tesla",
+    "context": "He produced artificial lightning, with discharges consisting of millions of volts and up to 135 feet long. Thunder from the released energy was heard 15 miles away in Cripple Creek, Colorado. People walking along the street observed sparks jumping between their feet and the ground. Sparks sprang from water line taps when touched. Light bulbs within 100 feet of the lab glowed even when turned off. Horses in a livery stable bolted from their stalls after receiving shocks through their metal shoes. Butterflies were electrified, swirling in circles with blue halos of St. Elmo's fire around their wings.",
+    "question": "What natural phenomenon did Tesla create artificially? ",
+    "answers": [
+      "lightning"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:56e7667e37bdd419002c3f4a",
+    "benchmark": "squad",
+    "group_id": "Teacher",
+    "context": "The way a teacher promotes the course they are teaching, the more the student will get out of the subject matter. The three most important aspects of teacher enthusiasm are enthusiasm about teaching, enthusiasm about the students, and enthusiasm about the subject matter. A teacher must enjoy teaching. If they do not enjoy what they are doing, the students will be able to tell. They also must enjoy being around their students. A teacher who cares for their students is going to help that individual succeed in their life in the future. The teacher also needs to be enthusiastic about the subject matter they are teaching. For example, a teacher talking about chemistry needs to enjoy the art of chemistry and show that to their students. A spark in the teacher may create a spark of excitement in the student as well. An enthusiastic teacher has the ability to be very influential in the young students life.",
+    "question": "What does a teacher need to be with regards to their subject matter?",
+    "answers": [
+      "enthusiastic"
+    ],
+    "split": "reserve"
+  },
+  {
+    "id": "squad:57275411dd62a815002e9b33",
+    "benchmark": "squad",
+    "group_id": "Construction",
+    "context": "The owner produces a list of requirements for a project, giving an overall view of the project's goals. Several D&B contractors present different ideas about how to accomplish these goals. The owner selects the ideas he or she likes best and hires the appropriate contractor. Often, it is not just one contractor, but a consortium of several contractors working together. Once these have been hired, they begin building the first phase of the project. As they build phase 1, they design phase 2. This is in contrast to a design-bid-build contract, where the project is completely designed by the owner, then bid on, then completed.",
+    "question": "Who is usually working together?",
+    "answers": [
+      "a consortium of several contractors"
+    ],
+    "split": "reserve"
+  }
+]

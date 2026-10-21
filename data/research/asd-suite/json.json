@@ -1,0 +1,1137 @@
+[
+  {
+    "id": "json:12",
+    "benchmark": "json",
+    "group_id": "project-1475271c",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-1475271c\nRevision: 17\nRegion: north\nOwners in order: owner-506\nRequests per second: 715\nTimeout in milliseconds: 3846\nService 1: name=service-0-780; port=22876; enabled=no",
+    "expected": {
+      "project": "project-1475271c",
+      "revision": 17,
+      "region": "north",
+      "owners": [
+        "owner-506"
+      ],
+      "services": [
+        {
+          "name": "service-0-780",
+          "port": 22876,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 715,
+        "timeout_ms": 3846
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:7",
+    "benchmark": "json",
+    "group_id": "project-b5c5b392",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-b5c5b392\nRevision: 27\nRegion: west\nOwners in order: owner-771, owner-305\nRequests per second: 68\nTimeout in milliseconds: 8599\nService 1: name=service-0-211; port=13250; enabled=yes\nService 2: name=service-1-520; port=16362; enabled=yes\nService 3: name=service-2-259; port=17050; enabled=no\nService 4: name=service-3-907; port=20119; enabled=yes",
+    "expected": {
+      "project": "project-b5c5b392",
+      "revision": 27,
+      "region": "west",
+      "owners": [
+        "owner-771",
+        "owner-305"
+      ],
+      "services": [
+        {
+          "name": "service-0-211",
+          "port": 13250,
+          "enabled": true
+        },
+        {
+          "name": "service-1-520",
+          "port": 16362,
+          "enabled": true
+        },
+        {
+          "name": "service-2-259",
+          "port": 17050,
+          "enabled": false
+        },
+        {
+          "name": "service-3-907",
+          "port": 20119,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 68,
+        "timeout_ms": 8599
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:27",
+    "benchmark": "json",
+    "group_id": "project-8603aef8",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-8603aef8\nRevision: 70\nRegion: east\nOwners in order: owner-225\nRequests per second: 166\nTimeout in milliseconds: 452\nService 1: name=service-0-899; port=8208; enabled=no\nService 2: name=service-1-358; port=1246; enabled=yes\nService 3: name=service-2-659; port=16192; enabled=no\nService 4: name=service-3-940; port=11347; enabled=no",
+    "expected": {
+      "project": "project-8603aef8",
+      "revision": 70,
+      "region": "east",
+      "owners": [
+        "owner-225"
+      ],
+      "services": [
+        {
+          "name": "service-0-899",
+          "port": 8208,
+          "enabled": false
+        },
+        {
+          "name": "service-1-358",
+          "port": 1246,
+          "enabled": true
+        },
+        {
+          "name": "service-2-659",
+          "port": 16192,
+          "enabled": false
+        },
+        {
+          "name": "service-3-940",
+          "port": 11347,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 166,
+        "timeout_ms": 452
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:1",
+    "benchmark": "json",
+    "group_id": "project-4b68d61c",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-4b68d61c\nRevision: 95\nRegion: west\nOwners in order: owner-514, owner-203\nRequests per second: 387\nTimeout in milliseconds: 1592\nService 1: name=service-0-446; port=27356; enabled=yes\nService 2: name=service-1-669; port=4976; enabled=yes",
+    "expected": {
+      "project": "project-4b68d61c",
+      "revision": 95,
+      "region": "west",
+      "owners": [
+        "owner-514",
+        "owner-203"
+      ],
+      "services": [
+        {
+          "name": "service-0-446",
+          "port": 27356,
+          "enabled": true
+        },
+        {
+          "name": "service-1-669",
+          "port": 4976,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 387,
+        "timeout_ms": 1592
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:28",
+    "benchmark": "json",
+    "group_id": "project-cea2986e",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-cea2986e\nRevision: 86\nRegion: north\nOwners in order: owner-974, owner-622\nRequests per second: 551\nTimeout in milliseconds: 9453\nService 1: name=service-0-880; port=19175; enabled=no",
+    "expected": {
+      "project": "project-cea2986e",
+      "revision": 86,
+      "region": "north",
+      "owners": [
+        "owner-974",
+        "owner-622"
+      ],
+      "services": [
+        {
+          "name": "service-0-880",
+          "port": 19175,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 551,
+        "timeout_ms": 9453
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:25",
+    "benchmark": "json",
+    "group_id": "project-e0ba7014",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-e0ba7014\nRevision: 16\nRegion: north\nOwners in order: owner-228, owner-431\nRequests per second: 389\nTimeout in milliseconds: 7245\nService 1: name=service-0-475; port=27074; enabled=yes\nService 2: name=service-1-997; port=29654; enabled=no",
+    "expected": {
+      "project": "project-e0ba7014",
+      "revision": 16,
+      "region": "north",
+      "owners": [
+        "owner-228",
+        "owner-431"
+      ],
+      "services": [
+        {
+          "name": "service-0-475",
+          "port": 27074,
+          "enabled": true
+        },
+        {
+          "name": "service-1-997",
+          "port": 29654,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 389,
+        "timeout_ms": 7245
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:29",
+    "benchmark": "json",
+    "group_id": "project-8021f838",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-8021f838\nRevision: 56\nRegion: east\nOwners in order: owner-373, owner-269, owner-153\nRequests per second: 96\nTimeout in milliseconds: 435\nService 1: name=service-0-715; port=8354; enabled=yes\nService 2: name=service-1-979; port=4615; enabled=no",
+    "expected": {
+      "project": "project-8021f838",
+      "revision": 56,
+      "region": "east",
+      "owners": [
+        "owner-373",
+        "owner-269",
+        "owner-153"
+      ],
+      "services": [
+        {
+          "name": "service-0-715",
+          "port": 8354,
+          "enabled": true
+        },
+        {
+          "name": "service-1-979",
+          "port": 4615,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 96,
+        "timeout_ms": 435
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:22",
+    "benchmark": "json",
+    "group_id": "project-29ae15e1",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-29ae15e1\nRevision: 89\nRegion: east\nOwners in order: owner-242, owner-452\nRequests per second: 11\nTimeout in milliseconds: 8981\nService 1: name=service-0-219; port=16920; enabled=no\nService 2: name=service-1-577; port=29803; enabled=yes\nService 3: name=service-2-588; port=21800; enabled=no",
+    "expected": {
+      "project": "project-29ae15e1",
+      "revision": 89,
+      "region": "east",
+      "owners": [
+        "owner-242",
+        "owner-452"
+      ],
+      "services": [
+        {
+          "name": "service-0-219",
+          "port": 16920,
+          "enabled": false
+        },
+        {
+          "name": "service-1-577",
+          "port": 29803,
+          "enabled": true
+        },
+        {
+          "name": "service-2-588",
+          "port": 21800,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 11,
+        "timeout_ms": 8981
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "development"
+  },
+  {
+    "id": "json:20",
+    "benchmark": "json",
+    "group_id": "project-3fc97e85",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-3fc97e85\nRevision: 43\nRegion: east\nOwners in order: owner-989, owner-164, owner-280\nRequests per second: 79\nTimeout in milliseconds: 211\nService 1: name=service-0-934; port=14400; enabled=no",
+    "expected": {
+      "project": "project-3fc97e85",
+      "revision": 43,
+      "region": "east",
+      "owners": [
+        "owner-989",
+        "owner-164",
+        "owner-280"
+      ],
+      "services": [
+        {
+          "name": "service-0-934",
+          "port": 14400,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 79,
+        "timeout_ms": 211
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:2",
+    "benchmark": "json",
+    "group_id": "project-dc558f26",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-dc558f26\nRevision: 96\nRegion: west\nOwners in order: owner-227, owner-722, owner-461\nRequests per second: 596\nTimeout in milliseconds: 2820\nService 1: name=service-0-410; port=11814; enabled=no\nService 2: name=service-1-151; port=21221; enabled=yes\nService 3: name=service-2-455; port=29709; enabled=no",
+    "expected": {
+      "project": "project-dc558f26",
+      "revision": 96,
+      "region": "west",
+      "owners": [
+        "owner-227",
+        "owner-722",
+        "owner-461"
+      ],
+      "services": [
+        {
+          "name": "service-0-410",
+          "port": 11814,
+          "enabled": false
+        },
+        {
+          "name": "service-1-151",
+          "port": 21221,
+          "enabled": true
+        },
+        {
+          "name": "service-2-455",
+          "port": 29709,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 596,
+        "timeout_ms": 2820
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:15",
+    "benchmark": "json",
+    "group_id": "project-760e0010",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-760e0010\nRevision: 12\nRegion: east\nOwners in order: owner-225\nRequests per second: 829\nTimeout in milliseconds: 3331\nService 1: name=service-0-166; port=7865; enabled=yes\nService 2: name=service-1-304; port=6724; enabled=no\nService 3: name=service-2-857; port=22762; enabled=yes\nService 4: name=service-3-129; port=19401; enabled=no",
+    "expected": {
+      "project": "project-760e0010",
+      "revision": 12,
+      "region": "east",
+      "owners": [
+        "owner-225"
+      ],
+      "services": [
+        {
+          "name": "service-0-166",
+          "port": 7865,
+          "enabled": true
+        },
+        {
+          "name": "service-1-304",
+          "port": 6724,
+          "enabled": false
+        },
+        {
+          "name": "service-2-857",
+          "port": 22762,
+          "enabled": true
+        },
+        {
+          "name": "service-3-129",
+          "port": 19401,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 829,
+        "timeout_ms": 3331
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:21",
+    "benchmark": "json",
+    "group_id": "project-da8750eb",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-da8750eb\nRevision: 14\nRegion: north\nOwners in order: owner-601\nRequests per second: 730\nTimeout in milliseconds: 3282\nService 1: name=service-0-556; port=7938; enabled=yes\nService 2: name=service-1-432; port=9807; enabled=yes",
+    "expected": {
+      "project": "project-da8750eb",
+      "revision": 14,
+      "region": "north",
+      "owners": [
+        "owner-601"
+      ],
+      "services": [
+        {
+          "name": "service-0-556",
+          "port": 7938,
+          "enabled": true
+        },
+        {
+          "name": "service-1-432",
+          "port": 9807,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 730,
+        "timeout_ms": 3282
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:13",
+    "benchmark": "json",
+    "group_id": "project-40fe8905",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-40fe8905\nRevision: 35\nRegion: west\nOwners in order: owner-953, owner-655\nRequests per second: 56\nTimeout in milliseconds: 9987\nService 1: name=service-0-159; port=28415; enabled=yes\nService 2: name=service-1-676; port=23778; enabled=yes",
+    "expected": {
+      "project": "project-40fe8905",
+      "revision": 35,
+      "region": "west",
+      "owners": [
+        "owner-953",
+        "owner-655"
+      ],
+      "services": [
+        {
+          "name": "service-0-159",
+          "port": 28415,
+          "enabled": true
+        },
+        {
+          "name": "service-1-676",
+          "port": 23778,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 56,
+        "timeout_ms": 9987
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:3",
+    "benchmark": "json",
+    "group_id": "project-9dac0496",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-9dac0496\nRevision: 57\nRegion: east\nOwners in order: owner-674\nRequests per second: 381\nTimeout in milliseconds: 5620\nService 1: name=service-0-990; port=8564; enabled=yes\nService 2: name=service-1-490; port=7256; enabled=no\nService 3: name=service-2-371; port=3673; enabled=no\nService 4: name=service-3-188; port=23238; enabled=yes",
+    "expected": {
+      "project": "project-9dac0496",
+      "revision": 57,
+      "region": "east",
+      "owners": [
+        "owner-674"
+      ],
+      "services": [
+        {
+          "name": "service-0-990",
+          "port": 8564,
+          "enabled": true
+        },
+        {
+          "name": "service-1-490",
+          "port": 7256,
+          "enabled": false
+        },
+        {
+          "name": "service-2-371",
+          "port": 3673,
+          "enabled": false
+        },
+        {
+          "name": "service-3-188",
+          "port": 23238,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 381,
+        "timeout_ms": 5620
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:31",
+    "benchmark": "json",
+    "group_id": "project-ec05609f",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-ec05609f\nRevision: 95\nRegion: north\nOwners in order: owner-790, owner-848\nRequests per second: 695\nTimeout in milliseconds: 1024\nService 1: name=service-0-184; port=12967; enabled=no\nService 2: name=service-1-774; port=8261; enabled=yes\nService 3: name=service-2-444; port=2687; enabled=yes\nService 4: name=service-3-695; port=9199; enabled=no",
+    "expected": {
+      "project": "project-ec05609f",
+      "revision": 95,
+      "region": "north",
+      "owners": [
+        "owner-790",
+        "owner-848"
+      ],
+      "services": [
+        {
+          "name": "service-0-184",
+          "port": 12967,
+          "enabled": false
+        },
+        {
+          "name": "service-1-774",
+          "port": 8261,
+          "enabled": true
+        },
+        {
+          "name": "service-2-444",
+          "port": 2687,
+          "enabled": true
+        },
+        {
+          "name": "service-3-695",
+          "port": 9199,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 695,
+        "timeout_ms": 1024
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:10",
+    "benchmark": "json",
+    "group_id": "project-3b88c222",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-3b88c222\nRevision: 97\nRegion: north\nOwners in order: owner-694, owner-662\nRequests per second: 28\nTimeout in milliseconds: 9025\nService 1: name=service-0-955; port=5351; enabled=no\nService 2: name=service-1-627; port=24196; enabled=yes\nService 3: name=service-2-980; port=25942; enabled=yes",
+    "expected": {
+      "project": "project-3b88c222",
+      "revision": 97,
+      "region": "north",
+      "owners": [
+        "owner-694",
+        "owner-662"
+      ],
+      "services": [
+        {
+          "name": "service-0-955",
+          "port": 5351,
+          "enabled": false
+        },
+        {
+          "name": "service-1-627",
+          "port": 24196,
+          "enabled": true
+        },
+        {
+          "name": "service-2-980",
+          "port": 25942,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 28,
+        "timeout_ms": 9025
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "validation"
+  },
+  {
+    "id": "json:8",
+    "benchmark": "json",
+    "group_id": "project-1fdef5e1",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-1fdef5e1\nRevision: 94\nRegion: west\nOwners in order: owner-516, owner-909, owner-910\nRequests per second: 732\nTimeout in milliseconds: 5266\nService 1: name=service-0-933; port=6774; enabled=yes",
+    "expected": {
+      "project": "project-1fdef5e1",
+      "revision": 94,
+      "region": "west",
+      "owners": [
+        "owner-516",
+        "owner-909",
+        "owner-910"
+      ],
+      "services": [
+        {
+          "name": "service-0-933",
+          "port": 6774,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 732,
+        "timeout_ms": 5266
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:5",
+    "benchmark": "json",
+    "group_id": "project-7f8cf7da",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-7f8cf7da\nRevision: 19\nRegion: west\nOwners in order: owner-240, owner-685, owner-954\nRequests per second: 601\nTimeout in milliseconds: 8628\nService 1: name=service-0-822; port=26970; enabled=no\nService 2: name=service-1-241; port=1844; enabled=yes",
+    "expected": {
+      "project": "project-7f8cf7da",
+      "revision": 19,
+      "region": "west",
+      "owners": [
+        "owner-240",
+        "owner-685",
+        "owner-954"
+      ],
+      "services": [
+        {
+          "name": "service-0-822",
+          "port": 26970,
+          "enabled": false
+        },
+        {
+          "name": "service-1-241",
+          "port": 1844,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 601,
+        "timeout_ms": 8628
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:4",
+    "benchmark": "json",
+    "group_id": "project-196e976c",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-196e976c\nRevision: 98\nRegion: north\nOwners in order: owner-409, owner-128\nRequests per second: 343\nTimeout in milliseconds: 3454\nService 1: name=service-0-637; port=15669; enabled=no",
+    "expected": {
+      "project": "project-196e976c",
+      "revision": 98,
+      "region": "north",
+      "owners": [
+        "owner-409",
+        "owner-128"
+      ],
+      "services": [
+        {
+          "name": "service-0-637",
+          "port": 15669,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 343,
+        "timeout_ms": 3454
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:16",
+    "benchmark": "json",
+    "group_id": "project-074a922b",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-074a922b\nRevision: 35\nRegion: north\nOwners in order: owner-262, owner-112\nRequests per second: 791\nTimeout in milliseconds: 8425\nService 1: name=service-0-859; port=8331; enabled=yes",
+    "expected": {
+      "project": "project-074a922b",
+      "revision": 35,
+      "region": "north",
+      "owners": [
+        "owner-262",
+        "owner-112"
+      ],
+      "services": [
+        {
+          "name": "service-0-859",
+          "port": 8331,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 791,
+        "timeout_ms": 8425
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:30",
+    "benchmark": "json",
+    "group_id": "project-b9a9ca9e",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-b9a9ca9e\nRevision: 75\nRegion: north\nOwners in order: owner-503\nRequests per second: 110\nTimeout in milliseconds: 1884\nService 1: name=service-0-919; port=10975; enabled=yes\nService 2: name=service-1-722; port=23708; enabled=no\nService 3: name=service-2-925; port=1028; enabled=yes",
+    "expected": {
+      "project": "project-b9a9ca9e",
+      "revision": 75,
+      "region": "north",
+      "owners": [
+        "owner-503"
+      ],
+      "services": [
+        {
+          "name": "service-0-919",
+          "port": 10975,
+          "enabled": true
+        },
+        {
+          "name": "service-1-722",
+          "port": 23708,
+          "enabled": false
+        },
+        {
+          "name": "service-2-925",
+          "port": 1028,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 110,
+        "timeout_ms": 1884
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:6",
+    "benchmark": "json",
+    "group_id": "project-b29a33b9",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-b29a33b9\nRevision: 77\nRegion: east\nOwners in order: owner-523\nRequests per second: 595\nTimeout in milliseconds: 2804\nService 1: name=service-0-602; port=5130; enabled=yes\nService 2: name=service-1-568; port=21423; enabled=yes\nService 3: name=service-2-759; port=1641; enabled=yes",
+    "expected": {
+      "project": "project-b29a33b9",
+      "revision": 77,
+      "region": "east",
+      "owners": [
+        "owner-523"
+      ],
+      "services": [
+        {
+          "name": "service-0-602",
+          "port": 5130,
+          "enabled": true
+        },
+        {
+          "name": "service-1-568",
+          "port": 21423,
+          "enabled": true
+        },
+        {
+          "name": "service-2-759",
+          "port": 1641,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 595,
+        "timeout_ms": 2804
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:0",
+    "benchmark": "json",
+    "group_id": "project-7249968c",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-7249968c\nRevision: 32\nRegion: north\nOwners in order: owner-933\nRequests per second: 511\nTimeout in milliseconds: 1017\nService 1: name=service-0-568; port=1148; enabled=no",
+    "expected": {
+      "project": "project-7249968c",
+      "revision": 32,
+      "region": "north",
+      "owners": [
+        "owner-933"
+      ],
+      "services": [
+        {
+          "name": "service-0-568",
+          "port": 1148,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 511,
+        "timeout_ms": 1017
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:9",
+    "benchmark": "json",
+    "group_id": "project-6d1a3b73",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-6d1a3b73\nRevision: 22\nRegion: east\nOwners in order: owner-347\nRequests per second: 49\nTimeout in milliseconds: 4937\nService 1: name=service-0-251; port=11151; enabled=no\nService 2: name=service-1-694; port=1056; enabled=no",
+    "expected": {
+      "project": "project-6d1a3b73",
+      "revision": 22,
+      "region": "east",
+      "owners": [
+        "owner-347"
+      ],
+      "services": [
+        {
+          "name": "service-0-251",
+          "port": 11151,
+          "enabled": false
+        },
+        {
+          "name": "service-1-694",
+          "port": 1056,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 49,
+        "timeout_ms": 4937
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:23",
+    "benchmark": "json",
+    "group_id": "project-8f13bdad",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-8f13bdad\nRevision: 6\nRegion: north\nOwners in order: owner-796, owner-855, owner-758\nRequests per second: 698\nTimeout in milliseconds: 6806\nService 1: name=service-0-755; port=19180; enabled=no\nService 2: name=service-1-479; port=6133; enabled=no\nService 3: name=service-2-897; port=4289; enabled=no\nService 4: name=service-3-354; port=29851; enabled=yes",
+    "expected": {
+      "project": "project-8f13bdad",
+      "revision": 6,
+      "region": "north",
+      "owners": [
+        "owner-796",
+        "owner-855",
+        "owner-758"
+      ],
+      "services": [
+        {
+          "name": "service-0-755",
+          "port": 19180,
+          "enabled": false
+        },
+        {
+          "name": "service-1-479",
+          "port": 6133,
+          "enabled": false
+        },
+        {
+          "name": "service-2-897",
+          "port": 4289,
+          "enabled": false
+        },
+        {
+          "name": "service-3-354",
+          "port": 29851,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 698,
+        "timeout_ms": 6806
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:18",
+    "benchmark": "json",
+    "group_id": "project-aca37828",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-aca37828\nRevision: 37\nRegion: north\nOwners in order: owner-895\nRequests per second: 258\nTimeout in milliseconds: 459\nService 1: name=service-0-721; port=9310; enabled=yes\nService 2: name=service-1-785; port=2062; enabled=yes\nService 3: name=service-2-756; port=16464; enabled=no",
+    "expected": {
+      "project": "project-aca37828",
+      "revision": 37,
+      "region": "north",
+      "owners": [
+        "owner-895"
+      ],
+      "services": [
+        {
+          "name": "service-0-721",
+          "port": 9310,
+          "enabled": true
+        },
+        {
+          "name": "service-1-785",
+          "port": 2062,
+          "enabled": true
+        },
+        {
+          "name": "service-2-756",
+          "port": 16464,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 258,
+        "timeout_ms": 459
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:17",
+    "benchmark": "json",
+    "group_id": "project-21403360",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-21403360\nRevision: 67\nRegion: north\nOwners in order: owner-438, owner-161, owner-293\nRequests per second: 197\nTimeout in milliseconds: 7531\nService 1: name=service-0-262; port=9164; enabled=yes\nService 2: name=service-1-393; port=5706; enabled=yes",
+    "expected": {
+      "project": "project-21403360",
+      "revision": 67,
+      "region": "north",
+      "owners": [
+        "owner-438",
+        "owner-161",
+        "owner-293"
+      ],
+      "services": [
+        {
+          "name": "service-0-262",
+          "port": 9164,
+          "enabled": true
+        },
+        {
+          "name": "service-1-393",
+          "port": 5706,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 197,
+        "timeout_ms": 7531
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:11",
+    "benchmark": "json",
+    "group_id": "project-c55114ae",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-c55114ae\nRevision: 90\nRegion: north\nOwners in order: owner-835, owner-359, owner-514\nRequests per second: 673\nTimeout in milliseconds: 9494\nService 1: name=service-0-437; port=12830; enabled=yes\nService 2: name=service-1-236; port=25188; enabled=no\nService 3: name=service-2-833; port=8682; enabled=no\nService 4: name=service-3-512; port=21483; enabled=yes",
+    "expected": {
+      "project": "project-c55114ae",
+      "revision": 90,
+      "region": "north",
+      "owners": [
+        "owner-835",
+        "owner-359",
+        "owner-514"
+      ],
+      "services": [
+        {
+          "name": "service-0-437",
+          "port": 12830,
+          "enabled": true
+        },
+        {
+          "name": "service-1-236",
+          "port": 25188,
+          "enabled": false
+        },
+        {
+          "name": "service-2-833",
+          "port": 8682,
+          "enabled": false
+        },
+        {
+          "name": "service-3-512",
+          "port": 21483,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 673,
+        "timeout_ms": 9494
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:24",
+    "benchmark": "json",
+    "group_id": "project-4c7b705f",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-4c7b705f\nRevision: 91\nRegion: north\nOwners in order: owner-197\nRequests per second: 322\nTimeout in milliseconds: 8149\nService 1: name=service-0-583; port=20731; enabled=no",
+    "expected": {
+      "project": "project-4c7b705f",
+      "revision": 91,
+      "region": "north",
+      "owners": [
+        "owner-197"
+      ],
+      "services": [
+        {
+          "name": "service-0-583",
+          "port": 20731,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 322,
+        "timeout_ms": 8149
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:14",
+    "benchmark": "json",
+    "group_id": "project-ac5a651d",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-ac5a651d\nRevision: 72\nRegion: east\nOwners in order: owner-462, owner-300, owner-264\nRequests per second: 60\nTimeout in milliseconds: 708\nService 1: name=service-0-726; port=10407; enabled=no\nService 2: name=service-1-625; port=26643; enabled=yes\nService 3: name=service-2-877; port=11128; enabled=no",
+    "expected": {
+      "project": "project-ac5a651d",
+      "revision": 72,
+      "region": "east",
+      "owners": [
+        "owner-462",
+        "owner-300",
+        "owner-264"
+      ],
+      "services": [
+        {
+          "name": "service-0-726",
+          "port": 10407,
+          "enabled": false
+        },
+        {
+          "name": "service-1-625",
+          "port": 26643,
+          "enabled": true
+        },
+        {
+          "name": "service-2-877",
+          "port": 11128,
+          "enabled": false
+        }
+      ],
+      "limits": {
+        "requests_per_second": 60,
+        "timeout_ms": 708
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:19",
+    "benchmark": "json",
+    "group_id": "project-8e6b8c88",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-8e6b8c88\nRevision: 46\nRegion: west\nOwners in order: owner-461, owner-432\nRequests per second: 859\nTimeout in milliseconds: 9195\nService 1: name=service-0-617; port=15304; enabled=no\nService 2: name=service-1-143; port=2526; enabled=yes\nService 3: name=service-2-682; port=27500; enabled=no\nService 4: name=service-3-580; port=15840; enabled=yes",
+    "expected": {
+      "project": "project-8e6b8c88",
+      "revision": 46,
+      "region": "west",
+      "owners": [
+        "owner-461",
+        "owner-432"
+      ],
+      "services": [
+        {
+          "name": "service-0-617",
+          "port": 15304,
+          "enabled": false
+        },
+        {
+          "name": "service-1-143",
+          "port": 2526,
+          "enabled": true
+        },
+        {
+          "name": "service-2-682",
+          "port": 27500,
+          "enabled": false
+        },
+        {
+          "name": "service-3-580",
+          "port": 15840,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 859,
+        "timeout_ms": 9195
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  },
+  {
+    "id": "json:26",
+    "benchmark": "json",
+    "group_id": "project-bc910a3a",
+    "instruction": "Convert the following facts into one JSON object. Return JSON only. Use exactly the keys project (string), revision (integer), region (string), owners (ordered string array), services (ordered array of objects with name:string, port:integer, enabled:boolean), limits (object with requests_per_second:integer and timeout_ms:integer). Preserve the listed orders.\n\nProject: project-bc910a3a\nRevision: 33\nRegion: north\nOwners in order: owner-448, owner-906, owner-284\nRequests per second: 101\nTimeout in milliseconds: 5030\nService 1: name=service-0-819; port=10230; enabled=yes\nService 2: name=service-1-903; port=25773; enabled=no\nService 3: name=service-2-223; port=11127; enabled=yes",
+    "expected": {
+      "project": "project-bc910a3a",
+      "revision": 33,
+      "region": "north",
+      "owners": [
+        "owner-448",
+        "owner-906",
+        "owner-284"
+      ],
+      "services": [
+        {
+          "name": "service-0-819",
+          "port": 10230,
+          "enabled": true
+        },
+        {
+          "name": "service-1-903",
+          "port": 25773,
+          "enabled": false
+        },
+        {
+          "name": "service-2-223",
+          "port": 11127,
+          "enabled": true
+        }
+      ],
+      "limits": {
+        "requests_per_second": 101,
+        "timeout_ms": 5030
+      }
+    },
+    "source": "Project-authored synthetic extraction fixture; not production data",
+    "split": "reserve"
+  }
+]

@@ -205,3 +205,12 @@ results/asd-optimization/** -text
 results/asd-optimization/**/*.log -whitespace
 results/asd-optimization/tests-*.xml -whitespace
 results/asd-optimization/**/*.xml -whitespace
+memorydraft/evaluation/asd_suite.py text eol=lf
+scripts/*asd_suite*.py text eol=lf
+tests/test_asd_suite*.py text eol=lf
+docs/ASD_SUITE*.md text eol=lf
+docs/ASD_RESEARCH_ROADMAP.md text eol=lf
+data/research/asd-suite/** -text
+results/asd-suite-stage1/** -text
+results/asd-suite-stage1/**/*.log -whitespace
+results/asd-suite-stage1/**/*.xml -whitespace
