@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-21 — 短块ASD CPU判定精简（执行准备）
+
+- 用户授权继续上一阶段的小成本检查。新增显式CPUASDVerifier：一次传输4K FP32摘要，CPU完成原ASD/Run/Utility规则；整数ID范围、FP64精确求和格点检查及不支持设置回退原Tensor。Target、解码、默认验证器与infra不改，不新增预算/接受容差。
+- 协议docs/ASD_CPU_PROTOCOL.md：仍六类各前两道开发题，7组/每题5次，420正式计时，原生DFlash完整保留；同策略Tensor/CPU相邻、随机先后。36独立生成逐轮精确影子比较，捕获原0/4/12轮用于resident回放。验证/保留题不生成答案。策略构造单列并计入主时延，摘要复制/精确性检查/回退均在线计时。
+- 最初`.venv\Scripts\python.exe -m pytest -q tests/test_asd_cpu.py tests/test_asd.py --basetemp .test-tmp-asd-cpu-first --junitxml=artifacts/asd-cpu-tests-first-local.xml`：37 passed/9.05s。加入本机3090真实CUDA参考比较后`tests/test_asd_cpu.py`：29 passed/3.94s，逐轮summary/events与GPU Tensor相同；相关55 passed/11.63s，追加构造成本审计后报表12 passed/7.68s。这里只是单元检查，尚无在线速度结论。
+- 冻结前完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-cpu-full --junitxml=artifacts/asd-cpu-tests-full-local.xml`：629 passed/5 skipped/70.22s，既有python_multipart提醒。下一步在独立服务器目录运行，源码/协议/配对统计均先提交冻结。
+
 ## 2026-10-21 — 原生16块执行成本诊断完成（144计时/48profile/77状态）
 
 - 冻结`4290e2b7a6277709f8c8b90517ea2bdbe93cbabe`/1251 blobs，source SHA`6f36eda11a904354000cc50f50e58c211e1b146bcf9fdf1e92c5c71350a13eaf`、源码ZIP SHA`01ce9e139edf76608260c9b9ed46c1ec12dd5bea90f832a02c18617ce89e1f33`。服务器独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-execution` PID3983505，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_execution_pipeline`；两worker均退出0，EXECUTION COMPLETE，运行前后全部部署SHA相同。
