@@ -25,10 +25,15 @@ class RuntimeConfig:
     alignment: dict = field(default_factory=dict)
     benefit: dict = field(default_factory=dict)
     prefix_risk: dict = field(default_factory=dict)
+    execution_profile: str = "eager"
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
             raise ValueError("backend must be transformers, dflash or demo")
+        if self.execution_profile not in {"eager", "rmsnorm-inductor"}:
+            raise ValueError("Unknown execution_profile")
+        if self.execution_profile != "eager" and self.backend != "dflash":
+            raise ValueError("RMSNorm execution requires the audited dflash backend")
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",

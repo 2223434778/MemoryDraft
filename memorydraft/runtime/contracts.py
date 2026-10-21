@@ -55,6 +55,7 @@ class GenerationResult:
     finish_reason: str
     peak_gpu_bytes: int = 0
     counters: dict[str, int | float] = field(default_factory=dict)
+    execution_profile: str = "eager"
 
 
 TokenCallback = Callable[[list[int]], None]
