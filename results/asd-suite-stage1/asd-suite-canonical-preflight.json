@@ -1,0 +1,2210 @@
+[
+  {
+    "id": "gsm8k:885",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "500",
+      "expected_answer": "500",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:52",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "15",
+      "expected_answer": "15",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:1150",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "21",
+      "expected_answer": "21",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:1196",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "75",
+      "expected_answer": "75",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:374",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "45",
+      "expected_answer": "45",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:350",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:924",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "12",
+      "expected_answer": "12",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:109",
+    "benchmark": "gsm8k",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "28",
+      "expected_answer": "28",
+      "error": null
+    }
+  },
+  {
+    "id": "math500:329",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "4",
+      "expected_answer": "4",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:448",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "44",
+      "expected_answer": "44",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:444",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\frac{1}{2}",
+      "expected_answer": "\\frac{1}{2}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:122",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "9",
+      "expected_answer": "9",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:261",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "76^\\circ",
+      "expected_answer": "76^\\circ",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:46",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:359",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:342",
+    "benchmark": "math500",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2",
+      "expected_answer": "2",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "mbpp:262",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "caf52604fa5a5840f5e5b5d030c4c129bd6486bb34aac162c3b9686c2f15f02d"
+    }
+  },
+  {
+    "id": "mbpp:217",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "7536d1d8c8feecfcf54738d58333ab47c3ef385db508532734b55d4fd5e1c89d"
+    }
+  },
+  {
+    "id": "mbpp:378",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "3c61be1232c97cec319ff889cbf4be1df2db499683a166eeb775061b3b96ab70"
+    }
+  },
+  {
+    "id": "mbpp:282",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ec211a14c08b1f3fc9faebf8b76bf175990c51172e167550f3e397bddc43dce2"
+    }
+  },
+  {
+    "id": "mbpp:398",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "94768f411cbd3d2a817982c7943f23384844990673a7a2ac6d8bea6d4528b989"
+    }
+  },
+  {
+    "id": "mbpp:345",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "bb61aa52406b2b73495090e3cbd215297218c4c1f3b3952f5f3d2bb233756825"
+    }
+  },
+  {
+    "id": "mbpp:504",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f82ed9c68958bb0a7717b8c05cb5402a0391f0c241d155bb5d35809044521117"
+    }
+  },
+  {
+    "id": "mbpp:125",
+    "benchmark": "mbpp",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "2ddd65c54414a2e45137d2ccd26ce534d2ce7bb01e58e17b076747a040d75366"
+    }
+  },
+  {
+    "id": "humaneval:82",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a2d7eaebd899435460a931df6f1cd4a7244f77bf5615aa53e75878e73cbaa34d"
+    }
+  },
+  {
+    "id": "humaneval:134",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "5383c9721bb3dccaf91bc42ac0878d72bad002e7a56f8364ff42216d3d548050"
+    }
+  },
+  {
+    "id": "humaneval:137",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "846cae36b4af59fbdefaba9e8d6bac1dc15787609da74b5dec4e70e735cd2ca5"
+    }
+  },
+  {
+    "id": "humaneval:150",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "461b3b59cb8d02546f2c1792df7913c307ff66c9627c1f9fc36c896d743fd2ea"
+    }
+  },
+  {
+    "id": "humaneval:60",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "7d0568ae33dc15285d6f00f1b21361614aabd95060711de6366349b494eae358"
+    }
+  },
+  {
+    "id": "humaneval:98",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "dcc0aa592cc072614e6f946110fc40c849db37abd0e4598cef3a8b9a15c1cad8"
+    }
+  },
+  {
+    "id": "humaneval:115",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "d9686d0b81fcbe67cfe404528685aec7de357d251b811d92f2d1082ebefc5592"
+    }
+  },
+  {
+    "id": "humaneval:136",
+    "benchmark": "humaneval",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "78194035ba7cb4d8773a90fb4fa1563a4d4ed2a20be54cf30fba03a1ef2ff4a4"
+    }
+  },
+  {
+    "id": "squad:5734025d4776f419006616c6",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572651f9f1498d1400e8dbef",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5727c94bff5b5019007d954b",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572872dd2ca10214002da382",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:57286fa83acd2414000df9e8",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572776e85951b619008f8a80",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5727311d5951b619008f86ab",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5726e834dd62a815002e94a4",
+    "benchmark": "squad",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "json:12",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:7",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:27",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:1",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:28",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:25",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:29",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:22",
+    "benchmark": "json",
+    "split": "development",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:667",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "53",
+      "expected_answer": "53",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:893",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "480",
+      "expected_answer": "480",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:1053",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "55",
+      "expected_answer": "55",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:739",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "98",
+      "expected_answer": "98",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:304",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3200",
+      "expected_answer": "3200",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:908",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "14",
+      "expected_answer": "14",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:1034",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "66",
+      "expected_answer": "66",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:242",
+    "benchmark": "gsm8k",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "id": "math500:201",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "66",
+      "expected_answer": "66",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:291",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "63",
+      "expected_answer": "63",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:87",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1",
+      "expected_answer": "1",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:257",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "864 \\mbox{ inches}^2",
+      "expected_answer": "864 \\mbox{ inches}^2",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:248",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}",
+      "expected_answer": "\\begin{pmatrix} -1 & 0 \\\\ 0 & -1 \\end{pmatrix}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:232",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\frac{1997}{2}",
+      "expected_answer": "\\frac{1997}{2}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:397",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "23",
+      "expected_answer": "23",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:375",
+    "benchmark": "math500",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "25",
+      "expected_answer": "25",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "mbpp:124",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": false,
+      "error": "ValueError: unsupported import",
+      "metric": "provided tests",
+      "code_sha256": "0785c7c16752b3934ce1424820ac931ae1c6ff420aec83af5414199ad7ef1d29"
+    }
+  },
+  {
+    "id": "mbpp:75",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "963e32e237e1d5a84b96b5a72827f5bcda411b66a3866f5ac9a29bd9e08fbcb9"
+    }
+  },
+  {
+    "id": "mbpp:175",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "457da2797b1465438922e1f9875fc5a40f3b17f390635e02a6174e84939140f3"
+    }
+  },
+  {
+    "id": "mbpp:268",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "8804c6ce0c6959cb1af91440d0146518fe1b6b7aed6d035e1a7d8c6de1b8b5d1"
+    }
+  },
+  {
+    "id": "mbpp:184",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ef0316bc9c561ae3d6d2c55deeb7f98e26a974112bbe83408eb9b2976c15baf0"
+    }
+  },
+  {
+    "id": "mbpp:353",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "8ff93fcd4926b04ee72ccadb9a296124179e2ac9297e3a7a5d6df724f7a6db55"
+    }
+  },
+  {
+    "id": "mbpp:441",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "16482c1ee427eab6fcb0ddfa233b278a613e6027ed446d4c8025f39aceded52b"
+    }
+  },
+  {
+    "id": "mbpp:393",
+    "benchmark": "mbpp",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "4b8a221df564e88e464a043e4254056cd53415bda8ff46a4e2f2daf1d7bc55e7"
+    }
+  },
+  {
+    "id": "humaneval:23",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "831c4d6a608f99826ae7fb5dc85b3f25a5aebf7643e2dec1468c8a442c7f751b"
+    }
+  },
+  {
+    "id": "humaneval:20",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "eed9a1d07a93c00e8c08eae654a5385bfe78c1d60966541cf3a54cfd053a089b"
+    }
+  },
+  {
+    "id": "humaneval:86",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a9cb76bb520af23357122e78d29b3ba71127f823f99eac697fd83ae96f741d9d"
+    }
+  },
+  {
+    "id": "humaneval:40",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "dbb1fe91db00bb6b4b3a2901b25e817dcfcc23416e648d206ff5e5f937d1b3c1"
+    }
+  },
+  {
+    "id": "humaneval:64",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "9e6230a04e3f7d7c6a23551074d55ef95af0a3ddac8d9f634e88a27216bc5a33"
+    }
+  },
+  {
+    "id": "humaneval:104",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "b4f6d509de0eab0216d43f87e340a7080b2de5f10b908ff3a6029483da44ea10"
+    }
+  },
+  {
+    "id": "humaneval:16",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "bd8bbf2fb61f74a953bb69696b1080e9f52c7ee3ebd1e1ff89d6e12824316c51"
+    }
+  },
+  {
+    "id": "humaneval:126",
+    "benchmark": "humaneval",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "90f3e7d4ab790a881bc5a7f7c1c30da482af1ed619fcac67a6058c888214c9da"
+    }
+  },
+  {
+    "id": "squad:5725d16aec44d21400f3d61b",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5710e8c8a58dae1900cd6b26",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5726e3c4dd62a815002e9404",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:57293d116aef051400154bca",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:56bec0353aeaaa14008c9351",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5725f46289a1e219009ac0fc",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5727478cf1498d1400e8f59a",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572fe4a304bcaa1900d76e57",
+    "benchmark": "squad",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "json:20",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:2",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:15",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:21",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:13",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:3",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:31",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:10",
+    "benchmark": "json",
+    "split": "validation",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:884",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "50",
+      "expected_answer": "50",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:1125",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "90",
+      "expected_answer": "90",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:687",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "13",
+      "expected_answer": "13",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:583",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "120",
+      "expected_answer": "120",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:736",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:260",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "11",
+      "expected_answer": "11",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:167",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "16",
+      "expected_answer": "16",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:53",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "40",
+      "expected_answer": "40",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:351",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "10",
+      "expected_answer": "10",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:180",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:923",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2",
+      "expected_answer": "2",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:986",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "70",
+      "expected_answer": "70",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:171",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1210",
+      "expected_answer": "1210",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:634",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "14",
+      "expected_answer": "14",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:395",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "38",
+      "expected_answer": "38",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:311",
+    "benchmark": "gsm8k",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "91",
+      "expected_answer": "91",
+      "error": null
+    }
+  },
+  {
+    "id": "math500:26",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "144",
+      "expected_answer": "144",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:346",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "66",
+      "expected_answer": "66",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:152",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:62",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "4",
+      "expected_answer": "4",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:317",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "0",
+      "expected_answer": "0",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:283",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1",
+      "expected_answer": "1",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:89",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "21",
+      "expected_answer": "21",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:207",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "28",
+      "expected_answer": "28",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:196",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1600",
+      "expected_answer": "1600",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:189",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "160",
+      "expected_answer": "160",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:466",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8 \\pi",
+      "expected_answer": "8 \\pi",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:194",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\frac{1}{4}",
+      "expected_answer": "\\frac{1}{4}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:229",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "90",
+      "expected_answer": "90",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:278",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "255",
+      "expected_answer": "255",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:404",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:159",
+    "benchmark": "math500",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3.21",
+      "expected_answer": "3.21",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "mbpp:107",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "89ea3084e7423c62cfb2f732a80aeb53cf42181cfe1099ad7eb585fb42b71da5"
+    }
+  },
+  {
+    "id": "mbpp:86",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f4fa17df6cac3f416bdcf0420a5567129d123a2946b9660109d906a2d3bd577f"
+    }
+  },
+  {
+    "id": "mbpp:340",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "07a459e7482d3dd1e21219cd8cac8f8d2541446aeba1190ee95a90fea96db599"
+    }
+  },
+  {
+    "id": "mbpp:55",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "79b06d9a16ffa840fb36a983e0c8a28e04a095f04be7f87086a0aa97dd0e3637"
+    }
+  },
+  {
+    "id": "mbpp:428",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "451b47b336fea4a95135744baa074082d5f919cb6680a2ee21c9a8a2e6a4bdcc"
+    }
+  },
+  {
+    "id": "mbpp:218",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "94b2f3f69a9a0aafea1050b98406b2150fc4a4b33e83402dc089bea76d3c74df"
+    }
+  },
+  {
+    "id": "mbpp:67",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "e1d525054b97194c33ab0699f20f1d40b4e5674af9e545e0d7a42bb5db9583b6"
+    }
+  },
+  {
+    "id": "mbpp:462",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "52c08b84b56c5e4e6ed7fa1b72f2d62fc178dabb1bf6129e66719f538eae19f1"
+    }
+  },
+  {
+    "id": "mbpp:302",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "882c9542e66ac8eca2cd0a3a7a3d86269ea49cdfe6da2884a34c379c00ef6684"
+    }
+  },
+  {
+    "id": "mbpp:473",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ff588e90f5e750e3b2e43b6ccf2001d315e8da2fc8c72b177067536fad706b2b"
+    }
+  },
+  {
+    "id": "mbpp:93",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "1912849ee28ca8497e604413175efc874b6d13faa9e482ffb714c3f7ab18bd66"
+    }
+  },
+  {
+    "id": "mbpp:429",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "98394cf76bef77d96e9f6c7e5babbd2fbd7f0bf6ef6bb75239feb503686d7779"
+    }
+  },
+  {
+    "id": "mbpp:421",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "64c938cc58b685b3d6a30bfb7aba4d4aeea08c4254d252cf647f659b775ceb71"
+    }
+  },
+  {
+    "id": "mbpp:111",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "3ab87a7ecd6d8c2f050d288bfc2a39ae12453ee603cff026cb8df1a63d894ac5"
+    }
+  },
+  {
+    "id": "mbpp:334",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "c5b310a5f21902b534324039c8f4545392caeefc514a06f38f15c48328a9ed9b"
+    }
+  },
+  {
+    "id": "mbpp:468",
+    "benchmark": "mbpp",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ce8fc837c9ce47b9881922fbbe9f22fb03473f4f54bb7e4cffabdf0d63e38486"
+    }
+  },
+  {
+    "id": "humaneval:95",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "833d21b6cef70f36a1fffb9c3cabf4eb8b2011d82c1c64482ceb4269558ad381"
+    }
+  },
+  {
+    "id": "humaneval:69",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "bb7abaa91b35ebe57ef574b0e001211f2fb0c11112d99a4e6adb31cc12247736"
+    }
+  },
+  {
+    "id": "humaneval:101",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "9426ef8e63d264717393dab9edd39e11337eaf1142a77f6874fabd739a5db780"
+    }
+  },
+  {
+    "id": "humaneval:135",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ead68105763bf648cc85202e3e839d9d703c02bc17b45053a12484777aa25594"
+    }
+  },
+  {
+    "id": "humaneval:153",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f8498f18416a72222fbad6fe507091d3e47efd5c0713371d05289687c5bf89fb"
+    }
+  },
+  {
+    "id": "humaneval:22",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a86be194a60e31f0c34edf4cebd1d1be214984a55e2975f0424d06e7183fb9ab"
+    }
+  },
+  {
+    "id": "humaneval:63",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "23a01d1893c6a892c95728bdc8f84997c3cbc8f48885101ff75da0eb57dcc48f"
+    }
+  },
+  {
+    "id": "humaneval:58",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a71dd4b6d6cd971574184e64dd1b9b29833c502f23f2f695bc3d923799b6b0ae"
+    }
+  },
+  {
+    "id": "humaneval:30",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "72c970fd4db1f2ffa712cfc40e2b83cdea8e487aa1e8b1d983473e440ea08ea0"
+    }
+  },
+  {
+    "id": "humaneval:75",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f26eee4c69f8d34be38fdd88ba17e05f22ec9b0537fa6b86c8850fcad769b758"
+    }
+  },
+  {
+    "id": "humaneval:123",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "2cedab18e89b4df2c3b65560070bef1eb337653bfeac22f425b673f64fa4d6d9"
+    }
+  },
+  {
+    "id": "humaneval:148",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "22b6a528a39fc941293445bdf8b6e1bec9cd8583246059f25292a77aa71d4f43"
+    }
+  },
+  {
+    "id": "humaneval:138",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "3309e8993ffcc28f2429c427b08834727dbd3f5b0539c4d0479dd8bbe7663a1f"
+    }
+  },
+  {
+    "id": "humaneval:47",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "28fe0c9c55f7ef2e6ef4327b48fdc1d406001a8564833849a9bec8a53db5ef1d"
+    }
+  },
+  {
+    "id": "humaneval:73",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f175199849f42313f1da6cf6e3f6ccc7097cec6e6853653c3bf697ff58775371"
+    }
+  },
+  {
+    "id": "humaneval:143",
+    "benchmark": "humaneval",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "9d86b0c823284089bb17e1367a2adadfadcc19d404828dd103aba66f121aabaf"
+    }
+  },
+  {
+    "id": "squad:5733638fd058e614000b59eb",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:571ccd9b5efbb31900334df8",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572646655951b619008f6ec3",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572966626aef051400154e15",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5726642f5951b619008f7157",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5725c7f5271a42140099d1a3",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5730b4282461fd1900a9cfc8",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:571163172419e314009555e8",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:573028fa04bcaa1900d77287",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5728231fff5b5019007d9dd7",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:5727cd0f4b864d1900163d73",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:572a058aaf94a219006aa752",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:56f8b9839e9bad19000a03c2",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:56e0fe85e3433e1400422a6a",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:56e7667e37bdd419002c3f4a",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "squad:57275411dd62a815002e9b33",
+    "benchmark": "squad",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "id": "json:8",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:5",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:4",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:16",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:30",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:6",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:0",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:9",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:23",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:18",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:17",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:11",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:24",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:14",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:19",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "id": "json:26",
+    "benchmark": "json",
+    "split": "reserve",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  }
+]

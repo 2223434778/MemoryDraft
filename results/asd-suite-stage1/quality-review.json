@@ -1,0 +1,52 @@
+{
+  "status": "complete",
+  "scope": "All five MATH primary failures; model-assisted manual review, not a new scorer",
+  "source": "data/research/asd-suite/math500.json",
+  "source_sha256": "bfb5fce7e68f4fba09a1ac067d5ad0e6da338abe62518b52ab9b7c89a7a73410",
+  "primary_scores_unchanged": true,
+  "request_id": "math500:444",
+  "expected": "1/2",
+  "reference_argument": "Partition into four congruent corner rectangles. In each, its corner is the nearest original vertex. A 180-degree rotation swaps that corner and O, pairing the nearer-to-O and nearer-to-corner regions; equality has area zero.",
+  "checks": [
+    {
+      "method": "ASD",
+      "parsed_answer": "\\frac{k^2 + 1}{8k}",
+      "finish_reason": "eos",
+      "primary_correct": false,
+      "reviewed_correct": false,
+      "reason": "Variable expression differs from constant 1/2; e.g. k=2"
+    },
+    {
+      "method": "DFlash",
+      "parsed_answer": "\\frac{k^2 + 1}{4k}",
+      "finish_reason": "eos",
+      "primary_correct": false,
+      "reviewed_correct": false,
+      "reason": "Variable expression differs from constant 1/2; e.g. k=2"
+    },
+    {
+      "method": "ASD-Run",
+      "parsed_answer": "\\frac{1}{k(1 + k^2)}",
+      "finish_reason": "eos",
+      "primary_correct": false,
+      "reviewed_correct": false,
+      "reason": "Variable expression differs from constant 1/2; e.g. k=2"
+    },
+    {
+      "method": "ASD-Utility",
+      "parsed_answer": null,
+      "finish_reason": "length",
+      "primary_correct": false,
+      "reviewed_correct": false,
+      "reason": "No boxed final answer at 4096-token limit"
+    },
+    {
+      "method": "AR",
+      "parsed_answer": "\\frac{k^2 + 1}{4k}",
+      "finish_reason": "eos",
+      "primary_correct": false,
+      "reviewed_correct": false,
+      "reason": "Variable expression differs from constant 1/2; e.g. k=2"
+    }
+  ]
+}

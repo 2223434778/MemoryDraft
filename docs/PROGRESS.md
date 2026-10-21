@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-21 — 跨任务基线第一阶段完成（48新题，1200计时）
+
+- 新池192题/六类，48开发题进入本轮，48验证和96保留题尚未生成模型答案。五方法自然EOS上限4096三重复、遵守EOS前128两重复，共1200计时；另48机制回放单列。数据/许可/来源/划分固定，前192参考预检故障与修复均保留。
+- 实际执行冻结`be1251b24f7a53f38fd2e817d68d62d4ab8e30d6`，1147源码blob，source SHA`57f1e8fd9d0e8d6d38213abec2601bc430ade8bfeee2e753632653f5c3ddcbee`，源码ZIP SHA`cdfee8f529d67c895b59a19a248657fe3eaeea59e94ad7de0aefc42caee249e7`。服务器独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-suite-stage1` PID3824147正常完成，运行前后源码一致，737旧证据核验通过（两个既有CRLF例外），infra三引用仍为`27e36199f8a65acdb9a9c42ccb744ddfa9a9402b`。
+- 精确GPU入口：`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_suite_pipeline`，两子进程固定`CUDA_VISIBLE_DEVICES=0/1`，各600计时/24机制，命令和分片记录见pipeline.log。结束两卡各19MiB/0%。结果ZIP683670字节、SHA`4550bfdc066bb2e2e7ec483008f94c6cb40f2072f36d42a64cb7f09e72f754a8`，压缩trace无损保存，模型权重/原整库未上传。
+- 严格D相对AR题级几何平均加速GSM3.56×、MATH5.14×、MBPP3.23×、HumanEval3.90×、SQuAD1.34×、合成JSON6.97×；完整自然/128共96对token一致。基础ASD在GSM/MATH等128时延低11.45%/18.80%，本批Run/Utility未进一步改善。SQuAD/JSON各8题均零近似支出、轨迹未变；代码组均不足128，未强制续写。
+- MATH各方法7/8正确，Utility在错题444截断4096，其他方法正常结束但变量表达式错误；保留全部主结果，人工辅助复核不改主评分。HumanEval AR/D/Run6/8、ASD/U7/8；134实现变化修复提供测试，60重复docstring导致39→112 token，各组仍通过。不能把计算效率、输出缩短和质量变化混为一个收益。
+- 自然重复token/轮次/账本一致，题级bootstrap5000次。1200行Target输入SHA/token数/隔离空snapshot经CPU重tokenize通过；48机制回放相同，1064块标量相容性通过，缺失未提交候选ID的EOS位置限制明确保留。480组逐题重复秒数/IQR、错答、截断、质量升降、共同EOS诊断、数值检查在results/asd-suite-stage1。后加分析仅增强分解/审计，配对估计、聚合、输入、评分和执行12函数与冻结相同。
+- 检查：服务器70 passed/7.71s；报告审计7 passed/7.05s；最终`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-suite-final --junitxml=artifacts/asd-suite-tests-final-local.xml`为542 passed/4 skipped/56.53s，只有既有python_multipart提醒。重建`.venv\Scripts\python.exe -m scripts.write_asd_suite_report`，完整表docs/ASD_SUITE_RESULTS.md，解释docs/ASD_SUITE_FINDINGS.md。
+- 这只是阶段0完成，不将旧小样本结果当整个方法已否决。下一项是真实16/24/32 Draft结构/KV预检，再做同长度方法对照；其余设备账本、调度、多候选、训练和并发仍依路线表逐项推进。
+
 ## 2026-10-21 — 按用户要求建立跨任务研究基线（执行准备）
 
 - 用户要求更丰富数据、细致逐项评估，允许慢慢推进。新增ASD_RESEARCH_ROADMAP.md逐项区分未做/仅诊断/局部初测，不再把4/8旧题负结果当整个方法已否决。第一阶段仅补六类基线，下一阶段按单因素推进更长Draft、GPU执行、调度、候选结构、训练和并发。

@@ -1,0 +1,8 @@
+......................................................................   [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-suite-stage1/artifacts/tests-server.xml -
+70 passed in 7.71s
+START START0  1["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_suite", "--config", "configs/runtime-dflash.json", "--benchmarks", "gsm8k", "math500", "mbpp", "humaneval", "squad", "json", "--shard", "0", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-suite-stage1/results/raw/asd-suite-stage1/part-0"] ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_suite", "--config", "configs/runtime-dflash.json", "--benchmarks", "gsm8k", "math500", "mbpp", "humaneval", "squad", "json", "--shard", "1", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-suite-stage1/results/raw/asd-suite-stage1/part-1"]
+
+FINISH 0 0
+FINISH 1 0
+PIPELINE COMPLETE

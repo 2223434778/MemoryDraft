@@ -1,0 +1,112 @@
+{
+  "status": "complete",
+  "reference_cases": 192,
+  "reference_passed": 192,
+  "unique_request_messages": 192,
+  "summary": {
+    "gsm8k": {
+      "development": 8,
+      "input_characters": [
+        263,
+        305,
+        196,
+        236,
+        229,
+        447,
+        477,
+        312
+      ]
+    },
+    "math500": {
+      "development": 8,
+      "input_characters": [
+        196,
+        249,
+        517,
+        394,
+        231,
+        215,
+        297,
+        156
+      ],
+      "subjects": {
+        "Prealgebra": 2,
+        "Number Theory": 1,
+        "Counting & Probability": 1,
+        "Algebra": 1,
+        "Geometry": 1,
+        "Precalculus": 1,
+        "Intermediate Algebra": 1
+      },
+      "levels": {
+        "4": 2,
+        "5": 2,
+        "3": 3,
+        "2": 1
+      }
+    },
+    "mbpp": {
+      "development": 8,
+      "input_characters": [
+        537,
+        397,
+        395,
+        386,
+        394,
+        508,
+        349,
+        448
+      ]
+    },
+    "humaneval": {
+      "development": 8,
+      "input_characters": [
+        461,
+        668,
+        602,
+        391,
+        382,
+        390,
+        1198,
+        613
+      ]
+    },
+    "squad": {
+      "development": 8,
+      "input_characters": [
+        958,
+        3552,
+        829,
+        801,
+        926,
+        1129,
+        1304,
+        1081
+      ],
+      "articles": [
+        "French_and_Indian_War",
+        "European_Union_law",
+        "Jacksonville,_Florida",
+        "University_of_Chicago",
+        "Yuan_dynasty",
+        "American_Broadcasting_Company",
+        "Genghis_Khan",
+        "Victoria_and_Albert_Museum"
+      ]
+    },
+    "json": {
+      "development": 8,
+      "input_characters": [
+        550,
+        724,
+        709,
+        615,
+        561,
+        616,
+        622,
+        668
+      ]
+    }
+  },
+  "note": "Reference/scorer checks only; validation/reserve have no model-generated outcomes"
+}

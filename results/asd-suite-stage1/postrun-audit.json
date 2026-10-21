@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "source_commit": "be1251b24f7a53f38fd2e817d68d62d4ab8e30d6",
+  "execution_files": 1147,
+  "source_sha256": "57f1e8fd9d0e8d6d38213abec2601bc430ade8bfeee2e753632653f5c3ddcbee",
+  "frozen_functions": [
+    {
+      "path": "scripts/write_asd_suite_report.py",
+      "function": "paired",
+      "sha256": "074568eb76bedcfea39b20e6e3f286b425c8cfddbc9c32ffcdea53177b9b3d88"
+    },
+    {
+      "path": "scripts/write_asd_suite_report.py",
+      "function": "aggregate",
+      "sha256": "09a4f7cf4fa32cb65373beabf7e82446ae082260d7d799cb48ff9623fbe38334"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "function": "execute",
+      "sha256": "6c8a8575677d8ad773244e95ba882bd069c241eed5d7d7e2d23ac6c1c63ee0b9"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "function": "prefix_agreement",
+      "sha256": "3db4f06b6f74509f2351da5aeaf384b06313976c253e171874c02c8902e3fe97"
+    },
+    {
+      "path": "scripts/run_asd_suite.py",
+      "function": "main",
+      "sha256": "8a3ebb8ab8b750bc1e155a2b9cb6368dca4ae130bf66d1708baccead28f0be87"
+    },
+    {
+      "path": "scripts/run_asd_suite_pipeline.py",
+      "function": "main",
+      "sha256": "2234b559472d423e9def1c29efb54ee92e3f1a821f900c4c92e3b13483fe48ba"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "function": "request_for",
+      "sha256": "48bc156272fc8eb2570002aef161e303ef96e514565825413f4d0bbcba11f45a"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "function": "score",
+      "sha256": "b5af61d76d11893aaf224795e74a7b07676ea1a44669dc56aa77765785d19839"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "function": "code_score",
+      "sha256": "858950bb414087074a6c3b8a14c8552744586396b842cac1cc8bb03a129bf84a"
+    },
+    {
+      "path": "memorydraft/evaluation/asd_suite.py",
+      "function": "qa_score",
+      "sha256": "9a469339843ce06f2654865d35ea5492ab1ee62ce0fcde79a3334d5749fcf25a"
+    },
+    {
+      "path": "memorydraft/backends/asd.py",
+      "function": "ASDVerifier",
+      "sha256": "05f987c15121ef38a42dc6c2336426d61da59af503681dcaf383448aaf04472c"
+    },
+    {
+      "path": "memorydraft/backends/dflash_reuse.py",
+      "function": "generate_reuse",
+      "sha256": "bd4bcd272745fd9ec0aa217706a4eea36e35095a7defe2e6ca9396555acdce17"
+    }
+  ],
+  "old_evidence_verified": 737,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "result_zip": {
+    "bytes": 683670,
+    "sha256": "4550bfdc066bb2e2e7ec483008f94c6cb40f2072f36d42a64cb7f09e72f754a8"
+  },
+  "report_changes": "Offline diagnostics expanded after launch: censored/common-EOS subsets, restricted-code labels, cost-per-forward factor, scalar compatibility and matrix tamper checks. Paired estimator, aggregation, prompts, scoring and execution unchanged."
+}

@@ -57,6 +57,10 @@ BF16/SDPA使严格DFlash的等128token时间较原FP32/eager下降38.30%/41.19%�
 这些是执行组合和基础ASD的结果；全部6个长度变体在FP32和BF16均未通过继续门槛，未见ASD前缀导致Draft退化，不进入适配训练。
 BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长度/截断单列，默认严格FP32/eager配置继续保留。
 
+[更丰富数据的分阶段评估](docs/ASD_SUITE_FINDINGS.md)已完成第一阶段：六类新开发题各8道，1200次计时与48次机制回放，另48验证/96保留题尚未生成模型答案。
+严格D在各类均快于AR；基础ASD在数学等128前缀有计算收益，Run/Utility尚无进一步稳定增益；短问答/JSON近似规则未触发，代码有质量提升和输出变长并存的例子。
+完整记录见[跨任务结果](docs/ASD_SUITE_RESULTS.md)，[研究路线表](docs/ASD_RESEARCH_ROADMAP.md)逐项标明未做方向；不把旧4/8题诊断当作整条路线的最终否决。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

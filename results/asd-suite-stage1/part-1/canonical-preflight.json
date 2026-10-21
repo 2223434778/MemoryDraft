@@ -1,0 +1,230 @@
+[
+  {
+    "request_id": "gsm8k:52",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "15",
+      "expected_answer": "15",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:1196",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "75",
+      "expected_answer": "75",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:350",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:109",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "28",
+      "expected_answer": "28",
+      "error": null
+    }
+  },
+  {
+    "request_id": "math500:448",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "44",
+      "expected_answer": "44",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:122",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "9",
+      "expected_answer": "9",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:46",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:342",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2",
+      "expected_answer": "2",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "mbpp:217",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "7536d1d8c8feecfcf54738d58333ab47c3ef385db508532734b55d4fd5e1c89d"
+    }
+  },
+  {
+    "request_id": "mbpp:282",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ec211a14c08b1f3fc9faebf8b76bf175990c51172e167550f3e397bddc43dce2"
+    }
+  },
+  {
+    "request_id": "mbpp:345",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "bb61aa52406b2b73495090e3cbd215297218c4c1f3b3952f5f3d2bb233756825"
+    }
+  },
+  {
+    "request_id": "mbpp:125",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "2ddd65c54414a2e45137d2ccd26ce534d2ce7bb01e58e17b076747a040d75366"
+    }
+  },
+  {
+    "request_id": "humaneval:134",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "5383c9721bb3dccaf91bc42ac0878d72bad002e7a56f8364ff42216d3d548050"
+    }
+  },
+  {
+    "request_id": "humaneval:150",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "461b3b59cb8d02546f2c1792df7913c307ff66c9627c1f9fc36c896d743fd2ea"
+    }
+  },
+  {
+    "request_id": "humaneval:98",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "dcc0aa592cc072614e6f946110fc40c849db37abd0e4598cef3a8b9a15c1cad8"
+    }
+  },
+  {
+    "request_id": "humaneval:136",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "78194035ba7cb4d8773a90fb4fa1563a4d4ed2a20be54cf30fba03a1ef2ff4a4"
+    }
+  },
+  {
+    "request_id": "squad:572651f9f1498d1400e8dbef",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:572872dd2ca10214002da382",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:572776e85951b619008f8a80",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:5726e834dd62a815002e94a4",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "json:7",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:1",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:25",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:22",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  }
+]
