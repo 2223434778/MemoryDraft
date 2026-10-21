@@ -1,0 +1,98 @@
+[
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/zz/czzzx7inwm2iqxwqg2o2iv76pxccfwg4dv5u2zc7riputfmfqbsf.py",
+    "sha256": "57b0486581768b285bb604308d35530136eac316ec3522dd5d454eae99edce99",
+    "triton_kernels": [
+      {
+        "name": "triton_red_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/ad/cad7ft5c3wdzpjsmea73woljsiml7g4ogbzzh5s5czz5ktiurdoq.py",
+    "sha256": "ac1d2ba7924fe57398e74821db69c815e00f8d90ef84af676cb054ff30f559cd",
+    "triton_kernels": [
+      {
+        "name": "triton_red_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/ai/caitvv6ka5veqihlv55ih4us52hls5mswvwvwqz4kto5cq2r7lhe.py",
+    "sha256": "5d741e20872e72350c5996dc367f0d15e6253987935803a4456c3a836b1cffe6",
+    "triton_kernels": [
+      {
+        "name": "triton_per_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 0,
+    "file": "artifacts/inductor-0/q4/cq4smnkiziuwsx3zoiiqvxbmabxccytzvnwxmz7gaxfi4pmynqyg.py",
+    "sha256": "8948dfccbbec9793e7ee73e0a20c774a212717d21a6eee3643cf27e3acb019c7",
+    "triton_kernels": [
+      {
+        "name": "triton_per_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/x3/cx37agzipjheu4dx5xz53cnly4rw7y756lhe5c6kzf6c35kh3brr.py",
+    "sha256": "dbdad76a93c2f78fc0b237f9744c5b2591d6ff87457c116a104b4b9f1a3d1add",
+    "triton_kernels": [
+      {
+        "name": "triton_per_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/sz/cszrzwporq2tqab4e7wecckouhydlhgpvslog67mjuqulsikdhce.py",
+    "sha256": "092f85a22947904c896f719bde89888d511e617d400a2cfcad0f6e94dac3a05c",
+    "triton_kernels": [
+      {
+        "name": "triton_red_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/nk/cnkxejml7hovseuirx5wpekqqwyw6rb6y7az7b5p5ssl2szkcftf.py",
+    "sha256": "f1f18a293228e887ef3488e9d07c6aaa7549c64486ea25d83570777ff966e52a",
+    "triton_kernels": [
+      {
+        "name": "triton_red_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  },
+  {
+    "shard": 1,
+    "file": "artifacts/inductor-1/3z/c3z75rhsih3bcy7z2b4wa5qvmo4udb4sr3bkbvnbj2wfftx5ty3m.py",
+    "sha256": "f934a0d6d1b6fda44b223c76e202f2e48dbebc547124d38afbcb8f89d45f7ea7",
+    "triton_kernels": [
+      {
+        "name": "triton_per_fused_add_mean_mul_pow_rsqrt_0",
+        "call_sites": 1
+      }
+    ],
+    "external_mm_call_count": 0
+  }
+]

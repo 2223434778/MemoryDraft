@@ -1,0 +1,122 @@
+{
+  "stage": "postrun-descriptive-only",
+  "workers": [
+    {
+      "shard": 0,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "cold_wall_seconds": 107.51134163397364,
+      "cache_bytes": 412257,
+      "outer_compile_seconds": 3.838958263397217,
+      "controller_seconds": 0.0033858970273286104,
+      "mean_paired_saving_seconds": 0.03135409715630683,
+      "conditional_amortization_requests": 122.54679639696349
+    },
+    {
+      "shard": 1,
+      "inventory_by_owner": {
+        "target": 145,
+        "draft": 22
+      },
+      "cold_wall_seconds": 120.18260838603601,
+      "cache_bytes": 412257,
+      "outer_compile_seconds": 3.961764335632324,
+      "controller_seconds": 0.0035313681000843644,
+      "mean_paired_saving_seconds": 0.03126475700022032,
+      "conditional_amortization_requests": 126.82957055141883
+    }
+  ],
+  "faster_questions": {
+    "DFlash": 12,
+    "ASD": 12,
+    "ASD-Run": 12,
+    "ASD-Utility": 12
+  },
+  "numeric": {
+    "states": 192,
+    "bitwise_equal": 13,
+    "max_abs": 4.57763671875e-05,
+    "max_rms": 6.546205698123225e-07,
+    "max_relative_floor_1e_6": 4.5698649842051964e-07,
+    "stride_differences": 0
+  },
+  "replay_by_role": {
+    "target.input_layernorm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9167901725784221
+    },
+    "target.q_norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9174335285245074
+    },
+    "target.k_norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9483728658098665
+    },
+    "target.post_attention_layernorm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9107997355290569
+    },
+    "target.norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9098429648888992
+    },
+    "draft.hidden_norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9112607492217745
+    },
+    "draft.input_layernorm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9394798412156767
+    },
+    "draft.q_norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9468933982154171
+    },
+    "draft.k_norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9489039716415346
+    },
+    "draft.post_attention_layernorm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9410519069387396
+    },
+    "draft.norm.0": {
+      "n": 12,
+      "geometric_ratio": 0.9420006131250351
+    },
+    "target.input_layernorm.1": {
+      "n": 12,
+      "geometric_ratio": 0.9411200737126435
+    },
+    "target.q_norm.1": {
+      "n": 12,
+      "geometric_ratio": 0.9454993647362133
+    },
+    "target.k_norm.1": {
+      "n": 12,
+      "geometric_ratio": 0.9462914265038137
+    },
+    "target.post_attention_layernorm.1": {
+      "n": 12,
+      "geometric_ratio": 0.9412015111577088
+    },
+    "target.norm.1": {
+      "n": 12,
+      "geometric_ratio": 0.9393493900510187
+    }
+  },
+  "trajectories": {
+    "max_spent_difference": 9.5367431640625e-05,
+    "round_pairs": 581,
+    "rounds_equal_without_regret": true
+  },
+  "compiled_switch_median_seconds": 0.00034640205558389425,
+  "peak_allocated_bytes": {
+    "eager": 37750196224,
+    "rmsnorm-inductor": 37750196224
+  },
+  "note": "Same-input roles and amortization are descriptive, not additional independent requests or a production ROI guarantee. Outer time contains backend time; cold wall also contains inference."
+}

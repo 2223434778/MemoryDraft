@@ -1,0 +1,9 @@
+........................................................................ [ 74%]
+.........................                                                [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/artifacts/tests-server.xml -
+97 passed in 17.53s
+START 0 {"argv": ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_rmsnorm_probe", "--config", "configs/runtime-dflash.json", "--shard", "0", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/results/raw/asd-rmsnorm/part-0"], "cache": {"TORCHINDUCTOR_CACHE_DIR": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/artifacts/inductor-0", "TRITON_CACHE_DIR": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/artifacts/triton-0"}}START 
+1 {"argv": ["/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python", "-u", "-m", "scripts.run_asd_rmsnorm_probe", "--config", "configs/runtime-dflash.json", "--shard", "1", "--output", "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/results/raw/asd-rmsnorm/part-1"], "cache": {"TORCHINDUCTOR_CACHE_DIR": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/artifacts/inductor-1", "TRITON_CACHE_DIR": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm/artifacts/triton-1"}}
+FINISH 0 0
+FINISH 1 0
+REGIONAL RMSNORM COMPLETE

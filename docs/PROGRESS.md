@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm-only完成（120预检/288计时/192同输入状态）
+
+- 冻结39f99df5352796f7c2d02bc2b1d030cc19bd5657/1349 blobs；source SHA bbb852bff12a23779e7a1cad658396c5ae0c62c14ea38417faaf0c116e688d90，source ZIP SHA de57293d2ba00b1005cc42d1b62c72946e3670d865e6162998270b31b552dd54。服务器/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm，PID4048957，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_pipeline`；两worker0退出、REGIONAL RMSNORM COMPLETE，执行前后1349文件SHA一致，两卡恢复19MiB/0%。
+- 原六类各前两题，FP32 highest/TF32关闭、eager attention、16块、相同CPU接受，仅RMSNorm编译，MLP仍eager。120预检+288配对计时+12独立DFlash诊断，另20warmup；诊断覆盖16角色/调用×12题=192真实状态，原始/回放stride全部相同，各20次计时。不生成validation/reserve或新自然4096答案。
+- 编译/eager题级时延比：DFlash0.973247 [0.972584,0.973876]、ASD0.973270 [0.972207,0.974349]、Run0.972470 [0.971559,0.973363]、Utility0.972586 [0.971686,0.973514]，时延下降2.67%–2.75%，各12/12题更快。六类点估计均改善，是固定开发子集结果；成本含策略构造、profile绑定/恢复（中位0.346ms），正式0新编译。
+- 60跨profile对token全部相同，eager重现旧轨迹，每profile重复完全重现，同profile DFlash/AR各12/12；48非AR案例输出长度/调用密度相同，581轮除regret外一致。10对账本浮点变化，最大spent差9.5367431640625e-5；192模块输出13逐位相同，最大abs4.57763671875e-5/RMS6.55e-7。输入/规则未改，不宣称全输入或完整自然答案无损。
+- 运行时发现167模块（Target145/Draft22），每卡共享4图，诊断后仍4图。backend3.463/3.607秒、outer3.839/3.962秒（嵌套不相加）、controller约0.0035秒；完整准备wall107.51/120.18秒还含推理。cache各412257字节/0.393MiB，正式allocated峰值两profile均35.158GiB，预算满足。当前请求混合平均省约31ms，仅outer+controller条件摊销约123/127请求，不作生产ROI保证。
+- 同输入norm回放按角色约快5.1%–9.0%；运行后只读代码生成8文件（每卡4）各一次融合mean/pow/rsqrt/mul kernel、无GEMM。与相同轨迹在线对照共同支持norm执行收益，不虚构原版kernel次数/带宽或精确因果占比。它是DFlash与ASD共同的执行优化，不是Run/Utility独有算法贡献；不与前轮MLP/CPU百分比直接相加。
+- 结果ZIP346034字节/SHA d310ffe98b9268b913de5bb1a61d4b46ebf6c7666e013c89e9b197340a527719；results/asd-rmsnorm，完整表docs/ASD_RMSNORM_RESULTS.md、解释docs/ASD_RMSNORM_FINDINGS.md。重建`.venv\Scripts\python.exe -m scripts.write_asd_rmsnorm_report`，后描述`.venv\Scripts\python.exe -m results.asd-rmsnorm.inspect_results`；后审计17冻结文件、892旧SHA、此前6批215发布文件、7旧runtime/接受文件及infra引用通过，两个既有CRLF例外保留。
+- 本地完整655 passed/5 skipped/77.17s，服务器97 passed/17.53s。旧MLP实际analysis内存重算逐字段完全相同，原结果不改，面试infra引用仍27e36199。保留RMSNorm实验工具，停止12题norm扫参；下一项优先扩48开发题自然EOS质量/时延，之后再进入未观察验证集，不先叠加MLP。GPU后执行/统计源码未改，不重复已通过性能运行。
+
 ## 2026-10-21 — RMSNorm独立编译检查（执行准备）
 
 - 按用户授权继续RMSNorm-only，不叠加MLP编译。共享可恢复区域绑定及既有测量/审计边界，新增RegionalRMSNorm、独立runner/pipeline/report入口。实际transformers4.57.3和DFlash源码已核验：隐藏norm、Q/K norm、Draft hidden_norm均为Qwen3RMSNorm；运行时记录全部模块名称/形状/eps。

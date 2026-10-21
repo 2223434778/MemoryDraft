@@ -1,0 +1,15 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+prepared gsm8k:885 4
+prepared math500:329 4
+prepared mbpp:262 4
+prepared humaneval:82 4
+prepared squad:5734025d4776f419006616c6 4
+prepared json:12 4
+timed gsm8k:885 {"warmup": 10, "preflight": 60, "timed": 24, "diagnostics": 0, "rmsnorm_states": 0}
+timed math500:329 {"warmup": 10, "preflight": 60, "timed": 48, "diagnostics": 0, "rmsnorm_states": 0}
+timed mbpp:262 {"warmup": 10, "preflight": 60, "timed": 72, "diagnostics": 0, "rmsnorm_states": 0}
+timed humaneval:82 {"warmup": 10, "preflight": 60, "timed": 96, "diagnostics": 0, "rmsnorm_states": 0}
+timed squad:5734025d4776f419006616c6 {"warmup": 10, "preflight": 60, "timed": 120, "diagnostics": 0, "rmsnorm_states": 0}
+timed json:12 {"warmup": 10, "preflight": 60, "timed": 144, "diagnostics": 0, "rmsnorm_states": 0}

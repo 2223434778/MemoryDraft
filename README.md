@@ -67,7 +67,9 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [CPU摘要判定小检查](docs/ASD_CPU_FINDINGS.md)已完成420计时/430影子块/77状态回放：保持原策略轨迹与预算，ASD/Run/Utility时延降低0.30%/0.67%/0.64%；resident成本降低约80%–85%不能当作生成倍速。保留显式CPU实验选项，默认infra不改，主要优化进入模型编译/融合；未新增自然完整答案或验证池评测。
 
-[MLP区域编译检查](docs/ASD_COMPILE_FINDINGS.md)完成120预检/288配对计时/36同输入回放：37个模块每卡共享2图、正式计时无重编译，四策略时延仅低0.17%–0.29%。本批token相同但13组账本浮点变化；生成代码只融合SiLU乘法，3个GEMM仍在，模块回放未更快。保留研究工具，默认infra不改；下一项单独检查RMSNorm融合。
+[MLP区域编译检查](docs/ASD_COMPILE_FINDINGS.md)完成120预检/288配对计时/36同输入回放：37个模块每卡共享2图、正式计时无重编译，四策略时延仅低0.17%–0.29%。本批token相同但13组账本浮点变化；生成代码只融合SiLU乘法，3个GEMM仍在，模块回放未更快。保留研究工具，停止MLP-only扫参。
+
+[独立RMSNorm融合检查](docs/ASD_RMSNORM_FINDINGS.md)完成120预检/288计时/192真实状态：167个norm每卡共享4图、正式无重编译，DFlash/ASD/Run/Utility时延下降2.67%–2.75%，各12/12题更快。同输入norm回放快约5%–9%，生成代码确认归约融合。本批token全同但10组账本浮点变化，尚未核查新完整自然答案；默认infra不改，下一项扩48开发题自然EOS质量和时延。
 
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
