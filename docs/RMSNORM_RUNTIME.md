@@ -1,6 +1,6 @@
 # RMSNorm显式运行时profile接入候选
 
-状态：隔离工作树准备中，须独立验证及真实GPU smoke通过后才合入主研究分支。本文件不声称已完成接入验收。
+状态：48题独立验证已通过，显式选项已合入研究分支，真实GPU接入验收中。首次服务器前置测试发现延迟导入测试夹具引用旧模块，已修复后准备新源码重试；尚不声称接入验收通过。默认配置仍eager。
 
 配置字段execution_profile默认eager；configs/runtime-dflash-rmsnorm.json显式选择rmsnorm-inductor。该数值profile只对原Qwen3RMSNorm编译，不改变precision/attention、Target输入、接受规则或检索。使用已测Linux/PyTorch2.5.1/Transformers4.57.3、CUDA FP32 Target和Draft；不支持的环境明确拒绝，不静默回退。
 

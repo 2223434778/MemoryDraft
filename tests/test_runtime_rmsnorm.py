@@ -1,11 +1,11 @@
 from dataclasses import asdict, replace
+from importlib import import_module
 from types import SimpleNamespace
 import json
 import sys
 
 import pytest
 import torch
-import transformers
 from transformers.models.qwen3.modeling_qwen3 import Qwen3RMSNorm
 
 from memorydraft.backends import regional_compile as region
@@ -31,6 +31,8 @@ def test_explicit_config_preserves_eager_default_and_rejects_incompatible_backen
 
 @pytest.mark.parametrize("wrong", ["platform", "torch", "transformers", "device", "dtype", "draft"])
 def test_unsupported_runtime_stack_fails_without_fallback(monkeypatch, wrong):
+    # Model imports can replace Transformers' initial lazy module object.
+    transformers = import_module("transformers")
     monkeypatch.setattr(sys, "platform", "linux")
     monkeypatch.setattr(torch, "__version__", "2.5.1+cu124")
     monkeypatch.setattr(transformers, "__version__", "4.57.3")
