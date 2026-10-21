@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TASK_IDS = ("math500:1", "math500:4", "math500:7", "gsm8k:21")
 TRANSFER_IDS = ("math500:8", "math500:9", "gsm8k:24", "gsm8k:25")
 PROFILES = {"fp32-eager": (torch.float32, "eager"), "fp32-sdpa": (torch.float32, "sdpa"),
-            "bf16-sdpa": (torch.bfloat16, "sdpa")}
+            "bf16-sdpa": (torch.bfloat16, "sdpa"), "bf16-eager": (torch.bfloat16, "eager")}
 # Tuple: verification policy, smaller draft block (including anchor), length rule, incremental EOS.
 ARMS = {"D-old": ("strict", None, "full", False), "D-fast": ("strict", None, "full", True),
         "U-old": ("utility", None, "full", False), "U-fast": ("utility", None, "full", True),
@@ -136,17 +136,24 @@ def main():
     parser.add_argument("--task-ids", nargs="+", required=True)
     parser.add_argument("--transfer", action="store_true")
     parser.add_argument("--arms", nargs="+", choices=ARMS)
+    parser.add_argument("--attribution", action="store_true")
     args = parser.parse_args()
     allowed = TRANSFER_IDS if args.transfer else TASK_IDS
     if not args.task_ids or len(set(args.task_ids)) != len(args.task_ids) or set(args.task_ids) - set(allowed):
         parser.error("Unknown, duplicate or empty task IDs")
-    if args.arms and (not args.transfer or len(set(args.arms)) != len(args.arms)):
+    if args.transfer and args.attribution:
+        parser.error("Transfer and attribution are separate stages")
+    if args.arms and (not (args.transfer or args.attribution) or len(set(args.arms)) != len(args.arms)):
         parser.error("Explicit unique arms are only allowed for the frozen transfer rule")
     args.output.mkdir(parents=True, exist_ok=False)
     before = protected(ROOT)
     info = dict(status="started", profile=args.profile, task_ids=args.task_ids, transfer=args.transfer,
+                attribution=args.attribution,
                 runner_sha256=file_hash(Path(__file__)), protocol_sha256=file_hash(ROOT / "docs/ASD_OPTIMIZATION_PROTOCOL.md"),
                 original_sha256=before, loader="Experimental profile, production config remains FP32/eager")
+    extension = ROOT / "docs/ASD_OPTIMIZATION_EXTENSION_PROTOCOL.md"
+    if extension.exists():
+        info["extension_protocol_sha256"] = file_hash(extension)
     write(args.output / "provenance.json", info)
     try:
         config = replace(RuntimeConfig.load(args.config), db=None, max_new_tokens=2048)
@@ -185,14 +192,14 @@ def main():
                             raise ValueError("Incremental EOS changed the trajectory")
             print("completed", args.profile, q, len(jobs), flush=True)
             references.clear()
-        if args.profile == "fp32-eager" and not args.transfer:
+        if args.profile == "fp32-eager" and not args.transfer and not args.attribution:
             old = sources()
             for q in args.task_ids:
                 for state in selected_states(old[q]):
                     for row in draft_pair(engine, data[q], old[q], state):
                         append(args.output / "draft-pairs.jsonl", row)
                 print("draft-pairs", q, flush=True)
-        if not args.transfer:
+        if not args.transfer and not args.attribution:
             with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA]) as prof:
                 execute(engine, data[args.task_ids[0]], "U-fast", 128, profile=True)
             stats = [dict(key=e.key, cpu_us=e.cpu_time_total, device_us=getattr(e, "device_time_total", 0), count=e.count)

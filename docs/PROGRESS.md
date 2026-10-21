@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-21 — ASD优化排查追加归因（执行准备）
+
+- 原执行冻结`37f15d0ff9842f87e87cb208c621f38c2dac2bec`，1035文件，ZIP SHA`0cd5dfe87089923c08e5b742b4100284236cf5e6f083894b7a44628811c8e8e9`、source SHA`4b0a0aa3c3e7c2ee405d46236cd6320141dcf9313e3cca123997a05cfdcebafa`，独立pipeline PID3777460。服务器80 passed/6.74s；本地完整回归522 passed/4 skipped/50.18s（服务测试需允许loopback，沙箱内停滞运行已终止，相关XML均保存）。
+- 初轮A全部204主生成完成：FP32/eager固定短验证/短Draft及两动态长度均未达速度门槛；增量EOS输出/账本不变但无时间收益。FP32/SDPA与原输出/轮数相同，速度持平。32个Draft分支/15等128对的第一块接受92/88、后续轮268/281，未见近似前缀退化，不进入训练。
+- BF16/SDPA四旧题D-fast等128约9.178s，对照FP32/eager14.876s，显示组合执行收益，已由原冻结规则选择4其他旧题迁移。看到这个结果后才追加`ASD_OPTIMIZATION_EXTENSION_PROTOCOL.md`，不冒充预注册：BF16下重测全部原长度选项，增加BF16/eager归因，不调阈值；若长度仍不通过即停止。
+- 新独立目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization-extension`，等待原pipeline结束后运行，不修改原执行目录/manifest。追加144主生成及8AR128，选择性迁移仍用原5%速度/质量/截断条件。实验loader新增profile与attribution入口，生产RuntimeConfig仍FP32/eager。
+
 ## 2026-10-21 — ASD剩余优化空间排查（执行准备）
 
 - 用户授权尝试剩余方向。冻结执行成本/验证长度/Draft前缀适应三个检查轴；不重新扫描置信度、价格或未来二选一模型。协议`docs/ASD_OPTIMIZATION_PROTOCOL.md`，独立服务器目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-optimization`。

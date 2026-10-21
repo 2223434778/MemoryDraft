@@ -82,6 +82,10 @@ def audit_part(path):
                 raise ValueError("Nondeterministic timed repeats")
         if r["arm"].startswith("D-") and any(x.get("regret", 0) for x in r["rounds"]):
             raise ValueError("Strict arm spent approximate regret")
+    expected_keys = {(q, arm, limit, rep) for q in info["task_ids"] for arm in info["arms"]
+                     for limit, rep in ((2048, 0), (128, 0), (128, 1))}
+    if set(seen) != expected_keys:
+        raise ValueError("Changed frozen matrix identities")
     for q in info["task_ids"]:
         for r in [x for x in rows if x["request_id"] == q]:
             identity = r["prompt_sha256"], r["snapshot_id"]
