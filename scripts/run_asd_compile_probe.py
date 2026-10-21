@@ -43,15 +43,15 @@ def previous_rows():
     return result
 
 
-def timing_order(q, repeat, methods=METHODS):
+def timing_order(q, repeat, methods=METHODS, profiles=PROFILES):
     rng = random.Random(f"asd-compile:{q}:{repeat}")
     methods = list(methods)
     rng.shuffle(methods)
     order = []
     for method in methods:
-        profiles = list(PROFILES)
-        rng.shuffle(profiles)
-        order.extend((method, p) for p in profiles)
+        pair = list(profiles)
+        rng.shuffle(pair)
+        order.extend((method, p) for p in pair)
     return order
 
 
@@ -121,21 +121,21 @@ def capture_inputs(compiler):
 
 
 @torch.inference_mode()
-def replay_mlp(compiler, state):
+def replay_mlp(compiler, state, profiles=PROFILES):
     x, module = state["input"], state["module"]
     eager = type(module).forward
     compiled = compiler.compiled[type(module)]
     a, b = eager(module, x), compiled(module, x)
     finite = bool(torch.isfinite(a).all() & torch.isfinite(b).all())
     if not finite:
-        raise ValueError("Non-finite compiled MLP output")
+        raise ValueError("Non-finite compiled region output")
     delta = (a-b).abs()
     numeric = dict(bitwise_equal=torch.equal(a, b), max_abs=float(delta.max()),
                    rms=float((delta.double().square().mean()).sqrt()),
                    max_relative_floor_1e_6=float((delta/a.abs().clamp_min(1e-6)).max()))
-    samples = {p: [] for p in PROFILES}
+    samples = {p: [] for p in profiles}
     for repeat in range(REPLAY_REPEATS+5):
-        order = list(PROFILES)
+        order = list(profiles)
         random.Random(f"mlp-replay:{repeat}").shuffle(order)
         for profile in order:
             fn = eager if profile == "eager" else compiled
@@ -151,7 +151,8 @@ def replay_mlp(compiler, state):
                 samples_seconds=samples, median_seconds={p: statistics.median(v) for p, v in samples.items()})
 
 
-def main():
+def main(*, compiler_type=RegionalMLP, profiles=PROFILES, capture=capture_inputs,
+         replay_key="mlp_replays", state_key="mlp_states"):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
@@ -165,7 +166,7 @@ def main():
                 repeats=REPEATS, max_new_tokens=LIMIT, backend_graph_budget=8, backend_seconds_budget=300,
                 cache_dirs={k: os.environ[k] for k in ("TORCHINDUCTOR_CACHE_DIR", "TRITON_CACHE_DIR")})
     write(args.output/"provenance.json", info)
-    counts = dict(warmup=0, preflight=0, timed=0, diagnostics=0, mlp_states=0)
+    counts = dict(warmup=0, preflight=0, timed=0, diagnostics=0, **{state_key: 0})
     compiler = None
     try:
         engine = load_engine(replace(RuntimeConfig.load(args.config), db=None, max_new_tokens=4096))
@@ -173,11 +174,11 @@ def main():
             raise ValueError("Expected frozen native16 FP32 models")
         info.update(runtime=provenance(engine), stop_token_ids=engine.stops)
         started = time.perf_counter()
-        compiler = RegionalMLP(engine.target, engine.draft)
+        compiler = compiler_type(engine.target, engine.draft)
         info["controller_setup_seconds"] = time.perf_counter()-started
         warmup = dict(benchmark="gsm8k", id="warmup", question="What is 3 plus 4?", answer="#### 7")
         started = time.perf_counter()
-        for profile in PROFILES:
+        for profile in profiles:
             for method in ("AR", *METHODS):
                 row = execute(engine, compiler, warmup, method, profile, 32)
                 row.update(stage="warmup", repeat=0)
@@ -185,7 +186,7 @@ def main():
                 counts["warmup"] += 1
         seen = {}
         for record in records:
-            for method, profile in timing_order(record["id"], -1, ("AR", *METHODS)):
+            for method, profile in timing_order(record["id"], -1, ("AR", *METHODS), profiles):
                 row = execute(engine, compiler, record, method, profile)
                 if profile == "eager":
                     require_same(row, previous[record["id"], method])
@@ -202,7 +203,7 @@ def main():
         write(args.output/"provenance.json", info)
         for record in records:
             for repeat in range(REPEATS):
-                for slot, (method, profile) in enumerate(timing_order(record["id"], repeat)):
+                for slot, (method, profile) in enumerate(timing_order(record["id"], repeat, profiles=profiles)):
                     row = execute(engine, compiler, record, method, profile)
                     require_same(row, seen[record["id"], method, profile])
                     row.update(stage="timed", repeat=repeat, slot=slot)
@@ -211,14 +212,14 @@ def main():
             print("timed", record["id"], json.dumps(counts), flush=True)
         # Hooks and same-input arithmetic checks are separate from all timings.
         for record in records:
-            with capture_inputs(compiler) as states:
+            with capture(compiler) as states:
                 row = execute(engine, compiler, record, "DFlash", "eager")
             require_same(row, seen[record["id"], "DFlash", "eager"])
             row["instrumented_latency_seconds"] = row.pop("latency_seconds")
-            row.update(stage="diagnostic", mlp_replays=[replay_mlp(compiler, s) for s in states])
+            row.update(stage="diagnostic", **{replay_key: [replay_mlp(compiler, s, profiles) for s in states]})
             append(args.output/"diagnostics.jsonl", row)
             counts["diagnostics"] += 1
-            counts["mlp_states"] += len(states)
+            counts[state_key] += len(states)
             del row, states
         info.update(status="complete", counts=counts, compiler=compiler.summary())
     except Exception as error:

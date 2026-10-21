@@ -250,3 +250,10 @@ results/asd-compile/** -text
 results/asd-compile/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-compile/**/*.log -whitespace
 results/asd-compile/**/*.xml -whitespace
+scripts/*asd_rmsnorm*.py text eol=lf
+tests/test_asd_rmsnorm.py text eol=lf
+docs/ASD_RMSNORM*.md text eol=lf
+results/asd-rmsnorm/** -text
+results/asd-rmsnorm/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-rmsnorm/**/*.log -whitespace
+results/asd-rmsnorm/**/*.xml -whitespace

@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-21 — RMSNorm独立编译检查（执行准备）
+
+- 按用户授权继续RMSNorm-only，不叠加MLP编译。共享可恢复区域绑定及既有测量/审计边界，新增RegionalRMSNorm、独立runner/pipeline/report入口。实际transformers4.57.3和DFlash源码已核验：隐藏norm、Q/K norm、Draft hidden_norm均为Qwen3RMSNorm；运行时记录全部模块名称/形状/eps。
+- 冻结协议docs/ASD_RMSNORM_PROTOCOL.md：六类各前两道已观察dev，120预检/288正式配对/12独立诊断，192实际norm状态，另20短warmup；128上限尊重EOS。相同CPU接受实现、FP32 highest/TF32关闭、原16块；数值profile差异全部保留，每profile重复精确重现，输入/规则不改。8图/backend300秒/worker1800秒/allocated46GiB/cache4GiB，与前轮相同。
+- 先`.venv\Scripts\python.exe -m pytest -q tests/test_regional_compile.py tests/test_asd_compile.py tests/test_asd_rmsnorm.py --basetemp .test-tmp-asd-rmsnorm-first --junitxml=artifacts/asd-rmsnorm-tests-first-local.xml`：26 passed/17.29s。本机Dynamo/eager只测捕获/恢复，非CUDA性能。旧MLP的实际raw重新在内存审计/计算，与已发布analysis.json逐字段完全相同，旧文件未改。
+- 完整检查`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-asd-rmsnorm-full --junitxml=artifacts/asd-rmsnorm-tests-full-local.xml`：655 passed/5 skipped/77.17s，只有既有python_multipart提醒。提交源码及统计、导出Git blobs到独立/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-rmsnorm。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_rmsnorm_pipeline`，运行前后源码/旧结果SHA及infra引用核验。完整结果另补，不能以测试通过冒充性能。
+
 ## 2026-10-21 — MLP区域编译完成（120预检/288计时/36同输入状态）
 
 - 冻结`5aa8c79336656a6447f0f6b9b5e22b53e3fc0f77`/1316 blobs，source SHA`585549eb91372b7dd2c432881e3412b1e60de5b7638b33883ceb10ab27ac414e`、源码ZIP SHA`47c07f3af4ad01c6f745eac790626d3e36ffbb862acf49c279cbb33f31914842`。服务器`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-compile` PID4026974，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_compile_pipeline`；两worker0退出，REGIONAL COMPILE COMPLETE，前后1316文件SHA相同。

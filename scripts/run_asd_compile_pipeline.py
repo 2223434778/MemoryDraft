@@ -10,11 +10,11 @@ import subprocess
 import zipfile
 
 
-def main():
+def main(*, study="compile", extra_tests=()):
     root = Path.cwd()
-    name = "ASD_COMPILE_SOURCE_MANIFEST.json"
+    name = "ASD_"+study.upper()+"_SOURCE_MANIFEST.json"
     manifest = json.loads((root/name).read_text(encoding="utf-8"))
-    dest = root/"results/raw/asd-compile"
+    dest = root/"results/raw"/("asd-"+study)
     dest.mkdir(parents=True, exist_ok=False)
     (root/"artifacts").mkdir(exist_ok=True)
 
@@ -33,7 +33,7 @@ def main():
                  "TRITON_CACHE_DIR": str(root/f"artifacts/triton-{shard}")}
         for folder in cache.values():
             Path(folder).mkdir(parents=True, exist_ok=False)
-        command = [exe, "-u", "-m", "scripts.run_asd_compile_probe", "--config", "configs/runtime-dflash.json",
+        command = [exe, "-u", "-m", "scripts.run_asd_"+study+"_probe", "--config", "configs/runtime-dflash.json",
                    "--shard", str(shard), "--output", str(dest/f"part-{shard}")]
         print("START", shard, json.dumps(dict(argv=command, cache=cache)), flush=True)
         with (dest/f"part-{shard}.log").open("w") as log:
@@ -59,7 +59,7 @@ def main():
 
     try:
         subprocess.run([exe, "-m", "pytest", "-q", "tests/test_regional_compile.py", "tests/test_asd_compile.py",
-                        "tests/test_asd_cpu.py", "tests/test_dflash_reuse.py", "--basetemp", "artifacts/test-tmp",
+                        "tests/test_asd_cpu.py", "tests/test_dflash_reuse.py", *extra_tests, "--basetemp", "artifacts/test-tmp",
                         "--junitxml=artifacts/tests-server.xml"], env=env, check=True)
         with ThreadPoolExecutor(max_workers=2) as pool:
             list(pool.map(worker, [0, 1]))
@@ -69,7 +69,7 @@ def main():
         raise
     finally:
         (dest/"execution-verification.json").write_bytes((json.dumps(info, indent=2)+"\n").encode())
-        with zipfile.ZipFile(root.parent/"asd-compile-results.zip", "w", zipfile.ZIP_DEFLATED) as archive:
+        with zipfile.ZipFile(root.parent/("asd-"+study+"-results.zip"), "w", zipfile.ZIP_DEFLATED) as archive:
             for path in sorted(dest.rglob("*")):
                 if path.is_file():
                     relative = path.relative_to(dest).as_posix()
@@ -79,7 +79,7 @@ def main():
                         archive.write(path, relative)
             for path in (name, "scripts/run_asd_compile_pipeline.py", "artifacts/tests-server.xml"):
                 archive.write(root/path, path.replace("artifacts/", ""))
-    print("REGIONAL COMPILE COMPLETE", flush=True)
+    print("REGIONAL "+study.upper()+" COMPLETE", flush=True)
 
 
 if __name__ == "__main__":

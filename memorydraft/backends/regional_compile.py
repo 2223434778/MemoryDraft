@@ -1,4 +1,4 @@
-"""Research-only regional MLP compilation with reversible instance bindings."""
+"""Research-only regional compilation with reversible instance bindings."""
 from __future__ import annotations
 
 from contextlib import contextmanager
@@ -42,14 +42,13 @@ class CompileBackend:
         return result
 
 
-class RegionalMLP:
-    """Compile the existing Qwen3MLP.forward; never rewrite its arithmetic/KV."""
-    def __init__(self, target, draft, *, backend="inductor", max_graphs=8, max_seconds=300.):
-        from transformers.models.qwen3.modeling_qwen3 import Qwen3MLP
+class _RegionalCompiler:
+    def __init__(self, target, draft, region_type, profile, *, backend="inductor", max_graphs=8, max_seconds=300.):
+        self.profile = profile
         self.regions = [(owner+"."+name, module) for owner, model in (("target", target), ("draft", draft))
-                        for name, module in model.named_modules() if isinstance(module, Qwen3MLP)]
+                        for name, module in model.named_modules() if isinstance(module, region_type)]
         if not self.regions or any(not any(n.startswith(owner+".") for n, _ in self.regions) for owner in ("target", "draft")):
-            raise ValueError("Expected audited Qwen3 MLPs in both Target and Draft")
+            raise ValueError("Expected audited "+region_type.__name__+" in both Target and Draft")
         if any("forward" in m.__dict__ for _, m in self.regions):
             raise ValueError("Refusing to overwrite an existing instance forward adapter")
         self.backend = CompileBackend(backend, max_graphs=max_graphs, max_seconds=max_seconds)
@@ -60,13 +59,13 @@ class RegionalMLP:
 
     @contextmanager
     def activate(self, profile):
-        if profile not in {"eager", "mlp-inductor"} or self.active:
+        if profile not in {"eager", self.profile} or self.active:
             raise ValueError("Invalid or nested regional execution profile")
         changed = []
         started = time.perf_counter()
         self.active = True
         try:
-            if profile == "mlp-inductor":
+            if profile == self.profile:
                 for _, module in self.regions:
                     module.forward = MethodType(self.compiled[type(module)], module)
                     changed.append(module)
@@ -91,3 +90,21 @@ class RegionalMLP:
                     compile_times=utils.compile_times(), switch_seconds=self.switch_seconds,
                     float32_matmul_precision=torch.get_float32_matmul_precision(),
                     allow_tf32=torch.backends.cuda.matmul.allow_tf32)
+
+
+class RegionalMLP(_RegionalCompiler):
+    """Compile the existing Qwen3MLP.forward; never rewrite its arithmetic/KV."""
+    def __init__(self, target, draft, **kwargs):
+        from transformers.models.qwen3.modeling_qwen3 import Qwen3MLP
+        super().__init__(target, draft, Qwen3MLP, "mlp-inductor", **kwargs)
+
+
+class RegionalRMSNorm(_RegionalCompiler):
+    """Compile original RMSNorm reductions, including Q/K head normalization."""
+    def __init__(self, target, draft, **kwargs):
+        from transformers.models.qwen3.modeling_qwen3 import Qwen3RMSNorm
+        super().__init__(target, draft, Qwen3RMSNorm, "rmsnorm-inductor", **kwargs)
+
+    def summary(self):
+        return dict(super().summary(), inventory=[dict(region=n, type=type(m).__name__,
+                    weight_shape=list(m.weight.shape), eps=m.variance_epsilon) for n, m in self.regions])
