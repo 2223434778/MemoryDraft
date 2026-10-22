@@ -2,6 +2,8 @@
 
 ## 2026-10-22 — 阶段3真实计算分配（生成前冻结）
 
+- 修复版已运行：cea9ebb92db4879144b79b0338cd1272b38b0a35/1491 blobs，source SHA5dc11ff081b1c81798e2f6ee4bd5c8e227bc5b8d828b178948261538a9af3bf0，本地完整ZIP SHA1e0cd79e5476e1c1284e80da4be82f99550c6313e3926e4882a7003657ac28cc。404622B delta SHA6b5b909f89a0e9cf1258fbf629cf6450db43aad2e61d0937234cebdcf0b0479c，结合旧完整ZIP在新asd-allocation-v2核验1491目标blob。2026-10-22 04:02:59 UTC/PID568165启动；服务器90 passed/9.76s后两worker已正式生成。旧失败ZIP服务器另存asd-allocation-failed-preflight-results.zip；生产动作/样本/主统计与门槛未改。
+
 - 首次服务器前置81 passed/8 errors/9.94s，GPU worker未启动。新root未创建artifacts父目录，pytest --basetemp artifacts/test-tmp在部分tmp_path测试初始化失败；仅pipeline补mkdir，并新增空部署目录/首子进程之前父目录存在的测试。相关13 passed/6.65s；生产解码、样本与统计/门槛未改。原失败ZIP及pipeline.log保留artifacts/asd-allocation-failed-preflight-*，后续新目录/新manifest重试。
 
 - 已启动：冻结d7c067bf57b6acbc2c434ad1f43a3337a881b335/1491 blobs，source SHA1f08f58f38c280040ea1f02abcc1200747401d3929933ea5d201f7f5e0dbaa27，本地完整ZIP SHA9af4058570a3f7cbb98966ec110d023e5093341d4a7d83bc0f7b66535144578f。旧已校验完整ZIP+403927B delta（SHAcff3198ff666753222d7559e7cca26c83a791aca8d441a532f6112fe12793f21）在新asd-allocation重建1491目标blob全部SHA通过；DEPLOYMENT_DELTA.json列45个变化/新增文件。2026-10-22 04:00:30 UTC/PID566285启动双卡pipeline，最终结果待完成，未预判门槛。
