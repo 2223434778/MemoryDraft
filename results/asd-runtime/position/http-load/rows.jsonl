@@ -1,0 +1,4 @@
+{"index": 0, "status": 200, "token_count": 128, "ttft_seconds": 0.19914794398937374, "queue_seconds": 0.0015465799951925874, "error": null, "latency_seconds": 1.6990587910404429, "success": true}
+{"index": 1, "status": 200, "token_count": 128, "ttft_seconds": 1.87606185907498, "queue_seconds": 1.6820775679079816, "error": null, "latency_seconds": 3.3657383010722697, "success": true}
+{"index": 2, "status": 200, "token_count": 128, "ttft_seconds": 1.8578882600413635, "queue_seconds": 1.660705407964997, "error": null, "latency_seconds": 3.3551920580212027, "success": true}
+{"index": 3, "status": 200, "token_count": 128, "ttft_seconds": 1.8669072589837015, "queue_seconds": 1.6747607280267403, "error": null, "latency_seconds": 3.354104135069065, "success": true}

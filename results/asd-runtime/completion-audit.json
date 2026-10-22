@@ -1,0 +1,11 @@
+{
+  "status": "complete",
+  "purpose": "Postfailure audit only; original zero-tolerance execution remains failed",
+  "files_verified_after": 1715,
+  "source_commit": "353f6756c5d758fc2bbe0e66e337a8c2f25e0efb",
+  "original_adapter_unchanged": true,
+  "cache_bytes": {
+    "base": 814867,
+    "position": 818191
+  }
+}

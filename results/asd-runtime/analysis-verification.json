@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "execution_commit": "353f6756c5d758fc2bbe0e66e337a8c2f25e0efb",
+  "analysis_commit": "ec7e2720a370687e76771ec0098cd32b1663ad7a",
+  "original_files_verified": 1715,
+  "analysis_files_verified": 5,
+  "original_zero_tolerance_gate_passed": false,
+  "tests_initial": "1 failed, 18 passed: report evidence directory lacked source manifest",
+  "tests_after_manifest_copy": "19 passed in 3.29s",
+  "analysis_sha256": "4d64cfdf7b7b9b46a830ce0000be08fc42eb5600d4e18f2b14bc8d271cb15cc4",
+  "report_sha256": "f6354d383e68ec4d6698964c6f8b54016d9167228588703460d36909ba520b87",
+  "original_failure_record_sha256": "5e9f521aa76d5f37fcc0d8e5b09046de50a59be6a4b59acfe588ada8c1310344"
+}

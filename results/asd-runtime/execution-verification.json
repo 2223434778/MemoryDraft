@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "commit": "353f6756c5d758fc2bbe0e66e337a8c2f25e0efb",
+  "files_verified_before": 1715,
+  "phases": [
+    "cpu",
+    "acceptance",
+    "cli"
+  ],
+  "error_type": "ValueError",
+  "error": "Runtime ASD budget/trajectory changed",
+  "archive_path": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime-results.zip"
+}

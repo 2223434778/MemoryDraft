@@ -6,7 +6,9 @@
 - 最终原pipeline零容差检查失败：冷CLI累计spent比原参考分别多7.62939453125e-6/3.814697265625e-6，token/EOS/轮数/例外数全部相同，实际支出均<8。原status=failed、日志和150899B ZIP/SHA67cc41e08ccde8f966748d46e9f209dccd0a8dd36ed4f0add566d757100c03d8原样保留，33成员逐字节核验；不把原协议追改成通过。另补completion-audit.json核1715源/旧权重不变、缓存和退出状态。
 - 最小后处理修正仅冷CLI的spent比较允许1e-5绝对误差，普通直接/HTTP默认仍零容差、实际spent<=8和其余字段仍精确；不改Target/ASDVerifier/预算，不重跑GPU。worker4图、CLI3图与FP32编译路径舍入相符，但未逐算子定位；说明见ASD_RUNTIME_NUMERICS.md。后处理19 passed/5.49s，XML artifacts/asd-runtime-rounding-local.xml；原全量863 passed/7 skipped属于修正前核心工程，未将新增检查追算进去。
 - 原/适配模型准备21.239/21.410秒，其中适配合并0.451秒；首AR32冷wall4.829/4.692秒，独立CLI冷请求6.673/6.175秒（不含模型加载），所有冷编译计入请求。各worker4图、正式新图0，GPU峰34.903/34.672GiB，worker+CLI cache814867/818191B。两卡最后19MiB/0%，没有训练或新seed。历史16题128收益3.23%仍引用原研究，本轮只证明工程可用。
-- 结果results/asd-runtime，运行指南ASD_RUNTIME.md、主报告ASD_RUNTIME_RESULTS.md。重建命令`.venv\Scripts\python.exe -m scripts.write_asd_runtime_report`；原GPU入口及source manifest保留，数值比较修正另行提交，准备仅CPU跨环境复算/发布，不开启阶段6。
+- 比较/分析版本单独冻结ec7e2720a370687e76771ec0098cd32b1663ad7a，仅在新asd-runtime-analysis目录执行CPU复算，旧1715文件保持。首个分析测试18 passed/1 failed，因证据目录漏放原source manifest；补入原字节后19 passed/3.29s，失败XML不覆盖。服务器Python3.11与本机3.13 analysis逐字节相同（SHA4d64cfdf7b7b9b46a830ce0000be08fc42eb5600d4e18f2b14bc8d271cb15cc4），原GPU目录/失败记录未变。CI加入ASD运行时测试；尚未声称远端Actions已通过。
+- 发布前审计1715 canonical Git blobs、185未改执行文件、5分析文件、1174旧结果及上轮66文件发布清单通过；原main/面试branch/tag均27e3619。两个旧结果和两个模型清单的Windows CRLF仅作规范化比对，原字节不重写。`python -m results.asd-runtime.audit_postrun`可复核；原33个ZIP成员逐字节相同，original_zero_tolerance_gate_passed=false保留。
+- 结果results/asd-runtime，运行指南ASD_RUNTIME.md、主报告ASD_RUNTIME_RESULTS.md。重建命令`.venv\Scripts\python.exe -m scripts.write_asd_runtime_report`；本轮仅JSON/XML/log/代码/配置与报告，不上传adapter/hidden/weights。发布清单独立于既有研究publication，未开启阶段6。
 
 ## 2026-10-22 — 数学ASD工程接入（GPU验收准备）
 

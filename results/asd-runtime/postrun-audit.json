@@ -1,0 +1,34 @@
+{
+  "status": "complete",
+  "execution_commit": "353f6756c5d758fc2bbe0e66e337a8c2f25e0efb",
+  "source_sha256": "79d5ca2043fc6206af87b30e94287fcb208524a6219bf8121acdbf9dccf53759",
+  "canonical_git_blobs": 1715,
+  "frozen_runtime_files": 185,
+  "previous_result_files": 1174,
+  "previous_publication_files": 66,
+  "previous_publication_commit": "3f21debf2fbf940d1ec4450ab7b22d1e91df4247",
+  "legacy_crlf": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "archive_bytes": 150899,
+  "archive_sha256": "67cc41e08ccde8f966748d46e9f209dccd0a8dd36ed4f0add566d757100c03d8",
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "analysis_commit": "ec7e2720a370687e76771ec0098cd32b1663ad7a",
+  "analysis_files_verified": 5,
+  "analysis_changed": [
+    "scripts/run_asd_runtime_pipeline.py",
+    "scripts/validate_asd_runtime.py",
+    "scripts/write_asd_runtime_report.py",
+    "tests/test_asd_runtime_acceptance.py"
+  ],
+  "original_zero_tolerance_gate_passed": false,
+  "source_checkout_crlf": [
+    "configs/dflash-manifest.json",
+    "configs/qwen3-download-manifest.json"
+  ]
+}

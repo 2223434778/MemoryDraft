@@ -1,0 +1,37 @@
+{
+  "synthetic": false,
+  "baseline": "AR",
+  "methods": {
+    "AR": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 1.6807634920114651,
+      "output_tokens": 32,
+      "tokens_per_second": 19.038966607790716,
+      "p50_seconds": 1.6807634920114651,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.1840717230224982,
+      "mean_tpot_seconds": 0.04828037964480539,
+      "peak_gpu_bytes": 37043180032,
+      "strict_correct": true,
+      "speedup": 1.0
+    },
+    "DFlash": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 0.4648393460083753,
+      "output_tokens": 32,
+      "tokens_per_second": 68.84098834314993,
+      "p50_seconds": 0.4648393460083753,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.18333841604180634,
+      "mean_tpot_seconds": 0.009080675160211901,
+      "peak_gpu_bytes": 37153314304,
+      "strict_correct": true,
+      "speedup": 3.6157943737860387
+    }
+  },
+  "percentile_policy": "P95 requires >=20 observations; P99 requires >=100. Repeats are not independent requests."
+}

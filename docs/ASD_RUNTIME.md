@@ -60,3 +60,5 @@ flowchart LR
 ```
 
 默认严格运行配置、原面试版及历史H/D/R/OT实现继续保留。本配置是已测数学近似解码的显式使用入口。
+
+已完成的[工程验收](ASD_RUNTIME_RESULTS.md)保留两配置32直接结果、8 AR和2次CLI，以及真实HTTP/SSE/取消恢复证据。冷CLI的累计spent存在小于1e-5的数值差异，原零容差失败与后处理比较修正见[数值说明](ASD_RUNTIME_NUMERICS.md)；这不改变实际预算或解码规则。未来pipeline只对独立CLI账本比较使用该容差，普通直接/HTTP仍精确比较。

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime/scripts/run_asd_runtime_pipeline.py", line 114, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime/scripts/run_asd_runtime_pipeline.py", line 94, in main
+    checks = check_results(root,dest,cache_bytes)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime/scripts/run_asd_runtime_pipeline.py", line 38, in check_results
+    check_result(cli,old["gsm8k:1196","natural","ASD"],adapter_sha=expected_sha)
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime/scripts/validate_asd_runtime.py", line 47, in check_result
+    raise ValueError("Runtime ASD budget/trajectory changed")
+ValueError: Runtime ASD budget/trajectory changed

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="19" time="2.575" timestamp="2026-10-22T21:45:56.634285" hostname="a6000-Super-Server"><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_matches_trajectory_budget_and_profile" time="0.001" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[token_ids]" time="0.001" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[text]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[finish_reason]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[prompt_sha256]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[snapshot_id]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[execution_profile]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[approximate]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[draft_adapter_sha256]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[rounds]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[budget]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[spent]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[gate]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_acceptance_rejects_incorrect_metadata_or_trajectory[cap]" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_report_rejects_failed_execution_before_reading_results" time="0.006" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_report_distinguishes_cold_costs_from_prior_speedup" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_cold_cli_rounding_requires_explicit_bounded_tolerance" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_cli_tolerance_never_permits_exceeding_actual_budget" time="0.000" /><testcase classname="tests.test_asd_runtime_acceptance" name="test_report_rechecks_real_failed_cli_without_changing_failure_evidence" time="0.001"><failure message="FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime-analysis/results/asd-runtime/ASD_RUNTIME_SOURCE_MANIFEST.json'">def test_report_rechecks_real_failed_cli_without_changing_failure_evidence():
+        from scripts.write_asd_runtime_report import analyze, ROOT
+        evidence = ROOT/"results/asd-runtime"
+        if not evidence.exists():pytest.skip("Real runtime evidence is published after GPU execution")
+        before = (evidence/"execution-verification.json").read_bytes()
+&gt;       result = analyze(ROOT)
+
+tests/test_asd_runtime_acceptance.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/write_asd_runtime_report.py:15: in analyze
+    manifest = json.loads((evidence/"ASD_RUNTIME_SOURCE_MANIFEST.json").read_text(encoding="utf-8"))
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1058: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime-analysis/results/asd-runtime/ASD_RUNTIME_SOURCE_MANIFEST.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+&gt;       return io.open(self, mode, buffering, encoding, errors, newline)
+E       FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-runtime-analysis/results/asd-runtime/ASD_RUNTIME_SOURCE_MANIFEST.json'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1044: FileNotFoundError</failure></testcase></testsuite></testsuites>
