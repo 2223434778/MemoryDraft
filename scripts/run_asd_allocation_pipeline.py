@@ -16,6 +16,7 @@ def main():
     manifest = json.loads((root/manifest_name).read_text())
     dest = root/"results/raw/asd-allocation"
     dest.mkdir(parents=True, exist_ok=False)
+    (root/"artifacts").mkdir(exist_ok=True)
     exe = str(root.parent/".venv-dflash/bin/python")
     env = dict(os.environ, PYTHONPATH=".", OMP_NUM_THREADS="4", HF_HUB_OFFLINE="1")
     def verify():

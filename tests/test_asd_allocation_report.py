@@ -90,3 +90,18 @@ def test_resource_limits_remain_admission_requirements(bad):
         info["cache_bytes"] = 5*2**30
     with pytest.raises(ValueError):
         audit_resources([info], [row])
+
+
+def test_fresh_deployment_has_test_temp_parent_before_any_child(tmp_path, monkeypatch):
+    import json
+    from scripts import run_asd_allocation_pipeline as pipeline
+    monkeypatch.chdir(tmp_path)
+    (tmp_path/"ASD_ALLOCATION_SOURCE_MANIFEST.json").write_text(json.dumps(dict(commit="fixture", files={})))
+    def stop(*args, **kwargs):
+        assert (tmp_path/"artifacts").is_dir()
+        raise RuntimeError("fixture stop before GPU")
+    monkeypatch.setattr(pipeline, "run_owned", stop)
+    with pytest.raises(RuntimeError, match="fixture stop"):
+        pipeline.main()
+    info = json.loads((tmp_path/"results/raw/asd-allocation/execution-verification.json").read_text())
+    assert info["status"] == "failed"

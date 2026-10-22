@@ -2,6 +2,8 @@
 
 ## 2026-10-22 — 阶段3真实计算分配（生成前冻结）
 
+- 首次服务器前置81 passed/8 errors/9.94s，GPU worker未启动。新root未创建artifacts父目录，pytest --basetemp artifacts/test-tmp在部分tmp_path测试初始化失败；仅pipeline补mkdir，并新增空部署目录/首子进程之前父目录存在的测试。相关13 passed/6.65s；生产解码、样本与统计/门槛未改。原失败ZIP及pipeline.log保留artifacts/asd-allocation-failed-preflight-*，后续新目录/新manifest重试。
+
 - 已启动：冻结d7c067bf57b6acbc2c434ad1f43a3337a881b335/1491 blobs，source SHA1f08f58f38c280040ea1f02abcc1200747401d3929933ea5d201f7f5e0dbaa27，本地完整ZIP SHA9af4058570a3f7cbb98966ec110d023e5093341d4a7d83bc0f7b66535144578f。旧已校验完整ZIP+403927B delta（SHAcff3198ff666753222d7559e7cca26c83a791aca8d441a532f6112fe12793f21）在新asd-allocation重建1491目标blob全部SHA通过；DEPLOYMENT_DELTA.json列45个变化/新增文件。2026-10-22 04:00:30 UTC/PID566285启动双卡pipeline，最终结果待完成，未预判门槛。
 
 - 用户要求完成阶段3。协议docs/ASD_ALLOCATION_PROTOCOL.md：六类原开发题各前2，strict/native16/FP32/RMSNorm；不消费reserve，不把已观察validation当独立。动作native16、实际Draft8、Draft16/verify7和Target单步；单步累积真实feature后Draft追赶，pending达到1024强制native。仅可选round_action薄回调，默认旧轨迹不变，未改接受规则/Target输入/权重。
