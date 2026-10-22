@@ -49,8 +49,11 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32):
     @app.get("/healthz")
     async def health(request: Request):
         worker = request.app.state.worker
+        description = worker.engine.describe()
         return {"status": "ready" if not worker.closing else "closing", "methods": list(worker.engine.methods),
-                "synthetic": worker.engine.describe().get("synthetic", False)}
+                "synthetic": description.get("synthetic", False),
+                "approximate_methods": description.get("approximate_methods", []),
+                "draft_adapter_sha256": (description.get("draft_adapter") or {}).get("sha256")}
 
     @app.get("/metrics")
     async def metrics(request: Request):
@@ -110,7 +113,8 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32):
 
         async def stream():
             try:
-                yield event("start", {"request_id": generation.id, "method": body.method})
+                yield event("start", {"request_id": generation.id, "method": body.method,
+                    "approximate": body.method in worker.engine.describe().get("approximate_methods", [])})
                 while True:
                     if await request.is_disconnected():
                         return

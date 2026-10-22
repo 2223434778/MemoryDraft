@@ -19,6 +19,7 @@ from memorydraft.retrieval.reuse import ReuseMatcher
 from memorydraft.retrieval.suffix import SuffixArrayIndex
 from memorydraft.runtime.config import RuntimeConfig
 from memorydraft.runtime.contracts import GenerationResult, RequestCancelled
+from memorydraft.runtime.draft_adapter import DraftAdapterSpec, merge_draft_adapter
 
 
 def verify_dflash_assets(directory: Path):
@@ -39,6 +40,18 @@ class InferenceEngine:
         if draft is not None:
             draft.eval()
         self.methods = ("AR", "DFlash", "R+DFlash") if draft is not None else ("AR",)
+        from memorydraft.backends.asd import ASDConfig
+        self._asd_config = ASDConfig(**config.asd) if config.asd else None
+        if self._asd_config is not None:
+            if draft is None:
+                raise ValueError("ASD requires a loaded DFlash draft")
+            self.methods += ("ASD",)
+        self._adapter_spec = DraftAdapterSpec(**config.draft_adapter) if config.draft_adapter else None
+        self._adapter_info = None
+        if self._adapter_spec is not None:
+            self._adapter_info = merge_draft_adapter(draft, self._adapter_spec)
+        elif getattr(draft, "_memorydraft_adapter_sha256", None) is not None:
+            raise ValueError("An adapted draft requires its matching draft_adapter config")
         self.lock = threading.Lock()
         self.reuse = ReuseConfig(**config.reuse)
         if config.retrieval.startswith("ot"):
@@ -67,8 +80,11 @@ class InferenceEngine:
             raise ValueError("Target must be a prepared local directory; runtime never downloads models")
         if config.backend == "dflash":
             verify_dflash_assets(Path(config.draft))
+        if config.draft_adapter:
+            DraftAdapterSpec(**config.draft_adapter).verify()
         torch.set_num_threads(config.threads)
         torch.set_float32_matmul_precision("highest")
+        torch.backends.cuda.matmul.allow_tf32 = False
         tokenizer = AutoTokenizer.from_pretrained(config.target, local_files_only=True, trust_remote_code=False)
         target = AutoModelForCausalLM.from_pretrained(config.target, local_files_only=True, trust_remote_code=False,
                                                     torch_dtype=torch.float32, attn_implementation="eager")
@@ -87,6 +103,10 @@ class InferenceEngine:
                 "gpu": torch.cuda.get_device_name(self.target.device) if self.target.device.type == "cuda" else None,
                 "target_revision": self.config.target_revision,
                 "execution_profile": self.execution_profile,
+                "approximate_methods": ["ASD"] if self._asd_config is not None else [],
+                "asd": None if self._asd_config is None else {"budget": self._asd_config.budget,
+                    "gate": self._asd_config.gate, "cap": self._asd_config.cap, "selection": "longest", "value": "remaining"},
+                "draft_adapter": self._adapter_info,
                 "regional_compilation": None if self._regional is None else {
                     "backend": self._regional.backend.name, "graphs": len(self._regional.backend.events),
                     "max_graphs": self._regional.backend.max_graphs,
@@ -113,6 +133,11 @@ class InferenceEngine:
                 raise RuntimeError("InferenceEngine is closed")
             if self.config.execution_profile != self.execution_profile:
                 raise ValueError("Reload the engine to change execution_profile")
+            from memorydraft.backends.asd import ASDConfig, ASDVerifier
+            current_asd = ASDConfig(**self.config.asd) if self.config.asd else None
+            current_adapter = DraftAdapterSpec(**self.config.draft_adapter) if self.config.draft_adapter else None
+            if current_asd != self._asd_config or current_adapter != self._adapter_spec:
+                raise ValueError("Reload the engine to change ASD or draft_adapter configuration")
             self.synchronize()
             if self.target.device.type == "cuda":
                 torch.cuda.reset_peak_memory_stats(self.target.device)
@@ -200,6 +225,7 @@ class InferenceEngine:
                                                       config=AlignmentConfig(**self.config.alignment))
             check()
             counters = {}
+            verifier = ASDVerifier(self._asd_config) if method == "ASD" else None
             if method == "AR":
                 class Streamer:
                     prompt_seen = False
@@ -225,9 +251,10 @@ class InferenceEngine:
                         pad_token_id=self.tokenizer.pad_token_id, eos_token_id=self.stops or None,
                     )
             else:
+                verification = {"verifier": verifier, "incremental_stop": True} if verifier is not None else {}
                 detail = generate_reuse(self.target, self.draft, ids, max_new_tokens=request.max_new_tokens,
                                         stop_token_ids=self.stops, matcher=matcher, config=self.reuse,
-                                        on_tokens=commit, should_stop=should_stop, profile=profile)
+                                        on_tokens=commit, should_stop=should_stop, profile=profile, **verification)
                 output = detail.sequences
                 counters = {"rounds": len(detail.rounds), "reuse_rounds": sum(r["route"] == "R" for r in detail.rounds),
                             "reuse_accepted_tokens": sum(r["accepted"] for r in detail.rounds if r["route"] == "R"),
@@ -249,7 +276,9 @@ class InferenceEngine:
             peak = torch.cuda.max_memory_allocated(self.target.device) if self.target.device.type == "cuda" else 0
             return GenerationResult(request.id, method, tokens, text, prompt_tokens, prompt_sha, snapshot.snapshot_id,
                                     latency, first, "eos" if tokens and tokens[-1] in self.stops else "length", peak, counters,
-                                    execution_profile=self.execution_profile)
+                                    execution_profile=self.execution_profile, approximate=verifier is not None,
+                                    asd=None if verifier is None else {**verifier.summary(), "gate": self._asd_config.gate, "cap": self._asd_config.cap},
+                                    draft_adapter_sha256=self._adapter_spec.sha256 if self._adapter_spec is not None and method != "AR" else None)
         finally:
             try:
                 self.synchronize()

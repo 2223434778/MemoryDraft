@@ -26,6 +26,8 @@ class RuntimeConfig:
     benefit: dict = field(default_factory=dict)
     prefix_risk: dict = field(default_factory=dict)
     execution_profile: str = "eager"
+    asd: dict = field(default_factory=dict)
+    draft_adapter: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -34,6 +36,18 @@ class RuntimeConfig:
             raise ValueError("Unknown execution_profile")
         if self.execution_profile != "eager" and self.backend != "dflash":
             raise ValueError("RMSNorm execution requires the audited dflash backend")
+        if type(self.asd) is not dict or type(self.draft_adapter) is not dict:
+            raise ValueError("asd and draft_adapter must be objects")
+        if self.asd:
+            if self.backend != "dflash" or set(self.asd)-{"budget", "gate", "cap"}:
+                raise ValueError("Runtime ASD requires dflash and supports only budget/gate/cap")
+            from memorydraft.backends.asd import ASDConfig
+            ASDConfig(**self.asd)
+        if self.draft_adapter:
+            if self.backend != "dflash" or set(self.draft_adapter) != {"path", "sha256"}:
+                raise ValueError("draft_adapter requires dflash and path/sha256")
+            from memorydraft.runtime.draft_adapter import DraftAdapterSpec
+            DraftAdapterSpec(**self.draft_adapter)
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",
@@ -75,6 +89,9 @@ class RuntimeConfig:
             if value.get(key):
                 candidate = Path(value[key]).expanduser()
                 value[key] = str(candidate if candidate.is_absolute() else path.parent / candidate)
+        if isinstance(value.get("draft_adapter"), dict) and value["draft_adapter"].get("path"):
+            candidate = Path(value["draft_adapter"]["path"]).expanduser()
+            value["draft_adapter"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
         return cls(**value)
 
     def as_dict(self):

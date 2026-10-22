@@ -318,3 +318,13 @@ results/asd-adaptation-followup/** -text
 results/asd-adaptation-followup/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-adaptation-followup/**/*.log -whitespace
 results/asd-adaptation-followup/**/*.xml -whitespace
+memorydraft/serving/app.py text eol=lf
+scripts/*asd_runtime*.py text eol=lf
+tests/test_runtime_asd.py text eol=lf
+tests/test_asd_runtime_acceptance.py text eol=lf
+docs/ASD_RUNTIME*.md text eol=lf
+examples/request-asd*.json text eol=lf
+results/asd-runtime/** -text
+results/asd-runtime/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-runtime/**/*.log -whitespace
+results/asd-runtime/**/*.xml -whitespace

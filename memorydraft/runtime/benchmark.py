@@ -84,7 +84,7 @@ def summarize(rows, methods, *, baseline="AR", synthetic=False):
 
 
 def compare(result, reference):
-    return (result.token_ids == reference.token_ids and result.prompt_sha256 == reference.prompt_sha256
+    return (not getattr(result, "approximate", False) and result.token_ids == reference.token_ids and result.prompt_sha256 == reference.prompt_sha256
             and result.snapshot_id == reference.snapshot_id
             and getattr(result, "execution_profile", "eager") == getattr(reference, "execution_profile", "eager"))
 
@@ -97,6 +97,8 @@ def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
         raise ValueError("Benchmark methods must be unique and supported by the engine")
     if type(repeats) is not int or not 1 <= repeats <= 1000:
         raise ValueError("repeats must be in [1, 1000]")
+    if set(methods) & set(engine.describe().get("approximate_methods", [])):
+        raise ValueError("Strict benchmark excludes approximate methods; use the ASD runtime acceptance runner")
     if "AR" not in methods:
         methods.insert(0, "AR")
     output = Path(output)
@@ -180,7 +182,7 @@ def check_regression(current, baseline, *, max_slowdown=.10):
         rows = [json.loads(line) for line in (directory / "rows.jsonl").read_text(encoding="utf-8").splitlines()]
         if info["status"] != "complete" or summary["synthetic"]:
             raise ValueError("Regression requires completed real-model runs")
-        if not rows or any(not row["correct"] for row in rows):
+        if not rows or any(not row["correct"] or row.get("approximate", False) for row in rows):
             raise ValueError("Regression requires strictly correct nonempty rows")
         runs.append((info, summary, rows))
     new, old = runs
@@ -192,6 +194,9 @@ def check_regression(current, baseline, *, max_slowdown=.10):
             raise ValueError("Incomparable regression environment: " + key)
     if new[0]["engine"].get("execution_profile", "eager") != old[0]["engine"].get("execution_profile", "eager"):
         raise ValueError("Incomparable regression environment: execution_profile")
+    if ((new[0]["engine"].get("draft_adapter") or {}).get("sha256") !=
+            (old[0]["engine"].get("draft_adapter") or {}).get("sha256")):
+        raise ValueError("Incomparable regression environment: draft_adapter")
     if not new[0]["engine"]["target_revision"]:
         raise ValueError("Regression requires a pinned Target revision")
 

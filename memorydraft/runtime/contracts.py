@@ -56,6 +56,9 @@ class GenerationResult:
     peak_gpu_bytes: int = 0
     counters: dict[str, int | float] = field(default_factory=dict)
     execution_profile: str = "eager"
+    approximate: bool = False
+    asd: dict | None = None
+    draft_adapter_sha256: str | None = None
 
 
 TokenCallback = Callable[[list[int]], None]

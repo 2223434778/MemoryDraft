@@ -1,0 +1,12 @@
+{
+  "id": "gsm8k:1196",
+  "user_id": "asd-suite-gsm8k:1196",
+  "order": 1,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Solve the following math problem step by step. End with a line '#### <answer>'.\n\nAlain's mom bought 5 packs of red pens and also bought twice the amount of black pens than the red. If each pack has 5 pens, how many pens does Alain have?"
+    }
+  ],
+  "max_new_tokens": 4096
+}

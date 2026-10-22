@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-22 — 数学ASD工程接入（GPU验收准备）
+
+- 用户授权落实接纳方案的工程入口。runtime显式增加ASD B8/g.25/cap2和startup-only位置适配dense合并；复用原ASDVerifier/AdapterBank及RMSNorm，Target输入和原strict接受规则保持。每请求预算/KV独立，结果/SSE携带近似标记、账本及adapter SHA；严格benchmark拒绝近似方法，原eager/面试版保留。
+- 新configs/runtime-dflash-asd{,-position}.json、问题示例、prepare/validate/run/write_asd_runtime脚本及docs/ASD_RUNTIME{,_PROTOCOL}.md。位置权重SHA42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e，约2.1MB只读旧checkpoint并复制到新目录，不上传权重。新root asd-runtime，两卡各16直接/4 AR、一个独立CLI冷启动、HTTP JSON/SSE/取消恢复与4请求并发2；这是工程验收，不重新估计历史3.23%收益。
+- 本机相关112 passed/11.95s（artifacts/asd-runtime-related-v3-local.xml）；之前两次受限Windows环境在16项后停留并中断，不算通过。允许本机通信后完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/asd-runtime-full-tmp --junitxml=artifacts/asd-runtime-full-local.xml -x --tb=short`：863 passed/7 skipped/123.83s，一个既有starlette警告。报告/矩阵守卫后续独立相关检查另记，不追算进已完成全量。
+- 报告及完整16格矩阵判定追加后，`.venv\Scripts\python.exe -m pytest -q tests/test_asd_runtime_acceptance.py --basetemp artifacts/asd-runtime-report-tmp --junitxml=artifacts/asd-runtime-report-local.xml -x --tb=short`：16 passed/4.71s。固定协议和执行判定在GPU前冻结，canonical Git blobs部署到全新目录。准确入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_runtime_pipeline`；本条尚无GPU验收结果，不启动新训练/seed或阶段6。
+
 ## 2026-10-22 — 用户接纳数学ASD位置适配收益
 
 - 用户明确接纳已测场景收益，不要求尝试不同训练seed；本阶段据此接纳ordinary-position作为数学ASD的有效优化方案，取消此前补seed的后续安排。贡献表述为已实现、已实测的位置匹配严格前缀离线适配：在固定Qwen3-8B/DFlash b16/ASD配置的新16题上，128 token时延降低3.23%，验证调用331→319，适配未新增答案错误。旧ASD前缀的局部正结果也保留。
