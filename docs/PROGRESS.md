@@ -2,6 +2,8 @@
 
 ## 2026-10-22 — 阶段3真实计算分配（生成前冻结）
 
+- 已启动：冻结d7c067bf57b6acbc2c434ad1f43a3337a881b335/1491 blobs，source SHA1f08f58f38c280040ea1f02abcc1200747401d3929933ea5d201f7f5e0dbaa27，本地完整ZIP SHA9af4058570a3f7cbb98966ec110d023e5093341d4a7d83bc0f7b66535144578f。旧已校验完整ZIP+403927B delta（SHAcff3198ff666753222d7559e7cca26c83a791aca8d441a532f6112fe12793f21）在新asd-allocation重建1491目标blob全部SHA通过；DEPLOYMENT_DELTA.json列45个变化/新增文件。2026-10-22 04:00:30 UTC/PID566285启动双卡pipeline，最终结果待完成，未预判门槛。
+
 - 用户要求完成阶段3。协议docs/ASD_ALLOCATION_PROTOCOL.md：六类原开发题各前2，strict/native16/FP32/RMSNorm；不消费reserve，不把已观察validation当独立。动作native16、实际Draft8、Draft16/verify7和Target单步；单步累积真实feature后Draft追赶，pending达到1024强制native。仅可选round_action薄回调，默认旧轨迹不变，未改接受规则/Target输入/权重。
 - 每题1源native512、四请求动作128上限各3次（其中AR为原生generate），源轮0/4/12各四动作×3次保留实际KV的64新token局部检查；均遵守EOS，缺失状态不补。最多12+144+432=588主要生成，另10短warmup。局部clock从当前起草前起算，包含该动作及实际后续，前缀共同重放排除；请求clock全在线。原完整dev DFlash/RMSNorm token/prompt/snapshot先核对，全部数值分歧与失败保留。
 - 先比最好固定动作的有限oracle，再留一次重复防选噪声；总体或任一>=2请求家族须oracle省>=5%、跨重复省>=3%，全题输出安全且同范围留题单层stump再省>=2%才进入实际闭环候选。四固定廉价特征/每叶至少3状态，训练不见本题；家族报告沿用全体其他题的同一个留题模型。若不通过结束本四动作阶段，不扫更多特征/长度；通过再按协议做完整生成与质量检查，不把局部oracle当线上提速。
