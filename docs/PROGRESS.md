@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-22 — 阶段4多候选与局部修复（生成前准备）
+
+- 用户授权阶段4。检索DFlash、BASTION(arXiv2605.29727及官方repo)、OPT-Tree(TACL2025)、ReTrace(arXiv2608.29748v2)原始来源，选择免训练有限方案；没有复制新上游源码，不增加许可依赖，不宣称原创或完整论文复现。新增draft_tree.py和candidate_repair.py，adapter仅可选严格tree入口，默认路径/Target输入/权重/接受规则保持。
+- 冻结协议ASD_CANDIDATE_PROTOCOL.md：六类原开发题各2，native、打包线性控制、固定Top-2单替换树32/48、一次旧后缀重验4/8，三重复共216完整自然请求4096上限/EOS，另12短warmup。树单Target调用、祖先隔离/深度位置/所选KV及feature提交；修复只重验token，不提交错误前缀的Target状态。全部在线构造/同步/KV成本计入。原完整DFlash/RMSNorm输出与质量参照保留。
+- 准入整体净省>=3%或家族>=5%且两题都快，三重复方向一致、每题严格输出/输入/轨迹安全与资源满足才扩全部48开发题；不使用已观察validation作新独立，不生成reserve。完整BASTION自适应树及ReTrace表示融合未做，有限负结果不能否定这些方法。
+- 首轮tiny检查81 passed/2 skipped/12.45s，相关94 passed/2 skipped/12.28s；随后补强制分支切换的跨轮feature测试，将完整回归。记录artifacts/stage4-{tiny,related}-local.xml。服务器两卡19MiB/0%；新目录asd-candidate-pilot、各worker3600秒、图8/backend300秒/cache4GiB/allocated46GiB；主协议/统计GPU前提交冻结，旧结果和infra引用保护。尚无本轮GPU性能结论。
+- 完整回归791 passed/5 skipped/109.86s（含HTTP回环，artifacts/stage4-full-local.xml）；随后报告准入修正为必须全题安全，另14 passed/6.74s。`git diff --check`通过。执行`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/stage4-full-tmp --junitxml=artifacts/stage4-full-local.xml -x --tb=short`；报告追加`tests/test_asd_candidate_report.py --basetemp artifacts/stage4-report-final-tmp --junitxml=artifacts/stage4-report-final-local.xml`。准备commit导出canonical Git source，尚未GPU计时。
+
 ## 2026-10-22 — 阶段3计算分配检查完成（按门槛停止扩测）
 
 - 冻结cea9ebb92db4879144b79b0338cd1272b38b0a35/1491 blobs，source SHA5dc11ff081b1c81798e2f6ee4bd5c8e227bc5b8d828b178948261538a9af3bf0；asd-allocation-v2/PID568165于04:02:59–04:09:43 UTC完成，ASD ALLOCATION COMPLETE，前后1491 SHA相同，两worker0退出、两卡19MiB/0%。旧完整ZIP+404622B delta重建记录保留deployment-delta.json，原前置失败目录/ZIP未覆盖。

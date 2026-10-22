@@ -55,7 +55,8 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    draft_block_size: int | None = None,
                    verify_length: Callable[[int], int] | None = None,
                    incremental_stop: bool = False,
-                   round_action: Callable[[int, int, tuple], str] | None = None) -> ReuseGeneration:
+                   round_action: Callable[[int, int, tuple], str] | None = None,
+                   tree_config=None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -70,6 +71,13 @@ guided R may replace a block after its draft forward has already run.
     if round_action is not None and (matcher is not None or route_sequence or verify_length is not None
                                      or draft_block_size is not None or not trace):
         raise ValueError("Round allocation requires traced, exclusive model drafting")
+    if tree_config is not None:
+        from memorydraft.backends.draft_tree import TreeConfig
+        if (not isinstance(tree_config, TreeConfig) or matcher is not None or verifier is not None
+                or round_action is not None or route_sequence or verify_length is not None or draft_block_size is not None):
+            raise ValueError("Draft tree requires exclusive strict native drafting")
+        if target.config._attn_implementation != "eager":
+            raise ValueError("Draft tree requires the audited eager attention backend")
     if max_new_tokens == 0:
         return ReuseGeneration(input_ids.clone())
     if should_stop and should_stop():
@@ -193,13 +201,28 @@ guided R may replace a block after its draft forward has already run.
             if type(length) is not int or not 1 <= length < block.shape[1]:
                 raise ValueError("Verification length must select a nonempty proposal prefix")
             block = block[:, :length + 1]
+        tree = None
+        verify_kwargs = {}
+        verify_block = block
+        if tree_config is not None:
+            from memorydraft.backends.draft_tree import build_tree, commit_tree_cache
+            with mark("build_tree"):
+                tree = build_tree(block, logits, tree_config)
+                verify_block = tree.tokens
+                verify_positions = block.new_tensor([tree.depths])+start
+                verify_kwargs["attention_mask"] = tree.mask(start, target.dtype)
+        else:
+            verify_positions = positions[:, start:start + block.shape[1]]
         with mark("target_verify"):
-            output = target(block, position_ids=positions[:, start:start + block.shape[1]],
-                            past_key_values=target_cache, use_cache=True, output_hidden_states=True)
+            output = target(verify_block, position_ids=verify_positions,
+                            past_key_values=target_cache, use_cache=True, output_hidden_states=True, **verify_kwargs)
         with mark("accept_decision"):
             posterior = output.logits.argmax(dim=-1)
             decision = None
-            if allocation == "target":
+            if tree is not None:
+                path, recovery, native_accepted = tree.select(posterior)
+                accepted = len(path)-1
+            elif allocation == "target":
                 accepted = 0
             elif verifier is None:
                 accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
@@ -208,12 +231,21 @@ guided R may replace a block after its draft forward has already run.
                 accepted = decision.accepted
         with mark("commit_kv"):
             advance = accepted + 1
-            ids[:, start:start + advance] = block[:, :advance]
-            ids[:, start + advance] = posterior[:, accepted]
+            if tree is None:
+                ids[:, start:start + advance] = block[:, :advance]
+                ids[:, start + advance] = posterior[:, accepted]
+            else:
+                selected = block.new_tensor(path)
+                ids[:, start:start + advance] = tree.tokens.index_select(1, selected)
+                ids[:, start + advance] = recovery
+                valid_features = _features(output, draft.target_layer_ids).index_select(1, selected)
+                commit_tree_cache(target_cache, start, path)
             old_start = start
             start += advance
             target_cache.crop(start)
-            pending.append(_features(output, draft.target_layer_ids)[:, :advance, :].clone())
+            if tree is None:
+                valid_features = _features(output, draft.target_layer_ids)[:, :advance, :].clone()
+            pending.append(valid_features)
             pending_tokens += advance
             result.feature_peak_tokens = max(result.feature_peak_tokens, pending_tokens)
         if proposal is not None:
@@ -235,6 +267,9 @@ guided R may replace a block after its draft forward has already run.
                                          draft_prefix=getattr(proposal, "draft_prefix", None))
             if allocation is not None:
                 result.rounds[-1]["allocation"] = allocation
+            if tree is not None:
+                result.rounds[-1].update(tree_nodes=len(tree.parents), native_accepted=native_accepted,
+                                         tree_path=path, tree_gain=accepted-native_accepted)
         step += 1
         available = min(start + 1, limit)
         with mark("publish_stop"):
