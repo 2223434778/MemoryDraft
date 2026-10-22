@@ -29,7 +29,7 @@ def prepare(source, output):
         raise ValueError("Changed official GSM test source")
     exclusion_files, used_ids, used_text = {}, set(), set()
     for path in sorted((ROOT/"data/research").rglob("*.json")):
-        if path.is_relative_to(output):
+        if path.is_relative_to(output) or path.is_relative_to(ROOT/f"data/research/{STUDY}"):
             continue
         found = list(old_questions(json.loads(path.read_text(encoding="utf-8"))))
         if found:

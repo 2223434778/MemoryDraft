@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-22 — 阶段5后续：GPU完成及数据重导出修复
+
+- GPU实际源411c2211e6cdfe9d20365d40986f41de4590fdf3，1651 blobs，source SHAbc433a997c85ded26a40342e90f4ea41b3612a19e0b185ad38660072b9f70190，PID852273于11:44:14 UTC/北京时间19:44:14启动。双卡80 teacher状态、单新增ordinary-position适配器、960正式+24 AR参考全部完成，1651源文件前后SHA一致，旧160features和4个adapter SHA前后相同；正式新图0、全部strict逐ID与AR相同。成功ZIP768701B/SHA1f42320a13b75717747bd7ff5b38e91e52aa9274292c535b076c358fcb7c4cd4，已下载并逐member校验；后查两卡19MiB/0%。
+- 运行后发现prepare脚本导出到新目录时会把已有自身题集加入排重，导致重导出题集漂移。仅修复prepare排重时始终忽略canonical自身目录，不改变本轮records/protocol/GPU执行源码。先单测真实复现1 failed/3.89s，修复后两选择/机制测试文件18 passed/23.46s；actual官方数据重导出records SHA仍d0f3d12e6f0d92c4a1ed1fbd1e5b86d3785d9d63192cf5e662253b5342cbbfc2，记录与manifest逐字节核验。此修复单独冻结，服务器保持原411c221不变，不重跑训练或计时。
+- 本地829 passed/7 skipped/128.95s属于GPU前全量；服务器104 passed/24.94s包含真实PEFT/tiny DFlash。后续数据重导出修复只跑相关18项，不能把新增测试声称已在先前全量/服务器运行。当前服务器与本地统计已生成，下一步完成独立题质量/位置对照归因及发布。
+
 ## 2026-10-22 — 阶段5后续同位置控制与独立GSM（执行准备）
 
 - 用户授权继续上一轮建议。复用旧80源/160teacher状态和两固定adapter，不重训ASD组；全部80个ASD采样位置都能在严格源EOS前到达，新增ordinary-position截取严格内容至相同generated_before，64训练/16额外诊断状态，同prompt/长度/anchor位置，80对内容均不同。原32题/8内部校准、seed、128更新/累积2、lr/rank/loss/shuffle及原32状态混合校准选模规则不变；新16状态不参与选模。
