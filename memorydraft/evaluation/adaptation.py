@@ -108,16 +108,26 @@ def evaluate_blocks(target, draft, examples):
 
 
 def attach_lora(target, draft):
+    linears = [m for n, m in draft.named_modules() if n.rsplit(".", 1)[-1] in {"q_proj", "v_proj"}]
+    if not linears or any(type(m) is not torch.nn.Linear or m.weight.dtype != torch.float32 for m in linears):
+        raise ValueError("This adapter experiment requires native FP32 Linear projections")
     import peft
     from peft import LoraConfig, get_peft_model
+    from peft.tuners.lora import model as lora_module
+    from unittest.mock import patch
     if peft.__version__ != "0.11.1":
         raise RuntimeError("Bounded training pins PEFT 0.11.1")
     target.requires_grad_(False)
     draft.requires_grad_(False)
     torch.manual_seed(SEED)
     # Generic PEFT forwarding preserves DFlash's custom target_hidden interface.
-    wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
-                             target_modules=["q_proj", "v_proj"], bias="none"))
+    # PEFT 0.11 probes an unrelated system bitsandbytes installation even for
+    # native FP32 Linear. Scope the dispatch choice to these validated layers;
+    # no package or CUDA setting changes, and both optional probes are restored.
+    with patch.object(lora_module, "is_bnb_available", return_value=False), \
+            patch.object(lora_module, "is_bnb_4bit_available", return_value=False):
+        wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
+                                 target_modules=["q_proj", "v_proj"], bias="none"))
     return wrapped
 
 

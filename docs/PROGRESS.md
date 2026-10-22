@@ -2,6 +2,8 @@
 
 ## 2026-10-22 — 阶段5等预算Draft适配（执行准备）
 
+- 首次冻结9bb81bed254761efd4cef30d2845a59cfa71126d/1584 blobs，source SHAcfd25ba4da9e7c0dd0beed31d0c804abda403f5a3b49f8f06db0ec2b4b2d058a，本地完整ZIP SHA6098cbffee0155719ce5d41d9fc7aa8b9ccaa485fd9214bd9e0a124580975327；1232175B delta SHAe31988f5f71b11a1a053346d1cbe1b472f86a1ea7606ef9717fd0066ea8ebe51。新asd-adaptation/PID695345于07:28:44 UTC启动，但服务器CPU前置2 failed/84 passed/9.91s，GPU worker未启动。PEFT0.11探测系统旧bitsandbytes而缺cuda124.so，非PyTorch CUDA故障；失败ZIP另存asd-adaptation-failed-peft-results.zip，82100B/SHA1032258be91b46cc780f2fea789ed7c4b2b99577bf28d7cb26ea6de935fdc015。
+- 最小修复只让已验证原生FP32 Linear在get_peft_model期间跳过两项不使用的bnb量化探测，并恢复全局探测函数；不升级共享环境或改精度。测试补检查探测恢复与非FP32拒绝。训练预算/数据/统计不变，将新source/新目录重试，保留原失败现场。
 - 用户授权阶段5。新实现复用PEFT0.11.1和已审计DFlash，原推理引擎未改。旧16状态检查只是不支持当时的必要性假设，不能代替训练。检索DFlash原训练、AdaFlash2607.19223v3、Draft-OPD2605.29343，选择一次离线硬标签可行性，不假称完整KL/on-policy在线算法复现。
 - 新官方GSM train固定commit3101c7d5072418e28b9008a6636bde82a006892c，raw SHA17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465；32训练/8内部校准按固定SHA排序，排除与完整官方test的规范化精确重合（0），只保存问题/来源元数据，没有参考答案。questions SHA a2455b6fb3571d3a2e689d392e771c2d3278fb99f0beefa4fb14cdecef82dab5，MIT notice保留。Windows首准备命令遇UTF8默认GBK读取错误，显式UTF8后成功，未生成GPU数据。
 - 协议docs/ASD_ADAPTATION_PROTOCOL.md：原strict/ASD各256源轨迹，在真实Draft轮4/12取两源共同存在的状态；重新prefill实际上下文提取anchor前features，teacher新生成至多15标签，EOS后padding不计loss。禁止复用错误Target状态或把ASD旧候选当正确标签；source缺失/进度差异和ASD此前预算均记录。hidden缓存限16GiB，不上传。

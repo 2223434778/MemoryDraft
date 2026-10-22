@@ -101,7 +101,10 @@ def test_real_peft_updates_only_adapter_and_matches_dense_merge(tiny):
     target, draft = deepcopy(tiny.target), ToyDraft()
     original = deepcopy(draft)
     target_before = {n:p.clone() for n, p in target.state_dict().items()}
+    from peft.tuners.lora import model as lora_module
+    probes = lora_module.is_bnb_available, lora_module.is_bnb_4bit_available
     model = attach_lora(target, draft)
+    assert (lora_module.is_bnb_available, lora_module.is_bnb_4bit_available) == probes
     guard = parameter_guard(target)
     sample = teacher_example(target, tiny.reference[:, :8], [0, 1], 4)
     params = [p for p in model.parameters() if p.requires_grad]
@@ -153,3 +156,11 @@ def test_fixed_evaluation_coverage_is_eight_domain_plus_two_each_transfer():
     from scripts.run_asd_adaptation_eval import records
     from collections import Counter
     assert dict(Counter(r["benchmark"] for r in records())) == dict(gsm8k=8, math500=2, mbpp=2, humaneval=2, squad=2, json=2)
+
+
+def test_non_fp32_projection_rejected_before_optional_backend_dispatch(tiny):
+    target = deepcopy(tiny.target)
+    before = parameter_guard(target)
+    with pytest.raises(ValueError, match="native FP32"):
+        attach_lora(target, ToyDraft().double())
+    assert parameter_guard(target) == before

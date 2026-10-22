@@ -8,6 +8,8 @@
 - AdaFlash https://arxiv.org/html/2607.19223v3 、Draft-OPD https://arxiv.org/abs/2605.29343 支持在部署到达的前缀上纠正Draft。本轮只做冻结原Draft采集一次、teacher新生成硬标签的离线适配；没有完整反向KL/混合损失、在线刷新buffer/长度头或异步serving，不称这些论文的完整复现。
 - LoRA复用现有PEFT0.11.1，generic PeftModel forwarding适配DFlash custom target_hidden，不改模型forward。q_proj/v_proj、rank8/alpha16/dropout0/biasnone；冻结Target和原Draft权重，只训练LoRA。推理时合并成原dense投影，不新增在线LoRA分支。资产许可保持现有MIT，未引入新上游源码；数据GSM8K MIT notice随子集保留。
 
+执行前置修复：服务器系统旧bitsandbytes缺少CUDA124库，PEFT0.11.1创建普通FP32 Linear时仍会探测它。仅对已验证type==torch.nn.Linear/dtype==FP32的投影，在get_peft_model调用期间临时禁用两个bnb量化dispatcher availability探测并自动恢复；不修改共享环境/库/精度，不假装CUDA不可用，也不支持量化模型。首次2 failed/84 passed的CPU前置与源commit9bb81be归档保留，GPU worker未启动。预算/问题/主统计不变，新root重试。
+
 Target输入、权重、greedy、非thinking、原native16和验证规则固定；训练/teacher采集FP32/eager，评估统一FP32/highest/TF32关闭/eager attention/rmsnorm-inductor强执行profile。融合norm只在评估启用，训练保留普通可微forward；不混合不同profile的时延比较。ASD继续原B8/g.25/M2/longest，不重定价，不使用树/R/OT，不把近似输出当严格加速。
 
 ## 数据隔离及实际轨迹
