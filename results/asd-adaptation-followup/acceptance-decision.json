@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "date": "2026-10-22",
+  "authority": "User decision in this conversation",
+  "decision": "Accept measured position-matched strict-prefix adaptation gains in the evaluated mathematical ASD scenario",
+  "accepted_variant": "ordinary-position",
+  "comparison": "Same-profile base ASD",
+  "scope": {
+    "target": "Qwen3-8B",
+    "draft": "DFlash b16",
+    "benchmark": "GSM8K",
+    "independent_requests": 16,
+    "training_seed": 20261022
+  },
+  "measured": {
+    "prefix128_latency_ratio": 0.9676828748565943,
+    "natural_latency_ratio": 0.926837779432747,
+    "correct": 14,
+    "new_answer_losses": 0
+  },
+  "additional_training_seeds_required": false,
+  "new_gpu_runs": 0,
+  "next_priority": "Consolidate the fixed recipe, adapter identity and engineering use",
+  "original_asd_content_increment_gate": false,
+  "original_publication_commit": "bd993e2df8ffbad13f46913a97f1cf3cab2371a7",
+  "preserved_publication_sha256": "4952b1ebdbe0acb3fa09620514f44c8c3a215096a98853859c07b40e4bfb1466",
+  "changed_interpretation_files": [
+    "README.md",
+    "docs/ASD_ADAPTATION_FOLLOWUP_FINDINGS.md",
+    "docs/ASD_RESEARCH_ROADMAP.md",
+    "docs/PROGRESS.md"
+  ],
+  "prior_published_files_unchanged": 60
+}
