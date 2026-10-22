@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="86" time="9.918" timestamp="2026-10-22T15:28:46.516876" hostname="a6000-Super-Server"><testcase classname="tests.test_adaptation" name="test_teacher_features_end_before_anchor_and_labels_follow_actual_prefix" time="0.092" /><testcase classname="tests.test_adaptation" name="test_corrected_teacher_labels_use_changed_prefix_not_old_draft_suffix" time="0.012" /><testcase classname="tests.test_adaptation" name="test_position_loss_masks_padding_and_prioritizes_first_tokens" time="0.015" /><testcase classname="tests.test_adaptation" name="test_offline_dense_merge_restores_base_and_does_not_accumulate" time="0.002" /><testcase classname="tests.test_adaptation" name="test_calibration_is_request_balanced_and_model_forward_is_differentiable" time="0.011" /><testcase classname="tests.test_adaptation" name="test_real_peft_updates_only_adapter_and_matches_dense_merge" time="0.513"><failure message="RuntimeError: &#10;        CUDA Setup failed despite GPU being available. Please run the following command to get more information:&#10;&#10;        python -m bitsandbytes&#10;&#10;        Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them&#10;        to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes&#10;        and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....2359e+00],
+         [ 9.5407e-03, -3.5448e-02, -1.7163e-02,  ..., -2.1120e-01,
+          -4.0152e-01,  1.9563e+00]]]))
+
+    def test_real_peft_updates_only_adapter_and_matches_dense_merge(tiny):
+        peft = pytest.importorskip("peft")
+        if peft.__version__ != "0.11.1":
+            pytest.skip("Pinned PEFT stack only")
+        target, draft = deepcopy(tiny.target), ToyDraft()
+        original = deepcopy(draft)
+        target_before = {n:p.clone() for n, p in target.state_dict().items()}
+&gt;       model = attach_lora(target, draft)
+
+tests/test_adaptation.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+memorydraft/evaluation/adaptation.py:119: in attach_lora
+    wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/mapping.py:145: in get_peft_model
+    return PeftModel(model, peft_config, adapter_name=adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/peft_model.py:138: in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:139: in __init__
+    super().__init__(model, config, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:166: in __init__
+    self.inject_adapter(self.model, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:372: in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:223: in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:291: in _create_new_module
+    from .bnb import dispatch_bnb_8bit
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/bnb.py:19: in &lt;module&gt;
+    import bitsandbytes as bnb
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/__init__.py:6: in &lt;module&gt;
+    from . import cuda_setup, utils, research
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/__init__.py:1: in &lt;module&gt;
+    from . import nn
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/__init__.py:1: in &lt;module&gt;
+    from .modules import LinearFP8Mixed, LinearFP8Global
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/modules.py:8: in &lt;module&gt;
+    from bitsandbytes.optim import GlobalOptimManager
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/optim/__init__.py:6: in &lt;module&gt;
+    from bitsandbytes.cextension import COMPILED_WITH_CUDA
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    import ctypes as ct
+    import os
+    import torch
+    
+    from pathlib import Path
+    from warnings import warn
+    
+    from bitsandbytes.cuda_setup.main import CUDASetup
+    
+    
+    setup = CUDASetup.get_instance()
+    if setup.initialized != True:
+        setup.run_cuda_setup()
+    
+    lib = setup.lib
+    try:
+        if lib is None and torch.cuda.is_available():
+            CUDASetup.get_instance().generate_instructions()
+            CUDASetup.get_instance().print_log_stack()
+&gt;           raise RuntimeError('''
+            CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+    
+            python -m bitsandbytes
+    
+            Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+            to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+            and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues''')
+E           RuntimeError: 
+E                   CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+E           
+E                   python -m bitsandbytes
+E           
+E                   Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+E                   to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+E                   and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cextension.py:20: RuntimeError</failure></testcase><testcase classname="tests.test_adaptation" name="test_audited_real_dflash_accepts_peft_gradient" time="0.598"><failure message="RuntimeError: &#10;        CUDA Setup failed despite GPU being available. Please run the following command to get more information:&#10;&#10;        python -m bitsandbytes&#10;&#10;        Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them&#10;        to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes&#10;        and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues">tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....2359e+00],
+         [ 9.5407e-03, -3.5448e-02, -1.7163e-02,  ..., -2.1120e-01,
+          -4.0152e-01,  1.9563e+00]]]))
+
+    def test_audited_real_dflash_accepts_peft_gradient(tiny):
+        import transformers
+        peft = pytest.importorskip("peft")
+        directory = Path(__file__).resolve().parents[1]/"models/dflash-qwen3-8b"
+        if transformers.__version__ != "4.57.3" or not (directory/"config.json").exists():
+            pytest.skip("Audited DFlash stack only on prepared server")
+        from transformers import AutoConfig, AutoModel
+        config = AutoConfig.from_pretrained(directory, trust_remote_code=True)
+        config.hidden_size, config.intermediate_size = 32, 64
+        config.num_hidden_layers, config.num_target_layers = 1, 2
+        config.num_attention_heads, config.num_key_value_heads, config.head_dim = 4, 2, 8
+        config.layer_types, config.block_size, config.vocab_size = ["full_attention"], 4, 32
+        config.dflash_config = dict(target_layer_ids=[0, 1], mask_token_id=31)
+        config._attn_implementation = "eager"
+        draft = AutoModel.from_config(config, trust_remote_code=True).float()
+        target = deepcopy(tiny.target)
+&gt;       model = attach_lora(target, draft)
+
+tests/test_adaptation.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+memorydraft/evaluation/adaptation.py:119: in attach_lora
+    wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/mapping.py:145: in get_peft_model
+    return PeftModel(model, peft_config, adapter_name=adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/peft_model.py:138: in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:139: in __init__
+    super().__init__(model, config, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:166: in __init__
+    self.inject_adapter(self.model, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:372: in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:223: in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:291: in _create_new_module
+    from .bnb import dispatch_bnb_8bit
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/bnb.py:19: in &lt;module&gt;
+    import bitsandbytes as bnb
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/__init__.py:6: in &lt;module&gt;
+    from . import cuda_setup, utils, research
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/__init__.py:1: in &lt;module&gt;
+    from . import nn
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/__init__.py:1: in &lt;module&gt;
+    from .modules import LinearFP8Mixed, LinearFP8Global
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/modules.py:8: in &lt;module&gt;
+    from bitsandbytes.optim import GlobalOptimManager
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/optim/__init__.py:6: in &lt;module&gt;
+    from bitsandbytes.cextension import COMPILED_WITH_CUDA
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    import ctypes as ct
+    import os
+    import torch
+    
+    from pathlib import Path
+    from warnings import warn
+    
+    from bitsandbytes.cuda_setup.main import CUDASetup
+    
+    
+    setup = CUDASetup.get_instance()
+    if setup.initialized != True:
+        setup.run_cuda_setup()
+    
+    lib = setup.lib
+    try:
+        if lib is None and torch.cuda.is_available():
+            CUDASetup.get_instance().generate_instructions()
+            CUDASetup.get_instance().print_log_stack()
+&gt;           raise RuntimeError('''
+            CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+    
+            python -m bitsandbytes
+    
+            Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+            to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+            and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues''')
+E           RuntimeError: 
+E                   CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+E           
+E                   python -m bitsandbytes
+E           
+E                   Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+E                   to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+E                   and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cextension.py:20: RuntimeError</failure></testcase><testcase classname="tests.test_adaptation" name="test_frozen_question_subset_has_no_answers_or_evaluation_questions" time="0.002" /><testcase classname="tests.test_adaptation" name="test_fixed_evaluation_coverage_is_eight_domain_plus_two_each_transfer" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_matched_budget_natural_and_equal_prefix_costs_are_separate" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_unusable_measurements_rejected[missing]" time="0.001" /><testcase classname="tests.test_asd_adaptation_report" name="test_unusable_measurements_rejected[duplicate]" time="0.000" /><testcase classname="tests.test_asd_adaptation_report" name="test_unusable_measurements_rejected[nan]" time="0.000" /><testcase classname="tests.test_asd_adaptation_report" name="test_unusable_measurements_rejected[zero]" time="0.000" /><testcase classname="tests.test_asd_adaptation_report" name="test_quality_and_numerical_failures_are_retained[strict]" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_quality_and_numerical_failures_are_retained[input]" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_quality_and_numerical_failures_are_retained[budget]" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_quality_and_numerical_failures_are_retained[base]" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_quality_and_numerical_failures_are_retained[unstable]" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_shortened_asd_output_reports_quality_loss_and_cannot_enter_full128" time="0.002" /><testcase classname="tests.test_asd_adaptation_report" name="test_fresh_pipeline_artifacts_parent_created_before_any_gpu" time="0.002" /><testcase classname="tests.test_dflash_reuse" name="test_execution_scopes_preserve_real_target_trajectory" time="1.722" /><testcase classname="tests.test_dflash_reuse" name="test_draft_diagnostic_observer_preserves_generation_and_observes_only_proposals" time="0.057" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[None]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[0]" time="0.052" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_features_survive_reuse_and_draft_switches[2]" time="0.023" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[0]" time="0.000" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[1]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[2]" time="0.005" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[9]" time="0.009" /><testcase classname="tests.test_dflash_reuse" name="test_budget_and_eos_do_not_commit_rejected_suffix[29]" time="0.020" /><testcase classname="tests.test_dflash_reuse" name="test_pending_feature_limit_forces_real_draft_catchup" time="0.018" /><testcase classname="tests.test_dflash_reuse" name="test_official_arctic_candidates_with_real_target" time="0.021" /><testcase classname="tests.test_dflash_reuse" name="test_cursor_realigns_after_one_changed_token_and_stays_in_snapshot" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_invalid_controls_are_explicit" time="0.000" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[None]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[0]" time="0.055" /><testcase classname="tests.test_dflash_reuse" name="test_guided_replacement_after_real_draft_keeps_features_and_strict_output[2]" time="0.021" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-None]" time="0.014" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-0]" time="0.056" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-1]" time="0.029" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-2]" time="0.021" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-0-5]" time="0.012" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-None]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-0]" time="0.055" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-1]" time="0.029" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-2]" time="0.028" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[False-1-5]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-0]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-1]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-2]" time="0.008" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-0-5]" time="0.006" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-None]" time="0.004" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-0]" time="0.017" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-1]" time="0.011" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-2]" time="0.010" /><testcase classname="tests.test_dflash_reuse" name="test_splice_feedback_with_real_target_rejection_eos_and_feature_catchup[True-1-5]" time="0.008" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[edit]" time="0.044" /><testcase classname="tests.test_dflash_reuse" name="test_aligned_candidates_still_obey_real_target_rejection_and_kv[ot]" time="0.108" /><testcase classname="tests.test_dflash_reuse" name="test_actual_audited_dflash_forward_and_native_control" time="0.174" /><testcase classname="tests.test_dflash_reuse" name="test_guided_matcher_receives_only_current_draft_logits" time="0.057" /><testcase classname="tests.test_dflash_reuse" name="test_real_target_risk_handoff_switch_rejection_and_kv_recovery" time="0.060" /><testcase classname="tests.test_runtime_rmsnorm" name="test_explicit_config_preserves_eager_default_and_rejects_incompatible_backend" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[platform]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[torch]" time="0.000" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[transformers]" time="0.000" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[device]" time="0.000" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[dtype]" time="0.000" /><testcase classname="tests.test_runtime_rmsnorm" name="test_unsupported_runtime_stack_fails_without_fallback[draft]" time="0.000" /><testcase classname="tests.test_runtime_rmsnorm" name="test_persistent_profile_streams_committed_tokens_and_recovers_after_cancel[AR]" time="0.408" /><testcase classname="tests.test_runtime_rmsnorm" name="test_persistent_profile_streams_committed_tokens_and_recovers_after_cancel[DFlash]" time="0.186" /><testcase classname="tests.test_runtime_rmsnorm" name="test_persistent_profile_streams_committed_tokens_and_recovers_after_cancel[R+DFlash]" time="0.193" /><testcase classname="tests.test_runtime_rmsnorm" name="test_cold_compilation_is_inside_request_clock_and_warm_request_has_no_new_events" time="0.232" /><testcase classname="tests.test_runtime_rmsnorm" name="test_close_refuses_active_owner_then_restores_all_bindings_and_is_idempotent" time="0.038" /><testcase classname="tests.test_runtime_rmsnorm" name="test_profile_mutation_requires_reload_and_releases_owner" time="0.037" /><testcase classname="tests.test_runtime_rmsnorm" name="test_compile_failure_is_not_hidden_and_owner_is_released" time="0.062" /><testcase classname="tests.test_runtime_rmsnorm" name="test_close_restores_bindings_even_if_synchronization_fails" time="0.039" /><testcase classname="tests.test_runtime_rmsnorm" name="test_benchmark_refuses_comparing_different_numerical_profiles" time="0.016" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[None]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[warm_compile]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[no_cold_compile]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[wrong_profile]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[failed_stream]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[precision]" time="0.001" /><testcase classname="tests.test_runtime_rmsnorm" name="test_acceptance_report_rejects_incomplete_or_incompatible_evidence[memory]" time="0.001" /></testsuite></testsuites>

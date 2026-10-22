@@ -1,0 +1,403 @@
+{
+  "posthoc": true,
+  "source_generations": 80,
+  "source_finishes": {
+    "length": 39,
+    "eos": 41
+  },
+  "examples": 160,
+  "unique_teacher_prefixes": 160,
+  "shift": {
+    "train": {
+      "paired_states": 64,
+      "requests": 32,
+      "different_prefix": 64,
+      "same_generated_boundary": 3,
+      "prior_asd_relaxed": 64,
+      "different_teacher_labels": 63
+    },
+    "calibration": {
+      "paired_states": 16,
+      "requests": 8,
+      "different_prefix": 16,
+      "same_generated_boundary": 0,
+      "prior_asd_relaxed": 16,
+      "different_teacher_labels": 16
+    }
+  },
+  "feature_cache_bytes": 1719637760,
+  "curves": {
+    "ordinary": [
+      {
+        "update": 0,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6437463168986142,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        }
+      },
+      {
+        "update": 32,
+        "mean_training_loss": 2.058620495023206,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6425132052972913,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        },
+        "seconds": 3.5935608779545873
+      },
+      {
+        "update": 64,
+        "mean_training_loss": 2.0381513900356367,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6344638094305992,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        },
+        "seconds": 6.217024017940275
+      },
+      {
+        "update": 96,
+        "mean_training_loss": 1.9672645491664298,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6170157408341765,
+          "strict_accepted": 3.71875,
+          "labels": 15.0
+        },
+        "seconds": 8.94391219690442
+      },
+      {
+        "update": 128,
+        "mean_training_loss": 1.8485370863927528,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6022757263854146,
+          "strict_accepted": 3.59375,
+          "labels": 15.0
+        },
+        "seconds": 11.701881298911758
+      }
+    ],
+    "asd-prefix": [
+      {
+        "update": 0,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6437463168986142,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        }
+      },
+      {
+        "update": 32,
+        "mean_training_loss": 1.9103044165531173,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6430918630212545,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        },
+        "seconds": 3.633558419998735
+      },
+      {
+        "update": 64,
+        "mean_training_loss": 1.8935434487066232,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6365811806172132,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        },
+        "seconds": 6.3147870630491525
+      },
+      {
+        "update": 96,
+        "mean_training_loss": 1.834421530540567,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.6220415886491537,
+          "strict_accepted": 3.75,
+          "labels": 15.0
+        },
+        "seconds": 9.018930903053842
+      },
+      {
+        "update": 128,
+        "mean_training_loss": 1.7281520065444056,
+        "calibration": {
+          "requests": 8,
+          "states": 32,
+          "loss": 1.604260622523725,
+          "strict_accepted": 3.59375,
+          "labels": 15.0
+        },
+        "seconds": 11.635463583981618
+      }
+    ]
+  },
+  "training": {
+    "ordinary": {
+      "seconds": 11.714431111002341,
+      "selected_step": 128,
+      "initial_loss": 1.6437463168986142,
+      "selected_loss": 1.6022757263854146,
+      "final_loss": 1.6022757263854146,
+      "selected_loss_ratio": 0.9747706868834569,
+      "first_gradient_norm": 0.245555579662323,
+      "peak_gpu_bytes": 37076797440
+    },
+    "asd-prefix": {
+      "seconds": 11.647868811967783,
+      "selected_step": 128,
+      "initial_loss": 1.6437463168986142,
+      "selected_loss": 1.604260622523725,
+      "final_loss": 1.604260622523725,
+      "selected_loss_ratio": 0.9759782309660837,
+      "first_gradient_norm": 0.13029998540878296,
+      "peak_gpu_bytes": 37081255424
+    }
+  },
+  "domain": {
+    "natural/base/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0,
+      "tps_ratio": 1.0,
+      "ordinary_ratio": 0.9925444751739546,
+      "faster": 0,
+      "output_tokens": 1588,
+      "target_calls": 291,
+      "repeat_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "natural/base/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0,
+      "tps_ratio": 1.0,
+      "ordinary_ratio": 1.0112048049612938,
+      "faster": 0,
+      "output_tokens": 1648,
+      "target_calls": 276,
+      "repeat_ratios": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "natural/ordinary/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0078197072611415,
+      "tps_ratio": 0.9925444751739546,
+      "ordinary_ratio": 1.0,
+      "faster": 4,
+      "output_tokens": 1588,
+      "target_calls": 293,
+      "repeat_ratios": [
+        1.0077636462641526,
+        1.006926253972937,
+        1.0087773351606977
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "natural/ordinary/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 0.9916747033882325,
+      "tps_ratio": 1.016000267328747,
+      "ordinary_ratio": 1.0,
+      "faster": 5,
+      "output_tokens": 1654,
+      "target_calls": 273,
+      "repeat_ratios": [
+        0.9919734219344373,
+        0.9907915976708306,
+        0.9922603933178065
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "natural/asd-prefix/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 0.9872700982991272,
+      "tps_ratio": 1.0134152576743527,
+      "ordinary_ratio": 0.979926364123429,
+      "faster": 7,
+      "output_tokens": 1588,
+      "target_calls": 288,
+      "repeat_ratios": [
+        0.987107513602775,
+        0.9871958676909953,
+        0.987508383676523
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "natural/asd-prefix/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 0.9554255467299297,
+      "tps_ratio": 1.0461170222949518,
+      "ordinary_ratio": 0.965692366189181,
+      "faster": 8,
+      "output_tokens": 1634,
+      "target_calls": 262,
+      "repeat_ratios": [
+        0.9558893905338943,
+        0.9543251062018026,
+        0.9560646322879841
+      ],
+      "correct": 8,
+      "lost_correct": 0,
+      "gained_correct": 0,
+      "new_truncations": 0,
+      "truncations": 0
+    },
+    "prefix/base/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0,
+      "tps_ratio": 1.0,
+      "ordinary_ratio": 0.9864172232634834,
+      "faster": 0,
+      "output_tokens": 980,
+      "target_calls": 197,
+      "repeat_ratios": [
+        1.0,
+        1.0
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 1.0,
+      "common_full_128_vs_ordinary": 0.984402265296185
+    },
+    "prefix/base/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0,
+      "tps_ratio": 1.0,
+      "ordinary_ratio": 0.9853338058617978,
+      "faster": 0,
+      "output_tokens": 985,
+      "target_calls": 175,
+      "repeat_ratios": [
+        1.0,
+        1.0
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 1.0,
+      "common_full_128_vs_ordinary": 0.983376616418472
+    },
+    "prefix/ordinary/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0140856900928568,
+      "tps_ratio": 0.9864172232634834,
+      "ordinary_ratio": 1.0,
+      "faster": 3,
+      "output_tokens": 980,
+      "target_calls": 200,
+      "repeat_ratios": [
+        1.013802373924226,
+        1.01437018896927
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 1.0161724539299448,
+      "common_full_128_vs_ordinary": 1.0
+    },
+    "prefix/ordinary/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 1.0191928689712864,
+      "tps_ratio": 0.9853338058617979,
+      "ordinary_ratio": 1.0,
+      "faster": 2,
+      "output_tokens": 985,
+      "target_calls": 178,
+      "repeat_ratios": [
+        1.019323283506418,
+        1.0190627321767598
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 1.0217965928474826,
+      "common_full_128_vs_ordinary": 1.0
+    },
+    "prefix/asd-prefix/DFlash": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 0.9890833974575653,
+      "tps_ratio": 1.0117442245886554,
+      "ordinary_ratio": 0.9756615851182857,
+      "faster": 4,
+      "output_tokens": 980,
+      "target_calls": 195,
+      "repeat_ratios": [
+        0.9886632778598973,
+        0.989504953060658
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 0.9948928403587584,
+      "common_full_128_vs_ordinary": 0.9794829110389712
+    },
+    "prefix/asd-prefix/ASD": {
+      "requests": 8,
+      "safe": true,
+      "latency_ratio": 0.9704859335085403,
+      "tps_ratio": 1.0342598598608874,
+      "ordinary_ratio": 0.95622037046923,
+      "faster": 6,
+      "output_tokens": 985,
+      "target_calls": 169,
+      "repeat_ratios": [
+        0.970428032998033,
+        0.9705441820677981
+      ],
+      "common_full_128_requests": 7,
+      "common_full_128_ratio": 0.9665587737094187,
+      "common_full_128_vs_ordinary": 0.9503929749742559
+    }
+  },
+  "notes": [
+    "Prefix differences include different source round progress, not a pure token intervention.",
+    "Teacher suffixes are new continuations under each actual prefix; original ASD output is not the label.",
+    "An equal update count is not an equal measured FLOP or wall-time claim.",
+    "Natural approximate outputs may change length; use full-prefix work and quality separately."
+  ]
+}

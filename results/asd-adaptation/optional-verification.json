@@ -1,0 +1,14 @@
+{
+  "check": "Additional full-model unmerged PEFT versus dense-merged calibration replay",
+  "status": "not_run",
+  "reason": "The prerequisite readonly remote API inspection hit automatic permission approval review deadlines twice; no unsafe-action rejection was returned.",
+  "attempted_action": "Inspect signatures of PEFT set_peft_model_state_dict and LoraModel.unload on the authorized A6000 host",
+  "scope": "Posthoc optional numerical diagnosis, outside the completed preregistered collection/training/evaluation",
+  "completed_checks": [
+    "Real tiny PEFT-to-dense merge tolerance and restoration test",
+    "Audited tiny DFlash LoRA gradient test",
+    "Selected full-model dense adapters evaluated in all 540 formal requests",
+    "Target and draft-base parameter version guards and private checkpoint SHA audits"
+  ],
+  "additional_gpu_generations": 0
+}

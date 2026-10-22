@@ -1,0 +1,22 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.48s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.48s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.22s/it]
+collected gsm8k-train:2630 train 4
+collected gsm8k-train:2721 train 8
+collected gsm8k-train:7354 train 12
+collected gsm8k-train:6062 train 16
+collected gsm8k-train:4115 train 20
+collected gsm8k-train:7088 train 24
+collected gsm8k-train:2200 train 28
+collected gsm8k-train:993 train 32
+collected gsm8k-train:4302 train 36
+collected gsm8k-train:834 train 40
+collected gsm8k-train:2030 train 44
+collected gsm8k-train:1730 train 48
+collected gsm8k-train:5646 train 52
+collected gsm8k-train:6770 train 56
+collected gsm8k-train:5064 train 60
+collected gsm8k-train:136 train 64
+collected gsm8k-train:6543 calibration 68
+collected gsm8k-train:2988 calibration 72
+collected gsm8k-train:28 calibration 76
+collected gsm8k-train:2394 calibration 80

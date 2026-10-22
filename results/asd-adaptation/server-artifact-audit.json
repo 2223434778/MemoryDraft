@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "unique_feature_files": 160,
+  "feature_bytes": 1719637760,
+  "adapters": {
+    "ordinary": {
+      "bytes": 2132408,
+      "sha256": "b5bb3c12a87a37cdead2e9ce75479e5e38266f8be0999934ce3716a0232fc943",
+      "tensors": 20,
+      "numel": 532480
+    },
+    "asd-prefix": {
+      "bytes": 2132408,
+      "sha256": "885375d37670df6ec60e756bb018b9c5efc0f3121be23ee9c5424e14690822e0",
+      "tensors": 20,
+      "numel": 532480
+    }
+  },
+  "feature_checksums_and_shapes_verified": true,
+  "private_tensor_files_not_published": true
+}

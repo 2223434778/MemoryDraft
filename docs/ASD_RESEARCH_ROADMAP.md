@@ -20,7 +20,7 @@
 |2|GPU执行：减少同步、设备侧账本、编译/图捕获|RMSNorm48独立验证及显式profile工程验收完成|ASD_RMSNORM_VALIDATION_FINDINGS.md：1152计时+96 AR，自然时延低2.68%–2.86%、240完整输出全同、全部门槛通过。RMSNORM_RUNTIME_RESULTS.md：CLI/stream/cancel/R/HTTP真实验收通过，冷成本保留；默认eager/infra引用保持，reserve未生成。MLP-only停止扫参，CUDA Graph/精度/attention等仍未做完|
 |3|请求级/轮级长度与验证计算分配|本四动作/廉价选择器阶段完成，按预登记规则停止扩测|ASD_ALLOCATION_FINDINGS.md：六类各2/480主生成/27真实KV状态；请求oracle省0.93%，局部MBPP/短问答oracle省7.13%/16.31%，但四廉价特征留题预测未通过任何合格场景。保留native16与工具，不部署、不扩完整自然生成，不泛化为所有调度算法无效；reserve未生成|
 |4|多候选、树状候选、局部Draft修复|有限六方法检查完成，未通过自动扩48门槛|ASD_CANDIDATE_FINDINGS.md：六类各2/216完整自然计时，全部严格一致。tree32总体慢1.85%，GSM两题平均快3.45%正线索保留；tree48慢18.87%，直接修复4/8慢约17.7%。按预登记结束本固定方案，不否定树或训练后缀表示；完整BASTION/ReTrace、ASD树近似账本未实现，reserve未生成|
-|5|Draft领域适配、实际轨迹蒸馏|等预算LoRA实现与协议已准备，尚未GPU训练|ASD_ADAPTATION_PROTOCOL.md：32新GSM train/8内部校准，ordinary严格源与ASD实际前缀各128更新/累积2，教师从每个真实prefix重生成硬标签；18开发题含GSM8及其余五类各2，540自然/前缀计时。只做离线小适配，不复现完整OPD；validation/reserve不训练|
+|5|Draft领域适配、实际轨迹蒸馏|首轮等预算真实训练及18题评估完成，GSM有继续验证价值|ASD_ADAPTATION_FINDINGS.md：32新train/8内部校准，双臂各128更新；540计时严格一致/原ASD预算守恒。ASD-prefix+ASD在GSM自然省4.46%、共同128省3.34%，答案8/8；普通组共同128慢2.18%。额外增量区间仍跨1，且同轮源进度不同；等生成位置/独立GSM/多seed未做，不能声称稳定独有收益。完整OPD与更大训练仍未评估，reserve未生成|
 |6|长上下文与连续批处理/并发调度|当前仅单请求运行时|先长上下文单请求，再接成熟serving底座；排队并发不冒充连续批处理；关注吞吐、请求延迟和显存|
 |7|其他配对模型及非数学任务迁移|当前主要Qwen3-8B/DFlash|通过开发机制后冻结新配对和任务；BF16浮点分歧与近似策略的质量变化分开|
 

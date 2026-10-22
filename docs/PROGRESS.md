@@ -1,5 +1,18 @@
 # 项目进度
 
+## 2026-10-22 — 阶段5等预算真实训练与开发评估完成
+
+- GPU执行4d7ac6eca2ab9970e9f71314fc77b9b9de79e140/1584 blobs，source SHA4b5109f72f1da81084e59b14533594e1ac26c8b684a47156e4774a7c0ead1e84；本地完整ZIP SHAc14712655b4b70b88136922ddfa2d3c8c61977663f2653e0d83b8a6382626deb，实际旧ZIP+1233414B delta SHA11f264bbce26c4390bb9721839a64ef0573e52821e1c7bb74f7da220dfcde091在新asd-adaptation-v2重建逐SHA核验。PID697777于07:31:56 UTC/北京时间15:31:56启动；07:48:12后处理/末核查完成，两卡19MiB/0%。成功ZIP889588B/SHAb4178f0a920155077e00ad2a1633ccf131e9192d21a9dbd399ca9e45fce7f837，前后1584源SHA一致。
+- 40新GSM train问题（32训练/8内部校准）各strict/ASD源，共80源、80对/160唯一teacher状态、2400标签，无源状态缺失。39源达256采集上限、41 EOS，不当自然质量证据。两卡收集211.516/201.260秒，features1719637760B/1.60154GiB。普通/ASD-prefix各64训练状态/532480参数/128更新累积2，训练段11.714/11.648秒（此前加载/读取另计），校准CE1.643746→1.602276/1.604261，均选末128，梯度非零、Target无grad及Target/Draft base版本守卫通过。两adapter各2132408B/20张量，SHA/shape/finite服务器核验；hidden/权重不推Git。
+- 六臂（三模型×D/ASD）×18开发题，自然3重复324+128/EOS两重复216=540正式，另12短warmup。所有strict输出与旧完整DFlash/RMSNorm逐ID/text/EOS相同，base ASD也重现旧自然，全部重复轨迹/账本稳定、无自然截断；strict16/18、ASD17/18均保持旧质量，无新增对→错。GSM8是预指定训练域，另五类各2诊断迁移，不把18题当新独立测试。
+- GSM自然：ordinary+D比base D慢0.78%，ASD-prefix+D省1.27%；ordinary+ASD省0.83%，ASD-prefix+ASD省4.46%（相对ordinary省3.43%），最终答案均8/8。ASD-prefix的8题时延点估计均更低，但3题无减轮且有接近噪声差异；不称全部实质改善。三模型共同实际达128的7题，ASD-prefix+ASD/base0.966559、/ordinary0.950393；ordinary/base1.021797。支持非全由输出缩短的计算收益，固定128与自然不同集合不能相减归因。
+- GSM自然ASD输出base/ordinary/ASD-prefix共1648/1654/1634 token，Target验证276/273/262；近似接受token均54，regret60.24634/58.59283/58.66578。没有增加预算或例外数。1196输出197→211更长却调用37→32，52变短例也保留。MATH两组自然均省约2.4%而非ASD源独有，其余家族基本持平；全18题ASD-prefix+ASD自然省2.27%，不能泛化到所有任务。
+- 机制限制：64训练对全部prefix不同/此前有ASD例外，但只有3对生成边界相同，源内容与进度混杂；CE降低同时内部校准严格接受长度3.75→3.59375，两组均如此。校准是未合并eager，部署是dense/RMSNorm，不能凭loss或接受proxy断言训练因果。附加完整模型unmerged/dense数值重放的准备只读检查自动审批两次超时（非安全拒绝），未执行新增GPU复验；optional-verification.json明确所做tiny/完整dense/资产审计与未做项，不算通过。
+- 按请求事后bootstrap10000：GSM自然ASD-prefix/base比95%区间[.9253,.9828]；/ordinary[.9231,1.0040]，共同128/base[.9205,1.0071]、/ordinary[.8831,1.0077]，后几项跨1。保留窄域正信号，但不声称额外增量稳定独立证实。未在18题扫参/继续训练，下一步等生成位置控制及独立GSM确认，不先加复杂模块；validation/reserve未训练，reserve96未生成。
+- 原统计共同128集合缺乏三模型统一检查，按原协议修复并独立冻结f8e68035f6ae3f01e8e0fa531260a248e03fe7f8；生成源码和原目录保持4d7ac6e，没有重跑有效计时。本批新旧统计差0（反例已覆盖），修正版服务器代码SHA20a7d56864df54607429e38e8ac33b766b839a08f9ef40a8dd226878a39f8440；Python3.11服务器与3.13本地主统计差0。严格区分GPU执行与分析版本。
+- 评估每卡3图/backend3.18786/3.19195秒/cache398054B、正式新图0，计时请求峰35.1619GiB；首次base D32 wall4.74335/4.76201s、TTFT3.44322/3.45287s，图0→3编译成本请求内。离线dense合并总10.8298/10.7387s另列，不宣传线上每请求切权重免费。本地完整811 passed/7 skipped/114.38s、兼容20 passed/2 skipped/8.88s、统计12 passed/6.55s，服务器87 passed/10.03s。失败PEFT源9bb81be/82100B ZIP及2 failed/84 passed完整保留。
+- 审计两份1584 Git来源清单、11执行冻结文件/2分析文件、1073旧结果SHA、12批478历史发布文件、数据隔离/80源前沿/160配对样本/540实际KV轨迹及原infra三引用通过，两个既有CRLF例外单列。主结果results/asd-adaptation，主表ASD_ADAPTATION_RESULTS.md、结论ASD_ADAPTATION_FINDINGS.md。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_adaptation_pipeline`；本机`python -m scripts.write_asd_adaptation_report`、`python -m results.asd-adaptation.{inspect_results,audit_statistics,audit_postrun}`分别执行。默认及面试版保留。
+
 ## 2026-10-22 — 阶段5等预算Draft适配（执行准备）
 
 - 实际GPU冻结4d7ac6eca2ab9970e9f71314fc77b9b9de79e140/1584 blobs，source SHA4b5109f72f1da81084e59b14533594e1ac26c8b684a47156e4774a7c0ead1e84，本地完整ZIP SHAc14712655b4b70b88136922ddfa2d3c8c61977663f2653e0d83b8a6382626deb，1233414B delta SHA11f264bbce26c4390bb9721839a64ef0573e52821e1c7bb74f7da220dfcde091。新asd-adaptation-v2/PID697777于07:31:56 UTC/北京时间15:31:56启动；修复后服务器87 passed/10.03s。两卡收集各80样本，均覆盖20问题/两源轮4/12；各臂训练64状态/32题/532480参数/128更新，初始内部混合loss1.643746，选末128普通1.602276、ASD-prefix1.604261，训练段11.714/11.648秒，Target/Draft base版本守卫通过。540计时仍运行中，没有预判速度收益。

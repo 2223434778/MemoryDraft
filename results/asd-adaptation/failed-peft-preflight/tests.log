@@ -1,0 +1,266 @@
+.....FF................................................................. [ 83%]
+..............                                                           [100%]
+=================================== FAILURES ===================================
+_________ test_real_peft_updates_only_adapter_and_matches_dense_merge __________
+
+tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....2359e+00],
+         [ 9.5407e-03, -3.5448e-02, -1.7163e-02,  ..., -2.1120e-01,
+          -4.0152e-01,  1.9563e+00]]]))
+
+    def test_real_peft_updates_only_adapter_and_matches_dense_merge(tiny):
+        peft = pytest.importorskip("peft")
+        if peft.__version__ != "0.11.1":
+            pytest.skip("Pinned PEFT stack only")
+        target, draft = deepcopy(tiny.target), ToyDraft()
+        original = deepcopy(draft)
+        target_before = {n:p.clone() for n, p in target.state_dict().items()}
+>       model = attach_lora(target, draft)
+
+tests/test_adaptation.py:104: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+memorydraft/evaluation/adaptation.py:119: in attach_lora
+    wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/mapping.py:145: in get_peft_model
+    return PeftModel(model, peft_config, adapter_name=adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/peft_model.py:138: in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:139: in __init__
+    super().__init__(model, config, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:166: in __init__
+    self.inject_adapter(self.model, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:372: in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:223: in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:291: in _create_new_module
+    from .bnb import dispatch_bnb_8bit
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/bnb.py:19: in <module>
+    import bitsandbytes as bnb
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/__init__.py:6: in <module>
+    from . import cuda_setup, utils, research
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/__init__.py:1: in <module>
+    from . import nn
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/__init__.py:1: in <module>
+    from .modules import LinearFP8Mixed, LinearFP8Global
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/modules.py:8: in <module>
+    from bitsandbytes.optim import GlobalOptimManager
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/optim/__init__.py:6: in <module>
+    from bitsandbytes.cextension import COMPILED_WITH_CUDA
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    import ctypes as ct
+    import os
+    import torch
+    
+    from pathlib import Path
+    from warnings import warn
+    
+    from bitsandbytes.cuda_setup.main import CUDASetup
+    
+    
+    setup = CUDASetup.get_instance()
+    if setup.initialized != True:
+        setup.run_cuda_setup()
+    
+    lib = setup.lib
+    try:
+        if lib is None and torch.cuda.is_available():
+            CUDASetup.get_instance().generate_instructions()
+            CUDASetup.get_instance().print_log_stack()
+>           raise RuntimeError('''
+            CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+    
+            python -m bitsandbytes
+    
+            Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+            to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+            and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues''')
+E           RuntimeError: 
+E                   CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+E           
+E                   python -m bitsandbytes
+E           
+E                   Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+E                   to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+E                   and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cextension.py:20: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+False
+
+===================================BUG REPORT===================================
+================================================================================
+The following directories listed in your path were found to be non-existent: {PosixPath('test_real_peft_updates_only_adapter_and_matches_dense_merge (call)')}
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+DEBUG: Possible options found for libcudart.so: {PosixPath('/usr/local/cuda/lib64/libcudart.so.11.0'), PosixPath('/usr/local/cuda/lib64/libcudart.so')}
+CUDA SETUP: PyTorch settings found: CUDA_VERSION=124, Highest Compute Capability: 8.6.
+CUDA SETUP: To manually override the PyTorch CUDA version please see:https://github.com/TimDettmers/bitsandbytes/blob/main/how_to_use_nonpytorch_cuda.md
+CUDA SETUP: Required library version not found: libbitsandbytes_cuda124.so. Maybe you need to compile it from source?
+CUDA SETUP: Defaulting to libbitsandbytes_cpu.so...
+
+================================================ERROR=====================================
+CUDA SETUP: CUDA detection failed! Possible reasons:
+1. You need to manually override the PyTorch CUDA version. Please see: "https://github.com/TimDettmers/bitsandbytes/blob/main/how_to_use_nonpytorch_cuda.md
+2. CUDA driver not installed
+3. CUDA not installed
+4. You have multiple conflicting CUDA libraries
+5. Required library not pre-compiled for this bitsandbytes release!
+CUDA SETUP: If you compiled from source, try again with `make CUDA_VERSION=DETECTED_CUDA_VERSION` for example, `make CUDA_VERSION=113`.
+CUDA SETUP: The CUDA version for the compile might depend on your conda install. Inspect CUDA version via `conda list | grep cuda`.
+================================================================================
+
+CUDA SETUP: Something unexpected happened. Please compile from source:
+git clone https://github.com/TimDettmers/bitsandbytes.git
+cd bitsandbytes
+CUDA_VERSION=124
+python setup.py install
+CUDA SETUP: Setup Failed!
+________________ test_audited_real_dflash_accepts_peft_gradient ________________
+
+tiny = namespace(target=Qwen3ForCausalLM(
+  (model): Qwen3Model(
+    (embed_tokens): Embedding(32, 32, padding_idx=0)
+    (la....2359e+00],
+         [ 9.5407e-03, -3.5448e-02, -1.7163e-02,  ..., -2.1120e-01,
+          -4.0152e-01,  1.9563e+00]]]))
+
+    def test_audited_real_dflash_accepts_peft_gradient(tiny):
+        import transformers
+        peft = pytest.importorskip("peft")
+        directory = Path(__file__).resolve().parents[1]/"models/dflash-qwen3-8b"
+        if transformers.__version__ != "4.57.3" or not (directory/"config.json").exists():
+            pytest.skip("Audited DFlash stack only on prepared server")
+        from transformers import AutoConfig, AutoModel
+        config = AutoConfig.from_pretrained(directory, trust_remote_code=True)
+        config.hidden_size, config.intermediate_size = 32, 64
+        config.num_hidden_layers, config.num_target_layers = 1, 2
+        config.num_attention_heads, config.num_key_value_heads, config.head_dim = 4, 2, 8
+        config.layer_types, config.block_size, config.vocab_size = ["full_attention"], 4, 32
+        config.dflash_config = dict(target_layer_ids=[0, 1], mask_token_id=31)
+        config._attn_implementation = "eager"
+        draft = AutoModel.from_config(config, trust_remote_code=True).float()
+        target = deepcopy(tiny.target)
+>       model = attach_lora(target, draft)
+
+tests/test_adaptation.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+memorydraft/evaluation/adaptation.py:119: in attach_lora
+    wrapped = get_peft_model(draft, LoraConfig(r=RANK, lora_alpha=ALPHA, lora_dropout=0.,
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/mapping.py:145: in get_peft_model
+    return PeftModel(model, peft_config, adapter_name=adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/peft_model.py:138: in __init__
+    self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:139: in __init__
+    super().__init__(model, config, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:166: in __init__
+    self.inject_adapter(self.model, adapter_name)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:372: in inject_adapter
+    self._create_and_replace(peft_config, adapter_name, target, target_name, parent, current_key=key)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:223: in _create_and_replace
+    new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/model.py:291: in _create_new_module
+    from .bnb import dispatch_bnb_8bit
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/tuners/lora/bnb.py:19: in <module>
+    import bitsandbytes as bnb
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/__init__.py:6: in <module>
+    from . import cuda_setup, utils, research
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/__init__.py:1: in <module>
+    from . import nn
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/__init__.py:1: in <module>
+    from .modules import LinearFP8Mixed, LinearFP8Global
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/research/nn/modules.py:8: in <module>
+    from bitsandbytes.optim import GlobalOptimManager
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/optim/__init__.py:6: in <module>
+    from bitsandbytes.cextension import COMPILED_WITH_CUDA
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    import ctypes as ct
+    import os
+    import torch
+    
+    from pathlib import Path
+    from warnings import warn
+    
+    from bitsandbytes.cuda_setup.main import CUDASetup
+    
+    
+    setup = CUDASetup.get_instance()
+    if setup.initialized != True:
+        setup.run_cuda_setup()
+    
+    lib = setup.lib
+    try:
+        if lib is None and torch.cuda.is_available():
+            CUDASetup.get_instance().generate_instructions()
+            CUDASetup.get_instance().print_log_stack()
+>           raise RuntimeError('''
+            CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+    
+            python -m bitsandbytes
+    
+            Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+            to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+            and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues''')
+E           RuntimeError: 
+E                   CUDA Setup failed despite GPU being available. Please run the following command to get more information:
+E           
+E                   python -m bitsandbytes
+E           
+E                   Inspect the output of the command and see if you can locate CUDA libraries. You might need to add them
+E                   to your LD_LIBRARY_PATH. If you suspect a bug, please take the information from python -m bitsandbytes
+E                   and open an issue at: https://github.com/TimDettmers/bitsandbytes/issues
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cextension.py:20: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+
+===================================BUG REPORT===================================
+================================================================================
+The following directories listed in your path were found to be non-existent: {PosixPath('test_real_peft_updates_only_adapter_and_matches_dense_merge (call)')}
+CUDA_SETUP: WARNING! libcudart.so not found in any environmental path. Searching in backup paths...
+DEBUG: Possible options found for libcudart.so: {PosixPath('/usr/local/cuda/lib64/libcudart.so.11.0'), PosixPath('/usr/local/cuda/lib64/libcudart.so')}
+CUDA SETUP: PyTorch settings found: CUDA_VERSION=124, Highest Compute Capability: 8.6.
+CUDA SETUP: To manually override the PyTorch CUDA version please see:https://github.com/TimDettmers/bitsandbytes/blob/main/how_to_use_nonpytorch_cuda.md
+CUDA SETUP: Required library version not found: libbitsandbytes_cuda124.so. Maybe you need to compile it from source?
+CUDA SETUP: Defaulting to libbitsandbytes_cpu.so...
+
+================================================ERROR=====================================
+CUDA SETUP: CUDA detection failed! Possible reasons:
+1. You need to manually override the PyTorch CUDA version. Please see: "https://github.com/TimDettmers/bitsandbytes/blob/main/how_to_use_nonpytorch_cuda.md
+2. CUDA driver not installed
+3. CUDA not installed
+4. You have multiple conflicting CUDA libraries
+5. Required library not pre-compiled for this bitsandbytes release!
+CUDA SETUP: If you compiled from source, try again with `make CUDA_VERSION=DETECTED_CUDA_VERSION` for example, `make CUDA_VERSION=113`.
+CUDA SETUP: The CUDA version for the compile might depend on your conda install. Inspect CUDA version via `conda list | grep cuda`.
+================================================================================
+
+CUDA SETUP: Something unexpected happened. Please compile from source:
+git clone https://github.com/TimDettmers/bitsandbytes.git
+cd bitsandbytes
+CUDA_VERSION=124
+python setup.py install
+CUDA SETUP: Setup Failed!
+=============================== warnings summary ===============================
+tests/test_adaptation.py::test_real_peft_updates_only_adapter_and_matches_dense_merge
+tests/test_adaptation.py::test_audited_real_dflash_accepts_peft_gradient
+  /home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cuda_setup/main.py:166: UserWarning: Welcome to bitsandbytes. For bug reports, please run
+  
+  python -m bitsandbytes
+  
+  
+    warn(msg)
+
+tests/test_adaptation.py::test_real_peft_updates_only_adapter_and_matches_dense_merge
+tests/test_adaptation.py::test_audited_real_dflash_accepts_peft_gradient
+  /home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/bitsandbytes/cuda_setup/main.py:166: UserWarning: Found duplicate ['libcudart.so', 'libcudart.so.11.0', 'libcudart.so.12.0'] files: {PosixPath('/usr/local/cuda/lib64/libcudart.so.11.0'), PosixPath('/usr/local/cuda/lib64/libcudart.so')}.. We select the PyTorch default libcudart.so, which is {torch.version.cuda},but this might missmatch with the CUDA version that is needed for bitsandbytes.To override this behavior set the BNB_CUDA_VERSION=<version string, e.g. 122> environmental variableFor example, if you want to use the CUDA version 122BNB_CUDA_VERSION=122 python ...OR set the environmental variable in your .bashrc: export BNB_CUDA_VERSION=122In the case of a manual override, make sure you set the LD_LIBRARY_PATH, e.g.export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.2
+    warn(msg)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-adaptation/results/raw/asd-adaptation/tests-server.xml -
+=========================== short test summary info ============================
+FAILED tests/test_adaptation.py::test_real_peft_updates_only_adapter_and_matches_dense_merge
+FAILED tests/test_adaptation.py::test_audited_real_dflash_accepts_peft_gradient
+2 failed, 84 passed, 4 warnings in 9.91s

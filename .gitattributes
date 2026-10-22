@@ -305,3 +305,9 @@ tests/test_adaptation.py text eol=lf
 tests/test_asd_adaptation_report.py text eol=lf
 docs/ASD_ADAPTATION*.md text eol=lf
 data/research/asd-adaptation/** -text
+results/asd-adaptation/** -text
+results/asd-adaptation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-adaptation/**/*.log -whitespace
+results/asd-adaptation/**/*.xml -whitespace
+.gitattributes text eol=lf
+README.md text eol=lf

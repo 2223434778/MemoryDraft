@@ -1,0 +1,8 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.42s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.43s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.43s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.32s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.18s/it]
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/peft/utils/save_and_load.py:195: UserWarning: Could not find a config file in /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-adaptation-v2/configs/../models/dflash-qwen3-8b - will assume that the vocabulary was not modified.
+  warnings.warn(
+ordinary 32 {'requests': 8, 'states': 32, 'loss': 1.6425132052972913, 'strict_accepted': 3.75, 'labels': 15.0}
+ordinary 64 {'requests': 8, 'states': 32, 'loss': 1.6344638094305992, 'strict_accepted': 3.75, 'labels': 15.0}
+ordinary 96 {'requests': 8, 'states': 32, 'loss': 1.6170157408341765, 'strict_accepted': 3.71875, 'labels': 15.0}
+ordinary 128 {'requests': 8, 'states': 32, 'loss': 1.6022757263854146, 'strict_accepted': 3.59375, 'labels': 15.0}

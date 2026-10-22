@@ -1,0 +1,12 @@
+{
+  "status": "failed",
+  "commit": "9bb81bed254761efd4cef30d2845a59cfa71126d",
+  "files_verified_before": 1584,
+  "phases": [],
+  "worker_timeouts": {
+    "collect": 1800,
+    "train": 1200,
+    "evaluate": 3600
+  },
+  "error": "RuntimeError: Runtime acceptance process failed (1); see tests.log"
+}

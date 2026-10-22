@@ -1,0 +1,72 @@
+{
+  "posthoc": true,
+  "resampling_unit": "request, after averaging its timing repeats",
+  "draws": 10000,
+  "note": "Descriptive bootstrap of observed development requests, not independent confirmation or a new gate.",
+  "gsm8k": {
+    "natural/DFlash/vs-base": {
+      "requests": 8,
+      "ratio": 0.9872700982991272,
+      "percentile_95": [
+        0.9717806242933791,
+        1.0027626941531858
+      ]
+    },
+    "natural/DFlash/vs-ordinary": {
+      "requests": 8,
+      "ratio": 0.979926364123429,
+      "percentile_95": [
+        0.960906560471017,
+        0.9996681893359967
+      ]
+    },
+    "prefix/DFlash/vs-base": {
+      "requests": 7,
+      "ratio": 0.9948928403587584,
+      "percentile_95": [
+        0.9786141742688648,
+        1.0104845130066868
+      ]
+    },
+    "prefix/DFlash/vs-ordinary": {
+      "requests": 7,
+      "ratio": 0.9794829110389712,
+      "percentile_95": [
+        0.9553190990704091,
+        1.0039309300961423
+      ]
+    },
+    "natural/ASD/vs-base": {
+      "requests": 8,
+      "ratio": 0.9554255467299297,
+      "percentile_95": [
+        0.9253208448960055,
+        0.9827597170663327
+      ]
+    },
+    "natural/ASD/vs-ordinary": {
+      "requests": 8,
+      "ratio": 0.965692366189181,
+      "percentile_95": [
+        0.923061611847589,
+        1.0039930963755532
+      ]
+    },
+    "prefix/ASD/vs-base": {
+      "requests": 7,
+      "ratio": 0.9665587737094187,
+      "percentile_95": [
+        0.9205081282965003,
+        1.0071220157031557
+      ]
+    },
+    "prefix/ASD/vs-ordinary": {
+      "requests": 7,
+      "ratio": 0.9503929749742559,
+      "percentile_95": [
+        0.8830580637383438,
+        1.007696405188299
+      ]
+    }
+  }
+}
