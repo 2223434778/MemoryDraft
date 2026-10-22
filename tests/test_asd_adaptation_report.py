@@ -62,6 +62,8 @@ def test_shortened_asd_output_reports_quality_loss_and_cannot_enter_full128():
     assert a["natural/asd-prefix/ASD"]["lost_correct"] == 1
     assert a["prefix/asd-prefix/ASD"]["common_full_128_requests"] == 0
     assert a["prefix/asd-prefix/ASD"]["common_full_128_ratio"] is None
+    assert a["prefix/base/ASD"]["common_full_128_requests"] == 0
+    assert a["prefix/ordinary/ASD"]["common_full_128_requests"] == 0
 
 
 def test_fresh_pipeline_artifacts_parent_created_before_any_gpu(tmp_path, monkeypatch):

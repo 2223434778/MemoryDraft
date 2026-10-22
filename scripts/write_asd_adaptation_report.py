@@ -49,6 +49,7 @@ def analyze(rows):
             for policy in POLICIES_USED:
                 base = costs[stage, "base", policy]
                 ordinary = costs[stage, "ordinary", policy]
+                common_128 = all(costs[stage, v, policy]["tokens"] == 128 for v in VARIANTS)
                 for variant in VARIANTS:
                     item = costs[stage, variant, policy]
                     item.update(latency_ratio=item["seconds"]/base["seconds"],
@@ -56,7 +57,7 @@ def analyze(rows):
                                 ordinary_ratio=item["seconds"]/ordinary["seconds"],
                                 paired_safe=item["safe"] and base["safe"] and ordinary["safe"],
                                 repeat_ratios=[x/y for x, y in zip(item["times"], base["times"])],
-                                both_reach_128=item["tokens"] == 128 and base["tokens"] == 128 and ordinary["tokens"] == 128)
+                                both_reach_128=common_128)
                     if stage == "natural":
                         item.update(lost_correct=bool(base["quality"]["correct"] and not item["quality"]["correct"]),
                                     gained_correct=bool(not base["quality"]["correct"] and item["quality"]["correct"]),

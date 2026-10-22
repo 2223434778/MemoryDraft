@@ -2,6 +2,8 @@
 
 ## 2026-10-22 — 阶段5等预算Draft适配（执行准备）
 
+- 实际GPU冻结4d7ac6eca2ab9970e9f71314fc77b9b9de79e140/1584 blobs，source SHA4b5109f72f1da81084e59b14533594e1ac26c8b684a47156e4774a7c0ead1e84，本地完整ZIP SHAc14712655b4b70b88136922ddfa2d3c8c61977663f2653e0d83b8a6382626deb，1233414B delta SHA11f264bbce26c4390bb9721839a64ef0573e52821e1c7bb74f7da220dfcde091。新asd-adaptation-v2/PID697777于07:31:56 UTC/北京时间15:31:56启动；修复后服务器87 passed/10.03s。两卡收集各80样本，均覆盖20问题/两源轮4/12；各臂训练64状态/32题/532480参数/128更新，初始内部混合loss1.643746，选末128普通1.602276、ASD-prefix1.604261，训练段11.714/11.648秒，Target/Draft base版本守卫通过。540计时仍运行中，没有预判速度收益。
+- 在未读取正式时延结论前发现报告共同128筛选实现只对当前variant/base/ordinary检查，导致base/ordinary行可能未要求ASD-prefix也达到128；修正为同一策略三模型共同达到128，严格符合原协议，不改GPU训练/生成/计时。新增反例断言全部三行使用同一集合。GPU源保持4d7ac6e不动，分析版本另提交并审计，不重复有效GPU实验，不声称执行和分析为同一源码版本。
 - 首次冻结9bb81bed254761efd4cef30d2845a59cfa71126d/1584 blobs，source SHAcfd25ba4da9e7c0dd0beed31d0c804abda403f5a3b49f8f06db0ec2b4b2d058a，本地完整ZIP SHA6098cbffee0155719ce5d41d9fc7aa8b9ccaa485fd9214bd9e0a124580975327；1232175B delta SHAe31988f5f71b11a1a053346d1cbe1b472f86a1ea7606ef9717fd0066ea8ebe51。新asd-adaptation/PID695345于07:28:44 UTC启动，但服务器CPU前置2 failed/84 passed/9.91s，GPU worker未启动。PEFT0.11探测系统旧bitsandbytes而缺cuda124.so，非PyTorch CUDA故障；失败ZIP另存asd-adaptation-failed-peft-results.zip，82100B/SHA1032258be91b46cc780f2fea789ed7c4b2b99577bf28d7cb26ea6de935fdc015。
 - 最小修复只让已验证原生FP32 Linear在get_peft_model期间跳过两项不使用的bnb量化探测，并恢复全局探测函数；不升级共享环境或改精度。测试补检查探测恢复与非FP32拒绝。训练预算/数据/统计不变，将新source/新目录重试，保留原失败现场。
 - 用户授权阶段5。新实现复用PEFT0.11.1和已审计DFlash，原推理引擎未改。旧16状态检查只是不支持当时的必要性假设，不能代替训练。检索DFlash原训练、AdaFlash2607.19223v3、Draft-OPD2605.29343，选择一次离线硬标签可行性，不假称完整KL/on-policy在线算法复现。
