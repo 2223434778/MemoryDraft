@@ -50,3 +50,31 @@ def test_report_distinguishes_cold_costs_from_prior_speedup():
     text = render(dict(source_commit="fixture",frozen_files=10,variants=dict(position=variant)))
     assert "|position|20.000|2.000|3.000|4.000|4|35.000|" in text
     assert "本轮没有重新估计" in text and "包含适配器合并" in text
+
+
+def test_cold_cli_rounding_requires_explicit_bounded_tolerance():
+    row,reference = pair()
+    row["asd"]["spent"] += 5e-6
+    with pytest.raises(ValueError):check_result(row,reference,adapter_sha="fixture")
+    assert check_result(row,reference,adapter_sha="fixture",spent_atol=1e-5)
+    row["asd"]["spent"] += 1e-5
+    with pytest.raises(ValueError):check_result(row,reference,adapter_sha="fixture",spent_atol=1e-5)
+
+
+def test_cli_tolerance_never_permits_exceeding_actual_budget():
+    row,reference = pair()
+    reference["asd"]["spent"] = 8
+    row["asd"]["spent"] = 8+1e-6
+    with pytest.raises(ValueError):check_result(row,reference,adapter_sha="fixture",spent_atol=1e-5)
+
+
+def test_report_rechecks_real_failed_cli_without_changing_failure_evidence():
+    from scripts.write_asd_runtime_report import analyze, ROOT
+    evidence = ROOT/"results/asd-runtime"
+    if not evidence.exists():pytest.skip("Real runtime evidence is published after GPU execution")
+    before = (evidence/"execution-verification.json").read_bytes()
+    result = analyze(ROOT)
+    assert result["direct_rows"] == 32 and result["fresh_cli_runs"] == 2
+    assert not result["original_zero_tolerance_gate_passed"]
+    assert all(0 < v["cli_spent_difference"] <= 1e-5 for v in result["variants"].values())
+    assert (evidence/"execution-verification.json").read_bytes() == before

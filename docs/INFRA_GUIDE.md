@@ -4,6 +4,8 @@
 
 固定 Target 的单 GPU、batch=1、greedy 运行时。一个模型 worker 串行执行请求，HTTP 层并发接收并进入有界等待队列。支持 AR、关闭 R 的 DFlash 适配器，以及 R+DFlash；原 H/D/RHD 研究接口仍保留。没有连续批处理、分布式推理或采样支持。
 
+数学近似解码可显式使用[ASD运行指南](ASD_RUNTIME.md)中的两个配置，分别加载原Draft或已接纳的位置适配Draft；通过`--method ASD`调用。启动时合并一次适配器，每请求独立预算，JSON/SSE标记`approximate`并携带策略账本和权重SHA。该方法可改变输出，严格benchmark拒绝近似方法；性能与质量依据保留在对应研究报告。
+
 架构：`HTTP/CLI → 请求校验 → 有界队列 → 单 worker → 用户/时间快照 → tokenizer/候选索引 → Target 验证 → 已确认 token → SSE/最终结果`。
 
 ## 环境配置

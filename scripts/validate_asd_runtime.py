@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from dataclasses import asdict
 import json
+import math
 from pathlib import Path
 import socket
 import threading
@@ -31,7 +32,8 @@ def references(variant):
         ROOT/f"results/asd-adaptation-followup/eval-{i}/rows.jsonl") if r["variant"] == variant and r["repeat"] == 0}
 
 
-def check_result(row, reference, *, adapter_sha):
+def check_result(row, reference, *, adapter_sha, spent_atol=0.):
+    if not 0 <= spent_atol <= 1e-5:raise ValueError("Invalid spent comparison tolerance")
     for field in ("token_ids","text","finish_reason","prompt_sha256","snapshot_id","execution_profile"):
         if row[field] != reference[field]:
             raise ValueError("Runtime/research mismatch: "+field)
@@ -42,7 +44,8 @@ def check_result(row, reference, *, adapter_sha):
         raise ValueError("Runtime verification rounds changed")
     if asd:
         if (row["asd"]["gate"] != .25 or row["asd"]["cap"] != 2
-                or any(row["asd"][k] != v for k,v in reference["asd"].items())
+                or any(not math.isclose(row["asd"][k],v,rel_tol=0.,abs_tol=spent_atol) if k == "spent"
+                       else row["asd"][k] != v for k,v in reference["asd"].items())
                 or not 0 <= row["asd"]["spent"] <= 8):
             raise ValueError("Runtime ASD budget/trajectory changed")
     elif row["asd"] is not None:

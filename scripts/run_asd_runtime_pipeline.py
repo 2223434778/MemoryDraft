@@ -10,7 +10,7 @@ from scripts.run_rmsnorm_runtime_pipeline import run_owned
 from scripts.validate_asd_runtime import ADAPTER_SHA, TASK_IDS, check_result, references
 
 
-def check_results(root, output, cache_bytes):
+def check_results(root, output, cache_bytes, *, cli_spent_atol=0.):
     checks = {}
     for variant,name in (("base","base"),("ordinary-position","position")):
         directory = output/name
@@ -35,7 +35,7 @@ def check_results(root, output, cache_bytes):
             raise ValueError("Missing or duplicated direct runtime results")
         for row in rows:
             check_result(row,old[row["request_id"],row["stage"],row["method"]],adapter_sha=expected_sha)
-        check_result(cli,old["gsm8k:1196","natural","ASD"],adapter_sha=expected_sha)
+        check_result(cli,old["gsm8k:1196","natural","ASD"],adapter_sha=expected_sha,spent_atol=cli_spent_atol)
         if not cli["approximate"] or cli["counters"]["compile_graphs_before"] != 0 or not 0 < cli["counters"]["compile_graphs_after"] <= 8:
             raise ValueError("Fresh CLI did not exercise cold approximate execution")
         checks[name] = dict(status="complete",research_matching_rows=len(rows),fresh_cli_matches=True,
@@ -91,7 +91,8 @@ def main():
         info["phases"].append("cli")
         cache_bytes = {name:sum(p.stat().st_size for stage in ("worker","cli") for directory in caches[name,stage].values()
                                for p in Path(directory).rglob("*") if p.is_file()) for name in configs}
-        checks = check_results(root,dest,cache_bytes)
+        # Only the ledger's FP32 sum may round differently on the cold CLI graph.
+        checks = check_results(root,dest,cache_bytes,cli_spent_atol=1e-5)
         if private_sha() != ADAPTER_SHA:raise ValueError("Original accepted adapter changed during acceptance")
         info.update(status="complete",files_verified_after=verify(),original_adapter_unchanged=True,checks=checks)
     except Exception as error:

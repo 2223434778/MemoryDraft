@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-22 — 数学ASD工程接入完成，冷CLI账本例外保留
+
+- GPU实际冻结353f6756c5d758fc2bbe0e66e337a8c2f25e0efb/1715 blobs，source SHA79d5ca2043fc6206af87b30e94287fcb208524a6219bf8121acdbf9dccf53759；PID923189于13:36:35 UTC启动。两卡各16直接/4 AR、真实HTTP JSON/SSE/断连取消恢复/4请求并发2、严格benchmark隔离和两独立CLI均已执行。服务器相关129 passed/9.56s。32直接结果token/text/EOS/轮数/ASD账本与冻结研究完全一致，strict另与本轮AR一致；旧450错答保留。
+- 最终原pipeline零容差检查失败：冷CLI累计spent比原参考分别多7.62939453125e-6/3.814697265625e-6，token/EOS/轮数/例外数全部相同，实际支出均<8。原status=failed、日志和150899B ZIP/SHA67cc41e08ccde8f966748d46e9f209dccd0a8dd36ed4f0add566d757100c03d8原样保留，33成员逐字节核验；不把原协议追改成通过。另补completion-audit.json核1715源/旧权重不变、缓存和退出状态。
+- 最小后处理修正仅冷CLI的spent比较允许1e-5绝对误差，普通直接/HTTP默认仍零容差、实际spent<=8和其余字段仍精确；不改Target/ASDVerifier/预算，不重跑GPU。worker4图、CLI3图与FP32编译路径舍入相符，但未逐算子定位；说明见ASD_RUNTIME_NUMERICS.md。后处理19 passed/5.49s，XML artifacts/asd-runtime-rounding-local.xml；原全量863 passed/7 skipped属于修正前核心工程，未将新增检查追算进去。
+- 原/适配模型准备21.239/21.410秒，其中适配合并0.451秒；首AR32冷wall4.829/4.692秒，独立CLI冷请求6.673/6.175秒（不含模型加载），所有冷编译计入请求。各worker4图、正式新图0，GPU峰34.903/34.672GiB，worker+CLI cache814867/818191B。两卡最后19MiB/0%，没有训练或新seed。历史16题128收益3.23%仍引用原研究，本轮只证明工程可用。
+- 结果results/asd-runtime，运行指南ASD_RUNTIME.md、主报告ASD_RUNTIME_RESULTS.md。重建命令`.venv\Scripts\python.exe -m scripts.write_asd_runtime_report`；原GPU入口及source manifest保留，数值比较修正另行提交，准备仅CPU跨环境复算/发布，不开启阶段6。
+
 ## 2026-10-22 — 数学ASD工程接入（GPU验收准备）
 
 - 用户授权落实接纳方案的工程入口。runtime显式增加ASD B8/g.25/cap2和startup-only位置适配dense合并；复用原ASDVerifier/AdapterBank及RMSNorm，Target输入和原strict接受规则保持。每请求预算/KV独立，结果/SSE携带近似标记、账本及adapter SHA；严格benchmark拒绝近似方法，原eager/面试版保留。
