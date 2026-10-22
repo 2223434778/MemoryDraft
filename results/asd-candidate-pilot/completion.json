@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-22T05:30:26.470007+00:00",
+  "execution": {
+    "status": "complete",
+    "scope": "pilot",
+    "methods": [
+      "native",
+      "packed-linear",
+      "tree32",
+      "tree48",
+      "repair4",
+      "repair8"
+    ],
+    "commit": "2949b9ed7dda32678ef0484194554cbc43365d74",
+    "files_verified_before": 1540,
+    "worker_timeout_seconds": 3600,
+    "files_verified_after": 1540
+  },
+  "counts": [
+    108,
+    108
+  ],
+  "zip_bytes": 307959,
+  "zip_sha256": "61753a35323d691f87f33b1418b05a47b65a2f01802a7d5f3fedc166d7d9ca36",
+  "gpu_after": "0, 19, 0\n1, 19, 0\n",
+  "gpu_after_initial_observation": "0, 19, 1\n1, 19, 0\n"
+}

@@ -1,0 +1,3285 @@
+{
+  "scopes": {
+    "overall": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 278,
+        "draft_calls": 278,
+        "verify_nodes": 4448,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0087544094974004,
+        "repeat_ratios": [
+          1.008855926640493,
+          1.007866206342343,
+          1.009550741486475
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 278,
+        "draft_calls": 278,
+        "verify_nodes": 4448,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 1.0185331971448255,
+        "repeat_ratios": [
+          1.0182221781043683,
+          1.0178301001416752,
+          1.0195565237454727
+        ],
+        "safe": true,
+        "faster": 3,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 265,
+        "draft_calls": 265,
+        "verify_nodes": 8480,
+        "tree_gain": 79,
+        "branch_rounds": 55,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.1887265527615591,
+        "repeat_ratios": [
+          1.1879376020013495,
+          1.1873791946775099,
+          1.1908545005352276
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 264,
+        "draft_calls": 264,
+        "verify_nodes": 12672,
+        "tree_gain": 91,
+        "branch_rounds": 57,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.1767958155861482,
+        "repeat_ratios": [
+          1.1764586994522015,
+          1.1766974829477754,
+          1.1772376468849823
+        ],
+        "safe": true,
+        "faster": 1,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 380,
+        "draft_calls": 216,
+        "verify_nodes": 4258,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 164,
+        "repair_accepted": 112,
+        "repair_zero": 115
+      },
+      "repair8": {
+        "latency_ratio": 1.178010543504834,
+        "repeat_ratios": [
+          1.1787497859469722,
+          1.1772098930042212,
+          1.1780813806797183
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 12,
+        "eligible": false,
+        "target_calls": 379,
+        "draft_calls": 216,
+        "verify_nodes": 4760,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 163,
+        "repair_accepted": 140,
+        "repair_zero": 112
+      }
+    },
+    "gsm8k": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 87,
+        "draft_calls": 87,
+        "verify_nodes": 1392,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0128434272824776,
+        "repeat_ratios": [
+          1.014094549761845,
+          1.0124244883800952,
+          1.0120242524256013
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 87,
+        "draft_calls": 87,
+        "verify_nodes": 1392,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 0.9655043553959661,
+        "repeat_ratios": [
+          0.9672895476902743,
+          0.9634020543896057,
+          0.9658361993650022
+        ],
+        "safe": true,
+        "faster": 2,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 78,
+        "draft_calls": 78,
+        "verify_nodes": 2496,
+        "tree_gain": 28,
+        "branch_rounds": 20,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.1464937620348956,
+        "repeat_ratios": [
+          1.1388039532418532,
+          1.1452088701697982,
+          1.1553713252324191
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 77,
+        "draft_calls": 77,
+        "verify_nodes": 3696,
+        "tree_gain": 33,
+        "branch_rounds": 21,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.2139307539744495,
+        "repeat_ratios": [
+          1.216338852962965,
+          1.2125874795329028,
+          1.2128946848676057
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 116,
+        "draft_calls": 62,
+        "verify_nodes": 1259,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 54,
+        "repair_accepted": 40,
+        "repair_zero": 37
+      },
+      "repair8": {
+        "latency_ratio": 1.190364490220641,
+        "repeat_ratios": [
+          1.192931703712782,
+          1.1887255910139582,
+          1.1894638932576156
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 113,
+        "draft_calls": 61,
+        "verify_nodes": 1407,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 52,
+        "repair_accepted": 49,
+        "repair_zero": 35
+      }
+    },
+    "humaneval": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 26,
+        "draft_calls": 26,
+        "verify_nodes": 416,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0087582366065995,
+        "repeat_ratios": [
+          1.0084993887666558,
+          1.00918232072627,
+          1.0085939204137553
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 26,
+        "draft_calls": 26,
+        "verify_nodes": 416,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 0.974818295666108,
+        "repeat_ratios": [
+          0.9754666353366117,
+          0.9741993428060148,
+          0.9747898095826294
+        ],
+        "safe": true,
+        "faster": 1,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 24,
+        "draft_calls": 24,
+        "verify_nodes": 768,
+        "tree_gain": 5,
+        "branch_rounds": 5,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.1632170212247157,
+        "repeat_ratios": [
+          1.163343685550705,
+          1.1626381595884312,
+          1.1636690285506022
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 24,
+        "draft_calls": 24,
+        "verify_nodes": 1152,
+        "tree_gain": 5,
+        "branch_rounds": 5,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.1745069199015281,
+        "repeat_ratios": [
+          1.1740267447749524,
+          1.1740551929243326,
+          1.1754415288832116
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 33,
+        "draft_calls": 18,
+        "verify_nodes": 363,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 15,
+        "repair_accepted": 5,
+        "repair_zero": 13
+      },
+      "repair8": {
+        "latency_ratio": 1.185537001503651,
+        "repeat_ratios": [
+          1.1872487222995198,
+          1.1846671499539392,
+          1.1846956026731954
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 33,
+        "draft_calls": 18,
+        "verify_nodes": 412,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 15,
+        "repair_accepted": 9,
+        "repair_zero": 13
+      }
+    },
+    "json": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 27,
+        "draft_calls": 27,
+        "verify_nodes": 432,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0098962566646277,
+        "repeat_ratios": [
+          1.012231344090544,
+          1.009655374230268,
+          1.0078063944161495
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 27,
+        "draft_calls": 27,
+        "verify_nodes": 432,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 1.060075618650334,
+        "repeat_ratios": [
+          1.061576555925486,
+          1.0591028645589595,
+          1.0595500393438197
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 27,
+        "draft_calls": 27,
+        "verify_nodes": 864,
+        "tree_gain": 2,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.2651500908296875,
+        "repeat_ratios": [
+          1.2690884700471643,
+          1.2634997400512813,
+          1.2628671960899844
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 27,
+        "draft_calls": 27,
+        "verify_nodes": 1296,
+        "tree_gain": 2,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.2705588153590717,
+        "repeat_ratios": [
+          1.2719100246976889,
+          1.2696321347008128,
+          1.2701385608904574
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 37,
+        "draft_calls": 26,
+        "verify_nodes": 469,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 11,
+        "repair_accepted": 13,
+        "repair_zero": 6
+      },
+      "repair8": {
+        "latency_ratio": 1.2763160780837877,
+        "repeat_ratios": [
+          1.2789800184346958,
+          1.276721266300715,
+          1.2732521651316824
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 37,
+        "draft_calls": 26,
+        "verify_nodes": 493,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 11,
+        "repair_accepted": 13,
+        "repair_zero": 6
+      }
+    },
+    "math500": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 127,
+        "draft_calls": 127,
+        "verify_nodes": 2032,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.009218271776975,
+        "repeat_ratios": [
+          1.0066998289617783,
+          1.0103922289299299,
+          1.0105498104836856
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 127,
+        "draft_calls": 127,
+        "verify_nodes": 2032,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 1.0499042727579315,
+        "repeat_ratios": [
+          1.0475634437191221,
+          1.051670656483203,
+          1.0504679743958343
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 125,
+        "draft_calls": 125,
+        "verify_nodes": 4000,
+        "tree_gain": 42,
+        "branch_rounds": 27,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.2822148889897453,
+        "repeat_ratios": [
+          1.2832791396594945,
+          1.280527477698305,
+          1.2828410536606096
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 125,
+        "draft_calls": 125,
+        "verify_nodes": 6000,
+        "tree_gain": 49,
+        "branch_rounds": 28,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.3157599277359098,
+        "repeat_ratios": [
+          1.3127764776349338,
+          1.3181936993434724,
+          1.316294794611029
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 181,
+        "draft_calls": 102,
+        "verify_nodes": 2014,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 79,
+        "repair_accepted": 54,
+        "repair_zero": 54
+      },
+      "repair8": {
+        "latency_ratio": 1.3167680801661277,
+        "repeat_ratios": [
+          1.3141014543389413,
+          1.3180886223594661,
+          1.3181013071178302
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 183,
+        "draft_calls": 103,
+        "verify_nodes": 2282,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 80,
+        "repair_accepted": 69,
+        "repair_zero": 53
+      }
+    },
+    "mbpp": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 9,
+        "draft_calls": 9,
+        "verify_nodes": 144,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0088498802921346,
+        "repeat_ratios": [
+          1.011862625996464,
+          1.0076727433403008,
+          1.0070249926120682
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 9,
+        "draft_calls": 9,
+        "verify_nodes": 144,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 1.0466222377695331,
+        "repeat_ratios": [
+          1.0442674344808094,
+          1.0489559453821247,
+          1.0466578480505921
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 9,
+        "draft_calls": 9,
+        "verify_nodes": 288,
+        "tree_gain": 1,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.2171375093726347,
+        "repeat_ratios": [
+          1.2151162540269749,
+          1.2176641185948118,
+          1.2186450786307845
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 9,
+        "draft_calls": 9,
+        "verify_nodes": 432,
+        "tree_gain": 1,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 1.0860265031573189,
+        "repeat_ratios": [
+          1.0829697202873279,
+          1.0875413205305828,
+          1.0875772588871855
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 11,
+        "draft_calls": 6,
+        "verify_nodes": 121,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 5,
+        "repair_accepted": 0,
+        "repair_zero": 5
+      },
+      "repair8": {
+        "latency_ratio": 1.0932202901916959,
+        "repeat_ratios": [
+          1.0919376644267946,
+          1.0938571254196232,
+          1.0938779206877562
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 11,
+        "draft_calls": 6,
+        "verify_nodes": 134,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 5,
+        "repair_accepted": 0,
+        "repair_zero": 5
+      }
+    },
+    "squad": {
+      "native": {
+        "latency_ratio": 1.0,
+        "repeat_ratios": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 32,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "packed-linear": {
+        "latency_ratio": 1.0029603843615882,
+        "repeat_ratios": [
+          0.9997478222656717,
+          0.9978700824471931,
+          1.01130507856759
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 32,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree32": {
+        "latency_ratio": 1.01427440262908,
+        "repeat_ratios": [
+          1.0131694514739071,
+          1.0096497372301436,
+          1.020037271734958
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 64,
+        "tree_gain": 1,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "tree48": {
+        "latency_ratio": 1.058146044117676,
+        "repeat_ratios": [
+          1.0579941094819043,
+          1.0547368019624312,
+          1.0617333210469657
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 96,
+        "tree_gain": 1,
+        "branch_rounds": 1,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair4": {
+        "latency_ratio": 0.9999919733886113,
+        "repeat_ratios": [
+          1.0007303763553417,
+          0.9981750706545494,
+          1.0010790531704048
+        ],
+        "safe": true,
+        "faster": 1,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 32,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      },
+      "repair8": {
+        "latency_ratio": 1.0058573208631008,
+        "repeat_ratios": [
+          1.0072991524691002,
+          1.0011996029776256,
+          1.009097395210231
+        ],
+        "safe": true,
+        "faster": 0,
+        "requests": 2,
+        "eligible": false,
+        "target_calls": 2,
+        "draft_calls": 2,
+        "verify_nodes": 32,
+        "tree_gain": 0,
+        "branch_rounds": 0,
+        "repair_calls": 0,
+        "repair_accepted": 0,
+        "repair_zero": 0
+      }
+    }
+  },
+  "samples": [
+    {
+      "request_id": "gsm8k:52",
+      "benchmark": "gsm8k",
+      "methods": {
+        "native": {
+          "seconds": 3.633456326671876,
+          "times": [
+            3.60394509206526,
+            3.640699584968388,
+            3.65572430298198
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 50,
+          "draft_calls": 50,
+          "verify_nodes": 800,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 3.6736967909770706,
+          "times": [
+            3.6465690499171615,
+            3.6771946270018816,
+            3.697326696012169
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 50,
+          "draft_calls": 50,
+          "verify_nodes": 800,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 1.011074982244813,
+          "repeat_ratios": [
+            1.0118270275387231,
+            1.01002418386405,
+            1.0113800685123475
+          ]
+        },
+        "tree32": {
+          "seconds": 3.5198800766762965,
+          "times": [
+            3.498556351987645,
+            3.5238023389829323,
+            3.5372815390583128
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 45,
+          "draft_calls": 45,
+          "verify_nodes": 1440,
+          "tree_gain": 10,
+          "branch_rounds": 10,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 0.9687415397945318,
+          "repeat_ratios": [
+            0.9707573957467756,
+            0.9678915430242864,
+            0.9676007395232038
+          ]
+        },
+        "tree48": {
+          "seconds": 4.245193148652713,
+          "times": [
+            4.1915076919831336,
+            4.246839957893826,
+            4.297231796081178
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 45,
+          "draft_calls": 45,
+          "verify_nodes": 2160,
+          "tree_gain": 10,
+          "branch_rounds": 10,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 1.1683622333617443,
+          "repeat_ratios": [
+            1.1630331719568923,
+            1.166490082133679,
+            1.1754802714679329
+          ]
+        },
+        "repair4": {
+          "seconds": 4.297217233999011,
+          "times": [
+            4.279105197987519,
+            4.3034880720078945,
+            4.3090584320016205
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 65,
+          "draft_calls": 35,
+          "verify_nodes": 708,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 30,
+          "repair_accepted": 25,
+          "repair_zero": 19,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 1.1826803042752183,
+          "repeat_ratios": [
+            1.1873391765620256,
+            1.182049760374629,
+            1.1787153720773513
+          ]
+        },
+        "repair8": {
+          "seconds": 4.3290865053034695,
+          "times": [
+            4.3086152609903365,
+            4.323577834991738,
+            4.355066419928335
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 278,
+          "target_calls": 65,
+          "draft_calls": 35,
+          "verify_nodes": 801,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 30,
+          "repair_accepted": 27,
+          "repair_zero": 19,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "latency_ratio": 1.1914513664373028,
+          "repeat_ratios": [
+            1.1955274431002116,
+            1.187567865484644,
+            1.1913005628941713
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "benchmark": "gsm8k",
+      "methods": {
+        "native": {
+          "seconds": 2.7007006206937754,
+          "times": [
+            2.684501511976123,
+            2.703794874018058,
+            2.7138054760871455
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 37,
+          "draft_calls": 37,
+          "verify_nodes": 592,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 2.740162913338281,
+          "times": [
+            2.7284255189588293,
+            2.7438780730590224,
+            2.748185147996992
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 37,
+          "draft_calls": 37,
+          "verify_nodes": 592,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 1.014611872320142,
+          "repeat_ratios": [
+            1.016362071984967,
+            1.0148247928961407,
+            1.0126684363388552
+          ]
+        },
+        "tree32": {
+          "seconds": 2.598795545985922,
+          "times": [
+            2.5873808099422604,
+            2.5927028799196705,
+            2.6163029480958357
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 33,
+          "draft_calls": 33,
+          "verify_nodes": 1056,
+          "tree_gain": 18,
+          "branch_rounds": 10,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 0.9622671709974003,
+          "repeat_ratios": [
+            0.9638216996337731,
+            0.958912565754925,
+            0.9640716592068006
+          ]
+        },
+        "tree48": {
+          "seconds": 3.03727622066314,
+          "times": [
+            2.992077560047619,
+            3.0388698410242796,
+            3.080881260917522
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 32,
+          "draft_calls": 32,
+          "verify_nodes": 1536,
+          "tree_gain": 23,
+          "branch_rounds": 11,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 1.124625290708047,
+          "repeat_ratios": [
+            1.1145747345268144,
+            1.1239276582059174,
+            1.1352623789969054
+          ]
+        },
+        "repair4": {
+          "seconds": 3.3628616496377313,
+          "times": [
+            3.3431131649995223,
+            3.3611555399838835,
+            3.3843162439297885
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 51,
+          "draft_calls": 27,
+          "verify_nodes": 551,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 24,
+          "repair_accepted": 15,
+          "repair_zero": 18,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 1.2451812036736805,
+          "repeat_ratios": [
+            1.2453385293639043,
+            1.2431251986911767,
+            1.24707399765786
+          ]
+        },
+        "repair8": {
+          "seconds": 3.211882790317759,
+          "times": [
+            3.1954586959909648,
+            3.2172004119493067,
+            3.2229892630130053
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 179,
+          "target_calls": 48,
+          "draft_calls": 26,
+          "verify_nodes": 606,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 22,
+          "repair_accepted": 22,
+          "repair_zero": 16,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "latency_ratio": 1.1892776140039791,
+          "repeat_ratios": [
+            1.1903359643253524,
+            1.1898833165432725,
+            1.1876272236210599
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "benchmark": "humaneval",
+      "methods": {
+        "native": {
+          "seconds": 1.5295274730306119,
+          "times": [
+            1.528053832007572,
+            1.5303312910255045,
+            1.530197296058759
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 19,
+          "draft_calls": 19,
+          "verify_nodes": 304,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 1.5438890527002513,
+          "times": [
+            1.542779389070347,
+            1.5440764450468123,
+            1.5448113239835948
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 19,
+          "draft_calls": 19,
+          "verify_nodes": 304,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.0093895532593367,
+          "repeat_ratios": [
+            1.0096368051663653,
+            1.0089818159648927,
+            1.009550420695734
+          ]
+        },
+        "tree32": {
+          "seconds": 1.5541825722903013,
+          "times": [
+            1.5548406039597467,
+            1.5542089929804206,
+            1.5534981199307367
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 18,
+          "draft_calls": 18,
+          "verify_nodes": 576,
+          "tree_gain": 4,
+          "branch_rounds": 4,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.0161194223016066,
+          "repeat_ratios": [
+            1.0175299923282035,
+            1.0156029626362244,
+            1.0152273330582875
+          ]
+        },
+        "tree48": {
+          "seconds": 1.866677321687651,
+          "times": [
+            1.865219159051776,
+            1.8679305990226567,
+            1.866882206988521
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 18,
+          "draft_calls": 18,
+          "verify_nodes": 864,
+          "tree_gain": 4,
+          "branch_rounds": 4,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.2204274552774192,
+          "repeat_ratios": [
+            1.2206501629600528,
+            1.2206053747819012,
+            1.2200271244740413
+          ]
+        },
+        "repair4": {
+          "seconds": 1.6653462176521618,
+          "times": [
+            1.6661238889209926,
+            1.6639306460274383,
+            1.6659841180080548
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 23,
+          "draft_calls": 12,
+          "verify_nodes": 247,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 11,
+          "repair_accepted": 1,
+          "repair_zero": 10,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.0887978457506475,
+          "repeat_ratios": [
+            1.0903568015872993,
+            1.0873009365915836,
+            1.0887381139014125
+          ]
+        },
+        "repair8": {
+          "seconds": 1.6810752723831683,
+          "times": [
+            1.6824260170105845,
+            1.680056047043763,
+            1.6807437530951574
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 82,
+          "target_calls": 23,
+          "draft_calls": 12,
+          "verify_nodes": 280,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 11,
+          "repair_accepted": 1,
+          "repair_zero": 10,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "1bfc22561835aa405f56735f239b694cf5635e90ed7441f495bfeb13701ec0c4"
+          },
+          "latency_ratio": 1.09908144967954,
+          "repeat_ratios": [
+            1.10102535772591,
+            1.0978381327600804,
+            1.0983836904065587
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "benchmark": "humaneval",
+      "methods": {
+        "native": {
+          "seconds": 0.6180916496474916,
+          "times": [
+            0.6186507840175182,
+            0.6176635299343616,
+            0.6179606349905953
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 7,
+          "draft_calls": 7,
+          "verify_nodes": 112,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.6231148310083275,
+          "times": [
+            0.6232052739942446,
+            0.6234589590458199,
+            0.6226802599849179
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 7,
+          "draft_calls": 7,
+          "verify_nodes": 112,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 1.0081269199538623,
+          "repeat_ratios": [
+            1.007361972366946,
+            1.0093828254876474,
+            1.0076374201317766
+          ]
+        },
+        "tree32": {
+          "seconds": 0.5769991669803858,
+          "times": [
+            0.5774506699526682,
+            0.5761538989609107,
+            0.5773929320275784
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 6,
+          "draft_calls": 6,
+          "verify_nodes": 192,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 0.9335171690306096,
+          "repeat_ratios": [
+            0.9334032783450198,
+            0.9327957229758053,
+            0.9343522861069713
+          ]
+        },
+        "tree48": {
+          "seconds": 0.6836134359861413,
+          "times": [
+            0.6842507859691978,
+            0.6823149549309164,
+            0.6842745670583099
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 6,
+          "draft_calls": 6,
+          "verify_nodes": 288,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 1.1060065871720122,
+          "repeat_ratios": [
+            1.1060372081413574,
+            1.104670944394961,
+            1.107310932627163
+          ]
+        },
+        "repair4": {
+          "seconds": 0.7789289826760069,
+          "times": [
+            0.7780750420643017,
+            0.7787560150027275,
+            0.7799558909609914
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 10,
+          "draft_calls": 6,
+          "verify_nodes": 116,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 4,
+          "repair_accepted": 4,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 1.2602159940524087,
+          "repeat_ratios": [
+            1.2576966879626053,
+            1.2608094492570818,
+            1.262144943865011
+          ]
+        },
+        "repair8": {
+          "seconds": 0.7862079756256813,
+          "times": [
+            0.7878345049684867,
+            0.78535681089852,
+            0.7854326110100374
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 66,
+          "target_calls": 10,
+          "draft_calls": 6,
+          "verify_nodes": 132,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 4,
+          "repair_accepted": 8,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "8a69180dfa8fa89e7a0ee82312a4d38a5872327476757911f873e1569277a940"
+          },
+          "latency_ratio": 1.2719925533277618,
+          "repeat_ratios": [
+            1.2734720868731297,
+            1.2714961671477982,
+            1.2710075149398323
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "benchmark": "json",
+      "methods": {
+        "native": {
+          "seconds": 0.9045535376838719,
+          "times": [
+            0.9041249610017985,
+            0.904192429035902,
+            0.9053432230139151
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 10,
+          "draft_calls": 10,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.9128421136410907,
+          "times": [
+            0.9142322719562799,
+            0.9120044449809939,
+            0.9122896239859983
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 10,
+          "draft_calls": 10,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.009163167918664,
+          "repeat_ratios": [
+            1.0111791084091764,
+            1.0086397714626094,
+            1.0076726713090738
+          ]
+        },
+        "tree32": {
+          "seconds": 0.9540592226355026,
+          "times": [
+            0.9541785769397393,
+            0.9526202749693766,
+            0.9553788159973919
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 10,
+          "draft_calls": 10,
+          "verify_nodes": 320,
+          "tree_gain": 2,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.0547294138922843,
+          "repeat_ratios": [
+            1.05536139150774,
+            1.0535592252028818,
+            1.0552669879351466
+          ]
+        },
+        "tree48": {
+          "seconds": 1.1402119653454672,
+          "times": [
+            1.1448408430442214,
+            1.137832834967412,
+            1.137962218024768
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 10,
+          "draft_calls": 10,
+          "verify_nodes": 480,
+          "tree_gain": 2,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.2605245768702686,
+          "repeat_ratios": [
+            1.2662418276514589,
+            1.2583967731079433,
+            1.2569401185071636
+          ]
+        },
+        "repair4": {
+          "seconds": 1.2542480130214244,
+          "times": [
+            1.252512758015655,
+            1.254153502988629,
+            1.2560777780599892
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 16,
+          "draft_calls": 10,
+          "verify_nodes": 189,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 6,
+          "repair_accepted": 9,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.3865934527578683,
+          "repeat_ratios": [
+            1.385331466380302,
+            1.387042694358627,
+            1.3874050703980179
+          ]
+        },
+        "repair8": {
+          "seconds": 1.261312394325311,
+          "times": [
+            1.2639700720319524,
+            1.2617261869600043,
+            1.2582409239839762
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 115,
+          "target_calls": 16,
+          "draft_calls": 10,
+          "verify_nodes": 201,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 6,
+          "repair_accepted": 9,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.3944032517466325,
+          "repeat_ratios": [
+            1.398003734607033,
+            1.3954177744059677,
+            1.3897943807380078
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "benchmark": "json",
+      "methods": {
+        "native": {
+          "seconds": 1.446253693002897,
+          "times": [
+            1.4438906050054356,
+            1.4473620440112427,
+            1.4475084299920127
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 17,
+          "draft_calls": 17,
+          "verify_nodes": 272,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 1.4616264230571687,
+          "times": [
+            1.4630706410389394,
+            1.4628068110905588,
+            1.459001817042008
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 17,
+          "draft_calls": 17,
+          "verify_nodes": 272,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.0106293454105917,
+          "repeat_ratios": [
+            1.0132835797719117,
+            1.0106709769979267,
+            1.007940117523225
+          ]
+        },
+        "tree32": {
+          "seconds": 1.5408702467102557,
+          "times": [
+            1.541774433106184,
+            1.5409289400558919,
+            1.5399073669686913
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 17,
+          "draft_calls": 17,
+          "verify_nodes": 544,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.0654218234083839,
+          "repeat_ratios": [
+            1.0677917203432319,
+            1.0646465039150372,
+            1.0638330907524929
+          ]
+        },
+        "tree48": {
+          "seconds": 1.8364176577112328,
+          "times": [
+            1.8365351590327919,
+            1.8361274070339277,
+            1.8365904070669785
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 17,
+          "draft_calls": 17,
+          "verify_nodes": 816,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.2697756047891067,
+          "repeat_ratios": [
+            1.2719351124428697,
+            1.2686027069946193,
+            1.2687942736728053
+          ]
+        },
+        "repair4": {
+          "seconds": 1.6697348560361813,
+          "times": [
+            1.672730781021528,
+            1.6676817740080878,
+            1.668792013078928
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 21,
+          "draft_calls": 16,
+          "verify_nodes": 280,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 5,
+          "repair_accepted": 4,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.1545241779602748,
+          "repeat_ratios": [
+            1.158488583015076,
+            1.1522215750429985,
+            1.152872051382897
+          ]
+        },
+        "repair8": {
+          "seconds": 1.675092830361488,
+          "times": [
+            1.6748500070534647,
+            1.6760810810374096,
+            1.6743474029935896
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 222,
+          "target_calls": 21,
+          "draft_calls": 16,
+          "verify_nodes": 292,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 5,
+          "repair_accepted": 4,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "valid_json": true,
+            "metric": "exact typed JSON contract",
+            "error": null
+          },
+          "latency_ratio": 1.1582289044209428,
+          "repeat_ratios": [
+            1.1599563022623585,
+            1.1580247581954624,
+            1.156709949525357
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "benchmark": "math500",
+      "methods": {
+        "native": {
+          "seconds": 2.1945929446956143,
+          "times": [
+            2.187342716031708,
+            2.196794373099692,
+            2.199641744955443
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 30,
+          "draft_calls": 30,
+          "verify_nodes": 480,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 2.21093061795303,
+          "times": [
+            2.1922813289565966,
+            2.2182004339993,
+            2.2223100909031928
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 30,
+          "draft_calls": 30,
+          "verify_nodes": 480,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0074445118840394,
+          "repeat_ratios": [
+            1.0022578139624359,
+            1.0097442260239422,
+            1.0103054717886386
+          ]
+        },
+        "tree32": {
+          "seconds": 2.2603096266975626,
+          "times": [
+            2.2428335569566116,
+            2.269147011102177,
+            2.268948312033899
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 29,
+          "draft_calls": 29,
+          "verify_nodes": 928,
+          "tree_gain": 8,
+          "branch_rounds": 6,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0299448160356057,
+          "repeat_ratios": [
+            1.025369065633014,
+            1.032935553226311,
+            1.0315081159181494
+          ]
+        },
+        "tree48": {
+          "seconds": 2.765026173670776,
+          "times": [
+            2.7596637799870223,
+            2.761731651960872,
+            2.773683089064434
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 29,
+          "draft_calls": 29,
+          "verify_nodes": 1392,
+          "tree_gain": 8,
+          "branch_rounds": 6,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.2599266667442421,
+          "repeat_ratios": [
+            1.261651299433142,
+            1.2571643872448788,
+            1.260970380938383
+          ]
+        },
+        "repair4": {
+          "seconds": 2.9567220996832475,
+          "times": [
+            2.9330693630035967,
+            2.9683274710550904,
+            2.9687694649910554
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 45,
+          "draft_calls": 24,
+          "verify_nodes": 484,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 21,
+          "repair_accepted": 17,
+          "repair_zero": 12,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.3472758612615239,
+          "repeat_ratios": [
+            1.3409281232000037,
+            1.3512086098740137,
+            1.3496604489342388
+          ]
+        },
+        "repair8": {
+          "seconds": 2.8538221466975906,
+          "times": [
+            2.833056664094329,
+            2.862346167094074,
+            2.866063608904369
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 207,
+          "target_calls": 43,
+          "draft_calls": 23,
+          "verify_nodes": 518,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 20,
+          "repair_accepted": 21,
+          "repair_zero": 10,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.300387916399417,
+          "repeat_ratios": [
+            1.2952047447023207,
+            1.3029649939676802,
+            1.302968365406443
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "benchmark": "math500",
+      "methods": {
+        "native": {
+          "seconds": 7.11980687334047,
+          "times": [
+            7.1178402960067615,
+            7.11882523400709,
+            7.1227550900075585
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 97,
+          "draft_calls": 97,
+          "verify_nodes": 1552,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 7.198068015975878,
+          "times": [
+            7.197146161925048,
+            7.197418714989908,
+            7.199639171012677
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 97,
+          "draft_calls": 97,
+          "verify_nodes": 1552,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0109920316699108,
+          "repeat_ratios": [
+            1.0111418439611208,
+            1.0110402318359175,
+            1.0107941491787327
+          ]
+        },
+        "tree32": {
+          "seconds": 7.617223134691206,
+          "times": [
+            7.614365331013687,
+            7.620031533064321,
+            7.617272539995611
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 96,
+          "draft_calls": 96,
+          "verify_nodes": 3072,
+          "tree_gain": 34,
+          "branch_rounds": 21,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.0698637294802573,
+          "repeat_ratios": [
+            1.06975782180523,
+            1.0704057597400953,
+            1.0694278328735192
+          ]
+        },
+        "tree48": {
+          "seconds": 9.28781021766675,
+          "times": [
+            9.288119483971968,
+            9.282169078942388,
+            9.293142090085894
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 96,
+          "draft_calls": 96,
+          "verify_nodes": 4608,
+          "tree_gain": 41,
+          "branch_rounds": 22,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.3045031112352485,
+          "repeat_ratios": [
+            1.3049069798858473,
+            1.3038905681517317,
+            1.304711726382836
+          ]
+        },
+        "repair4": {
+          "seconds": 9.143569217024682,
+          "times": [
+            9.143754394957796,
+            9.148963192012161,
+            9.137990064104088
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 136,
+          "draft_calls": 78,
+          "verify_nodes": 1530,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 58,
+          "repair_accepted": 37,
+          "repair_zero": 42,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.2842439942102957,
+          "repeat_ratios": [
+            1.2846248320698639,
+            1.285178788812931,
+            1.2829291402878196
+          ]
+        },
+        "repair8": {
+          "seconds": 9.491758030334799,
+          "times": [
+            9.488068046048284,
+            9.4909050129354,
+            9.49630103202071
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 769,
+          "target_calls": 140,
+          "draft_calls": 80,
+          "verify_nodes": 1764,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 60,
+          "repair_accepted": 48,
+          "repair_zero": 43,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "latency_ratio": 1.3331482439328382,
+          "repeat_ratios": [
+            1.332998163975562,
+            1.3332122507512518,
+            1.3332342488292173
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "benchmark": "mbpp",
+      "methods": {
+        "native": {
+          "seconds": 0.3963517619607349,
+          "times": [
+            0.3962346169864759,
+            0.395811153925024,
+            0.3970095149707049
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 4,
+          "draft_calls": 4,
+          "verify_nodes": 64,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.400839175330475,
+          "times": [
+            0.4038653429597616,
+            0.39972101303283125,
+            0.39893116999883205
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 4,
+          "draft_calls": 4,
+          "verify_nodes": 64,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.0113217949317066,
+          "repeat_ratios": [
+            1.0192581002420245,
+            1.0098780922898092,
+            1.0048403248679543
+          ]
+        },
+        "tree32": {
+          "seconds": 0.41656217801695067,
+          "times": [
+            0.41639631800353527,
+            0.4176317020319402,
+            0.41565851401537657
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 4,
+          "draft_calls": 4,
+          "verify_nodes": 128,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.0509911094030104,
+          "repeat_ratios": [
+            1.0508832397593053,
+            1.0551286841983478,
+            1.0469736828500138
+          ]
+        },
+        "tree48": {
+          "seconds": 0.4870901456646,
+          "times": [
+            0.4866563780233264,
+            0.4875642230035737,
+            0.4870498359669
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 4,
+          "draft_calls": 4,
+          "verify_nodes": 192,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.2289339733346618,
+          "repeat_ratios": [
+            1.2282025778679926,
+            1.2318102159797395,
+            1.2267963804415094
+          ]
+        },
+        "repair4": {
+          "seconds": 0.4415467226644978,
+          "times": [
+            0.440101379994303,
+            0.44239380303770304,
+            0.44214498496148735
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 5,
+          "draft_calls": 3,
+          "verify_nodes": 58,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 2,
+          "repair_accepted": 0,
+          "repair_zero": 2,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.1140273995003462,
+          "repeat_ratios": [
+            1.1107090625787608,
+            1.117689076345491,
+            1.113688635382235
+          ]
+        },
+        "repair8": {
+          "seconds": 0.4438926193397492,
+          "times": [
+            0.44490286603104323,
+            0.4432972089853138,
+            0.44347778300289065
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 39,
+          "target_calls": 5,
+          "draft_calls": 3,
+          "verify_nodes": 59,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 2,
+          "repair_accepted": 0,
+          "repair_zero": 2,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "518a76e93edbc8ee4bead61aacdbab83b0fb9fe11dbad25a6e27925043797dbb"
+          },
+          "latency_ratio": 1.1199461234733303,
+          "repeat_ratios": [
+            1.1228268479284043,
+            1.1199714929440436,
+            1.1170457288299869
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "benchmark": "mbpp",
+      "methods": {
+        "native": {
+          "seconds": 0.5479870709823444,
+          "times": [
+            0.5488976559136063,
+            0.5483427479630336,
+            0.5467208090703934
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 5,
+          "draft_calls": 5,
+          "verify_nodes": 80,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.5514821136991183,
+          "times": [
+            0.5513496650382876,
+            0.5513407540274784,
+            0.5517559220315889
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 5,
+          "draft_calls": 5,
+          "verify_nodes": 80,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.0063779656525627,
+          "repeat_ratios": [
+            1.0044671517509036,
+            1.0054673943907924,
+            1.0092096603561822
+          ]
+        },
+        "tree32": {
+          "seconds": 0.5711413693303863,
+          "times": [
+            0.5695645469240844,
+            0.5718026090180501,
+            0.5720569520490244
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 5,
+          "draft_calls": 5,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.0422533661360558,
+          "repeat_ratios": [
+            1.0376516292023135,
+            1.0427832065659015,
+            1.0463420132511707
+          ]
+        },
+        "tree48": {
+          "seconds": 0.6605113090093558,
+          "times": [
+            0.6597914110170677,
+            0.6599403789732605,
+            0.6618021370377392
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 5,
+          "draft_calls": 5,
+          "verify_nodes": 240,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.2053410454106075,
+          "repeat_ratios": [
+            1.2020299301859572,
+            1.2035180212098844,
+            1.2104937768200594
+          ]
+        },
+        "repair4": {
+          "seconds": 0.5797843533024812,
+          "times": [
+            0.5792134809307754,
+            0.5798140929546207,
+            0.5803254860220477
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 6,
+          "draft_calls": 3,
+          "verify_nodes": 63,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 3,
+          "repair_accepted": 0,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.0580256068142915,
+          "repeat_ratios": [
+            1.055230377995895,
+            1.0573935647156745,
+            1.0614658823921361
+          ]
+        },
+        "repair8": {
+          "seconds": 0.5844251736610507,
+          "times": [
+            0.5824070239905268,
+            0.5854889979818836,
+            0.5853794990107417
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 24,
+          "target_calls": 6,
+          "draft_calls": 3,
+          "verify_nodes": 75,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 3,
+          "repair_accepted": 0,
+          "repair_zero": 3,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "a3f7fd599f252f35f7ba9269166b0b914d64d34858c465b09798e0d28c8ec894"
+          },
+          "latency_ratio": 1.0664944569100614,
+          "repeat_ratios": [
+            1.061048480925185,
+            1.0677427578952028,
+            1.0707101125455254
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "benchmark": "squad",
+      "methods": {
+        "native": {
+          "seconds": 0.72018271467338,
+          "times": [
+            0.7195770810358226,
+            0.7235412709414959,
+            0.7174297920428216
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.7232858130009845,
+          "times": [
+            0.7192154630320147,
+            0.7223014229675755,
+            0.7283405530033633
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0043087653513203,
+          "repeat_ratios": [
+            0.9994974575853813,
+            0.9982864170660133,
+            1.0152081236123107
+          ]
+        },
+        "tree32": {
+          "seconds": 0.7267334529509147,
+          "times": [
+            0.7244972819462419,
+            0.7263920980039984,
+            0.7293109789025038
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 32,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0090959393277101,
+          "repeat_ratios": [
+            1.0068376287128777,
+            1.0039401029035881,
+            1.0165607659334184
+          ]
+        },
+        "tree48": {
+          "seconds": 0.7436495766742155,
+          "times": [
+            0.7446908400161192,
+            0.7424830549862236,
+            0.7437748350203037
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 48,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0325845948850332,
+          "repeat_ratios": [
+            1.0349007210515175,
+            1.0261792724277912,
+            1.0367214231548243
+          ]
+        },
+        "repair4": {
+          "seconds": 0.7193804356502369,
+          "times": [
+            0.7206628419226035,
+            0.7212354759685695,
+            0.7162429890595376
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 0.9988860062775778,
+          "repeat_ratios": [
+            1.001508887533241,
+            0.9968131811335019,
+            0.998345757318072
+          ]
+        },
+        "repair8": {
+          "seconds": 0.725306905961285,
+          "times": [
+            0.7262526099802926,
+            0.7256441189674661,
+            0.7240239889360964
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 4,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "f1": 0.5714285714285715,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.007115126735899,
+          "repeat_ratios": [
+            1.009277017181899,
+            1.0029063276836079,
+            1.0091914177058334
+          ]
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "benchmark": "squad",
+      "methods": {
+        "native": {
+          "seconds": 0.2974499856354669,
+          "times": [
+            0.29729005799163133,
+            0.2981059519806877,
+            0.2969539469340816
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0,
+          "repeat_ratios": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "packed-linear": {
+          "seconds": 0.29792947601526976,
+          "times": [
+            0.29728951898869127,
+            0.29734689905308187,
+            0.29915201000403613
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.001612003371856,
+          "repeat_ratios": [
+            0.9999981869459621,
+            0.9974537478283728,
+            1.0074020335228695
+          ]
+        },
+        "tree32": {
+          "seconds": 0.3032362403270478,
+          "times": [
+            0.3030875929398462,
+            0.3026846720604226,
+            0.3039364559808746
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 32,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0194528659304498,
+          "repeat_ratios": [
+            1.0195012742349363,
+            1.0153593715566993,
+            1.0235137775364977
+          ]
+        },
+        "tree48": {
+          "seconds": 0.32234877833010006,
+          "times": [
+            0.32139656494837254,
+            0.3229364879662171,
+            0.3227132820757106
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 48,
+          "tree_gain": 1,
+          "branch_rounds": 1,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0837074933503186,
+          "repeat_ratios": [
+            1.0810874979122909,
+            1.0832943314970713,
+            1.0867452189391074
+          ]
+        },
+        "repair4": {
+          "seconds": 0.29777656802131486,
+          "times": [
+            0.2972757479874417,
+            0.29796791705302894,
+            0.29808603902347386
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.001097940499645,
+          "repeat_ratios": [
+            0.9999518651774423,
+            0.9995369601755967,
+            1.0038123490227377
+          ]
+        },
+        "repair8": {
+          "seconds": 0.2988181113032624,
+          "times": [
+            0.2988720239372924,
+            0.2979547759750858,
+            0.29962753399740905
+          ],
+          "safe": true,
+          "stable": true,
+          "tokens": 2,
+          "target_calls": 1,
+          "draft_calls": 1,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "branch_rounds": 0,
+          "repair_calls": 0,
+          "repair_accepted": 0,
+          "repair_zero": 0,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "f1": 1.0,
+            "metric": "SQuAD normalized exact match and token F1, maximum over references"
+          },
+          "latency_ratio": 1.0045995149903024,
+          "repeat_ratios": [
+            1.0053212877563016,
+            0.9994928782716432,
+            1.0090033727146281
+          ]
+        }
+      }
+    }
+  ],
+  "globally_safe": {
+    "native": true,
+    "packed-linear": true,
+    "tree32": true,
+    "tree48": true,
+    "repair4": true,
+    "repair8": true
+  },
+  "expand_candidates": {},
+  "execution_audit": {
+    "peak_gpu_bytes": 37752659968,
+    "formal_compile_events": 0
+  }
+}

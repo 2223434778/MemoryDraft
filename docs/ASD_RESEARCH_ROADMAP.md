@@ -19,7 +19,7 @@
 |1|更长真实Draft块：16对24/32|完整48开发题已完成，当前b16权重直接扩块不升级|ASD_BLOCK_SUITE_FINDINGS.md：3120计时/144机制；Utility24较ASD16六类自然均更慢；ASD32有2个额外质量失败。停止该外推实现扫参，专用长块训练仍未评估|
 |2|GPU执行：减少同步、设备侧账本、编译/图捕获|RMSNorm48独立验证及显式profile工程验收完成|ASD_RMSNORM_VALIDATION_FINDINGS.md：1152计时+96 AR，自然时延低2.68%–2.86%、240完整输出全同、全部门槛通过。RMSNORM_RUNTIME_RESULTS.md：CLI/stream/cancel/R/HTTP真实验收通过，冷成本保留；默认eager/infra引用保持，reserve未生成。MLP-only停止扫参，CUDA Graph/精度/attention等仍未做完|
 |3|请求级/轮级长度与验证计算分配|本四动作/廉价选择器阶段完成，按预登记规则停止扩测|ASD_ALLOCATION_FINDINGS.md：六类各2/480主生成/27真实KV状态；请求oracle省0.93%，局部MBPP/短问答oracle省7.13%/16.31%，但四廉价特征留题预测未通过任何合格场景。保留native16与工具，不部署、不扩完整自然生成，不泛化为所有调度算法无效；reserve未生成|
-|4|多候选、树状候选、局部Draft修复|有限方案已实现，生成前冻结准备|ASD_CANDIDATE_PROTOCOL.md：native/packed-linear/固定Top-2树32与48/一次后缀修复4与8；六类各2、三重复完整自然输出，全部在线成本与严格质量核对后才决定扩48。完整BASTION/ReTrace未复现，reserve不生成|
+|4|多候选、树状候选、局部Draft修复|有限六方法检查完成，未通过自动扩48门槛|ASD_CANDIDATE_FINDINGS.md：六类各2/216完整自然计时，全部严格一致。tree32总体慢1.85%，GSM两题平均快3.45%正线索保留；tree48慢18.87%，直接修复4/8慢约17.7%。按预登记结束本固定方案，不否定树或训练后缀表示；完整BASTION/ReTrace、ASD树近似账本未实现，reserve未生成|
 |5|Draft领域适配、实际轨迹蒸馏|只做16状态前缀诊断，未训练|不能凭未见退化否定训练；固定训练数据/算力，普通蒸馏与ASD轨迹适配等成本对照，验证题不可用于训练|
 |6|长上下文与连续批处理/并发调度|当前仅单请求运行时|先长上下文单请求，再接成熟serving底座；排队并发不冒充连续批处理；关注吞吐、请求延迟和显存|
 |7|其他配对模型及非数学任务迁移|当前主要Qwen3-8B/DFlash|通过开发机制后冻结新配对和任务；BF16浮点分歧与近似策略的质量变化分开|

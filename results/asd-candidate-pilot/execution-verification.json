@@ -1,0 +1,16 @@
+{
+  "status": "complete",
+  "scope": "pilot",
+  "methods": [
+    "native",
+    "packed-linear",
+    "tree32",
+    "tree48",
+    "repair4",
+    "repair8"
+  ],
+  "commit": "2949b9ed7dda32678ef0484194554cbc43365d74",
+  "files_verified_before": 1540,
+  "worker_timeout_seconds": 3600,
+  "files_verified_after": 1540
+}

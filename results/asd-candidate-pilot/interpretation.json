@@ -1,0 +1,1073 @@
+{
+  "posthoc": true,
+  "methods": {
+    "native": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 278,
+      "draft_calls": 278,
+      "verify_nodes": 4448,
+      "raw_advance": 1990,
+      "advance_after_eos_or_cap": 15,
+      "tree_gain_histogram": {},
+      "tree_native_accept_histogram": {},
+      "branch_rounds": 0,
+      "repair_accept_histogram": {},
+      "repair_calls": 0,
+      "repair_accepted": 0,
+      "all_quality_dicts_equal_old": true
+    },
+    "packed-linear": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 278,
+      "draft_calls": 278,
+      "verify_nodes": 4448,
+      "raw_advance": 1990,
+      "advance_after_eos_or_cap": 15,
+      "tree_gain_histogram": {
+        "0": 278
+      },
+      "tree_native_accept_histogram": {
+        "0": 30,
+        "1": 26,
+        "2": 25,
+        "3": 36,
+        "4": 14,
+        "5": 19,
+        "6": 17,
+        "7": 13,
+        "8": 13,
+        "9": 9,
+        "10": 11,
+        "11": 10,
+        "12": 11,
+        "13": 3,
+        "14": 7,
+        "15": 34
+      },
+      "branch_rounds": 0,
+      "repair_accept_histogram": {},
+      "repair_calls": 0,
+      "repair_accepted": 0,
+      "all_quality_dicts_equal_old": true
+    },
+    "tree32": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 265,
+      "draft_calls": 265,
+      "verify_nodes": 8480,
+      "raw_advance": 1993,
+      "advance_after_eos_or_cap": 18,
+      "tree_gain_histogram": {
+        "0": 210,
+        "1": 43,
+        "2": 4,
+        "3": 4,
+        "4": 4
+      },
+      "tree_native_accept_histogram": {
+        "0": 29,
+        "1": 21,
+        "2": 25,
+        "3": 30,
+        "4": 18,
+        "5": 18,
+        "6": 20,
+        "7": 8,
+        "8": 14,
+        "9": 8,
+        "10": 13,
+        "11": 9,
+        "12": 10,
+        "13": 4,
+        "14": 5,
+        "15": 33
+      },
+      "branch_rounds": 55,
+      "repair_accept_histogram": {},
+      "repair_calls": 0,
+      "repair_accepted": 0,
+      "all_quality_dicts_equal_old": true
+    },
+    "tree48": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 264,
+      "draft_calls": 264,
+      "verify_nodes": 12672,
+      "raw_advance": 1993,
+      "advance_after_eos_or_cap": 18,
+      "tree_gain_histogram": {
+        "0": 207,
+        "1": 45,
+        "2": 4,
+        "3": 4,
+        "4": 1,
+        "7": 2,
+        "8": 1
+      },
+      "tree_native_accept_histogram": {
+        "0": 29,
+        "1": 21,
+        "2": 25,
+        "3": 32,
+        "4": 17,
+        "5": 18,
+        "6": 19,
+        "7": 8,
+        "8": 14,
+        "9": 9,
+        "10": 12,
+        "11": 7,
+        "12": 10,
+        "13": 3,
+        "14": 6,
+        "15": 34
+      },
+      "branch_rounds": 57,
+      "repair_accept_histogram": {},
+      "repair_calls": 0,
+      "repair_accepted": 0,
+      "all_quality_dicts_equal_old": true
+    },
+    "repair4": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 380,
+      "draft_calls": 216,
+      "verify_nodes": 4258,
+      "raw_advance": 1987,
+      "advance_after_eos_or_cap": 12,
+      "tree_gain_histogram": {},
+      "tree_native_accept_histogram": {},
+      "branch_rounds": 0,
+      "repair_accept_histogram": {
+        "0": 115,
+        "1": 20,
+        "2": 10,
+        "3": 4,
+        "4": 15
+      },
+      "repair_calls": 164,
+      "repair_accepted": 112,
+      "all_quality_dicts_equal_old": true
+    },
+    "repair8": {
+      "requests": 12,
+      "output_tokens": 1987,
+      "finish_reasons": {
+        "eos": 12
+      },
+      "target_calls": 379,
+      "draft_calls": 216,
+      "verify_nodes": 4760,
+      "raw_advance": 1987,
+      "advance_after_eos_or_cap": 12,
+      "tree_gain_histogram": {},
+      "tree_native_accept_histogram": {},
+      "branch_rounds": 0,
+      "repair_accept_histogram": {
+        "0": 112,
+        "1": 22,
+        "2": 10,
+        "3": 4,
+        "4": 5,
+        "5": 2,
+        "6": 3,
+        "7": 2,
+        "8": 3
+      },
+      "repair_calls": 163,
+      "repair_accepted": 140,
+      "all_quality_dicts_equal_old": true
+    }
+  },
+  "per_request": [
+    {
+      "request_id": "gsm8k:52",
+      "benchmark": "gsm8k",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 3.633456326671876,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 800,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.011074982244813,
+          "seconds": 3.6736967909770706,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.011074982244813,
+          "verify_nodes": 800,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 0.9687415397945318,
+          "seconds": 3.5198800766762965,
+          "target_call_ratio": 0.9,
+          "amortized_wall_per_call_ratio": 1.0763794886605909,
+          "verify_nodes": 1440,
+          "tree_gain": 10,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.1683622333617443,
+          "seconds": 4.245193148652713,
+          "target_call_ratio": 0.9,
+          "amortized_wall_per_call_ratio": 1.2981802592908271,
+          "verify_nodes": 2160,
+          "tree_gain": 10,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.1826803042752183,
+          "seconds": 4.297217233999011,
+          "target_call_ratio": 1.3,
+          "amortized_wall_per_call_ratio": 0.9097540802117065,
+          "verify_nodes": 708,
+          "tree_gain": 0,
+          "repair_calls": 30,
+          "repair_zero": 19,
+          "repair_accepted": 25
+        },
+        "repair8": {
+          "latency_ratio": 1.1914513664373028,
+          "seconds": 4.3290865053034695,
+          "target_call_ratio": 1.3,
+          "amortized_wall_per_call_ratio": 0.9165010511056175,
+          "verify_nodes": 801,
+          "tree_gain": 0,
+          "repair_calls": 30,
+          "repair_zero": 19,
+          "repair_accepted": 27
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "benchmark": "gsm8k",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 2.7007006206937754,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 592,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.014611872320142,
+          "seconds": 2.740162913338281,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.014611872320142,
+          "verify_nodes": 592,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 0.9622671709974003,
+          "seconds": 2.598795545985922,
+          "target_call_ratio": 0.8918918918918919,
+          "amortized_wall_per_call_ratio": 1.078905615966782,
+          "verify_nodes": 1056,
+          "tree_gain": 18,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.124625290708047,
+          "seconds": 3.03727622066314,
+          "target_call_ratio": 0.8648648648648649,
+          "amortized_wall_per_call_ratio": 1.3003479923811792,
+          "verify_nodes": 1536,
+          "tree_gain": 23,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.2451812036736805,
+          "seconds": 3.3628616496377313,
+          "target_call_ratio": 1.3783783783783783,
+          "amortized_wall_per_call_ratio": 0.9033667556063957,
+          "verify_nodes": 551,
+          "tree_gain": 0,
+          "repair_calls": 24,
+          "repair_zero": 18,
+          "repair_accepted": 15
+        },
+        "repair8": {
+          "latency_ratio": 1.1892776140039791,
+          "seconds": 3.211882790317759,
+          "target_call_ratio": 1.2972972972972974,
+          "amortized_wall_per_call_ratio": 0.9167348274614006,
+          "verify_nodes": 606,
+          "tree_gain": 0,
+          "repair_calls": 22,
+          "repair_zero": 16,
+          "repair_accepted": 22
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "benchmark": "humaneval",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 1.5295274730306119,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 304,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0093895532593367,
+          "seconds": 1.5438890527002513,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0093895532593367,
+          "verify_nodes": 304,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0161194223016066,
+          "seconds": 1.5541825722903013,
+          "target_call_ratio": 0.9473684210526315,
+          "amortized_wall_per_call_ratio": 1.0725705013183626,
+          "verify_nodes": 576,
+          "tree_gain": 4,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2204274552774192,
+          "seconds": 1.866677321687651,
+          "target_call_ratio": 0.9473684210526315,
+          "amortized_wall_per_call_ratio": 1.2882289805706093,
+          "verify_nodes": 864,
+          "tree_gain": 4,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.0887978457506475,
+          "seconds": 1.6653462176521618,
+          "target_call_ratio": 1.2105263157894737,
+          "amortized_wall_per_call_ratio": 0.8994416986635785,
+          "verify_nodes": 247,
+          "tree_gain": 0,
+          "repair_calls": 11,
+          "repair_zero": 10,
+          "repair_accepted": 1
+        },
+        "repair8": {
+          "latency_ratio": 1.09908144967954,
+          "seconds": 1.6810752723831683,
+          "target_call_ratio": 1.2105263157894737,
+          "amortized_wall_per_call_ratio": 0.9079368497352722,
+          "verify_nodes": 280,
+          "tree_gain": 0,
+          "repair_calls": 11,
+          "repair_zero": 10,
+          "repair_accepted": 1
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:82",
+      "benchmark": "humaneval",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.6180916496474916,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 112,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0081269199538623,
+          "seconds": 0.6231148310083275,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0081269199538623,
+          "verify_nodes": 112,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 0.9335171690306096,
+          "seconds": 0.5769991669803858,
+          "target_call_ratio": 0.8571428571428571,
+          "amortized_wall_per_call_ratio": 1.0891033638690446,
+          "verify_nodes": 192,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.1060065871720122,
+          "seconds": 0.6836134359861413,
+          "target_call_ratio": 0.8571428571428571,
+          "amortized_wall_per_call_ratio": 1.2903410183673476,
+          "verify_nodes": 288,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.2602159940524087,
+          "seconds": 0.7789289826760069,
+          "target_call_ratio": 1.4285714285714286,
+          "amortized_wall_per_call_ratio": 0.8821511958366861,
+          "verify_nodes": 116,
+          "tree_gain": 0,
+          "repair_calls": 4,
+          "repair_zero": 3,
+          "repair_accepted": 4
+        },
+        "repair8": {
+          "latency_ratio": 1.2719925533277618,
+          "seconds": 0.7862079756256813,
+          "target_call_ratio": 1.4285714285714286,
+          "amortized_wall_per_call_ratio": 0.8903947873294333,
+          "verify_nodes": 132,
+          "tree_gain": 0,
+          "repair_calls": 4,
+          "repair_zero": 3,
+          "repair_accepted": 8
+        }
+      }
+    },
+    {
+      "request_id": "json:12",
+      "benchmark": "json",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.9045535376838719,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.009163167918664,
+          "seconds": 0.9128421136410907,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.009163167918664,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0547294138922843,
+          "seconds": 0.9540592226355026,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0547294138922843,
+          "verify_nodes": 320,
+          "tree_gain": 2,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2605245768702686,
+          "seconds": 1.1402119653454672,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.2605245768702686,
+          "verify_nodes": 480,
+          "tree_gain": 2,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.3865934527578683,
+          "seconds": 1.2542480130214244,
+          "target_call_ratio": 1.6,
+          "amortized_wall_per_call_ratio": 0.8666209079736676,
+          "verify_nodes": 189,
+          "tree_gain": 0,
+          "repair_calls": 6,
+          "repair_zero": 3,
+          "repair_accepted": 9
+        },
+        "repair8": {
+          "latency_ratio": 1.3944032517466325,
+          "seconds": 1.261312394325311,
+          "target_call_ratio": 1.6,
+          "amortized_wall_per_call_ratio": 0.8715020323416454,
+          "verify_nodes": 201,
+          "tree_gain": 0,
+          "repair_calls": 6,
+          "repair_zero": 3,
+          "repair_accepted": 9
+        }
+      }
+    },
+    {
+      "request_id": "json:7",
+      "benchmark": "json",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 1.446253693002897,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 272,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0106293454105917,
+          "seconds": 1.4616264230571687,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0106293454105917,
+          "verify_nodes": 272,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0654218234083839,
+          "seconds": 1.5408702467102557,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.065421823408384,
+          "verify_nodes": 544,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2697756047891067,
+          "seconds": 1.8364176577112328,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.2697756047891067,
+          "verify_nodes": 816,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.1545241779602748,
+          "seconds": 1.6697348560361813,
+          "target_call_ratio": 1.2352941176470589,
+          "amortized_wall_per_call_ratio": 0.9346148107297464,
+          "verify_nodes": 280,
+          "tree_gain": 0,
+          "repair_calls": 5,
+          "repair_zero": 3,
+          "repair_accepted": 4
+        },
+        "repair8": {
+          "latency_ratio": 1.1582289044209428,
+          "seconds": 1.675092830361488,
+          "target_call_ratio": 1.2352941176470589,
+          "amortized_wall_per_call_ratio": 0.93761387500743,
+          "verify_nodes": 292,
+          "tree_gain": 0,
+          "repair_calls": 5,
+          "repair_zero": 3,
+          "repair_accepted": 4
+        }
+      }
+    },
+    {
+      "request_id": "math500:329",
+      "benchmark": "math500",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 2.1945929446956143,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 480,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0074445118840394,
+          "seconds": 2.21093061795303,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0074445118840394,
+          "verify_nodes": 480,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0299448160356057,
+          "seconds": 2.2603096266975626,
+          "target_call_ratio": 0.9666666666666667,
+          "amortized_wall_per_call_ratio": 1.065460154519592,
+          "verify_nodes": 928,
+          "tree_gain": 8,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2599266667442421,
+          "seconds": 2.765026173670776,
+          "target_call_ratio": 0.9666666666666667,
+          "amortized_wall_per_call_ratio": 1.3033724138733538,
+          "verify_nodes": 1392,
+          "tree_gain": 8,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.3472758612615239,
+          "seconds": 2.9567220996832475,
+          "target_call_ratio": 1.5,
+          "amortized_wall_per_call_ratio": 0.8981839075076826,
+          "verify_nodes": 484,
+          "tree_gain": 0,
+          "repair_calls": 21,
+          "repair_zero": 12,
+          "repair_accepted": 17
+        },
+        "repair8": {
+          "latency_ratio": 1.300387916399417,
+          "seconds": 2.8538221466975906,
+          "target_call_ratio": 1.4333333333333333,
+          "amortized_wall_per_call_ratio": 0.907247383534477,
+          "verify_nodes": 518,
+          "tree_gain": 0,
+          "repair_calls": 20,
+          "repair_zero": 10,
+          "repair_accepted": 21
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "benchmark": "math500",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 7.11980687334047,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 1552,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0109920316699108,
+          "seconds": 7.198068015975878,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0109920316699108,
+          "verify_nodes": 1552,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0698637294802573,
+          "seconds": 7.617223134691206,
+          "target_call_ratio": 0.9896907216494846,
+          "amortized_wall_per_call_ratio": 1.0810081433290102,
+          "verify_nodes": 3072,
+          "tree_gain": 34,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.3045031112352485,
+          "seconds": 9.28781021766675,
+          "target_call_ratio": 0.9896907216494846,
+          "amortized_wall_per_call_ratio": 1.3180916853106157,
+          "verify_nodes": 4608,
+          "tree_gain": 41,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.2842439942102957,
+          "seconds": 9.143569217024682,
+          "target_call_ratio": 1.402061855670103,
+          "amortized_wall_per_call_ratio": 0.915968142929402,
+          "verify_nodes": 1530,
+          "tree_gain": 0,
+          "repair_calls": 58,
+          "repair_zero": 42,
+          "repair_accepted": 37
+        },
+        "repair8": {
+          "latency_ratio": 1.3331482439328382,
+          "seconds": 9.491758030334799,
+          "target_call_ratio": 1.443298969072165,
+          "amortized_wall_per_call_ratio": 0.9236812832963236,
+          "verify_nodes": 1764,
+          "tree_gain": 0,
+          "repair_calls": 60,
+          "repair_zero": 43,
+          "repair_accepted": 48
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:217",
+      "benchmark": "mbpp",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.3963517619607349,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 64,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0113217949317066,
+          "seconds": 0.400839175330475,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0113217949317066,
+          "verify_nodes": 64,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0509911094030104,
+          "seconds": 0.41656217801695067,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0509911094030104,
+          "verify_nodes": 128,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2289339733346618,
+          "seconds": 0.4870901456646,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.2289339733346618,
+          "verify_nodes": 192,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.1140273995003462,
+          "seconds": 0.4415467226644978,
+          "target_call_ratio": 1.25,
+          "amortized_wall_per_call_ratio": 0.8912219196002771,
+          "verify_nodes": 58,
+          "tree_gain": 0,
+          "repair_calls": 2,
+          "repair_zero": 2,
+          "repair_accepted": 0
+        },
+        "repair8": {
+          "latency_ratio": 1.1199461234733303,
+          "seconds": 0.4438926193397492,
+          "target_call_ratio": 1.25,
+          "amortized_wall_per_call_ratio": 0.8959568987786642,
+          "verify_nodes": 59,
+          "tree_gain": 0,
+          "repair_calls": 2,
+          "repair_zero": 2,
+          "repair_accepted": 0
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:262",
+      "benchmark": "mbpp",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.5479870709823444,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 80,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0063779656525627,
+          "seconds": 0.5514821136991183,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0063779656525627,
+          "verify_nodes": 80,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0422533661360558,
+          "seconds": 0.5711413693303863,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0422533661360558,
+          "verify_nodes": 160,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.2053410454106075,
+          "seconds": 0.6605113090093558,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.2053410454106077,
+          "verify_nodes": 240,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.0580256068142915,
+          "seconds": 0.5797843533024812,
+          "target_call_ratio": 1.2,
+          "amortized_wall_per_call_ratio": 0.8816880056785763,
+          "verify_nodes": 63,
+          "tree_gain": 0,
+          "repair_calls": 3,
+          "repair_zero": 3,
+          "repair_accepted": 0
+        },
+        "repair8": {
+          "latency_ratio": 1.0664944569100614,
+          "seconds": 0.5844251736610507,
+          "target_call_ratio": 1.2,
+          "amortized_wall_per_call_ratio": 0.8887453807583845,
+          "verify_nodes": 75,
+          "tree_gain": 0,
+          "repair_calls": 3,
+          "repair_zero": 3,
+          "repair_accepted": 0
+        }
+      }
+    },
+    {
+      "request_id": "squad:572651f9f1498d1400e8dbef",
+      "benchmark": "squad",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.72018271467338,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.0043087653513203,
+          "seconds": 0.7232858130009845,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0043087653513203,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0090959393277101,
+          "seconds": 0.7267334529509147,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0090959393277101,
+          "verify_nodes": 32,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.0325845948850332,
+          "seconds": 0.7436495766742155,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0325845948850332,
+          "verify_nodes": 48,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 0.9988860062775778,
+          "seconds": 0.7193804356502369,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 0.9988860062775778,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair8": {
+          "latency_ratio": 1.007115126735899,
+          "seconds": 0.725306905961285,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.007115126735899,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        }
+      }
+    },
+    {
+      "request_id": "squad:5734025d4776f419006616c6",
+      "benchmark": "squad",
+      "methods": {
+        "native": {
+          "latency_ratio": 1.0,
+          "seconds": 0.2974499856354669,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "packed-linear": {
+          "latency_ratio": 1.001612003371856,
+          "seconds": 0.29792947601526976,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.001612003371856,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree32": {
+          "latency_ratio": 1.0194528659304498,
+          "seconds": 0.3032362403270478,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0194528659304498,
+          "verify_nodes": 32,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "tree48": {
+          "latency_ratio": 1.0837074933503186,
+          "seconds": 0.32234877833010006,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0837074933503186,
+          "verify_nodes": 48,
+          "tree_gain": 1,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair4": {
+          "latency_ratio": 1.001097940499645,
+          "seconds": 0.29777656802131486,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.001097940499645,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        },
+        "repair8": {
+          "latency_ratio": 1.0045995149903024,
+          "seconds": 0.2988181113032624,
+          "target_call_ratio": 1.0,
+          "amortized_wall_per_call_ratio": 1.0045995149903024,
+          "verify_nodes": 16,
+          "tree_gain": 0,
+          "repair_calls": 0,
+          "repair_zero": 0,
+          "repair_accepted": 0
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Trace raw advance/tree_gain can include work beyond EOS or cap; output tokens are separately exact.",
+    "Wall/call includes prefill, drafting, decoding and every online cost; it is not isolated Target kernel latency.",
+    "No threshold, method or task was changed using these descriptive counts."
+  ]
+}

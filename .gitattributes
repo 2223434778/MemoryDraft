@@ -288,3 +288,14 @@ results/asd-allocation/** -text
 results/asd-allocation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-allocation/**/*.log -whitespace
 results/asd-allocation/**/*.xml -whitespace
+memorydraft/backends/draft_tree.py text eol=lf
+memorydraft/backends/candidate_repair.py text eol=lf
+scripts/*asd_candidate*.py text eol=lf
+tests/test_draft_tree.py text eol=lf
+tests/test_candidate_repair.py text eol=lf
+tests/test_asd_candidate_report.py text eol=lf
+docs/ASD_CANDIDATE*.md text eol=lf
+results/asd-candidate-pilot/** -text
+results/asd-candidate-pilot/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-candidate-pilot/**/*.log -whitespace
+results/asd-candidate-pilot/**/*.xml -whitespace

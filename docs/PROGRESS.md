@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-22 — 阶段4有限多候选/后缀修复检查完成
+
+- 冻结2949b9ed7dda32678ef0484194554cbc43365d74/1540 blobs，source SHA3fbbfe1da9e33f728d542f6ea9835eca1e0fb1323337fa344e79d3ed251eedce；本地完整ZIP SHAe2503bf149c76b5918dc5300bbb0363b5f5ecaba1f0e1cf5eb1cb95e89f1626c。旧完整ZIP+819188B delta（SHAac40da7d4e45da56a49f9bbd98d03ef21c12890a753427552adde1fa66a9a4be）在独立asd-candidate-pilot重建1540目标blob。PID618342于2026-10-22 05:23:43 UTC/北京时间13:23:43启动；约13:30完成和末审计，前后源码SHA全同，两卡最终19MiB/0%。成功ZIP307959B/SHA61753a35323d691f87f33b1418b05a47b65a2f01802a7d5f3fedc166d7d9ca36。
+- 服务器121 passed/9.47s后12题×六方法×3=216正式完整自然请求，另12短warmup。各方法1987输出token、12/12自然EOS，无4096截断；全部token/text/EOS及输入/快照与旧完整DFlash/RMSNorm同，每臂重复轨迹稳定，评分字典也全同。保留旧HumanEval:134失败和SQuAD四token旧EM失败，不把严格一致当全题答对。仅strict D隔离候选机制，没有改ASD接受或将其冒充ASD完整收益。
+- 题均自然wall/native：packed-linear1.008754，tree32 1.018533，tree48 1.188727，repair4 1.176796，repair8 1.178011。每题一条稳定轨迹：native Target/Draft278/278、4448验证节点；tree32 265/265、8480节点；tree48 264/264、12672节点；repair4 380/216，repair8 379/216。Target列不含12相同prefill，但所有prefill/构造/同步/选路/KV/特征/EOS成本均在wall内。
+- tree32有55/265轮走分支，43次只多推进1；宽48只再少一次调用。repair4 164次/115零接受（70.12%），repair8 163次/112零接受（68.71%）：省Draft约22.3%却多Target约36%。raw tree_gain和EOS之后已付工作在interpretation.json分列，不能当多输出token或孤立kernel成本。
+- 正线索保留：tree32在GSM两题时延比分别0.968742/0.962267、家族0.965504，三重复方向一致；HumanEval家族0.974818但一题退化，其余家族均更慢。总体未省3%、任何家族未省5%，按原协议不自动扩48，不临时调门槛/预算/挑题。此有限固定树/直接token修复阶段完成，不断言所有树或表示复用失败；完整BASTION、ReTrace训练/表示融合、ASD树账本及独立数据未做，reserve96未生成。
+- 每卡3图/backend3.27113/3.24606s/cache398883B，peak35.1599GiB，正式新增编译0。首次空cache native32 wall4.83495/4.82669s、TTFT3.52471/3.51903s，图0→3/编译在线成本未扣。结束即时一次GPU19MiB/1%随后0%，completion保留两次观察，仅复核空闲，未重复模型生成。
+- 本地完整791 passed/5 skipped/109.86s后报告14 passed/6.74s；服务器121通过。后审计1540 Git blobs/10冻结文件/1044旧SHA/11批434历史发布文件/轨迹前沿与树路径/原infra三引用通过，两个既有CRLF例外显式列出。Python3.11服务器与3.13本地主统计完全相同（差异0），后验机制脚本没有改变冻结选择规则。
+- 结果results/asd-candidate-pilot，主表docs/ASD_CANDIDATE_PILOT_RESULTS.md，结论ASD_CANDIDATE_FINDINGS.md。服务器命令`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_candidate_pipeline`；本机`python -m scripts.write_asd_candidate_report`、`python -m results.asd-candidate-pilot.inspect_results`、`python -m results.asd-candidate-pilot.audit_statistics`、`python -m results.asd-candidate-pilot.audit_postrun`。只新增可选研究入口，不升级默认；原infra冻结引用保持。
+
 ## 2026-10-22 — 阶段4多候选与局部修复（生成前准备）
 
 - 用户授权阶段4。检索DFlash、BASTION(arXiv2605.29727及官方repo)、OPT-Tree(TACL2025)、ReTrace(arXiv2608.29748v2)原始来源，选择免训练有限方案；没有复制新上游源码，不增加许可依赖，不宣称原创或完整论文复现。新增draft_tree.py和candidate_repair.py，adapter仅可选严格tree入口，默认路径/Target输入/权重/接受规则保持。
