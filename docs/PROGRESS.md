@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-22 — 阶段5等预算Draft适配（执行准备）
+
+- 用户授权阶段5。新实现复用PEFT0.11.1和已审计DFlash，原推理引擎未改。旧16状态检查只是不支持当时的必要性假设，不能代替训练。检索DFlash原训练、AdaFlash2607.19223v3、Draft-OPD2605.29343，选择一次离线硬标签可行性，不假称完整KL/on-policy在线算法复现。
+- 新官方GSM train固定commit3101c7d5072418e28b9008a6636bde82a006892c，raw SHA17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465；32训练/8内部校准按固定SHA排序，排除与完整官方test的规范化精确重合（0），只保存问题/来源元数据，没有参考答案。questions SHA a2455b6fb3571d3a2e689d392e771c2d3278fb99f0beefa4fb14cdecef82dab5，MIT notice保留。Windows首准备命令遇UTF8默认GBK读取错误，显式UTF8后成功，未生成GPU数据。
+- 协议docs/ASD_ADAPTATION_PROTOCOL.md：原strict/ASD各256源轨迹，在真实Draft轮4/12取两源共同存在的状态；重新prefill实际上下文提取anchor前features，teacher新生成至多15标签，EOS后padding不计loss。禁止复用错误Target状态或把ASD旧候选当正确标签；source缺失/进度差异和ASD此前预算均记录。hidden缓存限16GiB，不上传。
+- LoRA q/v rank8/alpha16/dropout0，原Target/Draft base冻结；各128更新/累积2、AdamW1e-4/.01、clip1/seed20261022。每32步用相同内部混合校准池按teacher位置CE选训练checkpoint；不按评估题继续训练。两卡各训一组、单组训练段900秒，GPU46GiB。训练/eager可微，评估统一原强RMSNorm profile，合并dense投影并单列离线准备成本。
+- 评估原开发18题：GSM8+五类各2，三模型×strict/ASD，自然3次/128且EOS前缀2次=540正式，另12短warmup。严格输出核对旧完整参考，base ASD也重现旧自然；近似组单列质量/长度/TPS/共同128，不拿更短输出当吞吐。validation48不作新盲测、不训练或选ckpt，reserve96不生成。
+- 新文件memorydraft/evaluation/adaptation.py、prepare_asd_adaptation及run_asd_adaptation_{collect,train,eval,pipeline}/write_asd_adaptation_report、tests/test_adaptation.py与test_asd_adaptation_report.py。初始tiny7 passed/2 skipped/14.56s，相关59 passed/4 skipped/11.42s；本机无PEFT，服务器有0.11.1，将在服务器先验证真实tiny DFlash梯度再启动GPU流程。完整本地回归运行中，尚无本轮训练/加速结论。
+- 本地完整811 passed/7 skipped/114.38s，XML artifacts/adaptation-full-local.xml，`git diff --check`通过；最小测试和报告测试覆盖监督/预算矩阵/质量损失及fresh部署。完整命令`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/adaptation-full-tmp --junitxml=artifacts/adaptation-full-local.xml -x --tb=short`。准备提交冻结源/数据/主统计并部署；尚无GPU训练结果。
+
 ## 2026-10-22 — 阶段4有限多候选/后缀修复检查完成
 
 - 冻结2949b9ed7dda32678ef0484194554cbc43365d74/1540 blobs，source SHA3fbbfe1da9e33f728d542f6ea9835eca1e0fb1323337fa344e79d3ed251eedce；本地完整ZIP SHAe2503bf149c76b5918dc5300bbb0363b5f5ecaba1f0e1cf5eb1cb95e89f1626c。旧完整ZIP+819188B delta（SHAac40da7d4e45da56a49f9bbd98d03ef21c12890a753427552adde1fa66a9a4be）在独立asd-candidate-pilot重建1540目标blob。PID618342于2026-10-22 05:23:43 UTC/北京时间13:23:43启动；约13:30完成和末审计，前后源码SHA全同，两卡最终19MiB/0%。成功ZIP307959B/SHA61753a35323d691f87f33b1418b05a47b65a2f01802a7d5f3fedc166d7d9ca36。

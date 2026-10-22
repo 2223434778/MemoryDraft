@@ -299,3 +299,9 @@ results/asd-candidate-pilot/** -text
 results/asd-candidate-pilot/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-candidate-pilot/**/*.log -whitespace
 results/asd-candidate-pilot/**/*.xml -whitespace
+memorydraft/evaluation/adaptation.py text eol=lf
+scripts/*asd_adaptation*.py text eol=lf
+tests/test_adaptation.py text eol=lf
+tests/test_asd_adaptation_report.py text eol=lf
+docs/ASD_ADAPTATION*.md text eol=lf
+data/research/asd-adaptation/** -text
