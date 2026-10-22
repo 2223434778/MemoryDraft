@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-22 — 阶段3真实计算分配（生成前冻结）
+
+- 用户要求完成阶段3。协议docs/ASD_ALLOCATION_PROTOCOL.md：六类原开发题各前2，strict/native16/FP32/RMSNorm；不消费reserve，不把已观察validation当独立。动作native16、实际Draft8、Draft16/verify7和Target单步；单步累积真实feature后Draft追赶，pending达到1024强制native。仅可选round_action薄回调，默认旧轨迹不变，未改接受规则/Target输入/权重。
+- 每题1源native512、四请求动作128上限各3次（其中AR为原生generate），源轮0/4/12各四动作×3次保留实际KV的64新token局部检查；均遵守EOS，缺失状态不补。最多12+144+432=588主要生成，另10短warmup。局部clock从当前起草前起算，包含该动作及实际后续，前缀共同重放排除；请求clock全在线。原完整dev DFlash/RMSNorm token/prompt/snapshot先核对，全部数值分歧与失败保留。
+- 先比最好固定动作的有限oracle，再留一次重复防选噪声；总体或任一>=2请求家族须oracle省>=5%、跨重复省>=3%，全题输出安全且同范围留题单层stump再省>=2%才进入实际闭环候选。四固定廉价特征/每叶至少3状态，训练不见本题；家族报告沿用全体其他题的同一个留题模型。若不通过结束本四动作阶段，不扫更多特征/长度；通过再按协议做完整生成与质量检查，不把局部oracle当线上提速。
+- 依据DISCO(PMLR2024)、DFlash(arXiv2602.06036v1)、BlockPilot(arXiv2606.31315v1)，已检索官方论文，未引入上游新代码。并行Draft成本不随裁短候选线性下降，所以两种裁短分开实测，非重复旧例外接受/拒绝预测。
+- 首轮`.venv\Scripts\python.exe -m pytest -q tests/test_allocation.py tests/test_dflash_reuse.py --basetemp .test-tmp-allocation-first --junitxml=artifacts/allocation-tests-first-local.xml -x --tb=short`：52 passed/2 skipped/31.15s。相关60 passed/2 skipped/11.58s；报告合成测试一度因每侧3题留一后不足每叶3状态而失败，增加为每侧4题保持最小叶规则，原失败XML保留。
+- 完整`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-allocation-full --junitxml=artifacts/allocation-tests-full-local.xml -x --tb=short`：731 passed/5 skipped/112.80s。随后补充资源审计反例，报告相关12 passed/6.70s，未重复无关GPU性能。真实tiny Target/KV覆盖混合动作/追赶、EOS/上限/stream、默认trace相同、fork边界与报告矩阵/不稳定/NaN/数值风险。
+- A6000探测torch2.5.1+cu124/Transformers4.57.3，两卡19MiB/0%。部署独立asd-allocation，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_allocation_pipeline`；worker2400秒，图8/backend300秒/cache4GiB/allocated46GiB，先服务器相关检查。源码、协议和主统计在GPU前提交导出Git blobs，原infra引用及全部旧结果保护。
+
 ## 2026-10-21 — 显式RMSNorm运行时真实验收完成
 
 - 冻结52fe5be256a9982d4201c24a92b498a5e9cc0e2f/1453 blobs，source SHA59b878abbab371be65d061898812483c3c18aa220a2f575ae69f0d0802d72627；rmsnorm-runtime-v2/PID12263于12:47:08–12:49:01 UTC运行同一pipeline，RMSNORM RUNTIME ACCEPTANCE COMPLETE，前后1453 SHA相同，两卡结束19MiB/0%。旧完整ZIP+delta重建记录见deployment-delta.json，原目录/失败结果保留。

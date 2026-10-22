@@ -54,7 +54,8 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    profile: bool = False,
                    draft_block_size: int | None = None,
                    verify_length: Callable[[int], int] | None = None,
-                   incremental_stop: bool = False) -> ReuseGeneration:
+                   incremental_stop: bool = False,
+                   round_action: Callable[[int, int, tuple], str] | None = None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -66,6 +67,9 @@ guided R may replace a block after its draft forward has already run.
         raise ValueError("Expected one nonempty token sequence")
     if max_new_tokens < 0 or any(route not in {"R", "D"} for route in route_sequence):
         raise ValueError("Invalid generation budget or diagnostic route")
+    if round_action is not None and (matcher is not None or route_sequence or verify_length is not None
+                                     or draft_block_size is not None or not trace):
+        raise ValueError("Round allocation requires traced, exclusive model drafting")
     if max_new_tokens == 0:
         return ReuseGeneration(input_ids.clone())
     if should_stop and should_stop():
@@ -134,21 +138,33 @@ guided R may replace a block after its draft forward has already run.
                 proposal = None
         before_draft = draft_cache.get_seq_length()
         before_pending = pending_tokens
-        draft_forward = proposal is None
-        if proposal is not None:
+        current_block, allocated_verify, allocation = block_size, None, None
+        if round_action is not None:
+            from memorydraft.backends.allocation import action_spec
+            allocation = round_action(step, start - prompt + 1, tuple(result.rounds[-4:]))
+            current_block, allocated_verify = action_spec(allocation, block_size)
+            # Bound deferred feature storage even for a policy that never drafts.
+            if allocation == "target" and pending_tokens >= config.max_pending_tokens:
+                allocation = "native"
+                current_block, allocated_verify = action_spec(allocation, block_size)
+        draft_forward = proposal is None and allocation != "target"
+        if allocation == "target":
+            route = "A"
+            block = ids[:, start:start + 1].clone()
+        elif proposal is not None:
             route = "R"
             block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
         else:
             route = "D"
-            block = ids[:, start:start + block_size].clone()
+            block = ids[:, start:start + current_block].clone()
             # Clear stale proposals left in the output workspace by previous rounds.
             block[:, 1:] = draft.mask_token_id
             context = pending[0] if len(pending) == 1 else torch.cat(pending, dim=1)
             with mark("draft_forward"):
                 hidden = draft(target_hidden=context, noise_embedding=target.model.embed_tokens(block),
-                               position_ids=positions[:, before_draft:start + block_size],
+                               position_ids=positions[:, before_draft:start + current_block],
                                past_key_values=draft_cache, use_cache=True, is_causal=False)
-                logits = target.lm_head(hidden[:, -block_size + 1:, :])
+                logits = target.lm_head(hidden[:, -current_block + 1:, :])
                 block[:, 1:] = logits.argmax(dim=-1)
             draft_cache.crop(start)
             pending.clear()
@@ -170,6 +186,8 @@ guided R may replace a block after its draft forward has already run.
                 if proposal is not None:
                     route = "R"
                     block = torch.cat([ids[:, start:start + 1], ids.new_tensor([proposal.tokens])], dim=1)
+        if allocated_verify is not None and allocation != "target":
+            block = block[:, :min(block.shape[1], allocated_verify + 1)]
         if verify_length is not None:
             length = verify_length(block.shape[1] - 1)
             if type(length) is not int or not 1 <= length < block.shape[1]:
@@ -181,7 +199,9 @@ guided R may replace a block after its draft forward has already run.
         with mark("accept_decision"):
             posterior = output.logits.argmax(dim=-1)
             decision = None
-            if verifier is None:
+            if allocation == "target":
+                accepted = 0
+            elif verifier is None:
                 accepted = int((block[:, 1:] == posterior[:, :-1]).cumprod(dim=1).sum().item())
             else:
                 decision = verifier.decide(block[0, 1:], output.logits[0, :-1], stop_token_ids=stop_token_ids)
@@ -213,6 +233,8 @@ guided R may replace a block after its draft forward has already run.
                 result.rounds[-1].update(strict_accepted=decision.strict_accepted,
                                          relaxed_tokens=decision.relaxed, regret=decision.regret,
                                          draft_prefix=getattr(proposal, "draft_prefix", None))
+            if allocation is not None:
+                result.rounds[-1]["allocation"] = allocation
         step += 1
         available = min(start + 1, limit)
         with mark("publish_stop"):
