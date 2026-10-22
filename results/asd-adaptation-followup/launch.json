@@ -1,0 +1,6 @@
+{
+  "pid": 852273,
+  "launched_utc": "2026-10-22T11:44:14.017970+00:00",
+  "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-adaptation-followup",
+  "command": "OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_adaptation_followup_pipeline"
+}

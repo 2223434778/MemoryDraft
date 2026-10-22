@@ -1,0 +1,371 @@
+{
+  "status": "complete",
+  "arm": "ordinary-position",
+  "updates": 128,
+  "accumulation": 2,
+  "initialization_seed": 20261022,
+  "train_states": 64,
+  "train_requests": 32,
+  "calibration_states": 32,
+  "trainable_parameters": 532480,
+  "train_order_keys": [
+    [
+      "gsm8k-train:1297",
+      4
+    ],
+    [
+      "gsm8k-train:1297",
+      12
+    ],
+    [
+      "gsm8k-train:136",
+      4
+    ],
+    [
+      "gsm8k-train:136",
+      12
+    ],
+    [
+      "gsm8k-train:1457",
+      4
+    ],
+    [
+      "gsm8k-train:1457",
+      12
+    ],
+    [
+      "gsm8k-train:1584",
+      4
+    ],
+    [
+      "gsm8k-train:1584",
+      12
+    ],
+    [
+      "gsm8k-train:1730",
+      4
+    ],
+    [
+      "gsm8k-train:1730",
+      12
+    ],
+    [
+      "gsm8k-train:2019",
+      4
+    ],
+    [
+      "gsm8k-train:2019",
+      12
+    ],
+    [
+      "gsm8k-train:2030",
+      4
+    ],
+    [
+      "gsm8k-train:2030",
+      12
+    ],
+    [
+      "gsm8k-train:2200",
+      4
+    ],
+    [
+      "gsm8k-train:2200",
+      12
+    ],
+    [
+      "gsm8k-train:2438",
+      4
+    ],
+    [
+      "gsm8k-train:2438",
+      12
+    ],
+    [
+      "gsm8k-train:2630",
+      4
+    ],
+    [
+      "gsm8k-train:2630",
+      12
+    ],
+    [
+      "gsm8k-train:2634",
+      4
+    ],
+    [
+      "gsm8k-train:2634",
+      12
+    ],
+    [
+      "gsm8k-train:2721",
+      4
+    ],
+    [
+      "gsm8k-train:2721",
+      12
+    ],
+    [
+      "gsm8k-train:3164",
+      4
+    ],
+    [
+      "gsm8k-train:3164",
+      12
+    ],
+    [
+      "gsm8k-train:3944",
+      4
+    ],
+    [
+      "gsm8k-train:3944",
+      12
+    ],
+    [
+      "gsm8k-train:4115",
+      4
+    ],
+    [
+      "gsm8k-train:4115",
+      12
+    ],
+    [
+      "gsm8k-train:4302",
+      4
+    ],
+    [
+      "gsm8k-train:4302",
+      12
+    ],
+    [
+      "gsm8k-train:4322",
+      4
+    ],
+    [
+      "gsm8k-train:4322",
+      12
+    ],
+    [
+      "gsm8k-train:4557",
+      4
+    ],
+    [
+      "gsm8k-train:4557",
+      12
+    ],
+    [
+      "gsm8k-train:5025",
+      4
+    ],
+    [
+      "gsm8k-train:5025",
+      12
+    ],
+    [
+      "gsm8k-train:5064",
+      4
+    ],
+    [
+      "gsm8k-train:5064",
+      12
+    ],
+    [
+      "gsm8k-train:5608",
+      4
+    ],
+    [
+      "gsm8k-train:5608",
+      12
+    ],
+    [
+      "gsm8k-train:5646",
+      4
+    ],
+    [
+      "gsm8k-train:5646",
+      12
+    ],
+    [
+      "gsm8k-train:5873",
+      4
+    ],
+    [
+      "gsm8k-train:5873",
+      12
+    ],
+    [
+      "gsm8k-train:6062",
+      4
+    ],
+    [
+      "gsm8k-train:6062",
+      12
+    ],
+    [
+      "gsm8k-train:6770",
+      4
+    ],
+    [
+      "gsm8k-train:6770",
+      12
+    ],
+    [
+      "gsm8k-train:7088",
+      4
+    ],
+    [
+      "gsm8k-train:7088",
+      12
+    ],
+    [
+      "gsm8k-train:7354",
+      4
+    ],
+    [
+      "gsm8k-train:7354",
+      12
+    ],
+    [
+      "gsm8k-train:7438",
+      4
+    ],
+    [
+      "gsm8k-train:7438",
+      12
+    ],
+    [
+      "gsm8k-train:834",
+      4
+    ],
+    [
+      "gsm8k-train:834",
+      12
+    ],
+    [
+      "gsm8k-train:84",
+      4
+    ],
+    [
+      "gsm8k-train:84",
+      12
+    ],
+    [
+      "gsm8k-train:979",
+      4
+    ],
+    [
+      "gsm8k-train:979",
+      12
+    ],
+    [
+      "gsm8k-train:993",
+      4
+    ],
+    [
+      "gsm8k-train:993",
+      12
+    ]
+  ],
+  "calibration_identity_sha256": "4c1ddb15f092a7da32b8859e200660d146dfc2d42a67f1d64c9a365f32ad35ce",
+  "initial_calibration": {
+    "requests": 8,
+    "states": 32,
+    "loss": 1.6437463168986142,
+    "strict_accepted": 3.75,
+    "labels": 15.0
+  },
+  "seconds": 11.16566255199723,
+  "selected_step": 128,
+  "selected_calibration_loss": 1.5920076873153448,
+  "first_grad_norm": 0.14907974004745483,
+  "teacher_parameter_versions_unchanged": true,
+  "teacher_gradients_absent": true,
+  "draft_base_versions_unchanged": true,
+  "peak_gpu_bytes": 37081255424,
+  "adapter_path": "artifacts/followup-adapter/selected.safetensors",
+  "adapter_sha256": "42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e",
+  "final_sha256": "42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e",
+  "tensor_shapes": {
+    "base_model.model.layers.0.self_attn.q_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.0.self_attn.q_proj.lora_B.weight": [
+      4096,
+      8
+    ],
+    "base_model.model.layers.0.self_attn.v_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.0.self_attn.v_proj.lora_B.weight": [
+      1024,
+      8
+    ],
+    "base_model.model.layers.1.self_attn.q_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.1.self_attn.q_proj.lora_B.weight": [
+      4096,
+      8
+    ],
+    "base_model.model.layers.1.self_attn.v_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.1.self_attn.v_proj.lora_B.weight": [
+      1024,
+      8
+    ],
+    "base_model.model.layers.2.self_attn.q_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.2.self_attn.q_proj.lora_B.weight": [
+      4096,
+      8
+    ],
+    "base_model.model.layers.2.self_attn.v_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.2.self_attn.v_proj.lora_B.weight": [
+      1024,
+      8
+    ],
+    "base_model.model.layers.3.self_attn.q_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.3.self_attn.q_proj.lora_B.weight": [
+      4096,
+      8
+    ],
+    "base_model.model.layers.3.self_attn.v_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.3.self_attn.v_proj.lora_B.weight": [
+      1024,
+      8
+    ],
+    "base_model.model.layers.4.self_attn.q_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.4.self_attn.q_proj.lora_B.weight": [
+      4096,
+      8
+    ],
+    "base_model.model.layers.4.self_attn.v_proj.lora_A.weight": [
+      8,
+      4096
+    ],
+    "base_model.model.layers.4.self_attn.v_proj.lora_B.weight": [
+      1024,
+      8
+    ]
+  },
+  "original_unchanged": true
+}

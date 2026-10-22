@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "execution_commit": "411c2211e6cdfe9d20365d40986f41de4590fdf3",
+  "launch": {
+    "pid": 852273,
+    "launched_utc": "2026-10-22T11:44:14.017970+00:00",
+    "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-adaptation-followup",
+    "command": "OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_adaptation_followup_pipeline"
+  },
+  "zip_bytes": 768701,
+  "zip_sha256": "1f42320a13b75717747bd7ff5b38e91e52aa9274292c535b076c358fcb7c4cd4",
+  "main_statistics_server_local_exact": true,
+  "gpu_final": {
+    "memory_mib_each": 19,
+    "utilization_percent_each": 0
+  }
+}

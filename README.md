@@ -83,6 +83,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [阶段5等预算Draft适配](docs/ASD_ADAPTATION_FINDINGS.md)完成32新GSM train/8内部校准、普通与ASD实际前缀两组rank8 LoRA各128更新，以及18开发题540次计时。ASD前缀适配+ASD在GSM8题自然时延低4.46%、共同达128的7题低3.34%，最终答案保持8/8；普通适配共同128反慢2.18%。全部strict输出与旧参考一致，未新增质量失败。单seed/已观察开发集及源进度差异限制仍在，额外增量区间跨1，不作独立确认；权重留服务器、默认不升级，reserve未生成。
 
+[同位置控制与独立16题](docs/ASD_ADAPTATION_FOLLOWUP_FINDINGS.md)完成新增严格前缀适配及960计时/24 AR参考。旧ASD前缀收益重现，但新题自然仅省0.83%、128省1.05%，未通过ASD内容增量门槛；同位置严格组为7.32%/3.23%，其中自然值含旧错答长路径缩短，共同正确14题仍为3.70%/3.41%（事后诊断）。新ASD各组14/16、strict15/16，无训练新增失败，原近似质量损失保留；单seed，默认/面试版不升级，reserve未生成。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

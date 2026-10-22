@@ -1,0 +1,11 @@
+{
+  "files": {
+    "data/research/history.jsonl": "c82d81cc48db6545dbeb7a989c3efdf969b749ac5ce31ea44d4b806d42c6cabe",
+    "data/research/memory-dev.jsonl": "77b3c5c27841aa6f4150986e5980e26ce01c0b41bdf3f9fe6c2b0c1497db319d",
+    "data/research/memory-test.jsonl": "ae9dbf9ded81a429bd5b80f02bf425d937c84aa380d637f0a1f81f6f0aa19ce7",
+    "data/research/specbench-dev.jsonl": "f996c518e8e20cd1ebefa91e09a3a033bca3f14899aee30f78f08a8a1be0d4b5",
+    "data/research/specbench-test.jsonl": "3e5b1f70d94c5393b6335748ac7483328a7b80de629453ea83acd0bdedc4a9ac"
+  },
+  "independent_questions": 16,
+  "matches": []
+}

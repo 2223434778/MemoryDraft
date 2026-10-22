@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.894" timestamp="2026-10-22T20:15:56.938199+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_adaptation_followup_selection" name="test_reexport_to_another_directory_does_not_exclude_its_own_frozen_selection" time="0.046"><failure message="assert b'[\n  {\n   ...nt&quot;\n  }\n]\n' == b'[\n  {\n   ...nt&quot;\n  }\n]\n'&#10;  &#10;  At index 1456 diff: b'7' != b'3'&#10;  Use -v to get more diff">tests\test_adaptation_followup_selection.py:26: in test_reexport_to_another_directory_does_not_exclude_its_own_frozen_selection
+    assert (exported/"records.json").read_bytes() == (frozen/"records.json").read_bytes()
+E   assert b'[\n  {\n   ...nt"\n  }\n]\n' == b'[\n  {\n   ...nt"\n  }\n]\n'
+E     
+E     At index 1456 diff: b'7' != b'3'
+E     Use -v to get more diff</failure></testcase></testsuite></testsuites>

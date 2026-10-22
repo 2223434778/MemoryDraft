@@ -1,0 +1,15 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.50s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.50s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:03,  1.50s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.39s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.24s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+evaluated observed gsm8k:885 40
+evaluated observed gsm8k:1150 80
+evaluated observed gsm8k:374 120
+evaluated observed gsm8k:924 160
+evaluated independent gsm8k:578 200
+evaluated independent gsm8k:341 240
+evaluated independent gsm8k:526 280
+evaluated independent gsm8k:1142 320
+evaluated independent gsm8k:553 360
+evaluated independent gsm8k:1200 400
+evaluated independent gsm8k:120 440
+evaluated independent gsm8k:429 480

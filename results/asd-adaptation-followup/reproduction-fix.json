@@ -1,0 +1,25 @@
+{
+  "execution_commit": "411c2211e6cdfe9d20365d40986f41de4590fdf3",
+  "commit": "8ed9ee42eb12f0e77d31b3df7631d12f9890d099",
+  "files": {
+    "scripts/prepare_asd_adaptation_followup.py": "9d74d97905668115e62b0dc4932d24c80d392c8bbdfa79dacf1bfac0ce84b614",
+    "tests/test_adaptation_followup_selection.py": "9b90c76703258f163d8a39125341206db97e9d6f42783544dca76863934e2b6e"
+  },
+  "original_prepare_sha256": "033b0364edbb0dfa33e6591582d47ee70e058b6c88a829dbc2b105236c285a21",
+  "reason": "Exporting to another directory must ignore the canonical existing own study dataset in the exclusions",
+  "gpu_execution_and_frozen_records_unchanged": true,
+  "verified_reexport_files": [
+    "records.json",
+    "manifest.json",
+    "GSM8K_LICENSE.txt"
+  ],
+  "records_sha256": "d0f3d12e6f0d92c4a1ed1fbd1e5b86d3785d9d63192cf5e662253b5342cbbfc2",
+  "tests_before": {
+    "failed": 1,
+    "seconds": 3.89
+  },
+  "tests_after": {
+    "passed": 18,
+    "seconds": 23.46
+  }
+}

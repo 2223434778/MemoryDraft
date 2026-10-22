@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-22 — 阶段5后续：同位置控制及独立16题评估完成
+
+- GPU来源411c221/1651 blobs（完整SHA见下方准备记录），新root asd-adaptation-followup，PID852273于11:44:14 UTC启动；12:14:31检查已完成。80新teacher状态892671808B/约0.831GiB，两卡收集54.246/56.030秒；新严格位置臂64状态/32题/532480参数/128更新，训练段11.166秒，初始校准CE1.643746→1.592008、接受3.75→4.0625，选末128，首梯度0.14908，Target无grad/Target与Draft base版本未变。选中/末权重均2132408B/SHA42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e。原两组权重和160features只读复用，前后SHA一致。
+- 四模型×D/原ASD×24题，960正式（自然3/128且EOS两重复），另24完整AR和18短warmup。全部strict输出与AR逐ID/text/EOS一致，旧8base策略重现旧参考；全部重复轨迹/账本稳定、输入/快照一致、无4096截断、正式新图0。旧8所有模型8/8；新16 strict15/16、四ASD均14/16，训练无新增对→错/错→对。ASD仍在450将AR正确4变为错误7或3，近似质量损失不能隐去。
+- 旧ASD-prefix自然比base省4.41%、四模型共同128的7题省3.38%，与前轮4.46%/3.34%接近；旧正结果可重复。新16 ASDp自然仅省0.83%、128省1.05%；比同位置严格组慢7.77%/2.85%，预定ASD内容增量点门槛未通过。新ordinary自然慢0.31%/128省1.57%；同位置组自然省7.32%/128省3.23%，但不在strict D上显示稳定收益（自然基本持平/128慢1.12%）。保留位置/近似策略交互候选，停止当前ASD-prefix小LoRA扩大扫参，不把位置解释成旧收益的唯一原因。
+- 新自然base/position/ASDp共5307/4518/4855 token，871/704/784验证；450旧错答1125→385/463 token，仍错，自然总收益受其影响。事后四ASD共同正确14题，position自然省3.70%/128省3.41%，ASDp约0.64%/0.23%；仅排除450的15题，ASDp自然反慢3.09%。这些只作敏感性分析，不替换全部16题主结果。完整128均2048token，base/ordinary/position/ASDp验证331/325/319/326。近似预算固定，实际接受token/支出变化单列。
+- 预指定请求bootstrap10000：新ASDp自然/base比区间[.8855,1.0962]、128[.9435,1.0428]；/position自然[1.0105,1.1604]、128[.9722,1.1129]。position/base自然[.8348,.9905]、128[.9355,.9974]，但/ordinary区间均跨1；单seed、旧题反例和近似质量损失保留。下一次小成本应检查独立初始化seed及不依赖ASD采集的固定位置对照，尚未运行，不进入默认或面试版。
+- 每卡4图/backend3.44966/3.31189秒/cache417205B、正式新图0；评估峰37476341760B。首AR32冷wall5.81727/5.66429秒、TTFT3.54100/3.43118秒，编译0→4成本在请求内；离线dense合并20.0606/20.9785秒另列。成功ZIP768701B/SHA1f42320a13b75717747bd7ff5b38e91e52aa9274292c535b076c358fcb7c4cd4，24成员原始字节核验；末两卡19MiB/0%。实际传输2347345B delta SHA1ee08de7e1fd922d0f3f99e8020f6dcee06bbaceabb0791a9d5c1c207255f054，完整canonical ZIP SHA8c6e19822a401428a0a5aec919101a85fbd819fe95caef37ee200e8074f0bfdf只在本机。
+- 统计仍GPU执行411c221版，服务器Python3.11/本机3.13逐字段完全一致。仅prepare重导出修复单独冻结8ed9ee42eb12f0e77d31b3df7631d12f9890d099，实际records/manifest/license字节不变；失败单测与修复18 passed记录保留。本机GPU前全量829 passed/7 skipped，服务器104 passed，不将修复后新增测试算作已在旧全量执行。审计1651 Git源、1126旧结果（两个历史CRLF例外）、80位置/960KV/训练评估隔离/旧adapter身份及infra三个引用通过。主报告docs/ASD_ADAPTATION_FOLLOWUP_FINDINGS.md、主表ASD_ADAPTATION_FOLLOWUP_RESULTS.md、数据results/asd-adaptation-followup；reserve96未生成。
+- 复核命令：`.venv\Scripts\python.exe -m scripts.write_asd_adaptation_followup_report`，以及`python -m results.asd-adaptation-followup.inspect_results`、`python -m results.asd-adaptation-followup.sensitivity`、`python -m results.asd-adaptation-followup.audit_postrun`逐项执行。服务器新目录入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_adaptation_followup_pipeline`，已运行目录不可覆盖；原权重/hidden留服务器，不上传。
+
 ## 2026-10-22 — 阶段5后续：GPU完成及数据重导出修复
 
 - GPU实际源411c2211e6cdfe9d20365d40986f41de4590fdf3，1651 blobs，source SHAbc433a997c85ded26a40342e90f4ea41b3612a19e0b185ad38660072b9f70190，PID852273于11:44:14 UTC/北京时间19:44:14启动。双卡80 teacher状态、单新增ordinary-position适配器、960正式+24 AR参考全部完成，1651源文件前后SHA一致，旧160features和4个adapter SHA前后相同；正式新图0、全部strict逐ID与AR相同。成功ZIP768701B/SHA1f42320a13b75717747bd7ff5b38e91e52aa9274292c535b076c358fcb7c4cd4，已下载并逐member校验；后查两卡19MiB/0%。

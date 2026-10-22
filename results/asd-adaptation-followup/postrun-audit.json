@@ -1,0 +1,45 @@
+{
+  "status": "complete",
+  "execution_commit": "411c2211e6cdfe9d20365d40986f41de4590fdf3",
+  "git_blobs": 1651,
+  "source_sha256": "bc433a997c85ded26a40342e90f4ea41b3612a19e0b185ad38660072b9f70190",
+  "frozen_files": {
+    "docs/ASD_ADAPTATION_FOLLOWUP_PROTOCOL.md": "a24d13d3c522eb52456a6302d917a8408996df146bec84aae7c7b4cef2c915af",
+    "memorydraft/evaluation/adaptation_followup.py": "24e5d6e2f91a7fcfa2012eaf2981d28a5a9d1fa994efefa42caa1edf24e7c44d",
+    "scripts/run_asd_adaptation_followup_collect.py": "0186db1ca8fe69052a92824377e59750961b4196df5dad626761179e20219c83",
+    "scripts/run_asd_adaptation_followup_eval.py": "92321604b5e7bb7c970f81104adf46d33809e1a39cbf2df34c0ca2d2108fe980",
+    "scripts/run_asd_adaptation_followup_pipeline.py": "25907a5124be88c7d5bf92f6402c4935354c4efcf568d9f200590391c55ca22f",
+    "scripts/run_asd_adaptation_followup_train.py": "748906cc2ce75cdab572c7a4fb2ae4d6231d668eac5bc9ba385932f837daad69",
+    "scripts/write_asd_adaptation_followup_report.py": "8ac98ad1cf62398183adc64e64209ac4e7988745208551ddf354ae8d542ef30e",
+    "tests/test_adaptation_followup.py": "c7c3ca9108ffccff6ed6ee65511fb7e9faa8fc7a18e2dba97b2e2dd1ae575834",
+    "data/research/asd-adaptation-followup/GSM8K_LICENSE.txt": "893951b3bf94db8df1b13e05da5cdeb499400960e4d44a3962a8b33ed0b4f28e",
+    "data/research/asd-adaptation-followup/manifest.json": "5266457ddde0356df41e0a0c1eda894e804af8131ede8fdbd5a329a30dd3bfce",
+    "data/research/asd-adaptation-followup/records.json": "d0f3d12e6f0d92c4a1ed1fbd1e5b86d3785d9d63192cf5e662253b5342cbbfc2"
+  },
+  "reproduction_fix_commit": "8ed9ee42eb12f0e77d31b3df7631d12f9890d099",
+  "reproduction_fix_files": {
+    "scripts/prepare_asd_adaptation_followup.py": "9d74d97905668115e62b0dc4932d24c80d392c8bbdfa79dacf1bfac0ce84b614",
+    "tests/test_adaptation_followup_selection.py": "9b90c76703258f163d8a39125341206db97e9d6f42783544dca76863934e2b6e"
+  },
+  "previous_result_files_verified": 1126,
+  "legacy_crlf": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "matched_states": 80,
+  "train_states": 64,
+  "formal_rows": 960,
+  "ar_references": 24,
+  "all_safe": true,
+  "frontiers_valid": true,
+  "training_evaluation_ids_disjoint": true,
+  "calibration_identical": true,
+  "previous_adapters_identical": true,
+  "zip_bytes": 768701,
+  "zip_sha256": "1f42320a13b75717747bd7ff5b38e91e52aa9274292c535b076c358fcb7c4cd4",
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  }
+}

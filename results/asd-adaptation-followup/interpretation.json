@@ -1,0 +1,4206 @@
+{
+  "positions": {
+    "train/ordinary": {
+      "states": 64,
+      "mean": 35.734375,
+      "minimum": 9,
+      "maximum": 76
+    },
+    "train/asd-prefix": {
+      "states": 64,
+      "mean": 47.140625,
+      "minimum": 12,
+      "maximum": 111
+    },
+    "calibration/ordinary": {
+      "states": 16,
+      "mean": 39.75,
+      "minimum": 16,
+      "maximum": 90
+    },
+    "calibration/asd-prefix": {
+      "states": 16,
+      "mean": 44.25,
+      "minimum": 13,
+      "maximum": 92
+    }
+  },
+  "samples": [
+    {
+      "request_id": "gsm8k:1047",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 413,
+          "calls": 56,
+          "seconds": 4.098689383322683,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9673628821572171,
+          "ordinary_ratio": 1.0004374062039751,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 356,
+          "proposed": 840,
+          "strict_accepted": 356,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 413,
+          "calls": 56,
+          "seconds": 4.096897374993811,
+          "base_ratio": 0.9995627850365624,
+          "position_ratio": 0.9669399366300637,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 356,
+          "proposed": 840,
+          "strict_accepted": 356,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 413,
+          "calls": 58,
+          "seconds": 4.2369719356841715,
+          "base_ratio": 1.0337382366480738,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.03419040016607,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 354,
+          "proposed": 870,
+          "strict_accepted": 354,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 413,
+          "calls": 59,
+          "seconds": 4.309194406998965,
+          "base_ratio": 1.0513591062871985,
+          "position_ratio": 1.0170457752402202,
+          "ordinary_ratio": 1.0518189772828943,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 353,
+          "proposed": 885,
+          "strict_accepted": 353,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 366,
+          "calls": 51,
+          "seconds": 3.757309799004967,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9639074956623731,
+          "ordinary_ratio": 0.9997950890606052,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 314,
+          "proposed": 765,
+          "strict_accepted": 292,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 366,
+          "calls": 51,
+          "seconds": 3.758079870681589,
+          "base_ratio": 1.0002049529364936,
+          "position_ratio": 0.9641050513341173,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 314,
+          "proposed": 765,
+          "strict_accepted": 292,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 366,
+          "calls": 53,
+          "seconds": 3.897998320288025,
+          "base_ratio": 1.037443950275358,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0372313666609378,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 312,
+          "proposed": 795,
+          "strict_accepted": 299,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 433,
+          "calls": 57,
+          "seconds": 4.1921957900049165,
+          "base_ratio": 1.1157439802049645,
+          "position_ratio": 1.0754739857597355,
+          "ordinary_ratio": 1.1155153520578565,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "10",
+            "expected_answer": "10",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 375,
+          "proposed": 855,
+          "strict_accepted": 355,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1075",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 225,
+          "calls": 55,
+          "seconds": 4.000844636660379,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0003648491393955,
+          "ordinary_ratio": 1.0004304627820162,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "0",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 171,
+          "proposed": 825,
+          "strict_accepted": 171,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 225,
+          "calls": 55,
+          "seconds": 3.999123162978018,
+          "base_ratio": 0.9995697224364608,
+          "position_ratio": 0.9999344145894574,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "0",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 171,
+          "proposed": 825,
+          "strict_accepted": 171,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 225,
+          "calls": 55,
+          "seconds": 3.9993854643156133,
+          "base_ratio": 0.99963528392695,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0000655897122708,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "0",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 171,
+          "proposed": 825,
+          "strict_accepted": 171,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 225,
+          "calls": 55,
+          "seconds": 3.9990970046492293,
+          "base_ratio": 0.9995631842348648,
+          "position_ratio": 0.9999278740024042,
+          "ordinary_ratio": 0.9999934589839515,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "0",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 171,
+          "proposed": 825,
+          "strict_accepted": 171,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 295,
+          "calls": 76,
+          "seconds": 5.533752777303259,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9998165166125399,
+          "ordinary_ratio": 0.6444813909103639,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "20",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 218,
+          "proposed": 1140,
+          "strict_accepted": 206,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 470,
+          "calls": 118,
+          "seconds": 8.586365495342761,
+          "base_ratio": 1.5516351815642764,
+          "position_ratio": 1.5513504822850608,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "20",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 352,
+          "proposed": 1770,
+          "strict_accepted": 339,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 306,
+          "calls": 76,
+          "seconds": 5.534768315342565,
+          "base_ratio": 1.000183517059792,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.6445996642403145,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "20",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 230,
+          "proposed": 1140,
+          "strict_accepted": 214,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 470,
+          "calls": 118,
+          "seconds": 8.587605949646482,
+          "base_ratio": 1.5518593430607583,
+          "position_ratio": 1.551574602651632,
+          "ordinary_ratio": 1.0001444679130411,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "20",
+            "expected_answer": "16",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 352,
+          "proposed": 1770,
+          "strict_accepted": 339,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:109",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 210,
+          "calls": 33,
+          "seconds": 2.4498101516704387,
+          "base_ratio": 1.0,
+          "position_ratio": 0.972498371468863,
+          "ordinary_ratio": 0.9724617934073584,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 178,
+          "proposed": 495,
+          "strict_accepted": 178,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 210,
+          "calls": 34,
+          "seconds": 2.5191839600059516,
+          "base_ratio": 1.028318034476349,
+          "position_ratio": 1.0000376138803113,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 510,
+          "strict_accepted": 177,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 210,
+          "calls": 34,
+          "seconds": 2.519089207286015,
+          "base_ratio": 1.0282793568996917,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9999623875344394,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 510,
+          "strict_accepted": 177,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 210,
+          "calls": 33,
+          "seconds": 2.448815800327187,
+          "base_ratio": 0.9995941108568867,
+          "position_ratio": 0.9721036449381883,
+          "ordinary_ratio": 0.9720670817233219,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 178,
+          "proposed": 495,
+          "strict_accepted": 178,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 201,
+          "calls": 29,
+          "seconds": 2.184113277394014,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0002032079815482,
+          "ordinary_ratio": 1.1089128621580333,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 172,
+          "proposed": 435,
+          "strict_accepted": 154,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 194,
+          "calls": 26,
+          "seconds": 1.9695986510099222,
+          "base_ratio": 0.9017841113808708,
+          "position_ratio": 0.9019673611099367,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 168,
+          "proposed": 390,
+          "strict_accepted": 150,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 201,
+          "calls": 29,
+          "seconds": 2.183669538314765,
+          "base_ratio": 0.9997968333035462,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.1086875679951733,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 172,
+          "proposed": 435,
+          "strict_accepted": 154,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 194,
+          "calls": 27,
+          "seconds": 2.0404764007156095,
+          "base_ratio": 0.9342356103206398,
+          "position_ratio": 0.9344254544533035,
+          "ordinary_ratio": 1.0359858845706178,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "28.00",
+            "expected_answer": "28",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 167,
+          "proposed": 405,
+          "strict_accepted": 149,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1142",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 232,
+          "calls": 35,
+          "seconds": 2.6318418459656336,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0286000777315056,
+          "ordinary_ratio": 0.9996543431579665,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 196,
+          "proposed": 525,
+          "strict_accepted": 196,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 232,
+          "calls": 35,
+          "seconds": 2.632751874664488,
+          "base_ratio": 1.0003457763619987,
+          "position_ratio": 1.0289557433243353,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 196,
+          "proposed": 525,
+          "strict_accepted": 196,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 232,
+          "calls": 34,
+          "seconds": 2.558663860661909,
+          "base_ratio": 0.972195143330554,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9718590974274701,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 197,
+          "proposed": 510,
+          "strict_accepted": 197,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 232,
+          "calls": 34,
+          "seconds": 2.5565346740574264,
+          "base_ratio": 0.9713861332421452,
+          "position_ratio": 0.9991678521601771,
+          "ordinary_ratio": 0.9710503669789337,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 197,
+          "proposed": 510,
+          "strict_accepted": 197,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 229,
+          "calls": 34,
+          "seconds": 2.5753229280235246,
+          "base_ratio": 1.0,
+          "position_ratio": 1.028088202978905,
+          "ordinary_ratio": 1.0283173624110542,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 194,
+          "proposed": 510,
+          "strict_accepted": 183,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 228,
+          "calls": 33,
+          "seconds": 2.504404789962185,
+          "base_ratio": 0.9724624289677851,
+          "position_ratio": 0.9997771510619912,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 194,
+          "proposed": 495,
+          "strict_accepted": 179,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 228,
+          "calls": 33,
+          "seconds": 2.504963018310567,
+          "base_ratio": 0.9726791894921867,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0002228986107276,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 194,
+          "proposed": 495,
+          "strict_accepted": 180,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 228,
+          "calls": 33,
+          "seconds": 2.5048797676960626,
+          "base_ratio": 0.9726468632104616,
+          "position_ratio": 0.9999667657311123,
+          "ordinary_ratio": 1.0001896569339674,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "9",
+            "expected_answer": "9",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 194,
+          "proposed": 495,
+          "strict_accepted": 179,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1150",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 84,
+          "calls": 17,
+          "seconds": 1.351856933052962,
+          "base_ratio": 1.0,
+          "position_ratio": 1.055924527394111,
+          "ordinary_ratio": 0.9990120439892154,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 67,
+          "proposed": 255,
+          "strict_accepted": 67,
+          "common_128": false
+        },
+        "ordinary/DFlash": {
+          "tokens": 84,
+          "calls": 17,
+          "seconds": 1.3531938290301089,
+          "base_ratio": 1.000988933033119,
+          "position_ratio": 1.0569687660397316,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 67,
+          "proposed": 255,
+          "strict_accepted": 67,
+          "common_128": false
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 84,
+          "calls": 16,
+          "seconds": 1.2802590507005032,
+          "base_ratio": 0.9470373819877774,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9461017507138049,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 68,
+          "proposed": 240,
+          "strict_accepted": 68,
+          "common_128": false
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 84,
+          "calls": 16,
+          "seconds": 1.282538794640762,
+          "base_ratio": 0.9487237615775986,
+          "position_ratio": 1.001780689571389,
+          "ordinary_ratio": 0.9477864642347739,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 68,
+          "proposed": 240,
+          "strict_accepted": 68,
+          "common_128": false
+        },
+        "base/ASD": {
+          "tokens": 89,
+          "calls": 18,
+          "seconds": 1.4338918916570644,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0007986139764042,
+          "ordinary_ratio": 1.0010562724216656,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 71,
+          "proposed": 270,
+          "strict_accepted": 68,
+          "common_128": false
+        },
+        "ordinary/ASD": {
+          "tokens": 89,
+          "calls": 18,
+          "seconds": 1.4323789093177766,
+          "base_ratio": 0.9989448421125114,
+          "position_ratio": 0.9997426134250794,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 71,
+          "proposed": 270,
+          "strict_accepted": 68,
+          "common_128": false
+        },
+        "ordinary-position/ASD": {
+          "tokens": 89,
+          "calls": 18,
+          "seconds": 1.4327476793356861,
+          "base_ratio": 0.999202023298942,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0002574528398251,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 71,
+          "proposed": 270,
+          "strict_accepted": 68,
+          "common_128": false
+        },
+        "asd-prefix/ASD": {
+          "tokens": 89,
+          "calls": 18,
+          "seconds": 1.432462956989184,
+          "base_ratio": 0.999003457180981,
+          "position_ratio": 0.9998012753043619,
+          "ordinary_ratio": 1.00005867698195,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 71,
+          "proposed": 270,
+          "strict_accepted": 68,
+          "common_128": false
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1195",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 320,
+          "calls": 56,
+          "seconds": 4.170612984996599,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9830787165072278,
+          "ordinary_ratio": 1.0167264100605673,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 265,
+          "proposed": 840,
+          "strict_accepted": 265,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 320,
+          "calls": 55,
+          "seconds": 4.102001230348833,
+          "base_ratio": 0.9835487601236099,
+          "position_ratio": 0.9669058527245937,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 266,
+          "proposed": 825,
+          "strict_accepted": 266,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 320,
+          "calls": 57,
+          "seconds": 4.24239983529939,
+          "base_ratio": 1.017212541792067,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.034226855884833,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 264,
+          "proposed": 855,
+          "strict_accepted": 264,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 320,
+          "calls": 55,
+          "seconds": 4.100374592002481,
+          "base_ratio": 0.9831587363184275,
+          "position_ratio": 0.9665224286227877,
+          "ordinary_ratio": 0.9996034524967187,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 266,
+          "proposed": 825,
+          "strict_accepted": 266,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 280,
+          "calls": 43,
+          "seconds": 3.257993109019784,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9789216021517922,
+          "ordinary_ratio": 1.0000597303162262,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 236,
+          "proposed": 645,
+          "strict_accepted": 212,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 280,
+          "calls": 43,
+          "seconds": 3.257798519684002,
+          "base_ratio": 0.9999402732512714,
+          "position_ratio": 0.9788631343472355,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 236,
+          "proposed": 645,
+          "strict_accepted": 212,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 280,
+          "calls": 44,
+          "seconds": 3.328145075007342,
+          "base_ratio": 1.021532263464076,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.021593279909208,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 235,
+          "proposed": 660,
+          "strict_accepted": 211,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 280,
+          "calls": 43,
+          "seconds": 3.2581217913733176,
+          "base_ratio": 1.0000394974296225,
+          "position_ratio": 0.9789602670388791,
+          "ordinary_ratio": 1.0000992301050426,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "320",
+            "expected_answer": "320",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 236,
+          "proposed": 645,
+          "strict_accepted": 212,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1196",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 215,
+          "calls": 38,
+          "seconds": 2.801868481328711,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9991655269880194,
+          "ordinary_ratio": 0.9752805481045885,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 178,
+          "proposed": 570,
+          "strict_accepted": 178,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 215,
+          "calls": 39,
+          "seconds": 2.87288461435431,
+          "base_ratio": 1.0253459908981601,
+          "position_ratio": 1.024490367340813,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 585,
+          "strict_accepted": 177,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 215,
+          "calls": 38,
+          "seconds": 2.8042085176566616,
+          "base_ratio": 1.000835169938755,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9760950731002179,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 178,
+          "proposed": 570,
+          "strict_accepted": 178,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 215,
+          "calls": 38,
+          "seconds": 2.8032545743044466,
+          "base_ratio": 1.0004947030829507,
+          "position_ratio": 0.9996598172545984,
+          "ordinary_ratio": 0.9757630223984777,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 178,
+          "proposed": 570,
+          "strict_accepted": 178,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 197,
+          "calls": 37,
+          "seconds": 2.750801505986601,
+          "base_ratio": 1.0,
+          "position_ratio": 1.1466921522044415,
+          "ordinary_ratio": 0.9747816373818148,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 160,
+          "proposed": 555,
+          "strict_accepted": 153,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 197,
+          "calls": 38,
+          "seconds": 2.8219668903232864,
+          "base_ratio": 1.0258707813638341,
+          "position_ratio": 1.176357974165747,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 159,
+          "proposed": 570,
+          "strict_accepted": 149,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 211,
+          "calls": 32,
+          "seconds": 2.398901484324597,
+          "base_ratio": 0.8720736407566448,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.8500813714542828,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 179,
+          "proposed": 480,
+          "strict_accepted": 163,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 211,
+          "calls": 32,
+          "seconds": 2.3990496220455193,
+          "base_ratio": 0.872127493323106,
+          "position_ratio": 1.000061752315337,
+          "ordinary_ratio": 0.850133865947195,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 179,
+          "proposed": 480,
+          "strict_accepted": 166,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:120",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 163,
+          "calls": 37,
+          "seconds": 2.771944435701395,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0001154917273876,
+          "ordinary_ratio": 1.000069197613066,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 126,
+          "proposed": 555,
+          "strict_accepted": 126,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 163,
+          "calls": 37,
+          "seconds": 2.771752637034903,
+          "base_ratio": 0.9999308071749123,
+          "position_ratio": 1.0000462909111012,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 126,
+          "proposed": 555,
+          "strict_accepted": 126,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 163,
+          "calls": 37,
+          "seconds": 2.7716243360191584,
+          "base_ratio": 0.9998845216094111,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9999537112316481,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 125,
+          "proposed": 555,
+          "strict_accepted": 125,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 163,
+          "calls": 37,
+          "seconds": 2.772132917346122,
+          "base_ratio": 1.0000679961843029,
+          "position_ratio": 1.0001834957646873,
+          "ordinary_ratio": 1.0001371985025425,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 125,
+          "proposed": 555,
+          "strict_accepted": 125,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 203,
+          "calls": 34,
+          "seconds": 2.580470898654312,
+          "base_ratio": 1.0,
+          "position_ratio": 1.1253057867460263,
+          "ordinary_ratio": 1.0590777036395351,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 168,
+          "proposed": 510,
+          "strict_accepted": 133,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 196,
+          "calls": 32,
+          "seconds": 2.4365265077212825,
+          "base_ratio": 0.9442177817203462,
+          "position_ratio": 1.0625337337184018,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 163,
+          "proposed": 480,
+          "strict_accepted": 123,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 195,
+          "calls": 30,
+          "seconds": 2.2931286136154085,
+          "base_ratio": 0.8886473452621576,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.941146589765615,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 164,
+          "proposed": 450,
+          "strict_accepted": 122,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 196,
+          "calls": 31,
+          "seconds": 2.364738538279198,
+          "base_ratio": 0.9163980649858846,
+          "position_ratio": 1.031228045491477,
+          "ordinary_ratio": 0.9705367582849641,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "240",
+            "expected_answer": "240",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 164,
+          "proposed": 465,
+          "strict_accepted": 123,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:1200",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 244,
+          "calls": 37,
+          "seconds": 2.787821002964241,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9997497397695929,
+          "ordinary_ratio": 1.0252351303115212,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 208,
+          "proposed": 555,
+          "strict_accepted": 208,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 244,
+          "calls": 36,
+          "seconds": 2.7192015963373706,
+          "base_ratio": 0.9753860070090912,
+          "position_ratio": 0.9751419066822411,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 209,
+          "proposed": 540,
+          "strict_accepted": 209,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 244,
+          "calls": 37,
+          "seconds": 2.788518858336223,
+          "base_ratio": 1.0002503228762678,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0254917701181918,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 208,
+          "proposed": 555,
+          "strict_accepted": 208,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 244,
+          "calls": 37,
+          "seconds": 2.7897664886744074,
+          "base_ratio": 1.000697851730114,
+          "position_ratio": 1.000447416855172,
+          "ordinary_ratio": 1.0259505924209829,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 208,
+          "proposed": 555,
+          "strict_accepted": 208,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 209,
+          "calls": 32,
+          "seconds": 2.445987688998381,
+          "base_ratio": 1.0,
+          "position_ratio": 1.00004745437847,
+          "ordinary_ratio": 1.0008941305811585,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 480,
+          "strict_accepted": 161,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 209,
+          "calls": 32,
+          "seconds": 2.443802610350152,
+          "base_ratio": 0.9991066681741461,
+          "position_ratio": 0.9991540801601096,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 480,
+          "strict_accepted": 161,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 209,
+          "calls": 32,
+          "seconds": 2.4458716216807566,
+          "base_ratio": 0.9999525478733411,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.000846636026102,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 480,
+          "strict_accepted": 161,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 209,
+          "calls": 32,
+          "seconds": 2.4447075679975874,
+          "base_ratio": 0.9994766445446347,
+          "position_ratio": 0.9995240740875969,
+          "ordinary_ratio": 1.0003703071776757,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 177,
+          "proposed": 480,
+          "strict_accepted": 161,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:271",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 266,
+          "calls": 37,
+          "seconds": 2.7325172793352976,
+          "base_ratio": 1.0,
+          "position_ratio": 1.000792387894602,
+          "ordinary_ratio": 1.0262134548849207,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 228,
+          "proposed": 555,
+          "strict_accepted": 228,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 266,
+          "calls": 36,
+          "seconds": 2.662718235010592,
+          "base_ratio": 0.9744561379894787,
+          "position_ratio": 0.9752282852370421,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 229,
+          "proposed": 540,
+          "strict_accepted": 229,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 266,
+          "calls": 37,
+          "seconds": 2.730353780052004,
+          "base_ratio": 0.9992082394868441,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0254009395932735,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 228,
+          "proposed": 555,
+          "strict_accepted": 228,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 266,
+          "calls": 36,
+          "seconds": 2.6626883836773536,
+          "base_ratio": 0.9744452135084283,
+          "position_ratio": 0.9752173520995651,
+          "ordinary_ratio": 0.9999887891505583,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 229,
+          "proposed": 540,
+          "strict_accepted": 229,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 253,
+          "calls": 41,
+          "seconds": 3.0314736627042294,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9319797619340429,
+          "ordinary_ratio": 1.5415608448047842,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 212,
+          "proposed": 615,
+          "strict_accepted": 195,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 209,
+          "calls": 26,
+          "seconds": 1.9664962774065013,
+          "base_ratio": 0.6486931757316625,
+          "position_ratio": 0.604568911486633,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 183,
+          "proposed": 390,
+          "strict_accepted": 167,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 300,
+          "calls": 44,
+          "seconds": 3.252724776354929,
+          "base_ratio": 1.0729846728911814,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.6540711588047146,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 255,
+          "proposed": 660,
+          "strict_accepted": 242,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 215,
+          "calls": 38,
+          "seconds": 2.809893095322574,
+          "base_ratio": 0.9269066493607621,
+          "position_ratio": 0.8638582384063243,
+          "ordinary_ratio": 1.428882997443748,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "20",
+            "expected_answer": "20",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 177,
+          "proposed": 570,
+          "strict_accepted": 163,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:292",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 355,
+          "calls": 65,
+          "seconds": 4.722250945322837,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0148822040152568,
+          "ordinary_ratio": 0.9995329046284478,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 289,
+          "proposed": 975,
+          "strict_accepted": 289,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 355,
+          "calls": 65,
+          "seconds": 4.724457717655848,
+          "base_ratio": 1.0004673136515958,
+          "position_ratio": 1.0153564723239548,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 289,
+          "proposed": 975,
+          "strict_accepted": 289,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 355,
+          "calls": 64,
+          "seconds": 4.653003990650177,
+          "base_ratio": 0.9853360282046753,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9848757823064772,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 290,
+          "proposed": 960,
+          "strict_accepted": 290,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 355,
+          "calls": 65,
+          "seconds": 4.722215433682625,
+          "base_ratio": 0.9999924799336963,
+          "position_ratio": 1.0148745720337922,
+          "ordinary_ratio": 0.9995253880747322,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 289,
+          "proposed": 975,
+          "strict_accepted": 289,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 310,
+          "calls": 49,
+          "seconds": 3.6130153896519914,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9808323715652101,
+          "ordinary_ratio": 0.9809356509480027,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 260,
+          "proposed": 735,
+          "strict_accepted": 239,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 304,
+          "calls": 50,
+          "seconds": 3.6832338453192883,
+          "base_ratio": 1.019434862045816,
+          "position_ratio": 0.9998947133966506,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 253,
+          "proposed": 750,
+          "strict_accepted": 231,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 304,
+          "calls": 50,
+          "seconds": 3.6836216813341403,
+          "base_ratio": 1.0195422061816763,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0001052976897855,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 253,
+          "proposed": 750,
+          "strict_accepted": 231,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 304,
+          "calls": 50,
+          "seconds": 3.6826773383654654,
+          "base_ratio": 1.0192808336529626,
+          "position_ratio": 0.9997436373627997,
+          "ordinary_ratio": 0.9998489080581918,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "75",
+            "expected_answer": "75",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 253,
+          "proposed": 750,
+          "strict_accepted": 231,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:341",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 367,
+          "calls": 52,
+          "seconds": 3.8775104080171636,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0188756885144798,
+          "ordinary_ratio": 1.0194083773668297,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 314,
+          "proposed": 780,
+          "strict_accepted": 314,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 367,
+          "calls": 51,
+          "seconds": 3.803687015043882,
+          "base_ratio": 0.9809611360885986,
+          "position_ratio": 0.9994774529382172,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 315,
+          "proposed": 765,
+          "strict_accepted": 315,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 367,
+          "calls": 51,
+          "seconds": 3.805675659677945,
+          "base_ratio": 0.9814740024447922,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0005228202599734,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 315,
+          "proposed": 765,
+          "strict_accepted": 315,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 367,
+          "calls": 50,
+          "seconds": 3.7334819683261835,
+          "base_ratio": 0.962855434406266,
+          "position_ratio": 0.9810299936705927,
+          "ordinary_ratio": 0.9815428960269255,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 316,
+          "proposed": 750,
+          "strict_accepted": 316,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 407,
+          "calls": 53,
+          "seconds": 3.986961881009241,
+          "base_ratio": 1.0,
+          "position_ratio": 1.122947007138798,
+          "ordinary_ratio": 1.0594216818342355,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 353,
+          "proposed": 795,
+          "strict_accepted": 343,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 377,
+          "calls": 50,
+          "seconds": 3.763338007304507,
+          "base_ratio": 0.9439112084893756,
+          "position_ratio": 1.0599622665779103,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 326,
+          "proposed": 750,
+          "strict_accepted": 293,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 388,
+          "calls": 47,
+          "seconds": 3.5504452620322504,
+          "base_ratio": 0.89051397229148,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9434298102219255,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 340,
+          "proposed": 705,
+          "strict_accepted": 312,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 402,
+          "calls": 57,
+          "seconds": 4.2881288383311285,
+          "base_ratio": 1.0755379575501864,
+          "position_ratio": 1.2077721304951574,
+          "ordinary_ratio": 1.139448231864377,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "260",
+            "expected_answer": "260",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 344,
+          "proposed": 855,
+          "strict_accepted": 318,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:350",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 224,
+          "calls": 43,
+          "seconds": 3.1416790146613494,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9998622826448226,
+          "ordinary_ratio": 0.9998786514839691,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 182,
+          "proposed": 645,
+          "strict_accepted": 182,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 224,
+          "calls": 43,
+          "seconds": 3.1420602990159145,
+          "base_ratio": 1.0001213632432804,
+          "position_ratio": 0.9999836291742781,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 182,
+          "proposed": 645,
+          "strict_accepted": 182,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 224,
+          "calls": 43,
+          "seconds": 3.142111737979576,
+          "base_ratio": 1.0001377363238597,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0000163710937302,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 182,
+          "proposed": 645,
+          "strict_accepted": 182,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 224,
+          "calls": 43,
+          "seconds": 3.142225567639495,
+          "base_ratio": 1.0001739684339472,
+          "position_ratio": 1.0000362271202972,
+          "ordinary_ratio": 1.000052598807105,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 182,
+          "proposed": 645,
+          "strict_accepted": 182,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 221,
+          "calls": 35,
+          "seconds": 2.6012699830268198,
+          "base_ratio": 1.0,
+          "position_ratio": 0.924389881975795,
+          "ordinary_ratio": 0.9246384361072252,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 186,
+          "proposed": 525,
+          "strict_accepted": 170,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 255,
+          "calls": 38,
+          "seconds": 2.8132834213320166,
+          "base_ratio": 1.0815038191685507,
+          "position_ratio": 0.9997311877575881,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 217,
+          "proposed": 570,
+          "strict_accepted": 197,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 255,
+          "calls": 38,
+          "seconds": 2.814039869699627,
+          "base_ratio": 1.0817946188058611,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0002688845218632,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 217,
+          "proposed": 570,
+          "strict_accepted": 197,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 221,
+          "calls": 34,
+          "seconds": 2.5295813903212547,
+          "base_ratio": 0.9724409257119291,
+          "position_ratio": 0.8989145525472829,
+          "ordinary_ratio": 0.8991562567569406,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "8",
+            "expected_answer": "8",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 187,
+          "proposed": 510,
+          "strict_accepted": 171,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:374",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 155,
+          "calls": 27,
+          "seconds": 2.0720877127023414,
+          "base_ratio": 1.0,
+          "position_ratio": 1.000734303614043,
+          "ordinary_ratio": 0.9663313455612698,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 127,
+          "proposed": 405,
+          "strict_accepted": 127,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 155,
+          "calls": 28,
+          "seconds": 2.1442828303358206,
+          "base_ratio": 1.0348417285575835,
+          "position_ratio": 1.035601616578826,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 126,
+          "proposed": 420,
+          "strict_accepted": 126,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 155,
+          "calls": 27,
+          "seconds": 2.0705672876598933,
+          "base_ratio": 0.9992662351921072,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9656222856271331,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 127,
+          "proposed": 405,
+          "strict_accepted": 127,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 155,
+          "calls": 26,
+          "seconds": 2.0013745533069596,
+          "base_ratio": 0.9658734719761645,
+          "position_ratio": 0.9665827163573449,
+          "ordinary_ratio": 0.9333538118166623,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 128,
+          "proposed": 390,
+          "strict_accepted": 128,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 180,
+          "calls": 32,
+          "seconds": 2.448120106671316,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0312931044497993,
+          "ordinary_ratio": 1.0006755964675154,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 147,
+          "proposed": 480,
+          "strict_accepted": 128,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 180,
+          "calls": 32,
+          "seconds": 2.446467282017693,
+          "base_ratio": 0.9993248596549168,
+          "position_ratio": 1.0305968368673792,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 147,
+          "proposed": 480,
+          "strict_accepted": 128,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 180,
+          "calls": 31,
+          "seconds": 2.3738354267164445,
+          "base_ratio": 0.9696564397504681,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9703115362158671,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 148,
+          "proposed": 465,
+          "strict_accepted": 129,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 180,
+          "calls": 30,
+          "seconds": 2.302755757661847,
+          "base_ratio": 0.9406220517476491,
+          "position_ratio": 0.9700570358607727,
+          "ordinary_ratio": 0.9412575326830769,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "45",
+            "expected_answer": "45",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 149,
+          "proposed": 450,
+          "strict_accepted": 130,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:429",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 174,
+          "calls": 30,
+          "seconds": 2.276293822020913,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0331301817837473,
+          "ordinary_ratio": 1.0327062839246453,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 143,
+          "proposed": 450,
+          "strict_accepted": 143,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 174,
+          "calls": 29,
+          "seconds": 2.2042025476694107,
+          "base_ratio": 0.9683295391596244,
+          "position_ratio": 1.0004104728185548,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 146,
+          "proposed": 435,
+          "strict_accepted": 146,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 174,
+          "calls": 29,
+          "seconds": 2.2032981536661587,
+          "base_ratio": 0.9679322292892979,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9995896956002486,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 146,
+          "proposed": 435,
+          "strict_accepted": 146,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 174,
+          "calls": 30,
+          "seconds": 2.276766592714315,
+          "base_ratio": 1.0002076931759987,
+          "position_ratio": 1.033344755872422,
+          "ordinary_ratio": 1.0329207699726275,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 143,
+          "proposed": 450,
+          "strict_accepted": 143,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 162,
+          "calls": 22,
+          "seconds": 1.7156516489728044,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0441817823817172,
+          "ordinary_ratio": 1.0006153200329797,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 140,
+          "proposed": 330,
+          "strict_accepted": 113,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 162,
+          "calls": 22,
+          "seconds": 1.7145966233219951,
+          "base_ratio": 0.9993850583529349,
+          "position_ratio": 1.043539671516624,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 140,
+          "proposed": 330,
+          "strict_accepted": 117,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 162,
+          "calls": 21,
+          "seconds": 1.6430584002907078,
+          "base_ratio": 0.9576876525455738,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9582769369435223,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 141,
+          "proposed": 315,
+          "strict_accepted": 118,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 162,
+          "calls": 22,
+          "seconds": 1.713086321678323,
+          "base_ratio": 0.9985047504859058,
+          "position_ratio": 1.042620470078985,
+          "ordinary_ratio": 0.9991191504619051,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "13",
+            "expected_answer": "13",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 140,
+          "proposed": 330,
+          "strict_accepted": 117,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:450",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 396,
+          "calls": 79,
+          "seconds": 5.727665889038083,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0000144562527369,
+          "ordinary_ratio": 1.0000634855109185,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 317,
+          "proposed": 1185,
+          "strict_accepted": 317,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 396,
+          "calls": 79,
+          "seconds": 5.727302288326125,
+          "base_ratio": 0.9999365185192358,
+          "position_ratio": 0.9999509738542685,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 317,
+          "proposed": 1185,
+          "strict_accepted": 317,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 396,
+          "calls": 79,
+          "seconds": 5.727583089649367,
+          "base_ratio": 0.9999855439562433,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0000490285494124,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 317,
+          "proposed": 1185,
+          "strict_accepted": 317,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 396,
+          "calls": 79,
+          "seconds": 5.7268281022940455,
+          "base_ratio": 0.9998537298159027,
+          "position_ratio": 0.9998681839541209,
+          "ordinary_ratio": 0.9999172060407837,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "4",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 317,
+          "proposed": 1185,
+          "strict_accepted": 317,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 1125,
+          "calls": 221,
+          "seconds": 16.609148927692633,
+          "base_ratio": 1.0,
+          "position_ratio": 2.8836976821966283,
+          "ordinary_ratio": 1.013319187994886,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "7",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 903,
+          "proposed": 3315,
+          "strict_accepted": 877,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 1125,
+          "calls": 218,
+          "seconds": 16.39083629765082,
+          "base_ratio": 0.9868558809971403,
+          "position_ratio": 2.845794016693565,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "7",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 906,
+          "proposed": 3270,
+          "strict_accepted": 880,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 385,
+          "calls": 79,
+          "seconds": 5.759670658347507,
+          "base_ratio": 0.3467769892016766,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.3513957771131543,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "3",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 306,
+          "proposed": 1185,
+          "strict_accepted": 283,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 463,
+          "calls": 92,
+          "seconds": 6.725459177667896,
+          "base_ratio": 0.40492497279342576,
+          "position_ratio": 1.1676812055079346,
+          "ordinary_ratio": 0.4103182446298855,
+          "quality": {
+            "correct": false,
+            "parsed_answer": "3",
+            "expected_answer": "4",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 371,
+          "proposed": 1380,
+          "strict_accepted": 349,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:467",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 291,
+          "calls": 51,
+          "seconds": 3.727296796704953,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0197689680727893,
+          "ordinary_ratio": 1.0001962019351864,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 240,
+          "proposed": 765,
+          "strict_accepted": 240,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 291,
+          "calls": 51,
+          "seconds": 3.726565637315313,
+          "base_ratio": 0.9998038365524616,
+          "position_ratio": 1.0195689266763195,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 240,
+          "proposed": 765,
+          "strict_accepted": 240,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 291,
+          "calls": 50,
+          "seconds": 3.6550404193500676,
+          "base_ratio": 0.9806142678472071,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.98080666626423,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 241,
+          "proposed": 750,
+          "strict_accepted": 241,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 291,
+          "calls": 51,
+          "seconds": 3.7269527229946107,
+          "base_ratio": 0.9999076881372456,
+          "position_ratio": 1.0196748312997672,
+          "ordinary_ratio": 1.0001038719606659,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 240,
+          "proposed": 765,
+          "strict_accepted": 240,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 301,
+          "calls": 48,
+          "seconds": 3.536265902997305,
+          "base_ratio": 1.0,
+          "position_ratio": 1.193026097306185,
+          "ordinary_ratio": 0.9998768696332981,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 253,
+          "proposed": 720,
+          "strict_accepted": 237,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 301,
+          "calls": 48,
+          "seconds": 3.5367013783349344,
+          "base_ratio": 1.000123145529656,
+          "position_ratio": 1.1931730131368314,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 253,
+          "proposed": 720,
+          "strict_accepted": 238,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 266,
+          "calls": 40,
+          "seconds": 2.9641144573300457,
+          "base_ratio": 0.8382046312800434,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.8381014228364226,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 226,
+          "proposed": 600,
+          "strict_accepted": 198,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 314,
+          "calls": 45,
+          "seconds": 3.3269680606511733,
+          "base_ratio": 0.9408138844511854,
+          "position_ratio": 1.12241551685827,
+          "ordinary_ratio": 0.9406980416925947,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "1200",
+            "expected_answer": "1200",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 269,
+          "proposed": 675,
+          "strict_accepted": 259,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:52",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 278,
+          "calls": 50,
+          "seconds": 3.655168936975921,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0195181321310203,
+          "ordinary_ratio": 1.020103949989768,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 228,
+          "proposed": 750,
+          "strict_accepted": 228,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 278,
+          "calls": 49,
+          "seconds": 3.5831337943673134,
+          "base_ratio": 0.9802922535590912,
+          "position_ratio": 0.9994257272910732,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 229,
+          "proposed": 735,
+          "strict_accepted": 229,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 278,
+          "calls": 49,
+          "seconds": 3.5851926726754755,
+          "base_ratio": 0.9808555321225891,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0005746026875688,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 229,
+          "proposed": 735,
+          "strict_accepted": 229,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 278,
+          "calls": 49,
+          "seconds": 3.578430094368135,
+          "base_ratio": 0.9790053910144916,
+          "position_ratio": 0.9981137475932935,
+          "ordinary_ratio": 0.99868726643516,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 229,
+          "proposed": 735,
+          "strict_accepted": 229,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 347,
+          "calls": 54,
+          "seconds": 3.9743360453285277,
+          "base_ratio": 1.0,
+          "position_ratio": 1.078678239898899,
+          "ordinary_ratio": 1.0775636438885752,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 293,
+          "proposed": 810,
+          "strict_accepted": 261,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 326,
+          "calls": 50,
+          "seconds": 3.68826107661395,
+          "base_ratio": 0.9280194313083231,
+          "position_ratio": 1.0010343667556392,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 276,
+          "proposed": 750,
+          "strict_accepted": 252,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 326,
+          "calls": 50,
+          "seconds": 3.6844500040169805,
+          "base_ratio": 0.9270605107355524,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9989667020534055,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 276,
+          "proposed": 750,
+          "strict_accepted": 252,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 326,
+          "calls": 50,
+          "seconds": 3.691885946667753,
+          "base_ratio": 0.9289315006483236,
+          "position_ratio": 1.0020181961059766,
+          "ordinary_ratio": 1.00098281276149,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "15",
+            "expected_answer": "15",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 276,
+          "proposed": 750,
+          "strict_accepted": 246,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:526",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 305,
+          "calls": 63,
+          "seconds": 4.652794678967136,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9996478866851177,
+          "ordinary_ratio": 0.984135949498174,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 243,
+          "proposed": 945,
+          "strict_accepted": 243,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 305,
+          "calls": 64,
+          "seconds": 4.727796684329708,
+          "base_ratio": 1.0161197754333793,
+          "position_ratio": 1.015761986130934,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 242,
+          "proposed": 960,
+          "strict_accepted": 242,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 305,
+          "calls": 63,
+          "seconds": 4.6544335669993115,
+          "base_ratio": 1.0003522373423406,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9844825989295269,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 243,
+          "proposed": 945,
+          "strict_accepted": 243,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 305,
+          "calls": 62,
+          "seconds": 4.5855487366595,
+          "base_ratio": 0.9855471932575017,
+          "position_ratio": 0.9852001689683109,
+          "ordinary_ratio": 0.9699124228117318,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 244,
+          "proposed": 930,
+          "strict_accepted": 244,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 375,
+          "calls": 59,
+          "seconds": 4.407483910598482,
+          "base_ratio": 1.0,
+          "position_ratio": 1.1984562999370614,
+          "ordinary_ratio": 1.0012457910889603,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": false,
+          "accepted": 316,
+          "proposed": 885,
+          "strict_accepted": 299,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 351,
+          "calls": 59,
+          "seconds": 4.401999938301742,
+          "base_ratio": 0.9987557589754207,
+          "position_ratio": 1.196965131442514,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 292,
+          "proposed": 885,
+          "strict_accepted": 280,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 337,
+          "calls": 49,
+          "seconds": 3.677634228991034,
+          "base_ratio": 0.8344067280989023,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.8354462245653363,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": true,
+          "accepted": 287,
+          "proposed": 735,
+          "strict_accepted": 253,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 369,
+          "calls": 61,
+          "seconds": 4.553852986660786,
+          "base_ratio": 1.0332092139259628,
+          "position_ratio": 1.238256091582589,
+          "ordinary_ratio": 1.0344963767577033,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "21",
+            "expected_answer": "21",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 308,
+          "proposed": 915,
+          "strict_accepted": 299,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:553",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 181,
+          "calls": 32,
+          "seconds": 2.412834805281212,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9998803557144176,
+          "ordinary_ratio": 0.9995371433685217,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 148,
+          "proposed": 480,
+          "strict_accepted": 148,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 181,
+          "calls": 32,
+          "seconds": 2.413952119027575,
+          "base_ratio": 1.0004630709669462,
+          "position_ratio": 1.0003433712775687,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 148,
+          "proposed": 480,
+          "strict_accepted": 148,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 181,
+          "calls": 32,
+          "seconds": 2.4131235217209905,
+          "base_ratio": 1.0001196586020504,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9996567465857946,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 148,
+          "proposed": 480,
+          "strict_accepted": 148,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 181,
+          "calls": 32,
+          "seconds": 2.4135635556497923,
+          "base_ratio": 1.0003020307759922,
+          "position_ratio": 1.0001823503541534,
+          "ordinary_ratio": 0.9998390343475664,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 148,
+          "proposed": 480,
+          "strict_accepted": 148,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 188,
+          "calls": 26,
+          "seconds": 1.9999140136642382,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0002433496504002,
+          "ordinary_ratio": 0.9650022361849311,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 161,
+          "proposed": 390,
+          "strict_accepted": 147,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 191,
+          "calls": 27,
+          "seconds": 2.0724449526363364,
+          "base_ratio": 1.0362670287205034,
+          "position_ratio": 1.0365192039396638,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 163,
+          "proposed": 405,
+          "strict_accepted": 152,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 188,
+          "calls": 26,
+          "seconds": 1.9994274536923815,
+          "base_ratio": 0.9997567095542447,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9647674603607348,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 161,
+          "proposed": 390,
+          "strict_accepted": 138,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 188,
+          "calls": 25,
+          "seconds": 1.9262643496816356,
+          "base_ratio": 0.9631735847244444,
+          "position_ratio": 0.9634079726795618,
+          "ordinary_ratio": 0.929464663093345,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "92",
+            "expected_answer": "92",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 162,
+          "proposed": 375,
+          "strict_accepted": 139,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:578",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 350,
+          "calls": 48,
+          "seconds": 3.591017986376149,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0001512224527944,
+          "ordinary_ratio": 0.9995773902224708,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 301,
+          "proposed": 720,
+          "strict_accepted": 301,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 350,
+          "calls": 48,
+          "seconds": 3.592536227311939,
+          "base_ratio": 1.000422788452063,
+          "position_ratio": 1.000574074839964,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 301,
+          "proposed": 720,
+          "strict_accepted": 301,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 350,
+          "calls": 48,
+          "seconds": 3.59047502593603,
+          "base_ratio": 0.9998488004119781,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9994262545328731,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 301,
+          "proposed": 720,
+          "strict_accepted": 301,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 350,
+          "calls": 48,
+          "seconds": 3.592083082340347,
+          "base_ratio": 1.0002966000081979,
+          "position_ratio": 1.000447867313573,
+          "ordinary_ratio": 0.9998738648846053,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 301,
+          "proposed": 720,
+          "strict_accepted": 301,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 367,
+          "calls": 46,
+          "seconds": 3.475957971687118,
+          "base_ratio": 1.0,
+          "position_ratio": 0.999674987133537,
+          "ordinary_ratio": 1.0001050100964515,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 320,
+          "proposed": 690,
+          "strict_accepted": 297,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 367,
+          "calls": 46,
+          "seconds": 3.4755929993310324,
+          "base_ratio": 0.9998950009295111,
+          "position_ratio": 0.999570022189097,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 320,
+          "proposed": 690,
+          "strict_accepted": 297,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 367,
+          "calls": 46,
+          "seconds": 3.4770880700477087,
+          "base_ratio": 1.0003251185341697,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0004301627713499,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 320,
+          "proposed": 690,
+          "strict_accepted": 297,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 367,
+          "calls": 46,
+          "seconds": 3.4765019013235965,
+          "base_ratio": 1.0001564833754921,
+          "position_ratio": 0.9998314196499187,
+          "ordinary_ratio": 1.000261509904278,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "48",
+            "expected_answer": "48",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 320,
+          "proposed": 690,
+          "strict_accepted": 295,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:885",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 179,
+          "calls": 37,
+          "seconds": 2.7570125539787114,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0014871561208822,
+          "ordinary_ratio": 1.0008208870823176,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 141,
+          "proposed": 555,
+          "strict_accepted": 141,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 179,
+          "calls": 37,
+          "seconds": 2.7547512142919004,
+          "base_ratio": 0.9991797862205787,
+          "position_ratio": 1.0006657225555184,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 141,
+          "proposed": 555,
+          "strict_accepted": 141,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 179,
+          "calls": 37,
+          "seconds": 2.7529185343300924,
+          "base_ratio": 0.9985150522282857,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9993347203361596,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 141,
+          "proposed": 555,
+          "strict_accepted": 141,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 179,
+          "calls": 38,
+          "seconds": 2.822511560982093,
+          "base_ratio": 1.0237572393019607,
+          "position_ratio": 1.025279726146686,
+          "ordinary_ratio": 1.0245976283951328,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 140,
+          "proposed": 570,
+          "strict_accepted": 140,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 171,
+          "calls": 33,
+          "seconds": 2.4861138813042394,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0039474982110674,
+          "ordinary_ratio": 1.0010039220012412,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 138,
+          "proposed": 495,
+          "strict_accepted": 115,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 171,
+          "calls": 33,
+          "seconds": 2.483620520021456,
+          "base_ratio": 0.998997084847346,
+          "position_ratio": 1.0029406240526426,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 138,
+          "proposed": 495,
+          "strict_accepted": 115,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 171,
+          "calls": 33,
+          "seconds": 2.476338539350157,
+          "base_ratio": 0.9960680232600793,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9970679978633629,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 138,
+          "proposed": 495,
+          "strict_accepted": 115,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 171,
+          "calls": 33,
+          "seconds": 2.485887026957547,
+          "base_ratio": 0.9999087514259107,
+          "position_ratio": 1.0038558894333953,
+          "ordinary_ratio": 1.0009125818207008,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "500",
+            "expected_answer": "500",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 138,
+          "proposed": 495,
+          "strict_accepted": 115,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:924",
+      "study_split": "observed",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 243,
+          "calls": 46,
+          "seconds": 3.5076864073053002,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0006219585709935,
+          "ordinary_ratio": 1.000158718479468,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 198,
+          "proposed": 690,
+          "strict_accepted": 198,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 243,
+          "calls": 46,
+          "seconds": 3.507129761002337,
+          "base_ratio": 0.99984130670809,
+          "position_ratio": 1.0004631665784305,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 198,
+          "proposed": 690,
+          "strict_accepted": 198,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 243,
+          "calls": 46,
+          "seconds": 3.5055061277234927,
+          "base_ratio": 0.9993784280210264,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.999537047845535,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 198,
+          "proposed": 690,
+          "strict_accepted": 198,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 243,
+          "calls": 45,
+          "seconds": 3.4348678476332375,
+          "base_ratio": 0.9792402879800182,
+          "position_ratio": 0.9798493348701894,
+          "ordinary_ratio": 0.9793957115095602,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 199,
+          "proposed": 675,
+          "strict_accepted": 199,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 242,
+          "calls": 38,
+          "seconds": 2.9494996730160588,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0005781520717592,
+          "ordinary_ratio": 1.0005442940012133,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 204,
+          "proposed": 570,
+          "strict_accepted": 188,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 242,
+          "calls": 38,
+          "seconds": 2.947895151368963,
+          "base_ratio": 0.9994560020935839,
+          "position_ratio": 1.0000338396518265,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 204,
+          "proposed": 570,
+          "strict_accepted": 188,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 242,
+          "calls": 38,
+          "seconds": 2.9477953989990056,
+          "base_ratio": 0.9994221819949176,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 0.9999661614932569,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 204,
+          "proposed": 570,
+          "strict_accepted": 188,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 242,
+          "calls": 38,
+          "seconds": 2.948916556003193,
+          "base_ratio": 0.9998022996855364,
+          "position_ratio": 1.000380337456449,
+          "ordinary_ratio": 1.0003464860796543,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "12",
+            "expected_answer": "12",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 204,
+          "proposed": 570,
+          "strict_accepted": 188,
+          "common_128": true
+        }
+      }
+    },
+    {
+      "request_id": "gsm8k:959",
+      "study_split": "independent",
+      "arms": {
+        "base/DFlash": {
+          "tokens": 260,
+          "calls": 37,
+          "seconds": 2.7996601030463353,
+          "base_ratio": 1.0,
+          "position_ratio": 0.9509644978613057,
+          "ordinary_ratio": 0.9742923996853142,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 224,
+          "proposed": 555,
+          "strict_accepted": 224,
+          "common_128": true
+        },
+        "ordinary/DFlash": {
+          "tokens": 260,
+          "calls": 38,
+          "seconds": 2.8735317076789215,
+          "base_ratio": 1.0263859189735947,
+          "position_ratio": 0.9760565700486391,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 223,
+          "proposed": 570,
+          "strict_accepted": 223,
+          "common_128": true
+        },
+        "ordinary-position/DFlash": {
+          "tokens": 260,
+          "calls": 39,
+          "seconds": 2.944021684660887,
+          "base_ratio": 1.0515639671606816,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0245307809875894,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 222,
+          "proposed": 585,
+          "strict_accepted": 222,
+          "common_128": true
+        },
+        "asd-prefix/DFlash": {
+          "tokens": 260,
+          "calls": 39,
+          "seconds": 2.9433439356895783,
+          "base_ratio": 1.051321884569809,
+          "position_ratio": 0.9997697880505297,
+          "ordinary_ratio": 1.024294921759206,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 222,
+          "proposed": 585,
+          "strict_accepted": 222,
+          "common_128": true
+        },
+        "base/ASD": {
+          "tokens": 237,
+          "calls": 36,
+          "seconds": 2.74367081199307,
+          "base_ratio": 1.0,
+          "position_ratio": 1.0539995850702237,
+          "ordinary_ratio": 1.0545216688961676,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 201,
+          "proposed": 540,
+          "strict_accepted": 187,
+          "common_128": true
+        },
+        "ordinary/ASD": {
+          "tokens": 237,
+          "calls": 34,
+          "seconds": 2.601815489353612,
+          "base_ratio": 0.9482972512520879,
+          "position_ratio": 0.9995049093429342,
+          "ordinary_ratio": 1.0,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 203,
+          "proposed": 510,
+          "strict_accepted": 189,
+          "common_128": true
+        },
+        "ordinary-position/ASD": {
+          "tokens": 237,
+          "calls": 34,
+          "seconds": 2.603104261953073,
+          "base_ratio": 0.9487669769180925,
+          "position_ratio": 1.0,
+          "ordinary_ratio": 1.0004953358932387,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": true,
+          "same_tokens_as_position": true,
+          "accepted": 203,
+          "proposed": 510,
+          "strict_accepted": 187,
+          "common_128": true
+        },
+        "asd-prefix/ASD": {
+          "tokens": 255,
+          "calls": 34,
+          "seconds": 2.603819851685936,
+          "base_ratio": 0.9490277916374587,
+          "position_ratio": 1.0002748986059922,
+          "ordinary_ratio": 1.0007703706663773,
+          "quality": {
+            "correct": true,
+            "parsed_answer": "7",
+            "expected_answer": "7",
+            "error": null
+          },
+          "finish_reason": "eos",
+          "same_tokens_as_base": false,
+          "same_tokens_as_position": false,
+          "accepted": 221,
+          "proposed": 510,
+          "strict_accepted": 178,
+          "common_128": true
+        }
+      }
+    }
+  ]
+}
