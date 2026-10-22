@@ -1,0 +1,98 @@
+{
+  "status": "complete",
+  "source_commit": "cea9ebb92db4879144b79b0338cd1272b38b0a35",
+  "source_files": 1491,
+  "frozen_files": [
+    "memorydraft/backends/dflash_reuse.py",
+    "memorydraft/backends/allocation.py",
+    "scripts/run_asd_allocation_probe.py",
+    "scripts/run_asd_allocation_pipeline.py",
+    "scripts/write_asd_allocation_report.py",
+    "tests/test_allocation.py",
+    "tests/test_asd_allocation_report.py",
+    "docs/ASD_ALLOCATION_PROTOCOL.md"
+  ],
+  "protected_results": 1006,
+  "legacy_crlf_normalized": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "prior_publications": [
+    {
+      "name": "asd-suite-stage1",
+      "commit": "dcfc01de31b4e619d89872e8cb7487648aeb6ce5",
+      "files": 54
+    },
+    {
+      "name": "asd-block-preflight",
+      "commit": "2a4ab50f72098c9cba74450d951f276fbd8c25aa",
+      "files": 29
+    },
+    {
+      "name": "asd-block-suite",
+      "commit": "d72f6b6e9a306f86016426d84ebf8c9b040eb852",
+      "files": 35
+    },
+    {
+      "name": "asd-execution",
+      "commit": "1e56ecbe071ec305fb2982c467099d98a725c079",
+      "files": 33
+    },
+    {
+      "name": "asd-cpu",
+      "commit": "38ce3b393dcf724d5e51a8a33a46765b25f8c6e9",
+      "files": 30
+    },
+    {
+      "name": "asd-compile",
+      "commit": "4f3aa2ab92391f0ee5211f4563fd5d64010a92e3",
+      "files": 34
+    },
+    {
+      "name": "asd-rmsnorm",
+      "commit": "841e0e5fc1bb0322dd4cbe8d3913c699e93c02cc",
+      "files": 39
+    },
+    {
+      "name": "asd-rmsnorm-suite",
+      "commit": "e958532bb4dc7544692011115895f90df2bd3f43",
+      "files": 43
+    },
+    {
+      "name": "asd-rmsnorm-validation",
+      "commit": "9b8176e78e3463b0573782dd570eb71045691022",
+      "files": 50
+    },
+    {
+      "name": "rmsnorm-runtime",
+      "commit": "79915573aface0f893b113537949734f62ac1ac8",
+      "files": 40
+    }
+  ],
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "counts": [
+    {
+      "sources": 6,
+      "requests": 72,
+      "branches": 156
+    },
+    {
+      "sources": 6,
+      "requests": 72,
+      "branches": 168
+    }
+  ],
+  "resources": {
+    "peak_gpu_bytes": 37750796288,
+    "formal_compile_events": 0
+  },
+  "result_zip": {
+    "bytes": 264854,
+    "sha256": "f3c835e254d39259771824e1488a65f34891391adfc5ee426c44b56731140684"
+  },
+  "actual_KV_prefixes_and_native_future_verified": true
+}

@@ -1,5 +1,17 @@
 # 项目进度
 
+## 2026-10-22 — 阶段3计算分配检查完成（按门槛停止扩测）
+
+- 冻结cea9ebb92db4879144b79b0338cd1272b38b0a35/1491 blobs，source SHA5dc11ff081b1c81798e2f6ee4bd5c8e227bc5b8d828b178948261538a9af3bf0；asd-allocation-v2/PID568165于04:02:59–04:09:43 UTC完成，ASD ALLOCATION COMPLETE，前后1491 SHA相同，两worker0退出、两卡19MiB/0%。旧完整ZIP+404622B delta重建记录保留deployment-delta.json，原前置失败目录/ZIP未覆盖。
+- 六类各2开发题，12 native512源逐ID/prompt/snapshot重现旧完整DFlash/RMSNorm前缀；144请求128/EOS计时；27状态×4动作×3重复=324实际KV分支64/EOS，共480主生成，另10warmup，9缺失状态不补位。144请求/27状态全部跨动作token一致、每动作重复轨迹精确；审计全部共同轮/KV前沿及之后native。128/64/512不冒充完整自然质量，validation不作新独立，reserve未生成。
+- 请求等权native归一成本native/half/verify-half/AR=1/1.224244/1.182876/3.748638；局部一次动作及native后续为1/1.016271/1.015223/1.076463。短块单调用略省，但Target调用数题级中位增19.52%/17.52%，每调用摊销中位降约2.97%/2.18%，不能相乘中位数作总体因果分解。全部逐题指标保存interpretation.json。
+- 请求oracle/跨重复/留题预测比最好固定为0.990718/0.991221/1.041159，无oracle合格场景；局部总体0.951273/0.951369/1.045080。局部MBPP oracle0.928661、短问答0.836896，跨重复相近，两个场景过空间门槛；但留题选择器分别1.003124/1.298426，没有合格场景再省>=2%，continue_selector=False。按冻结协议结束当前四动作/四特征检查，不扫特征/阈值、不加复杂头、不启动闭环或完整48自然扩测；保留局部终止机会，不否定全部计算分配路线。
+- 局部机会例：mbpp:262轮4只剩EOS，Target0.05022s对native0.07204s；两token问答0.05003对0.07568。另一四token问答剩3token，Target先单步还须后续D，0.13517对0.08687s，错误选择反而慢55.6%；留题模型在这里误选。源轮0历史特征相同、prompt长度不能可靠预测终止，是本批机制解释，不是免费EOS oracle。
+- 每卡4图/warmup后稳定、正式新编译0，outer3.804/3.824s与backend3.426/3.432s嵌套，cache414716B/卡，peak35.158GiB，资源满足原预算。成功ZIP264854B/SHAf3c835e254d39259771824e1488a65f34891391adfc5ee426c44b56731140684。1491 Git blob/8冻结文件/1006旧SHA/10批387发布文件/真实KV及infra引用审计通过，两既有CRLF例外单列。
+- 本地相关60 passed/2 skipped/11.58s，完整731 passed/5 skipped/112.80s；后续资源/部署报告13 passed/6.65s，服务器修复后90 passed/9.76s。原合成夹具/服务器缺父目录的失败XML和ZIP保留。执行/协议/主统计GPU后未改，只有只读interpretation新增；不重复已通过GPU测量。
+- 原服务器Python3.11从未压缩行内存重建主统计，与本地3.13仅11个浮点字段最大3.33e-16末位差，模型/选择/continue判定相同，statistics-rebuild-server.json保存全部差异。留题4.12%/4.51%是按预测回查实测动作成本的离线估计，未计在线选择开销，未假装实际跑过闭环策略。原前置失败ZIP73598B/SHA1bf52dc8e04065b162ba0ed7d08638e9e3a5bbbf669524d14569b7d2de4d0f45一并保留。
+- 结果results/asd-allocation；主表docs/ASD_ALLOCATION_RESULTS.md，解释ASD_ALLOCATION_FINDINGS.md。运行`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_allocation_pipeline`；重建`python -m scripts.write_asd_allocation_report`，描述`python -m results.asd-allocation.inspect_results`，后审计`python -m results.asd-allocation.audit_postrun`需原ZIP/Git历史。默认执行/面试版保持。下一路线为阶段4多候选/局部修复成本预检，尚未实现，不把本轮严格局部结果冒充ASD新收益。
+
 ## 2026-10-22 — 阶段3真实计算分配（生成前冻结）
 
 - 修复版已运行：cea9ebb92db4879144b79b0338cd1272b38b0a35/1491 blobs，source SHA5dc11ff081b1c81798e2f6ee4bd5c8e227bc5b8d828b178948261538a9af3bf0，本地完整ZIP SHA1e0cd79e5476e1c1284e80da4be82f99550c6313e3926e4882a7003657ac28cc。404622B delta SHA6b5b909f89a0e9cf1258fbf629cf6450db43aad2e61d0937234cebdcf0b0479c，结合旧完整ZIP在新asd-allocation-v2核验1491目标blob。2026-10-22 04:02:59 UTC/PID568165启动；服务器90 passed/9.76s后两worker已正式生成。旧失败ZIP服务器另存asd-allocation-failed-preflight-results.zip；生产动作/样本/主统计与门槛未改。

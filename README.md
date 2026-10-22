@@ -77,6 +77,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [显式RMSNorm运行时](docs/RMSNORM_RUNTIME.md)已完成[真实GPU接入验收](docs/RMSNORM_RUNTIME_RESULTS.md)：`configs/runtime-dflash-rmsnorm.json`选择数值profile，12示例配对、取消恢复、三路SSE、HTTP队列和新进程CLI通过。默认eager/原面试版不变；冷编译计请求时间，R示例仅证明触发兼容，未显示额外提速，不以小样本代替独立性能结果。
 
+[阶段3计算分配检查](docs/ASD_ALLOCATION_FINDINGS.md)完成六类各2题、480主生成及27个真实KV状态：请求oracle仅省0.93%，局部MBPP/短问答仍有7.13%/16.31%理想选择空间，但留题廉价选择器未通过任何合格场景，按预登记规则停止闭环扩测。实际缩短Draft8/只验证7的128/EOS请求总体更慢；保留原生16块、工具与全部结果，不把局部oracle当线上提速，reserve96未生成。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

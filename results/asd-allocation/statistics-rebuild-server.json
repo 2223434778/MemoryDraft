@@ -1,0 +1,62 @@
+{
+  "status": "complete",
+  "exact": false,
+  "differences": [
+    {
+      "path": "branch.overall.fixed_costs.native",
+      "server": 0.9999999999999997,
+      "local": 1.0
+    },
+    {
+      "path": "branch.overall.optimistic_oracle_ratio",
+      "server": 0.9512733793287961,
+      "local": 0.951273379328796
+    },
+    {
+      "path": "branch.overall.cross_repeat_oracle_ratio",
+      "server": 0.9513687681254742,
+      "local": 0.951368768125474
+    },
+    {
+      "path": "branch.overall.leave_request_out_ratio",
+      "server": 1.0450799514290932,
+      "local": 1.045079951429093
+    },
+    {
+      "path": "branch.families.gsm8k.fixed_costs.native",
+      "server": 0.9999999999999999,
+      "local": 1.0
+    },
+    {
+      "path": "branch.families.gsm8k.optimistic_oracle_ratio",
+      "server": 0.9914357731630179,
+      "local": 0.9914357731630177
+    },
+    {
+      "path": "branch.families.humaneval.cross_repeat_oracle_ratio",
+      "server": 0.997311470217482,
+      "local": 0.9973114702174818
+    },
+    {
+      "path": "branch.families.json.fixed_costs.native",
+      "server": 0.9999999999999999,
+      "local": 1.0
+    },
+    {
+      "path": "branch.families.math500.fixed_costs.native",
+      "server": 0.9999999999999999,
+      "local": 1.0
+    },
+    {
+      "path": "branch.families.math500.optimistic_oracle_ratio",
+      "server": 0.9945622426948173,
+      "local": 0.9945622426948172
+    },
+    {
+      "path": "branch.families.mbpp.optimistic_oracle_ratio",
+      "server": 0.9286606650597932,
+      "local": 0.9286606650597931
+    }
+  ],
+  "scope": "Pure statistics rebuilt from original uncompressed server rows; original frozen report unchanged"
+}

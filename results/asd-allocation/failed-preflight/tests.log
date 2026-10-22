@@ -1,0 +1,126 @@
+.....................................................................EEE [ 80%]
+EEEEE............                                                        [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_benchmark_refuses_comparing_different_numerical_profiles _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[None] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[warm_compile] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[no_cold_compile] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[wrong_profile] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[failed_stream] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[precision] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+_ ERROR at setup of test_acceptance_report_rejects_incomplete_or_incompatible_evidence[memory] _
+
+self = PosixPath('/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/artifacts/test-tmp'
+
+/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py:1116: FileNotFoundError
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/asd-allocation/results/raw/asd-allocation/tests-server.xml -
+=========================== short test summary info ============================
+ERROR tests/test_runtime_rmsnorm.py::test_benchmark_refuses_comparing_different_numerical_profiles
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[None]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[warm_compile]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[no_cold_compile]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[wrong_profile]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[failed_stream]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[precision]
+ERROR tests/test_runtime_rmsnorm.py::test_acceptance_report_rejects_incomplete_or_incompatible_evidence[memory]
+81 passed, 8 errors in 9.94s
