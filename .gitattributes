@@ -311,3 +311,10 @@ results/asd-adaptation/**/*.log -whitespace
 results/asd-adaptation/**/*.xml -whitespace
 .gitattributes text eol=lf
 README.md text eol=lf
+memorydraft/evaluation/adaptation_followup.py text eol=lf
+tests/test_adaptation_followup.py text eol=lf
+data/research/asd-adaptation-followup/** -text
+results/asd-adaptation-followup/** -text
+results/asd-adaptation-followup/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/asd-adaptation-followup/**/*.log -whitespace
+results/asd-adaptation-followup/**/*.xml -whitespace

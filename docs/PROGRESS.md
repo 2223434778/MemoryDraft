@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-22 — 阶段5后续同位置控制与独立GSM（执行准备）
+
+- 用户授权继续上一轮建议。复用旧80源/160teacher状态和两固定adapter，不重训ASD组；全部80个ASD采样位置都能在严格源EOS前到达，新增ordinary-position截取严格内容至相同generated_before，64训练/16额外诊断状态，同prompt/长度/anchor位置，80对内容均不同。原32题/8内部校准、seed、128更新/累积2、lr/rank/loss/shuffle及原32状态混合校准选模规则不变；新16状态不参与选模。
+- 新16官方GSM test按固定SHA排序、排除既有GSM ID/规范化问题及source_index<32，问题记录SHA d0f3d12e6f0d92c4a1ed1fbd1e5b86d3785d9d63192cf5e662253b5342cbbfc2；旧8单列。data/research/asd-adaptation-followup/manifest.json保留来源、排重文件SHA与ID。suite reserve96不生成，新题不参与训练或选checkpoint。
+- 新模块adaptation_followup.py与prepare/run/write_asd_adaptation_followup脚本薄复用原teacher、LoRA、dense bank、ASD、RMSNorm和评分。四模型×两策略×24题，自然3/128且EOS两重复=960正式，另24 AR参考、18短warmup。主对比ASD-prefix/同位置严格适配，位置混杂得到控制，仍不能代替多seed或证明上游未见。协议docs/ASD_ADAPTATION_FOLLOWUP_PROTOCOL.md在GPU前冻结。
+- 首轮本机`.venv\Scripts\python.exe -m pytest -q tests/test_adaptation_followup.py tests/test_adaptation.py tests/test_asd_adaptation_report.py --basetemp artifacts/followup-tests-tmp --junitxml=artifacts/followup-tests-local.xml`：37 passed/2 skipped/31.37s。准备完整CPU回归和服务器真实PEFT前置；尚无本轮GPU结果。目标新目录asd-adaptation-followup，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_adaptation_followup_pipeline`。原执行源码/私有features/adapters运行前后SHA审计，不覆盖旧目录。
+- 完整本机回归`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/followup-full-tmp --junitxml=artifacts/followup-full-local.xml -x --tb=short`：829 passed/7 skipped/128.95s，一个既有starlette弃用警告。额外核对5个既有JSONL请求文件，新16题均未出现；旧公开结果/训练文件56项SHA及两adapter常量与既有provenance一致。准备冻结源码后部署，未产生新GPU结论。
+
 ## 2026-10-22 — 阶段5等预算真实训练与开发评估完成
 
 - GPU执行4d7ac6eca2ab9970e9f71314fc77b9b9de79e140/1584 blobs，source SHA4b5109f72f1da81084e59b14533594e1ac26c8b684a47156e4774a7c0ead1e84；本地完整ZIP SHAc14712655b4b70b88136922ddfa2d3c8c61977663f2653e0d83b8a6382626deb，实际旧ZIP+1233414B delta SHA11f264bbce26c4390bb9721839a64ef0573e52821e1c7bb74f7da220dfcde091在新asd-adaptation-v2重建逐SHA核验。PID697777于07:31:56 UTC/北京时间15:31:56启动；07:48:12后处理/末核查完成，两卡19MiB/0%。成功ZIP889588B/SHAb4178f0a920155077e00ad2a1633ccf131e9192d21a9dbd399ca9e45fce7f837，前后1584源SHA一致。
