@@ -72,3 +72,19 @@ python -m memorydraft infer --config configs/runtime-dflash-asd-position.json --
 ```
 
 同输入三方法的[长输入评估](ASD_LONG_CONTEXT_FINDINGS.md)已完成，正式峰约42.29GiB，使用48GiB A6000。该轮是模型请求基准，未测长输入HTTP排队或连续批处理；原短输入3.23%收益与长输入边界分别报告。
+
+## 显式公共前缀缓存
+
+```bash
+python -m memorydraft serve --config configs/runtime-dflash-asd-prefix-cache.json --host 127.0.0.1 --port 8000 --queue-capacity 4 --event-capacity 32
+```
+
+该配置使用原Draft和原ASD策略，不加载位置适配器；同一服务可调用DFlash或ASD。使用已准备的本地模型，测试环境是48GiB A6000/FP32。示例请求仍是examples/request-asd-long.json；发送HTTP时加method:"ASD"、stream:true等服务字段，沿用前文API。
+
+缓存只存在于同一个engine/服务进程中，重启清空；单次CLI infer退出后不会留下下一次可用的GPU缓存。默认运行配置未启用缓存。当前登记表只覆盖公开GSM train worked examples，不缓存最终问题、私有用户记录或生成答案。其他prompt精确前缀不匹配时正常完整prefill，AR路径保持完整计算。
+
+缓存保存Target KV和DFlash需要的选层Target features。命中时复制独立KV并计算问题后缀，Draft KV和ASD预算每请求新建；活动请求KV不共享。取消时释放活动状态，已完整登记的公共输入缓存可以继续复用。registry SHA、模型revision、tokenizer/template和选层布局检查失败会拒绝启动或要求reload。
+
+上限2GiB/3 entries，按LRU淘汰；当前以整个登记前缀为entry，不做相同前半段去重。首次完整prefill、存入缓存、命中复制、查找和淘汰均在engine.generate计时内。返回counters中的prefix_cache_hit、prefix_cache_prefix_tokens、prefix_cache_reused_tokens、prefix_cache_filled_bytes、prefix_cache_evictions、prefix_cache_bytes和prefix_cache_entries可用于解释请求成本。
+
+固定请求/数值profile下已执行配对检查，见[缓存结果与边界](ASD_PREFIX_CACHE_FINDINGS.md)。分段prefill仍可能带来浮点舍入差异；当前检查覆盖输出、验证总轮数与ASD汇总账本，不是所有模型/输入的逐bit或逐轮一致性保证。服务仍是单模型worker串行排队，未实现continuous batching。

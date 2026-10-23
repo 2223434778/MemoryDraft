@@ -344,6 +344,7 @@ tests/test_prefix_cache*.py text eol=lf
 docs/ASD_PREFIX_CACHE*.md text eol=lf
 data/workloads/asd-prefix-cache/** -text
 results/asd-prefix-cache/** -text
+results/asd-prefix-cache/analysis-local.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-prefix-cache/**/*.log -whitespace
 results/asd-prefix-cache/**/*.xml -whitespace
 results/asd-prefix-cache-failed-startup/** -text

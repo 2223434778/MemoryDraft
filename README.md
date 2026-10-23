@@ -87,7 +87,9 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [数学ASD运行入口](docs/ASD_RUNTIME.md)现已接入CLI/HTTP/SSE，提供原Draft和已接纳位置适配Draft两个显式配置，每请求独立预算并标记近似输出。[工程验收](docs/ASD_RUNTIME_RESULTS.md)完成32直接结果、8 AR参考和2次独立CLI；真实流式、取消恢复及队列通过。冷CLI累计账本存在不到1e-5的末位差异，原零容差失败记录及修正说明保留；未改解码规则或新增性能百分比。
 
-[长输入数学工作负载](docs/ASD_LONG_CONTEXT_FINDINGS.md)完成8个已观察任务×约512/2K/4K输入，216正式结果+24 AR与9独立profile；全部strict匹配AR、无截断/OOM/正式新图。位置适配在2K共同128五题省2.32%，三个长度自然请求均无净提速；ASD两组均7/8。4K首token约4.8秒，占平均请求约61%，下一步优先验证公共示例前缀缓存，保留既有短输入收益。模型请求时延不含HTTP和排队，未接连续批处理。
+[长输入数学工作负载](docs/ASD_LONG_CONTEXT_FINDINGS.md)完成8个已观察任务×约512/2K/4K输入，216正式结果+24 AR与9独立profile；全部strict匹配AR、无截断/OOM/正式新图。位置适配在2K共同128五题省2.32%，三个长度自然请求均无净提速；ASD两组均7/8。4K首token约4.8秒，占平均请求约61%，据此推进公共示例前缀缓存，保留既有短输入收益。该轮模型请求时延不含HTTP和排队，未接连续批处理。
+
+[公共前缀Target KV及DFlash特征缓存](docs/ASD_PREFIX_CACHE_FINDINGS.md)完成288配对生成及80真实HTTP负载请求。ASD命中自然时延在约512/2K/4K输入低13.69%/42.53%/59.10%，4K首token4.82→0.20秒；首次填充加一次命中的配对总成本低28.98%。同前缀HTTP请求流从空缓存起步命中19/20，总wall低62.45%；两种大前缀交替时受2GiB容量限制，0/20命中、慢0.10%。输出/验证总轮数和ASD汇总量保持，spent末位差异单列；默认关闭、仅缓存登记公开前缀、每请求独立活动KV/预算。配置`configs/runtime-dflash-asd-prefix-cache.json`用于常驻服务，单次CLI退出即清缓存；未实现分块去重或连续批处理。
 
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 

@@ -1,6 +1,16 @@
 # 项目进度
 
-## 2026-10-23 — 阶段7公共前缀缓存与排队评估（执行准备）
+## 2026-10-23 — 阶段6后续公共前缀缓存与真实排队完成
+
+- 实际GPU源c2903a7ab256f9916d9be05733a53946cae0200c/1852 blobs，source SHA4f7ba9bc94e2622cd7cf98de4b21f97a0defcc276d2ac63dcea0ce42b413eaad，完整本机ZIP SHA f3f4b35087098c53581bcb9fa952599759d282672e9718a9b28855c45641a061；实际4125303B delta SHA490f4dc1f6562a2914b5fdfc66c6fc21f818b66acdcdfc496bc9f33d8a7316f9。新root asd-prefix-cache-v2/PID1470334于04:33:26 UTC启动，04:52:20检查全部完成/两卡19MiB/0%；1852源文件前后SHA一致，成功ZIP196649B/SHA8ff757a282107b933c01c433bdb83b4ee15ea7d4207a03030062ccd9752d06ef，24原始成员逐字节核验。
+- 288正式（三状态×D/ASD×24输入×自然/128且EOS）全完成，全部自然EOS，无OOM/截断/正式新图。strict逐token匹配旧完整AR，off也重现上轮；缓存输出、验证总轮数和ASD汇总量相同。未保存逐轮trace，不冒称每轮接受边界相同。48 ASD配对spent末位不同，最大9.5367431640625e-5，实际预算仍≤8，未放宽接受器。ASD三档均原7/8，strict7/8、7/8、6/8，无新增质量变化。
+- ASD命中自然题均时延比.8631/.5747/.4090，TTFT均.4867/1.9899/4.8204→.1341/.1616/.2021秒；首token后均2.3471/2.4199/3.1077→2.3461/2.4153/3.1067秒，支持收益来自重复Target prefill减少。cold自然基本持平；cold+1hit / 2off实测成本估算.9373/.7923/.7102，不冒充另测到达轨迹。ASD共同完整128三档N6/6/5，hit/off题均比.8206/.5366/.4008，其余EOS短请求保留。
+- 各卡20off+20cache、并发2/四道4K轮换，共80真实HTTP负载请求，另JSON/SSE/断连/恢复请求。相同4073token前缀流19/20hit，wall143.6329→53.9338秒/省62.45%，平均队列6.8259→2.5738秒；3937/4073前缀交替流0/20hit、19次淘汰，wall157.1194→157.2842秒/慢0.10%，两者分别约1.382/1.429GiB，合2.811GiB超2GiB限额。两前缀有3934共同token但整项存储重复，下一步共享公共段/块去重有明确工程动机，尚未实现。不跨卡比较因果，不把串行worker排队称连续批处理。
+- 每worker模型准备20.100/20.378秒，各3图/backend3.402/3.371秒；首DFlash16冷wall4.249/4.263、图0→2编译2.960/2.929秒保留，第三图在后续warmup。正式总峰43.7216GiB≤46，编译/测试缓存合计1918142B。只在同一engine生命周期缓存，独立CLI每次均冷，使用入口docs/ASD_RUNTIME.md，默认及面试版引用保持。
+- 本机修复前全量906 passed/7 skipped/125.62秒、相关42 passed/7.12秒，修复后相关64 passed/12.60秒；服务器修复后99 passed/8.63秒。首源98 passed后启动热点主动终止的失败ZIP/日志保留，不算正式性能。主统计冻结c2903a7源，两环境逐字段相同；本机CRLF JSON另存analysis-local.json，发布LF来自analysis-server.json。主表手动补汇总字段定义，原生成Markdown另存results-generated.md。
+- 审计1852 Git源、85冻结执行/数据文件、1283旧结果、上一发布72文件和infra三引用通过；两个既有结果CRLF例外保留，无私有缓存/权重/raw trace上传。报告ASD_PREFIX_CACHE_FINDINGS.md、主表ASD_PREFIX_CACHE_RESULTS.md、数据results/asd-prefix-cache。复核`python -m scripts.write_asd_prefix_cache_report --input results/asd-prefix-cache --output artifacts/prefix-cache-report-recheck`、`python -m results.asd-prefix-cache.inspect_results`、`python -m results.asd-prefix-cache.audit_postrun`。当前未做共享段缓存/块管理/新模型训练，reserve96未生成。
+
+## 2026-10-23 — 阶段6后续公共前缀缓存与排队评估（执行准备）
 
 - 按用户授权继续多个阶段。实现显式 opt-in PublicPrefixCache：只读登记公开 worked-example token 前缀，Target KV + Draft所需选层features独立存储，命中逐请求克隆KV，Draft KV仍每请求新建；LRU 2GiB/3 entries，未命中完整prefill后仅复制允许部分入库。默认配置和独立面试版本不变，ASD验证器/预算/Target输入未改。
 - `.venv\Scripts\python.exe -m scripts.prepare_public_prefixes`生成5个公开前缀，token数459/1867/4073/323/3937，registry SHA9bfda318cd757144b64961e8cc05d6a29f95c00e9c65229b2ab8ca2a365bae82；不含最终问题/测试答案，原24请求逐字节复用。模型revision/tokenizer/template及registry SHA绑定，实例限制Target/选层布局，配置变化要求reload。
