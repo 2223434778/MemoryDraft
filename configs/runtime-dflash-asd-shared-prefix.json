@@ -1,0 +1,21 @@
+{
+  "backend": "dflash",
+  "target": "../models/qwen3-8b",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "draft": "../models/dflash-qwen3-8b",
+  "device": "cuda:0",
+  "dtype": "float32",
+  "attention": "eager",
+  "execution_profile": "rmsnorm-inductor",
+  "threads": 4,
+  "max_input_tokens": 8192,
+  "max_new_tokens": 4096,
+  "template_options": {"enable_thinking": false},
+  "asd": {"budget": 8, "gate": 0.25, "cap": 2},
+  "prefix_cache": {
+    "path": "../data/workloads/asd-shared-prefix/public-prefixes.json",
+    "sha256": "f124b3a0791ed5fc2bcb15486925e8898d3f9a0bef2016ac7faf419b2fe6add1",
+    "max_bytes": 2147483648,
+    "max_entries": 3
+  }
+}

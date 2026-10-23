@@ -350,3 +350,10 @@ results/asd-prefix-cache/**/*.xml -whitespace
 results/asd-prefix-cache-failed-startup/** -text
 results/asd-prefix-cache-failed-startup/**/*.log -whitespace
 results/asd-prefix-cache-failed-startup/**/*.xml -whitespace
+scripts/*shared_prefix*.py text eol=lf
+tests/test_shared_prefix*.py text eol=lf
+docs/ASD_SHARED_PREFIX*.md text eol=lf
+data/workloads/asd-shared-prefix/** -text
+results/asd-shared-prefix/** -text
+results/asd-shared-prefix/**/*.log -whitespace
+results/asd-shared-prefix/**/*.xml -whitespace

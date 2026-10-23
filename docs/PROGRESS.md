@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-23 — 阶段6共享公共段修复（执行准备）
+
+- 用户授权下一步。新prepare_shared_prefix只对已固定公开registry求token最长公共段，将4K的4073/3937两个entry换为3934，保留三个短entry，父SHA/ID/长度入新registry；不读测试答案、不改请求。新SHA f124b3a0791ed5fc2bcb15486925e8898d3f9a0bef2016ac7faf419b2fe6add1。显式配置runtime-dflash-asd-shared-prefix.json，原registry/配置/默认/面试版不变，在线PublicPrefixCache及模型/接受器未改。
+- 原runner增加向后兼容的config/levels/study/variant/mode/load-states参数，复用原HTTP helper。shared新跑4K原8题×D/ASD×自然/128且EOS×off/cold/hit共96；whole新进程只跑同流20cache HTTP控制，shared各卡20off+20cache，共120负载请求，另有JSON/SSE/断连/恢复。GPU0 shared→whole/GPU1 whole→shared，2GiB/3 entries、每worker46GiB/2400秒、总磁盘cache16GiB。协议ASD_SHARED_PREFIX_PROTOCOL.md先于GPU冻结。
+- 首unit34 passed/27.49秒；新增报告后相关shared_prefix/shared_prefix_report/prefix_cache/prefix_cache_study/runtime_asd共60 passed/7.86秒，一个既有starlette警告。完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/shared-prefix-full-tmp --junitxml=artifacts/shared-prefix-full-local.xml -x --tb=short`运行中；无GPU结果。测试构造同容量交替后缀，whole持续miss/淘汰、shared命中且真实tiny模型logits/features接近、token argmax及KV边界一致。
+- 准备新root asd-shared-prefix，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_shared_prefix_pipeline`，不覆盖旧目录/结果；源码前后SHA审计，测试与输出保存独立路径。主比较为同卡相同HTTP请求流，记录窗口次序/命中/填充/淘汰、冷成本、EOS质量及spent浮点差异，不冒称通用块存储或逐轮trace一致。
+- 本机完整回归924 passed/7 skipped/137.79秒，一个既有starlette警告；报告HTTP控制前缀/显存等补充校验后专项7 passed/0.32秒，XML分开保留。`git diff --check`通过，准备冻结canonical Git blobs部署，尚无本轮GPU结论。
+
 ## 2026-10-23 — 阶段6后续公共前缀缓存与真实排队完成
 
 - 实际GPU源c2903a7ab256f9916d9be05733a53946cae0200c/1852 blobs，source SHA4f7ba9bc94e2622cd7cf98de4b21f97a0defcc276d2ac63dcea0ce42b413eaad，完整本机ZIP SHA f3f4b35087098c53581bcb9fa952599759d282672e9718a9b28855c45641a061；实际4125303B delta SHA490f4dc1f6562a2914b5fdfc66c6fc21f818b66acdcdfc496bc9f33d8a7316f9。新root asd-prefix-cache-v2/PID1470334于04:33:26 UTC启动，04:52:20检查全部完成/两卡19MiB/0%；1852源文件前后SHA一致，成功ZIP196649B/SHA8ff757a282107b933c01c433bdb83b4ee15ea7d4207a03030062ccd9752d06ef，24原始成员逐字节核验。

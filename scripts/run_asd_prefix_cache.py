@@ -29,7 +29,9 @@ from scripts.validate_asd_runtime import sse_events
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def http_checks(engine,items,references,output):
+def http_checks(engine,items,references,output,*,load_states=("off","cache")):
+    if not load_states or len(set(load_states)) != len(load_states) or not set(load_states) <= {"off","cache"}:
+        raise ValueError("Invalid HTTP load states")
     chosen = [r for r in items if r["level"] == 4096][:4]
     app = create_app(lambda:engine,queue_capacity=4)
     sock = socket.socket()
@@ -38,7 +40,7 @@ def http_checks(engine,items,references,output):
     server = uvicorn.Server(uvicorn.Config(app,log_level="warning",access_log=False))
     thread = threading.Thread(target=server.run,kwargs={"sockets":[sock]},daemon=True)
     thread.start()
-    summary = dict(status="started",mode="closed_loop",concurrency=2,requests_per_state=20)
+    summary = dict(status="started",mode="closed_loop",concurrency=2,requests_per_state=20,load_states=list(load_states))
     obj = engine._prefix_cache
     try:
         deadline = time.perf_counter()+30
@@ -77,7 +79,7 @@ def http_checks(engine,items,references,output):
             recovered = client.post(url+"/v1/generate",json=body)
             recovered.raise_for_status()
             if compare(row,recovered.json())["changed"]:raise ValueError("Cancellation polluted public cache")
-            for state in ("off","cache"):
+            for state in load_states:
                 obj.clear()
                 context = patch.object(engine,"_prefix_cache",None) if state == "off" else nullcontext()
                 with context:
@@ -129,19 +131,30 @@ def http_checks(engine,items,references,output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--shard",type=int,choices=(0,1),required=True)
+    parser.add_argument("--config",type=Path,default=ROOT/"configs/runtime-dflash-asd-prefix-cache.json")
+    parser.add_argument("--levels",type=int,nargs="+",choices=LEVELS,default=list(LEVELS))
+    parser.add_argument("--study",choices=(STUDY,"asd-shared-prefix"),default=STUDY)
+    parser.add_argument("--variant",choices=("whole","shared"))
+    parser.add_argument("--mode",choices=("eval","http-only"),default="eval")
+    parser.add_argument("--load-states",nargs="+",choices=("off","cache"),default=["off","cache"])
     args = parser.parse_args()
+    if 4096 not in args.levels or len(set(args.levels)) != len(args.levels):
+        parser.error("HTTP checks require 4096 and unique input levels")
+    if len(set(args.load_states)) != len(args.load_states):parser.error("Duplicate HTTP load state")
     tasks,items,data = load_data(ROOT)
     chosen = {r["id"] for i,r in enumerate(tasks) if i%2 == args.shard}
-    items = [r for r in items if r["task_id"] in chosen]
+    items = [r for r in items if r["task_id"] in chosen and r["level"] in args.levels]
     tasks = {r["id"]:r for r in tasks}
-    output = ROOT/f"results/raw/{STUDY}/eval-{args.shard}"
+    label = f"{args.variant}-{args.shard}" if args.variant else str(args.shard)
+    output = ROOT/f"results/raw/{args.study}/eval-{label}"
     output.mkdir(parents=True,exist_ok=False)
-    info = dict(status="started",shard=args.shard,data_files=data["files"],rows=0)
+    info = dict(status="started",shard=args.shard,data_files=data["files"],rows=0,
+                variant=args.variant,mode=args.mode,levels=args.levels,load_states=args.load_states)
     engine = None
     all_rows = []
     try:
         started = time.perf_counter()
-        engine = load_engine(RuntimeConfig.load(ROOT/"configs/runtime-dflash-asd-prefix-cache.json"))
+        engine = load_engine(RuntimeConfig.load(args.config))
         obj = engine._prefix_cache
         info.update(runtime=provenance(engine),model_setup_seconds=time.perf_counter()-started)
         def generate(item,method,limit,state):
@@ -150,7 +163,7 @@ def main():
             check_input(row,item)
             if row["peak_gpu_bytes"] > 46*2**30:raise torch.cuda.OutOfMemoryError("GPU budget exceeded")
             return row
-        for level in LEVELS:
+        for level in sorted(set(args.levels)):
             item = next(r for r in items if r["level"] == level)
             obj.clear()
             for method in ("DFlash","ASD"):
@@ -162,8 +175,8 @@ def main():
                 ROOT/f"results/asd-long-context/eval-base-{i}/rows.jsonl") if r["repeat"] == 0}
         reference_ar = {r["request_id"]:r for i in (0,1) for r in read_rows(
                 ROOT/f"results/asd-long-context/eval-base-{i}/references.jsonl")}
-        prefix_refs = {}
-        for item in items:
+        prefix_refs = {(r["request"]["id"],m):old[r["request"]["id"],m,"prefix"] for r in items for m in ("DFlash","ASD")}
+        for item in items if args.mode == "eval" else ():
             jobs = [(method,stage,limit) for method in ("DFlash","ASD") for stage,limit in (("natural",4096),("prefix",128))]
             rng = random.Random("public-prefix:"+item["request"]["id"])
             rng.shuffle(jobs)
@@ -182,10 +195,11 @@ def main():
                     info["rows"] += 1
                 write_json(output/"provenance.json",info)
             print("evaluated",args.shard,item["task_id"],item["level"],info["rows"],flush=True)
-        analysis = analyze(all_rows,items)
-        write_json(output/"analysis.json",analysis)
-        if not analysis["all_outputs_and_decisions_equal"] or any(not r["strict_token_match_ar"] for r in all_rows if r["method"] == "DFlash"):
-            raise ValueError("Cache correctness gate failed; HTTP stage not started")
+        if args.mode == "eval":
+            analysis = analyze(all_rows,items)
+            write_json(output/"analysis.json",analysis)
+            if not analysis["all_outputs_and_decisions_equal"] or any(not r["strict_token_match_ar"] for r in all_rows if r["method"] == "DFlash"):
+                raise ValueError("Cache correctness gate failed; HTTP stage not started")
         # Cross-question requests may share only the registered public prefix.
         obj.clear()
         cross = []
@@ -200,7 +214,7 @@ def main():
             engine.generate(request_for(items[-1],4096),"ASD",on_tokens=seen.extend,should_stop=lambda:bool(seen))
         except RequestCancelled:pass
         else:raise ValueError("Direct cancellation was not exercised")
-        info["http"] = http_checks(engine,items,prefix_refs,output)
+        info["http"] = http_checks(engine,items,prefix_refs,output,load_states=tuple(args.load_states))
         info.update(status="complete",compiler=engine._regional.summary())
     except Exception as error:
         info.update(status="failed",error_type=type(error).__name__,error=str(error))
