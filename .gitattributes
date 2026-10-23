@@ -346,3 +346,6 @@ data/workloads/asd-prefix-cache/** -text
 results/asd-prefix-cache/** -text
 results/asd-prefix-cache/**/*.log -whitespace
 results/asd-prefix-cache/**/*.xml -whitespace
+results/asd-prefix-cache-failed-startup/** -text
+results/asd-prefix-cache-failed-startup/**/*.log -whitespace
+results/asd-prefix-cache-failed-startup/**/*.xml -whitespace

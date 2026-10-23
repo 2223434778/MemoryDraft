@@ -13,3 +13,5 @@
 - 新 root asd-prefix-cache，source Git blobs/旧结果只读，执行前后核 SHA。入口 `OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_prefix_cache_pipeline`。只导出代码/公开输入/聚合 JSON/JSONL/XML/log，不上传 KV/features/权重/raw trace。
 
 原理参考：[vLLM Automatic Prefix Caching](https://docs.vllm.ai/en/v0.13.0/features/automatic_prefix_caching/)。这减少共享输入的 prefill 工作，不直接改善后续 Draft 接受率；DFlash 另需选层 Target features，故不能只保存 KV。
+
+启动修复记录：首源3d53852通过服务器98测试，但在登记校验逐token调用len(tokenizer)，真实词表10次调用耗0.415秒、尚无warmup/正式行时主动停止两个自有worker。失败目录asd-prefix-cache及ZIP保留；将词表大小在初始化只取一次，新目录asd-prefix-cache-v2复跑，实验矩阵/接受规则/分析不变。

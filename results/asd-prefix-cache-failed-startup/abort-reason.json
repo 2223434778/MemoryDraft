@@ -1,0 +1,9 @@
+{
+  "status": "aborted_before_formal_generation",
+  "utc": "2026-10-23T04:31:19.055945+00:00",
+  "stopped_owned_workers": [
+    1466450,
+    1466451
+  ],
+  "reason": "Registry validates len(tokenizer) per token; measured 10 calls=0.415010467s. Hoist vocabulary size once. No decode/acceptance change."
+}

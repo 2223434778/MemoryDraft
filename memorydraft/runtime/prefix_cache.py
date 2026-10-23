@@ -60,11 +60,12 @@ class PublicPrefixCache:
             raise ValueError("Expected a bounded public prefix allowlist")
         self.prefixes = []
         seen = set()
+        vocab_size = len(tokenizer)
         for item in prefixes:
             tokens = item.get("token_ids")
             if (not isinstance(item.get("id"), str) or not item["id"] or not item.get("source")
                     or not isinstance(tokens, list) or not 1 <= len(tokens) < max_input_tokens
-                    or any(type(t) is not int or not 0 <= t < len(tokenizer) for t in tokens)):
+                    or any(type(t) is not int or not 0 <= t < vocab_size for t in tokens)):
                 raise ValueError("Invalid public prefix registration")
             key = tuple(tokens)
             if key in seen:

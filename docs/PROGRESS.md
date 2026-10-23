@@ -8,6 +8,8 @@
 - 首测试`.venv\Scripts\python.exe -m pytest -q tests/test_prefix_cache.py tests/test_runtime.py --basetemp artifacts/prefix-cache-unit-tmp --junitxml=artifacts/prefix-cache-unit-local.xml -x --tb=short`：53 passed/17.00秒。相关prefix_cache/prefix_cache_study/runtime_asd：42 passed/7.12秒，一个既有starlette警告。完整回归进行中；尚无GPU性能结论。
 - 新目录asd-prefix-cache，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_prefix_cache_pipeline`。分片奇偶同题同卡、46GiB/2400秒、编译缓存总8GiB。源码及既有结果前后SHA核验，不上传KV/features/权重/raw trace。
 - 完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/prefix-cache-full-tmp --junitxml=artifacts/prefix-cache-full-local.xml -x --tb=short`：906 passed/7 skipped/125.62秒，一个既有starlette警告；`git diff --check`通过。准备冻结canonical Git blobs再部署；此时尚无GPU结果。
+- 首冻结3d5385226ee3c40404c7a1158b03c3e3d917c5df/1844 blobs，source SHA26ce11a9771d22086ac7a882234c470e3c59eb0a6c61957182db80cc5b608c39，完整ZIP SHAca0686195d316fed6a854ddae37b3c15f4098d322a822d78a5eb9437edee2737；4032389B delta SHA24368755e80458e3c28f53de5c4bed7c6dde6c09a50cc1a1921d3b1269a9e99d。原root asd-prefix-cache/PID1466226于04:28:28 UTC启动，服务器98 passed/8.63秒；两个worker登记校验迟迟未完成、无warmup/正式行，定位逐token len(tokenizer)热点（独立10次0.415010467秒），04:31:19 UTC仅SIGTERM已核对PID/PPID/session/cwd/argv的两个自有worker，未修改旧source/解码/环境。
+- 最小修复词表长度在初始化只读取一次，补1000token登记表的有限调用回归；相关64 passed/12.60秒，报告10 passed/6.24秒。首次失败ZIP90098B/SHA b2de98751d4d179abf5354bd1704d48e987cd3a8fbc55e41a0a3e02a84212855，7成员逐字节下载验证，另存pipeline.log于results/asd-prefix-cache-failed-startup；保留失败现场，新root asd-prefix-cache-v2再次冻结执行。本机906全量属于修复前源，不冒称新增回归已在全量执行。
 
 ## 2026-10-23 — 阶段6长输入单请求完成
 

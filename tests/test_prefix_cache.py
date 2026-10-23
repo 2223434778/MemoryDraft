@@ -144,3 +144,19 @@ def test_prefix_config_paths_limits_and_default(tmp_path):
         with pytest.raises(ValueError):PrefixCacheSpec(**value)
     with pytest.raises(ValueError,match="dflash"):
         RuntimeConfig(target="x",prefix_cache=dict(path="public.json",sha256="a"*64))
+
+
+def test_registry_validation_does_not_query_expensive_vocab_size_per_token(engine,tmp_path):
+    spec = registry(engine,tmp_path,prefixes=(tuple([3]*1000),))
+    class Tokenizer:
+        calls = 0
+        backend_tokenizer = engine.tokenizer.backend_tokenizer
+        chat_template = engine.tokenizer.chat_template
+        def __len__(self):
+            self.calls += 1
+            if self.calls > 2:raise AssertionError("Per-token vocabulary-size lookup")
+            return len(engine.tokenizer)
+    tokenizer = Tokenizer()
+    obj = PublicPrefixCache(spec,target=engine.target,tokenizer=tokenizer,target_revision=engine.config.target_revision,
+            template_options=engine.config.template_options,layers=[0,1],max_input_tokens=8192)
+    assert len(obj.prefixes[0][0]) == 1000 and tokenizer.calls <= 2
