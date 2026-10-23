@@ -1,0 +1,130 @@
+[
+  {
+    "instruction": "Create a persuasive argument which explains why our company should adopt a bi-annual meeting.",
+    "input": "",
+    "output": "Having bi-annual meetings is beneficial for any company as it encourages regular check-ins and promotes team cohesion within the company. By holding bi-annual meetings, we can re-evaluate our goals and objectives, assess team performance, provide feedback to teams and employees, discover potential improvement areas, and brainstorm innovative solutions or ideas. Moreover, bi-annual meetings are also powerful tools for improving communication, motivation, and collaboration between different teams within the company. They also provide an opportunity for team members to come together and discuss pressing company-wide issues and challenges. All these are reasons why our company should consider adopting a bi-annual meeting system.",
+    "id": "alpaca:32069",
+    "benchmark": "alpaca",
+    "source_index": 32069
+  },
+  {
+    "instruction": "Convert this sentence into a valid for loop in Python",
+    "input": "multiply each element of the list by two",
+    "output": "for element in list:\n    element = element * 2",
+    "id": "alpaca:42198",
+    "benchmark": "alpaca",
+    "source_index": 42198
+  },
+  {
+    "instruction": "Explain what static analysis is.",
+    "input": "",
+    "output": "Static analysis is a type of software testing that involves examining the source code of a program without running the program. It typically involves examining all of the symbols, names, and tokens in the code in order to look for errors and vulnerabilities that could be exploited by an attacker. Static analysis can be used to identify common mistakes, such as use of incorrect variable names, unsafe APIs, and insecure interaction with other programs. It can also be used to detect malicious code, such as backdoors or time bombs, that may be hidden in the source code.",
+    "id": "alpaca:33033",
+    "benchmark": "alpaca",
+    "source_index": 33033
+  },
+  {
+    "instruction": "Change the following sentence to include an idiom:",
+    "input": "She got the better of him.",
+    "output": "She bested him.",
+    "id": "alpaca:1863",
+    "benchmark": "alpaca",
+    "source_index": 1863
+  },
+  {
+    "instruction": "Write a children's poem about a dog in the box below.",
+    "input": "",
+    "output": "Doggie's fur is soft and furry,\nWhen he snuggles you feel merry.\nHe loves to bark and loves to play,\nThe most loyal pet you'd ever say.\n\nDoggie loves to roam and sniff,\nHe can run and even leap.\nHe'll bring you joy, no worries here,\nJust give him treats loud cheers will hear!",
+    "id": "alpaca:47845",
+    "benchmark": "alpaca",
+    "source_index": 47845
+  },
+  {
+    "instruction": "Generate a list of items related to the topic given.",
+    "input": "Scuba diving",
+    "output": "Items related to scuba diving:\n- Wet Suit \n- Fins \n- Snorkel \n- BCD (Buoyancy Control Device) \n- Mask \n- Regulator \n- Dive Computer \n- Dive Knife or Cutting Tool \n- Weight Belt or Jacket \n- Under Water Flashlight \n- Cylinder and Air Tank \n- Torch \n- Dive Log Book \n- Compass",
+    "id": "alpaca:653",
+    "benchmark": "alpaca",
+    "source_index": 653
+  },
+  {
+    "instruction": "Group the following list of animals by category: dog, tiger, whale, eagle",
+    "input": "",
+    "output": "Mammals: dog, tiger \nBirds: eagle \nMarine Animals: whale",
+    "id": "alpaca:46981",
+    "benchmark": "alpaca",
+    "source_index": 46981
+  },
+  {
+    "instruction": "Describe a scene to a blind person.",
+    "input": "A flower garden in the morning",
+    "output": "The morning air is cool and crisp. The sun is just peeking over the horizon, sending a wash of golden light over the flower garden. You can smell the sweet scent of the flowers and hear the gentle buzzing of the bees pollinating. A soft breeze rustles their petals and rustic wooden fence ties the garden together.",
+    "id": "alpaca:49005",
+    "benchmark": "alpaca",
+    "source_index": 49005
+  },
+  {
+    "instruction": "Compare and contrast the advantages and disadvantages of deep learning and reinforcement learning.",
+    "input": "",
+    "output": "Deep learning and reinforcement learning both have advantages and disadvantages. Deep learning can enable machine learning algorithms to identify relationships within large datasets by recognizing patterns, but can suffer from overfitting when the available data is limited. Reinforcement learning is well-suited for environments in which a model must learn from trial and error, and is especially well-suited for problems involving a long-term reward structure, but can suffer from an inability to identify rewards which are not easily quantifiable. In addition, deep learning can be computationally expensive and require more data, while reinforcement learning can solve more complex problems but with fewer resources.",
+    "id": "alpaca:14689",
+    "benchmark": "alpaca",
+    "source_index": 14689
+  },
+  {
+    "instruction": "Imagine a situation and then write a scenario for a conversation in a natural language.",
+    "input": "Two tourists visiting a new museum.",
+    "output": "Tourist 1: Wow, this museum is amazing! \nTourist 2: I know, right? I haven't been to a place like this in a while. \nTourist 1: I'm so glad we decided to come here! \nTourist 2: Yeah, me too. Let's explore the museum and see what we can learn.",
+    "id": "alpaca:44618",
+    "benchmark": "alpaca",
+    "source_index": 44618
+  },
+  {
+    "instruction": "Compose a Shakespearean sonnet.",
+    "input": "",
+    "output": "Ah me, the pain of love that 'cross my breast\nThither does come a piercing of the heart\nTearing the soul apart and leaving now,\nLeaving all memories to the tempests' gust.\n\nThe wind remembers and will not forget,\nIt's echoing chill upon my passing time,\nA time of pain and solace I have met,\nFrom whence I found the love which made me climb.\n\nSadness, so joyous, when filling my heart \nIf only love be filled in its recess \nThe depths of loss I part on bended knee \nAnd view the days embark and never part.\n\nUnending night, silhouettes to see \nCan we find love in the darkness of thee?",
+    "id": "alpaca:12828",
+    "benchmark": "alpaca",
+    "source_index": 12828
+  },
+  {
+    "instruction": "Given two strings, determine the largest possible numeric value that can be obtained",
+    "input": "String 1: 23\nString 2: 45",
+    "output": "4523",
+    "id": "alpaca:24839",
+    "benchmark": "alpaca",
+    "source_index": 24839
+  },
+  {
+    "instruction": "Write 5 questions related to the COVID-19 situation",
+    "input": "",
+    "output": "1. How does the government plan to manage the economic impact of the COVID-19 pandemic? \n2. What procedures and protocols should be put in place to ensure public safety?\n3. What are the health benefits and effects of wearing face masks in public?\n4. What long term effects might the current situation have on global economies?\n5. What public health measures should be taken to slow the spread of COVID-19?",
+    "id": "alpaca:10294",
+    "benchmark": "alpaca",
+    "source_index": 10294
+  },
+  {
+    "instruction": "Come up with a way to express the following statement in a more persuasive way.",
+    "input": "This product is the most efficient.",
+    "output": "This product is the apex of efficiency.",
+    "id": "alpaca:6599",
+    "benchmark": "alpaca",
+    "source_index": 6599
+  },
+  {
+    "instruction": "Sources predict that the stock price for Company A will either stay the same or go up for the next 10 trading days. Pick a strategy for if the price will go up or stay the same.",
+    "input": "",
+    "output": "If the sources are correct and the stock price is predicted to either stay the same or go up, then a good strategy would be to buy the stock if the price is low, and then wait until it either goes up or stays the same. This is because the sources have already suggested that the price will not go down, so there is minimal risk. If the stock does go up, then the investor stands to make a profit. If the stock stays the same, the investor will at least not experience any loss.",
+    "id": "alpaca:2017",
+    "benchmark": "alpaca",
+    "source_index": 2017
+  },
+  {
+    "instruction": "Re-write the following sentence in the passive voice: \"My father built a house\".",
+    "input": "My father built a house",
+    "output": "A house was built by my father.",
+    "id": "alpaca:35230",
+    "benchmark": "alpaca",
+    "source_index": 35230
+  }
+]

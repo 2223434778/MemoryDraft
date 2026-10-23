@@ -1,0 +1,98 @@
+[
+  {
+    "question_id": 109,
+    "category": "reasoning",
+    "turns": [
+      "One morning after sunrise, Suresh was standing facing a pole. The shadow of the pole fell exactly to his right. Can you tell me the direction towards which the shadow was pointing - east, south, west, or north? Explain your reasoning steps.",
+      "To which direction was Suresh facing? How do you solve this?"
+    ],
+    "reference": [
+      "West",
+      "South."
+    ],
+    "id": "mtbench:109",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 97,
+    "category": "roleplay",
+    "turns": [
+      "Act as a math teacher. I will provide some mathematical equations or concepts, and it will be your job to explain them in easy-to-understand terms. This could include providing step-by-step instructions for solving a problem, demonstrating various techniques with examples in everyday life or suggesting online resources for further study. My first request is \"I need help understanding how probability works.\"",
+      "What are the differences between Riemannian geometry and euclidean geometry?"
+    ],
+    "id": "mtbench:97",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 84,
+    "category": "writing",
+    "turns": [
+      "Write a persuasive email to convince your introverted friend, who dislikes public speaking, to volunteer as a guest speaker at a local event. Use compelling arguments and address potential objections. Please be concise.",
+      "Can you rephrase your previous answer and incorporate a metaphor or simile in each sentence?"
+    ],
+    "id": "mtbench:84",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 138,
+    "category": "extraction",
+    "turns": [
+      "Analyze the following customer reviews from different sources for three different smartphones - the latest iPhone, Samsung Galaxy, and Google Pixel - and provide an overall rating for each phone on a scale of 1 to 10. Consider the following complex and contradictory reviews:\n- TechRadar's review of the latest iPhone: The new iPhone is a stunning triumph of engineering that sets a new bar for smartphone performance and camera quality. However, the incremental design and high price mean it lacks the 'wow' factor of previous iPhones. Still, its power and intelligence are unrivaled.\n- CNET's review of the latest Samsung Galaxy: The Samsung Galaxy phone has plenty of high points, including an amazing screen, fast performance, solid battery life and an impressive array of camera options. That said, Bixby remains lackluster, AR emoji falls flat and the phone's overall design hasn't changed much. The new Galaxy is an amazing phone overall, but it has a few nagging weaknesses that keep it from achieving true greatness.\n- The Verge's review of the latest Google Pixel: Google's Pixel packs cutting-edge specs, innovative AI-powered software, and a killer camera into a sleek design. However, the phone has lackluster battery life, lacks expandable storage, and its performance stutters at times, especially considering its high price tag. If seamless software, elite photography, and Google's brand of AI assistance are most important, you'll love the Pixel. But the overall experience isn't as well-rounded as some competitors. Return the answer as a JSON object with the overall ratings for each phone out of 10, to one decimal place.",
+      "Can you change the ratings from numbers to letters? Capital letters MUST be used when writing the names of phones."
+    ],
+    "id": "mtbench:138",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 130,
+    "category": "coding",
+    "turns": [
+      "Implement a program to find the common elements in two arrays without using any extra data structures.",
+      "Now the constraint of not using extra data structure is removed, implement one with the best time complexity."
+    ],
+    "reference": [
+      "O(n^2) or O(nlogn) is expected. The following is a O(n^2) solution. you can also sort them first and use two pointers.\n\n```\ndef find_common_elements(arr1, arr2):\n    common_elements = []\n    for i in range(len(arr1)):\n        for j in range(len(arr2)):\n            if arr1[i] == arr2[j]:\n                # Check if the element is already in the common_elements list\n                if arr1[i] not in common_elements:\n                    common_elements.append(arr1[i])\n    return common_elements\n```",
+      "Simply use hash table (set or dict) to achieve O(n) time complexity.\n\n```\ndef find_common_elements(arr1, arr2):\n    set1 = set(arr1)\n    set2 = set(arr2)\n    common_elements = set1.intersection(set2)\n    return list(common_elements)\n```"
+    ],
+    "id": "mtbench:130",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 151,
+    "category": "humanities",
+    "turns": [
+      "Provide insights into the correlation between economic indicators such as GDP, inflation, and unemployment rates. Explain how fiscal and monetary policies affect those indicators.",
+      "Now, explain them again like I'm five."
+    ],
+    "id": "mtbench:151",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 145,
+    "category": "stem",
+    "turns": [
+      "Describe the process and write out the balanced chemical equation for the reaction that occurs when solid calcium carbonate reacts with hydrochloric acid to form aqueous calcium chloride, carbon dioxide, and water. What type of reaction is this, and what observations might indicate that the reaction is taking place?",
+      "How can we reverse this process?"
+    ],
+    "reference": [
+      "CaCO₃ + 2 HCl → CaCl₂ + CO₂ + H₂O",
+      "Not easy to do this."
+    ],
+    "id": "mtbench:145",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 114,
+    "category": "math",
+    "turns": [
+      "When rolling two dice, what is the probability that you roll a total number that is at least 3?",
+      "Continue from previous question. What's the probability that you roll a number which is even or at least 3?"
+    ],
+    "reference": [
+      "36 (all cases) - 0 (sum equals 1) - 1 (sum equals 2) = 35, so the probability is 35/36",
+      "100%"
+    ],
+    "id": "mtbench:114",
+    "benchmark": "mtbench"
+  }
+]

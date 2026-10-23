@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-23 — ASD论文七任务五组扩样本（准备）
+
+- 用户授权直接扩大数学并补齐论文任务。新增asd_paper数据/评分/统计、prepare/run/pipeline/judge/report及测试；复用原树/ASD/引擎，执行函数仅新增可选request_factory/fixed，旧默认保持。
+- 固定241新源任务/249主请求：GSM64/MATH32/Human32/MBPP32/MMLU57/MT8双轮/Alpaca16。排除1049旧数据/结果文件中235题号及早期范围；数据manifest SHA7fcbccb1b830bcb7cfa7e8f7fe8705e73e0575466447ea2d8d952140a05d5ec6。新公共来源固定Git/HF commit及SHA/许可，Alpaca数据CC BY-NC 4.0仅研究；不进入面试版。
+- 五组全保留，自然2×、128/EOS1×、全七任务fixed256/EOS忽略1×，4980计时+249 AR，另40自身历史MT第二轮；各卡先数学后扩展，成本表、权重、B8/g.25/m2冻结，无按结果筛法/改参。MT主比较共享AR首轮历史；真实双轮质量单列。开放本地192盲评换序只辅助，不冒充官方GPT-4/MTBench/AlpacaEval。
+- 首相关79 passed/14.44秒，artifacts/paper-related-local.xml；217可评分参考本机预检全部通过，artifacts/paper-canonical-preflight-local.json。两A6000均19MiB/0%，D盘402GiB可用；新GPU生成尚未启动，完整回归与冻结源部署将继续。协议ASD_PAPER_PROTOCOL.md含准确命令与资源预算。
+- 模型前接口复核：MBPP题干不总含函数名，32题新增只含标准函数签名的明确契约，参考函数体/tests仍隐藏，ID选择保持。最终数据manifest SHA56ccef799adfffe2caf0c6f5bd807484bfbc831563a2b90f80e041536078eca4；前一个7fcb快照未生成任何新模型结果。新增接口提取测试，最终相关检查继续。
+- 接口后相关120 passed/2 skipped/16.70s；完整1028 passed/7 skipped/145.76s（前一完整1027 passed/7 skipped/142.29s也保留）。固定256覆盖全部七任务的矩阵调整后专项16 passed/9.19s，XML均在artifacts/paper-*local.xml。1049旧文件字节保持/241选择无旧ID重合/compileall/diff-check通过，准备提交canonical源；暂无新GPU结果。
+
 ## 2026-10-23 — 第二阶段剩余regret联合构树完成
 
 - 六类各8已观察开发题，六组1440正式计时+48同题AR全部完成；每worker720，pilot24/720后续跑余24。原四组960次token/text/轮次/账本/停止/输入/快照逐项复现第一阶段；冻结各物理卡成本表，无新校准或调参，全部strict AR/input/repeat/实际B<=8检查通过。

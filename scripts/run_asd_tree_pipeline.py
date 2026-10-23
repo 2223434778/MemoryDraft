@@ -12,7 +12,7 @@ from scripts.run_rmsnorm_runtime_pipeline import run_owned
 
 
 def main(*, study=STUDY, worker_module="scripts.run_asd_tree", report_module="scripts.write_asd_tree_report",
-         manifest_name="ASD_TREE_SOURCE_MANIFEST.json", extra_tests=()):
+         manifest_name="ASD_TREE_SOURCE_MANIFEST.json", extra_tests=(),worker_timeout=7200,post_worker_module=None):
     root = Path.cwd()
     name = manifest_name
     manifest = json.loads((root/name).read_text())
@@ -24,7 +24,7 @@ def main(*, study=STUDY, worker_module="scripts.run_asd_tree", report_module="sc
             if hashlib.sha256((root/n).read_bytes()).hexdigest() != h:
                 raise ValueError("Frozen tree source changed: "+n)
         return len(manifest["files"])
-    info = dict(status="started",commit=manifest["commit"],files_verified_before=verify(),worker_timeout_seconds=7200)
+    info = dict(status="started",commit=manifest["commit"],files_verified_before=verify(),worker_timeout_seconds=worker_timeout)
     exe = str(root.parent/".venv-dflash/bin/python")
     env = dict(os.environ,HF_HUB_OFFLINE="1",PYTHONPATH=".",OMP_NUM_THREADS="4",TORCHINDUCTOR_COMPILE_THREADS="2")
     try:
@@ -37,8 +37,14 @@ def main(*, study=STUDY, worker_module="scripts.run_asd_tree", report_module="sc
                          TRITON_CACHE_DIR=str(root/f"artifacts/triton-{shard}"))
             for directory in cache.values():Path(directory).mkdir(exist_ok=False)
             run_owned([exe,"-u","-m",worker_module,"--shard",str(shard)],
-                dict(env,**cache,CUDA_VISIBLE_DEVICES=str(shard)),out/f"part-{shard}.log",timeout=7200)
+                dict(env,**cache,CUDA_VISIBLE_DEVICES=str(shard)),out/f"part-{shard}.log",timeout=worker_timeout)
         with ThreadPoolExecutor(max_workers=2) as pool:list(pool.map(worker,(0,1)))
+        if post_worker_module:
+            cache=dict(TORCHINDUCTOR_CACHE_DIR=str(root/'artifacts/inductor-post'),
+                       TRITON_CACHE_DIR=str(root/'artifacts/triton-post'))
+            for directory in cache.values():Path(directory).mkdir(exist_ok=False)
+            run_owned([exe,'-u','-m',post_worker_module],dict(env,**cache,CUDA_VISIBLE_DEVICES='0'),
+                      out/'post-worker.log',timeout=3600)
         run_owned([exe,"-m",report_module,"--input",str(out)],env,out/"report.log",timeout=300)
         info.update(status="complete",files_verified_after=verify())
     except Exception as error:

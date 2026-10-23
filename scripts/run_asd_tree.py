@@ -27,7 +27,7 @@ from scripts.run_runtime_migration import append
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def execute(engine, record, arm, limit, tree_config, *, zero=False):
+def execute(engine, record, arm, limit, tree_config, *, zero=False, request_factory=request_for, fixed=False):
     if arm not in ARMS:
         raise ValueError("Unknown tree comparison arm")
     from memorydraft.runtime import engine as module
@@ -39,6 +39,8 @@ def execute(engine, record, arm, limit, tree_config, *, zero=False):
     def hook(*args, **kwargs):
         nonlocal detail
         kwargs["incremental_stop"] = True
+        if fixed:
+            kwargs["stop_token_ids"] = ()
         if arm.startswith("BudgetTree"):
             kwargs["tree_config"] = tree_config
         if verifier is not None:
@@ -46,7 +48,7 @@ def execute(engine, record, arm, limit, tree_config, *, zero=False):
         detail = native(*args, **kwargs)
         return detail
     with patch.object(module, "generate_reuse", hook):
-        result = engine.generate(request_for(record, limit), "DFlash")
+        result = engine.generate(request_factory(record, limit), "DFlash")
     engine.synchronize()
     row = asdict(result)
     row.update(engine_latency_seconds=row["latency_seconds"], latency_seconds=time.perf_counter()-started)

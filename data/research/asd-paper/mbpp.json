@@ -1,0 +1,486 @@
+[
+  {
+    "text": "Write a function to check whether the given number is undulating or not.",
+    "code": "def is_undulating(n): \r\n\tif (len(n) <= 2): \r\n\t\treturn False\r\n\tfor i in range(2, len(n)): \r\n\t\tif (n[i - 2] != n[i]): \r\n\t\t\treturn False\r\n\treturn True",
+    "task_id": 92,
+    "test_setup_code": "",
+    "test_list": [
+      "assert is_undulating(\"1212121\") == True",
+      "assert is_undulating(\"1991\") == False",
+      "assert is_undulating(\"121\") == True"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:92",
+    "benchmark": "mbpp",
+    "signature": "def is_undulating(n):"
+  },
+  {
+    "text": "Write a function to find sequences of one upper case letter followed by lower case letters in the given string by using regex.",
+    "code": "import re \r\ndef match(text): \r\n\t\tpattern = '[A-Z]+[a-z]+$'\r\n\t\tif re.search(pattern, text): \r\n\t\t\t\treturn('Yes') \r\n\t\telse: \r\n\t\t\t\treturn('No') ",
+    "task_id": 482,
+    "test_setup_code": "",
+    "test_list": [
+      "assert match(\"Geeks\") == 'Yes'",
+      "assert match(\"geeksforGeeks\") == 'Yes'",
+      "assert match(\"geeks\") == 'No'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:482",
+    "benchmark": "mbpp",
+    "signature": "def match(text):"
+  },
+  {
+    "text": "Write a function to reflect the modified run-length encoding from a list.",
+    "code": "from itertools import groupby\r\ndef modified_encode(alist):\r\n        def ctr_ele(el):\r\n            if len(el)>1: return [len(el), el[0]]\r\n            else: return el[0]\r\n        return [ctr_ele(list(group)) for key, group in groupby(alist)]",
+    "task_id": 317,
+    "test_setup_code": "",
+    "test_list": [
+      "assert modified_encode([1,1,2,3,4,4,5,1])==[[2, 1], 2, 3, [2, 4], 5, 1]",
+      "assert modified_encode('automatically')==['a', 'u', 't', 'o', 'm', 'a', 't', 'i', 'c', 'a', [2, 'l'], 'y']",
+      "assert modified_encode('python')==['p', 'y', 't', 'h', 'o', 'n']"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:317",
+    "benchmark": "mbpp",
+    "signature": "def modified_encode(alist):"
+  },
+  {
+    "text": "Write a function to zip the two given tuples.",
+    "code": "def zip_tuples(test_tup1, test_tup2):\r\n  res = []\r\n  for i, j in enumerate(test_tup1):\r\n    res.append((j, test_tup2[i % len(test_tup2)])) \r\n  return (res) ",
+    "task_id": 81,
+    "test_setup_code": "",
+    "test_list": [
+      "assert zip_tuples((7, 8, 4, 5, 9, 10),(1, 5, 6) ) == [(7, 1), (8, 5), (4, 6), (5, 1), (9, 5), (10, 6)]",
+      "assert zip_tuples((8, 9, 5, 6, 10, 11),(2, 6, 7) ) == [(8, 2), (9, 6), (5, 7), (6, 2), (10, 6), (11, 7)]",
+      "assert zip_tuples((9, 10, 6, 7, 11, 12),(3, 7, 8) ) == [(9, 3), (10, 7), (6, 8), (7, 3), (11, 7), (12, 8)]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:81",
+    "benchmark": "mbpp",
+    "signature": "def zip_tuples(test_tup1, test_tup2):"
+  },
+  {
+    "text": "Write a function that matches a string that has an a followed by one or more b's.",
+    "code": "import re\r\ndef text_match_one(text):\r\n        patterns = 'ab+?'\r\n        if re.search(patterns,  text):\r\n                return 'Found a match!'\r\n        else:\r\n                return('Not matched!')\r\n",
+    "task_id": 434,
+    "test_setup_code": "",
+    "test_list": [
+      "assert text_match_one(\"ac\")==('Not matched!')",
+      "assert text_match_one(\"dc\")==('Not matched!')",
+      "assert text_match_one(\"abba\")==('Found a match!')"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:434",
+    "benchmark": "mbpp",
+    "signature": "def text_match_one(text):"
+  },
+  {
+    "text": "Write a function to calculate the area of a regular polygon.",
+    "code": "from math import tan, pi\r\ndef area_polygon(s,l):\r\n  area = s * (l ** 2) / (4 * tan(pi / s))\r\n  return area",
+    "task_id": 163,
+    "test_setup_code": "",
+    "test_list": [
+      "assert area_polygon(4,20)==400.00000000000006",
+      "assert area_polygon(10,15)==1731.1969896610804",
+      "assert area_polygon(9,7)==302.90938549487214"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:163",
+    "benchmark": "mbpp",
+    "signature": "def area_polygon(s, l):"
+  },
+  {
+    "text": "Write a function to find the largest triangle that can be inscribed in an ellipse.",
+    "code": "import math\r\ndef largest_triangle(a,b): \r\n    if (a < 0 or b < 0): \r\n        return -1 \r\n    area = (3 * math.sqrt(3) * pow(a, 2)) / (4 * b);  \r\n    return area ",
+    "task_id": 198,
+    "test_setup_code": "",
+    "test_list": [
+      "assert largest_triangle(4,2)==10.392304845413264",
+      "assert largest_triangle(5,7)==4.639421805988064",
+      "assert largest_triangle(9,1)==105.2220865598093"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:198",
+    "benchmark": "mbpp",
+    "signature": "def largest_triangle(a, b):"
+  },
+  {
+    "text": "Write a python function to find quotient of two numbers.",
+    "code": "def find(n,m):  \r\n    q = n//m \r\n    return (q)",
+    "task_id": 292,
+    "test_setup_code": "",
+    "test_list": [
+      "assert find(10,3) == 3",
+      "assert find(4,2) == 2",
+      "assert find(20,5) == 4"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:292",
+    "benchmark": "mbpp",
+    "signature": "def find(n, m):"
+  },
+  {
+    "text": "Write a function to find the perimeter of a pentagon.",
+    "code": "import math\r\ndef perimeter_pentagon(a):\r\n  perimeter=(5*a)\r\n  return perimeter",
+    "task_id": 171,
+    "test_setup_code": "",
+    "test_list": [
+      "assert perimeter_pentagon(5)==25",
+      "assert perimeter_pentagon(10)==50",
+      "assert perimeter_pentagon(15)==75"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:171",
+    "benchmark": "mbpp",
+    "signature": "def perimeter_pentagon(a):"
+  },
+  {
+    "text": "Write a function to remove the matching tuples from the given two tuples.",
+    "code": "def remove_matching_tuple(test_list1, test_list2):\r\n  res = [sub for sub in test_list1 if sub not in test_list2]\r\n  return (res) ",
+    "task_id": 484,
+    "test_setup_code": "",
+    "test_list": [
+      "assert remove_matching_tuple([('Hello', 'dude'), ('How', 'are'), ('you', '?')], [('Hello', 'dude'), ('How', 'are')]) == [('you', '?')]",
+      "assert remove_matching_tuple([('Part', 'of'), ('the', 'journey'), ('is ', 'end')], [('Journey', 'the'), ('is', 'end')]) == [('Part', 'of'), ('the', 'journey'), ('is ', 'end')]",
+      "assert remove_matching_tuple([('Its', 'been'), ('a', 'long'), ('day', 'without')], [('a', 'long'), ('my', 'friend')]) == [('Its', 'been'), ('day', 'without')]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:484",
+    "benchmark": "mbpp",
+    "signature": "def remove_matching_tuple(test_list1, test_list2):"
+  },
+  {
+    "text": "Write a function to calculate the permutation coefficient of given p(n, k).",
+    "code": "def permutation_coefficient(n, k): \r\n\tP = [[0 for i in range(k + 1)] \r\n\t\t\tfor j in range(n + 1)] \r\n\tfor i in range(n + 1): \r\n\t\tfor j in range(min(i, k) + 1): \r\n\t\t\tif (j == 0): \r\n\t\t\t\tP[i][j] = 1\r\n\t\t\telse: \r\n\t\t\t\tP[i][j] = P[i - 1][j] + ( \r\n\t\t\t\t\t\tj * P[i - 1][j - 1]) \r\n\t\t\tif (j < k): \r\n\t\t\t\tP[i][j + 1] = 0\r\n\treturn P[n][k] ",
+    "task_id": 506,
+    "test_setup_code": "",
+    "test_list": [
+      "assert permutation_coefficient(10, 2) == 90",
+      "assert permutation_coefficient(10, 3) == 720",
+      "assert permutation_coefficient(10, 1) == 10"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:506",
+    "benchmark": "mbpp",
+    "signature": "def permutation_coefficient(n, k):"
+  },
+  {
+    "text": "Write a function to find the maximum sum we can make by dividing number in three parts recursively and summing them up together for the given number.",
+    "code": "MAX = 1000000\r\ndef breakSum(n): \r\n\tdp = [0]*(n+1) \r\n\tdp[0] = 0\r\n\tdp[1] = 1\r\n\tfor i in range(2, n+1): \r\n\t\tdp[i] = max(dp[int(i/2)] + dp[int(i/3)] + dp[int(i/4)], i); \r\n\treturn dp[n]",
+    "task_id": 416,
+    "test_setup_code": "",
+    "test_list": [
+      "assert breakSum(12) == 13",
+      "assert breakSum(24) == 27",
+      "assert breakSum(23) == 23"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:416",
+    "benchmark": "mbpp",
+    "signature": "def breakSum(n):"
+  },
+  {
+    "text": "Write a function to find k number of pairs which consist of one element from the first array and one element from the second array.",
+    "code": "import heapq\r\ndef k_smallest_pairs(nums1, nums2, k):\r\n   queue = []\r\n   def push(i, j):\r\n       if i < len(nums1) and j < len(nums2):\r\n           heapq.heappush(queue, [nums1[i] + nums2[j], i, j])\r\n   push(0, 0)\r\n   pairs = []\r\n   while queue and len(pairs) < k:\r\n       _, i, j = heapq.heappop(queue)\r\n       pairs.append([nums1[i], nums2[j]])\r\n       push(i, j + 1)\r\n       if j == 0:\r\n           push(i + 1, 0)\r\n   return pairs",
+    "task_id": 408,
+    "test_setup_code": "",
+    "test_list": [
+      "assert k_smallest_pairs([1,3,7],[2,4,6],2)==[[1, 2], [1, 4]]",
+      "assert k_smallest_pairs([1,3,7],[2,4,6],1)==[[1, 2]]",
+      "assert k_smallest_pairs([1,3,7],[2,4,6],7)==[[1, 2], [1, 4], [3, 2], [1, 6], [3, 4], [3, 6], [7, 2]]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:408",
+    "benchmark": "mbpp",
+    "signature": "def k_smallest_pairs(nums1, nums2, k):"
+  },
+  {
+    "text": "Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not.",
+    "code": "def is_Sum_Of_Powers_Of_Two(n): \r\n    if (n % 2 == 1): \r\n        return False\r\n    else: \r\n        return True",
+    "task_id": 138,
+    "test_setup_code": "",
+    "test_list": [
+      "assert is_Sum_Of_Powers_Of_Two(10) == True",
+      "assert is_Sum_Of_Powers_Of_Two(7) == False",
+      "assert is_Sum_Of_Powers_Of_Two(14) == True"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:138",
+    "benchmark": "mbpp",
+    "signature": "def is_Sum_Of_Powers_Of_Two(n):"
+  },
+  {
+    "text": "Write a function to convert radians to degrees.",
+    "code": "import math\r\ndef degree_radian(radian):\r\n degree = radian*(180/math.pi)\r\n return degree",
+    "task_id": 214,
+    "test_setup_code": "",
+    "test_list": [
+      "assert degree_radian(90)==5156.620156177409",
+      "assert degree_radian(60)==3437.746770784939",
+      "assert degree_radian(120)==6875.493541569878"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:214",
+    "benchmark": "mbpp",
+    "signature": "def degree_radian(radian):"
+  },
+  {
+    "text": "Write a function to sort a list of tuples in increasing order by the last element in each tuple.",
+    "code": "def sort_tuple(tup): \r\n\tlst = len(tup) \r\n\tfor i in range(0, lst): \r\n\t\tfor j in range(0, lst-i-1): \r\n\t\t\tif (tup[j][-1] > tup[j + 1][-1]): \r\n\t\t\t\ttemp = tup[j] \r\n\t\t\t\ttup[j]= tup[j + 1] \r\n\t\t\t\ttup[j + 1]= temp \r\n\treturn tup",
+    "task_id": 487,
+    "test_setup_code": "",
+    "test_list": [
+      "assert sort_tuple([(1, 3), (3, 2), (2, 1)] ) == [(2, 1), (3, 2), (1, 3)]",
+      "assert sort_tuple([(2, 4), (3, 3), (1, 1)] ) == [(1, 1), (3, 3), (2, 4)]",
+      "assert sort_tuple([(3, 9), (6, 7), (4, 3)] ) == [(4, 3), (6, 7), (3, 9)]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:487",
+    "benchmark": "mbpp",
+    "signature": "def sort_tuple(tup):"
+  },
+  {
+    "text": "Write a python function to toggle all odd bits of a given number.",
+    "code": "def even_bit_toggle_number(n) : \r\n    res = 0; count = 0; temp = n    \r\n    while(temp > 0 ) : \r\n        if (count % 2 == 0) : \r\n            res = res | (1 << count)      \r\n        count = count + 1\r\n        temp >>= 1 \r\n    return n ^ res ",
+    "task_id": 383,
+    "test_setup_code": "",
+    "test_list": [
+      "assert even_bit_toggle_number(10) == 15",
+      "assert even_bit_toggle_number(20) == 1",
+      "assert even_bit_toggle_number(30) == 11"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:383",
+    "benchmark": "mbpp",
+    "signature": "def even_bit_toggle_number(n):"
+  },
+  {
+    "text": "Write a python function to find the frequency of a number in a given array.",
+    "code": "def frequency(a,x): \r\n    count = 0  \r\n    for i in a: \r\n        if i == x: count += 1\r\n    return count ",
+    "task_id": 168,
+    "test_setup_code": "",
+    "test_list": [
+      "assert frequency([1,2,3],4) == 0",
+      "assert frequency([1,2,2,3,3,3,4],3) == 3",
+      "assert frequency([0,1,2,3,1,2],1) == 2"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:168",
+    "benchmark": "mbpp",
+    "signature": "def frequency(a, x):"
+  },
+  {
+    "text": "Write a function to merge two dictionaries.",
+    "code": "def merge_dict(d1,d2):\r\n d = d1.copy()\r\n d.update(d2)\r\n return d",
+    "task_id": 263,
+    "test_setup_code": "",
+    "test_list": [
+      "assert merge_dict({'a': 100, 'b': 200},{'x': 300, 'y': 200})=={'x': 300, 'y': 200, 'a': 100, 'b': 200}",
+      "assert merge_dict({'a':900,'b':900,'d':900},{'a':900,'b':900,'d':900})=={'a':900,'b':900,'d':900,'a':900,'b':900,'d':900}",
+      "assert merge_dict({'a':10,'b':20},{'x':30,'y':40})=={'x':30,'y':40,'a':10,'b':20}"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:263",
+    "benchmark": "mbpp",
+    "signature": "def merge_dict(d1, d2):"
+  },
+  {
+    "text": "Write a function to find sequences of lowercase letters joined with an underscore using regex.",
+    "code": "import re\r\ndef text_match(text):\r\n  patterns = '^[a-z]+_[a-z]+$'\r\n  if re.search(patterns,  text):\r\n    return ('Found a match!')\r\n  else:\r\n    return ('Not matched!')",
+    "task_id": 43,
+    "test_setup_code": "",
+    "test_list": [
+      "assert text_match(\"aab_cbbbc\") == 'Found a match!'",
+      "assert text_match(\"aab_Abbbc\") == 'Not matched!'",
+      "assert text_match(\"Aaab_abbbc\") == 'Not matched!'"
+    ],
+    "challenge_test_list": [
+      "assert text_match(\"aab-cbbbc\") == 'Not matched!'"
+    ],
+    "id": "mbpp:43",
+    "benchmark": "mbpp",
+    "signature": "def text_match(text):"
+  },
+  {
+    "text": "Write a function to find the nth tetrahedral number.",
+    "code": "def tetrahedral_number(n): \r\n\treturn (n * (n + 1) * (n + 2)) / 6",
+    "task_id": 80,
+    "test_setup_code": "",
+    "test_list": [
+      "assert tetrahedral_number(5) == 35.0",
+      "assert tetrahedral_number(6) == 56.0",
+      "assert tetrahedral_number(7) == 84.0"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:80",
+    "benchmark": "mbpp",
+    "signature": "def tetrahedral_number(n):"
+  },
+  {
+    "text": "Write a function to search some literals strings in a string by using regex.",
+    "code": "import re\r\ndef check_literals(text, patterns):\r\n  for pattern in patterns:\r\n    if re.search(pattern,  text):\r\n        return ('Matched!')\r\n    else:\r\n        return ('Not Matched!')",
+    "task_id": 186,
+    "test_setup_code": "",
+    "test_list": [
+      "assert check_literals('The quick brown fox jumps over the lazy dog.',['fox']) == 'Matched!'",
+      "assert check_literals('The quick brown fox jumps over the lazy dog.',['horse']) == 'Not Matched!'",
+      "assert check_literals('The quick brown fox jumps over the lazy dog.',['lazy']) == 'Matched!'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:186",
+    "benchmark": "mbpp",
+    "signature": "def check_literals(text, patterns):"
+  },
+  {
+    "text": "Write a function to calculate electricity bill.",
+    "code": "def cal_electbill(units):\r\n if(units < 50):\r\n    amount = units * 2.60\r\n    surcharge = 25\r\n elif(units <= 100):\r\n    amount = 130 + ((units - 50) * 3.25)\r\n    surcharge = 35\r\n elif(units <= 200):\r\n    amount = 130 + 162.50 + ((units - 100) * 5.26)\r\n    surcharge = 45\r\n else:\r\n    amount = 130 + 162.50 + 526 + ((units - 200) * 8.45)\r\n    surcharge = 75\r\n total = amount + surcharge\r\n return total",
+    "task_id": 136,
+    "test_setup_code": "",
+    "test_list": [
+      "assert cal_electbill(75)==246.25",
+      "assert cal_electbill(265)==1442.75",
+      "assert cal_electbill(100)==327.5"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:136",
+    "benchmark": "mbpp",
+    "signature": "def cal_electbill(units):"
+  },
+  {
+    "text": "Write a function to count character frequency of a given string.",
+    "code": "def char_frequency(str1):\r\n    dict = {}\r\n    for n in str1:\r\n        keys = dict.keys()\r\n        if n in keys:\r\n            dict[n] += 1\r\n        else:\r\n            dict[n] = 1\r\n    return dict",
+    "task_id": 332,
+    "test_setup_code": "",
+    "test_list": [
+      "assert char_frequency('python')=={'p': 1, 'y': 1, 't': 1, 'h': 1, 'o': 1, 'n': 1}",
+      "assert char_frequency('program')=={'p': 1, 'r': 2, 'o': 1, 'g': 1, 'a': 1, 'm': 1}",
+      "assert char_frequency('language')=={'l': 1, 'a': 2, 'n': 1, 'g': 2, 'u': 1, 'e': 1}"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:332",
+    "benchmark": "mbpp",
+    "signature": "def char_frequency(str1):"
+  },
+  {
+    "text": "Write a python function to find the maximum sum of elements of list in a list of lists.",
+    "code": "def maximum_Sum(list1): \r\n    maxi = -100000\r\n    for x in list1: \r\n        sum = 0 \r\n        for y in x: \r\n            sum+= y      \r\n        maxi = max(sum,maxi)     \r\n    return maxi ",
+    "task_id": 23,
+    "test_setup_code": "",
+    "test_list": [
+      "assert maximum_Sum([[1,2,3],[4,5,6],[10,11,12],[7,8,9]]) == 33",
+      "assert maximum_Sum([[0,1,1],[1,1,2],[3,2,1]]) == 6",
+      "assert maximum_Sum([[0,1,3],[1,2,1],[9,8,2],[0,1,0],[6,4,8]]) == 19"
+    ],
+    "challenge_test_list": [
+      "assert maximum_Sum([[0,-1,-1],[-1,-1,-2],[-3,-2,-1]]) == -2"
+    ],
+    "id": "mbpp:23",
+    "benchmark": "mbpp",
+    "signature": "def maximum_Sum(list1):"
+  },
+  {
+    "text": "Write a function to find eulerian number a(n, m).",
+    "code": "def eulerian_num(n, m): \r\n\tif (m >= n or n == 0): \r\n\t\treturn 0 \r\n\tif (m == 0): \r\n\t\treturn 1 \r\n\treturn ((n - m) * eulerian_num(n - 1, m - 1) +(m + 1) * eulerian_num(n - 1, m))",
+    "task_id": 103,
+    "test_setup_code": "",
+    "test_list": [
+      "assert eulerian_num(3, 1) == 4",
+      "assert eulerian_num(4, 1) == 11",
+      "assert eulerian_num(5, 3) == 26"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:103",
+    "benchmark": "mbpp",
+    "signature": "def eulerian_num(n, m):"
+  },
+  {
+    "text": "Write a function to find all adverbs and their positions in a given sentence.",
+    "code": "import re\r\ndef find_adverb_position(text):\r\n for m in re.finditer(r\"\\w+ly\", text):\r\n    return (m.start(), m.end(), m.group(0))",
+    "task_id": 440,
+    "test_setup_code": "",
+    "test_list": [
+      "assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')",
+      "assert find_adverb_position(\"seriously!! there are many roses\")==(0, 9, 'seriously')",
+      "assert find_adverb_position(\"unfortunately!! sita is going to home\")==(0, 13, 'unfortunately')"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:440",
+    "benchmark": "mbpp",
+    "signature": "def find_adverb_position(text):"
+  },
+  {
+    "text": "Write a function to find all index positions of the maximum values in a given list.",
+    "code": "def position_max(list1):\r\n    max_val = max(list1)\r\n    max_result = [i for i, j in enumerate(list1) if j == max_val]\r\n    return max_result",
+    "task_id": 200,
+    "test_setup_code": "",
+    "test_list": [
+      "assert position_max([12,33,23,10,67,89,45,667,23,12,11,10,54])==[7]",
+      "assert position_max([1,2,2,2,4,4,4,5,5,5,5])==[7,8,9,10]",
+      "assert position_max([2,1,5,6,8,3,4,9,10,11,8,12])==[11]"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:200",
+    "benchmark": "mbpp",
+    "signature": "def position_max(list1):"
+  },
+  {
+    "text": "Write a function to find the lateral surface area of a cube.",
+    "code": "def lateralsurface_cube(l):\r\n  LSA = 4 * (l * l)\r\n  return LSA",
+    "task_id": 266,
+    "test_setup_code": "",
+    "test_list": [
+      "assert lateralsurface_cube(5)==100",
+      "assert lateralsurface_cube(9)==324",
+      "assert lateralsurface_cube(10)==400"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:266",
+    "benchmark": "mbpp",
+    "signature": "def lateralsurface_cube(l):"
+  },
+  {
+    "text": "Write a function to convert the given snake case string to camel case string by using regex.",
+    "code": "import re\r\ndef snake_to_camel(word):\r\n  return ''.join(x.capitalize() or '_' for x in word.split('_'))",
+    "task_id": 411,
+    "test_setup_code": "",
+    "test_list": [
+      "assert snake_to_camel('android_tv') == 'AndroidTv'",
+      "assert snake_to_camel('google_pixel') == 'GooglePixel'",
+      "assert snake_to_camel('apple_watch') == 'AppleWatch'"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:411",
+    "benchmark": "mbpp",
+    "signature": "def snake_to_camel(word):"
+  },
+  {
+    "text": "Write a function to find the nth decagonal number.",
+    "code": "def is_num_decagonal(n): \r\n\treturn 4 * n * n - 3 * n ",
+    "task_id": 279,
+    "test_setup_code": "",
+    "test_list": [
+      "assert is_num_decagonal(3) == 27",
+      "assert is_num_decagonal(7) == 175",
+      "assert is_num_decagonal(10) == 370"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:279",
+    "benchmark": "mbpp",
+    "signature": "def is_num_decagonal(n):"
+  },
+  {
+    "text": "Write a function to check if given tuple is distinct or not.",
+    "code": "def check_distinct(test_tup):\r\n  res = True\r\n  temp = set()\r\n  for ele in test_tup:\r\n    if ele in temp:\r\n      res = False\r\n      break\r\n    temp.add(ele)\r\n  return (res) ",
+    "task_id": 394,
+    "test_setup_code": "",
+    "test_list": [
+      "assert check_distinct((1, 4, 5, 6, 1, 4)) == False",
+      "assert check_distinct((1, 4, 5, 6)) == True",
+      "assert check_distinct((2, 3, 4, 5, 6)) == True"
+    ],
+    "challenge_test_list": [],
+    "id": "mbpp:394",
+    "benchmark": "mbpp",
+    "signature": "def check_distinct(test_tup):"
+  }
+]
