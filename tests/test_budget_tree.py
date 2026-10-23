@@ -41,6 +41,14 @@ def test_cost_model_changes_node_budget_without_target_information():
     assert len(a.parents) == 32 and len(b.parents) == 8
 
 
+def test_eos_terminates_the_path_mass_surrogate_and_tree_expansion():
+    block = torch.tensor([[4,0,0,0]])
+    logits = torch.tensor([[[5.,0.],[5.,0.],[5.,0.]]])
+    tree = build_budget_tree(block,logits,BudgetTreeConfig(costs(),8,32,1),10,stop_token_ids=(0,))
+    assert tree.tokens.tolist() == [[4,0]] and tree.parents == (-1,0)
+    assert tree.budget_metadata["expected_advance"] < 2
+
+
 def test_tree_asd_longest_then_least_cost_charges_only_selected_path():
     tree = DraftTree(torch.tensor([[0, 1, 2, 3, 2]]), (-1, 0, 1, 0, 3), (0, 1, 2, 1, 2), 1)
     logits = torch.full((5, 5), -9.)

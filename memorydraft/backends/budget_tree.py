@@ -60,7 +60,7 @@ class BudgetTreeConfig:
 
 
 def build_budget_tree(block: torch.Tensor, logits: torch.Tensor,
-                      config: BudgetTreeConfig, context: int) -> DraftTree:
+                      config: BudgetTreeConfig, context: int, *, stop_token_ids=()) -> DraftTree:
     if (block.ndim != 2 or block.shape[0] != 1 or not block.shape[1]
             or logits.ndim != 3 or logits.shape[0] != 1 or logits.shape[1] < block.shape[1]-1
             or logits.shape[2] < config.top_k):
@@ -78,7 +78,7 @@ def build_budget_tree(block: torch.Tensor, logits: torch.Tensor,
     queue = []
     def expand(node):
         depth = depths[node]
-        if depth < horizon:
+        if depth < horizon and tokens[node] not in stop_token_ids:
             for token, probability in zip(candidate_ids[depth], weights[depth]):
                 mass = masses[node]*probability
                 heapq.heappush(queue, (-mass, depth+1, node, token))

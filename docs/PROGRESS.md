@@ -1,5 +1,11 @@
 # 项目进度
 
+## 2026-10-23 — 树ASD执行启动及EOS构树修正
+
+- 初执行源ae2c6cb0eb6e388ad8d187c01d724bb24bd25437，2058个canonical Git blobs，source SHA f074e787889c818759114e9fe5a5197209f8cf85d38c7c006d4a21fba8b56522。源ZIP25450676B/SHAecb7a5d92eb29de8af209ed2fac3fbda1bcf90a2cdfb57b69ff7b8a3fee3858f；全包传输超时，只收到部分，不使用该残包。
+- 实际以服务器已有engineering源ZIP+243文件delta2942972B/SHAea49cf910b57bd95df6fa3c8c9b0427ec04a71b4dbd24906d3724a03a925fe46，在asd-budget-tree逐文件重建全部2058 canonical SHA，PID1817346。初部署系统python3缺is_relative_to，在未写任何源文件时失败；改用项目Python3.11完成，不改源内容。服务器132 passed/9.32秒，本机完整978 passed/7 skipped/148.80秒。
+- 运行期间仅查看进度、节点分布与成本表，未比较方法速度/质量。代码复核发现构树surrogate错误计入EOS后代；停止本root拥有的两个worker进程组，保留部分运行和失败归档，不作为最终候选性能证据。修正EOS为叶子，新增针对性测试，其他模型/参数/题集/顺序保持；新版本将在独立v2目录执行。
+
 ## 2026-10-23 — 成本受控候选树 + ASD执行准备
 
 - 用户授权实现第一步并跨数据评估。新增best-first路径质量构树、实测节点成本表，以及树上ASD最长可行路径/同长度低regret选择；原生16深度、Top4、8..32节点，原始B8/g.25/m2。只提交选中路径的KV、特征和regret；第二步剩余预算驱动构树尚不实现。

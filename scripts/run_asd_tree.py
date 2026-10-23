@@ -118,7 +118,7 @@ def calibrate(engine, warm, out):
     for _ in range(4):
         engine.synchronize()
         started = time.perf_counter()
-        build_budget_tree(block,logits.unsqueeze(0),BudgetTreeConfig(costs),128)
+        build_budget_tree(block,logits.unsqueeze(0),BudgetTreeConfig(costs),128,stop_token_ids=engine.stops)
         engine.synchronize()
         auxiliary.append(time.perf_counter()-started)
     costs = replace(costs,auxiliary_seconds=statistics.median(auxiliary[1:]))
