@@ -328,3 +328,11 @@ results/asd-runtime/** -text
 results/asd-runtime/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/asd-runtime/**/*.log -whitespace
 results/asd-runtime/**/*.xml -whitespace
+memorydraft/evaluation/long_context.py text eol=lf
+scripts/*asd_long_context*.py text eol=lf
+tests/test_long_context.py text eol=lf
+docs/ASD_LONG_CONTEXT*.md text eol=lf
+data/workloads/asd-long-context/** -text
+results/asd-long-context/** -text
+results/asd-long-context/**/*.log -whitespace
+results/asd-long-context/**/*.xml -whitespace

@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-23 — 阶段6长输入数学小检查（执行准备）
+
+- 用户授权下一步。新增long_context评估模块、prepare/run/pipeline/write_asd_long_context脚本、test_long_context及GPU前协议ASD_LONG_CONTEXT_PROTOCOL.md。复用原runtime两配置，未改Target/验证器/接受规则；不训练或补seed，不迁移serving。
+- 选原followup独立文件顺序前8道已观察题；官方GSM train的48个固定SHA排序解题示例，排除全部test与适配40题，当前题答案不入prompt。24请求实际输入447–542/1929–2000/4061–4156token，完整嵌套示例，不作纯长度因果或新盲测声明。准备命令`.venv\Scripts\python.exe -m scripts.prepare_asd_long_context --source artifacts/asd-adaptation-gsm-train-source.jsonl --test-source artifacts/asd-attribution-gsm-source.jsonl`，已完成。
+- 两卡两配置先预检并取资源准入交集；同题同卡，GPU0 base→position/GPU1 position→base平衡先后，分进程独立cache。全准入时216正式（三方法×24输入×自然2+128/EOS1）及24 AR。TTFT/首token后耗时/自然路径/共同128分别报告，正式后最多9次独立profiler聚合，不上传raw trace。每进程46GiB/2400秒/8图/backend300秒/cache4GiB，旧权重与canonical Git源前后核SHA。
+- 初次相关单测1 failed/2 passed/4.90秒，测试夹具缺examples字段，已补；随后15 passed/4.52秒。首全量1 failed/25 passed/2 skipped/10.46秒，因旧独立题检查把已复用工作负载当新增research题集。将数据以完全相同5文件字节归到data/workloads，不改旧题集或测试；相关test_long_context+test_adaptation_followup共32 passed/23.31秒。各失败XML保留，第二次完整回归进行中，GPU尚未开始。
+- 第二次完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/long-context-full-v2-tmp --junitxml=artifacts/long-context-full-v2-local.xml -x --tb=short`：883 passed/7 skipped/127.89秒，一个既有starlette警告。历史研究/运行时未修改，数据归类后兼容检查通过。准备冻结canonical源码/输入/协议再部署，尚无GPU结论。
+- 服务器新root asd-long-context，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_long_context_pipeline`。本条尚无本轮性能结论。
+
 ## 2026-10-22 — 数学ASD工程接入完成，冷CLI账本例外保留
 
 - GPU实际冻结353f6756c5d758fc2bbe0e66e337a8c2f25e0efb/1715 blobs，source SHA79d5ca2043fc6206af87b30e94287fcb208524a6219bf8121acdbf9dccf53759；PID923189于13:36:35 UTC启动。两卡各16直接/4 AR、真实HTTP JSON/SSE/断连取消恢复/4请求并发2、严格benchmark隔离和两独立CLI均已执行。服务器相关129 passed/9.56s。32直接结果token/text/EOS/轮数/ASD账本与冻结研究完全一致，strict另与本轮AR一致；旧450错答保留。
