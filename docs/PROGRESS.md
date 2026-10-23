@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-23 — 成本受控树 + ASD跨六类评估完成
+
+- 第一阶段组合完成：六类各8道已观察development，四组自然3次/128-EOS2次，共960计时+48同题AR；两worker各480，24题有效性屏障后完成其余24，模型/预算/题集无调参。全部strict逐token/text/EOS同AR，输入、重复轨迹/账本、实际B<=8通过。
+- GSM组合较线性ASD自然省7.89%、等128省10.95%（N7），两组答案8/8；同896token验证ASD157轮、严格树142、组合126，相对严格树等128再省9.87%。接纳该数学场景算法收益。自然输出较ASD更长，组合相对严格树完整仅省0.40%，不把前缀增益直接当完整请求增益。
+- MBPP较ASD自然省5.96%、同通过集合6/8，相对严格树省1.85%；MATH自然省10.02%但正确7→6/8、等128反慢5.69%，新增448的逆元14明确错误。HumanEval较ASD自然省15.97%但通过7→6/8，严格树本身较DFlash省9.67%且组合较树慢1.31%；SQuAD/JSON零近似触发。所有正负结果保留，未实现第二步预算驱动构树。
+- 最终源05ec51424cc67ad3a38d86beed98ad3c3b47347e，2058 canonical Git blobs，source SHA6b89ac60d295dc44efc469717c61042c0bf0659932798bf7937edab0edf537d1；完整本地ZIP25451573B/SHA8ba3eec035d6e75471814356781e17b0847af4be91ffdcf74ee9c58b1194a52b。实际existing engineering ZIP+243文件delta2943869B/SHA48ce8fcdd2af8888f4add14f16371251aba7b99958d5c73a1661e408b753b826重建，无EOL偏离，运行前后2058 SHA保持。
+- root asd-budget-tree-v2、timeout PID1821773、13:54:42→14:15:06 UTC启动/末核查窗口。加载20.45/19.82s、校准4.92s/卡，峰allocated最大35.21GiB、每卡4图/正式新图0、cache415135B/卡，末两GPU19MiB/0%。除1008主生成，另18预热/校准生成及合成成本Target前向单列。
+- 原pipeline ZIP850991B/SHAaae86dc98ccad27c76b7acfcc7693f46e6e3f214621fa9f4ee3d84f126fdcfe1；追加部署/末核查metadata的final ZIP851755B/SHA63db7b3fa1a70f5b7cf52d526a3da3e7eb37e6e79d9276bdf7bace75481f32b0，29原始成员逐SHA发布。初EOS遗漏停止的20成员264365B/SHAcadde1be3680d09cd340a9a0127eed34b533615d651518701849d4ea1a30c349单列startup-eos，不混入正式结果。
+- 最终本地完整979 passed/7 skipped/136.46s，相关131 passed/2 skipped/13.29s，服务器133 passed/9.33s；六XML保留。统计JSON/MD跨Windows3.13/Linux3.11逐字节重现；canonical Git/source、raw publication、实际ledger/coverage/AR/input/budget、资源及原infra三引用核查通过。数学444/448的明确反例单列quality-review，不改冻结评分。
+- 结论docs/ASD_TREE_FINDINGS.md、主表ASD_TREE_RESULTS.md、原始/复算results/asd-budget-tree。命令`python -m scripts.write_asd_tree_report`、`python -m results.asd-budget-tree.inspect_results`、`python -m results.asd-budget-tree.analyze_interaction`。下一步优先GSM的计算与近似预算联合分配，保留本轮四组对照和现有工程成果。
+
 ## 2026-10-23 — 树ASD执行启动及EOS构树修正
 
 - 初执行源ae2c6cb0eb6e388ad8d187c01d724bb24bd25437，2058个canonical Git blobs，source SHA f074e787889c818759114e9fe5a5197209f8cf85d38c7c006d4a21fba8b56522。源ZIP25450676B/SHAecb7a5d92eb29de8af209ed2fac3fbda1bcf90a2cdfb57b69ff7b8a3fee3858f；全包传输超时，只收到部分，不使用该残包。

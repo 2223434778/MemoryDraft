@@ -1,0 +1,86 @@
+{
+  "zip_bytes": 264365,
+  "zip_sha256": "cadde1be3680d09cd340a9a0127eed34b533615d651518701849d4ea1a30c349",
+  "files": {
+    "execution-verification.json": {
+      "sha256": "3529e5e27c8549c65e1f4dd8cb7eb7d100f55e1c0aece30105b600a5f3ecd872",
+      "bytes": 232
+    },
+    "part-0/calibration-generations.jsonl.gz": {
+      "sha256": "3d481074c722ed32890b9924e24783b291053c22da7b60c6f9bd2d3787c705e9",
+      "bytes": 594
+    },
+    "part-0/calibration.json": {
+      "sha256": "894b318830ed8b03123ee5c42e4f6017fdd9209ee18a8555ffdf7d7bd55e6189",
+      "bytes": 7601
+    },
+    "part-0/canonical-preflight.json": {
+      "sha256": "8e95a6acd57996c8492e10c413d17c194ea6eab94816612148488123296cb184",
+      "bytes": 5458
+    },
+    "part-0/provenance.json": {
+      "sha256": "7310c12ba4c4ddef25508ab0b36df63b605ace30c4e4b56b1c73fb881b9ab150",
+      "bytes": 109101
+    },
+    "part-0/references.jsonl.gz": {
+      "sha256": "3b28988e9dca95405c2317c4cb5af753fec6356786ed81e7c2bb55036a7ca788",
+      "bytes": 5491
+    },
+    "part-0/rows.jsonl.gz": {
+      "sha256": "b93bbc82983bee91187bfc2e8ba10afb0db291003a024097d85c40c4495db721",
+      "bytes": 44408
+    },
+    "part-0/warmup.jsonl.gz": {
+      "sha256": "bb3551793d65d81f46c16027e3d8c8f366675a4f6460cd9328bf839c4b07c7f5",
+      "bytes": 2641
+    },
+    "part-0.log": {
+      "sha256": "5cf392c922e1b2f845599e7c3627f07ac6c50c07cc3500bf792c1e075d36b905",
+      "bytes": 878
+    },
+    "part-1/calibration-generations.jsonl.gz": {
+      "sha256": "88e0ad2bc424b24aac9f18cba7b9d73a570a7f43f40ab550b7eab43c4ac09ce5",
+      "bytes": 591
+    },
+    "part-1/calibration.json": {
+      "sha256": "8add1c7c868b61898e3a484fdddaf750ecc0485e24faa3b05d648057c0c6f357",
+      "bytes": 7600
+    },
+    "part-1/canonical-preflight.json": {
+      "sha256": "d9912d65ce2e91728f6e2ccfaffd3372f0555cdb0d2f2cd9869d726cf7638778",
+      "bytes": 5415
+    },
+    "part-1/provenance.json": {
+      "sha256": "42f64c97470d4c5bff17336a97ab46332814917415e23cc9817b5549d55c177d",
+      "bytes": 109102
+    },
+    "part-1/references.jsonl.gz": {
+      "sha256": "2002884918127236838738f505c0629bc622e165e6a33d5a08f00fa98f62e84e",
+      "bytes": 3321
+    },
+    "part-1/rows.jsonl.gz": {
+      "sha256": "632360227655ab67ad28ecffaab685e3e940543904f846c6568d7d9c129b6ac1",
+      "bytes": 80869
+    },
+    "part-1/warmup.jsonl.gz": {
+      "sha256": "48f00d7dbda24249d8e54a98de7200232d9e75c7114e7928c38143db7ab8f59e",
+      "bytes": 2636
+    },
+    "part-1.log": {
+      "sha256": "4f4a14df7e8ed7aaf4c156dcc3210e6530cdd73158e3f4289f6ecf2a6a7177e2",
+      "bytes": 844
+    },
+    "tests-server.xml": {
+      "sha256": "9830d2f31f8da973f2c46d490e2920c330acd3a81b19b69349129387a20f6ac6",
+      "bytes": 17855
+    },
+    "tests.log": {
+      "sha256": "8bfa2fc638a66f1cae7c0ef7a40f1c2e237b16bacc43675c72fb5b28ead69fe4",
+      "bytes": 302
+    },
+    "ASD_TREE_SOURCE_MANIFEST.json": {
+      "sha256": "5e602304b16b794fe888756a6db10a24b8954a7e809759a5029aaffaba6715d7",
+      "bytes": 244821
+    }
+  }
+}

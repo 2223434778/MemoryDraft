@@ -1,0 +1,385 @@
+{
+  "gsm8k": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 1.047159508827117,
+      "ci95": [
+        0.9448894562219478,
+        1.1440176970541671
+      ]
+    },
+    "prefix": {
+      "n": 7,
+      "mean_interaction_ratio": 1.0328192464745343,
+      "ci95": [
+        0.9172220092573578,
+        1.1620086961000726
+      ]
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 235,
+        "node_histogram": {
+          "32": 191,
+          "16": 24,
+          "10": 2,
+          "8": 3,
+          "17": 5,
+          "12": 3,
+          "13": 1,
+          "18": 2,
+          "22": 1,
+          "29": 1,
+          "14": 2
+        },
+        "full_horizon_blocks": 235,
+        "full_horizon_mean_max_depth": 8.561702127659574,
+        "full_horizon_shallower_than_native": 200,
+        "mean_advance": 6.753191489361702,
+        "sum_predicted_advance": 1621.9700578696352,
+        "sum_recorded_advance": 1587,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 234,
+        "node_histogram": {
+          "32": 185,
+          "16": 28,
+          "31": 1,
+          "18": 1,
+          "11": 3,
+          "8": 7,
+          "13": 1,
+          "14": 1,
+          "10": 1,
+          "15": 1,
+          "17": 3,
+          "28": 1,
+          "25": 1
+        },
+        "full_horizon_blocks": 234,
+        "full_horizon_mean_max_depth": 8.807692307692308,
+        "full_horizon_shallower_than_native": 202,
+        "mean_advance": 7.504273504273504,
+        "sum_predicted_advance": 1693.596549796144,
+        "sum_recorded_advance": 1756,
+        "relaxed_blocks": 45,
+        "extra_vs_same_tree_strict": 109
+      }
+    }
+  },
+  "humaneval": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 0.9240366503266921,
+      "ci95": [
+        0.8216201608915871,
+        0.9923080809470457
+      ]
+    },
+    "prefix": {
+      "n": 0,
+      "mean_interaction_ratio": null,
+      "ci95": null
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 63,
+        "node_histogram": {
+          "16": 15,
+          "32": 40,
+          "19": 2,
+          "18": 1,
+          "8": 1,
+          "29": 1,
+          "15": 1,
+          "13": 2
+        },
+        "full_horizon_blocks": 63,
+        "full_horizon_mean_max_depth": 9.920634920634921,
+        "full_horizon_shallower_than_native": 49,
+        "mean_advance": 8.285714285714286,
+        "sum_predicted_advance": 539.1673827885885,
+        "sum_recorded_advance": 522,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 60,
+        "node_histogram": {
+          "16": 19,
+          "32": 34,
+          "19": 2,
+          "31": 1,
+          "14": 1,
+          "8": 1,
+          "12": 2
+        },
+        "full_horizon_blocks": 60,
+        "full_horizon_mean_max_depth": 10.916666666666666,
+        "full_horizon_shallower_than_native": 39,
+        "mean_advance": 9.666666666666666,
+        "sum_predicted_advance": 592.5822302427157,
+        "sum_recorded_advance": 580,
+        "relaxed_blocks": 5,
+        "extra_vs_same_tree_strict": 17
+      }
+    }
+  },
+  "json": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 1.001684547819386,
+      "ci95": [
+        1.0010484420261407,
+        1.0023997377377676
+      ]
+    },
+    "prefix": {
+      "n": 6,
+      "mean_interaction_ratio": 0.9988835777444914,
+      "ci95": [
+        0.9967572813779764,
+        1.0010098741110065
+      ]
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 102,
+        "node_histogram": {
+          "32": 51,
+          "16": 31,
+          "19": 2,
+          "11": 3,
+          "20": 2,
+          "21": 1,
+          "18": 3,
+          "9": 1,
+          "17": 2,
+          "10": 4,
+          "26": 1,
+          "30": 1
+        },
+        "full_horizon_blocks": 102,
+        "full_horizon_mean_max_depth": 13.686274509803921,
+        "full_horizon_shallower_than_native": 31,
+        "mean_advance": 13,
+        "sum_predicted_advance": 1354.3892598092357,
+        "sum_recorded_advance": 1326,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 102,
+        "node_histogram": {
+          "32": 51,
+          "16": 31,
+          "19": 2,
+          "11": 3,
+          "20": 2,
+          "21": 1,
+          "18": 3,
+          "9": 1,
+          "17": 2,
+          "10": 4,
+          "26": 1,
+          "30": 1
+        },
+        "full_horizon_blocks": 102,
+        "full_horizon_mean_max_depth": 13.686274509803921,
+        "full_horizon_shallower_than_native": 31,
+        "mean_advance": 13,
+        "sum_predicted_advance": 1354.3892598092357,
+        "sum_recorded_advance": 1326,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": 0
+      }
+    }
+  },
+  "math500": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 0.9442150043206271,
+      "ci95": [
+        0.8032550149963819,
+        1.0945099832711762
+      ]
+    },
+    "prefix": {
+      "n": 8,
+      "mean_interaction_ratio": 1.136470144918554,
+      "ci95": [
+        1.0333248621153106,
+        1.2881711454722535
+      ]
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 659,
+        "node_histogram": {
+          "32": 423,
+          "25": 1,
+          "16": 211,
+          "12": 1,
+          "15": 4,
+          "27": 1,
+          "30": 1,
+          "17": 2,
+          "26": 1,
+          "8": 3,
+          "13": 1,
+          "31": 3,
+          "29": 1,
+          "11": 1,
+          "14": 3,
+          "9": 1,
+          "18": 1
+        },
+        "full_horizon_blocks": 659,
+        "full_horizon_mean_max_depth": 8.742033383915023,
+        "full_horizon_shallower_than_native": 534,
+        "mean_advance": 8.292867981790591,
+        "sum_predicted_advance": 4845.074648148236,
+        "sum_recorded_advance": 5465,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 514,
+        "node_histogram": {
+          "32": 331,
+          "25": 1,
+          "13": 2,
+          "14": 2,
+          "16": 162,
+          "18": 3,
+          "17": 4,
+          "27": 1,
+          "9": 2,
+          "24": 1,
+          "12": 1,
+          "19": 1,
+          "15": 1,
+          "31": 1,
+          "8": 1
+        },
+        "full_horizon_blocks": 514,
+        "full_horizon_mean_max_depth": 9.101167315175097,
+        "full_horizon_shallower_than_native": 404,
+        "mean_advance": 9.073929961089494,
+        "sum_predicted_advance": 4011.2187596589733,
+        "sum_recorded_advance": 4664,
+        "relaxed_blocks": 68,
+        "extra_vs_same_tree_strict": 166
+      }
+    }
+  },
+  "mbpp": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 0.9970698192467288,
+      "ci95": [
+        0.9859790217401769,
+        1.0039930392640934
+      ]
+    },
+    "prefix": {
+      "n": 0,
+      "mean_interaction_ratio": null,
+      "ci95": null
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 38,
+        "node_histogram": {
+          "32": 28,
+          "8": 3,
+          "16": 5,
+          "13": 1,
+          "12": 1
+        },
+        "full_horizon_blocks": 38,
+        "full_horizon_mean_max_depth": 9.657894736842104,
+        "full_horizon_shallower_than_native": 33,
+        "mean_advance": 7.5,
+        "sum_predicted_advance": 305.9972045999972,
+        "sum_recorded_advance": 285,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 37,
+        "node_histogram": {
+          "32": 26,
+          "14": 1,
+          "8": 3,
+          "16": 5,
+          "13": 1,
+          "12": 1
+        },
+        "full_horizon_blocks": 37,
+        "full_horizon_mean_max_depth": 9.432432432432432,
+        "full_horizon_shallower_than_native": 32,
+        "mean_advance": 7.54054054054054,
+        "sum_predicted_advance": 293.9399639879462,
+        "sum_recorded_advance": 279,
+        "relaxed_blocks": 1,
+        "extra_vs_same_tree_strict": 3
+      }
+    }
+  },
+  "squad": {
+    "natural": {
+      "n": 8,
+      "mean_interaction_ratio": 0.9985229787078804,
+      "ci95": [
+        0.9958540566817102,
+        1.0009128691074447
+      ]
+    },
+    "prefix": {
+      "n": 0,
+      "mean_interaction_ratio": null,
+      "ci95": null
+    },
+    "mechanisms": {
+      "BudgetTree": {
+        "blocks": 9,
+        "node_histogram": {
+          "12": 1,
+          "32": 1,
+          "16": 5,
+          "8": 1,
+          "9": 1
+        },
+        "full_horizon_blocks": 9,
+        "full_horizon_mean_max_depth": 6.666666666666667,
+        "full_horizon_shallower_than_native": 9,
+        "mean_advance": 4.666666666666667,
+        "sum_predicted_advance": 43.84847036081977,
+        "sum_recorded_advance": 42,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": null
+      },
+      "BudgetTree-ASD": {
+        "blocks": 9,
+        "node_histogram": {
+          "12": 1,
+          "32": 1,
+          "16": 5,
+          "8": 1,
+          "9": 1
+        },
+        "full_horizon_blocks": 9,
+        "full_horizon_mean_max_depth": 6.666666666666667,
+        "full_horizon_shallower_than_native": 9,
+        "mean_advance": 4.666666666666667,
+        "sum_predicted_advance": 43.84847036081977,
+        "sum_recorded_advance": 42,
+        "relaxed_blocks": 0,
+        "extra_vs_same_tree_strict": 0
+      }
+    }
+  }
+}

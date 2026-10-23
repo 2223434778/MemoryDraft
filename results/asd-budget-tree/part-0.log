@@ -1,0 +1,27 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.50s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.50s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:03,  1.50s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.39s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.05s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.24s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+completed gsm8k gsm8k:885 20
+completed gsm8k gsm8k:1150 40
+completed math500 math500:329 60
+completed math500 math500:444 80
+completed mbpp mbpp:262 100
+completed mbpp mbpp:378 120
+completed humaneval humaneval:82 140
+completed humaneval humaneval:137 160
+completed squad squad:5734025d4776f419006616c6 180
+completed squad squad:5727c94bff5b5019007d954b 200
+completed json json:12 220
+completed json json:27 240
+completed gsm8k gsm8k:374 260
+completed gsm8k gsm8k:924 280
+completed math500 math500:261 300
+completed math500 math500:359 320
+completed mbpp mbpp:398 340
+completed mbpp mbpp:504 360
+completed humaneval humaneval:60 380
+completed humaneval humaneval:115 400
+completed squad squad:57286fa83acd2414000df9e8 420
+completed squad squad:5727311d5951b619008f86ab 440
+completed json json:28 460
+completed json json:29 480

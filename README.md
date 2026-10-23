@@ -1,5 +1,9 @@
 # MemoryDraft
 
+> [成本受控树 + ASD](docs/ASD_TREE_FINDINGS.md)：六类各8道已观察开发题，960计时+48 AR完成。
+> GSM8K组合较线性ASD完整请求省7.89%、等128省10.95%，答案均8/8；同等128较严格树再省9.87%。
+> MBPP完整省5.96%、质量保持；MATH/HumanEval有质量取舍，全部正负结果及复现见报告。既有工程成果继续保留。
+
 > [ASD候选统一比较](docs/ASD_COMPARISON_FINDINGS.md)：原reserve96已用于24题14组初筛及72题确认，
 > 完成2448计时+96 AR，全部执行一致性检查通过。位置适配在新GSM等128时延省1.42%，完整请求慢0.79%；
 > Utility在新MATH完整请求慢32.04%，不能将初筛局部收益推广。全部正负结果及复现见[完整表](docs/ASD_COMPARISON_RESULTS.md)。
