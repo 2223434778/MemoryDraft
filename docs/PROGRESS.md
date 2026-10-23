@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-23 — 统一比较执行中及工程组合预登记
+
+- 已冻结34f6a2eb72d35142700fa0bbf13c867f416de27a/1964 canonical Git blobs，source SHAe648c352b141ede94846a4e9a7a8bab10727544db5035f2870f9f52b91fdc374；source ZIP23331209B/SHA9193fe7690a709aa1fd5e977c14a2135c2a196fabd3c02ee6c78a287e14bc9e9。本地初相关99 passed/23.15秒；补first-token EOS/真实tiny树后专项14 passed/22.58秒。已有结果1040文件/20198 token载荷对reserve96命中0。
+- 首root asd-comparison服务器100 passed/19.38秒，但缺少部署models软链接，两个worker均在模型加载前失败，无正式生成；原失败ZIP下载artifacts/asd-comparison-startup-failure.zip。新root asd-comparison-v2从同一ZIP重新解包，补链接到原models，1964源SHA再核对，PID1702283；服务器100 passed/20.11秒，两卡开始screen。未改代码/题集/选择规则，旧适配器只读。
+- 首本地完整回归无新增失败输出但在约76%后挂起；核对本轮PID后终止，未生成完整XML，不当作通过。开启-vv/-o faulthandler_timeout=60并在允许环境重跑：938 passed/7 skipped/134.56秒，artifacts/comparison-full-v2-local.xml及comparison-full-diagnostic.log；仅既有starlette警告。未查明首次挂起原因，不将其解释为产品缺陷或更改实验规则。
+- 追加独立工程协议ASD_COMPARISON_ENGINEERING_PROTOCOL.md和runner/test；确认结束后，GSM两个候选按同规则选一，与ASD/DFlash共测8个已观察公开4K请求×off/cold/hit×2，共144计时+8 AR。只验证相同缓存条件下新组合，不重算通用融合收益、不消耗确认数据调参，不覆盖主执行源。初工程专项9 passed/7.47秒，补非有限计时检查后将复测。
+
 ## 2026-10-23 — ASD候选统一比较（执行准备）
 
 - 用户授权一次完成初筛和确认，按特定场景实际收益判断，不要求所有任务胜出或新训练seed。新增evaluation/asd_comparison、run_asd_comparison及pipeline/report/test，复用原engine、CPU接受器、Confidence、严格tree32及两个旧LoRA；默认runtime、Target输入及面试版不改。
