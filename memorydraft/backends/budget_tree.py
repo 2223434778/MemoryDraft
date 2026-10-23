@@ -51,40 +51,93 @@ class BudgetTreeConfig:
     min_nodes: int = 8
     max_nodes: int = 32
     top_k: int = 4
+    spine_mode: str = "none"
 
     def __post_init__(self):
         if (not isinstance(self.costs, TreeCosts)
                 or any(type(v) is not int for v in (self.min_nodes, self.max_nodes, self.top_k))
-                or not 2 <= self.min_nodes <= self.max_nodes <= 64 or not 1 <= self.top_k <= 8):
+                or not 2 <= self.min_nodes <= self.max_nodes <= 64 or not 1 <= self.top_k <= 8
+                or self.spine_mode not in {"none", "full", "remaining"}):
             raise ValueError("Invalid cost-controlled tree bounds")
 
 
+@dataclass(frozen=True)
+class RegretBudget:
+    total: float
+    remaining: float
+    gate: float
+    cap: int
+
+    def __post_init__(self):
+        if (any(not math.isfinite(v) or v < 0 for v in (self.total, self.remaining, self.gate))
+                or self.remaining > self.total or type(self.cap) is not int or self.cap < 0):
+            raise ValueError("Invalid immutable regret budget snapshot")
+
+    def spine_length(self, horizon: int) -> int:
+        if not horizon or not self.total or not self.remaining or not self.gate or not self.cap:
+            return 0
+        count = min(self.cap, horizon)
+        # Upper bound on one block's admissible regret under the existing local
+        # gate and exception cap. This is a resource scale, not an error model.
+        block_ceiling = self.gate*count*(2*horizon-count+1)/2
+        fraction = min(1., self.remaining/min(self.total, block_ceiling))
+        return min(horizon, math.ceil(horizon*fraction))
+
+
 def build_budget_tree(block: torch.Tensor, logits: torch.Tensor,
-                      config: BudgetTreeConfig, context: int, *, stop_token_ids=()) -> DraftTree:
+                      config: BudgetTreeConfig, context: int, *, stop_token_ids=(),
+                      regret_budget: RegretBudget | None = None) -> DraftTree:
     if (block.ndim != 2 or block.shape[0] != 1 or not block.shape[1]
             or logits.ndim != 3 or logits.shape[0] != 1 or logits.shape[1] < block.shape[1]-1
             or logits.shape[2] < config.top_k):
         raise ValueError("Missing anchored block or aligned draft distributions")
+    if config.spine_mode == "remaining" and not isinstance(regret_budget, RegretBudget):
+        raise ValueError("Remaining-budget construction requires a budget snapshot")
     horizon = block.shape[1]-1
     tokens, parents, depths, masses = [int(block[0, 0])], [-1], [0], [1.]
     if not horizon:
         return DraftTree(block.clone(), (-1,), (0,), 1)
     scores = logits[0, :horizon].float()
     values, ids = scores.topk(config.top_k, dim=-1)
-    probabilities = (values-scores.logsumexp(-1, keepdim=True)).exp()
+    normalizer = scores.logsumexp(-1, keepdim=True)
+    probabilities = (values-normalizer).exp()
     candidate_ids, weights = ids.tolist(), probabilities.tolist()
     if any(not math.isfinite(p) or p < 0 or p > 1 for row in weights for p in row):
         raise ValueError("Non-finite draft path probabilities")
-    queue = []
+    queue, reserved_edges = [], set()
     def expand(node):
         depth = depths[node]
         if depth < horizon and tokens[node] not in stop_token_ids:
             for token, probability in zip(candidate_ids[depth], weights[depth]):
+                if (node, token) in reserved_edges:
+                    continue
                 mass = masses[node]*probability
                 heapq.heappush(queue, (-mass, depth+1, node, token))
-    expand(0)
-    prefix_mass = 1.
+    requested = (horizon if config.spine_mode == "full" else
+                 regret_budget.spine_length(horizon) if config.spine_mode == "remaining" else 0)
+    if requested:
+        native = block[0].tolist()
+        native_scores = scores.gather(1, block[0, 1:, None])
+        native_weights = (native_scores-normalizer).exp().flatten().tolist()
+        if any(not math.isfinite(v) or not 0 <= v <= 1 for v in native_weights):
+            raise ValueError("Non-finite native spine probabilities")
+        for depth in range(1, min(requested, config.max_nodes-1)+1):
+            if tokens[-1] in stop_token_ids:
+                break
+            parent = len(tokens)-1
+            reserved_edges.add((parent, native[depth]))
+            tokens.append(native[depth])
+            parents.append(parent)
+            depths.append(depth)
+            masses.append(masses[parent]*native_weights[depth-1])
+    reserved = len(tokens)-1
+    for node in range(len(tokens)):
+        expand(node)
+    prefix_mass = sum(masses)
     best, best_score, best_mass = None, -math.inf, None
+    if len(tokens) >= config.min_nodes:
+        best, best_mass = len(tokens), prefix_mass
+        best_score = prefix_mass/config.costs.cycle(context, best)
     while queue and len(tokens) < config.max_nodes:
         negative_mass, depth, parent, token = heapq.heappop(queue)
         tokens.append(token)
@@ -105,6 +158,9 @@ def build_budget_tree(block: torch.Tensor, logits: torch.Tensor,
     tree.budget_metadata = dict(nodes=best, built_nodes=len(tokens), max_depth=max(depths[:best]),
         expected_advance=best_mass, estimated_cycle_seconds=config.costs.cycle(context, best),
         horizon=horizon, top_k=config.top_k)
+    if config.spine_mode != "none":
+        tree.budget_metadata.update(spine_mode=config.spine_mode, spine_requested=requested,
+            spine_reserved=reserved, regret_before=regret_budget.remaining if regret_budget else None)
     return tree
 
 
@@ -119,6 +175,10 @@ The local denominator is the original proposal horizon, independent of width.
             raise ValueError("Tree ASD currently supports the original remaining/longest rule")
         super().__init__(config, record=record)
 
+    def construction_budget(self) -> RegretBudget:
+        return RegretBudget(self.config.budget, max(0., self.config.budget-self.spent),
+                            self.config.gate, self.config.cap)
+
     def decide_tree(self, tree, logits, *, horizon, stop_token_ids=()):
         n = len(tree.parents)
         if (logits.ndim != 2 or logits.shape[0] != n or tree.tokens.shape != (1, n)
@@ -128,7 +188,7 @@ The local denominator is the original proposal horizon, independent of width.
                for i, p in enumerate(tree.parents) if i):
             raise ValueError("Tree must be ordered and ancestor closed")
         top, top_ids = logits.max(-1)
-        parent_ids = torch.tensor(tree.parents[1:], device=logits.device)
+        parent_ids = torch.tensor(tree.parents[1:], device=logits.device, dtype=torch.long)
         proposed = logits[parent_ids, tree.tokens[0, 1:]]
         maxima, predictions = top.tolist(), top_ids.tolist()
         candidates, tokens = proposed.tolist(), tree.tokens[0].tolist()

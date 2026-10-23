@@ -11,11 +11,12 @@ from memorydraft.evaluation.asd_tree import STUDY
 from scripts.run_rmsnorm_runtime_pipeline import run_owned
 
 
-def main():
+def main(*, study=STUDY, worker_module="scripts.run_asd_tree", report_module="scripts.write_asd_tree_report",
+         manifest_name="ASD_TREE_SOURCE_MANIFEST.json", extra_tests=()):
     root = Path.cwd()
-    name = "ASD_TREE_SOURCE_MANIFEST.json"
+    name = manifest_name
     manifest = json.loads((root/name).read_text())
-    out = root/f"results/raw/{STUDY}"
+    out = root/f"results/raw/{study}"
     out.mkdir(parents=True,exist_ok=False)
     (root/"artifacts").mkdir(exist_ok=True)
     def verify():
@@ -28,17 +29,17 @@ def main():
     env = dict(os.environ,HF_HUB_OFFLINE="1",PYTHONPATH=".",OMP_NUM_THREADS="4",TORCHINDUCTOR_COMPILE_THREADS="2")
     try:
         run_owned([exe,"-m","pytest","-q","tests/test_budget_tree.py","tests/test_draft_tree.py",
-            "tests/test_dflash_reuse.py","tests/test_asd_cpu.py","tests/test_asd_tree_report.py",
+            "tests/test_dflash_reuse.py","tests/test_asd_cpu.py","tests/test_asd_tree_report.py",*extra_tests,
             "--basetemp","artifacts/test-tmp","--junitxml="+str(out/"tests-server.xml")],
             env,out/"tests.log",timeout=300)
         def worker(shard):
             cache = dict(TORCHINDUCTOR_CACHE_DIR=str(root/f"artifacts/inductor-{shard}"),
                          TRITON_CACHE_DIR=str(root/f"artifacts/triton-{shard}"))
             for directory in cache.values():Path(directory).mkdir(exist_ok=False)
-            run_owned([exe,"-u","-m","scripts.run_asd_tree","--shard",str(shard)],
+            run_owned([exe,"-u","-m",worker_module,"--shard",str(shard)],
                 dict(env,**cache,CUDA_VISIBLE_DEVICES=str(shard)),out/f"part-{shard}.log",timeout=7200)
         with ThreadPoolExecutor(max_workers=2) as pool:list(pool.map(worker,(0,1)))
-        run_owned([exe,"-m","scripts.write_asd_tree_report","--input",str(out)],env,out/"report.log",timeout=300)
+        run_owned([exe,"-m",report_module,"--input",str(out)],env,out/"report.log",timeout=300)
         info.update(status="complete",files_verified_after=verify())
     except Exception as error:
         info.update(status="failed",error=type(error).__name__+": "+str(error))

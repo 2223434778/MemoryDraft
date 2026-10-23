@@ -127,11 +127,11 @@ def calibrate(engine, warm, out):
     return BudgetTreeConfig(costs)
 
 
-def main():
+def main(*, study=STUDY, arms=ARMS, tree_factory=calibrate, execution=execute, legacy_check=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--shard",type=int,choices=(0,1),required=True)
     args = parser.parse_args()
-    out = ROOT/f"results/raw/{STUDY}/part-{args.shard}"
+    out = ROOT/f"results/raw/{study}/part-{args.shard}"
     out.mkdir(parents=True,exist_ok=False)
     before,engine = protected(ROOT),None
     pool = records(ROOT)
@@ -139,7 +139,7 @@ def main():
                 for i,r in enumerate(r for r in pool if r["benchmark"]==b)
                 if i%2 == args.shard and int(i>=4)==half]
     info = dict(status="started",task_ids=[r["id"] for r in selected],shard=args.shard,repeats=REPEATS,
-        arms=ARMS,split="previously_observed_development",limit=4096)
+        arms=arms,split="previously_observed_development",limit=4096)
     write(out/"provenance.json",info)
     try:
         started = time.perf_counter()
@@ -152,12 +152,12 @@ def main():
         append(out/"warmup.jsonl",asdict(engine.generate(request_for(warm,32),"AR")))
         append(out/"warmup.jsonl",asdict(engine.generate(request_for(warm,32),"DFlash")))
         started = time.perf_counter()
-        tree_config = calibrate(engine,warm,out)
+        tree_config = tree_factory(engine,warm,out)
         info.update(calibration_seconds=time.perf_counter()-started,tree_config=asdict(tree_config))
-        for arm in ARMS:
-            append(out/"warmup.jsonl",execute(engine,warm,arm,64,tree_config))
-        zero = execute(engine,warm,"BudgetTree-ASD",64,tree_config,zero=True)
-        strict = execute(engine,warm,"BudgetTree",64,tree_config)
+        for arm in arms:
+            append(out/"warmup.jsonl",execution(engine,warm,arm,64,tree_config))
+        zero = execution(engine,warm,"BudgetTree-ASD",64,tree_config,zero=True)
+        strict = execution(engine,warm,"BudgetTree",64,tree_config)
         append(out/"warmup.jsonl",zero)
         append(out/"warmup.jsonl",strict)
         if zero["token_ids"] != strict["token_ids"] or zero["asd"]["spent"] != 0:
@@ -190,11 +190,12 @@ def main():
                 def partial(name):
                     return [json.loads(line) for i in (0,1)
                         for line in (out.parent/f"part-{i}/{name}.jsonl").read_text().splitlines()]
-                pilot = aggregate(partial("rows"),partial("references"))
-                if (pilot["timed_generations"] != 480 or pilot["ar_generations"] != 24
+                pilot = aggregate(partial("rows"),partial("references"),arms=arms)
+                pilot_count = 24*len(arms)*sum(REPEATS.values())
+                if (pilot["timed_generations"] != pilot_count or pilot["ar_generations"] != 24
                         or any(v["ASD"]["natural"]["requests"] != 4 for v in pilot["families"].values())):
                     raise ValueError("Pilot24 coverage incomplete")
-                write(out/"pilot-check.json",dict(status="passed",timed=480,ar=24,checks="coverage/AR/input/repeats/budget"))
+                write(out/"pilot-check.json",dict(status="passed",timed=pilot_count,ar=24,checks="coverage/AR/input/repeats/budget"))
                 barrier("pilot-check")
                 info["completed_phase"] = "pilot24"
             reference = asdict(engine.generate(request_for(record,4096),"AR"))
@@ -204,10 +205,10 @@ def main():
             for stage,repeats in REPEATS.items():
                 limit = 4096 if stage == "natural" else 128
                 for repeat in range(repeats):
-                    jobs = list(ARMS)
+                    jobs = list(arms)
                     random.Random(f"budget-tree:{record['id']}:{stage}:{repeat}").shuffle(jobs)
                     for arm in jobs:
-                        row = execute(engine,record,arm,limit,tree_config)
+                        row = execution(engine,record,arm,limit,tree_config)
                         row.update(stage=stage,repeat=repeat)
                         if (row["prompt_sha256"],row["snapshot_id"]) != (reference["prompt_sha256"],reference["snapshot_id"]):
                             raise ValueError("Target input changed")
@@ -224,6 +225,8 @@ def main():
                         if stage == "natural":
                             if row["text"] not in quality_cache:quality_cache[row["text"]]=score(record,row["text"])
                             row["quality"] = quality_cache[row["text"]]
+                        if legacy_check is not None:
+                            legacy_check(row)
                         append(out/"rows.jsonl",row)
                         count += 1
                         peak = max(peak,row["peak_gpu_bytes"])
@@ -234,7 +237,8 @@ def main():
                           for p in Path(os.environ[name]).rglob("*") if p.is_file())
         if peak > 46*2**30 or cache_bytes > 4*2**30:
             raise ValueError("Resource bounds exceeded")
-        info.update(status="complete",count=count,cache_bytes=cache_bytes,compiler=engine._regional.summary())
+        info.update(status="complete",count=count,cache_bytes=cache_bytes,compiler=engine._regional.summary(),
+                    legacy_checked_rows=getattr(legacy_check,"checked",None))
     except Exception as error:
         info.update(status="failed",error=type(error).__name__+": "+str(error))
         raise

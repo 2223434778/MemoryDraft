@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-23 — 剩余regret联合构树（第二阶段准备）
+
+- 用户要求直接进行第二步。新增opt-in固定主干/剩余预算主干，预算只读快照、实际选路扣费不变；节点总量沿用第一阶段冻结成本表，EOS叶子/32上限/原生16保持。规则和资源尺度详见ASD_JOINT_TREE_PROTOCOL.md，不以Draft置信度冒充错误概率。
+- 六类各8已观察开发题，原四组加SpineTree-ASD/JointTree-ASD，共1440计时+48 AR，原四组960次轨迹与第一阶段逐项核对。自然EOS与共同完整128、质量和长度分别报告；固定主干为动态分配必要消融，不按新结果扫参。
+- 首核心检查115 passed/2 skipped/11.95秒，artifacts/joint-first-local.xml。正在补相关/完整检查，尚无第二阶段GPU结果。服务器新隔离root asd-joint-tree，冻结canonical Git blobs再部署；旧结果与infra引用不动。
+- 相关检查135 passed/2 skipped/16.28秒，artifacts/joint-related-v2-local.xml；旧analysis经JSON键规范化后全部逐值保持。首相关检查32 passed后仅旧报告比较测试因内存整数键/JSON字符串键差别失败，修正测试序列化比较，未改统计结果；失败XML保留。完整回归运行中，`git diff --check`与新增入口compileall通过。
+
 ## 2026-10-23 — 成本受控树 + ASD跨六类评估完成
 
 - 第一阶段组合完成：六类各8道已观察development，四组自然3次/128-EOS2次，共960计时+48同题AR；两worker各480，24题有效性屏障后完成其余24，模型/预算/题集无调参。全部strict逐token/text/EOS同AR，输入、重复轨迹/账本、实际B<=8通过。

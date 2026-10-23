@@ -15,7 +15,9 @@ def records(root):
     return load_suite(root/"data/research/asd-suite", "development")
 
 
-def aggregate(rows, references):
+def aggregate(rows, references, *, arms=ARMS):
+    if len(set(arms)) != len(arms) or not {"DFlash", "ASD", "BudgetTree"}.issubset(arms):
+        raise ValueError("Invalid comparison arms")
     refs = {r["request_id"]: r for r in references}
     if len(refs) != len(references):
         raise ValueError("Duplicate AR reference")
@@ -26,7 +28,7 @@ def aggregate(rows, references):
         raise ValueError("Missing request coverage")
     samples = []
     for identity, cells in sorted(grouped.items()):
-        if set(cells) != {(s,a) for s in REPEATS for a in ARMS}:
+        if set(cells) != {(s,a) for s in REPEATS for a in arms}:
             raise ValueError("Incomplete tree comparison matrix")
         ref = refs[identity]
         values = {}
@@ -57,7 +59,7 @@ def aggregate(rows, references):
                 nodes=sum(r.get("tree_nodes",r["proposed"]+1) for r in first["rounds"]),
                 node_histogram=dict(Counter(r["tree_nodes"] for r in first["rounds"] if "tree_nodes" in r)),
                 same_tree_extra=sum(r["accepted"]-r["strict_accepted"] for r in first["rounds"]
-                                    if arm == "BudgetTree-ASD"))
+                                    if arm.endswith("Tree-ASD")))
         samples.append(dict(request_id=identity, benchmark=ref["benchmark"], arms=values))
     families = {}
     for benchmark in BENCHMARKS:
@@ -65,7 +67,7 @@ def aggregate(rows, references):
         if not selected:
             continue
         families[benchmark] = {}
-        for arm in ARMS:
+        for arm in arms:
             result = {}
             for stage in REPEATS:
                 items = [s["arms"][f"{stage}/{arm}"] for s in selected]
