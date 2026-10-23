@@ -63,6 +63,14 @@ class InferenceEngine:
         self._closed = False
         self._regional = self._regional_context = None
         self._regional_setup_seconds = 0.
+        self._prefix_spec = None
+        self._prefix_cache = None
+        if config.prefix_cache:
+            from memorydraft.runtime.prefix_cache import PrefixCacheSpec, PublicPrefixCache
+            self._prefix_spec = PrefixCacheSpec(**config.prefix_cache)
+            self._prefix_cache = PublicPrefixCache(self._prefix_spec, target=target, tokenizer=tokenizer,
+                target_revision=config.target_revision, template_options=config.template_options,
+                layers=draft.target_layer_ids, max_input_tokens=config.max_input_tokens)
         if self.execution_profile != "eager":
             from memorydraft.backends.regional_compile import runtime_rmsnorm
             started = time.perf_counter()
@@ -107,6 +115,7 @@ class InferenceEngine:
                 "asd": None if self._asd_config is None else {"budget": self._asd_config.budget,
                     "gate": self._asd_config.gate, "cap": self._asd_config.cap, "selection": "longest", "value": "remaining"},
                 "draft_adapter": self._adapter_info,
+                "prefix_cache": self._prefix_cache.describe() if self._prefix_cache is not None else None,
                 "regional_compilation": None if self._regional is None else {
                     "backend": self._regional.backend.name, "graphs": len(self._regional.backend.events),
                     "max_graphs": self._regional.backend.max_graphs,
@@ -138,6 +147,10 @@ class InferenceEngine:
             current_adapter = DraftAdapterSpec(**self.config.draft_adapter) if self.config.draft_adapter else None
             if current_asd != self._asd_config or current_adapter != self._adapter_spec:
                 raise ValueError("Reload the engine to change ASD or draft_adapter configuration")
+            from memorydraft.runtime.prefix_cache import PrefixCacheSpec
+            current_prefix = PrefixCacheSpec(**self.config.prefix_cache) if self.config.prefix_cache else None
+            if current_prefix != self._prefix_spec:
+                raise ValueError("Reload the engine to change public prefix cache configuration")
             self.synchronize()
             if self.target.device.type == "cuda":
                 torch.cuda.reset_peak_memory_stats(self.target.device)
@@ -252,6 +265,8 @@ class InferenceEngine:
                     )
             else:
                 verification = {"verifier": verifier, "incremental_stop": True} if verifier is not None else {}
+                if self._prefix_cache is not None:
+                    verification["prefill"] = self._prefix_cache.prefill
                 detail = generate_reuse(self.target, self.draft, ids, max_new_tokens=request.max_new_tokens,
                                         stop_token_ids=self.stops, matcher=matcher, config=self.reuse,
                                         on_tokens=commit, should_stop=should_stop, profile=profile, **verification)
@@ -262,6 +277,8 @@ class InferenceEngine:
                             "index_bytes": index.bytes_used if index else 0,
                             "feature_peak_tokens": detail.feature_peak_tokens, "buffer_flushes": detail.buffer_flushes}
                 counters.update(getattr(matcher, "stats", {}))
+                if self._prefix_cache is not None:
+                    counters.update(self._prefix_cache.last)
                 if self.config.retrieval.endswith(("-guided", "-splice")):
                     counters["draft_forward_rounds"] = sum(r["draft_forward"] for r in detail.rounds)
             self.synchronize()
@@ -297,6 +314,8 @@ class InferenceEngine:
                 if self._regional_context is not None:
                     self._regional_context.__exit__(None, None, None)
                     self._regional_context = None
+                if self._prefix_cache is not None:
+                    self._prefix_cache.clear()
                 self._closed = True
         finally:
             self.lock.release()

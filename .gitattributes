@@ -336,3 +336,13 @@ data/workloads/asd-long-context/** -text
 results/asd-long-context/** -text
 results/asd-long-context/**/*.log -whitespace
 results/asd-long-context/**/*.xml -whitespace
+memorydraft/runtime/prefix_cache.py text eol=lf
+memorydraft/evaluation/prefix_cache.py text eol=lf
+scripts/*asd_prefix_cache*.py text eol=lf
+scripts/prepare_public_prefixes.py text eol=lf
+tests/test_prefix_cache*.py text eol=lf
+docs/ASD_PREFIX_CACHE*.md text eol=lf
+data/workloads/asd-prefix-cache/** -text
+results/asd-prefix-cache/** -text
+results/asd-prefix-cache/**/*.log -whitespace
+results/asd-prefix-cache/**/*.xml -whitespace

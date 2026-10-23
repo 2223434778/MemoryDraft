@@ -28,6 +28,7 @@ class RuntimeConfig:
     execution_profile: str = "eager"
     asd: dict = field(default_factory=dict)
     draft_adapter: dict = field(default_factory=dict)
+    prefix_cache: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -48,6 +49,13 @@ class RuntimeConfig:
                 raise ValueError("draft_adapter requires dflash and path/sha256")
             from memorydraft.runtime.draft_adapter import DraftAdapterSpec
             DraftAdapterSpec(**self.draft_adapter)
+        if type(self.prefix_cache) is not dict:
+            raise ValueError("prefix_cache must be an object")
+        if self.prefix_cache:
+            if self.backend != "dflash":
+                raise ValueError("Public prefix caching requires the audited dflash backend")
+            from memorydraft.runtime.prefix_cache import PrefixCacheSpec
+            PrefixCacheSpec(**self.prefix_cache)
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",
@@ -92,6 +100,9 @@ class RuntimeConfig:
         if isinstance(value.get("draft_adapter"), dict) and value["draft_adapter"].get("path"):
             candidate = Path(value["draft_adapter"]["path"]).expanduser()
             value["draft_adapter"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
+        if isinstance(value.get("prefix_cache"), dict) and value["prefix_cache"].get("path"):
+            candidate = Path(value["prefix_cache"]["path"]).expanduser()
+            value["prefix_cache"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
         return cls(**value)
 
     def as_dict(self):

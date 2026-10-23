@@ -56,7 +56,7 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    verify_length: Callable[[int], int] | None = None,
                    incremental_stop: bool = False,
                    round_action: Callable[[int, int, tuple], str] | None = None,
-                   tree_config=None) -> ReuseGeneration:
+                   tree_config=None, prefill=None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -99,10 +99,16 @@ guided R may replace a block after its draft forward has already run.
         return torch.profiler.record_function("memorydraft::" + name) if profile else nullcontext()
 
     with mark("target_prefill"):
-        output = target(input_ids, position_ids=positions[:, :prompt], past_key_values=target_cache,
-                        use_cache=True, logits_to_keep=1, output_hidden_states=True)
-    ids[:, prompt:prompt + 1] = output.logits.argmax(dim=-1)
-    pending = [_features(output, draft.target_layer_ids)]
+        if prefill is None:
+            output = target(input_ids, position_ids=positions[:, :prompt], past_key_values=target_cache,
+                            use_cache=True, logits_to_keep=1, output_hidden_states=True)
+            first_logits, features = output.logits, _features(output, draft.target_layer_ids)
+        else:
+            first_logits, features, target_cache = prefill(
+                target, input_ids, positions[:, :prompt], draft.target_layer_ids, should_stop)
+    ids[:, prompt:prompt + 1] = first_logits.argmax(dim=-1)
+    pending = [features]
+    del features, first_logits
     pending_tokens = prompt
     result = ReuseGeneration(ids, feature_peak_tokens=prompt)
     start, blocked_until, step = prompt, 0, 0

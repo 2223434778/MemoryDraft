@@ -1,5 +1,14 @@
 # 项目进度
 
+## 2026-10-23 — 阶段7公共前缀缓存与排队评估（执行准备）
+
+- 按用户授权继续多个阶段。实现显式 opt-in PublicPrefixCache：只读登记公开 worked-example token 前缀，Target KV + Draft所需选层features独立存储，命中逐请求克隆KV，Draft KV仍每请求新建；LRU 2GiB/3 entries，未命中完整prefill后仅复制允许部分入库。默认配置和独立面试版本不变，ASD验证器/预算/Target输入未改。
+- `.venv\Scripts\python.exe -m scripts.prepare_public_prefixes`生成5个公开前缀，token数459/1867/4073/323/3937，registry SHA9bfda318cd757144b64961e8cc05d6a29f95c00e9c65229b2ab8ca2a365bae82；不含最终问题/测试答案，原24请求逐字节复用。模型revision/tokenizer/template及registry SHA绑定，实例限制Target/选层布局，配置变化要求reload。
+- 协议docs/ASD_PREFIX_CACHE_PROTOCOL.md：288正式生成（24输入×D/ASD×自然/128且EOS×off/cold/hit），首次填充和命中复制计入时延；保留spent浮点差异，不放宽线上接受。通过输出/轮数检查后，各卡做跨问题复用、直接取消、真实HTTP JSON/SSE/断连恢复，空缓存起步20off+20cache、并发2/四个4K请求轮换；HTTP顺序混杂明确保留，不声称continuous batching。
+- 首测试`.venv\Scripts\python.exe -m pytest -q tests/test_prefix_cache.py tests/test_runtime.py --basetemp artifacts/prefix-cache-unit-tmp --junitxml=artifacts/prefix-cache-unit-local.xml -x --tb=short`：53 passed/17.00秒。相关prefix_cache/prefix_cache_study/runtime_asd：42 passed/7.12秒，一个既有starlette警告。完整回归进行中；尚无GPU性能结论。
+- 新目录asd-prefix-cache，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_prefix_cache_pipeline`。分片奇偶同题同卡、46GiB/2400秒、编译缓存总8GiB。源码及既有结果前后SHA核验，不上传KV/features/权重/raw trace。
+- 完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/prefix-cache-full-tmp --junitxml=artifacts/prefix-cache-full-local.xml -x --tb=short`：906 passed/7 skipped/125.62秒，一个既有starlette警告；`git diff --check`通过。准备冻结canonical Git blobs再部署；此时尚无GPU结果。
+
 ## 2026-10-23 — 阶段6长输入单请求完成
 
 - GPU执行77d4646f07b87b25d6b0b51eb2cbb1c817556106/1778 blobs，source SHA09ec377a23cfcb10023ca09014115ba01d39634e19293a642e907c8f88e2989d；PID1419258于03:15:47 UTC启动，全部四预检与四正式进程成功，源码前后1778 SHA及原适配器不变。成功ZIP251671B/SHA4aee7662aa1deb1933d2643c57ddafaa361ea724d04689f5c33cf4446d696b8b，38原始成员逐字节核验，末查两卡19MiB/0%。
