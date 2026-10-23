@@ -335,6 +335,7 @@ scripts/*asd_paper*.py text eol=lf
 tests/test_asd_paper.py text eol=lf
 docs/ASD_PAPER*.md text eol=lf
 data/research/asd-paper/** -text
+data/research/asd-paper/*README.md -whitespace
 results/asd-paper/** -text
 results/asd-paper/**/*.log -whitespace
 results/asd-paper/**/*.xml -whitespace

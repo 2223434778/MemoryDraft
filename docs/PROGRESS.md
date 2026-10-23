@@ -1,5 +1,23 @@
 # 项目进度
 
+## 2026-10-24 — ASD七任务五方法扩样本完成
+
+- 241新源任务/249匹配输入，五组4980正式计时+249 AR、40自身历史MT第二轮、18预热/零检查全部完成；192本地裁判记录另列。两个worker2500/2480，数学里程碑各960、parameter_changes=0；全部严格AR/token/text/停止、输入/快照、重复轨迹、实际预算≤8检查通过。源码60645db/2199 canonical Git blobs前后及最终复核SHA一致，未重复启动GPU实验。
+- A6000隔离root asd-paper于2026-10-23 15:44:40 UTC启动，pipeline末日志18:27:09、最终归档审计18:54:32 UTC；不将审计时间当精确结束时刻。原ZIP8773881B/SHAdc34db532d6e752b4fc8e69b8a76d975059f7038882dccca1bfabc4d5f2155d2保留；追加deployment/completion/pipeline日志后的ZIP8774872B/SHAcc6a55bcbe59a333b985854780b35055f396464c38daf0ddb9f7d711d78a3bd5下载本机。31原始归档成员逐字节核验，补充统计不修改冻结主评分或载荷。
+- GSM64题组合较ASD完整省9.86%（请求比95%CI .8714–.9308）、共同128省11.64%（N63），各组正确集合保持63/64；逐题输出长度比+1.91%、调用密度-18.02%。共同8064token验证1343→1069轮，固定256 TPS85.250→95.721/+12.28%，真实EOS后的强制计算另列。MATH32题组合完整省11.42%、等128省4.70%，正确26→28、ASD3截断→组合0；新增答对180/421/425、失去485，完整收益含避免循环。共同正确且EOS25题仅省2.17%，后验诊断保留。
+- Joint较第一组合GSM自然慢3.93%、共同128慢.16%；MATH慢18.98%、正确28→23，另2截断；七任务直接自然配对未显示进一步收益。接纳第一组合的数学收益，Joint保留消融，不为复现旧8题的小增量在新题调参。HumanEval组合快6.34%但28→27，真实大小写处理错误保留。MBPP一例163由ASD28token/.844秒变组合4096/23.722秒，主时延慢71.85%；不删失败题。214只差浮点运算关联顺序/一个ULP，506是组合数代替排列数，不能把两者都称语义错误。
+- MMLU主“只答字母”正确25→22，十处跨组质量变化均是正确字母后多写解释；五组逐题首选项均相同，补充提取均38/57，主评分不改。开放MT/Alpaca有速度信号，但176实际judge前向170选A/6选C、88对不同文本换序一致0；该裁判无效，约50%偏好不作为质量保持证据。4超长未评、12相同文本自动平局全部保留。真实自身历史MT速度另表，不混入共享AR首轮的匹配输入比较。
+- 本机最终完整1028 passed/7 skipped/145.75s、矩阵扩充专项16 passed/9.19s；服务器171 passed/10.63s，相关及前次完整XML保留。Windows复算analysis.json/report.md与服务器逐字节相同（report-reconstruction.json）。独立审计1049旧数据/结果SHA、241无旧ID重叠、2199 Git blobs、33101联合构树块/26947缩短、完整矩阵和资源通过；infra三引用保持27e3619。9个MATH复核无新增等价答案，5个代码题25组原测试及20反例重新检查一致，完整24个变化/待复核案例保存quality-audit.json。
+- 模型加载20.119/20.152秒、冷backend3.464/3.364秒包含相应预热wall；18预热/零检查29.467秒。每卡4图/正式新图0、cache411424B，生成峰35.94/36.15GiB；裁判加载19.836秒、前向248.732秒、峰38.86GiB，最终两卡19MiB/0%。成本表独立读取耗时漏记明确列缺项，在线构树/选择/验证仍计入wall。没有新训练/seed/阈值扫描、权重/KV/logits/features或私有历史发布。
+- 结论docs/ASD_PAPER_FINDINGS.md、主表ASD_PAPER_RESULTS.md；公开results/asd-paper，协议ASD_PAPER_PROTOCOL.md。本地执行`python artifacts/publish_paper_results.py`后，`python -m scripts.write_asd_paper_report --input results/asd-paper`及`python -m results.asd-paper.{inspect_results,analyze_mechanism,review_quality,audit_quality,describe_results}`（分别运行模块，非字面花括号）。README/路线表同步，新题现均已观察；保留第一组合作为数学研究主线，未启动后续GPU。
+
+## 2026-10-23 — 七任务扩样本执行启动
+
+- 固定源码60645db3b6322e41362b9b875d5c88818c2c6c0f/2199 canonical Git blobs，source SHA4b29bbcead5ac60a8206f86b189a0f7fc4dfa7973b91b5ecb2ddd1066b883a66；完整本机ZIP28248779B/SHA24258dd3273e8b589c37a19020326a5620d6ebc40cd67a1df3d6dd8af7f1d2f5。实际以旧asd-joint-tree原源目录+77文件delta1840356B/SHA2cd1ffaff262ef5ca7dc9fbf56571c10fbd001e3f7bee434fe63c8a6b12ab55b，逐文件重建全部2199 SHA。
+- 新root `/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper`、owned timeout PID1891785，于15:44:40 UTC启动，outer19000/worker14400/本地judge3600秒。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_paper_pipeline`。严格5组、七任务fixed256、自然EOS/128与自身历史MT分开，参数/样本/评委规则不再修改。
+- 上游Alpaca/FastChat README原始字节包含尾空格，冻结时原样保留，不修改来源文本；后续.gitattributes为这两类原始README豁免whitespace检查。此为来源文本格式，不是算法/数据选择变化。当前尚无正式比较结果。
+- 服务器171 passed/10.63s，随后正式生成启动；本地源外的复算/发布审计脚本准备中。计时元数据复核发现冻结worker未独立记录成本表读取耗时，最终需明确单列为缺项，不估造数字、不为此重跑主性能；表本身仍按既有SHA冻结，全部在线构树/选择/验证成本已计入wall。
+
 ## 2026-10-23 — ASD论文七任务五组扩样本（准备）
 
 - 用户授权直接扩大数学并补齐论文任务。新增asd_paper数据/评分/统计、prepare/run/pipeline/judge/report及测试；复用原树/ASD/引擎，执行函数仅新增可选request_factory/fixed，旧默认保持。

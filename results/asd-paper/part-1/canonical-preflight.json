@@ -1,0 +1,1040 @@
+[
+  {
+    "request_id": "gsm8k:268",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1375",
+      "expected_answer": "1375",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:60",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "17",
+      "expected_answer": "17",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:794",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "32",
+      "expected_answer": "32",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:610",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "65960",
+      "expected_answer": "65960",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:266",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "118000",
+      "expected_answer": "118000",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:1217",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "75",
+      "expected_answer": "75",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:863",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "110",
+      "expected_answer": "110",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:309",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:243",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "250",
+      "expected_answer": "250",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:288",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:507",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2",
+      "expected_answer": "2",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:622",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "7",
+      "expected_answer": "7",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:346",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "9",
+      "expected_answer": "9",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:503",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "18",
+      "expected_answer": "18",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:789",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "4",
+      "expected_answer": "4",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:476",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "5",
+      "expected_answer": "5",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:587",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "30",
+      "expected_answer": "30",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:48",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:913",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:1315",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "5",
+      "expected_answer": "5",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:347",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "36",
+      "expected_answer": "36",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:1020",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "22",
+      "expected_answer": "22",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:1229",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "36",
+      "expected_answer": "36",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:996",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:690",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "5760",
+      "expected_answer": "5760",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:131",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "940",
+      "expected_answer": "940",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:912",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:128",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "880",
+      "expected_answer": "880",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:449",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "112",
+      "expected_answer": "112",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:837",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "120",
+      "expected_answer": "120",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:623",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "8",
+      "expected_answer": "8",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:479",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "15400",
+      "expected_answer": "15400",
+      "error": null
+    }
+  },
+  {
+    "request_id": "math500:264",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1\\frac{4}{5}",
+      "expected_answer": "1\\frac{4}{5}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:180",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3",
+      "expected_answer": "3",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:423",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1440",
+      "expected_answer": "1440",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:355",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "100",
+      "expected_answer": "100",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:436",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "4",
+      "expected_answer": "4",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:179",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "5x - 7y + 11z + 4 = 0",
+      "expected_answer": "5x - 7y + 11z + 4 = 0",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:310",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "49",
+      "expected_answer": "49",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:426",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6\\sqrt{2}",
+      "expected_answer": "6\\sqrt{2}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:98",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2k+2",
+      "expected_answer": "2k+2",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:377",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:69",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "-1",
+      "expected_answer": "-1",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:269",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "6",
+      "expected_answer": "6",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:298",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\begin{pmatrix} -18 \\\\ -49 \\\\ 96 \\end{pmatrix}",
+      "expected_answer": "\\begin{pmatrix} -18 \\\\ -49 \\\\ 96 \\end{pmatrix}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:275",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "7",
+      "expected_answer": "7",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:154",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "2\\sqrt{113}",
+      "expected_answer": "2\\sqrt{113}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": null,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:27",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "78",
+      "expected_answer": "78",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "humaneval:110",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "d86f93d5daa6ce79e2e57e5741c9d1e1e002e48436bc41ba56b30d9c51991148"
+    }
+  },
+  {
+    "request_id": "humaneval:161",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "a804f08f4b3a57b44e2ad19948582cd4b4bf38c86676cf2620484ccc9b6d76f2"
+    }
+  },
+  {
+    "request_id": "humaneval:50",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "d5b4b4d2b2befde961fa4f860dc7679164006a2a93d163284a450eb0dfe47e4c"
+    }
+  },
+  {
+    "request_id": "humaneval:117",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "23967e2fdc5f01a0b391e495295130292f56a04f502eb9cc5b7a9e03efcfe6b1"
+    }
+  },
+  {
+    "request_id": "humaneval:144",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "eb814c5dc8fc2ffd6241cbe04d900f5f7cf81a1476628594332c2b749f18d4b1"
+    }
+  },
+  {
+    "request_id": "humaneval:92",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "b0478691d2c16fd5c6472199f00f3af746186dcc8ac96d06103662f40d81af4b"
+    }
+  },
+  {
+    "request_id": "humaneval:41",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "a4a2be914fcf6ccfe200e819df00f381cb9ceed9a27f14072608e64333c00986"
+    }
+  },
+  {
+    "request_id": "humaneval:93",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "8ddb6820c4a5f7dafef1c80007a51d898eb29d8c7b8fd97c769471957a9c9f96"
+    }
+  },
+  {
+    "request_id": "humaneval:53",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "da56e0ed184f795b9ca691411cf24e6c5d806e4d9697a0d0282425004d1610f7"
+    }
+  },
+  {
+    "request_id": "humaneval:51",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "e608ecb958e7c8d95c3742b28c3b78e9385e095ff74963d9ac7b45ba5c463831"
+    }
+  },
+  {
+    "request_id": "humaneval:158",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "e4a8fdbe3f38aa0bea67201988e42a03874ec5acceb657cec231c5ba30d20a11"
+    }
+  },
+  {
+    "request_id": "humaneval:27",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "c8b2cecdd4063121805a0f01a26d2721e7d3de2c086cc0eabcda9495fb6e3d49"
+    }
+  },
+  {
+    "request_id": "humaneval:89",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "3e54e10f1c78c78b2487111f59858a713f73ec90a7c75539cbf0263b708e54dd"
+    }
+  },
+  {
+    "request_id": "humaneval:54",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "515f210e70ea433758d7ea48a11311eea537c7cb7dcf0015d49aae487c67762a"
+    }
+  },
+  {
+    "request_id": "humaneval:52",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "42ef7df5766c1a2a881bff2ba8fc8e8fe6265b48954b5c1f6c380ef675f28b36"
+    }
+  },
+  {
+    "request_id": "humaneval:156",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "ea9a0ee40f3308fc41dc437519abf0067cb2a09361234b0cc67ef3030d0a3950"
+    }
+  },
+  {
+    "request_id": "mbpp:482",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "29637adec256e0ea0d01e094653c4f9d6f8c3cf713c5a14cdf78f0be31ec205c"
+    }
+  },
+  {
+    "request_id": "mbpp:81",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "9a7f434ddc663a88eea0b9485797870b531c35a932c8fcffdb067c3d83357848"
+    }
+  },
+  {
+    "request_id": "mbpp:163",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "9625d2732a2c08af801b9fab55ce08be31c29869352f11340fd315ccfc886b54"
+    }
+  },
+  {
+    "request_id": "mbpp:292",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "2449dc43fccbf1603cdcd41a98fbd34a356e015beaa8045af7bc5312055efcf5"
+    }
+  },
+  {
+    "request_id": "mbpp:484",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "0ef059b47ffed06d99496258524050cf1c53cdfdb5addc718d3949d4dd1cc36c"
+    }
+  },
+  {
+    "request_id": "mbpp:416",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "0bec90f9197316fba720f31f436ac32544002734283863882280c2f168b798c1"
+    }
+  },
+  {
+    "request_id": "mbpp:138",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "619f3d2139d3fff0e1ea19ff3acce2cc5135f6257d871f6bbea6d7ad8a3a9bd9"
+    }
+  },
+  {
+    "request_id": "mbpp:487",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "58c396f617e7d6919a23abc58843b5e2a5de40af600754f5c3572fa857f4a16a"
+    }
+  },
+  {
+    "request_id": "mbpp:168",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "f280e1ee692ab2b5a9db77afc35a42902a7ec738097f942f7c2b97e99077f2b7"
+    }
+  },
+  {
+    "request_id": "mbpp:43",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "de0bc81be06796b456d4d3b489531f8a2ffa59ca75ca02d207e11daa56592899",
+      "challenge_correct": true,
+      "challenge_error": null
+    }
+  },
+  {
+    "request_id": "mbpp:186",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "6bf7b74d85903f16175d9c62d8ad3c37f7728f68c5b7de76c010e6a4cfd30ea7"
+    }
+  },
+  {
+    "request_id": "mbpp:332",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "a4ffca68032e39f81bf4705f4d62624de3252de7e22a1345414fe9cded4b58e0"
+    }
+  },
+  {
+    "request_id": "mbpp:103",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "f4a14eb7230067eb2bed2b72155de773667fb4454211f1c7745f0c073cf120ac"
+    }
+  },
+  {
+    "request_id": "mbpp:200",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "76d9910db6312571ec440c753c85ffb4d5d7353a3af968b4ad54169ab97cad25"
+    }
+  },
+  {
+    "request_id": "mbpp:411",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "b5cdcb8b051083c727abc88996edff437cf6fdcd8095d84bb0f980a00be717eb"
+    }
+  },
+  {
+    "request_id": "mbpp:394",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "4b69d55e607ab64b050cb9427691db455d2b5878f7ae0ae6aacb3232e7ab2922"
+    }
+  },
+  {
+    "request_id": "mmlu:12378",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:725",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:4670",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:6780",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:2910",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:2352",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:1479",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:250",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "C",
+      "expected_answer": "C",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:4842",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:10089",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:819",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:3335",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:13893",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:913",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:458",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:1597",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:7028",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:5078",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:13257",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:7136",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "C",
+      "expected_answer": "C",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:6066",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:13618",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:6913",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:6490",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:8835",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "C",
+      "expected_answer": "C",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:1450",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:7316",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "request_id": "mmlu:13712",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "B",
+      "expected_answer": "B",
+      "metric": "zero-shot generated choice exact match"
+    }
+  }
+]

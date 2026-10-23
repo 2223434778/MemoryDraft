@@ -1,0 +1,446 @@
+{
+  "frozen_primary_scores_unchanged": true,
+  "reviewed_cases": 24,
+  "additional_math_equivalences": 0,
+  "math": [
+    {
+      "request_id": "math500:154",
+      "review": "Squared lengths: reference 452, strict 520, ASD 40, combination 45; all unequal. Joint repeats the unfolding discussion until length=4096, without a final answer.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "74e23b91a76debcf566d33c8023b4de3954f2768f15b2e2b8300181fff7ab8ab",
+        "ASD": "d64893d7f40cdf97a1778d217d7290d088eb082c76dd8c2006546ac1f9fd9bd3",
+        "BudgetTree": "74e23b91a76debcf566d33c8023b4de3954f2768f15b2e2b8300181fff7ab8ab",
+        "BudgetTree-ASD": "30747174be96351bfd0bb5e757a7f0403aae18b9bd853c0635fdf89f76618633",
+        "JointTree-ASD": "25044c3130396c1dd537e3ea18de6795fa7b6f5724ff2161fa9d0af14017984c"
+      }
+    },
+    {
+      "request_id": "math500:180",
+      "review": "Two-digit common divisors are 10,25,50. Combination alone returns 3; all others return 2.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "f364d39881d88ab3c23dc86342b824361cd1ed1cac8465e5ffe011761dea82a9",
+        "ASD": "d9c31b2f1be3d38050a70d64e4740fd253025c6042b6c747816d0e67b4c9a8af",
+        "BudgetTree": "f364d39881d88ab3c23dc86342b824361cd1ed1cac8465e5ffe011761dea82a9",
+        "BudgetTree-ASD": "7401ebc320e4d6e76bcdb925a337294509e1462306c5ac92501ae030d9d425f2",
+        "JointTree-ASD": "a2e3f51f4266408c467600a8266ebaa36b4f1406009bfaa7db17412358b2fbf1"
+      }
+    },
+    {
+      "request_id": "math500:264",
+      "review": "Reference mixed number is 9/5. Combination 5/3 and other completed answers 5 are unequal. ASD is unfinished at 4096.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "6fee11c1fb1226f3b44ce3d94b48e0aea5d688b930636f6b74b904183a977f88",
+        "ASD": "eeb66e6ab42ec25482afd25cf809b0ed591c7b7ecfd9e4e3ec427ece0cfced76",
+        "BudgetTree": "6fee11c1fb1226f3b44ce3d94b48e0aea5d688b930636f6b74b904183a977f88",
+        "BudgetTree-ASD": "412e8d9de87f2c241b962adef536822bbb6e932f30b532f652ef1c8526c89535",
+        "JointTree-ASD": "9e4e96d14b9b1dab86ff51554ce3e109b113c47dfef0a9371de4f947236e2192"
+      }
+    },
+    {
+      "request_id": "math500:33",
+      "review": "125/9*(3/5)^7 = 243/625, not strict 146/375. ASD and both combinations give the correct fraction.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "e8b12d871591617f01c7e3d62b5ee38470e12da74b0e3c6227e3115d9be96cca",
+        "ASD": "679ebb41d377ff1f4c2c8779c6304a99860c6baae0e06516bc76bf66f011930a",
+        "BudgetTree": "e8b12d871591617f01c7e3d62b5ee38470e12da74b0e3c6227e3115d9be96cca",
+        "BudgetTree-ASD": "d6ada8aca6da9e7b990800060281321ef943c5c6f07f9ee937f12019ed5fd669",
+        "JointTree-ASD": "6b19560136ed26bfb9fe3480388b931f5b65fc4f73014e47d9190eb2a2da9543"
+      }
+    },
+    {
+      "request_id": "math500:355",
+      "review": "Put t=c/(a+b). Using ab<=(a+b)^2/4, E>=8/t+40+96t+64t^2. E-100>=(4t-1)^2*(4t+8)/t>=0; equality at a=b=2c. Joint is unfinished at 4096.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "b88a73052e8702e2ea45aafd6946a28600afd1295330dbc737e641656ace6dcc",
+        "ASD": "be55c83cffb093c70f91077e8f514f60ee117038a8ff7762630c0d3034af7497",
+        "BudgetTree": "b88a73052e8702e2ea45aafd6946a28600afd1295330dbc737e641656ace6dcc",
+        "BudgetTree-ASD": "a078de221606886de1eae4953133416df49c25dcf54d1fa1d9858352ac90da5a",
+        "JointTree-ASD": "3f3f8441f7d14a92f3e7a4eef13f04d6bdf4d4b624f812bac2b2e19f5e5255b4"
+      }
+    },
+    {
+      "request_id": "math500:358",
+      "review": "Equation becomes (x-6)^2/40+y^2/10=1. Unequal positive denominators imply ellipse, not Joint circle.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "5e179f94083a96ba6e31a5a9ba02ac15518e587aa693ca57b06e35ce50b4c64f",
+        "ASD": "117a6ac84dcb29ccc8a3bcb6aa345d47c2c39e2b2eda772c1c1d57d877a1d7f2",
+        "BudgetTree": "5e179f94083a96ba6e31a5a9ba02ac15518e587aa693ca57b06e35ce50b4c64f",
+        "BudgetTree-ASD": "5c1e5957c0f0fa094cc23155d7a95c218f6dc01d13f9eab3fac67d2c39457b2d",
+        "JointTree-ASD": "24e8268ab3982e577a1671c6e619cd548bdc1730e124d2bf700b88d1f8cf9f46"
+      }
+    },
+    {
+      "request_id": "math500:421",
+      "review": "cos(A+B)=-3x gives 12x^3+14x^2-1=0. It is primitive and has no rational root, so minimal cubic coefficient L1 is 27, not Joint 22. ASD repeats an unfinished minimal-polynomial discussion.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "72e15130c5785875f08a656c4fe4e625f49fd57fbdd08fdc8d857e806c0c7a4c",
+        "ASD": "ac5fd67339f8cfd5eea108f2e562bba0aab22cd4b9c00018bcb6e794c18f72e7",
+        "BudgetTree": "72e15130c5785875f08a656c4fe4e625f49fd57fbdd08fdc8d857e806c0c7a4c",
+        "BudgetTree-ASD": "0be3254e661f7ab4edb612738bd9a4e807e3f55b8e312bd5eaff35e72749a996",
+        "JointTree-ASD": "3a5962a6bfd478f723f7c61c427e86f8e5a184c85b9ada70d88d69338ba7c0db"
+      }
+    },
+    {
+      "request_id": "math500:425",
+      "review": "Centroid identity gives sum distances^2=(a^2+b^2+c^2)/3+3*GH^2/4=3R^2. On a 3-4-5 triangle, strict expression is 425/12, Joint 475/24, reference 75/4, so neither is an equivalent form. ASD repeats an unfinished vector identity.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "dc13d9b73188d9bd97aa78dc07d2cd84df9d098053d2f74854be4ea746d64ae9",
+        "ASD": "f23fda52e9855008c8da21470be62d61c46ef20d1d45436a41f4230a84fbc81e",
+        "BudgetTree": "dc13d9b73188d9bd97aa78dc07d2cd84df9d098053d2f74854be4ea746d64ae9",
+        "BudgetTree-ASD": "cc9cd2094c4c93501ca6a3a491df82b5820a0b3ca60f297cc9f1e753b05e2159",
+        "JointTree-ASD": "1ee1ca24419caca21d8708878fc1f6f25552cad93d65727b747f6433d67ec84d"
+      }
+    },
+    {
+      "request_id": "math500:485",
+      "review": "Enumerating the 24 open Hamiltonian paths with the six labelled edge lengths gives minimum 13, not the combination and Joint answer 19.",
+      "additional_equivalent_answers": 0,
+      "output_sha256": {
+        "DFlash": "1c835ae933c9440484297d0379ee0991408f15dc2f0871db55207fc2b724a377",
+        "ASD": "b8d7c781f902cf94a6d258f6103b5bb47800ec352bdc8378b63f1885eb0e14c8",
+        "BudgetTree": "1c835ae933c9440484297d0379ee0991408f15dc2f0871db55207fc2b724a377",
+        "BudgetTree-ASD": "95c30e760c05cb4192a75fee1b0f7fde4775758e0bb046f7aac4f3f6329779ef",
+        "JointTree-ASD": "d1d81bafb76dbaf18ba7a320b52d1b339aca205b258351a5a4aa679fb75f6cba"
+      }
+    }
+  ],
+  "code": [
+    {
+      "request_id": "humaneval:117",
+      "review": "The combinations omit word.lower(), counting uppercase U as a consonant.",
+      "counterexample": "assert select_words(\"Uncle sam\",3)==[\"Uncle\"]",
+      "arms": {
+        "DFlash": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "ASD": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "BudgetTree": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "BudgetTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: Fifth test error: []",
+          "counterexample_passed": false
+        },
+        "JointTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: Fifth test error: []",
+          "counterexample_passed": false
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:83",
+      "review": "Combination enumerates and passes the source tests. Other formulas give 17/19/99 for n=2. Test passing does not establish acceptable asymptotic complexity.",
+      "counterexample": "assert starts_one_ends(2)==18",
+      "arms": {
+        "DFlash": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "BudgetTree": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "BudgetTree-ASD": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "JointTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:93",
+      "review": "ASD handles both cases; other completions fail uppercase vowel replacement after swapcase.",
+      "counterexample": "assert encode(\"test\")==\"TGST\"",
+      "arms": {
+        "DFlash": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: This prints if this assert fails 1 (good for debugging!)",
+          "counterexample_passed": false
+        },
+        "ASD": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "BudgetTree": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: This prints if this assert fails 1 (good for debugging!)",
+          "counterexample_passed": false
+        },
+        "BudgetTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: This prints if this assert fails 2 (good for debugging!)",
+          "counterexample_passed": false
+        },
+        "JointTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError: This prints if this assert fails 1 (good for debugging!)",
+          "counterexample_passed": false
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:506",
+      "review": "Strict and combination compute a binomial coefficient (45), instead of permutation coefficient (90). ASD and Joint use the passing recurrence.",
+      "counterexample": "assert permutation_coefficient(10,2)==90",
+      "arms": {
+        "DFlash": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "ASD": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        },
+        "BudgetTree": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "BudgetTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError",
+          "counterexample_passed": false
+        },
+        "JointTree-ASD": {
+          "original_tests_correct": true,
+          "original_error": null,
+          "counterexample_passed": true
+        }
+      }
+    },
+    {
+      "request_id": "mbpp:214",
+      "review": "Both formulas implement radian-to-degree conversion. Original exact floating-point assertions distinguish multiplication/division association; this is not evidence of a mathematical mistake.",
+      "counterexample": null,
+      "arms": {
+        "DFlash": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError"
+        },
+        "ASD": {
+          "original_tests_correct": true,
+          "original_error": null
+        },
+        "BudgetTree": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError"
+        },
+        "BudgetTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError"
+        },
+        "JointTree-ASD": {
+          "original_tests_correct": false,
+          "original_error": "AssertionError"
+        }
+      }
+    }
+  ],
+  "mbpp214_float_diagnostic": [
+    {
+      "radians": 90,
+      "expected": 5156.620156177409,
+      "left": 5156.620156177409,
+      "grouped": 5156.620156177409,
+      "absolute_error": 0.0,
+      "ulps": 0.0
+    },
+    {
+      "radians": 60,
+      "expected": 3437.746770784939,
+      "left": 3437.7467707849396,
+      "grouped": 3437.746770784939,
+      "absolute_error": 4.547473508864641e-13,
+      "ulps": 1.0
+    },
+    {
+      "radians": 120,
+      "expected": 6875.493541569878,
+      "left": 6875.493541569879,
+      "grouped": 6875.493541569878,
+      "absolute_error": 9.094947017729282e-13,
+      "ulps": 1.0
+    }
+  ],
+  "mmlu": [
+    {
+      "request_id": "mmlu:1026",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:11338",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:12714",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:2056",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:250",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:4842",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:5078",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:6066",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:913",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    },
+    {
+      "request_id": "mmlu:9898",
+      "review": "Changed frozen grade is due to extra explanation after the same correct leading option, not a changed leading choice."
+    }
+  ],
+  "mmlu_leading_choice_diagnostic": {
+    "DFlash": {
+      "requests": 57,
+      "frozen_exact": 32,
+      "leading_choice_correct": 38,
+      "no_leading_choice": 3
+    },
+    "ASD": {
+      "requests": 57,
+      "frozen_exact": 25,
+      "leading_choice_correct": 38,
+      "no_leading_choice": 3
+    },
+    "BudgetTree": {
+      "requests": 57,
+      "frozen_exact": 32,
+      "leading_choice_correct": 38,
+      "no_leading_choice": 3
+    },
+    "BudgetTree-ASD": {
+      "requests": 57,
+      "frozen_exact": 22,
+      "leading_choice_correct": 38,
+      "no_leading_choice": 3
+    },
+    "JointTree-ASD": {
+      "requests": 57,
+      "frozen_exact": 22,
+      "leading_choice_correct": 38,
+      "no_leading_choice": 3
+    }
+  },
+  "changed_leading_choices": [],
+  "local_judge_audit": {
+    "rows": 192,
+    "statuses": {
+      "judged": 176,
+      "identical": 12,
+      "too_long": 4
+    },
+    "labels": {
+      "A": 170,
+      "C": 6
+    },
+    "nonidentical_complete_pairs": 88,
+    "order_consistent_pairs": 0,
+    "conclusion": "The first-token local judge fails the order-swap control. Do not use its approximately 50% preferences as quality preservation evidence."
+  },
+  "mbpp163_truncation": {
+    "DFlash": {
+      "finish_reason": "eos",
+      "quality": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined",
+        "metric": "MBPP original tests withheld from prompt, single greedy completion",
+        "code_sha256": "875c12bfcfb76d206f4ef76ff7e1bfc0062418f0272209965fd8741237792407"
+      },
+      "latency_seconds": 0.9758350400952622,
+      "tokens": 32
+    },
+    "ASD": {
+      "finish_reason": "eos",
+      "quality": {
+        "correct": false,
+        "error": "NameError: name 'tan' is not defined",
+        "metric": "MBPP original tests withheld from prompt, single greedy completion",
+        "code_sha256": "ce2544c8767562260736e3c10e0db4d55606b6f866486410a5c8e3cd3e4ee97e"
+      },
+      "latency_seconds": 0.8390490770107135,
+      "tokens": 28
+    },
+    "BudgetTree": {
+      "finish_reason": "eos",
+      "quality": {
+        "correct": false,
+        "error": "NameError: name 'math' is not defined",
+        "metric": "MBPP original tests withheld from prompt, single greedy completion",
+        "code_sha256": "875c12bfcfb76d206f4ef76ff7e1bfc0062418f0272209965fd8741237792407"
+      },
+      "latency_seconds": 0.6758039370179176,
+      "tokens": 32
+    },
+    "BudgetTree-ASD": {
+      "finish_reason": "length",
+      "quality": {
+        "correct": false,
+        "error": "SyntaxError: too many nested parentheses (<unknown>, line 2)",
+        "metric": "MBPP original tests withheld from prompt, single greedy completion",
+        "code_sha256": "5bf8ae795a4b052a5dcfed441023ebb4712ddb46279f2bd32ed29cb9b121ddf9"
+      },
+      "latency_seconds": 23.728592877974734,
+      "tokens": 4096
+    },
+    "JointTree-ASD": {
+      "finish_reason": "length",
+      "quality": {
+        "correct": false,
+        "error": "SyntaxError: too many nested parentheses (<unknown>, line 2)",
+        "metric": "MBPP original tests withheld from prompt, single greedy completion",
+        "code_sha256": "6f6031472f0ea2d015d1454ee5fb83b078ccf1bd35264b41d20f4b93139ef66a"
+      },
+      "latency_seconds": 31.087859786930494,
+      "tokens": 4096
+    }
+  },
+  "note": "Post-hoc diagnostics only. No primary grade, timing sample, prompt, parameter or selection was changed."
+}

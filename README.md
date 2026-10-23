@@ -1,5 +1,9 @@
 # MemoryDraft
 
+> [ASD论文七任务扩样本](docs/ASD_PAPER_FINDINGS.md)：241新源任务/249匹配输入、五组4980计时+249 AR完成。
+> BudgetTree-ASD在GSM64题较ASD完整省9.86%、等128省11.64%，正确集合保持63/64；MATH32题省11.42%/4.70%、正确26→28。
+> Joint未显示对第一组合的稳定增量。代码有实际失败/截断，MMLU有输出格式变化，开放裁判未通过换序控制；全部正负结果见[主表](docs/ASD_PAPER_RESULTS.md)及[质量复核](results/asd-paper/quality-audit.json)。
+
 > [成本受控树 + ASD](docs/ASD_TREE_FINDINGS.md)：六类各8道已观察开发题，960计时+48 AR完成。
 > GSM8K组合较线性ASD完整请求省7.89%、等128省10.95%，答案均8/8；同等128较严格树再省9.87%。
 > MBPP完整省5.96%、质量保持；MATH/HumanEval有质量取舍，全部正负结果及复现见报告。既有工程成果继续保留。

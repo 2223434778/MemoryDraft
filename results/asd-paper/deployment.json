@@ -1,0 +1,17 @@
+{
+  "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper",
+  "pid": 1891785,
+  "argv": [
+    "/usr/bin/timeout",
+    "19000",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_asd_paper_pipeline"
+  ],
+  "commit": "60645db3b6322e41362b9b875d5c88818c2c6c0f",
+  "source_sha256": "4b29bbcead5ac60a8206f86b189a0f7fc4dfa7973b91b5ecb2ddd1066b883a66",
+  "verified_files": 2199,
+  "delta_sha256": "2cd1ffaff262ef5ca7dc9fbf56571c10fbd001e3f7bee434fe63c8a6b12ab55b",
+  "started_utc": "2026-10-23T15:44:40.323999+00:00"
+}

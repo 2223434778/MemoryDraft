@@ -1,0 +1,16 @@
+{
+  "source_commit": "60645db3b6322e41362b9b875d5c88818c2c6c0f",
+  "canonical_files": 2199,
+  "public_payloads": 31,
+  "timed": 4980,
+  "ar": 249,
+  "realized_second_turns": 40,
+  "old_files": 1049,
+  "selected_unused_source_tasks": 241,
+  "all_source_data_input_repeat_strict_budget_resource_publication_checks": true,
+  "allocation": {
+    "checked_blocks": 33101,
+    "remaining_shortened_blocks": 26947
+  },
+  "protected_refs": true
+}

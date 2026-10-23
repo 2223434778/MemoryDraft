@@ -1,0 +1,9 @@
+{
+  "audit_utc": "2026-10-23T18:54:32.563083+00:00",
+  "source_sha256": "4b29bbcead5ac60a8206f86b189a0f7fc4dfa7973b91b5ecb2ddd1066b883a66",
+  "verified_canonical_files": 2199,
+  "original_zip_bytes": 8773881,
+  "original_zip_sha256": "dc34db532d6e752b4fc8e69b8a76d975059f7038882dccca1bfabc4d5f2155d2",
+  "final_gpu": "0, NVIDIA RTX A6000, 19 MiB, 0 %\n1, NVIDIA RTX A6000, 19 MiB, 0 %\n",
+  "pipeline_log_mtime_utc": "2026-10-23T18:27:09.840235+00:00"
+}
