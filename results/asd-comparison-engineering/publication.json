@@ -1,0 +1,149 @@
+{
+  "archive_sha256": "3eb99594c4d748ef49fbef2baff240683feeaa239df15d0e7fd87321bcd4a0a7",
+  "files": [
+    {
+      "source": "analysis.json",
+      "raw_sha256": "3b324942c3690346700f2b23699314f7b55be08b0e3404152d283a43e3119975",
+      "raw_bytes": 27388,
+      "published": "analysis.json",
+      "published_sha256": "3b324942c3690346700f2b23699314f7b55be08b0e3404152d283a43e3119975",
+      "published_bytes": 27388
+    },
+    {
+      "source": "eval-0/analysis.json",
+      "raw_sha256": "849e7499736ae5257f36ca526fe1c5bc2d6d72286ca02cafb3a78aa99b3f17b5",
+      "raw_bytes": 14574,
+      "published": "eval-0/analysis.json",
+      "published_sha256": "849e7499736ae5257f36ca526fe1c5bc2d6d72286ca02cafb3a78aa99b3f17b5",
+      "published_bytes": 14574
+    },
+    {
+      "source": "eval-0/provenance.json",
+      "raw_sha256": "b062934cc94e8de3ca973c68746daeddc81bb4efb45ab121d08d33c6c43148df",
+      "raw_bytes": 97179,
+      "published": "eval-0/provenance.json",
+      "published_sha256": "b062934cc94e8de3ca973c68746daeddc81bb4efb45ab121d08d33c6c43148df",
+      "published_bytes": 97179
+    },
+    {
+      "source": "eval-0/references.jsonl",
+      "raw_sha256": "ee6c346dbbcb2598c5de7c0766d17386986e43ad2eb3a977b40f694b2e51088d",
+      "raw_bytes": 8112,
+      "published": "eval-0/references.jsonl.gz",
+      "published_sha256": "d307bf9dcbba64cb22f610f5f0dd75614b2b12865feffb4cc17f6395a31d9c4a",
+      "published_bytes": 2514
+    },
+    {
+      "source": "eval-0/rows.jsonl",
+      "raw_sha256": "b927e73b93c8f453d6dc7b355ce8e8189cc29f7e3d6be6199492dd3df45c1c95",
+      "raw_bytes": 842296,
+      "published": "eval-0/rows.jsonl.gz",
+      "published_sha256": "2edc7283ec4b63f33817329dd1d001113cf8388058bb341efd4e60bf6742a40f",
+      "published_bytes": 25821
+    },
+    {
+      "source": "eval-0/warmup.jsonl",
+      "raw_sha256": "0cd7bf86d04d11b24eb9d96ddf5ced417e36b04b867de93a336b7bc12cce521f",
+      "raw_bytes": 25895,
+      "published": "eval-0/warmup.jsonl.gz",
+      "published_sha256": "001ac030f32fb9f9afaf4c63021066545212335f212df9f9d4f4deb5126ac36f",
+      "published_bytes": 1804
+    },
+    {
+      "source": "eval-0.log",
+      "raw_sha256": "364f21e328206449dcd5092c43028652d6567fa24a28f2153a2d8442b03fa2f3",
+      "raw_bytes": 927,
+      "published": "eval-0.log",
+      "published_sha256": "364f21e328206449dcd5092c43028652d6567fa24a28f2153a2d8442b03fa2f3",
+      "published_bytes": 927
+    },
+    {
+      "source": "eval-1/analysis.json",
+      "raw_sha256": "effea14819de42723a3b6d8d02149ff90dcff77e23616382e52b5fabc2c0a4de",
+      "raw_bytes": 14620,
+      "published": "eval-1/analysis.json",
+      "published_sha256": "effea14819de42723a3b6d8d02149ff90dcff77e23616382e52b5fabc2c0a4de",
+      "published_bytes": 14620
+    },
+    {
+      "source": "eval-1/provenance.json",
+      "raw_sha256": "8aeb28e415863aeafd679cd60ce11e8aa58df45d8a75d64864739533f261e843",
+      "raw_bytes": 97185,
+      "published": "eval-1/provenance.json",
+      "published_sha256": "8aeb28e415863aeafd679cd60ce11e8aa58df45d8a75d64864739533f261e843",
+      "published_bytes": 97185
+    },
+    {
+      "source": "eval-1/references.jsonl",
+      "raw_sha256": "28a7055e79292b1e825ab9949d2e95302c217e378692d8b74592058bbc0103c9",
+      "raw_bytes": 7238,
+      "published": "eval-1/references.jsonl.gz",
+      "published_sha256": "4daaa638500329cd4f4ec98efdca9f6776b24f1219cb9fb39617b0dffde8e7e7",
+      "published_bytes": 2526
+    },
+    {
+      "source": "eval-1/rows.jsonl",
+      "raw_sha256": "8364b4ed1c73f3174c40003b5118d2b07f65d0dd1d532ee4587dce07417a3575",
+      "raw_bytes": 933955,
+      "published": "eval-1/rows.jsonl.gz",
+      "published_sha256": "0216de448c532c73eb4c439808e0875a2de5b6c27020d42b568e559ad9c5913d",
+      "published_bytes": 27263
+    },
+    {
+      "source": "eval-1/warmup.jsonl",
+      "raw_sha256": "9cb9d9d6edb93b8a28b5631cce06f83571bcf3fd0cfeef84ac25edf36f938bef",
+      "raw_bytes": 29056,
+      "published": "eval-1/warmup.jsonl.gz",
+      "published_sha256": "fa03daf83996c05be934ceed7dbe4f1fd3f2b9e24c68e607c8e065c9872a1731",
+      "published_bytes": 1805
+    },
+    {
+      "source": "eval-1.log",
+      "raw_sha256": "328cfe31b92ca5a1c9eaf71a443d7d682c6bb3950780be99556381527e3b5309",
+      "raw_bytes": 928,
+      "published": "eval-1.log",
+      "published_sha256": "328cfe31b92ca5a1c9eaf71a443d7d682c6bb3950780be99556381527e3b5309",
+      "published_bytes": 928
+    },
+    {
+      "source": "execution-verification.json",
+      "raw_sha256": "29f346fab89490881ab87386e9e662cffb892d8408e5575ceff7efa69a3b1fa6",
+      "raw_bytes": 766,
+      "published": "execution-verification.json",
+      "published_sha256": "29f346fab89490881ab87386e9e662cffb892d8408e5575ceff7efa69a3b1fa6",
+      "published_bytes": 766
+    },
+    {
+      "source": "report.md",
+      "raw_sha256": "975bd5f548c773a52d42146fe0a6bb2f118e66b1a748da0945c81faa4b28e8c3",
+      "raw_bytes": 445,
+      "published": "report.md",
+      "published_sha256": "975bd5f548c773a52d42146fe0a6bb2f118e66b1a748da0945c81faa4b28e8c3",
+      "published_bytes": 445
+    },
+    {
+      "source": "tests-server.xml",
+      "raw_sha256": "f66afb77a9245ccac2511ca40bfe643db233b3ab05ae01576f763890c20abba6",
+      "raw_bytes": 1685,
+      "published": "tests-server.xml",
+      "published_sha256": "f66afb77a9245ccac2511ca40bfe643db233b3ab05ae01576f763890c20abba6",
+      "published_bytes": 1685
+    },
+    {
+      "source": "tests.log",
+      "raw_sha256": "8b8e065de22ec8a9d490c38bd1509bcaeee7a53f286c0bc89e876d17a6cd316e",
+      "raw_bytes": 243,
+      "published": "tests.log",
+      "published_sha256": "8b8e065de22ec8a9d490c38bd1509bcaeee7a53f286c0bc89e876d17a6cd316e",
+      "published_bytes": 243
+    },
+    {
+      "source": "ASD_COMPARISON_ENGINEERING_SOURCE_MANIFEST.json",
+      "raw_sha256": "90cc5d6ff5290c72513d8376182a42899a8d836f239fcdea54966f4552efe693",
+      "raw_bytes": 233346,
+      "published": "ASD_COMPARISON_ENGINEERING_SOURCE_MANIFEST.json",
+      "published_sha256": "90cc5d6ff5290c72513d8376182a42899a8d836f239fcdea54966f4552efe693",
+      "published_bytes": 233346
+    }
+  ]
+}

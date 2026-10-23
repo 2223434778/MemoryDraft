@@ -1,0 +1,39 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.50s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.50s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.49s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.37s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+completed confirm gsm8k gsm8k:260 20
+completed confirm gsm8k gsm8k:53 40
+completed confirm gsm8k gsm8k:180 60
+completed confirm gsm8k gsm8k:986 80
+completed confirm gsm8k gsm8k:634 100
+completed confirm gsm8k gsm8k:311 120
+completed confirm math500 math500:283 140
+completed confirm math500 math500:207 160
+completed confirm math500 math500:189 180
+completed confirm math500 math500:194 200
+completed confirm math500 math500:278 220
+completed confirm math500 math500:159 240
+completed confirm mbpp mbpp:218 260
+completed confirm mbpp mbpp:462 280
+completed confirm mbpp mbpp:473 300
+completed confirm mbpp mbpp:429 320
+completed confirm mbpp mbpp:111 340
+completed confirm mbpp mbpp:468 360
+completed confirm humaneval humaneval:22 380
+completed confirm humaneval humaneval:58 400
+completed confirm humaneval humaneval:75 420
+completed confirm humaneval humaneval:148 440
+completed confirm humaneval humaneval:47 460
+completed confirm humaneval humaneval:143 480
+completed confirm squad squad:5725c7f5271a42140099d1a3 500
+completed confirm squad squad:571163172419e314009555e8 520
+completed confirm squad squad:5728231fff5b5019007d9dd7 540
+completed confirm squad squad:572a058aaf94a219006aa752 560
+completed confirm squad squad:56e0fe85e3433e1400422a6a 580
+completed confirm squad squad:57275411dd62a815002e9b33 600
+completed confirm json json:6 620
+completed confirm json json:9 640
+completed confirm json json:18 660
+completed confirm json json:11 680
+completed confirm json json:14 700
+completed confirm json json:26 720

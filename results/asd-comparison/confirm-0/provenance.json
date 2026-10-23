@@ -1,0 +1,4007 @@
+{
+  "status": "complete",
+  "phase": "confirm",
+  "shard": 0,
+  "selection": {
+    "gsm8k": [
+      "base/ASD-Utility",
+      "ordinary-position/ASD"
+    ],
+    "humaneval": [
+      "base/tree32",
+      "asd-prefix/ASD"
+    ],
+    "json": [
+      "base/ASD-Utility",
+      "ordinary-position/DFlash"
+    ],
+    "math500": [
+      "base/ASD-Utility",
+      "ordinary-position/ASD-Utility"
+    ],
+    "mbpp": [
+      "base/ASD-Utility",
+      "ordinary-position/ASD"
+    ],
+    "squad": [
+      "base/ASD-Run",
+      "asd-prefix/DFlash"
+    ]
+  },
+  "repeats": {
+    "natural": 3,
+    "prefix": 2
+  },
+  "selection_sha256": "798d1f3c5c8c6fdc7ea9833f5e90de00d89e02b29b4a524f7e8a58f81b775c2b",
+  "runtime": {
+    "version": "0.3.0",
+    "engine": {
+      "backend": "dflash",
+      "synthetic": false,
+      "methods": [
+        "AR",
+        "DFlash",
+        "R+DFlash"
+      ],
+      "torch": "2.5.1+cu124",
+      "transformers": "4.57.3",
+      "device": "cuda:0",
+      "dtype": "torch.float32",
+      "gpu": "NVIDIA RTX A6000",
+      "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+      "execution_profile": "rmsnorm-inductor",
+      "approximate_methods": [],
+      "asd": null,
+      "draft_adapter": null,
+      "prefix_cache": null,
+      "regional_compilation": {
+        "backend": "inductor",
+        "graphs": 4,
+        "max_graphs": 8,
+        "max_backend_seconds": 300.0,
+        "setup_seconds": 0.004028121009469032,
+        "binding_lifetime": "engine; lazy compilation is charged inside generate"
+      },
+      "implementation": "DFlash uses the audited adapter with R disabled; native control remains in research scripts",
+      "config": {
+        "backend": "dflash",
+        "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison-v2/configs/../models/qwen3-8b",
+        "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+        "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison-v2/configs/../models/dflash-qwen3-8b",
+        "device": "cuda:0",
+        "dtype": "float32",
+        "attention": "eager",
+        "db": null,
+        "threads": 4,
+        "max_input_tokens": 8192,
+        "max_new_tokens": 4096,
+        "template_options": {
+          "enable_thinking": false
+        },
+        "reuse": {
+          "max_tokens": 32,
+          "min_match": 6,
+          "cooldown_rounds": 1,
+          "max_pending_tokens": 1024
+        },
+        "retrieval": "suffix",
+        "alignment": {},
+        "benefit": {},
+        "prefix_risk": {},
+        "execution_profile": "rmsnorm-inductor",
+        "asd": {},
+        "draft_adapter": {},
+        "prefix_cache": {}
+      }
+    },
+    "packages": {
+      "torch": "2.5.1",
+      "transformers": "4.57.3",
+      "numpy": "1.26.4",
+      "pydivsufsort": "0.0.19",
+      "fastapi": "0.111.1",
+      "uvicorn": "0.30.2"
+    },
+    "source": {
+      "sha256": "633566235e4f9269bea52465a4d6f01a0ba43b188e7c458823d79ed513a62eb7",
+      "files": {
+        "__init__.py": "17894f6fb71652d0ed97f8ab778ad3ab1ccf87b0e929ad0260e52d47c47c4cfe",
+        "__main__.py": "b473c1add851f6682bf9e5891d37fc20ab81c7ff819f2db2e71cdc013ff4bffd",
+        "assets/DFLASH_LICENSE.txt": "6fd2aebd899c0b48ea9abb845aef043c6dadff00a6726a10a1bc32db528a5422",
+        "assets/dflash-manifest.json": "eb5e6b37ac58f40e31e8ba132eff2a15cea38a0f29577d9b22f8f2abdfb62c72",
+        "backends/__init__.py": "208222a0f3b8a2bc693067984e2aae736aa3612214dc304f0c1f420baa8d5e7e",
+        "backends/allocation.py": "36a23833b5119a07dfec1f2fd6739bf56a426f0a75380a3a7218360b9cda6770",
+        "backends/asd.py": "bd307a1fb0cb2307e6fa2fbccf4cb39030b66754704b5d6ec50973c2feb59f84",
+        "backends/asd_confidence.py": "91813c58034245b91d15a91f78a35f10a0a8e3a8e592888fe0308c7b43dbdddc",
+        "backends/asd_cpu.py": "588edb3fd70b519391cff05fa091681cdb66780dd02524d6e702d8405d0f33c8",
+        "backends/candidate_repair.py": "ce461442d91b34d1085f9f2e922759f2301d851095a8585fb7b7bad585281ee4",
+        "backends/dflash_reuse.py": "d0b12a796135c08f3951318def90b8059ccf81b935d935e46a32a4a5a036e9c2",
+        "backends/draft_tree.py": "ed90a33ea6ab5a0d06fba318bb5a3e63b3bf5fc48bf97482ce913a1b57086559",
+        "backends/regional_compile.py": "540f964d5ace613292b368be049a1a3ff24df2428cb737979121c59083786b6d",
+        "backends/transformers.py": "87e94724b93b621bcd357cc1676d8b4190097538b0b5ea1aad95ccf61ca1e038",
+        "cli.py": "afd4e23b6125f88fb65266476cec1c10c7904a581849554ee281eccab4dab018",
+        "drafters/__init__.py": "1a5b21ac5f210db7673cd9f8d627464cc9138f582ecb7cc6fba930835a6bc035",
+        "drafters/candidates.py": "9c39006cfcb123fdfe71c56ef700505693403ea63d178235ea770ae0329acc70",
+        "evaluation/__init__.py": "ba48f0685d25b843017b25108e832409ff4c410692a972197af70a33eb1798ef",
+        "evaluation/adaptation.py": "ca0ba393927afc8ce32b6f39559096d14297c97ed507ec012b913a84569a6388",
+        "evaluation/adaptation_followup.py": "24e5d6e2f91a7fcfa2012eaf2981d28a5a9d1fa994efefa42caa1edf24e7c44d",
+        "evaluation/asd_bench.py": "56dab84b122f38fc1d6ce2eeb49b21c3a50342d258bc9d494349580b30d1bb94",
+        "evaluation/asd_budget.py": "a64b802b4cadf89b6f16e4519d2eff5e0662f1ed8bff082aee6c2ed838481897",
+        "evaluation/asd_comparison.py": "78485bdb53905229d7be15c2ec74a7c0313f6a018858ac39249209707b603b35",
+        "evaluation/asd_suite.py": "1bf7a0d3fad234e5361d9fcde7c3cc79148b315755315eb0e16aab93fcfa991b",
+        "evaluation/benefit_probe.py": "bb383dce3b812da7e6f29c4b713b35345615784ec5c28d603d76b6b156a1365b",
+        "evaluation/config_revisions.py": "381a4401c8060142cfe2b3fcac25f771eab122f622713bf9b46ab3acda2c2d3d",
+        "evaluation/distillation.py": "243b20f9bd067441bddb07121409fc6dc13a8ae698e7e1835a3824b7f8b2849a",
+        "evaluation/guided_validation.py": "0cedea63939e43fe1d9df3ca912839bad62d21d42c5f66524723b85067e47bd6",
+        "evaluation/history_alignment.py": "90dc41a4ff8529dc2b3898edfa109d38a8c9eefdc33c2ad6b511ab366983184b",
+        "evaluation/long_context.py": "5018a07079ed1fdf59504c08a2f5e4f508031d3604ce3e47fbaeb21b1e623568",
+        "evaluation/matrix_probe.py": "32cec17e58a0f69c41b370d713a9becb18d11c1cfcc795fb1a72584bdcb602ff",
+        "evaluation/prefix_cache.py": "45926cb4ad7976368963c8701d5c8c134ebc19ff5b1ad26561e55970c6b799a4",
+        "evaluation/prefix_risk_continuation.py": "6f8045918adb7d8bc2f156396f343658b2cf566b5568c5129af6b29b0c66d74e",
+        "evaluation/prefix_risk_probe.py": "f8df935a5f7256d145e382451001de43d3591a3796fa0dbf2e297747ec013e36",
+        "evaluation/prefixes.py": "84f5fd74b864e88b7a671efdf77543743babc093e5a20e3b309bbd390a6a3170",
+        "evaluation/release_triage.py": "48cfc02ecea6bcb95305710eb937014ad411fddcdd383defaf11bd5715d59b2f",
+        "evaluation/replay.py": "f08534ea9fa9900409fa48417ec5f1e2afd98cd19cde18647f21b0d127f0256e",
+        "evaluation/reuse_attribution.py": "6a66ad93d8b0520285d16816455208ba02ad059a0dddb668b906a3daf2cbb2a1",
+        "evaluation/reuse_cases.py": "2aad3b4abb776839163a75552b45d2844ea665b2c4b599ebcb71a7022c80d8cb",
+        "evaluation/runtime_migration.py": "73c93ac51f2515dafaf59b94a1144aa5d659b2afa65a9e5ee885c5548c400965",
+        "evaluation/splice_probe.py": "6976663d25e54909af64525983f42d8dee9daf0efd5f70267b54a1a0652b9cef",
+        "evaluation/transport_diagnosis.py": "4d0502cccd2d7bc482a3a2b4aeeab7a2182278f37c25a1e5e3e73c69e3b26e3a",
+        "evaluation/transport_probe.py": "e86283f367c7cf149f90d2ffd911e5c746e011308885073027c18de6070c4296",
+        "evaluation/transport_validation.py": "460ee65d9ef8523a02d15083e80c27a4d03de21710d1d492253de8b89e98afab",
+        "memory/__init__.py": "eec3bd08ca36d4808e2476909d1cd410dd52eee93eba4c4fc0e536d7d346e9ad",
+        "memory/store.py": "e04567f4fdef99d587c5d4e26c1675c621d490a4c6da35d9654e409fdf35e364",
+        "retrieval/__init__.py": "c9e1781fa6038cd0b240256e9d5de855129452fe71cf64e1a4d4ef1ca3a9beb8",
+        "retrieval/acceptance.py": "bd6d9eed51177dc4c2c5b6b8d5888d8fb2bae21c1249a40ef1b59bcc4c4ff244",
+        "retrieval/arctic.py": "70bb5c23d0b2b778d8496fa25d25afb3766225df5b44a6325f4cf2ac1e9b1382",
+        "retrieval/benefit.py": "3a51e5bb8e118c498716e7cc02bf46cd8368b49a79f8a98c140982432db1e94e",
+        "retrieval/guided.py": "7ff9cba41845bc338e936ce11dfbbc1c1333296225fe1c5fd354c251954d66b6",
+        "retrieval/matrix.py": "eca8429456b2fec307aab930d065d2127925323ebfb7f73de1a6aa1648e7d335",
+        "retrieval/pool.py": "853189bad99b1ee3ad671a60e9693b77baf19ee44f0f8e164f73dccad8f983bb",
+        "retrieval/prefix_risk.py": "a410a6768aad741f0bb51933607baa30a39b8dca4c0151908be5a046fc2127eb",
+        "retrieval/reuse.py": "acce3044fef35f44a41724e0c9ec169888798caf7c5ce3b5f887eedce33bc8b0",
+        "retrieval/splice.py": "f787ec85989750f849daeeb736cfc3616cf44d698c0c53971a5f05f917a6cbe8",
+        "retrieval/suffix.py": "3b961481783bde2177ed5c8515424037aa3bcff1cbc5db05e5268b2426321bdf",
+        "retrieval/transport.py": "86db3b1b5c79ef184252019d03911038b5747a0583bf7d436b2d86d23ca2fdff",
+        "routing/__init__.py": "2879ed1b9af14a69b3e57fc4028f72ef2738166a2cc498afc31524775ee0049f",
+        "routing/policy.py": "4ba6ce2378de2a52c7e652b76391864c2c78e8e8da6ed004be1d4895d50b7299",
+        "runtime/__init__.py": "7dfa5205ea91fa64acd53a47d678278adf869be0819d699df9bc44e03d306fcd",
+        "runtime/benchmark.py": "c53af5cb12685a4451fb9589023d637c044f1cc7af1fd4fe3940ad85e9258276",
+        "runtime/cli.py": "089b9c91d6cc8abc9f0bc5f1d40d9e6d128fcf92dbc809d4bcd16925fde6d404",
+        "runtime/config.py": "18c2b6b01f9d182740869686a78da4bea482b68d6a67d6f2b6076a8d151a7c84",
+        "runtime/contracts.py": "a76d56463c119916d948928d86977524a276848fb0f3f690c3e441ccf3fd237d",
+        "runtime/demo.py": "8be2aa9a60cb5c6e641f3a1ac22d43bc3e23b9519d9498bba8b7d6f83df88da7",
+        "runtime/draft_adapter.py": "2b96102eba752192f39fe89233b92315000d2ccc4d2315c5d7c2a183cc2c7ff2",
+        "runtime/engine.py": "2086648c47461f58367b63365e3d15e681ac2543a93737f7875389e1b8a4d1aa",
+        "runtime/prefix_cache.py": "3b6a275cf2a4391533943e68ffaad5b87ab42f1cf8bc45d28b245ce58240ecb8",
+        "serving/__init__.py": "7b4d5d621027fad0c986aa4c0820c0f105aec807b1dc9872355dd00160486fda",
+        "serving/app.py": "cf3b1e405712dd94c6865006224a5047bebefcd6af6b77d9cf1b9e52fe6b3f25",
+        "serving/loadtest.py": "5b5c786adbb7820b33a27e232bde8ad0ff2db91c3f2a8a51a39ac764d6d9b8a8",
+        "serving/worker.py": "d28659db45f66fd43da5125493c4c611bdaa8c3261e5739cb00041510acb526f"
+      }
+    },
+    "timing": "Synchronized engine latency includes snapshot, tokenization, indexing, generation and decode; load/warmup excluded"
+  },
+  "compiler_after_warmup": {
+    "backend": "inductor",
+    "fullgraph": true,
+    "dynamic": true,
+    "max_autotune": false,
+    "cudagraphs": false,
+    "regions": [
+      "target.model.layers.0.self_attn.q_norm",
+      "target.model.layers.0.self_attn.k_norm",
+      "target.model.layers.0.input_layernorm",
+      "target.model.layers.0.post_attention_layernorm",
+      "target.model.layers.1.self_attn.q_norm",
+      "target.model.layers.1.self_attn.k_norm",
+      "target.model.layers.1.input_layernorm",
+      "target.model.layers.1.post_attention_layernorm",
+      "target.model.layers.2.self_attn.q_norm",
+      "target.model.layers.2.self_attn.k_norm",
+      "target.model.layers.2.input_layernorm",
+      "target.model.layers.2.post_attention_layernorm",
+      "target.model.layers.3.self_attn.q_norm",
+      "target.model.layers.3.self_attn.k_norm",
+      "target.model.layers.3.input_layernorm",
+      "target.model.layers.3.post_attention_layernorm",
+      "target.model.layers.4.self_attn.q_norm",
+      "target.model.layers.4.self_attn.k_norm",
+      "target.model.layers.4.input_layernorm",
+      "target.model.layers.4.post_attention_layernorm",
+      "target.model.layers.5.self_attn.q_norm",
+      "target.model.layers.5.self_attn.k_norm",
+      "target.model.layers.5.input_layernorm",
+      "target.model.layers.5.post_attention_layernorm",
+      "target.model.layers.6.self_attn.q_norm",
+      "target.model.layers.6.self_attn.k_norm",
+      "target.model.layers.6.input_layernorm",
+      "target.model.layers.6.post_attention_layernorm",
+      "target.model.layers.7.self_attn.q_norm",
+      "target.model.layers.7.self_attn.k_norm",
+      "target.model.layers.7.input_layernorm",
+      "target.model.layers.7.post_attention_layernorm",
+      "target.model.layers.8.self_attn.q_norm",
+      "target.model.layers.8.self_attn.k_norm",
+      "target.model.layers.8.input_layernorm",
+      "target.model.layers.8.post_attention_layernorm",
+      "target.model.layers.9.self_attn.q_norm",
+      "target.model.layers.9.self_attn.k_norm",
+      "target.model.layers.9.input_layernorm",
+      "target.model.layers.9.post_attention_layernorm",
+      "target.model.layers.10.self_attn.q_norm",
+      "target.model.layers.10.self_attn.k_norm",
+      "target.model.layers.10.input_layernorm",
+      "target.model.layers.10.post_attention_layernorm",
+      "target.model.layers.11.self_attn.q_norm",
+      "target.model.layers.11.self_attn.k_norm",
+      "target.model.layers.11.input_layernorm",
+      "target.model.layers.11.post_attention_layernorm",
+      "target.model.layers.12.self_attn.q_norm",
+      "target.model.layers.12.self_attn.k_norm",
+      "target.model.layers.12.input_layernorm",
+      "target.model.layers.12.post_attention_layernorm",
+      "target.model.layers.13.self_attn.q_norm",
+      "target.model.layers.13.self_attn.k_norm",
+      "target.model.layers.13.input_layernorm",
+      "target.model.layers.13.post_attention_layernorm",
+      "target.model.layers.14.self_attn.q_norm",
+      "target.model.layers.14.self_attn.k_norm",
+      "target.model.layers.14.input_layernorm",
+      "target.model.layers.14.post_attention_layernorm",
+      "target.model.layers.15.self_attn.q_norm",
+      "target.model.layers.15.self_attn.k_norm",
+      "target.model.layers.15.input_layernorm",
+      "target.model.layers.15.post_attention_layernorm",
+      "target.model.layers.16.self_attn.q_norm",
+      "target.model.layers.16.self_attn.k_norm",
+      "target.model.layers.16.input_layernorm",
+      "target.model.layers.16.post_attention_layernorm",
+      "target.model.layers.17.self_attn.q_norm",
+      "target.model.layers.17.self_attn.k_norm",
+      "target.model.layers.17.input_layernorm",
+      "target.model.layers.17.post_attention_layernorm",
+      "target.model.layers.18.self_attn.q_norm",
+      "target.model.layers.18.self_attn.k_norm",
+      "target.model.layers.18.input_layernorm",
+      "target.model.layers.18.post_attention_layernorm",
+      "target.model.layers.19.self_attn.q_norm",
+      "target.model.layers.19.self_attn.k_norm",
+      "target.model.layers.19.input_layernorm",
+      "target.model.layers.19.post_attention_layernorm",
+      "target.model.layers.20.self_attn.q_norm",
+      "target.model.layers.20.self_attn.k_norm",
+      "target.model.layers.20.input_layernorm",
+      "target.model.layers.20.post_attention_layernorm",
+      "target.model.layers.21.self_attn.q_norm",
+      "target.model.layers.21.self_attn.k_norm",
+      "target.model.layers.21.input_layernorm",
+      "target.model.layers.21.post_attention_layernorm",
+      "target.model.layers.22.self_attn.q_norm",
+      "target.model.layers.22.self_attn.k_norm",
+      "target.model.layers.22.input_layernorm",
+      "target.model.layers.22.post_attention_layernorm",
+      "target.model.layers.23.self_attn.q_norm",
+      "target.model.layers.23.self_attn.k_norm",
+      "target.model.layers.23.input_layernorm",
+      "target.model.layers.23.post_attention_layernorm",
+      "target.model.layers.24.self_attn.q_norm",
+      "target.model.layers.24.self_attn.k_norm",
+      "target.model.layers.24.input_layernorm",
+      "target.model.layers.24.post_attention_layernorm",
+      "target.model.layers.25.self_attn.q_norm",
+      "target.model.layers.25.self_attn.k_norm",
+      "target.model.layers.25.input_layernorm",
+      "target.model.layers.25.post_attention_layernorm",
+      "target.model.layers.26.self_attn.q_norm",
+      "target.model.layers.26.self_attn.k_norm",
+      "target.model.layers.26.input_layernorm",
+      "target.model.layers.26.post_attention_layernorm",
+      "target.model.layers.27.self_attn.q_norm",
+      "target.model.layers.27.self_attn.k_norm",
+      "target.model.layers.27.input_layernorm",
+      "target.model.layers.27.post_attention_layernorm",
+      "target.model.layers.28.self_attn.q_norm",
+      "target.model.layers.28.self_attn.k_norm",
+      "target.model.layers.28.input_layernorm",
+      "target.model.layers.28.post_attention_layernorm",
+      "target.model.layers.29.self_attn.q_norm",
+      "target.model.layers.29.self_attn.k_norm",
+      "target.model.layers.29.input_layernorm",
+      "target.model.layers.29.post_attention_layernorm",
+      "target.model.layers.30.self_attn.q_norm",
+      "target.model.layers.30.self_attn.k_norm",
+      "target.model.layers.30.input_layernorm",
+      "target.model.layers.30.post_attention_layernorm",
+      "target.model.layers.31.self_attn.q_norm",
+      "target.model.layers.31.self_attn.k_norm",
+      "target.model.layers.31.input_layernorm",
+      "target.model.layers.31.post_attention_layernorm",
+      "target.model.layers.32.self_attn.q_norm",
+      "target.model.layers.32.self_attn.k_norm",
+      "target.model.layers.32.input_layernorm",
+      "target.model.layers.32.post_attention_layernorm",
+      "target.model.layers.33.self_attn.q_norm",
+      "target.model.layers.33.self_attn.k_norm",
+      "target.model.layers.33.input_layernorm",
+      "target.model.layers.33.post_attention_layernorm",
+      "target.model.layers.34.self_attn.q_norm",
+      "target.model.layers.34.self_attn.k_norm",
+      "target.model.layers.34.input_layernorm",
+      "target.model.layers.34.post_attention_layernorm",
+      "target.model.layers.35.self_attn.q_norm",
+      "target.model.layers.35.self_attn.k_norm",
+      "target.model.layers.35.input_layernorm",
+      "target.model.layers.35.post_attention_layernorm",
+      "target.model.norm",
+      "draft.layers.0.self_attn.q_norm",
+      "draft.layers.0.self_attn.k_norm",
+      "draft.layers.0.input_layernorm",
+      "draft.layers.0.post_attention_layernorm",
+      "draft.layers.1.self_attn.q_norm",
+      "draft.layers.1.self_attn.k_norm",
+      "draft.layers.1.input_layernorm",
+      "draft.layers.1.post_attention_layernorm",
+      "draft.layers.2.self_attn.q_norm",
+      "draft.layers.2.self_attn.k_norm",
+      "draft.layers.2.input_layernorm",
+      "draft.layers.2.post_attention_layernorm",
+      "draft.layers.3.self_attn.q_norm",
+      "draft.layers.3.self_attn.k_norm",
+      "draft.layers.3.input_layernorm",
+      "draft.layers.3.post_attention_layernorm",
+      "draft.layers.4.self_attn.q_norm",
+      "draft.layers.4.self_attn.k_norm",
+      "draft.layers.4.input_layernorm",
+      "draft.layers.4.post_attention_layernorm",
+      "draft.norm",
+      "draft.hidden_norm"
+    ],
+    "graph_count": 4,
+    "events": [
+      {
+        "index": 0,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "40",
+              "4096"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "4096"
+            ]
+          }
+        ],
+        "backend_seconds": 2.2822319470578805
+      },
+      {
+        "index": 1,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "s1"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "40",
+              "32",
+              "128"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "128"
+            ]
+          }
+        ],
+        "backend_seconds": 0.631373873911798
+      },
+      {
+        "index": 2,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "1",
+              "4096"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "4096"
+            ]
+          }
+        ],
+        "backend_seconds": 0.45287042192649096
+      },
+      {
+        "index": 3,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "1",
+              "32",
+              "128"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "128"
+            ]
+          }
+        ],
+        "backend_seconds": 0.1357963050249964
+      }
+    ],
+    "backend_seconds": 3.502272547921166,
+    "compilation_time_metrics": {
+      "_compile.compile_inner": [
+        2.552051544189453,
+        0.689244270324707,
+        0.4809277057647705,
+        0.17029213905334473
+      ],
+      "OutputGraph.call_user_compiler": [
+        2.2823598384857178,
+        0.6314754486083984,
+        0.4529585838317871,
+        0.13589239120483398
+      ],
+      "create_aot_dispatcher_function": [
+        1.5894989967346191,
+        0.625476598739624,
+        0.44974303245544434,
+        0.13109064102172852
+      ],
+      "compile_fx.<locals>.fw_compiler_base": [
+        1.5263283252716064,
+        0.5708816051483154,
+        0.4157218933105469,
+        0.08272433280944824
+      ],
+      "compile_fx_inner": [
+        1.20924711227417,
+        0.5686883926391602,
+        0.4143555164337158,
+        0.08061075210571289
+      ],
+      "GraphLowering.run": [
+        0.010164022445678711,
+        0.009729862213134766,
+        0.00446319580078125,
+        0.006747007369995117
+      ],
+      "GraphLowering.compile_to_module": [
+        0.6917383670806885,
+        0.5372543334960938,
+        0.39278554916381836,
+        0.055725812911987305
+      ],
+      "Scheduler.__init__": [
+        0.013001680374145508,
+        0.01872730255126953,
+        0.0060787200927734375,
+        0.008616924285888672
+      ],
+      "Scheduler.codegen": [
+        0.3484804630279541,
+        0.0812234878540039,
+        0.006724119186401367,
+        0.022053241729736328
+      ],
+      "WrapperCodeGen.generate": [
+        0.0006358623504638672,
+        0.0006721019744873047,
+        0.0004565715789794922,
+        0.0006053447723388672
+      ],
+      "CachingAutotuner.benchmark_all_configs": [
+        0.12868618965148926,
+        0.12870502471923828
+      ]
+    },
+    "outer_compile_seconds": 3.8925156593322754,
+    "compile_times": "TorchDynamo compilation metrics:\nFunction                                Runtimes (s)\n--------------------------------------  ------------------------------\n_compile.compile_inner                  2.5521, 0.6892, 0.4809, 0.1703\nOutputGraph.call_user_compiler          2.2824, 0.6315, 0.4530, 0.1359\ncreate_aot_dispatcher_function          1.5895, 0.6255, 0.4497, 0.1311\ncompile_fx.<locals>.fw_compiler_base    1.5263, 0.5709, 0.4157, 0.0827\ncompile_fx_inner                        1.2092, 0.5687, 0.4144, 0.0806\nGraphLowering.run                       0.0102, 0.0097, 0.0045, 0.0067\nGraphLowering.compile_to_module         0.6917, 0.5373, 0.3928, 0.0557\nScheduler.__init__                      0.0130, 0.0187, 0.0061, 0.0086\nScheduler.codegen                       0.3485, 0.0812, 0.0067, 0.0221\nWrapperCodeGen.generate                 0.0006, 0.0007, 0.0005, 0.0006\nCachingAutotuner.benchmark_all_configs  0.1287, 0.1287",
+    "switch_seconds": 0.0003508320078253746,
+    "float32_matmul_precision": "highest",
+    "allow_tf32": false,
+    "inventory": [
+      {
+        "region": "target.model.layers.0.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.hidden_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      }
+    ]
+  },
+  "adapters": {
+    "asd-prefix": "885375d37670df6ec60e756bb018b9c5efc0f3121be23ee9c5424e14690822e0",
+    "ordinary-position": "42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e"
+  },
+  "task_ids": [
+    "gsm8k:736",
+    "gsm8k:167",
+    "gsm8k:351",
+    "gsm8k:923",
+    "gsm8k:171",
+    "gsm8k:395",
+    "math500:317",
+    "math500:89",
+    "math500:196",
+    "math500:466",
+    "math500:229",
+    "math500:404",
+    "mbpp:428",
+    "mbpp:67",
+    "mbpp:302",
+    "mbpp:93",
+    "mbpp:421",
+    "mbpp:334",
+    "humaneval:153",
+    "humaneval:63",
+    "humaneval:30",
+    "humaneval:123",
+    "humaneval:138",
+    "humaneval:73",
+    "squad:5726642f5951b619008f7157",
+    "squad:5730b4282461fd1900a9cfc8",
+    "squad:573028fa04bcaa1900d77287",
+    "squad:5727cd0f4b864d1900163d73",
+    "squad:56f8b9839e9bad19000a03c2",
+    "squad:56e7667e37bdd419002c3f4a",
+    "json:30",
+    "json:0",
+    "json:23",
+    "json:17",
+    "json:24",
+    "json:19"
+  ],
+  "count": 720,
+  "peak_gpu_bytes": 37831543808,
+  "compiler": {
+    "backend": "inductor",
+    "fullgraph": true,
+    "dynamic": true,
+    "max_autotune": false,
+    "cudagraphs": false,
+    "regions": [
+      "target.model.layers.0.self_attn.q_norm",
+      "target.model.layers.0.self_attn.k_norm",
+      "target.model.layers.0.input_layernorm",
+      "target.model.layers.0.post_attention_layernorm",
+      "target.model.layers.1.self_attn.q_norm",
+      "target.model.layers.1.self_attn.k_norm",
+      "target.model.layers.1.input_layernorm",
+      "target.model.layers.1.post_attention_layernorm",
+      "target.model.layers.2.self_attn.q_norm",
+      "target.model.layers.2.self_attn.k_norm",
+      "target.model.layers.2.input_layernorm",
+      "target.model.layers.2.post_attention_layernorm",
+      "target.model.layers.3.self_attn.q_norm",
+      "target.model.layers.3.self_attn.k_norm",
+      "target.model.layers.3.input_layernorm",
+      "target.model.layers.3.post_attention_layernorm",
+      "target.model.layers.4.self_attn.q_norm",
+      "target.model.layers.4.self_attn.k_norm",
+      "target.model.layers.4.input_layernorm",
+      "target.model.layers.4.post_attention_layernorm",
+      "target.model.layers.5.self_attn.q_norm",
+      "target.model.layers.5.self_attn.k_norm",
+      "target.model.layers.5.input_layernorm",
+      "target.model.layers.5.post_attention_layernorm",
+      "target.model.layers.6.self_attn.q_norm",
+      "target.model.layers.6.self_attn.k_norm",
+      "target.model.layers.6.input_layernorm",
+      "target.model.layers.6.post_attention_layernorm",
+      "target.model.layers.7.self_attn.q_norm",
+      "target.model.layers.7.self_attn.k_norm",
+      "target.model.layers.7.input_layernorm",
+      "target.model.layers.7.post_attention_layernorm",
+      "target.model.layers.8.self_attn.q_norm",
+      "target.model.layers.8.self_attn.k_norm",
+      "target.model.layers.8.input_layernorm",
+      "target.model.layers.8.post_attention_layernorm",
+      "target.model.layers.9.self_attn.q_norm",
+      "target.model.layers.9.self_attn.k_norm",
+      "target.model.layers.9.input_layernorm",
+      "target.model.layers.9.post_attention_layernorm",
+      "target.model.layers.10.self_attn.q_norm",
+      "target.model.layers.10.self_attn.k_norm",
+      "target.model.layers.10.input_layernorm",
+      "target.model.layers.10.post_attention_layernorm",
+      "target.model.layers.11.self_attn.q_norm",
+      "target.model.layers.11.self_attn.k_norm",
+      "target.model.layers.11.input_layernorm",
+      "target.model.layers.11.post_attention_layernorm",
+      "target.model.layers.12.self_attn.q_norm",
+      "target.model.layers.12.self_attn.k_norm",
+      "target.model.layers.12.input_layernorm",
+      "target.model.layers.12.post_attention_layernorm",
+      "target.model.layers.13.self_attn.q_norm",
+      "target.model.layers.13.self_attn.k_norm",
+      "target.model.layers.13.input_layernorm",
+      "target.model.layers.13.post_attention_layernorm",
+      "target.model.layers.14.self_attn.q_norm",
+      "target.model.layers.14.self_attn.k_norm",
+      "target.model.layers.14.input_layernorm",
+      "target.model.layers.14.post_attention_layernorm",
+      "target.model.layers.15.self_attn.q_norm",
+      "target.model.layers.15.self_attn.k_norm",
+      "target.model.layers.15.input_layernorm",
+      "target.model.layers.15.post_attention_layernorm",
+      "target.model.layers.16.self_attn.q_norm",
+      "target.model.layers.16.self_attn.k_norm",
+      "target.model.layers.16.input_layernorm",
+      "target.model.layers.16.post_attention_layernorm",
+      "target.model.layers.17.self_attn.q_norm",
+      "target.model.layers.17.self_attn.k_norm",
+      "target.model.layers.17.input_layernorm",
+      "target.model.layers.17.post_attention_layernorm",
+      "target.model.layers.18.self_attn.q_norm",
+      "target.model.layers.18.self_attn.k_norm",
+      "target.model.layers.18.input_layernorm",
+      "target.model.layers.18.post_attention_layernorm",
+      "target.model.layers.19.self_attn.q_norm",
+      "target.model.layers.19.self_attn.k_norm",
+      "target.model.layers.19.input_layernorm",
+      "target.model.layers.19.post_attention_layernorm",
+      "target.model.layers.20.self_attn.q_norm",
+      "target.model.layers.20.self_attn.k_norm",
+      "target.model.layers.20.input_layernorm",
+      "target.model.layers.20.post_attention_layernorm",
+      "target.model.layers.21.self_attn.q_norm",
+      "target.model.layers.21.self_attn.k_norm",
+      "target.model.layers.21.input_layernorm",
+      "target.model.layers.21.post_attention_layernorm",
+      "target.model.layers.22.self_attn.q_norm",
+      "target.model.layers.22.self_attn.k_norm",
+      "target.model.layers.22.input_layernorm",
+      "target.model.layers.22.post_attention_layernorm",
+      "target.model.layers.23.self_attn.q_norm",
+      "target.model.layers.23.self_attn.k_norm",
+      "target.model.layers.23.input_layernorm",
+      "target.model.layers.23.post_attention_layernorm",
+      "target.model.layers.24.self_attn.q_norm",
+      "target.model.layers.24.self_attn.k_norm",
+      "target.model.layers.24.input_layernorm",
+      "target.model.layers.24.post_attention_layernorm",
+      "target.model.layers.25.self_attn.q_norm",
+      "target.model.layers.25.self_attn.k_norm",
+      "target.model.layers.25.input_layernorm",
+      "target.model.layers.25.post_attention_layernorm",
+      "target.model.layers.26.self_attn.q_norm",
+      "target.model.layers.26.self_attn.k_norm",
+      "target.model.layers.26.input_layernorm",
+      "target.model.layers.26.post_attention_layernorm",
+      "target.model.layers.27.self_attn.q_norm",
+      "target.model.layers.27.self_attn.k_norm",
+      "target.model.layers.27.input_layernorm",
+      "target.model.layers.27.post_attention_layernorm",
+      "target.model.layers.28.self_attn.q_norm",
+      "target.model.layers.28.self_attn.k_norm",
+      "target.model.layers.28.input_layernorm",
+      "target.model.layers.28.post_attention_layernorm",
+      "target.model.layers.29.self_attn.q_norm",
+      "target.model.layers.29.self_attn.k_norm",
+      "target.model.layers.29.input_layernorm",
+      "target.model.layers.29.post_attention_layernorm",
+      "target.model.layers.30.self_attn.q_norm",
+      "target.model.layers.30.self_attn.k_norm",
+      "target.model.layers.30.input_layernorm",
+      "target.model.layers.30.post_attention_layernorm",
+      "target.model.layers.31.self_attn.q_norm",
+      "target.model.layers.31.self_attn.k_norm",
+      "target.model.layers.31.input_layernorm",
+      "target.model.layers.31.post_attention_layernorm",
+      "target.model.layers.32.self_attn.q_norm",
+      "target.model.layers.32.self_attn.k_norm",
+      "target.model.layers.32.input_layernorm",
+      "target.model.layers.32.post_attention_layernorm",
+      "target.model.layers.33.self_attn.q_norm",
+      "target.model.layers.33.self_attn.k_norm",
+      "target.model.layers.33.input_layernorm",
+      "target.model.layers.33.post_attention_layernorm",
+      "target.model.layers.34.self_attn.q_norm",
+      "target.model.layers.34.self_attn.k_norm",
+      "target.model.layers.34.input_layernorm",
+      "target.model.layers.34.post_attention_layernorm",
+      "target.model.layers.35.self_attn.q_norm",
+      "target.model.layers.35.self_attn.k_norm",
+      "target.model.layers.35.input_layernorm",
+      "target.model.layers.35.post_attention_layernorm",
+      "target.model.norm",
+      "draft.layers.0.self_attn.q_norm",
+      "draft.layers.0.self_attn.k_norm",
+      "draft.layers.0.input_layernorm",
+      "draft.layers.0.post_attention_layernorm",
+      "draft.layers.1.self_attn.q_norm",
+      "draft.layers.1.self_attn.k_norm",
+      "draft.layers.1.input_layernorm",
+      "draft.layers.1.post_attention_layernorm",
+      "draft.layers.2.self_attn.q_norm",
+      "draft.layers.2.self_attn.k_norm",
+      "draft.layers.2.input_layernorm",
+      "draft.layers.2.post_attention_layernorm",
+      "draft.layers.3.self_attn.q_norm",
+      "draft.layers.3.self_attn.k_norm",
+      "draft.layers.3.input_layernorm",
+      "draft.layers.3.post_attention_layernorm",
+      "draft.layers.4.self_attn.q_norm",
+      "draft.layers.4.self_attn.k_norm",
+      "draft.layers.4.input_layernorm",
+      "draft.layers.4.post_attention_layernorm",
+      "draft.norm",
+      "draft.hidden_norm"
+    ],
+    "graph_count": 4,
+    "events": [
+      {
+        "index": 0,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "40",
+              "4096"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "4096"
+            ]
+          }
+        ],
+        "backend_seconds": 2.2822319470578805
+      },
+      {
+        "index": 1,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "s1"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "40",
+              "32",
+              "128"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "128"
+            ]
+          }
+        ],
+        "backend_seconds": 0.631373873911798
+      },
+      {
+        "index": 2,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "1",
+              "4096"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "4096"
+            ]
+          }
+        ],
+        "backend_seconds": 0.45287042192649096
+      },
+      {
+        "index": 3,
+        "status": "complete",
+        "operations": [
+          {
+            "op": "placeholder",
+            "target": "s0"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_hidden_states_"
+          },
+          {
+            "op": "placeholder",
+            "target": "L_self_parameters_weight_"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_method",
+            "target": "pow"
+          },
+          {
+            "op": "call_method",
+            "target": "mean"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function add>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in method rsqrt of type object at 0x7f266c6b6240>"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "call_method",
+            "target": "to"
+          },
+          {
+            "op": "call_function",
+            "target": "<built-in function mul>"
+          },
+          {
+            "op": "output",
+            "target": "output"
+          }
+        ],
+        "inputs": [
+          {
+            "type": "SymInt"
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "1",
+              "1",
+              "32",
+              "128"
+            ]
+          },
+          {
+            "dtype": "torch.float32",
+            "shape": [
+              "128"
+            ]
+          }
+        ],
+        "backend_seconds": 0.1357963050249964
+      }
+    ],
+    "backend_seconds": 3.502272547921166,
+    "compilation_time_metrics": {
+      "_compile.compile_inner": [
+        2.552051544189453,
+        0.689244270324707,
+        0.4809277057647705,
+        0.17029213905334473
+      ],
+      "OutputGraph.call_user_compiler": [
+        2.2823598384857178,
+        0.6314754486083984,
+        0.4529585838317871,
+        0.13589239120483398
+      ],
+      "create_aot_dispatcher_function": [
+        1.5894989967346191,
+        0.625476598739624,
+        0.44974303245544434,
+        0.13109064102172852
+      ],
+      "compile_fx.<locals>.fw_compiler_base": [
+        1.5263283252716064,
+        0.5708816051483154,
+        0.4157218933105469,
+        0.08272433280944824
+      ],
+      "compile_fx_inner": [
+        1.20924711227417,
+        0.5686883926391602,
+        0.4143555164337158,
+        0.08061075210571289
+      ],
+      "GraphLowering.run": [
+        0.010164022445678711,
+        0.009729862213134766,
+        0.00446319580078125,
+        0.006747007369995117
+      ],
+      "GraphLowering.compile_to_module": [
+        0.6917383670806885,
+        0.5372543334960938,
+        0.39278554916381836,
+        0.055725812911987305
+      ],
+      "Scheduler.__init__": [
+        0.013001680374145508,
+        0.01872730255126953,
+        0.0060787200927734375,
+        0.008616924285888672
+      ],
+      "Scheduler.codegen": [
+        0.3484804630279541,
+        0.0812234878540039,
+        0.006724119186401367,
+        0.022053241729736328
+      ],
+      "WrapperCodeGen.generate": [
+        0.0006358623504638672,
+        0.0006721019744873047,
+        0.0004565715789794922,
+        0.0006053447723388672
+      ],
+      "CachingAutotuner.benchmark_all_configs": [
+        0.12868618965148926,
+        0.12870502471923828
+      ]
+    },
+    "outer_compile_seconds": 3.8925156593322754,
+    "compile_times": "TorchDynamo compilation metrics:\nFunction                                Runtimes (s)\n--------------------------------------  ------------------------------\n_compile.compile_inner                  2.5521, 0.6892, 0.4809, 0.1703\nOutputGraph.call_user_compiler          2.2824, 0.6315, 0.4530, 0.1359\ncreate_aot_dispatcher_function          1.5895, 0.6255, 0.4497, 0.1311\ncompile_fx.<locals>.fw_compiler_base    1.5263, 0.5709, 0.4157, 0.0827\ncompile_fx_inner                        1.2092, 0.5687, 0.4144, 0.0806\nGraphLowering.run                       0.0102, 0.0097, 0.0045, 0.0067\nGraphLowering.compile_to_module         0.6917, 0.5373, 0.3928, 0.0557\nScheduler.__init__                      0.0130, 0.0187, 0.0061, 0.0086\nScheduler.codegen                       0.3485, 0.0812, 0.0067, 0.0221\nWrapperCodeGen.generate                 0.0006, 0.0007, 0.0005, 0.0006\nCachingAutotuner.benchmark_all_configs  0.1287, 0.1287",
+    "switch_seconds": 0.0003508320078253746,
+    "float32_matmul_precision": "highest",
+    "allow_tf32": false,
+    "inventory": [
+      {
+        "region": "target.model.layers.0.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.0.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.1.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.2.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.3.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.4.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.5.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.6.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.7.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.8.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.9.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.10.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.11.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.12.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.13.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.14.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.15.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.16.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.17.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.18.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.19.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.20.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.21.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.22.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.23.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.24.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.25.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.26.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.27.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.28.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.29.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.30.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.31.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.32.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.33.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.34.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.layers.35.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "target.model.norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.0.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.1.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.2.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.3.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.self_attn.q_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.self_attn.k_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          128
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.input_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.layers.4.post_attention_layernorm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      },
+      {
+        "region": "draft.hidden_norm",
+        "type": "Qwen3RMSNorm",
+        "weight_shape": [
+          4096
+        ],
+        "eps": 1e-06
+      }
+    ]
+  },
+  "offline_merge_seconds": 13.492627236060798,
+  "cache_bytes": 418023,
+  "base_restored": true,
+  "original_unchanged": true
+}

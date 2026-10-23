@@ -1,5 +1,10 @@
 # MemoryDraft
 
+> [ASD候选统一比较](docs/ASD_COMPARISON_FINDINGS.md)：原reserve96已用于24题14组初筛及72题确认，
+> 完成2448计时+96 AR，全部执行一致性检查通过。位置适配在新GSM等128时延省1.42%，完整请求慢0.79%；
+> Utility在新MATH完整请求慢32.04%，不能将初筛局部收益推广。全部正负结果及复现见[完整表](docs/ASD_COMPARISON_RESULTS.md)。
+> 下文历史实验中的“保留题未生成”指各轮运行当时状态；目前这96题均已使用。
+
 > OT-R 实验在 `codex/ot-r-probe` 分支进行。此前完整 infra 已独立冻结为
 > `codex/infra-interview-v0.3` / `infra-v0.3-interview`，本机另存独立仓库、ZIP 和 Git bundle。
 > 见 [面试版本位置与复现](docs/INFRA_INTERVIEW.md)。OT 运行配置为 `configs/runtime-ot.json`，

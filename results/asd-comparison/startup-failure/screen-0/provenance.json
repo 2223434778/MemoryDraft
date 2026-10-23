@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "phase": "screen",
+  "shard": 0,
+  "selection": null,
+  "repeats": {
+    "natural": 2,
+    "prefix": 1
+  },
+  "selection_sha256": null,
+  "error": "ValueError: Target must be a prepared local directory; runtime never downloads models",
+  "original_unchanged": true
+}

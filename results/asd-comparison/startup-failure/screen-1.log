@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison/scripts/run_asd_comparison.py", line 177, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison/scripts/run_asd_comparison.py", line 79, in main
+    engine = load_engine(replace(RuntimeConfig.load(ROOT/"configs/runtime-dflash-rmsnorm.json"), db=None, max_new_tokens=4096))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison/memorydraft/runtime/config.py", line 117, in load_engine
+    return InferenceEngine.load(config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-comparison/memorydraft/runtime/engine.py", line 88, in load
+    raise ValueError("Target must be a prepared local directory; runtime never downloads models")
+ValueError: Target must be a prepared local directory; runtime never downloads models

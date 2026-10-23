@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "commit": "34f6a2eb72d35142700fa0bbf13c867f416de27a",
+  "files_verified_before": 1964,
+  "initial_isolation": {
+    "result_files_scanned": 901,
+    "generation_payloads_checked": 18446,
+    "protected_generation_matches": 0,
+    "scope": "Repository result JSON/JSONL token payloads; current validation raw directory excluded"
+  },
+  "completed_phase": "confirm",
+  "files_verified_after": 1964
+}

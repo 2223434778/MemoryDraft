@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "commit": "34d049946b0975661ea26ccc0d4861001e414f8a",
+  "files_verified_before": 1967,
+  "pids": [
+    1743989,
+    1743990
+  ],
+  "started_at": "2026-10-23T11:50:41.708791+00:00",
+  "comparison_analysis_sha256": "806cee8a8930388169be7ee024cf6bbbd74717a74cc3b0db6379c8f4eebc6b66",
+  "files_verified_after": 1967,
+  "finished_at": "2026-10-23T12:01:44.261160+00:00",
+  "previous_adapters_unchanged": {
+    "asd-prefix": "885375d37670df6ec60e756bb018b9c5efc0f3121be23ee9c5424e14690822e0",
+    "ordinary-position": "42755672a816b44b727cbc5bcdbbd2b18dd2a19db42e5706f09d540d678b1f6e"
+  },
+  "resources": {
+    "peak_gpu_bytes": 46894044160,
+    "formal_compile_events": 0,
+    "cache_bytes": {
+      "0": 418595,
+      "1": 418627
+    }
+  }
+}

@@ -1,0 +1,344 @@
+[
+  {
+    "request_id": "gsm8k:260",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "11",
+      "expected_answer": "11",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:53",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "40",
+      "expected_answer": "40",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:180",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "20",
+      "expected_answer": "20",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:986",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "70",
+      "expected_answer": "70",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:634",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "14",
+      "expected_answer": "14",
+      "error": null
+    }
+  },
+  {
+    "request_id": "gsm8k:311",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "91",
+      "expected_answer": "91",
+      "error": null
+    }
+  },
+  {
+    "request_id": "math500:283",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "1",
+      "expected_answer": "1",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:207",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "28",
+      "expected_answer": "28",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:189",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "160",
+      "expected_answer": "160",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:194",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "\\frac{1}{4}",
+      "expected_answer": "\\frac{1}{4}",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:278",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "255",
+      "expected_answer": "255",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "math500:159",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "3.21",
+      "expected_answer": "3.21",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "request_id": "mbpp:218",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "94b2f3f69a9a0aafea1050b98406b2150fc4a4b33e83402dc089bea76d3c74df"
+    }
+  },
+  {
+    "request_id": "mbpp:462",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "52c08b84b56c5e4e6ed7fa1b72f2d62fc178dabb1bf6129e66719f538eae19f1"
+    }
+  },
+  {
+    "request_id": "mbpp:473",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ff588e90f5e750e3b2e43b6ccf2001d315e8da2fc8c72b177067536fad706b2b"
+    }
+  },
+  {
+    "request_id": "mbpp:429",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "98394cf76bef77d96e9f6c7e5babbd2fbd7f0bf6ef6bb75239feb503686d7779"
+    }
+  },
+  {
+    "request_id": "mbpp:111",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "3ab87a7ecd6d8c2f050d288bfc2a39ae12453ee603cff026cb8df1a63d894ac5"
+    }
+  },
+  {
+    "request_id": "mbpp:468",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "ce8fc837c9ce47b9881922fbbe9f22fb03473f4f54bb7e4cffabdf0d63e38486"
+    }
+  },
+  {
+    "request_id": "humaneval:22",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a86be194a60e31f0c34edf4cebd1d1be214984a55e2975f0424d06e7183fb9ab"
+    }
+  },
+  {
+    "request_id": "humaneval:58",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "a71dd4b6d6cd971574184e64dd1b9b29833c502f23f2f695bc3d923799b6b0ae"
+    }
+  },
+  {
+    "request_id": "humaneval:75",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "f26eee4c69f8d34be38fdd88ba17e05f22ec9b0537fa6b86c8850fcad769b758"
+    }
+  },
+  {
+    "request_id": "humaneval:148",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "22b6a528a39fc941293445bdf8b6e1bec9cd8583246059f25292a77aa71d4f43"
+    }
+  },
+  {
+    "request_id": "humaneval:47",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "28fe0c9c55f7ef2e6ef4327b48fdc1d406001a8564833849a9bec8a53db5ef1d"
+    }
+  },
+  {
+    "request_id": "humaneval:143",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "provided tests",
+      "code_sha256": "9d86b0c823284089bb17e1367a2adadfadcc19d404828dd103aba66f121aabaf"
+    }
+  },
+  {
+    "request_id": "squad:5725c7f5271a42140099d1a3",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:571163172419e314009555e8",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:5728231fff5b5019007d9dd7",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:572a058aaf94a219006aa752",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:56e0fe85e3433e1400422a6a",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "squad:57275411dd62a815002e9b33",
+    "quality": {
+      "correct": true,
+      "f1": 1.0,
+      "metric": "SQuAD normalized exact match and token F1, maximum over references"
+    }
+  },
+  {
+    "request_id": "json:6",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:9",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:18",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:11",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:14",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  },
+  {
+    "request_id": "json:26",
+    "quality": {
+      "correct": true,
+      "valid_json": true,
+      "metric": "exact typed JSON contract",
+      "error": null
+    }
+  }
+]

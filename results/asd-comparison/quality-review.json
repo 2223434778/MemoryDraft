@@ -1,0 +1,15 @@
+{
+  "kind": "post-run mathematical review; frozen scoring and selection unchanged",
+  "reviews": [
+    {
+      "request_id": "math500:194",
+      "arm": "ordinary-position/ASD-Utility",
+      "predicted": "\\frac{\\sqrt[4]{2}}{8}",
+      "expected": "\\frac{1}{4}",
+      "frozen_correct": false,
+      "frozen_needs_review": true,
+      "review": "incorrect, not an equivalent answer",
+      "proof": "Equality would imply fourth_root(2)=2; raising both positive sides to the fourth power gives 2=16, a contradiction."
+    }
+  ]
+}

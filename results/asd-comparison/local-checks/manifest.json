@@ -1,0 +1,65 @@
+{
+  "kind": "Local verification evidence, separate from original GPU ZIP",
+  "files": [
+    {
+      "source": "artifacts/comparison-tests-local.xml",
+      "published": "comparison-tests-local.xml",
+      "bytes": 1878,
+      "sha256": "3285a6aa03859394daf43e78f76c69ea47479233647a67881b93cb11321e3a59"
+    },
+    {
+      "source": "artifacts/comparison-related-local.xml",
+      "published": "comparison-related-local.xml",
+      "bytes": 12802,
+      "sha256": "5cef0081184e9fe536e0433f9be916c3f99b8c7b659bf9e5fd3f5d5876868417"
+    },
+    {
+      "source": "artifacts/comparison-final-local.xml",
+      "published": "comparison-final-local.xml",
+      "bytes": 2006,
+      "sha256": "f313379c04b2d256ef0d21914fd63b5498f55d8a1403ac2b1198f64d3978ede6"
+    },
+    {
+      "source": "artifacts/comparison-full-v2-local.xml",
+      "published": "comparison-full-v2-local.xml",
+      "bytes": 126984,
+      "sha256": "2f547b5031cce26b07858801f36190968822b906f1f373f4557df1a935d832af"
+    },
+    {
+      "source": "artifacts/comparison-final-full-local.xml",
+      "published": "comparison-final-full-local.xml",
+      "bytes": 128440,
+      "sha256": "54430e7561feae64a9c887e0bb95e61e4428997ed1e555ef017728a7ad6e9d5b"
+    },
+    {
+      "source": "artifacts/comparison-final-full.log",
+      "published": "comparison-final-full.log",
+      "bytes": 1676,
+      "sha256": "f4322dc46a37776b2a7b6f0aa85f4b54127eb890590684533628901535fe673a"
+    },
+    {
+      "source": "artifacts/comparison-engineering-tests-local.xml",
+      "published": "comparison-engineering-tests-local.xml",
+      "bytes": 1543,
+      "sha256": "65754cf7a69451c1b9aee788bf8aef1c8ee3fac139aabe0fdd2352b0eea1132a"
+    },
+    {
+      "source": "artifacts/comparison-engineering-final-local.xml",
+      "published": "comparison-engineering-final-local.xml",
+      "bytes": 1688,
+      "sha256": "363e1d01227a81397af56a00fa9778cfa8350ed97518e0364aa56c74935fa09b"
+    },
+    {
+      "source": "artifacts/comparison-independent-rebuild.log",
+      "published": "comparison-independent-rebuild.log",
+      "bytes": 8934,
+      "sha256": "9ea471633956fcafd4d8b4c470b8f1d58ed14ead181c7c9b2d41bc93fb957c83"
+    },
+    {
+      "source": "artifacts/comparison-engineering-independent.log",
+      "published": "comparison-engineering-independent.log",
+      "bytes": 1516,
+      "sha256": "f06c41321ba5db629292f13e219a21a8f77ad2db63d345e65369fc14b8ad4bc4"
+    }
+  ]
+}

@@ -1,5 +1,16 @@
 # 项目进度
 
+## 2026-10-23 — ASD候选统一比较与匹配缓存组合完成
+
+- 用户授权一次完成多步。原reserve96按六类各4/12分成screen24/confirm72；14组1008计时+24 AR之后按冻结规则选各族两个候选，再完成1440计时+72 AR。全部4个worker正常完成，严格各臂与同题AR逐token/text/EOS相同，重复轨迹/账本稳定，实际ASD预算<=8，正式新图0；source前后1964部署SHA一致。没有新训练、seed、下载或参数扫描，默认strict和独立面试版保持。
+- GPU实际源34f6a2eb72d35142700fa0bbf13c867f416de27a，source SHAe648c352b141ede94846a4e9a7a8bab10727544db5035f2870f9f52b91fdc374；成功root asd-comparison-v2/PID1702283于服务器本地18:50:35启动。结果ZIP2009611B/SHAf306554454a57df0952b764ea25b0eeca20bc6d6b67fc83c7a72921e98442054，33成员原始SHA核对、JSONL无损gzip公开。首缺models链接的加载前失败8成员单列startup-failure，原失败不重写。
+- 新12 GSM：位置适配等128省1.42%（调用256→253、正确集合11/12保持），自然反慢0.79%，输出长度比均值+4.05%/调用密度-2.46%；保留数学等生成量小收益，不冒称完整请求增益。新12 MATH：基础ASD相对严格D自然省17.29%/128省10.95%、正确11对10/12；Utility自然慢32.04%、正确10/12，位置+Utility慢22.01%、正确9/12。局部等128快1.61%/3.11%被后续路径增长抵消。MBPP位置适配初筛快11.83%在确认仅0.05%；HumanEval tree32较严格D仅快0.04%、严格输出保持，新增节点抵消减轮。Confidence仅screen、未入选确认；SQuAD/JSON零近似激活。不改写旧局部正结果，降低固定局部预算规则优先级，优先保留Draft适配小收益及infra执行/缓存路线。
+- 按预登记，GSM确认选出的position+ASD与D/ASD匹配测8个已观察公开4K请求×off/cold/hit×2，共144自然+8 AR。三组各自缓存配对token/text/EOS相同，正确D6/8、ASD两组7/8保持，全部EOS、正式新图0。hit/off时延分别低54.75%/58.04%/57.97%，TTFT约4.86→.312秒；position在相同hit条件比base ASD慢0.04%，没有额外叠加收益。最大spent差6.29425e-5、实际<=8，未改接受器容差。
+- 工程源34d049946b0975661ea26ccc0d4861001e414f8a/1967部署文件，source SHA5d5312ddf9f797873fda78dffc6bb9e39a9fa38083f310ff19be32c87a79b159；source ZIP23338151B/SHA5491556b08e0687d951e0471c1442d192d1b8aeaa1899c263f5ae1e95c413f2f。root asd-comparison-engineering，owned timeout PIDs1743989/1743990，11:50:41–12:01:44 UTC执行/审计窗口；source前后1967 SHA一致、两个旧adapter SHA保持。结果ZIP183489B/SHA3eb99594c4d748ef49fbef2baff240683feeaa239df15d0e7fd87321bcd4a0a7，18原始成员公开。allocated峰43.67GiB、compiler cache418595/418627B，两GPU最终均19MiB/0%。
+- 部署复核更正：实际使用Windows git archive，有148文件转成CRLF；主源1816/1964、工程1819/1967与Git对象逐字节相同，其余全部仅换行差异。前述准备记录“canonical Git blobs”不准确，保留原记录并在结论中明确偏离；运行前后核的是实际部署字节。两份source-line-endings.json和audit_postrun记录完整差异，业务源内容/参数/数据未变。主模型加载未单独计秒，不做冷启动ROI宣传。
+- 本机最终完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/comparison-final-full-tmp --junitxml=artifacts/comparison-final-full-local.xml -x --tb=short`：948 passed/7 skipped/138.14秒，仅既有starlette警告；主server100 passed/20.11秒，工程server10 passed/3.14秒。主JSON/Markdown两平台逐字节相同，工程统计本机逐字段重现；原始载荷、两Git源内容/换行、旧结果及infra三引用另审计。MATH194额外错误的根式不等价已给明确反例，评分和已冻结选择不改。
+- 结论docs/ASD_COMPARISON_FINDINGS.md，主表ASD_COMPARISON_RESULTS.md、缓存表ASD_COMPARISON_ENGINEERING_RESULTS.md；公开results/asd-comparison{,-engineering}。复算`python -m scripts.write_asd_comparison_report`、`python -m results.asd-comparison.inspect_results`、`python -m results.asd-comparison.audit_postrun`、`python -m results.asd-comparison-engineering.inspect_results`。原reserve96现已观察，README/路线表已更新，今后独立验证需新预登记数据。
+
 ## 2026-10-23 — 统一比较执行中及工程组合预登记
 
 - 已冻结34f6a2eb72d35142700fa0bbf13c867f416de27a/1964 canonical Git blobs，source SHAe648c352b141ede94846a4e9a7a8bab10727544db5035f2870f9f52b91fdc374；source ZIP23331209B/SHA9193fe7690a709aa1fd5e977c14a2135c2a196fabd3c02ee6c78a287e14bc9e9。本地初相关99 passed/23.15秒；补first-token EOS/真实tiny树后专项14 passed/22.58秒。已有结果1040文件/20198 token载荷对reserve96命中0。

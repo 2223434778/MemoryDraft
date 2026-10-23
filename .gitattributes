@@ -1,10 +1,14 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
 results/asd-comparison/** -text
+results/asd-comparison-engineering/** -text
+results/asd-comparison-engineering/**/*.log -whitespace
+results/asd-comparison-engineering/**/*.xml -whitespace
 results/asd-comparison/**/*.log -whitespace
 results/asd-comparison/**/*.xml -whitespace
 scripts/*asd_comparison*.py text eol=lf
 memorydraft/evaluation/asd_comparison.py text eol=lf
 tests/test_asd_comparison.py text eol=lf
+tests/test_asd_comparison_engineering.py text eol=lf
 docs/ASD_COMPARISON*.md text eol=lf
 results/asd-compute/** -text
 results/asd-compute/*.log -whitespace
