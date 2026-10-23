@@ -1,0 +1,17 @@
+{
+  "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-joint-tree",
+  "pid": 1851082,
+  "argv": [
+    "/usr/bin/timeout",
+    "7600",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_asd_joint_tree_pipeline"
+  ],
+  "commit": "31c0a74a1bbf5addb327597515908b879b108f83",
+  "source_sha256": "fe066ff5fa5a49fb5c904d88343b9062ff840a93e1ce9eb312eadb54799e09dc",
+  "verified_files": 2129,
+  "delta_sha256": "c98e685089f9c60ecd7d49e23f903321ecb10e63ad307647217a60a13b883364",
+  "started_utc": "2026-10-23T14:40:38.391362+00:00"
+}

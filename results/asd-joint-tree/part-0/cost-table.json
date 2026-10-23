@@ -1,0 +1,6 @@
+{
+  "source": "asd-budget-tree",
+  "name": "part-0/calibration.json",
+  "sha256": "2932965978801ec82740e393d40d08833fd09ca0887837319bb6fd9e5bb3b917",
+  "profile": "first-stage FP32/RMSNorm A6000; read only"
+}

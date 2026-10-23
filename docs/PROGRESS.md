@@ -1,5 +1,23 @@
 # 项目进度
 
+## 2026-10-23 — 第二阶段剩余regret联合构树完成
+
+- 六类各8已观察开发题，六组1440正式计时+48同题AR全部完成；每worker720，pilot24/720后续跑余24。原四组960次token/text/轮次/账本/停止/输入/快照逐项复现第一阶段；冻结各物理卡成本表，无新校准或调参，全部strict AR/input/repeat/实际B<=8检查通过。
+- Joint较第一阶段组合：GSM完整省1.17%、共同128省2.48%（N7），答案均8/8；同896token验证126→固定主干123→Joint122轮，动态相对固定前缀仅另省0.62%。相对线性ASD，Joint完整省9.10%。接纳GSM小增量；MATH前缀省5.36%但完整慢4.97%、正确6/8保持；MBPP+0.36%、HumanEval+5.04%、SQuAD+0.02%、JSON-.06%，其余不升级。
+- 固定完整主干MATH359错误长枚举至4096截断，正确6→5/8；Joint同题1291token最终6、正常EOS，避免该消融退化但仍比第一阶段711token更长。MATH448新Joint给5（17*5%83=2）、旧/固定给14（余72），仍错；Human134沿用旧错代码。质量个案JSON/输出SHA单列，不改冻结评分。
+- 两新组8963轮（含重复）快照/主干/实际收费核对，Joint缩短2627轮；自然20/48请求触发，Joint/固定37/48完整输出相同。预算启发式不是语义正确概率；前缀减轮与完整长度效应分开，不把固定消融的大幅退化规避全算吞吐提升。
+- 实际源31c0a74a1bbf5addb327597515908b879b108f83/2129 canonical blobs，source SHAfe066ff5fa5a49fb5c904d88343b9062ff840a93e1ce9eb312eadb54799e09dc；新root asd-joint-tree、owned timeout PID1851082、14:40:38→15:06:54 UTC启动/末审计。运行前后/末检查2129 SHA一致，两旧root未改。完整ZIP26651076B/SHA2ff2c65ac2b09af5ab720937a55c8963f7babc7beb201394b529ca0c14ec9b9b，实际314文件delta4143372B/SHAc98e685089f9c60ecd7d49e23f903321ecb10e63ad307647217a60a13b883364。
+- 原pipeline ZIP1380224B/SHAa69a83204bfa004383da8a770d73677a346b721ddb64c583a08a98341b341bbd；追加部署/末审计/顶层log的final ZIP1381195B/SHAde372a1436001c9eff799b3faaed42f6a700ddd875ccfd764ddb54a836e569b4，28原始载荷逐字节发布。加载19.684/20.103s、只读表.000395/.002538s、20预热生成另计；峰allocated35.95/35.16GiB，每卡4图/正式0新图、cache413494B，末两GPU19MiB/0%。
+- 本机完整1012 passed/7 skipped/145.86s，相关135 passed/2 skipped/16.28s，服务器166 passed/13.86s。统计JSON/MD跨平台独立重建逐字节一致；raw载荷/canonical Git源/960旧轨迹/预算/资源/infra三引用独立核查通过。初相关JSON键测试失败及后续通过XML全保留，未混入正式性能。
+- 结论ASD_JOINT_TREE_FINDINGS.md、完整表ASD_JOINT_TREE_RESULTS.md、证据results/asd-joint-tree。复算`python -m scripts.write_asd_joint_tree_report`、`python -m results.asd-joint-tree.inspect_results`、`python -m results.asd-joint-tree.analyze_mechanism`、`python -m results.asd-joint-tree.review_quality`。保留Joint为GSM候选，其他任务保持第一阶段方案，默认服务和面试引用不变；未启动下一轮扫参。
+
+## 2026-10-23 — 第二阶段联合构树执行启动
+
+- 冻结源31c0a74a1bbf5addb327597515908b879b108f83，2129 canonical Git blobs，source SHAfe066ff5fa5a49fb5c904d88343b9062ff840a93e1ce9eb312eadb54799e09dc。完整ZIP26651076B/SHA2ff2c65ac2b09af5ab720937a55c8963f7babc7beb201394b529ca0c14ec9b9b；实际existing engineering ZIP+314文件delta4143372B/SHAc98e685089f9c60ecd7d49e23f903321ecb10e63ad307647217a60a13b883364重建，全部逐SHA一致。
+- 完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/joint-full-tmp --junitxml=artifacts/joint-full-local.xml -x --tb=short`：1012 passed/7 skipped/145.86秒，一个既有starlette警告。服务器166 passed/13.86秒；模型加载后已开始正式六组生成，尚未比较性能。
+- 新root `/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-joint-tree`，timeout PID1851082，于14:40:38 UTC启动，outer7600/worker7200秒。入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_joint_tree_pipeline`，manifest ASD_JOINT_TREE_SOURCE_MANIFEST.json。使用原两A6000和本地已有模型，无新下载/训练，之前root和证据不修改。
+- pilot24/720计时+24 AR已通过coverage/strict AR/input/repeats/budget屏障，两worker自动继续余24；原四组实际执行行同时与第一阶段逐轮复核。这里只检查进度和预算分配触发，不根据中间速度/质量改参或删题。
+
 ## 2026-10-23 — 剩余regret联合构树（第二阶段准备）
 
 - 用户要求直接进行第二步。新增opt-in固定主干/剩余预算主干，预算只读快照、实际选路扣费不变；节点总量沿用第一阶段冻结成本表，EOS叶子/32上限/原生16保持。规则和资源尺度详见ASD_JOINT_TREE_PROTOCOL.md，不以Draft置信度冒充错误概率。

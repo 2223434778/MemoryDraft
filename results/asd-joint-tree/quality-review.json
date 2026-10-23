@@ -1,0 +1,329 @@
+{
+  "scoring_unchanged": true,
+  "note": "Post-hoc arithmetic/output review, no tuning or additional GPU generation.",
+  "cases": [
+    {
+      "request_id": "math500:359",
+      "note": "Fixed spine reaches 4096 without a final box and enumerates trial S values. Joint ends at 1291 with boxed 6, original combination at 711 with boxed 6. SP=24 and S^3-3SP=-8 give S=4,P=6. This checks the final value, not every generated step.",
+      "arms": {
+        "ASD": {
+          "tokens": 667,
+          "calls": 68,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "6",
+            "expected_answer": "6",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "repeat0_seconds": 5.218563703936525,
+          "spent": 7.928047180175781,
+          "text_sha256": "ae8029488632b56b09f3232973f17b064da639cd349f094738f79c2f948d47b6"
+        },
+        "BudgetTree-ASD": {
+          "tokens": 711,
+          "calls": 64,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "6",
+            "expected_answer": "6",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "repeat0_seconds": 5.275077102007344,
+          "spent": 7.7984619140625,
+          "text_sha256": "759865cd75cbfc12c0d3468415d58724ea22ef9c2c8ed1d7aaf153947ff48942"
+        },
+        "SpineTree-ASD": {
+          "tokens": 4096,
+          "calls": 343,
+          "finish_reason": "length",
+          "quality": {
+            "correct": false,
+            "parsed_answer": null,
+            "expected_answer": "6",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": "missing boxed final answer",
+            "scalar_equivalent": null,
+            "secondary_correct": false,
+            "needs_review": true
+          },
+          "repeat0_seconds": 33.32583968504332,
+          "spent": 7.992277145385742,
+          "text_sha256": "079fc8cb162f9fa41c2c4c4dd15df09117fade190d9f30c914d3d3297446512e"
+        },
+        "JointTree-ASD": {
+          "tokens": 1291,
+          "calls": 115,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "6",
+            "expected_answer": "6",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "repeat0_seconds": 9.731849452946335,
+          "spent": 7.950735092163086,
+          "text_sha256": "f37b76321e659e946fa8da3d650afb97c87872b1f5c9be6a13a7516070c731b7"
+        }
+      }
+    },
+    {
+      "request_id": "math500:444",
+      "note": "All four frozen scores remain incorrect/needs_review. Explicit aspect-ratio counterexamples below rule out mere formatting differences.",
+      "arms": {
+        "ASD": {
+          "tokens": 1918,
+          "calls": 250,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "\\frac{k^2 + 1}{8k}",
+            "expected_answer": "\\frac{1}{2}",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": null,
+            "secondary_correct": false,
+            "needs_review": true
+          },
+          "repeat0_seconds": 20.454453047947027,
+          "spent": 7.978158950805664,
+          "text_sha256": "1207a7a14b5f2d9a671ca7de1c8b84bdcadc680cc59566037165972e13c194e5"
+        },
+        "BudgetTree-ASD": {
+          "tokens": 1361,
+          "calls": 163,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "\n\\begin{cases}\n\\frac{k}{4}, & \\text{if } k \\leq 1 \\\\\n\\frac{1}{4k}, & \\text{if } k > 1\n\\end{cases}\n",
+            "expected_answer": "\\frac{1}{2}",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": null,
+            "secondary_correct": false,
+            "needs_review": true
+          },
+          "repeat0_seconds": 13.860602814005688,
+          "spent": 7.999826431274414,
+          "text_sha256": "e5c299efa1a92e5f4644d2d1b8801bf37a350e256855caa5ff8715158d8031f9"
+        },
+        "SpineTree-ASD": {
+          "tokens": 2425,
+          "calls": 236,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "\\frac{(k^2 + 1)^2}{8k^2}",
+            "expected_answer": "\\frac{1}{2}",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": null,
+            "secondary_correct": false,
+            "needs_review": true
+          },
+          "repeat0_seconds": 21.615210109041072,
+          "spent": 7.978071212768555,
+          "text_sha256": "a9fa9063ad079e9980c60a6c5ab46b87890c3e90018d546ff802fcd1f54713e1"
+        },
+        "JointTree-ASD": {
+          "tokens": 1894,
+          "calls": 232,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "\\frac{k^2 + 1}{4k}",
+            "expected_answer": "\\frac{1}{2}",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": null,
+            "secondary_correct": false,
+            "needs_review": true
+          },
+          "repeat0_seconds": 20.205674204975367,
+          "spent": 7.967985153198242,
+          "text_sha256": "2d57c1976924ddcc003307e6f396c26167db75d553d077ccfefe3da1dc1a3480"
+        }
+      }
+    },
+    {
+      "request_id": "math500:448",
+      "note": "Correct inverse is 44. Joint emits 5; original combination and fixed spine emit 14. Both are arithmetically wrong. Linear ASD has the correct final value; its whole reasoning is not certified.",
+      "arms": {
+        "ASD": {
+          "tokens": 938,
+          "calls": 114,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "parsed_answer": "44",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": true,
+            "secondary_correct": true,
+            "needs_review": false
+          },
+          "repeat0_seconds": 8.476518791983835,
+          "spent": 7.91291618347168,
+          "text_sha256": "8dc88a8c9781e9d5ce7262ff029ab2c325680f37c481dd99250b4379cc8dec31"
+        },
+        "BudgetTree-ASD": {
+          "tokens": 725,
+          "calls": 74,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "14",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": false,
+            "secondary_correct": false,
+            "needs_review": false
+          },
+          "repeat0_seconds": 5.89644235605374,
+          "spent": 7.860313415527344,
+          "text_sha256": "33b13d0478e9f113340f0e37e46051340059a18760afedbb255443a2947e0c69"
+        },
+        "SpineTree-ASD": {
+          "tokens": 1220,
+          "calls": 116,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "14",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": false,
+            "secondary_correct": false,
+            "needs_review": false
+          },
+          "repeat0_seconds": 9.447962649050169,
+          "spent": 7.999645233154297,
+          "text_sha256": "244b954f76c05779cf1c66ac6de387a9eaaa95fd4c04ad0a81dae0bcab6a04b2"
+        },
+        "JointTree-ASD": {
+          "tokens": 210,
+          "calls": 20,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "parsed_answer": "5",
+            "expected_answer": "44",
+            "metric": "normalized boxed exact match, not general symbolic equivalence",
+            "error": null,
+            "scalar_equivalent": false,
+            "secondary_correct": false,
+            "needs_review": false
+          },
+          "repeat0_seconds": 1.6543042929843068,
+          "spent": 7.387664794921875,
+          "text_sha256": "b6b3144d7cdd8b00ff19f4fc8ff2661451904a8c8940e5405d0401027f488c00"
+        }
+      }
+    },
+    {
+      "request_id": "humaneval:134",
+      "note": "All three tree-ASD variants fail the provided tests with identical code SHA. Linear ASD passes. This is an inherited quality difference relative to linear ASD.",
+      "arms": {
+        "ASD": {
+          "tokens": 100,
+          "calls": 23,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": true,
+            "error": null,
+            "metric": "provided tests",
+            "code_sha256": "ad6ddce17f7c05f1ab80074ec3933bdb8c1e77549a632141fddd7b95a54b5829"
+          },
+          "repeat0_seconds": 1.815387011040002,
+          "spent": 6.366939544677734,
+          "text_sha256": "ad6ddce17f7c05f1ab80074ec3933bdb8c1e77549a632141fddd7b95a54b5829"
+        },
+        "BudgetTree-ASD": {
+          "tokens": 71,
+          "calls": 9,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+          },
+          "repeat0_seconds": 0.8805090310052037,
+          "spent": 2.76312255859375,
+          "text_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+        },
+        "SpineTree-ASD": {
+          "tokens": 71,
+          "calls": 10,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+          },
+          "repeat0_seconds": 0.9611608310369775,
+          "spent": 2.763134002685547,
+          "text_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+        },
+        "JointTree-ASD": {
+          "tokens": 71,
+          "calls": 10,
+          "finish_reason": "eos",
+          "quality": {
+            "correct": false,
+            "error": "AssertionError",
+            "metric": "provided tests",
+            "code_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+          },
+          "repeat0_seconds": 0.9588331719860435,
+          "spent": 2.763134002685547,
+          "text_sha256": "0be98c5707bc03d75c0f81f65653bfb9c8fe7d9af08428b4ca961f6f81b581ab"
+        }
+      }
+    }
+  ],
+  "inverse_residues": {
+    "44": 1,
+    "14": 72,
+    "5": 2
+  },
+  "rectangle_counterexamples": [
+    {
+      "arm": "ASD",
+      "k": 1,
+      "value": "1/4"
+    },
+    {
+      "arm": "BudgetTree-ASD",
+      "k": 1,
+      "value": "1/4"
+    },
+    {
+      "arm": "SpineTree-ASD",
+      "k": 2,
+      "value": "25/32"
+    },
+    {
+      "arm": "JointTree-ASD",
+      "k": 2,
+      "value": "5/8"
+    }
+  ]
+}

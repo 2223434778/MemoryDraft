@@ -1,0 +1,38 @@
+{
+  "joint-first-local.xml": {
+    "sha256": "7a48b279d6a2753e8a3d2dfed484e1e9d3b558685b19f1fa659d08747449f9b8",
+    "bytes": 16297,
+    "tests": 117,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 11.945
+  },
+  "joint-related-local.xml": {
+    "sha256": "4d1ca824a72a7541ca7436bf6bf58db4cee6354942ad7a028c98f28b03ec7dd4",
+    "bytes": 6128,
+    "tests": 33,
+    "skipped": 0,
+    "failures": 1,
+    "errors": 0,
+    "seconds": 13.024
+  },
+  "joint-related-v2-local.xml": {
+    "sha256": "756e5b70c83e6d422addb6bfcdabb312355a1555296ebb1d9747b729b8d34b4e",
+    "bytes": 18766,
+    "tests": 137,
+    "skipped": 2,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 16.278
+  },
+  "joint-full-local.xml": {
+    "sha256": "fcb7c77887a15523ded8a50ba6b0ee32ca4d3937be792473dc53980a9508a7b3",
+    "bytes": 136656,
+    "tests": 1019,
+    "skipped": 7,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 145.852
+  }
+}

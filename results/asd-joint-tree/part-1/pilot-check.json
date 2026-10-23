@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "timed": 720,
+  "ar": 24,
+  "checks": "coverage/AR/input/repeats/budget"
+}

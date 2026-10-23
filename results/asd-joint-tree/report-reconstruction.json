@@ -1,0 +1,11 @@
+{
+  "server_sha256": {
+    "analysis.json": "bb12f2ad8ed5c9dbca3c407293b5b82f8e37854b26bd45c1156555be38db5b79",
+    "report.md": "20a53f80e03cb10417e2c8b9346e8b7394dedddc03f62f9a96a3f577bd4521b9"
+  },
+  "local_sha256": {
+    "analysis.json": "bb12f2ad8ed5c9dbca3c407293b5b82f8e37854b26bd45c1156555be38db5b79",
+    "report.md": "20a53f80e03cb10417e2c8b9346e8b7394dedddc03f62f9a96a3f577bd4521b9"
+  },
+  "byte_exact": true
+}
