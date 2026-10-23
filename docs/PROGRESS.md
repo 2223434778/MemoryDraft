@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-23 — 成本受控候选树 + ASD执行准备
+
+- 用户授权实现第一步并跨数据评估。新增best-first路径质量构树、实测节点成本表，以及树上ASD最长可行路径/同长度低regret选择；原生16深度、Top4、8..32节点，原始B8/g.25/m2。只提交选中路径的KV、特征和regret；第二步剩余预算驱动构树尚不实现。
+- 来源BASTION论文式1/3/6及MIT仓库可见commit1577b5d9ee28783e15358f1dd791844e9f966172；独立实现，实测表代替roofline，不称完整官方复现。协议docs/ASD_TREE_PROTOCOL.md。
+- 冻结六类各8道已观察development，共四方法×(自然3+128/EOS2)=960计时+48 AR；先完成六类各4的24题有效性屏障，再继续其余24，无速度/质量选题。严格输出、重复轨迹、输入和预算检查贯穿全部运行。
+- 本机首机制91 passed/2 skipped/15.70秒；补齐报告后相关129 passed/2 skipped/13.22秒。命令`.venv\Scripts\python.exe -m pytest -q tests/test_budget_tree.py tests/test_draft_tree.py tests/test_dflash_reuse.py tests/test_asd_cpu.py tests/test_asd_tree_report.py --basetemp artifacts/tree-tests-2 --junitxml=artifacts/tree-tests-2.xml`。尚无本轮GPU性能结论。
+- A6000预检两卡各19MiB/0%、D盘余402GiB。后续在新隔离目录使用原模型/.venv-dflash，不改旧实验和面试引用；source导出直接读Git blobs，避免上一阶段git archive的CRLF偏离。
+
 ## 2026-10-23 — ASD候选统一比较与匹配缓存组合完成
 
 - 用户授权一次完成多步。原reserve96按六类各4/12分成screen24/confirm72；14组1008计时+24 AR之后按冻结规则选各族两个候选，再完成1440计时+72 AR。全部4个worker正常完成，严格各臂与同题AR逐token/text/EOS相同，重复轨迹/账本稳定，实际ASD预算<=8，正式新图0；source前后1964部署SHA一致。没有新训练、seed、下载或参数扫描，默认strict和独立面试版保持。

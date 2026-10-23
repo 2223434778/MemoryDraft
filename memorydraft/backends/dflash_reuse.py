@@ -73,9 +73,11 @@ guided R may replace a block after its draft forward has already run.
         raise ValueError("Round allocation requires traced, exclusive model drafting")
     if tree_config is not None:
         from memorydraft.backends.draft_tree import TreeConfig
-        if (not isinstance(tree_config, TreeConfig) or matcher is not None or verifier is not None
+        from memorydraft.backends.budget_tree import BudgetTreeConfig, TreeASDVerifier
+        if (not isinstance(tree_config, (TreeConfig, BudgetTreeConfig)) or matcher is not None
+                or (verifier is not None and not isinstance(verifier, TreeASDVerifier))
                 or round_action is not None or route_sequence or verify_length is not None or draft_block_size is not None):
-            raise ValueError("Draft tree requires exclusive strict native drafting")
+            raise ValueError("Draft tree requires exclusive native drafting and a tree-aware verifier")
         if target.config._attn_implementation != "eager":
             raise ValueError("Draft tree requires the audited eager attention backend")
     if max_new_tokens == 0:
@@ -213,7 +215,11 @@ guided R may replace a block after its draft forward has already run.
         if tree_config is not None:
             from memorydraft.backends.draft_tree import build_tree, commit_tree_cache
             with mark("build_tree"):
-                tree = build_tree(block, logits, tree_config)
+                if isinstance(tree_config, BudgetTreeConfig):
+                    from memorydraft.backends.budget_tree import build_budget_tree
+                    tree = build_budget_tree(block, logits, tree_config, start)
+                else:
+                    tree = build_tree(block, logits, tree_config)
                 verify_block = tree.tokens
                 verify_positions = block.new_tensor([tree.depths])+start
                 verify_kwargs["attention_mask"] = tree.mask(start, target.dtype)
@@ -226,7 +232,14 @@ guided R may replace a block after its draft forward has already run.
             posterior = output.logits.argmax(dim=-1)
             decision = None
             if tree is not None:
-                path, recovery, native_accepted = tree.select(posterior)
+                if verifier is None:
+                    path, recovery, native_accepted = tree.select(posterior)
+                else:
+                    path, recovery, decision = verifier.decide_tree(tree, output.logits[0],
+                        horizon=block.shape[1]-1, stop_token_ids=stop_token_ids)
+                    native_accepted = None
+                if isinstance(tree_config, BudgetTreeConfig):
+                    native_accepted = None
                 accepted = len(path)-1
             elif allocation == "target":
                 accepted = 0
@@ -275,7 +288,9 @@ guided R may replace a block after its draft forward has already run.
                 result.rounds[-1]["allocation"] = allocation
             if tree is not None:
                 result.rounds[-1].update(tree_nodes=len(tree.parents), native_accepted=native_accepted,
-                                         tree_path=path, tree_gain=accepted-native_accepted)
+                                         tree_path=path, tree_gain=accepted-native_accepted if native_accepted is not None else None)
+                if hasattr(tree, "budget_metadata"):
+                    result.rounds[-1]["tree_budget"] = tree.budget_metadata
         step += 1
         available = min(start + 1, limit)
         with mark("publish_stop"):

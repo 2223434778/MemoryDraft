@@ -1,4 +1,13 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/asd-budget-tree/** -text
+results/asd-budget-tree/**/*.log -whitespace
+results/asd-budget-tree/**/*.xml -whitespace
+scripts/*asd_tree*.py text eol=lf
+memorydraft/backends/budget_tree.py text eol=lf
+memorydraft/evaluation/asd_tree.py text eol=lf
+tests/test_budget_tree.py text eol=lf
+tests/test_asd_tree_report.py text eol=lf
+docs/ASD_TREE*.md text eol=lf
 results/asd-comparison/** -text
 results/asd-comparison-engineering/** -text
 results/asd-comparison-engineering/**/*.log -whitespace
