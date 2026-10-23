@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-23 — ASD候选统一比较（执行准备）
+
+- 用户授权一次完成初筛和确认，按特定场景实际收益判断，不要求所有任务胜出或新训练seed。新增evaluation/asd_comparison、run_asd_comparison及pipeline/report/test，复用原engine、CPU接受器、Confidence、严格tree32及两个旧LoRA；默认runtime、Target输入及面试版不改。
+- 冻结reserve96：六类各前4为screen24、其余12为confirm72。原/ASD-prefix/位置适配三Draft×DFlash/ASD/Run/Utility共12，再加原Confidence/tree32，共14组。初筛1008计时+24 AR，按各类质量损失/新增截断/自然时延顺序，从原策略/搜索和适配两轴各选一候选；选择落盘后确认1440计时+72 AR。协议docs/ASD_COMPARISON_PROTOCOL.md，结果results/raw/asd-comparison。
+- 首相关`.venv\Scripts\python.exe -m pytest -q tests/test_asd_comparison.py --basetemp artifacts/comparison-tests-tmp --junitxml=artifacts/comparison-tests-local.xml -x --tb=short`：13 passed/23.92秒；随后补计在线接受器构造及hook成本，添加真实tiny树入口覆盖，将跑相关/完整检查后冻结源码。
+- 两A6000均19MiB/0%，磁盘402GiB可用；只读复用旧selected adapters，SHA固定，不下载/训练。每worker14400秒、46GiB/8图/backend300秒/cache4GiB，new root asd-comparison；当前尚无新GPU结果。
+
 ## 2026-10-23 — 阶段6共享公共段与新HTTP控制完成
 
 - GPU实际源ecc44571a6096232be16a1035ab71804f7878551/1902 blobs，source SHA2bcebb23b8538579e75c43b8c22695be172493ae65467ddce7ebcb6320d67863，完整本机ZIP SHA9b2e491825ecdad0fa93209bdbb4ccb583e300165c5a70963b2cd064d14ff5ee；实际4454359B delta SHAc14b9e82a94689f5af1b0cc5c778da6078b7a7a0faf5e2ac303a6e06f8e087db。新root asd-shared-prefix/PID1522788于05:57:32 UTC启动，06:18:48检查完成、两卡19MiB/0%。1902源前后SHA一致，成功ZIP211506B/SHA9c8ed2c250a56a1cc1e99b7b931f48b68a9b842d5df79af50cdae62790ec9040，40成员原始字节核验。
