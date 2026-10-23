@@ -1,0 +1,9 @@
+{
+  "levels": [
+    512,
+    2048,
+    4096
+  ],
+  "excluded": [],
+  "rule": "Intersection across both cards/configs; resource failures retained; no outcome-based exclusion"
+}

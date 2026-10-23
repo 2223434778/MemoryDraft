@@ -1,0 +1,5 @@
+{
+  "pid": 1419258,
+  "started_utc": "2026-10-23T03:15:47.981882+00:00",
+  "command": "OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_long_context_pipeline"
+}

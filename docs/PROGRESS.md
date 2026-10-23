@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-23 — 阶段6长输入单请求完成
+
+- GPU执行77d4646f07b87b25d6b0b51eb2cbb1c817556106/1778 blobs，source SHA09ec377a23cfcb10023ca09014115ba01d39634e19293a642e907c8f88e2989d；PID1419258于03:15:47 UTC启动，全部四预检与四正式进程成功，源码前后1778 SHA及原适配器不变。成功ZIP251671B/SHA4aee7662aa1deb1933d2643c57ddafaa361ea724d04689f5c33cf4446d696b8b，38原始成员逐字节核验，末查两卡19MiB/0%。
+- 三档全部准入，216正式（三臂×24输入×自然2+128/EOS1）、24完整AR及9独立profiler完成。全部strict逐token匹配AR，重复输出/轮数一致，所有自然EOS，无截断/OOM，正式新图0。两ASD三档均同样7/8，无新增错答；1075仍错。4K DFlash/AR341额外错，strict6/8，ASD7/8。旧短输入成果及reserve96保持。
+- 位置适配相对base ASD自然题均比1.0114/1.0146/1.0031，未带来净自然提速；共同128三档N6/5/4，比1.0161/.9768/1.0050。保留2K约2.32%等长收益：113→108验证轮，主要526少4轮。自然526少6轮，但1195输出182→236、24→35轮，抵消局部改善；不将前缀收益当完整解答提速。
+- 原ASD TTFT均0.486/1.992/4.815秒，占相应平均请求17.15%/45.22%/60.82%。独立同题Target prefill GPU约.49/1.92/4.70秒，Draft首次约.017/.038/.071秒。优化重点转向公共示例前缀的Target KV+选层hidden features缓存；尚未实现或宣称缓存收益。借鉴vLLM APC原理，需检查缓存生命周期、FP32分段数值、完整成本，再考虑连续批处理。
+- 各正式进程模型准备20.02–20.31秒、4编译图/backend3.34–3.47秒，首AR16冷wall5.32–5.59秒，编译0→4成本留在请求内；正式峰42.292GiB，8个进程cache合计3363660B。engine.generate计时含推理链路，不含HTTP/排队/文件读取/模型加载；wall−TTFT仍含Draft首次上下文处理，profiler不混入计时。
+- 主结果results/asd-long-context，完整表ASD_LONG_CONTEXT_RESULTS.md，解释ASD_LONG_CONTEXT_FINDINGS.md。服务器Python3.11/本机3.13主统计逐字节相同；审计1778 Git源、81执行/数据文件、1223旧结果、上轮74文件发布清单及infra三引用通过，两个既有结果CRLF例外保留。新增4K CLI示例和CI检查，不声称远端Actions已通过。
+- 复核命令`python -m scripts.write_asd_long_context_report`、`python -m results.asd-long-context.inspect_results`、`python -m results.asd-long-context.audit_postrun`。本机完整883 passed/7 skipped/127.89秒，相关32 passed/23.31秒，服务器74 passed/7.53秒；早期夹具/目录分类两次失败XML保留。只发布代码/配置/公开题目示例/JSON/XML/log，不传权重/hidden/raw trace。
+
 ## 2026-10-23 — 阶段6长输入数学小检查（执行准备）
 
 - 用户授权下一步。新增long_context评估模块、prepare/run/pipeline/write_asd_long_context脚本、test_long_context及GPU前协议ASD_LONG_CONTEXT_PROTOCOL.md。复用原runtime两配置，未改Target/验证器/接受规则；不训练或补seed，不迁移serving。
@@ -8,6 +18,7 @@
 - 初次相关单测1 failed/2 passed/4.90秒，测试夹具缺examples字段，已补；随后15 passed/4.52秒。首全量1 failed/25 passed/2 skipped/10.46秒，因旧独立题检查把已复用工作负载当新增research题集。将数据以完全相同5文件字节归到data/workloads，不改旧题集或测试；相关test_long_context+test_adaptation_followup共32 passed/23.31秒。各失败XML保留，第二次完整回归进行中，GPU尚未开始。
 - 第二次完整`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/long-context-full-v2-tmp --junitxml=artifacts/long-context-full-v2-local.xml -x --tb=short`：883 passed/7 skipped/127.89秒，一个既有starlette警告。历史研究/运行时未修改，数据归类后兼容检查通过。准备冻结canonical源码/输入/协议再部署，尚无GPU结论。
 - 服务器新root asd-long-context，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_long_context_pipeline`。本条尚无本轮性能结论。
+- GPU执行冻结77d4646f07b87b25d6b0b51eb2cbb1c817556106/1778 blobs，source SHA09ec377a23cfcb10023ca09014115ba01d39634e19293a642e907c8f88e2989d；完整本机ZIP SHA5e8a950aaae4be8aab2472fa44345268007aa8b01265c335a10c26744e246740，实际旧完整ZIP+3565842B delta（SHAb3f4c49ca99d078792e6139aa68508a1e0f3c33bbdcae639102c15755c633bc0）逐SHA重建。PID1419258于2026-10-23 03:15:47 UTC启动。服务器74 passed/7.53秒；四个资源预检全部准入512/2048/4096，峰约42.233GiB，无OOM。正式216+24 AR正在运行，未提前读取性能结论或按结果调参。
 
 ## 2026-10-22 — 数学ASD工程接入完成，冷CLI账本例外保留
 

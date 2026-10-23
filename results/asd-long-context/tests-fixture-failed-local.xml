@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="4.903" timestamp="2026-10-23T11:07:44.240940+08:00" hostname="DESKTOP-RPSID2L"><testcase classname="tests.test_long_context" name="test_frozen_inputs_are_complete_nested_examples_without_test_answer" time="0.013" /><testcase classname="tests.test_long_context" name="test_real_frozen_data_matrix_and_demo_exclusions" time="0.010" /><testcase classname="tests.test_long_context" name="test_analysis_separates_eos_prefix_work_and_first_token_cost" time="0.001"><failure message="KeyError: 'examples'">tests\test_long_context.py:62: in test_analysis_separates_eos_prefix_work_and_first_token_cost
+    result = analyze(rows,refs,items,tasks)
+scripts\write_asd_long_context_report.py:53: in analyze
+    cases.append(dict(request_id=rid,task_id=item["task_id"],level=item["level"],prompt_tokens=item["prompt_tokens"],examples=item["examples"],arms=arms))
+E   KeyError: 'examples'</failure></testcase></testsuite></testsuites>

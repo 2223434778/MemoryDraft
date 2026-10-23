@@ -62,3 +62,13 @@ flowchart LR
 默认严格运行配置、原面试版及历史H/D/R/OT实现继续保留。本配置是已测数学近似解码的显式使用入口。
 
 已完成的[工程验收](ASD_RUNTIME_RESULTS.md)保留两配置32直接结果、8 AR和2次CLI，以及真实HTTP/SSE/取消恢复证据。冷CLI的累计spent存在小于1e-5的数值差异，原零容差失败与后处理比较修正见[数值说明](ASD_RUNTIME_NUMERICS.md)；这不改变实际预算或解码规则。未来pipeline只对独立CLI账本比较使用该容差，普通直接/HTTP仍精确比较。
+
+## 长输入示例
+
+约4K token的公开多示例数学请求保存为examples/request-asd-long.json，当前题的参考答案不在输入中。在已准备模型/适配器的全新输出路径执行：
+
+```bash
+python -m memorydraft infer --config configs/runtime-dflash-asd-position.json --request examples/request-asd-long.json --method ASD --output artifacts/asd-long-answer.json
+```
+
+同输入三方法的[长输入评估](ASD_LONG_CONTEXT_FINDINGS.md)已完成，正式峰约42.29GiB，使用48GiB A6000。该轮是模型请求基准，未测长输入HTTP排队或连续批处理；原短输入3.23%收益与长输入边界分别报告。

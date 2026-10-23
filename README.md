@@ -87,6 +87,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [数学ASD运行入口](docs/ASD_RUNTIME.md)现已接入CLI/HTTP/SSE，提供原Draft和已接纳位置适配Draft两个显式配置，每请求独立预算并标记近似输出。[工程验收](docs/ASD_RUNTIME_RESULTS.md)完成32直接结果、8 AR参考和2次独立CLI；真实流式、取消恢复及队列通过。冷CLI累计账本存在不到1e-5的末位差异，原零容差失败记录及修正说明保留；未改解码规则或新增性能百分比。
 
+[长输入数学工作负载](docs/ASD_LONG_CONTEXT_FINDINGS.md)完成8个已观察任务×约512/2K/4K输入，216正式结果+24 AR与9独立profile；全部strict匹配AR、无截断/OOM/正式新图。位置适配在2K共同128五题省2.32%，三个长度自然请求均无净提速；ASD两组均7/8。4K首token约4.8秒，占平均请求约61%，下一步优先验证公共示例前缀缓存，保留既有短输入收益。模型请求时延不含HTTP和排队，未接连续批处理。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

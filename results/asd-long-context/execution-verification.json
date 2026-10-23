@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "commit": "77d4646f07b87b25d6b0b51eb2cbb1c817556106",
+  "files_verified_before": 1778,
+  "files_verified_after": 1778,
+  "original_adapter_unchanged": true,
+  "admitted": [
+    512,
+    2048,
+    4096
+  ],
+  "cache_bytes": 3363660
+}
