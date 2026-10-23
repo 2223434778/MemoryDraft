@@ -1,0 +1,35 @@
+{
+  "status": "complete",
+  "mode": "closed_loop",
+  "concurrency": 2,
+  "requests_per_state": 20,
+  "load_states": [
+    "cache"
+  ],
+  "cache": {
+    "wall_seconds": 54.536746917059645,
+    "requests": 20,
+    "tokens": 2405,
+    "hits": 19,
+    "mean_client_seconds": 5.339085470844293,
+    "mean_client_ttft_seconds": 3.0563720478850884,
+    "mean_queue_seconds": 2.6027293254388497
+  },
+  "json_and_sse_match": true,
+  "disconnect_cancelled": true,
+  "recovered": true,
+  "metrics": {
+    "submitted": 24,
+    "completed": 23,
+    "failed": 0,
+    "cancelled": 1,
+    "timed_out": 0,
+    "rejected": 0,
+    "output_tokens": 2789,
+    "running": 0,
+    "queued": 0,
+    "queue_capacity": 4,
+    "event_capacity": 32,
+    "closing": false
+  }
+}

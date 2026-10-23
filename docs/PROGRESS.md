@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-23 — 阶段6共享公共段与新HTTP控制完成
+
+- GPU实际源ecc44571a6096232be16a1035ab71804f7878551/1902 blobs，source SHA2bcebb23b8538579e75c43b8c22695be172493ae65467ddce7ebcb6320d67863，完整本机ZIP SHA9b2e491825ecdad0fa93209bdbb4ccb583e300165c5a70963b2cd064d14ff5ee；实际4454359B delta SHAc14b9e82a94689f5af1b0cc5c778da6078b7a7a0faf5e2ac303a6e06f8e087db。新root asd-shared-prefix/PID1522788于05:57:32 UTC启动，06:18:48检查完成、两卡19MiB/0%。1902源前后SHA一致，成功ZIP211506B/SHA9c8ed2c250a56a1cc1e99b7b931f48b68a9b842d5df79af50cdae62790ec9040，40成员原始字节核验。
+- 新registry保留三个短entry，把4073/3937两个公开4K前缀换为3934公共段，不改请求、Target/Draft或在线PublicPrefixCache/接受器。4K原8题shared下96正式（D/ASD×自然/128且EOS×off/cold/hit），全部自然EOS、无OOM/截断/正式新图，strict逐token匹配旧完整AR，当前输出均重现旧参考。ASD原7/8、strict原6/8保持；验证总轮数/汇总接受量相同，不冒称逐轮trace或bitwise一致，spent最大差6.29425048828125e-5且实际预算≤8。
+- shared ASD自然命中题均比off .4230/低57.70%，TTFT4.8023→.3090秒，首token后3.1039→3.1019；cold/off1.0017，cold+1hit/2off成本估算.7167。ASD共同完整128为5题、比.4144，D为6题/.4290，其余EOS短题保留。未新增训练/seed、reserve96未生成。
+- 共120新HTTP负载（shared各卡20off+20cache、whole新进程各20cache），另16个JSON/SSE/断连/恢复请求。GPU0 shared→whole/GPU1 whole→shared，同题同卡、并发2/四题轮换/空缓存起步。交替流whole157.4184→shared72.5130秒/低53.94%，hit0/20→19/20，淘汰19→0；平均queue7.4929→3.4734秒，固定2335token。单一前缀流whole54.5367→shared56.4706秒/慢3.55%，均19/20hit，固定2405token；保留原whole配置，公共段较短需多算139token。全部输出/输入/快照/汇总量一致，协议检查通过，无失败/超时，不将串行worker称连续批处理。
+- shared只填充1482457088B/1.3806GiB公共段，交替whole累计填充30184243200B；这是累计GPU入库量而非显存峰。原两个完整表示共2.8111GiB超2GiB，统一公共段解决覆盖容量问题；在线仍是整条登记entry，通用块/分支存储未实现。四进程模型准备20.259–20.858秒，各3图/backend3.256–3.428秒，首4K DFlash16冷wall8.491–9.161秒保留编译；正式峰43.6739GiB、HTTP峰43.6373GiB≤46，编译/测试cache共2725400B。
+- 本机unit34 passed/27.49秒、相关60 passed/7.86秒、完整924 passed/7 skipped/137.79秒，报告补充校验后专项7 passed/0.32秒；服务器116 passed/8.97秒。独立主统计JSON/Markdown两平台逐字节相同，审计1902 Git源、87冻结执行/数据文件、1323旧结果、上轮69文件发布清单及infra三引用通过，两个历史CRLF例外保留。在线缓存/引擎/ASD/旧registry/config与de1d4e4逐字节相同，无KV/features/权重/raw trace发布。
+- 报告docs/ASD_SHARED_PREFIX_FINDINGS.md、主表ASD_SHARED_PREFIX_RESULTS.md、数据results/asd-shared-prefix，入口configs/runtime-dflash-asd-shared-prefix.json用于常驻engine，默认与独立面试版不变。复核`python -m scripts.write_asd_shared_prefix_report --input results/asd-shared-prefix --output artifacts/shared-prefix-report-recheck`、`python -m results.asd-shared-prefix.inspect_results`、`python -m results.asd-shared-prefix.audit_postrun`；完整audit需artifacts/asd-shared-prefix-results.zip。后续可评估共享主干+短分支，减少单前缀额外后缀计算，本轮不冒称已经实现。
+
 ## 2026-10-23 — 阶段6共享公共段修复（执行准备）
 
 - 用户授权下一步。新prepare_shared_prefix只对已固定公开registry求token最长公共段，将4K的4073/3937两个entry换为3934，保留三个短entry，父SHA/ID/长度入新registry；不读测试答案、不改请求。新SHA f124b3a0791ed5fc2bcb15486925e8898d3f9a0bef2016ac7faf419b2fe6add1。显式配置runtime-dflash-asd-shared-prefix.json，原registry/配置/默认/面试版不变，在线PublicPrefixCache及模型/接受器未改。

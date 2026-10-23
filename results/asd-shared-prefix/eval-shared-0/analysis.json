@@ -1,0 +1,828 @@
+{
+  "rows": 48,
+  "cases": [
+    {
+      "task_id": "gsm8k:578",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "natural",
+      "timing": {
+        "off": {
+          "seconds": 8.441606914973818,
+          "ttft_seconds": 4.670666491030715,
+          "post_first_seconds": 3.7709404239431024,
+          "tpot_seconds": 0.017871755563711386,
+          "tokens": 212,
+          "rounds": 35
+        },
+        "cold": {
+          "seconds": 8.502933298004791,
+          "ttft_seconds": 4.718668452929705,
+          "post_first_seconds": 3.7842648450750858,
+          "tpot_seconds": 0.017934904479028842,
+          "tokens": 212,
+          "rounds": 35
+        },
+        "hit": {
+          "seconds": 4.112459871917963,
+          "ttft_seconds": 0.3214009989751503,
+          "post_first_seconds": 3.7910588729428127,
+          "tpot_seconds": 0.01796710366323608,
+          "tokens": 212,
+          "rounds": 35
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:578",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 7.48429903597571,
+          "ttft_seconds": 4.827460296917707,
+          "post_first_seconds": 2.656838739058003,
+          "tpot_seconds": 0.020919990071322857,
+          "tokens": 128,
+          "rounds": 24
+        },
+        "hit": {
+          "seconds": 2.9881700469413772,
+          "ttft_seconds": 0.326411327929236,
+          "post_first_seconds": 2.6617587190121412,
+          "tpot_seconds": 0.020958730070961742,
+          "tokens": 128,
+          "rounds": 24
+        },
+        "off": {
+          "seconds": 7.526724334922619,
+          "ttft_seconds": 4.850975523004308,
+          "post_first_seconds": 2.675748811918311,
+          "tpot_seconds": 0.021068888282821344,
+          "tokens": 128,
+          "rounds": 24
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:578",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 7.28894122201018,
+          "ttft_seconds": 4.766420205007307,
+          "post_first_seconds": 2.522521017002873,
+          "tpot_seconds": 0.019255885625976132,
+          "tokens": 132,
+          "rounds": 23
+        },
+        "hit": {
+          "seconds": 2.848609508946538,
+          "ttft_seconds": 0.32323756092227995,
+          "post_first_seconds": 2.525371948024258,
+          "tpot_seconds": 0.019277648458200444,
+          "tokens": 132,
+          "rounds": 23
+        },
+        "off": {
+          "seconds": 7.344427558011375,
+          "ttft_seconds": 4.804676034022123,
+          "post_first_seconds": 2.5397515239892527,
+          "tpot_seconds": 0.01938741621365842,
+          "tokens": 132,
+          "rounds": 23
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:578",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 7.23006334004458,
+          "ttft_seconds": 4.866148828994483,
+          "post_first_seconds": 2.3639145110500976,
+          "tpot_seconds": 0.01861350008700864,
+          "tokens": 128,
+          "rounds": 21
+        },
+        "hit": {
+          "seconds": 2.6914855299983174,
+          "ttft_seconds": 0.328729770029895,
+          "post_first_seconds": 2.3627557599684224,
+          "tpot_seconds": 0.018604376062743483,
+          "tokens": 128,
+          "rounds": 21
+        },
+        "off": {
+          "seconds": 7.244811446988024,
+          "ttft_seconds": 4.871237935964018,
+          "post_first_seconds": 2.3735735110240057,
+          "tpot_seconds": 0.01868955520491343,
+          "tokens": 128,
+          "rounds": 21
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:341",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 8.237427131971344,
+          "ttft_seconds": 4.9735553349601105,
+          "post_first_seconds": 3.263871797011234,
+          "tpot_seconds": 0.01754769783339373,
+          "tokens": 187,
+          "rounds": 29
+        },
+        "hit": {
+          "seconds": 3.597143432009034,
+          "ttft_seconds": 0.3364795340457931,
+          "post_first_seconds": 3.2606638979632407,
+          "tpot_seconds": 0.017530451064318497,
+          "tokens": 187,
+          "rounds": 29
+        },
+        "off": {
+          "seconds": 8.13396438898053,
+          "ttft_seconds": 4.864984276005998,
+          "post_first_seconds": 3.268980112974532,
+          "tpot_seconds": 0.01757516189771254,
+          "tokens": 187,
+          "rounds": 29
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:341",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 7.030860941042192,
+          "ttft_seconds": 4.876482251100242,
+          "post_first_seconds": 2.15437868994195,
+          "tpot_seconds": 0.01696361173182638,
+          "tokens": 128,
+          "rounds": 19
+        },
+        "hit": {
+          "seconds": 2.4917492989916354,
+          "ttft_seconds": 0.3378047179430723,
+          "post_first_seconds": 2.153944581048563,
+          "tpot_seconds": 0.016960193551563488,
+          "tokens": 128,
+          "rounds": 19
+        },
+        "off": {
+          "seconds": 7.039432456018403,
+          "ttft_seconds": 4.878424588008784,
+          "post_first_seconds": 2.1610078680096194,
+          "tpot_seconds": 0.017015809984327713,
+          "tokens": 128,
+          "rounds": 19
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:341",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 8.093750011990778,
+          "ttft_seconds": 4.8882379749557,
+          "post_first_seconds": 3.205512037035078,
+          "tpot_seconds": 0.014121198401035585,
+          "tokens": 228,
+          "rounds": 28
+        },
+        "hit": {
+          "seconds": 3.534590797033161,
+          "ttft_seconds": 0.3388117840513587,
+          "post_first_seconds": 3.1957790129818022,
+          "tpot_seconds": 0.01407832164309164,
+          "tokens": 228,
+          "rounds": 28
+        },
+        "off": {
+          "seconds": 8.09559411299415,
+          "ttft_seconds": 4.899868628941476,
+          "post_first_seconds": 3.195725484052673,
+          "tpot_seconds": 0.014078085832831159,
+          "tokens": 228,
+          "rounds": 28
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 4.00543212890625e-05,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:341",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 6.712240968015976,
+          "ttft_seconds": 4.8879551470745355,
+          "post_first_seconds": 1.8242858209414408,
+          "tpot_seconds": 0.014364455283003471,
+          "tokens": 128,
+          "rounds": 16
+        },
+        "hit": {
+          "seconds": 2.157445149961859,
+          "ttft_seconds": 0.33839424699544907,
+          "post_first_seconds": 1.81905090296641,
+          "tpot_seconds": 0.014323235456428425,
+          "tokens": 128,
+          "rounds": 16
+        },
+        "off": {
+          "seconds": 6.71613629499916,
+          "ttft_seconds": 4.888119768933393,
+          "post_first_seconds": 1.8280165260657668,
+          "tpot_seconds": 0.014393830913903677,
+          "tokens": 128,
+          "rounds": 16
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 5.7220458984375e-06,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:526",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "natural",
+      "timing": {
+        "off": {
+          "seconds": 9.206561319995672,
+          "ttft_seconds": 4.912093990948051,
+          "post_first_seconds": 4.29446732904762,
+          "tpot_seconds": 0.02236701733878969,
+          "tokens": 193,
+          "rounds": 38
+        },
+        "cold": {
+          "seconds": 9.21910518198274,
+          "ttft_seconds": 4.923606459982693,
+          "post_first_seconds": 4.295498722000048,
+          "tpot_seconds": 0.02237238917708358,
+          "tokens": 193,
+          "rounds": 38
+        },
+        "hit": {
+          "seconds": 4.615214150049724,
+          "ttft_seconds": 0.3391065620817244,
+          "post_first_seconds": 4.276107587967999,
+          "tpot_seconds": 0.02227139368733333,
+          "tokens": 193,
+          "rounds": 38
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:526",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 8.410605892073363,
+          "ttft_seconds": 4.9165716340066865,
+          "post_first_seconds": 3.4940342580666766,
+          "tpot_seconds": 0.027512080772178555,
+          "tokens": 128,
+          "rounds": 31
+        },
+        "hit": {
+          "seconds": 3.824984760954976,
+          "ttft_seconds": 0.33947648492176086,
+          "post_first_seconds": 3.4855082760332152,
+          "tpot_seconds": 0.027444947055379646,
+          "tokens": 128,
+          "rounds": 31
+        },
+        "off": {
+          "seconds": 8.416507147019729,
+          "ttft_seconds": 4.923498142044991,
+          "post_first_seconds": 3.4930090049747378,
+          "tpot_seconds": 0.027504007913186912,
+          "tokens": 128,
+          "rounds": 31
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:526",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 8.578761958051473,
+          "ttft_seconds": 4.93795777100604,
+          "post_first_seconds": 3.6408041870454326,
+          "tpot_seconds": 0.021671453494318052,
+          "tokens": 169,
+          "rounds": 32
+        },
+        "hit": {
+          "seconds": 3.9696647650562227,
+          "ttft_seconds": 0.33827946707606316,
+          "post_first_seconds": 3.6313852979801595,
+          "tpot_seconds": 0.02161538867845333,
+          "tokens": 169,
+          "rounds": 32
+        },
+        "off": {
+          "seconds": 8.569627717952244,
+          "ttft_seconds": 4.931433290941641,
+          "post_first_seconds": 3.6381944270106032,
+          "tpot_seconds": 0.02165591920839645,
+          "tokens": 169,
+          "rounds": 32
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 3.4332275390625e-05,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:526",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "prefix",
+      "timing": {
+        "off": {
+          "seconds": 7.7729478779947385,
+          "ttft_seconds": 4.934898026986048,
+          "post_first_seconds": 2.838049851008691,
+          "tpot_seconds": 0.022346849220540872,
+          "tokens": 128,
+          "rounds": 25
+        },
+        "cold": {
+          "seconds": 7.782757341046818,
+          "ttft_seconds": 4.93021425709594,
+          "post_first_seconds": 2.852543083950877,
+          "tpot_seconds": 0.022460969164967537,
+          "tokens": 128,
+          "rounds": 25
+        },
+        "hit": {
+          "seconds": 3.186695393989794,
+          "ttft_seconds": 0.34065766900312155,
+          "post_first_seconds": 2.8460377249866724,
+          "tpot_seconds": 0.02240974586603679,
+          "tokens": 128,
+          "rounds": 25
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": 3.4332275390625e-05,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:1142",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 6.951087648048997,
+          "ttft_seconds": 4.892030045972206,
+          "post_first_seconds": 2.0590576020767912,
+          "tpot_seconds": 0.02339838184178172,
+          "tokens": 89,
+          "rounds": 18
+        },
+        "hit": {
+          "seconds": 2.3893788850400597,
+          "ttft_seconds": 0.33827807393390685,
+          "post_first_seconds": 2.051100811106153,
+          "tpot_seconds": 0.023307963762569918,
+          "tokens": 89,
+          "rounds": 18
+        },
+        "off": {
+          "seconds": 6.936836447915994,
+          "ttft_seconds": 4.886457285960205,
+          "post_first_seconds": 2.0503791619557887,
+          "tpot_seconds": 0.023299763204043054,
+          "tokens": 89,
+          "rounds": 18
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:1142",
+      "level": 4096,
+      "method": "DFlash",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 6.95194768498186,
+          "ttft_seconds": 4.89441078202799,
+          "post_first_seconds": 2.0575369029538706,
+          "tpot_seconds": 0.02338110116993035,
+          "tokens": 89,
+          "rounds": 18
+        },
+        "hit": {
+          "seconds": 2.391466758097522,
+          "ttft_seconds": 0.33721639902796596,
+          "post_first_seconds": 2.054250359069556,
+          "tpot_seconds": 0.023343754080335864,
+          "tokens": 89,
+          "rounds": 18
+        },
+        "off": {
+          "seconds": 6.9450396070024,
+          "ttft_seconds": 4.886545876041055,
+          "post_first_seconds": 2.058493730961345,
+          "tpot_seconds": 0.023391974215469832,
+          "tokens": 89,
+          "rounds": 18
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": null,
+          "spent_bitwise_equal": true
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:1142",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "natural",
+      "timing": {
+        "cold": {
+          "seconds": 6.968000105931424,
+          "ttft_seconds": 4.90658974298276,
+          "post_first_seconds": 2.0614103629486635,
+          "tpot_seconds": 0.02147302461404858,
+          "tokens": 97,
+          "rounds": 18
+        },
+        "hit": {
+          "seconds": 2.407298075966537,
+          "ttft_seconds": 0.336777457036078,
+          "post_first_seconds": 2.070520618930459,
+          "tpot_seconds": 0.02156792311385895,
+          "tokens": 97,
+          "rounds": 18
+        },
+        "off": {
+          "seconds": 6.965407737996429,
+          "ttft_seconds": 4.889915168983862,
+          "post_first_seconds": 2.0754925690125674,
+          "tpot_seconds": 0.021619714260547578,
+          "tokens": 97,
+          "rounds": 18
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": -3.814697265625e-05,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    },
+    {
+      "task_id": "gsm8k:1142",
+      "level": 4096,
+      "method": "ASD",
+      "stage": "prefix",
+      "timing": {
+        "cold": {
+          "seconds": 6.968501426046714,
+          "ttft_seconds": 4.893971084035002,
+          "post_first_seconds": 2.0745303420117125,
+          "tpot_seconds": 0.021609691062622005,
+          "tokens": 97,
+          "rounds": 18
+        },
+        "hit": {
+          "seconds": 2.4067120460094884,
+          "ttft_seconds": 0.3399208780610934,
+          "post_first_seconds": 2.066791167948395,
+          "tpot_seconds": 0.021529074666129116,
+          "tokens": 97,
+          "rounds": 18
+        },
+        "off": {
+          "seconds": 6.969997614971362,
+          "ttft_seconds": 4.900463548023254,
+          "post_first_seconds": 2.0695340669481084,
+          "tpot_seconds": 0.021557646530709462,
+          "tokens": 97,
+          "rounds": 18
+        }
+      },
+      "comparisons": {
+        "cold": {
+          "changed": [],
+          "spent_delta": 0.0,
+          "spent_bitwise_equal": true
+        },
+        "hit": {
+          "changed": [],
+          "spent_delta": -3.814697265625e-05,
+          "spent_bitwise_equal": false
+        }
+      },
+      "prefix_tokens": 3934,
+      "cache_bytes": 1482457088
+    }
+  ],
+  "summary": {
+    "4096/DFlash/natural": {
+      "requests": 4,
+      "same_output_and_decisions": 4,
+      "seconds": {
+        "off": 8.179742267966503,
+        "cold": 8.227638315001968,
+        "hit": 3.678549084754195
+      },
+      "ttft_seconds": {
+        "off": 4.833550510986242,
+        "cold": 4.876965073461179,
+        "hit": 0.33381629225914367
+      },
+      "hit_ratio": 0.4437867651437168,
+      "cold_ratio": 1.005850383299784,
+      "cold_plus_one_hit_ratio": 0.727784996746362,
+      "all_full_128": false,
+      "common_full_128": 0,
+      "common_full_128_hit_ratio": null
+    },
+    "4096/DFlash/prefix": {
+      "requests": 4,
+      "same_output_and_decisions": 4,
+      "seconds": {
+        "off": 7.481925886240788,
+        "cold": 7.469428388518281,
+        "hit": 2.9240927162463777
+      },
+      "ttft_seconds": {
+        "off": 4.8848610322747845,
+        "cold": 4.878731241013156,
+        "hit": 0.3352272324555088
+      },
+      "hit_ratio": 0.387445546050064,
+      "cold_ratio": 0.9983598151810371,
+      "cold_plus_one_hit_ratio": 0.6945752512650704,
+      "all_full_128": false,
+      "common_full_128": 3,
+      "common_full_128_hit_ratio": 0.401813494097234
+    },
+    "4096/ASD/natural": {
+      "requests": 4,
+      "same_output_and_decisions": 4,
+      "seconds": {
+        "off": 7.7437642817385495,
+        "cold": 7.732363324495964,
+        "hit": 3.1900407867506146
+      },
+      "ttft_seconds": {
+        "off": 4.881473280722275,
+        "cold": 4.874801423487952,
+        "hit": 0.33427656727144495
+      },
+      "hit_ratio": 0.4083248024590663,
+      "cold_ratio": 0.9984138457343393,
+      "cold_plus_one_hit_ratio": 0.70523867423263,
+      "all_full_128": false,
+      "common_full_128": 0,
+      "common_full_128_hit_ratio": null
+    },
+    "4096/ASD/prefix": {
+      "requests": 4,
+      "same_output_and_decisions": 4,
+      "seconds": {
+        "off": 7.175973308738321,
+        "cold": 7.173390768788522,
+        "hit": 2.6105845299898647
+      },
+      "ttft_seconds": {
+        "off": 4.898679819976678,
+        "cold": 4.89457232929999,
+        "hit": 0.33692564102238975
+      },
+      "hit_ratio": 0.3620017167822835,
+      "cold_ratio": 0.9996079163268852,
+      "cold_plus_one_hit_ratio": 0.681717648452249,
+      "all_full_128": false,
+      "common_full_128": 3,
+      "common_full_128_hit_ratio": 0.3675703010205554
+    }
+  },
+  "differences": [],
+  "all_outputs_and_decisions_equal": true,
+  "max_spent_abs_delta": 4.00543212890625e-05,
+  "spent_bitwise_differences": 6,
+  "resource_peak_gpu_bytes": 46894461952
+}

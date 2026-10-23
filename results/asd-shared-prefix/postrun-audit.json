@@ -1,0 +1,26 @@
+{
+  "status": "complete",
+  "execution_commit": "ecc44571a6096232be16a1035ab71804f7878551",
+  "canonical_git_blobs": 1902,
+  "frozen_files": 87,
+  "previous_result_files": 1323,
+  "previous_publication_files": 69,
+  "legacy_crlf": [
+    "results/research-audit/model_preflight.json",
+    "results/research-audit/pilot_summary.json"
+  ],
+  "formal_rows": 96,
+  "outputs_and_aggregate_counters_equal": true,
+  "all_strict_match_previous_ar": true,
+  "http_load_requests": 120,
+  "server_local_analysis_equal": true,
+  "online_runtime_unchanged": true,
+  "infra_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "archive_bytes": 211506,
+  "archive_sha256": "9c8ed2c250a56a1cc1e99b7b931f48b68a9b842d5df79af50cdae62790ec9040",
+  "archive_members": 40
+}

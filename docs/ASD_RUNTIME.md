@@ -88,3 +88,13 @@ python -m memorydraft serve --config configs/runtime-dflash-asd-prefix-cache.jso
 上限2GiB/3 entries，按LRU淘汰；当前以整个登记前缀为entry，不做相同前半段去重。首次完整prefill、存入缓存、命中复制、查找和淘汰均在engine.generate计时内。返回counters中的prefix_cache_hit、prefix_cache_prefix_tokens、prefix_cache_reused_tokens、prefix_cache_filled_bytes、prefix_cache_evictions、prefix_cache_bytes和prefix_cache_entries可用于解释请求成本。
 
 固定请求/数值profile下已执行配对检查，见[缓存结果与边界](ASD_PREFIX_CACHE_FINDINGS.md)。分段prefill仍可能带来浮点舍入差异；当前检查覆盖输出、验证总轮数与ASD汇总账本，不是所有模型/输入的逐bit或逐轮一致性保证。服务仍是单模型worker串行排队，未实现continuous batching。
+
+## 共享公共段配置
+
+```bash
+python -m memorydraft serve --config configs/runtime-dflash-asd-shared-prefix.json --host 127.0.0.1 --port 8000 --queue-capacity 4 --event-capacity 32
+```
+
+该配置保留原模型/ASD策略/2GiB容量，将两个已登记的4K公开前缀合并为同一个3934-token公共段，其他三个短前缀保持。在线仍使用同一个PublicPrefixCache；这是登记边界调整，尚未实现通用块存储。新registry从原公开token求公共段，保留父SHA/ID/长度，重建命令为`python -m scripts.prepare_shared_prefix`。
+
+[共享段评估](ASD_SHARED_PREFIX_FINDINGS.md)中，交替模板流命中0/20→19/20，相对新整前缀控制总wall低53.94%；原本单一前缀高命中流则慢3.55%。频繁交替这两个模板时可用shared配置；只重复同一个长前缀时可继续使用runtime-dflash-asd-prefix-cache.json。两个配置都需常驻engine才能跨请求命中，默认缓存入口未改变。换模板需重新登记合法公开前缀并固定SHA，本轮没有验证任意新模板或其他模型。

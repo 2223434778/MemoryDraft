@@ -91,6 +91,8 @@ BF16主检查存在2/8题AR/D逐ID数值分歧，全部记录；自然质量/长
 
 [公共前缀Target KV及DFlash特征缓存](docs/ASD_PREFIX_CACHE_FINDINGS.md)完成288配对生成及80真实HTTP负载请求。ASD命中自然时延在约512/2K/4K输入低13.69%/42.53%/59.10%，4K首token4.82→0.20秒；首次填充加一次命中的配对总成本低28.98%。同前缀HTTP请求流从空缓存起步命中19/20，总wall低62.45%；两种大前缀交替时受2GiB容量限制，0/20命中、慢0.10%。输出/验证总轮数和ASD汇总量保持，spent末位差异单列；默认关闭、仅缓存登记公开前缀、每请求独立活动KV/预算。配置`configs/runtime-dflash-asd-prefix-cache.json`用于常驻服务，单次CLI退出即清缓存；未实现分块去重或连续批处理。
 
+[共享公共段修复](docs/ASD_SHARED_PREFIX_FINDINGS.md)完成96次4K配对生成及120次新HTTP负载请求：将两种公开长前缀统一登记为3934-token公共段，容量仍2GiB，交替流命中0/20→19/20，相对同卡新整前缀控制总wall降低53.94%；单一前缀流慢3.55%，保留原配置。输出/EOS/验证总轮数及ASD汇总量保持，质量未新增变化，spent末位差异单列。显式`configs/runtime-dflash-asd-shared-prefix.json`适合这类模板家族，在线缓存/引擎/接受器未改；尚未实现通用块或分支存储。
+
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
 
 当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。

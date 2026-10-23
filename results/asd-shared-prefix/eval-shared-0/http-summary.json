@@ -1,0 +1,45 @@
+{
+  "status": "complete",
+  "mode": "closed_loop",
+  "concurrency": 2,
+  "requests_per_state": 20,
+  "load_states": [
+    "off",
+    "cache"
+  ],
+  "off": {
+    "wall_seconds": 143.69998922594823,
+    "requests": 20,
+    "tokens": 2405,
+    "hits": 0,
+    "mean_client_seconds": 14.022330150293419,
+    "mean_client_ttft_seconds": 11.741934460448102,
+    "mean_queue_seconds": 6.827121315896511
+  },
+  "cache": {
+    "wall_seconds": 56.47057978005614,
+    "requests": 20,
+    "tokens": 2405,
+    "hits": 19,
+    "mean_client_seconds": 5.528184332855744,
+    "mean_client_ttft_seconds": 3.2678325899934864,
+    "mean_queue_seconds": 2.695211574190762
+  },
+  "json_and_sse_match": true,
+  "disconnect_cancelled": true,
+  "recovered": true,
+  "metrics": {
+    "submitted": 44,
+    "completed": 43,
+    "failed": 0,
+    "cancelled": 1,
+    "timed_out": 0,
+    "rejected": 0,
+    "output_tokens": 5194,
+    "running": 0,
+    "queued": 0,
+    "queue_capacity": 4,
+    "event_capacity": 32,
+    "closing": false
+  }
+}
