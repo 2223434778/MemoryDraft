@@ -343,6 +343,8 @@ results/asd-paper-metrics/**/*.xml -whitespace
 results/asd-paper-metrics/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 memorydraft/evaluation/asd_paper_metrics.py text eol=lf
 memorydraft/evaluation/asd_paper_extension.py text eol=lf
+memorydraft/evaluation/asd_extension_contracts.py text eol=lf
+tests/test_asd_extension_contracts.py text eol=lf
 tests/test_asd_paper_extension.py text eol=lf
 data/research/asd-paper-extension/** -text
 data/research/asd-paper-extension/*README.md -whitespace
