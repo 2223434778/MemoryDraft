@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-24 — 七任务指标补全准备
+
+- 用户授权继续未完成项，其他方法允许引用文献，不重复全五组实验。新增asd_paper_metrics、固定AR runner/pipeline、Skywork下载/pointwise评分、补充报告与测试。原241源任务/249主请求不变，计划747次DFlash-before/AR/DFlash-after固定256；原五组TPS保留，跨会话AR倍率和锚点校准估计明确区分，不当新候选配对实测。
+- 独立训练奖励模型Skywork/Skywork-Reward-V2-Qwen3-8B固定6f19fdefb933293d4898bdb59a96f7223d998659，Apache-2.0，13文件15152796883B；模型卡/逐文件Git blob及LFS SHA在configs/asd-reward-model.json。本机RTX3090 BF16/SDPA离线评分，8独立好坏控制至少7通过才评24单元×5方法；无外部推理API，权重只在artifacts/models。本机下载中，服务器两个GPU空闲，401GiB可用。远端HF超时/mirror403，改本地已配置代理下载；一次SSH短暂超时后恢复。
+- 首专项出现测试fixture浅拷贝使对照和变异行共用token list，修正为deepcopy；失败XML保留paper-metrics-tests-local.xml（3通过/1失败），未因此更改生成或验证逻辑。完整检查与固定源码部署继续，当前暂无新GPU性能或奖励评分结论。冻结协议ASD_PAPER_METRICS_PROTOCOL.md。
+- 修正后相关27 passed/11.81s（paper-metrics-tests-v2-local.xml）；增加全七族统计集成检查后再跑最终专项。直连大权重请求无进度，核对owned进程4688/17008后终止；HTTP Range64KiB检查2.81秒成功，改为16MiB分块/每文件4线程，保留首下载日志与零字节part。原模型版本/哈希不变。
+
 ## 2026-10-24 — ASD七任务五方法扩样本完成
 
 - 241新源任务/249匹配输入，五组4980正式计时+249 AR、40自身历史MT第二轮、18预热/零检查全部完成；192本地裁判记录另列。两个worker2500/2480，数学里程碑各960、parameter_changes=0；全部严格AR/token/text/停止、输入/快照、重复轨迹、实际预算≤8检查通过。源码60645db/2199 canonical Git blobs前后及最终复核SHA一致，未重复启动GPU实验。

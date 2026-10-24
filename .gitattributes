@@ -337,6 +337,9 @@ docs/ASD_PAPER*.md text eol=lf
 data/research/asd-paper/** -text
 data/research/asd-paper/*README.md -whitespace
 results/asd-paper/** -text
+results/asd-paper-metrics/** -text
+results/asd-paper-metrics/**/*.log -whitespace
+results/asd-paper-metrics/**/*.xml -whitespace
 results/asd-paper/**/*.log -whitespace
 results/asd-paper/**/*.xml -whitespace
 memorydraft/backends/budget_tree.py text eol=lf
