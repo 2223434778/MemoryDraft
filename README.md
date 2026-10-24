@@ -1,5 +1,9 @@
 # MemoryDraft
 
+> [七任务剩余指标补全](docs/ASD_PAPER_METRICS_FINDINGS.md)：747新固定计时、120独立奖励评分完成。
+> GSM严格DFlash/AR直接测得3.845×，组合/AR跨会话锚点估计4.709×；实际Draft接受长度ASD5.351→组合6.792。
+> 数学组合收益保持；开放奖励偏好MT为62.5%、Alpaca为25%，任务合同检查另列。完整[补充表](docs/ASD_PAPER_METRICS_RESULTS.md)与[文献基线](docs/ASD_LITERATURE_REFERENCE.md)区分实测、估计和原文报告值。
+
 > [ASD论文七任务扩样本](docs/ASD_PAPER_FINDINGS.md)：241新源任务/249匹配输入、五组4980计时+249 AR完成。
 > BudgetTree-ASD在GSM64题较ASD完整省9.86%、等128省11.64%，正确集合保持63/64；MATH32题省11.42%/4.70%、正确26→28。
 > Joint未显示对第一组合的稳定增量。代码有实际失败/截断，MMLU有输出格式变化，开放裁判未通过换序控制；全部正负结果见[主表](docs/ASD_PAPER_RESULTS.md)及[质量复核](results/asd-paper/quality-audit.json)。

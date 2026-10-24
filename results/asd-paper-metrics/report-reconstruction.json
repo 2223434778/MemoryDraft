@@ -1,0 +1,13 @@
+{
+  "before_sha256": {
+    "analysis.json": "a8b30c588e63887dc959921f31c1491b995df6c49b113544901c37d68b9dedfd",
+    "report.md": "7c6d7317766404f7163baf7d2547acb63e55b096622635f3a44c22b32ea807ef"
+  },
+  "after_sha256": {
+    "analysis.json": "a8b30c588e63887dc959921f31c1491b995df6c49b113544901c37d68b9dedfd",
+    "report.md": "7c6d7317766404f7163baf7d2547acb63e55b096622635f3a44c22b32ea807ef"
+  },
+  "byte_exact": true,
+  "seconds": 10.803296600002795,
+  "scope": "Independent local deterministic rebuild after merging server AR and local reward evidence; not a server reward reproduction."
+}

@@ -340,6 +340,11 @@ results/asd-paper/** -text
 results/asd-paper-metrics/** -text
 results/asd-paper-metrics/**/*.log -whitespace
 results/asd-paper-metrics/**/*.xml -whitespace
+results/asd-paper-metrics/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+memorydraft/evaluation/asd_paper_metrics.py text eol=lf
+scripts/download_asd_reward.py text eol=lf
+scripts/run_asd_reward.py text eol=lf
+tests/test_asd_paper_metrics.py text eol=lf
 results/asd-paper/**/*.log -whitespace
 results/asd-paper/**/*.xml -whitespace
 memorydraft/backends/budget_tree.py text eol=lf

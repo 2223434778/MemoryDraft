@@ -1,0 +1,12 @@
+{
+  "commit": "4a33ae58c8c35d5f0219ed3366a5150d70d02274",
+  "source_sha256": "fbde4b6505e814dd8b861eddf66514ae597c5e4300a45b86ac1e26917b137165",
+  "canonical_files": 2259,
+  "delta_bytes": 9157839,
+  "delta_sha256": "f44edeb53bea695557cf351b0382e4bacfd0ff55675b159dc1c8cfded068578c",
+  "full_source_zip_sha256": "3d507f7f1bc0005eceafda149d5a8ee019c12d4763ccba5679c8950cf3ab53f8",
+  "pid": 2352078,
+  "start_utc": "2026-10-24T04:20:49.798781+00:00",
+  "outer_timeout_seconds": 7800,
+  "worker_timeout_seconds": 7200
+}

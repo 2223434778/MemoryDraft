@@ -1,5 +1,17 @@
 # 项目进度
 
+## 2026-10-24 — 七任务剩余指标全部补测完成
+
+- 原249匹配输入全部完成DFlash-before/AR/DFlash-after固定256且忽略EOS，共747正式生成+4预热；两个worker375/372，各125/124请求。三个新输出均逐token匹配旧fixed DFlash，输入/快照/精度保持；前后漂移范围.98286–1.00836，跨会话.97392–1.00784，>3%均0/249，无漂移筛题。没有重复旧五组自然/前缀实验或按新结果调参。
+- 实际GPU源4a33ae58c8c35d5f0219ed3366a5150d70d02274/2259 canonical Git blobs，source SHAfbde4b6505e814dd8b861eddf66514ae597c5e4300a45b86ac1e26917b137165。完整源ZIP37165176B/SHA3d507f7f1bc0005eceafda149d5a8ee019c12d4763ccba5679c8950cf3ab53f8，实际delta64文件9157839B/SHAf44edeb53bea695557cf351b0382e4bacfd0ff55675b159dc1c8cfded068578c；新root asd-paper-metrics/PID2352078于04:20:49 UTC启动，执行验证文件末改05:05:41 UTC、完成审计05:06:24 UTC；前后与归档复核2259源SHA不变，两GPU最终19MiB/0%。
+- 新AR GSM20.382TPS；当前严格DFlash/AR同窗直接3.845×。组合/AR跨会话4.696×、按新旧DFlash逐请求漂移校准估计4.709×；MATH对应5.168×/5.175×。旧五组时间不重写，主表明确直接实测、跨会话比与估计的范围，不将文献AR与本机时延相除。旧GSM完整-9.86%/等128-11.64%/63同正确集合、MATH完整-11.42%/正确26→28等结论保持。统一tau_selected/tau_emitted，GSM实际Draft接受长5.351→6.792、MATH6.566→7.665；独立枚举3735旧首重复轨迹每个输出位置的Draft/Target来源，全覆盖无重叠，bonus和节点成本分开。
+- 另用独立训练Skywork Reward V2 Qwen3-8B在本机3090/BF16/SDPA离线评24开放单元×5组，共120行/87去重对话，全部可评、无裁剪。8控制全过、反序复算误差0；组合MT5胜0平3负/62.5%，Alpaca3胜2平11负/25%；Joint分别3/1/4及6/1/9，仍不升级。原192第一token位置裁判失败保留。9任务单元/45方法单元/65属性检查14未满足：ASD方向错、其他组代码次轮仍排序、所有组手机名未大写等，均保持原评分。RM会将严格排序方案排在线性ASD之上，大负分的bi-annual回答仍都每年两次；偏好不伪装准确率。7大差值/客观对照个案及输出SHA单列。
+- 模型实际**14**文件/15152796883B，准备记录13为计数笔误，固定manifest与运行校验始终完整14。成功分块下载1435.318秒，首直连无进度的owned进程停止/日志保留、该首失败阶段未完整计秒。评分实际Python3.13.5/Torch2.6.0+cu124/Transformers4.52.2，校验13.365秒/加载11.284秒/任务前向18.801秒/全进程57.888秒、峰14.332GiB；04:42:31–04:43:29 UTC，2259本地冻结源前后SHA相同。不同于生成服务器4.57.3；两种用途与成本分开，权重仅本地artifacts。
+- 生成每卡加载20.891/19.952秒、冷backend3.424/3.429秒包含预热，每卡4图/正式新图0、cache414726B，峰35.094/36.055GiB。本轮严格控制无需构树成本表；所有在线生成成本计wall，离线评价不混入速度。
+- 本地最终相关28 passed/11.85s、服务器28 passed；完整首次在82%后停滞，核对owned18156/24788的命令和停滞CPU计数后终止，记录incomplete/noXML。带-vv/-o faulthandler_timeout=60及完整日志重跑1040 passed/7 skipped/167.98s，仅既有Starlette警告；未因此更改生成代码，首次原因未定。首fixture浅拷贝的3通过/1失败XML与后续27通过也保留。
+- 原结果ZIP613909B/SHA59d2f5dc2abd0cfc43b25a4fce992ccf24890ee575adb65c26452888ea22d636保持服务器，追加deployment/completion/pipeline后614833B/SHA523e688cc02d13f50a7de2f1ae44cec2b609b09fdc778b7db277b64f845adfe5下载。32原始/本地检查载荷逐文件SHA，统计JSON/Markdown本地确定性重建逐字节相同，2259 Git blobs、747/249覆盖、精度/预算/资源/旧结果及infra三引用独立检查通过。报告ASD_PAPER_METRICS_FINDINGS/RESULTS，公开results/asd-paper-metrics；文献值单列ASD_LITERATURE_REFERENCE，不冒充本机实测。
+- 精确命令见ASD_PAPER_METRICS_PROTOCOL；服务器`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_paper_metrics_pipeline`。本地`python -m scripts.write_asd_paper_metrics_report --input results/asd-paper-metrics`及`python -m results.asd-paper-metrics.inspect_results`/`audit_open_contracts`/`audit_reward_differences`分别运行。README/路线表同步；接纳数学组合并保留所有正负结果，未启动新配对/训练/种子。
+
 ## 2026-10-24 — 七任务指标补全准备
 
 - 用户授权继续未完成项，其他方法允许引用文献，不重复全五组实验。新增asd_paper_metrics、固定AR runner/pipeline、Skywork下载/pointwise评分、补充报告与测试。原241源任务/249主请求不变，计划747次DFlash-before/AR/DFlash-after固定256；原五组TPS保留，跨会话AR倍率和锚点校准估计明确区分，不当新候选配对实测。

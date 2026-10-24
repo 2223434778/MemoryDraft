@@ -1,0 +1,11 @@
+{
+  "status": "incomplete",
+  "last_observed_progress": "82 percent plus 24 dots",
+  "no_final_junit_xml": true,
+  "owned_process_ids": [
+    18156,
+    24788
+  ],
+  "observation": "CPU counters stopped advancing over consecutive checks; terminated the verified owned test process; cause not established",
+  "followup": "verbose faulthandler_timeout=60 run, no implementation changes"
+}
