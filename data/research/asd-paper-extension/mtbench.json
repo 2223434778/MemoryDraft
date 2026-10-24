@@ -1,0 +1,186 @@
+[
+  {
+    "question_id": 111,
+    "category": "math",
+    "turns": [
+      "The vertices of a triangle are at points (0, 0), (-1, 1), and (3, 3). What is the area of the triangle?",
+      "What's area of the circle circumscribing the triangle?"
+    ],
+    "reference": [
+      "Area is 3",
+      "5pi"
+    ],
+    "id": "mtbench:111",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 137,
+    "category": "extraction",
+    "turns": [
+      "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility.",
+      "Now make the JSON object shorter by replacing each value with its first letter. Please output everything in a single line without using indentation or creating new lines."
+    ],
+    "id": "mtbench:137",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 90,
+    "category": "writing",
+    "turns": [
+      "Edit the following paragraph to correct any grammatical errors:\nShe didn't remembre where is her purse, so I thinks its in the car but he's say it's on kitchen table but he are not sure, and then they asked me to looking for it, she's say, \"Can you?\", and I responds with, \"Maybe, but ain't no sure,\" and he not heard me, and, \"What?\", he asks, \"Did you found it?\".",
+      "Modify your earlier reply and eliminate the use of gendered pronouns."
+    ],
+    "id": "mtbench:90",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 124,
+    "category": "coding",
+    "turns": [
+      "Here is a Python function to find the length of the longest common subsequence of two input strings. Can you identify any bug in this function?\n\n```\ndef longest_common_subsequence_length(str1, str2):\n    m = len(str1)\n    n = len(str2)\n\n    dp = [[0] * (n + 1) for _ in range(m + 1)]\n\n    for i in range(1, m + 1):\n        for j in range(1, n + 1):\n            if str1[i - 1] == str2[j - 1]:\n                dp[i][j] = dp[i - 1][j - 1] + 1\n            else:\n                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])\n\n    return dp[m][n]\n```",
+      "what about this one?\n\n```\ndef longest_common_subsequence(X , Y): \n    # Find lengths of two strings \n    m = len(X) \n    n = len(Y) \n  \n    # Create a table to store results of sub-problems \n    dp = [[None]*(n+1) for i in range(m+1)] \n  \n    # Fill dp[][] in bottom up manner \n    for i in range(1, m+1): \n        for j in range(1, n+1): \n            if X[i-1] == Y[j-1]: \n                dp[i][j] = dp[i-1][j-1]+1\n            else: \n                dp[i][j] = max(dp[i-1][j], dp[i][j-1]) \n  \n    return dp[m][n]\n```"
+    ],
+    "reference": [
+      "There is no bug in this implementation",
+      "There is a bug for the initialization of dp array. Should use 0 rather than None"
+    ],
+    "id": "mtbench:124",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 105,
+    "category": "reasoning",
+    "turns": [
+      "Read the below passage carefully and answer the questions with an explanation:\nAt a small company, parking spaces are reserved for the top executives: CEO, president, vice president, secretary, and treasurer with the spaces lined up in that order. The parking lot guard can tell at a glance if the cars are parked correctly by looking at the color of the cars. The cars are yellow, green, purple, red, and blue, and the executives' names are Alice, Bert, Cheryl, David, and Enid.\n* The car in the first space is red.\n* A blue car is parked between the red car and the green car.\n* The car in the last space is purple.\n* The secretary drives a yellow car.\n* Alice's car is parked next to David's.\n* Enid drives a green car.\n* Bert's car is parked between Cheryl's and Enid's.\n* David's car is parked in the last space.\nQuestion: What is the name of the secretary?",
+      "List car colors in order from last to first."
+    ],
+    "reference": [
+      "The secretary is Alice.",
+      "The car colors in order from last to first are: purple, yellow, green, blue, red"
+    ],
+    "id": "mtbench:105",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 152,
+    "category": "humanities",
+    "turns": [
+      "How do the stages of life shape our understanding of time and mortality?",
+      "Write an allegorical poem that illustrates the above."
+    ],
+    "id": "mtbench:152",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 141,
+    "category": "stem",
+    "turns": [
+      "In the field of quantum physics, what is superposition, and how does it relate to the phenomenon of quantum entanglement?",
+      "What assumptions have you made in your response? Are they valid?"
+    ],
+    "id": "mtbench:141",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 92,
+    "category": "roleplay",
+    "turns": [
+      "Embrace the role of Sheldon from \"The Big Bang Theory\" as we delve into our conversation. Don’t start with phrases like \"As Sheldon\". Let's kick things off with the following question: \"What is your opinion on hand dryers?\"",
+      "Let’s grab dinner in town. Would you like to take bus with me?"
+    ],
+    "id": "mtbench:92",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 113,
+    "category": "math",
+    "turns": [
+      "In a survey conducted at a local high school, preferences for a new school color were measured: 58% of students liked the color blue, 45% preferred green, and 22% liked both colors. If we randomly pick a student from the school, what's the probability that they would like neither blue nor green?",
+      "If we select a student liked green, what's the probability that he or she would dislike both colors?"
+    ],
+    "reference": [
+      "19%",
+      "0%"
+    ],
+    "id": "mtbench:113",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 131,
+    "category": "extraction",
+    "turns": [
+      "Evaluate the following movie reviews on a scale of 1 to 5, with 1 being very negative, 3 being neutral, and 5 being very positive:\n1. This movie released on Nov. 18, 2019, was phenomenal. The cinematography, the acting, the plot - everything was top-notch.\n2. Never before have I been so disappointed with a movie. The plot was predictable and the characters were one-dimensional. In my opinion, this movie is the worst one to have been released in 2022.\n3. The movie was okay. There were some parts I  enjoyed, but there were also parts that felt lackluster. This is a movie that was released in Feb 2018 and seems to be quite ordinary.\nReturn the answer as a JSON array of integers.",
+      "Update your previous reply by including the release date as part of the JSON content."
+    ],
+    "reference": [
+      "The answer to the first question should be [5, 1, 3].",
+      ""
+    ],
+    "id": "mtbench:131",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 82,
+    "category": "writing",
+    "turns": [
+      "Draft a professional email seeking your supervisor's feedback on the 'Quarterly Financial Report' you prepared. Ask specifically about the data analysis, presentation style, and the clarity of conclusions drawn. Keep the email short and to the point.",
+      "Take a moment to evaluate and critique your own response."
+    ],
+    "id": "mtbench:82",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 123,
+    "category": "coding",
+    "turns": [
+      "Write a simple website in HTML. When a user clicks the button, it shows a random joke from a list of 4 jokes.",
+      "How to use CSS to change the color of jokes to red?"
+    ],
+    "id": "mtbench:123",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 107,
+    "category": "reasoning",
+    "turns": [
+      "A is the father of B. B is the father of C. What is the relationship between A and C?",
+      "Building on the previous question, if C is the son of D, D is the father of E, E is the son of X, and X is the father of Y, and Y is the father of Z, what's the relationship between A and Z in terms of generations and also the familial relationship in words?"
+    ],
+    "reference": [
+      "A is the grandfather of C.",
+      "A is three generations above Z."
+    ],
+    "id": "mtbench:107",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 153,
+    "category": "humanities",
+    "turns": [
+      "Discuss antitrust laws and their impact on market competition. Compare the antitrust laws in US and China along with some case studies.",
+      "Pick one case study and explain it in detail."
+    ],
+    "id": "mtbench:153",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 148,
+    "category": "stem",
+    "turns": [
+      "You have been tasked with designing a solar-powered water heating system for a residential building. Describe the key components and considerations you would include in your design. Design a five-step workflow.",
+      "If the system is intended for a building with a capacity of 100 individuals, what would be the estimated budget for implementing this system?"
+    ],
+    "id": "mtbench:148",
+    "benchmark": "mtbench"
+  },
+  {
+    "question_id": 98,
+    "category": "roleplay",
+    "turns": [
+      "Embody the persona of Tony Stark from “Iron Man” throughout this conversation. Bypass the introduction “As Stark”. Our first question is: “What’s your favorite part about being Iron Man?",
+      "What do you think about GPT-4 as a replacement of your JAVIS?"
+    ],
+    "id": "mtbench:98",
+    "benchmark": "mtbench"
+  }
+]

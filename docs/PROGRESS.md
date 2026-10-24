@@ -1,5 +1,13 @@
 # 项目进度
 
+## 2026-10-24 — 七任务独立扩样与预算匹配消融准备
+
+- 用户要求跨领域补齐未做实验，参考ASD v3第4节。冻结514新源任务/530匹配输入：GSM128/MATH64/HumanEval64/MBPP64/MMLU114/MT16双轮/Alpaca64，选中manifest SHA7b2934c9b76599529bbe9ca6dbfd1c2a9453edcfa784b3c2ce06ac48f37c7054。1117旧载荷SHA、476保守已用/保留ID排除，HumanEval尚可用84中选择64，57学科/8对话类别均覆盖；没有输出过滤或新种子。
+- 四主组DFlash/ASD/BudgetTree/BudgetTree-ASD，继续原模型/提示/FP32/RMSNorm/native16/B8/g.25/M2和按卡冻结成本表。每请求自然2、prefix1、两个fixed256 strict-candidate-strict三连，共9540主计时+530自然AR+64自身历史MT第二轮。各族前4源任务预登记共32请求，5单参数控制×2方法×自然/固定，共640新增生成；B0/B8复用主轨迹。所有漂移保留，不筛题；非论文四重复/DSpark精确复现。
+- 新增extension模块/准备/runner/pipeline/report与测试，现有tree execute只增加显式可选ASDConfig，默认行为保持；旧paper统计只增加可选arms/repeats。奖励runner增加study入口，既有Skywork权重本机审80单元×4=320行，不新增下载/训练/付费API，代理不冒充官方质量指标。协议ASD_PAPER_EXTENSION_PROTOCOL.md。
+- 本机专项首次51 passed/1 error/33.91s：错误为pytest系统临时目录不可创建，发生在旧checkpoint fixture setup，非生成/评分失败；XML保留artifacts/paper-extension-tests-local.xml。改用工作区独立basetemp并补显式配置透传检查后复验；编译检查及跟踪文件diff检查已通过。远端两A6000均19MiB/0%，D盘401GiB可用。当前尚无本轮模型结果，冻结后部署独立asd-paper-extension root。
+- 专项复验`python -m pytest -q tests/test_asd_paper_extension.py tests/test_asd_paper.py tests/test_asd_paper_metrics.py tests/test_asd_tree_report.py --basetemp artifacts/pytest-paper-extension-v2 --junitxml=artifacts/paper-extension-tests-v2-local.xml`，52 passed/28.42s。首临时目录错误及成功XML均保留。新增数据最大原始输入2771字符；后续自然历史仍按模型原8192输入上限，溢出留证不筛题。完整回归与固定源部署继续。
+
 ## 2026-10-24 — 七任务剩余指标全部补测完成
 
 - 原249匹配输入全部完成DFlash-before/AR/DFlash-after固定256且忽略EOS，共747正式生成+4预热；两个worker375/372，各125/124请求。三个新输出均逐token匹配旧fixed DFlash，输入/快照/精度保持；前后漂移范围.98286–1.00836，跨会话.97392–1.00784，>3%均0/249，无漂移筛题。没有重复旧五组自然/前缀实验或按新结果调参。

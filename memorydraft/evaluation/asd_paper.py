@@ -125,7 +125,7 @@ def quality_ok(quality):
     return quality.get('secondary_correct',quality['correct']) if quality['correct'] is not None else None
 
 
-def aggregate(rows,references,records):
+def aggregate(rows,references,records,*,arms=ARMS,repeats=REPEATS):
     refs={r['request_id']:r for r in references}
     expected=set(expanded_ids(records))
     if len(refs)!=len(references) or set(refs)!=expected:raise ValueError('Incomplete AR coverage')
@@ -137,11 +137,11 @@ def aggregate(rows,references,records):
     for identity,cells in sorted(groups.items()):
         ref=refs[identity];benchmark=ref['benchmark']
         selected_stages=stages(dict(benchmark=benchmark))
-        if set(cells)!={(s,a) for s in selected_stages for a in ARMS}:raise ValueError('Incomplete method matrix')
+        if set(cells)!={(s,a) for s in selected_stages for a in arms}:raise ValueError('Incomplete method matrix')
         item=dict(request_id=identity,benchmark=benchmark,arms={})
         for (stage,arm),entries in sorted(cells.items()):
             entries.sort(key=lambda r:r['repeat'])
-            if [r['repeat'] for r in entries]!=list(range(REPEATS[stage])):raise ValueError('Incomplete repeats')
+            if [r['repeat'] for r in entries]!=list(range(repeats[stage])):raise ValueError('Incomplete repeats')
             first=entries[0]
             signature=lambda r:(r['token_ids'],r['rounds'],r['asd'],r['finish_reason'],r['text'])
             if any(signature(r)!=signature(first) for r in entries):raise ValueError('Unstable trajectory')
@@ -176,7 +176,7 @@ def aggregate(rows,references,records):
         selected=[s for s in samples if s['benchmark']==benchmark]
         if not selected:continue
         families[benchmark]={}
-        for arm in ARMS:
+        for arm in arms:
             family={}
             for stage in stages(dict(benchmark=benchmark)):
                 items=[s['arms'][stage+'/'+arm] for s in selected]

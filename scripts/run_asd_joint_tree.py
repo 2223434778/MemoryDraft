@@ -15,7 +15,8 @@ def tree_factory(engine,warm,out):
     return config
 
 
-def execute(engine,record,arm,limit,tree_config,*,zero=False,request_factory=common.request_for,fixed=False):
+def execute(engine,record,arm,limit,tree_config,*,zero=False,request_factory=common.request_for,fixed=False,
+            asd_config=None):
     if arm not in ARMS:
         raise ValueError("Unknown joint-tree arm")
     engine.synchronize()
@@ -24,7 +25,8 @@ def execute(engine,record,arm,limit,tree_config,*,zero=False,request_factory=com
     if arm in ("SpineTree-ASD","JointTree-ASD"):
         tree_config = replace(tree_config,spine_mode="full" if arm == "SpineTree-ASD" else "remaining")
         arm = "BudgetTree-ASD"
-    row = common.execute(engine,record,arm,limit,tree_config,zero=zero,request_factory=request_factory,fixed=fixed)
+    row = common.execute(engine,record,arm,limit,tree_config,zero=zero,request_factory=request_factory,
+                         fixed=fixed,asd_config=asd_config)
     row.update(arm=original,method=original,latency_seconds=time.perf_counter()-started)
     return row
 

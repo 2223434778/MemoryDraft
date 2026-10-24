@@ -1,0 +1,514 @@
+[
+  {
+    "instruction": "Describe a situation where a chatbot would be more useful than a human assistant.",
+    "input": "",
+    "output": "A chatbot would be more useful than a human assistant in situations that require quick responses or large-scale customer support, such as customer queries, sales inquiries, or financial transactions. Chatbots can provide immediate, accurate, and personalized responses, helping to automate customer service tasks, allowing users to get the information they need quickly and conveniently. \n\nFor example, a chatbot could be used in a customer service setting to ask the customer their query, collect all the necessary data from the customer, and then provide the customer with a solution or direct them to the proper channels for further support. This saves time for both the customer and the human customer service representative, as the chatbot can provide a quicker, more effective response to the customer query. \n \nIn addition, chatbots can also be used for large-scale customer support and marketing. For example, a chatbot can be used to send targeted promotions or personalized messages to customers, helping businesses to reach their customers quickly and easily, without having to use a large customer service staff. This can help businesses to perfect their customer outreach strategies and enhance customer service.",
+    "id": "alpaca:705",
+    "benchmark": "alpaca",
+    "source_index": 705
+  },
+  {
+    "instruction": "Identify which sentence contains the clearest opinion.",
+    "input": "A) The government should invest in new technology.\nB) Investing in new technology could be beneficial.\nC) The government should consider investing in new technology.\nD) New technology could bring significant benefit.",
+    "output": "A) The government should invest in new technology.",
+    "id": "alpaca:42416",
+    "benchmark": "alpaca",
+    "source_index": 42416
+  },
+  {
+    "instruction": "Describe a special memory from your childhood in a single sentence.",
+    "input": "",
+    "output": "I remember camping by a lake with my family and roasting marshmallows over a bonfire.",
+    "id": "alpaca:22051",
+    "benchmark": "alpaca",
+    "source_index": 22051
+  },
+  {
+    "instruction": "Create a new sentence from the words given through a process of semantic extension.",
+    "input": "Spice, flavor",
+    "output": "The spices added flavor to the dish.",
+    "id": "alpaca:40839",
+    "benchmark": "alpaca",
+    "source_index": 40839
+  },
+  {
+    "instruction": "What is the French word for \"book\"?",
+    "input": "",
+    "output": "Livre.",
+    "id": "alpaca:12808",
+    "benchmark": "alpaca",
+    "source_index": 12808
+  },
+  {
+    "instruction": "Provide an explanation why this opinion is wrong.",
+    "input": "Driverless cars will make travel safer.",
+    "output": "Although driverless cars may reduce the risk of human error, they are exposed to the same risks as human drivers in unexpected or unpredictable traffic scenarios. Autonomous vehicles may still be prone to accidents due to programming errors and other factors. Therefore, driverless cars will not necessarily make travel safer.",
+    "id": "alpaca:938",
+    "benchmark": "alpaca",
+    "source_index": 938
+  },
+  {
+    "instruction": "Challenge the assistant to think of a game using simple items around the house.",
+    "input": "",
+    "output": "You can play a game with simple household items like coins and paper. Place the coins on a flat surface and then place a piece of paper on top of them. Take turns trying to blow the paper off the coins without touching the coins. Whoever gets the paper off the coins the farthest wins!",
+    "id": "alpaca:28042",
+    "benchmark": "alpaca",
+    "source_index": 28042
+  },
+  {
+    "instruction": "What step should be taken to optimize the process?",
+    "input": "A manufacturing process in a factory that has low productivity",
+    "output": "To optimize the manufacturing process, the first step should be to analyze the process to identify areas of inefficiency. This could involve gathering data on the process and conducting a cost/benefit analysis to determine where improvements could be made. Based on the findings, recommendations can be made to increase productivity, such as introducing new technology or streamlining processes.",
+    "id": "alpaca:44667",
+    "benchmark": "alpaca",
+    "source_index": 44667
+  },
+  {
+    "instruction": "Summarize the important points of article \"Afghanistan and the Doctrine of Armed Humanitarian Intervention\".",
+    "input": "",
+    "output": "The article \"Afghanistan and the Doctrine of Armed Humanitarian Intervention\" examines the legal and ethical implications of the use of armed force for humanitarian purposes. It points out that the international community has long wrestled with the ethical concerns raised by using military force for humanitarian purposes, but there is no universally accepted legal framework for armed humanitarian interventions. Additionally, the article presents arguments against the doctrine of armed humanitarian intervention, including those related to international law and the long-term practical implications for the affected populations.",
+    "id": "alpaca:25917",
+    "benchmark": "alpaca",
+    "source_index": 25917
+  },
+  {
+    "instruction": "Rewrite this sentence to simplify it",
+    "input": "The end result of the project was very successful.",
+    "output": "The project was a success.",
+    "id": "alpaca:22458",
+    "benchmark": "alpaca",
+    "source_index": 22458
+  },
+  {
+    "instruction": "Brainstorm three possible uses of a time machine.",
+    "input": "",
+    "output": "1. Travel to the past to learn more about a certain subject or explore a historical event. \n2. Re-experience moments in life that have already passed. \n3. Create alternate timelines by changing the course of history.",
+    "id": "alpaca:21001",
+    "benchmark": "alpaca",
+    "source_index": 21001
+  },
+  {
+    "instruction": "Restrict the article to within 250 words",
+    "input": "Particle Physics: An Overview",
+    "output": "Particle physics is the study of the fundamental particles of matter and their interactions. It is one of the most active fields of physics, with applications in many areas of life. This article provides an overview of the basics of particle physics, including topics such as the Standard Model, experimental investigations of particles, and particle accelerators. In recent years, particle physics has become increasingly more important for applications such as medical imaging, nuclear waste disposal, and materials science. Particle physics is also playing an increasingly important role in the development of physics-based theories that can explain the behavior of the universe.",
+    "id": "alpaca:28928",
+    "benchmark": "alpaca",
+    "source_index": 28928
+  },
+  {
+    "instruction": "Please generate a short story of maximum 500 words, with a science fiction theme.",
+    "input": "",
+    "output": "Tariq sat on the porch, watching the sun set over the horizon and beyond. Every day he watched this same magnificent sight, but today was different - he knew because he had just received a mysterious package.\n\nHe opened it carefully and was astonished to find an old, ornate time machine. Not sure what to do, he decided to step inside and press the button that revealed the words \"Travel Now\".\n\nAnd with that, he was gone in a flurry of shining bits, transported to a future world of alien cities and interdimensional beings. Everywhere he went, technology was more advanced than he ever imagined. \n\nThough he had to be careful as he traveled through time, he found himself captivated by the wonders that he saw. He also found himself strangely connected to the stories of the people he encountered, as if he were rewriting them as they went.\n\nAfter months of exploration, he eventually returned home to a world that had changed dramatically. But in those strange and wonderful places, he had found something even more valuable - a deep connection to the powers of the universe and a newfound appreciation for life.",
+    "id": "alpaca:34447",
+    "benchmark": "alpaca",
+    "source_index": 34447
+  },
+  {
+    "instruction": "Convert the following measurement to the given unit.",
+    "input": "15 millimeters to centimeters",
+    "output": "1.5 centimeters",
+    "id": "alpaca:14181",
+    "benchmark": "alpaca",
+    "source_index": 14181
+  },
+  {
+    "instruction": "Describe the difference between the Democratic and Republican parties in the United States.",
+    "input": "",
+    "output": "The Democratic and Republican parties in the United States differ significantly in their ideologies and policy stances. Generally speaking, Democrats support greater government involvement in economic and social issues while Republicans generally advocate for limited government interference. Democrats tend to favor progressive stances on issues such as healthcare, taxes, and immigration, while Republicans often support conservative approaches to these issues.",
+    "id": "alpaca:41206",
+    "benchmark": "alpaca",
+    "source_index": 41206
+  },
+  {
+    "instruction": "Convert the following times into 12 hours format.",
+    "input": "13:10",
+    "output": "1:10 pm",
+    "id": "alpaca:43920",
+    "benchmark": "alpaca",
+    "source_index": 43920
+  },
+  {
+    "instruction": "Tell me about the environmental crisis our planet is facing today.",
+    "input": "",
+    "output": "The environmental crisis is a major global threat to our planet caused by human activities such as burning of fossil fuels, deforestation, and global warming. The effects of this crisis include a rise in sea levels, extreme weather patterns, wildlife extinction, air and water pollution, and loss of biodiversity. Other consequences include a decrease in food production and an deterioration of physical and mental health, leading to an increase in poverty and social unrest. Climate change is the most pressing concern, and it is essential that urgent and widespread measures be taken in order to mitigate the human-induced changes to the world's climate.",
+    "id": "alpaca:36207",
+    "benchmark": "alpaca",
+    "source_index": 36207
+  },
+  {
+    "instruction": "Order the given programming languages according to their popularity.",
+    "input": "Java, JavaScript, Python",
+    "output": "Python, Java, JavaScript.",
+    "id": "alpaca:12007",
+    "benchmark": "alpaca",
+    "source_index": 12007
+  },
+  {
+    "instruction": "Write a description of a personal experience with a difficult situation.",
+    "input": "",
+    "output": "I recently faced a difficult situation when I had to make a decision that could potentially harm someone I care about. Though I had thought about the consequences ahead of time, it was still a difficult decision to make. I weighed the consequences carefully and ended up going with my gut feeling and hoping that it would be the right decision. In the end, things worked out and thankfully, I was able to find a solution that would work for everyone.",
+    "id": "alpaca:51083",
+    "benchmark": "alpaca",
+    "source_index": 51083
+  },
+  {
+    "instruction": "Connect the given sentences to form a declarative statement.",
+    "input": "Humans have the capacity to learn. AI can be programmed.",
+    "output": "Humans have the capacity to learn while AI can be programmed.",
+    "id": "alpaca:30782",
+    "benchmark": "alpaca",
+    "source_index": 30782
+  },
+  {
+    "instruction": "What techniques can be used to detect outliers in a dataset?",
+    "input": "",
+    "output": "Some of the techniques that can be used to detect outliers in a dataset include using the interquartile range, using box-and-whisker plots, and using Z-scores. Additionally, approaches based on clustering, such as k-means and DBSCAN, can be used to find outliers by detecting points which are significantly different from the other points in the dataset.",
+    "id": "alpaca:49627",
+    "benchmark": "alpaca",
+    "source_index": 49627
+  },
+  {
+    "instruction": "Redact all the private data from the following document.",
+    "input": "John Smith, 3456 Main Street, Apt 2, Anytown, CA, 78956",
+    "output": "XXX XXXX, XXXX Main Street, Apt X, Anytown, CA, XXXXX",
+    "id": "alpaca:33631",
+    "benchmark": "alpaca",
+    "source_index": 33631
+  },
+  {
+    "instruction": "Generate Python code to calculate the area of a triangle.",
+    "input": "",
+    "output": "def find_area_triangle(base, height):\n    area = (base * height)/2\n    return area\n\n#Example\nbase = 10\nheight = 20\narea = find_area_triangle(base, height)\nprint(\"Area of the triangle is\", area)",
+    "id": "alpaca:47322",
+    "benchmark": "alpaca",
+    "source_index": 47322
+  },
+  {
+    "instruction": "Identify which of the given situation is a moral dilemma.",
+    "input": "A) Deciding whether to stick your parents' strict bedtime or stay up past it.\nB) Deciding whether to send a crass joke in a group chat.",
+    "output": "A) Deciding whether to stick your parents' strict bedtime or stay up past it.",
+    "id": "alpaca:18099",
+    "benchmark": "alpaca",
+    "source_index": 18099
+  },
+  {
+    "instruction": "Outline the steps a startup would need to take to increase brand awareness",
+    "input": "",
+    "output": "Steps to Increase Brand Awareness for a Startup: \n1. Identify target customers: Understand the target demographic and research their needs and interests.\n2. Develop a content strategy: Use content to engage, inform or entertain customers in order to establish a connection with them.\n3. Share the story: Create a website and create social media platforms to share the story, mission or purpose of the startup with customers.\n4. Make it interactive: Encourage audience participation via competitions, surveys, or polls.\n5. Track and analyze data: Measure the response of customers and use the insights to inform any changes or adjustments.",
+    "id": "alpaca:32987",
+    "benchmark": "alpaca",
+    "source_index": 32987
+  },
+  {
+    "instruction": "Given the following opening sentence, write the next two sentences of a story.",
+    "input": "Alice stepped out into the garden.",
+    "output": "The sun was beginning to peek up over the horizon, casting a beautiful pink and orange hue across the sky. A warm breeze rustled through Alice's hair as she walked across the dewy grass, admiring the fresh blooms of flowers.",
+    "id": "alpaca:42426",
+    "benchmark": "alpaca",
+    "source_index": 42426
+  },
+  {
+    "instruction": "Describe a possible application of GPT-3.",
+    "input": "",
+    "output": "GPT-3 can be used to generate natural language responses to user queries in customer service chatbots, automated summarization of text, dialog generation for virtual assistants, translation, text completion, and language understanding for natural language processing tasks.",
+    "id": "alpaca:29460",
+    "benchmark": "alpaca",
+    "source_index": 29460
+  },
+  {
+    "instruction": "Calculate the length of the hypotenuse in the following triangle.",
+    "input": "![alt text](https://www.onlinemathlearning.com/image-files/triangle-hypotenuse-length.png \"Right Triangle\")",
+    "output": "The length of the hypotenuse in the triangle is 5.  To calculate this, we use the Pythagorean theorem, which states that the square of the hypotenuse is equal to the sum of the squares of the other two sides. In this case, the other two sides have lengths of 3 and 4, so the hypotenuse must have a length of 5.",
+    "id": "alpaca:42504",
+    "benchmark": "alpaca",
+    "source_index": 42504
+  },
+  {
+    "instruction": "Give me an example of a maladaptive behavior in children.",
+    "input": "",
+    "output": "Examples of maladaptive behaviors in children include lying, cheating, stealing, excessive fighting, aggression, and refusal to follow rules or comply with requests.",
+    "id": "alpaca:33903",
+    "benchmark": "alpaca",
+    "source_index": 33903
+  },
+  {
+    "instruction": "Compare and contrast two characters in the movie The Avengers.",
+    "input": "Captain America and Iron Man",
+    "output": "Captain America and Iron Man are two of the main characters in The Avengers. Both are strong-willed, moral, and well-trained in combat. However, they have different beliefs and approaches to their roles as Avengers. Captain America believes in absolute justice and that to be effective and protect the people, the Avengers should operate within the parameters of law and order. Iron Man, however, has no such loyalty, believing order and stability can be maintained through his own means and technology. Additionally, while Iron Man has the advantage of having advanced firepower, Captain America relies on his knowledge and physical strength to defeat enemies.",
+    "id": "alpaca:18746",
+    "benchmark": "alpaca",
+    "source_index": 18746
+  },
+  {
+    "instruction": "Describe a web page in the following format:\n\nHeader, Body, Footer.",
+    "input": "",
+    "output": "A web page typically consists of a header, body, and footer. The header typically contains the page title, logo, and navigation bar. The body contains the main content of the page, such as text, images, and videos. The footer typically contains copyright information, contact details, and links to related pages.",
+    "id": "alpaca:34902",
+    "benchmark": "alpaca",
+    "source_index": 34902
+  },
+  {
+    "instruction": "Assess the security risk of a system given a set of data.",
+    "input": "The system includes antivirus and anti-malware software, firewalls, encryption, and regular security patches.",
+    "output": "Given the data, the system has a low security risk. The antivirus and anti-malware software, firewalls, encryption, and regular security patches all provide good protection against malicious attacks.",
+    "id": "alpaca:15636",
+    "benchmark": "alpaca",
+    "source_index": 15636
+  },
+  {
+    "instruction": "Could you compare and contrast two different types of learning styles",
+    "input": "",
+    "output": "Visual learners and auditory learners are two common types of learning styles. Visual learners prefer to learn by seeing information either through diagrams, charts, or pictures. Auditory learners prefer to learn by listening, such as being auditory present in a lecture or seminar. Visual learners tend to receive and remember information best by seeing it, whereas auditory learners tend to remember information best by hearing it. Additionally, visual learners are often able to decode abstract concepts quickly, while auditory learners are better able to process and recall information in a linear and logical manner.",
+    "id": "alpaca:18727",
+    "benchmark": "alpaca",
+    "source_index": 18727
+  },
+  {
+    "instruction": "Generate an alternative sentence given the example sentence.",
+    "input": "Example sentence: I loved going to the park",
+    "output": "I enjoyed visiting the park.",
+    "id": "alpaca:41194",
+    "benchmark": "alpaca",
+    "source_index": 41194
+  },
+  {
+    "instruction": "Name 5 birds commonly found in North America.",
+    "input": "",
+    "output": "Five birds commonly found in North America are the Bald Eagle, Red-tailed Hawk, Great Blue Heron, Robin, and Cardinals.",
+    "id": "alpaca:9186",
+    "benchmark": "alpaca",
+    "source_index": 9186
+  },
+  {
+    "instruction": "Find the wrong word and replace it with the correct one.",
+    "input": "We went to the bazaar and bought some fruits and vedgetables.",
+    "output": "We went to the bazaar and bought some fruits and vegetables.",
+    "id": "alpaca:11723",
+    "benchmark": "alpaca",
+    "source_index": 11723
+  },
+  {
+    "instruction": "Explain why computers are faster than humans in solving math problems.",
+    "input": "",
+    "output": "Computers are faster than humans in solving math problems because of their ability to run arithmetic calculations much faster than humans can. Computers can quickly process billions of operations every second and can be programmed to solve complex problems in a fraction of the time needed by humans. In addition, computers are able to execute instructions more consistently and accurately than humans, resulting in faster and more accurate solutions.",
+    "id": "alpaca:31967",
+    "benchmark": "alpaca",
+    "source_index": 31967
+  },
+  {
+    "instruction": "Given a maths equation, solve it.",
+    "input": "Equation: 3x + 5y = 15",
+    "output": "x = 5 and y = 2",
+    "id": "alpaca:7477",
+    "benchmark": "alpaca",
+    "source_index": 7477
+  },
+  {
+    "instruction": "Explain how to perform error handling in software development.",
+    "input": "",
+    "output": "Error handling is an important part of software development. It is used to anticipate the errors that could occur in a program and provide an appropriate response in the event of such an error. Error handling typically involves detecting an error, recording the error's specific details such as the time of occurrence and the type of error, and responding to the error by displaying an appropriate message and/or taking corrective action where possible. It is important for software developers to be aware of the different types of errors that can occur and to design the application to handle them appropriately.",
+    "id": "alpaca:26332",
+    "benchmark": "alpaca",
+    "source_index": 26332
+  },
+  {
+    "instruction": "Classify this statement: I'm going to finish this project tomorrow",
+    "input": "I'm going to finish this project tomorrow",
+    "output": "This statement is a statement of intention.",
+    "id": "alpaca:39075",
+    "benchmark": "alpaca",
+    "source_index": 39075
+  },
+  {
+    "instruction": "Describe a method for solving the following equation: 2x - y + 7 = 0",
+    "input": "",
+    "output": "One method for solving the equation is to first add 7 to both sides of the equation, so that y is isolated on the left-hand side. Then, divide both sides by 2, including the y-term, to cancel out the coefficient of 2. The resulting equation will have a single variable equal to the solution of the original equation.",
+    "id": "alpaca:11495",
+    "benchmark": "alpaca",
+    "source_index": 11495
+  },
+  {
+    "instruction": "Add a comma to the sentence at the appropriate point.",
+    "input": "She went to the shop but didn't buy anything",
+    "output": "She went to the shop, but didn't buy anything.",
+    "id": "alpaca:34910",
+    "benchmark": "alpaca",
+    "source_index": 34910
+  },
+  {
+    "instruction": "Create an analogy to compare \"cloud computing\" and \"on-premises computing\"",
+    "input": "",
+    "output": "Cloud computing is like renting a car; you have access to a powerful vehicle and can use it as you please, but you don't own the car and will have to eventually return it. On-premises computing is like owning your own vehicle; you have control over the vehicle, can make any changes you want, and you don't have to give it back.",
+    "id": "alpaca:17128",
+    "benchmark": "alpaca",
+    "source_index": 17128
+  },
+  {
+    "instruction": "Come up with a realistic conflict between two characters.",
+    "input": "John and Alex",
+    "output": "John and Alex are two brothers who have been embroiled in a long-standing feud. Despite coming from the same family, they have fundamentally different viewpoints on investments and financial advice. John often tries to give Alex advice, while Alex insists that it is his life and he should make his own decisions. This has created a rift between the siblings, with neither side willing to budge on their beliefs.",
+    "id": "alpaca:18658",
+    "benchmark": "alpaca",
+    "source_index": 18658
+  },
+  {
+    "instruction": "Describe the design principles of a relational database.",
+    "input": "",
+    "output": "Relational databases adhere to the principles of atomicity, consistency, isolation, and durability (ACID). Atomicity ensures that each transaction is an all-or-nothing operation; either all changes are committed, or none of them are. Consistency guarantees that a transaction will bring the database from one valid state to another. Isolation ensures that a transaction cannot interfere with other transactions. Durability guarantees that once a transaction is committed, its effects will remain, even if there is a system failure or restart.",
+    "id": "alpaca:26264",
+    "benchmark": "alpaca",
+    "source_index": 26264
+  },
+  {
+    "instruction": "Edit the sentence to use less than 70 characters.",
+    "input": "No one in the family believe what happened, the whole thing was just too hard for everyone to comprehend.",
+    "output": "No one believed the events. Too hard to comprehend.",
+    "id": "alpaca:7014",
+    "benchmark": "alpaca",
+    "source_index": 7014
+  },
+  {
+    "instruction": "Generate a story in which a character has a difficult decision to make",
+    "input": "",
+    "output": "Once upon a time there was a young man named Tom who was faced with a difficult decision. He had been offered a new job that would take him to a different city, but it meant leaving behind his family and friends. He was torn between the opportunity for a fresh start and his love for his community. He spent many nights pondering the decision and realized that whatever he chose, it would be a sacrifice. In the end, he decided to take the risk and move to the new city. Little did he know, the decision would change his life forever.",
+    "id": "alpaca:16788",
+    "benchmark": "alpaca",
+    "source_index": 16788
+  },
+  {
+    "instruction": "Please provide a valid array of numbers as input to the given function.",
+    "input": "f(x) = x + 5",
+    "output": "[2, 3, 4, 5, 6, 7]",
+    "id": "alpaca:35129",
+    "benchmark": "alpaca",
+    "source_index": 35129
+  },
+  {
+    "instruction": "List 3 things you can do to protect yourself from cyberattacks.",
+    "input": "",
+    "output": "Three things you can do to protect yourself from cyberattacks are: 1) Keep your software and operating system up to date and use a good antivirus; 2) Use strong passwords, never reuse them, and don't share them with anyone; and 3) Use two-factor authentication whenever possible.",
+    "id": "alpaca:11948",
+    "benchmark": "alpaca",
+    "source_index": 11948
+  },
+  {
+    "instruction": "Identify the geographical region of the following river.",
+    "input": "The Tigris",
+    "output": "The Tigris is a river located in Southwest Asia, mainly traversing through Turkey, Iraq and Syria.",
+    "id": "alpaca:19479",
+    "benchmark": "alpaca",
+    "source_index": 19479
+  },
+  {
+    "instruction": "How can AI impact education?",
+    "input": "",
+    "output": "AI can be used to improve education in several ways, such as developing personalized learning techniques, providing automated feedback and assessment, providing virtual tutoring and guidance, and more. AI can also be used to analyze large amounts of data to detect and predict student performance, enhance student engagement, and provide early warning systems. AI can also be used to automate administrative tasks and increase efficiency.",
+    "id": "alpaca:14554",
+    "benchmark": "alpaca",
+    "source_index": 14554
+  },
+  {
+    "instruction": "Translate the following phrase in English to Spanish.",
+    "input": "Good morning",
+    "output": "Buenos días.",
+    "id": "alpaca:1596",
+    "benchmark": "alpaca",
+    "source_index": 1596
+  },
+  {
+    "instruction": "Generate a hypothesis about the cause of climate change",
+    "input": "",
+    "output": "The rise in global temperatures is likely caused by the increased emissions of greenhouse gases from human activities such as burning fossil fuels and deforestation.",
+    "id": "alpaca:29129",
+    "benchmark": "alpaca",
+    "source_index": 29129
+  },
+  {
+    "instruction": "You are provided with a text, and you have to edit it and make it grammatically correct with correct punctuation and correct capitalization.",
+    "input": "example of a bad error in this sentence don’t use example",
+    "output": "Example of a bad error in this sentence? Don't use example.",
+    "id": "alpaca:50002",
+    "benchmark": "alpaca",
+    "source_index": 50002
+  },
+  {
+    "instruction": "Generate a list of 5 of the most important components of an essay.",
+    "input": "",
+    "output": "1. Introduction - A clear and interesting introduction paragraph to draw readers in and make them want to keep reading.\n2. Thesis statement - A succinct statement of the main point or argument of the essay.\n3. Main body - Detailed arguments and evidence supporting the main point.\n4. Counterarguments - Thoughtful and respectful acknowledgement of opposing views.\n5. Conclusion - A clear and concise summary of the main points and a restatement of the thesis.",
+    "id": "alpaca:7816",
+    "benchmark": "alpaca",
+    "source_index": 7816
+  },
+  {
+    "instruction": "Please find a quotation from the book that best summarizes the message of the book.",
+    "input": "The Catcher in the Rye by J.D. Salinger",
+    "output": "\"What really knocks me out is a book that, when you're all done reading it, you wish the author that wrote it was a terrific friend of yours and you could call him up on the phone whenever you felt like it.\" - J.D. Salinger, The Catcher in the Rye. This quotation is an excellent summation of the narrator's conflicted relationship with the world around him and his journey to find a sense of belonging.",
+    "id": "alpaca:38984",
+    "benchmark": "alpaca",
+    "source_index": 38984
+  },
+  {
+    "instruction": "Name five things that can be used to protect against sunburn.",
+    "input": "",
+    "output": "Sunscreen, hats, sunglasses, clothing with UV protection, umbrellas.",
+    "id": "alpaca:4271",
+    "benchmark": "alpaca",
+    "source_index": 4271
+  },
+  {
+    "instruction": "Explain a scientific phenomenon in simple words.",
+    "input": "Gravity",
+    "output": "Gravity is the force that attracts any two objects in the universe. It is what keeps us and other objects on Earth’s surface and what keeps the planets in their orbits around the sun. It is an invisible force with a powerful pull defined by the mass and distance of objects.",
+    "id": "alpaca:7255",
+    "benchmark": "alpaca",
+    "source_index": 7255
+  },
+  {
+    "instruction": "Elaborate on the difference between unsupervised and supervised learning.",
+    "input": "",
+    "output": "Supervised learning is a form of machine learning which uses labeled data with known outcomes/labels to teach an algorithm to make data-driven predictions. Unsupervised learning, on the other hand, uses unlabeled data to discover patterns in the data. It does not rely on the guidance of a teacher to give labels to the data, and instead the algorithm itself is responsible for analyzing and finding patterns in the data. Unsupervised learning can be used to group similar items together and draw conclusions from the data.",
+    "id": "alpaca:39425",
+    "benchmark": "alpaca",
+    "source_index": 39425
+  },
+  {
+    "instruction": "Given a story, pick out specific details and create an outline",
+    "input": "Once upon a time, there was a brave knight who set off on a quest to find the magical relic known as the Chalice of Life. He traveled to distant lands, bravely faced many dangerous creatures, and encountered numerous powerful magic users. Though his journey was long and arduous, the knight eventually found the Chalice of Life deep in a forgotten temple.",
+    "output": "Outline of the Story:\nI. Introduction: The brave knight sets off on a quest to find the Chalice of Life. \n II. The Journey: The knight travels to distant lands, bravely faces many dangerous creatures, and encounters numerous powerful magic users. \n III. Resolution: The knight eventually finds the Chalice of Life deep in a forgotten temple. \n IV. Conclusion: The knight succeeds in his quest and is rewarded with the Chalice of Life.",
+    "id": "alpaca:8083",
+    "benchmark": "alpaca",
+    "source_index": 8083
+  },
+  {
+    "instruction": "Create a Facebook post that encourages online shopping.",
+    "input": "",
+    "output": "Shop online and skip the hassle of commuting to the store! Get everything you need delivered right at your doorstep with just a few clicks! #ShopOnline #NoMoreTraffic",
+    "id": "alpaca:35524",
+    "benchmark": "alpaca",
+    "source_index": 35524
+  },
+  {
+    "instruction": "Design a word-scramble game with this set of words.",
+    "input": "peaceful, harmonious, joyful",
+    "output": "LABLPEES, IOMORNHAHS, YFOJUL",
+    "id": "alpaca:14994",
+    "benchmark": "alpaca",
+    "source_index": 14994
+  },
+  {
+    "instruction": "Generate a story that begins with the following sentence:\n\nShe had never seen anything like it before.",
+    "input": "",
+    "output": "She had never seen anything like it before. As she stared in disbelief, she recognised the silhouette of an enormous black bird soaring through the sky. A sudden chill ran through her body as the bird descended towards her and shrouded her in darkness. She felt herself being lifted off the ground as the bird flew higher and higher. She realised with a shudder of horror that it was carrying her away into the night. Where was it taking her? What would she find when she got to her destination? She was about to find out.",
+    "id": "alpaca:47290",
+    "benchmark": "alpaca",
+    "source_index": 47290
+  },
+  {
+    "instruction": "Give a brief answer to the following question.",
+    "input": "What is the difference between a Ponzi scheme and a pyramid scheme?",
+    "output": "The main difference between a Ponzi scheme and a pyramid scheme is in the way they operate. Ponzi schemes rely on a single entity or person to fool people out of their money, while pyramid schemes rely on participants recruiting new members to increase their earnings. In a Ponzi scheme, the fraudster will solicit funds from new investors and use the money to pay back earlier investors; in a pyramid scheme, members receive money from new participants recruited below them, resulting in a chain of recruitment.",
+    "id": "alpaca:567",
+    "benchmark": "alpaca",
+    "source_index": 567
+  }
+]

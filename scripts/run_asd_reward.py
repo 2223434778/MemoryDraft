@@ -41,10 +41,13 @@ def pair_score(candidate,baseline,*,identical=False):
 @torch.inference_mode()
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--model-directory',required=True)
-    args=parser.parse_args();out=ROOT/f'results/raw/{STUDY}/reward';out.mkdir(parents=True,exist_ok=False)
+    parser.add_argument('--study',choices=(STUDY,'asd-paper-extension'),default=STUDY)
+    parser.add_argument('--input',type=Path)
+    args=parser.parse_args();out=ROOT/f'results/raw/{args.study}/reward';out.mkdir(parents=True,exist_ok=False)
     manifest=json.loads((ROOT/'configs/asd-reward-model.json').read_bytes());directory=Path(args.model_directory)
     info=dict(status='started',model=manifest['repo'],revision=manifest['revision'],license=manifest['license'],
         max_input_tokens=manifest['max_input_tokens'],dtype='bfloat16',attention='sdpa',device='cuda:0',
+        study=args.study,
         interpretation='trained reward-model preference proxy; not official MT-Bench or AlpacaEval, not calibrated correctness')
     write(out/'provenance.json',info)
     try:
@@ -78,8 +81,15 @@ def main():
         info.update(controls_passed=sum(r['passed'] for r in controls),controls_total=len(controls),repeat_max_abs_error=repeat_error)
         if info['controls_passed']<7 or repeat_error>1e-5:
             info.update(status='control_failed',rows=0);return
+        if args.study==STUDY:
+            if args.input is not None:raise ValueError('Original reward audit uses its frozen published inputs')
+            units=open_units(ROOT)
+        else:
+            from memorydraft.evaluation.asd_paper_extension import open_units as extension_units
+            units=extension_units(ROOT,args.input or ROOT/f'results/{args.study}')
         jobs=[dict(request_id=u['request_id'],benchmark=u['benchmark'],arm=arm,messages=messages)
-              for u in open_units(ROOT) for arm,messages in u['answers'].items()]
+              for u in units for arm,messages in u['answers'].items()]
+        expected_rows=len(jobs);info['expected_rows']=expected_rows
         random.Random('MemoryDraft-pointwise-reward-v1').shuffle(jobs)
         cache={};count=0
         for job in jobs:
@@ -87,7 +97,7 @@ def main():
             if not cached:cache[digest]=score(messages)
             result=cache[digest]
             append(out/'rows.jsonl',dict(job,messages_sha256=digest,reused_identical=cached,**result));count+=1
-        if count!=120:raise ValueError('Incomplete pointwise reward matrix')
+        if count!=expected_rows:raise ValueError('Incomplete pointwise reward matrix')
         peak=torch.cuda.max_memory_allocated(0)
         if peak>22*2**30:raise ValueError('Local RTX3090 reward memory bound exceeded')
         info.update(status='complete',rows=count,unique_conversations=len(cache),peak_gpu_bytes=peak,

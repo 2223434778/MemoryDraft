@@ -27,15 +27,18 @@ from scripts.run_runtime_migration import append
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def execute(engine, record, arm, limit, tree_config, *, zero=False, request_factory=request_for, fixed=False):
+def execute(engine, record, arm, limit, tree_config, *, zero=False, request_factory=request_for, fixed=False,
+            asd_config=None):
     if arm not in ARMS:
         raise ValueError("Unknown tree comparison arm")
+    if asd_config is not None and (arm not in ("ASD", "BudgetTree-ASD") or zero):
+        raise ValueError("Explicit ASD controls require an approximate arm without zero override")
     from memorydraft.runtime import engine as module
     native, detail = module.generate_reuse, None
     engine.synchronize()
     started = time.perf_counter()
-    verifier = (CPUASDVerifier(ASDConfig(budget=8)) if arm == "ASD" else
-                TreeASDVerifier(ASDConfig(budget=0 if zero else 8)) if arm == "BudgetTree-ASD" else None)
+    verifier = (CPUASDVerifier(asd_config or ASDConfig(budget=8)) if arm == "ASD" else
+                TreeASDVerifier(asd_config or ASDConfig(budget=0 if zero else 8)) if arm == "BudgetTree-ASD" else None)
     def hook(*args, **kwargs):
         nonlocal detail
         kwargs["incremental_stop"] = True

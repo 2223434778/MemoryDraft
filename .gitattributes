@@ -342,6 +342,14 @@ results/asd-paper-metrics/**/*.log -whitespace
 results/asd-paper-metrics/**/*.xml -whitespace
 results/asd-paper-metrics/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 memorydraft/evaluation/asd_paper_metrics.py text eol=lf
+memorydraft/evaluation/asd_paper_extension.py text eol=lf
+tests/test_asd_paper_extension.py text eol=lf
+data/research/asd-paper-extension/** -text
+data/research/asd-paper-extension/*README.md -whitespace
+results/asd-paper-extension/** -text
+results/asd-paper-extension/**/*.log -whitespace
+results/asd-paper-extension/**/*.xml -whitespace
+results/asd-paper-extension/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 scripts/download_asd_reward.py text eol=lf
 scripts/run_asd_reward.py text eol=lf
 tests/test_asd_paper_metrics.py text eol=lf
