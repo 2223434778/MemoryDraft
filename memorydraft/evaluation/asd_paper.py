@@ -125,7 +125,14 @@ def quality_ok(quality):
     return quality.get('secondary_correct',quality['correct']) if quality['correct'] is not None else None
 
 
-def aggregate(rows,references,records,*,arms=ARMS,repeats=REPEATS):
+def aggregate(rows,references,records,*,arms=ARMS,repeats=REPEATS,strict_token_identity=True):
+    identity_differences=[]
+    def compare_identity(left,right,comparison):
+        from memorydraft.evaluation.asd_extension_resume import identity_difference
+        difference=identity_difference(left,right,comparison)
+        if difference:
+            if strict_token_identity:raise ValueError('Strict method token identity mismatch: '+comparison)
+            identity_differences.append(difference)
     refs={r['request_id']:r for r in references}
     expected=set(expanded_ids(records))
     if len(refs)!=len(references) or set(refs)!=expected:raise ValueError('Incomplete AR coverage')
@@ -152,12 +159,11 @@ def aggregate(rows,references,records,*,arms=ARMS,repeats=REPEATS):
             if first['asd'] and not 0<=first['asd']['spent']<=8:raise ValueError('Budget exceeded')
             if stage=='fixed':
                 if len(first['token_ids'])!=256:raise ValueError('Wrong fixed workload')
-                if arm=='BudgetTree' and first['token_ids']!=cells[stage,'DFlash'][0]['token_ids']:
-                    raise ValueError('Strict fixed tree differs from DFlash')
+                if arm=='BudgetTree':compare_identity(first,cells[stage,'DFlash'][0],'fixed-tree-vs-linear')
             elif arm in ('DFlash','BudgetTree'):
                 limit=4096 if stage=='natural' else 128
-                if first['token_ids']!=ref['token_ids'][:limit]:raise ValueError('Strict method differs from AR')
-                if stage=='natural' and (first['text'],first['finish_reason'])!=(ref['text'],ref['finish_reason']):
+                compare_identity(first,dict(ref,token_ids=ref['token_ids'][:limit]),'strict-vs-AR')
+                if stage=='natural' and first['token_ids']==ref['token_ids'] and (first['text'],first['finish_reason'])!=(ref['text'],ref['finish_reason']):
                     raise ValueError('Strict natural result differs from AR')
             seconds=statistics.mean(r['latency_seconds'] for r in entries)
             blocks=first['rounds']
@@ -207,5 +213,8 @@ def aggregate(rows,references,records,*,arms=ARMS,repeats=REPEATS):
                         gained=[s['request_id'] for s,a,b in all_pairs if a['correct'] is True and b['correct'] is False])
                 family[stage]=stats
             families[benchmark][arm]=family
-    return dict(timed_generations=len(rows),ar_generations=len(references),samples=samples,
+    result=dict(timed_generations=len(rows),ar_generations=len(references),samples=samples,
                 families=families,allocation_audit=audit)
+    if not strict_token_identity:result.update(strict_identity_policy='observe-forward-geometry',
+        strict_identity_differences=identity_differences,strict_AR_bit_identity_claim=False)
+    return result

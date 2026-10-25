@@ -98,9 +98,9 @@ def validate_policy(row,config):
         raise ValueError('Selected-path regret differs from request ledger')
 
 
-def aggregate(rows,references,records,frontier):
+def aggregate(rows,references,records,frontier,*,strict_token_identity=True):
     normalized,drifts=normalize_fixed(rows)
-    result=paper_aggregate(normalized,references,records,arms=ARMS,repeats=REPEATS)
+    result=paper_aggregate(normalized,references,records,arms=ARMS,repeats=REPEATS,strict_token_identity=strict_token_identity)
     expected=set(expanded_ids(records))
     if len(rows)!=len(expected)*18:raise ValueError('Incomplete raw four-arm matrix')
     if len(drifts)!=len(expected)*2:raise ValueError('Incomplete fixed adjacent controls')

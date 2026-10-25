@@ -19,4 +19,6 @@
 
 上游发布检查中的速度目标和质量阈值是其可配置协议默认值，不是算法保证，也没有替换本项目已冻结的评估与用户接受标准。报告保留实际局部收益、质量取舍和失败场景，不将所有任务均胜出设为贡献成立的必要条件。
 
+调用量字段以验证轮数为定义，不包含初始Target prefill；完整请求wall仍包含prefill及全部在线成本。共同128输出仅控制生成量，不要求不同近似路径的中间状态完全相同，不把它当同状态因果干预。
+
 核验文件Git blob：README `a999325c5109b5a61c0f019bc227d452a7415fc1`；EVALUATION `a81f6bf12146e73c164f0a6ab0876c6b64a6cc5f`；[适配文档](https://github.com/Kissmetothemoon/ASD/blob/9426ce7b3b8cafb2d34f675a5bb9db2ebf0259f6/docs/DEEPSPEC_DSPARK.md) `5925b34e374c28e5fe2325a4dec29faeead1f4e3`。本次只读复核，没有导入新的上游推理代码、改变库版本或修改正在生成的实验。

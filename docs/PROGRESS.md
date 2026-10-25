@@ -1,5 +1,19 @@
 # 项目进度
 
+## 2026-10-25 — 独立扩样续跑恢复
+
+- 用户恢复额度后继续原任务，01:53:36 UTC服务器两卡19MiB/0%，新continuation root尚不存在，未重复启动旧失败会话。最后元数据补丁补齐身份比较右侧方法名及自身历史输入分歧记录；`python -m pytest -q tests/test_asd_extension_resume.py --basetemp artifacts/pytest-extension-resume-final --junitxml=artifacts/paper-extension-resume-final-local.xml`，17 passed/17.43s。原69专项与完整1055+7skip结果分别保留，不把新17项冒称全套回归。
+
+## 2026-10-24 — 独立扩样中断与严格输出诊断
+
+- 一题诊断已完成：AR重放与原参考一致，两近似组与原部分结果一致；严格树与DFlash均1125 tokens/index602同处分歧于AR1318 tokens。严格树/AR实际top2间隔7.62939453125e-6/1.71661376953125e-5，logits最大差1.52587890625e-5，严格树重复稳定且输出等于实际前向argmax；同前缀整段前向选AR词。支持数值形状差异解释，不将未来所有差异自动归此。源2330SHA再次核对。诊断ZIP82262B/SHA9ebabeb5e92e432217d6f7d6ed3b4043289d4ebad26a5752dc7c870c5e4a8930、失败辅助ZIP2982B/SHA2e26bfcf2f215edfd7decc67074820682bc9af1dac6cbad90e8dc94c00421093均下载/校验。
+- 新增独立continuation入口与ASD_EXTENSION_CONTINUATION_PROTOCOL：原默认跨AR严格身份检查不变，仅续跑将跨形状差异逐项留证，不再声称全量bit-identical；接受规则/推理核心/输入/预算不改，同方法重复/strict前后/资源/质量仍硬检。新root不覆盖旧失败，完整83/89题原行字节复用，未完323整题重跑；本机对真实归档解压后核对3096主行/172参考/160控制均可完整复用，保留原2条323部分行。第一次直接读gzip归档目录被拒绝为缺失矩阵，解压后通过，未忽略缺项。
+- 专项命令`python -m pytest -q tests/test_asd_extension_resume.py tests/test_asd_paper_extension.py tests/test_asd_paper.py tests/test_asd_paper_metrics.py tests/test_asd_tree_report.py --basetemp artifacts/pytest-extension-resume --junitxml=artifacts/paper-extension-resume-tests-local.xml`，69 passed/39.90s。随后额度上限使下一工具调用在执行前停止；最终小型元数据补丁及复验恢复后继续，未启动续跑GPU。
+
+- 原冻结扩样在14:11:29 UTC因`math500:323`的严格BudgetTree与AR token不一致停止。原顺序BudgetTree-ASD/ASD/BudgetTree/DFlash，当时DFlash尚未执行；不能把此次分歧归给DFlash。失败行在断言前未落盘，原始错误输出没有保存，将以独立重放诊断，不假称恢复原失败行。
+- 两worker分别完成83/89源任务（合172，GSM128和MATH44），1494/1602主计时、各80控制；另保留323的两条近似输出。worker0完成当前题后按peer-failed退出，原旧数据SHA均未变。原失败ZIP6470691B/SHA8bc43b76d55124012b364986d72d823dc8b064a8ae8ff1324c6d4ed72e39f691保留，14:15:46 UTC独立复核全部2330源SHA相同。其余领域尚未生成，本轮未完成，不将部分结果当完整七领域验证。
+- 14:27:39.816130 UTC在物理GPU1启动一题正确性重放，owned timeout PID2727063/1200秒，使用原6d89480源/同配置、独立编译缓存。命令`CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. TORCHINDUCTOR_CACHE_DIR=artifacts/strict-diag-inductor TRITON_CACHE_DIR=artifacts/strict-diag-triton ../.venv-dflash/bin/python -u artifacts/diagnose_extension_strict.py`；观察器SHA6b004de62526f9a04b406e888b5d82aa5162d4501fe5da31efd828723e8b4cc1。比较AR重放、四组、失败严格组重复及首次分歧同前缀的实际Target argmax/top2间隔。仅留小型派生数值，不发布全logits/KV；诊断计时不用于加速结论。尚未确定数值形状差异或实现问题，不放宽接受规则、不跳过失败题。
+
 ## 2026-10-24 — 七任务独立扩样与预算匹配消融准备
 
 - 用户要求跨领域补齐未做实验，参考ASD v3第4节。冻结514新源任务/530匹配输入：GSM128/MATH64/HumanEval64/MBPP64/MMLU114/MT16双轮/Alpaca64，选中manifest SHA7b2934c9b76599529bbe9ca6dbfd1c2a9453edcfa784b3c2ce06ac48f37c7054。1117旧载荷SHA、476保守已用/保留ID排除，HumanEval尚可用84中选择64，57学科/8对话类别均覆盖；没有输出过滤或新种子。
@@ -11,6 +25,7 @@
 - 本机完整首轮在约85%处停滞，faulthandler明确位于旧HTTP/SSE测试的Windows asyncio socketpair/socket.accept；只核对并终止owned3108/13104，保留首日志及incomplete/noXML。相同源码在允许本机socket的环境重跑`python -m pytest -vv -o faulthandler_timeout=60 --basetemp artifacts/pytest-paper-extension-full-v2 --junitxml=artifacts/paper-extension-full-v2-local.xml`，1055 passed/7 skipped/162.49s，一条既有Starlette警告。没有为此更改运行/评分代码；首环境阻塞与新GPU实验分开。
 - 运行期间仅查看新开放题的题干字段，12:36:25 UTC另冻结34项客观/明确性质（9自动/25匿名agent辅助内容检查，26源任务/32轮次/四组136单元），配置SHA7684f4063874ad1f86fbbe651365927277bc26d056dfde4f717a8b001e21993e。12:38:06 UTC服务器确认仅GSM38/39完成、当前GSM、无rollout文件，尚无本轮开放回答。6个来源上下文/歧义标签事前声明，全部保留主结果。附加协议ASD_EXTENSION_CONTRACT_PROTOCOL.md；不是GPU开始前的原始预登记、不改prompt/样本/预算/主评分，不冒称人工专家或官方裁判。初准备以文件入口运行导致模块未找到/缺配置，附加10通过1失败XML保留；模块入口重建后12 passed/4.10s。
 - 题干规则及checker以7cf0daf事前提交并推送；13:10:27 UTC两卡均完成64个GSM源任务、各1152主计时/40控制，正运行MATH，未改配置。只读复核arXiv当前v3和ASD上游9426ce7的README/EVALUATION/DEEPSPEC文档；数据、答案、原始输出未随上游仓库提供，外部runner协议不足以确认所有原始切分/开放裁判。对应差异与精确blob记录于ASD_PAPER_ALIGNMENT.md，明确本项目Stanford Alpaca子集不称AlpacaEval；未据此改变数据或增加新GPU重复。
+- 13:55:12 UTC只读硬件快照显示两卡软件温度限频Active、硬件大幅温控Not Active，89/84°C、SM1500/1260MHz、memory7600MHz、power272.76/299.11W（limit300W）。未更改风扇/功率/频率，保存服务器root/HARDWARE_SNAPSHOTS.jsonl。13:56:07对已完成fixed三连的严格前后作只读漂移检查：GPU0 158对中1对>3%（max1.046331/min.997881），GPU1 167对中0对（max1.004230/min.997474）；共325对全部保留。BASELINE_DRIFT_SNAPSHOTS.jsonl另存，最终须随归档发布；是中途快照，不冒称全程温度或最终漂移统计。当前仍运行MATH，无新实现错误。
 
 ## 2026-10-24 — 七任务剩余指标全部补测完成
 

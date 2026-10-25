@@ -11,10 +11,11 @@ from scripts.diagnose_transport_online import write
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def main():
+def main(*,observe_geometry=False):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input',type=Path,default=ROOT/f'results/{STUDY}');args=parser.parse_args();out=args.input
-    result=aggregate(read_rows(out,'rows'),read_rows(out,'references'),load_records(ROOT),read_rows(out,'frontier'))
+    result=aggregate(read_rows(out,'rows'),read_rows(out,'references'),load_records(ROOT),read_rows(out,'frontier'),
+        strict_token_identity=not observe_geometry)
     resources=[]
     for shard in (0,1):
         p=json.loads((out/f'part-{shard}/provenance.json').read_bytes())
@@ -36,6 +37,9 @@ def main():
         '固定生成量与自然质量分列。计时重复不同于论文四次，不冒称完整原协议复现；所有漂移样本保留。','',
         '|任务|方法|自然时延vs ASD|共同128时延vs ASD（N）|固定TPS|固定TPS增益vs ASD|自然质量|截断|',
         '|---|---|---:|---:|---:|---:|---:|---:|']
+    if observe_geometry:
+        lines[6:6]=['续跑按ASD_EXTENSION_CONTINUATION_PROTOCOL修订跨前向几何的身份审计；接受规则/输入/预算均未改。',
+            f"跨形状逐字身份差异（主统计首重复）：{len(result['strict_identity_differences'])}项，全部保留；不宣称严格组全量逐字等同AR。",'']
     for benchmark in BENCHMARKS:
         family=result['families'][benchmark]
         for arm in ARMS:

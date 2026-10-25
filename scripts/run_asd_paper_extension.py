@@ -21,7 +21,7 @@ from scripts.run_runtime_migration import append
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def main():
+def main(*,continuation=False):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--shard',type=int,choices=(0,1),required=True);args=parser.parse_args()
     out=ROOT/f'results/raw/{STUDY}/part-{args.shard}';out.mkdir(parents=True,exist_ok=False)
@@ -32,6 +32,21 @@ def main():
         selection='Frozen unused public source IDs; no outcome-based exclusions')
     write(out/'provenance.json',info)
     try:
+        reuse=None
+        if continuation:
+            from memorydraft.evaluation.asd_extension_resume import resume_completed
+            reuse=resume_completed(ROOT,ROOT.parent/'asd-paper-extension',out,selected,args.shard)
+            info.update(reused_completed_tasks=reuse['completed_tasks'],
+                strict_identity_policy='observe-forward-geometry',strict_AR_bit_identity_claim=False)
+        def reject(message,row):
+            append(out/'rejected.jsonl',dict(row,rejection=message))
+            raise ValueError(message)
+        def identity(left,right,comparison):
+            from memorydraft.evaluation.asd_extension_resume import identity_difference
+            difference=identity_difference(left,right,comparison)
+            if difference:
+                append(out/'geometry-differences.jsonl',difference)
+                if not continuation:reject('Strict token identity mismatch: '+comparison,left)
         started=time.perf_counter()
         engine=load_engine(replace(RuntimeConfig.load(ROOT/'configs/runtime-dflash-rmsnorm.json'),db=None,max_new_tokens=4096))
         info['load_seconds']=time.perf_counter()-started
@@ -53,8 +68,11 @@ def main():
             if reference is not None:preflight.append(dict(request_id=task['id'],quality=score(task,reference)))
         write(out/'canonical-preflight.json',preflight)
         info['canonical_failed_ids']=[r['request_id'] for r in preflight if not r['quality']['correct']]
-        count=control_count=rollout_count=0;peak=0
+        old=reuse['original_provenance'] if reuse else {}
+        count=old.get('count',0);control_count=old.get('frontier_count',0)
+        rollout_count=old.get('rollout_count',0);peak=old.get('peak_gpu_bytes',0)
         for index,task in enumerate(selected):
+            if reuse and index<reuse['completed_tasks']:continue
             peer=out.parent/f'part-{1-args.shard}/provenance.json'
             if peer.exists():
                 try:peer_status=json.loads(peer.read_bytes())['status']
@@ -75,6 +93,8 @@ def main():
                         fixed=stage=='fixed',asd_config=config)
                     row.update(stage=stage,repeat=repeat,stop_policy='ignore-eos' if stage=='fixed' else 'natural-eos',
                         context_policy=ref['context_policy'])
+                    # Keep the actual last output if a later row check fails.
+                    write(out/'last-generated.json',row)
                     if (row['prompt_sha256'],row['snapshot_id'])!=(ref['prompt_sha256'],ref['snapshot_id']):
                         raise ValueError('Changed matched Target input')
                     if control:
@@ -84,8 +104,8 @@ def main():
                         if len(row['token_ids'])!=256:raise ValueError('Wrong fixed-work completion count')
                         if role:row['role']=role
                     elif arm in ('DFlash','BudgetTree'):
-                        if row['token_ids']!=ref['token_ids'][:limit]:raise ValueError('Strict AR token mismatch')
-                        if stage=='natural' and (row['text'],row['finish_reason'])!=(ref['text'],ref['finish_reason']):
+                        identity(row,dict(ref,token_ids=ref['token_ids'][:limit]),'strict-vs-AR')
+                        if stage=='natural' and row['token_ids']==ref['token_ids'] and (row['text'],row['finish_reason'])!=(ref['text'],ref['finish_reason']):
                             raise ValueError('Strict natural EOS mismatch')
                     if stage=='natural':
                         if row['text'] not in quality_cache:quality_cache[row['text']]=score(record,row['text'])
@@ -96,7 +116,7 @@ def main():
                     for repeat in range(REPEATS[stage]):
                         for arm in (order if repeat==0 else list(reversed(order))):
                             row=run(arm,limit,stage=stage,repeat=repeat)
-                            if (stage,arm) in seen and seen[stage,arm]!=signature(row):raise ValueError('Repeated trajectory changed')
+                            if (stage,arm) in seen and seen[stage,arm]!=signature(row):reject('Repeated trajectory changed',row)
                             seen[stage,arm]=signature(row);append(out/'rows.jsonl',row);count+=1
                             peak=max(peak,row['peak_gpu_bytes'])
                             if turn==1 and stage=='natural' and repeat==0:first_outputs[arm]=row
@@ -109,10 +129,11 @@ def main():
                     append(out/'rows.jsonl',row);count+=1
                     after=run(strict_arm,256,stage='fixed',repeat=1,role='after')
                     append(out/'rows.jsonl',after);count+=1
-                    if signature(before)!=signature(after):raise ValueError('Strict fixed repeat mismatch')
-                    if fixed_strict is not None and before['token_ids']!=fixed_strict:raise ValueError('Strict fixed tree mismatch')
-                    fixed_strict=before['token_ids']
-                    if fixed_strict[:len(ref['token_ids'][:256])]!=ref['token_ids'][:256]:raise ValueError('Strict fixed AR prefix mismatch')
+                    if signature(before)!=signature(after):reject('Strict fixed repeat mismatch',after)
+                    if fixed_strict is not None:identity(before,fixed_strict,'fixed-tree-vs-linear')
+                    fixed_strict=before
+                    identity(dict(before,token_ids=before['token_ids'][:len(ref['token_ids'][:256])]),
+                        dict(ref,token_ids=ref['token_ids'][:256]),'fixed-prefix-vs-AR')
                     peak=max(peak,*[r['peak_gpu_bytes'] for r in (before,row,after)])
                 if task['id'] in frontier:
                     controls=list(CONTROLS);random.Random('extension-frontier:'+record['id']).shuffle(controls)
@@ -131,8 +152,14 @@ def main():
                         first_token_ids=initial['token_ids'],first_text=initial['text'],
                         first_latency_seconds=initial['latency_seconds'],context_policy='own realized first-turn history')
                     if arm in ('DFlash','BudgetTree'):
-                        if strict_rollout is not None and row['token_ids']!=strict_rollout:raise ValueError('Strict own-history mismatch')
-                        strict_rollout=row['token_ids']
+                        if strict_rollout is not None:
+                            if row['prompt_sha256']==strict_rollout['prompt_sha256']:identity(row,strict_rollout,'own-history-tree-vs-linear')
+                            elif not continuation:reject('Strict own-history input mismatch',row)
+                            else:append(out/'geometry-differences.jsonl',dict(request_id=row['request_id'],arm=arm,
+                                stage='rollout',comparison='different-own-history-inputs',
+                                left_prompt_sha256=row['prompt_sha256'],right_prompt_sha256=strict_rollout['prompt_sha256'],
+                                interpretation='Different realized first turns; not a matched-input comparison'))
+                        strict_rollout=row
                     append(out/'rollout.jsonl',row);rollout_count+=1;peak=max(peak,row['peak_gpu_bytes'])
             if peak>46*2**30:raise ValueError('GPU memory limit exceeded')
             info.update(count=count,frontier_count=control_count,rollout_count=rollout_count,completed_tasks=index+1,
@@ -144,6 +171,13 @@ def main():
         if cache_bytes>4*2**30:raise ValueError('Compiler cache limit exceeded')
         if engine._regional.summary()['graph_count']!=info['compiler_after_warmup']['graph_count']:
             raise ValueError('New formal compiler graph')
+        if reuse:
+            import hashlib
+            directory=Path(reuse['original_root'])/f'results/raw/{STUDY}/part-{args.shard}'
+            for name,digest in reuse['original_payload_sha256'].items():
+                path=directory/(name+'.jsonl');data=path.read_bytes() if path.exists() else b''
+                if hashlib.sha256(data).hexdigest()!=digest:raise ValueError('Original interrupted payload changed')
+            info['reuse_payloads_unchanged']=True
         info.update(status='complete',cache_bytes=cache_bytes)
     except Exception as error:
         info.update(status='failed',error=type(error).__name__+': '+str(error));raise
