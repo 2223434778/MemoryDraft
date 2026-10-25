@@ -1,0 +1,40 @@
+{
+  "rule": {
+    "id": "alpaca:28928:turn1:property17",
+    "task_id": "alpaca:28928",
+    "turn": 1,
+    "check": "word_limit",
+    "criterion": "Article is at most 250 lexical words under the declared regex convention.",
+    "question_sha256": "0be0a81ab4d3ae1cf890e437fe336da044c6d07b64b2cc92b6e6bade5420aba6",
+    "maximum": 250
+  },
+  "questions": [
+    "Restrict the article to within 250 words\n\nInput:\nParticle Physics: An Overview"
+  ],
+  "answers": {
+    "A": {
+      "text": "Particle physics is the branch of physics that studies the fundamental particles that make up the universe and the forces that govern their interactions. It seeks to understand the smallest building blocks of matter and the forces that bind them. The Standard Model of particle physics is the most widely accepted framework that describes these particles and their interactions. It includes particles such as quarks, leptons, and bosons, which are categorized into fermions and bosons based on their properties.\n\nQuarks are the fundamental constituents of protons and neutrons, while leptons include electrons and neutrinos. Bosons, such as the photon and gluon, are responsible for mediating the fundamental forces. The Higgs boson, discovered in 2012, plays a crucial role in giving mass to other particles through the Higgs field.\n\nParticle physics experiments often take place in large particle accelerators, such as the Large Hadron Collider (LHC), where particles are accelerated to high energies and collided to study their interactions. These experiments have led to significant discoveries, including the confirmation of the Standard Model and the detection of the Higgs boson.\n\nDespite its successes, the Standard Model does not account for gravity or dark matter, prompting ongoing research into theories like supersymmetry and string theory. These theories aim to unify all fundamental forces and provide a more complete understanding of the universe.\n\nIn summary, particle physics explores the fundamental nature of matter and energy, driving advancements in both theoretical and experimental science. Its discoveries continue to shape our understanding of the cosmos and inspire new technologies and scientific inquiry.",
+      "answer_sha256": "a78ac989902c9f892a4da80609a809efcaafd2e3fbe9bd9a4aac6470d1890b26",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "Particle physics is the branch of physics that studies the fundamental particles that make up the universe and the forces that govern their interactions. These particles, such as quarks, leptons, and bosons, are the building blocks of all matter. The Standard Model of particle physics is the theoretical framework that describes these particles and their interactions, including the electromagnetic, weak, and strong forces.\n\nOne of the most significant discoveries in particle physics was the Higgs boson, which was detected in 2012 at the Large Hadron Collider (LHC). The Higgs boson is responsible for giving mass to other particles through the Higgs field. Beyond the Standard Model, physicists are exploring theories such as supersymmetry and string theory to explain phenomena that remain unexplained, such as dark matter and the unification of forces.\n\nExperiments at particle accelerators like the LHC allow scientists to probe the smallest scales of matter and test the predictions of theoretical models. These experiments often involve colliding particles at high energies to create new particles and observe their behavior. The study of particle physics not only deepens our understanding of the universe but also has practical applications in technology, medicine, and materials science.\n\nDespite significant progress, many questions remain unanswered. What is the nature of dark matter? How did the universe begin? What lies beyond the Standard Model? These questions drive ongoing research and exploration in particle physics, pushing the boundaries of human knowledge.",
+      "answer_sha256": "08610838ee7d30dae3746fafa8183e17b2e897a90c1d769abefa682eff350fcf",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "Particle physics is the branch of physics that studies the nature of particles that constitute matter and radiation. It explores the fundamental building blocks of the universe and the forces that govern their interactions. These particles are typically studied using particle accelerators, which allow scientists to collide particles at high energies to observe the resulting reactions.\n\nThe Standard Model of particle physics is the theoretical framework that describes the known subatomic particles and their interactions. It includes quarks, leptons, and force-carrying particles such as photons and gluons. The model has been highly successful in explaining a wide range of phenomena, but it does not account for gravity or dark matter, which remain areas of active research.\n\nOne of the most significant discoveries in particle physics was the Higgs boson, detected in 2012 at CERN's Large Hadron Collider. The Higgs boson is associated with the Higgs field, which gives mass to other particles. This discovery confirmed a key component of the Standard Model and deepened our understanding of the universe's fundamental structure.\n\nParticle physics also plays a crucial role in understanding the early universe, cosmic rays, and the behavior of matter under extreme conditions. Experiments in this field continue to push the boundaries of our knowledge, aiming to uncover new particles and forces that may lie beyond the Standard Model.\n\nIn summary, particle physics seeks to uncover the fundamental nature of the universe by studying its smallest components. Through advanced experiments and theoretical models, scientists strive to explain the forces and particles that shape our reality.",
+      "answer_sha256": "d5a9c1076e8335cb162ff8e87b019b6a9db05f2989261a2f141e01810c0e2926",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "Particle physics is the branch of physics that studies the fundamental particles that make up the universe and the forces that govern their interactions. These particles, such as quarks, leptons, and bosons, are the building blocks of all matter. The Standard Model of particle physics is the theoretical framework that describes these particles and their interactions, including the electromagnetic, weak, and strong forces.\n\nOne of the most significant discoveries in particle physics was the Higgs boson, which was detected in 2012 at the Large Hadron Collider (LHC). The Higgs boson is responsible for giving mass to other particles through the Higgs field. Beyond the Standard Model, physicists are exploring theories such as supersymmetry and string theory to explain phenomena that remain unexplained, such as dark matter and the unification of forces.\n\nExperiments at particle accelerators like the LHC allow scientists to probe the smallest scales of matter and test the predictions of theoretical models. These experiments often involve colliding particles at high energies to create new particles and observe their behavior. The study of particle physics not only deepens our understanding of the universe but also has practical applications in technology, medicine, and materials science.\n\nDespite significant progress, many questions remain unanswered. What is the nature of dark matter? How did the universe begin? What lies beyond the Standard Model? These questions drive ongoing research and exploration in particle physics, pushing the boundaries of human knowledge.",
+      "answer_sha256": "08610838ee7d30dae3746fafa8183e17b2e897a90c1d769abefa682eff350fcf",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    }
+  }
+}

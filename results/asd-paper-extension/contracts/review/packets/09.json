@@ -1,0 +1,40 @@
+{
+  "rule": {
+    "id": "mtbench:137:turn2:property9",
+    "task_id": "mtbench:137",
+    "turn": 2,
+    "check": "single_line_json",
+    "criterion": "The whole response is a single line and contains valid JSON; initialization semantics are separate.",
+    "question_sha256": "247a4b3c182378c8a0ef3591e9ebdc406c9bec2fa635068a8ec14be2872d63ec"
+  },
+  "questions": [
+    "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility.",
+    "Now make the JSON object shorter by replacing each value with its first letter. Please output everything in a single line without using indentation or creating new lines."
+  ],
+  "answers": {
+    "A": {
+      "text": "{\"people\":[\"A\",\"D\",\"H\"],\"organizations\":[\"F\",\"D\",\"V\"],\"locations\":[\"B\"]}",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "automatic_verdict": "pass",
+      "prior_answer": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```"
+    },
+    "B": {
+      "text": "{\"people\":[\"A\",\"D\",\"H\"],\"organizations\":[\"F\",\"D\",\"V\"],\"locations\":[\"B\"]}",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "automatic_verdict": "pass",
+      "prior_answer": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```"
+    },
+    "C": {
+      "text": "{\"people\":[\"A\",\"D\",\"H\"],\"organizations\":[\"F\",\"D\",\"V\"],\"locations\":[\"B\"]}",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "automatic_verdict": "pass",
+      "prior_answer": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```"
+    },
+    "D": {
+      "text": "{\"people\":[\"A\",\"D\",\"H\"],\"organizations\":[\"F\",\"D\",\"V\"],\"locations\":[\"B\"]}",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "automatic_verdict": "pass",
+      "prior_answer": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```"
+    }
+  }
+}

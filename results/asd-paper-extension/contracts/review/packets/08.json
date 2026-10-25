@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "mtbench:137:turn1:property8",
+    "task_id": "mtbench:137",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Named-entity coverage and grouping: people Adamson Emerson/Dieter Zetsche/Herbert Diess; organizations Faraday/Daimler AG(or Daimler)/Volkswagen; locations Berlin/Europe. Allow aliases and duplicate mentions; do not require specific key capitalization.",
+    "question_sha256": "247a4b3c182378c8a0ef3591e9ebdc406c9bec2fa635068a8ec14be2872d63ec"
+  },
+  "questions": [
+    "Identify the named entities (people, organizations, locations) mentioned in the given news article. Please generate a JSON dictionary that lists the named entities in three separate groups based on their entity types. The key is the type of entity and the value is a list of strings.\n\nYesterday, Adamson Emerson, the CEO of Faraday, and Dieter Zetsche, the CEO of Daimler AG, announced plans to build a new Gigafactory in Berlin. The facility will be a joint venture between Faraday and Daimler, producing electric vehicles and battery packs for both companies, creating thousands of job opportunities in the region. Emerson and Zetsche stated that the strategic location of Berlin, coupled with its skilled workforce and strong infrastructure, makes it an ideal choice for expansion. The new Gigafactory aims to meet the growing demand for electric vehicles in Europe and contribute to a sustainable future. Volkswagen CEO Herbert Diess welcomed the news, saying greater collaboration will benefit the auto industry's transition to e-mobility."
+  ],
+  "answers": {
+    "A": {
+      "text": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "```json\n{\n  \"people\": [\"Adamson Emerson\", \"Dieter Zetsche\", \"Herbert Diess\"],\n  \"organizations\": [\"Faraday\", \"Daimler AG\", \"Volkswagen\"],\n  \"locations\": [\"Berlin\"]\n}\n```",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

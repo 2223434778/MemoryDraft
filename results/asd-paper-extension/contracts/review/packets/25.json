@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:11948:turn1:property25",
+    "task_id": "alpaca:11948",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Three distinct proposed protective actions; count only, not a complete cybersecurity assessment.",
+    "question_sha256": "3a58b51142c83e6498b0987168b64ad63176e06b50da164dfde76a596ff5d122"
+  },
+  "questions": [
+    "List 3 things you can do to protect yourself from cyberattacks."
+  ],
+  "answers": {
+    "A": {
+      "text": "1. **Use Strong, Unique Passwords**: Create complex passwords for each of your accounts and avoid reusing the same password across multiple sites. Consider using a password manager to store and generate secure passwords.\n\n2. **Enable Two-Factor Authentication (2FA)**: Add an extra layer of security by enabling 2FA on your accounts. This typically involves a second verification step, such as a code sent to your phone or a biometric scan, making it harder for attackers to access your accounts.\n\n3. **Keep Software and Systems Updated**: Regularly update your operating system, applications, and antivirus software. These updates often include security patches that fix vulnerabilities which could be exploited by cybercriminals.",
+      "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "1. **Use Strong, Unique Passwords**  \n   Create complex passwords for each account and avoid using the same password across multiple sites. Consider using a password manager to store and generate secure passwords.\n\n2. **Enable Two-Factor Authentication (2FA)**  \n   Add an extra layer of security by requiring a second form of verification (like a code sent to your phone) in addition to your password when logging in.\n\n3. **Keep Software and Systems Updated**  \n   Regularly update your operating system, applications, and antivirus software to ensure you have the latest security patches and protections against known vulnerabilities.",
+      "answer_sha256": "c761a8805e3a0ec0b3bb3d881a92b95a82e81193b2176e9a233a49c132ef31d7",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "1. **Use Strong, Unique Passwords**: Create complex passwords for each of your accounts and avoid using the same password across multiple sites. Consider using a password manager to store and generate secure passwords.\n\n2. **Enable Two-Factor Authentication (2FA)**: Add an extra layer of security by requiring a second form of verification (like a code sent to your phone or a biometric scan) in addition to your password.\n\n3. **Keep Software and Systems Updated**: Regularly update your operating system, applications, and antivirus software to ensure you have the latest security patches and protections against known vulnerabilities.",
+      "answer_sha256": "27398d38bc54e333fc861f9ab2529919f4ba9900ca0da335767722fedd802868",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "1. **Use Strong, Unique Passwords**: Create complex passwords for each of your accounts and avoid reusing the same password across multiple sites. Consider using a password manager to store and generate secure passwords.\n\n2. **Enable Two-Factor Authentication (2FA)**: Add an extra layer of security by enabling 2FA on your accounts. This typically involves a second verification step, such as a code sent to your phone or a biometric scan, making it harder for attackers to access your accounts.\n\n3. **Keep Software and Systems Updated**: Regularly update your operating system, applications, and antivirus software. These updates often include security patches that fix vulnerabilities which could be exploited by cybercriminals.",
+      "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

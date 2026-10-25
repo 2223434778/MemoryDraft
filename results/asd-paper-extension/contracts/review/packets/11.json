@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "mtbench:131:turn1:property11",
+    "task_id": "mtbench:131",
+    "turn": 1,
+    "check": "json_integer_ratings",
+    "criterion": "Contains a JSON array of three integers in the inclusive range 1..5; no exact sentiment labels are imposed.",
+    "question_sha256": "47c7b0e890510e8ee12fd7e88f93b98279bee701f60180cd23ee9178a95c7dba"
+  },
+  "questions": [
+    "Evaluate the following movie reviews on a scale of 1 to 5, with 1 being very negative, 3 being neutral, and 5 being very positive:\n1. This movie released on Nov. 18, 2019, was phenomenal. The cinematography, the acting, the plot - everything was top-notch.\n2. Never before have I been so disappointed with a movie. The plot was predictable and the characters were one-dimensional. In my opinion, this movie is the worst one to have been released in 2022.\n3. The movie was okay. There were some parts I  enjoyed, but there were also parts that felt lackluster. This is a movie that was released in Feb 2018 and seems to be quite ordinary.\nReturn the answer as a JSON array of integers."
+  ],
+  "answers": {
+    "A": {
+      "text": "[5, 1, 3]",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "[5, 1, 3]",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "[5, 1, 3]",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "[5, 1, 3]",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "automatic_verdict": "pass",
+      "prior_answer": null
+    }
+  }
+}

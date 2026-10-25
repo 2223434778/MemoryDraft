@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:47322:turn1:property34",
+    "task_id": "alpaca:47322",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Python code computes triangle area for its declared interface (base/height, side lengths, or coordinates). Do not require one function name or an interface absent from the prompt.",
+    "question_sha256": "7253719fb483c8f14b35692f0377136db1abfeae02203240615c922014701e01"
+  },
+  "questions": [
+    "Generate Python code to calculate the area of a triangle."
+  ],
+  "answers": {
+    "A": {
+      "text": "Sure! Here's a simple Python code to calculate the area of a triangle using the **base** and **height**:\n\n```python\n# Function to calculate the area of a triangle\ndef calculate_triangle_area(base, height):\n    return (base * height) / 2\n\n# Example usage\nbase = float(input(\"Enter the base of the triangle: \"))\nheight = float(input(\"Enter the height of the triangle: \"))\n\narea = calculate_triangle_area(base, height)\nprint(f\"The area of the triangle is: {area}\")\n```\n\n### Alternative: Using Heron's Formula (with three sides)\nIf you want to calculate the area using the lengths of all three sides:\n\n```python\nimport math\n\n# Function to calculate the area using Heron's formula\ndef calculate_triangle_area_heron(a, b, c):\n    # Check if the sides form a valid triangle\n    if a + b <= c or a + c <= b or b + c <= a:\n        return \"Invalid triangle sides\"\n    \n    s = (a + b + c) / 2  # Semi-perimeter\n    area = math.sqrt(s * (s - a) * (s - b) * (s - c))\n    return area\n\n# Example usage\na = float(input(\"Enter side a: \"))\nb = float(input(\"Enter side b: \"))\nc = float(input(\"Enter side c: \"))\n\narea = calculate_triangle_area_heron(a, b, c)\nprint(f\"The area of the triangle is: {area}\")\n```\n\nLet me know if you'd like to use other methods like coordinates or vectors!",
+      "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "Sure! Here's a simple Python code to calculate the area of a triangle using the **base** and **height**:\n\n```python\n# Function to calculate the area of a triangle\ndef calculate_triangle_area(base, height):\n    return (base * height) / 2\n\n# Example usage\nbase = float(input(\"Enter the base of the triangle: \"))\nheight = float(input(\"Enter the height of the triangle: \"))\n\narea = calculate_triangle_area(base, height)\nprint(f\"The area of the triangle is: {area}\")\n```\n\n### Alternative: Using Heron's Formula (with three sides)\nIf you want to calculate the area using the lengths of all three sides:\n\n```python\nimport math\n\n# Function to calculate the area using Heron's formula\ndef calculate_triangle_area_heron(a, b, c):\n    # Check if the sides form a valid triangle\n    if a + b <= c or a + c <= b or b + c <= a:\n        return \"Invalid triangle sides\"\n    \n    s = (a + b + c) / 2  # Semi-perimeter\n    area = math.sqrt(s * (s - a) * (s - b) * (s - c))\n    return area\n\n# Example usage\na = float(input(\"Enter side a: \"))\nb = float(input(\"Enter side b: \"))\nc = float(input(\"Enter side c: \"))\n\narea = calculate_triangle_area_heron(a, b, c)\nprint(f\"The area of the triangle is: {area}\")\n```\n\nLet me know if you'd like to use other methods like coordinates or vectors!",
+      "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "Sure! Here's a simple Python code to calculate the area of a triangle using the **base** and **height**:\n\n```python\n# Function to calculate the area of a triangle\ndef triangle_area(base, height):\n    return 0.5 * base * height\n\n# Example usage\nbase = float(input(\"Enter the base of the triangle: \"))\nheight = float(input(\"Enter the height of the triangle: \"))\n\narea = triangle_area(base, height)\nprint(f\"The area of the triangle is: {area}\")\n```\n\n### Alternative: Using Heron's Formula (with three sides)\nIf you want to calculate the area using the lengths of all three sides, you can use **Heron's formula**:\n\n```python\nimport math\n\n# Function to calculate the area using Heron's formula\ndef triangle_area_heron(a, b, c):\n    s = (a + b + c) / 2\n    area = math.sqrt(s * (s - a) * (s - b) * (s - c))\n    return area\n\n# Example usage\na = float(input(\"Enter the length of side a: \"))\nb = float(input(\"Enter the length of side b: \"))\nc = float(input(\"Enter the length of side c: \"))\n\narea = triangle_area_heron(a, b, c)\nprint(f\"The area of the triangle is: {area}\")\n```\n\nLet me know if you'd like to handle invalid inputs or other types of triangles!",
+      "answer_sha256": "1ec30a53d37968b21ac8041cf3ee19dbd833e661e318095c8d46f4f8324db713",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "Sure! Here's a simple Python code to calculate the area of a triangle using the formula:\n\n$$\n\\text{Area} = \\frac{1}{2} \\times \\text{base} \\times \\text{height}\n$$\n\n### ✅ Python Code:\n\n```python\n# Function to calculate the area of a triangle\ndef calculate_triangle_area(base, height):\n    return 0.5 * base * height\n\n# Example usage\nbase = float(input(\"Enter the base of the triangle: \"))\nheight = float(input(\"Enter the height of the triangle: \"))\n\narea = calculate_triangle_area(base, height)\nprint(f\"The area of the triangle is: {area}\")\n```\n\n### 🔍 Explanation:\n- The function `calculate_triangle_area` takes two arguments: `base` and `height`.\n- It returns the area using the formula.\n- The user is prompted to enter the base and height.\n- The result is printed.\n\n### 📌 Example Output:\n```\nEnter the base of the triangle: 10\nEnter the height of the triangle: 5\nThe area of the triangle is: 25.0\n```\n\nLet me know if you'd like to calculate the area using Heron's formula or with three sides instead!",
+      "answer_sha256": "adbd174dd0e1098c171e6a1eca84d49ab3e62c75ea38f55ee8af3fbcd3dcd4cd",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

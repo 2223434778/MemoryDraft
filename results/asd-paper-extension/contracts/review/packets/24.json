@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:21001:turn1:property24",
+    "task_id": "alpaca:21001",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Three distinct proposed uses of a time machine; allow prose or lists.",
+    "question_sha256": "2135b2f01cf2b9aa8860ca0511a33803e2d7544e7dbf1876bc1ae24c51575ea2"
+  },
+  "questions": [
+    "Brainstorm three possible uses of a time machine."
+  ],
+  "answers": {
+    "A": {
+      "text": "Sure! Here are three possible uses of a time machine:\n\n1. **Preventing Historical Disasters**  \n   A time machine could be used to travel back to the past and prevent major historical events, such as wars, natural disasters, or the invention of harmful technologies. For example, stopping the assassination of a key political leader or preventing the spread of a deadly disease.\n\n2. **Personal Time Travel for Learning or Experience**  \n   Individuals might use a time machine to revisit important moments in their own lives, such as reliving a cherished memory, correcting a past mistake, or gaining insight from a future event. This could be used for personal growth, education, or emotional healing.\n\n3. **Scientific Exploration and Discovery**  \n   A time machine could enable scientists to observe historical events, study ancient civilizations, or witness natural phenomena that have long since changed. This could lead to groundbreaking discoveries in history, archaeology, physics, and even the evolution of life on Earth.",
+      "answer_sha256": "ddaaf28146484f5c5e32fb42c3edd86eb8fbcccc92d19f7284bbcb8df4f02b66",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "Sure! Here are three possible uses of a time machine:\n\n1. **Preventing Historical Disasters**: A time machine could be used to travel back in time to prevent major historical events, such as wars, natural disasters, or the assassination of key figures, potentially altering the course of history for the better.\n\n2. **Personal Time Travel for Learning or Experience**: Individuals might use a time machine to revisit important moments in their own lives, such as re-experiencing a significant event, meeting someone they lost touch with, or gaining insight into past decisions.\n\n3. **Scientific Research and Exploration**: A time machine could allow scientists to observe past events, study ancient civilizations, or witness natural phenomena that no longer occur, providing invaluable data for research and expanding human knowledge.",
+      "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "Sure! Here are three possible uses of a time machine:\n\n1. **Preventing Historical Disasters**  \n   A time machine could be used to prevent major historical events, such as wars, natural disasters, or the collapse of civilizations. By traveling back in time to intervene, a person could potentially alter the course of history and create a better future.\n\n2. **Personal Time Travel for Learning or Experience**  \n   Individuals might use a time machine to revisit important moments in their own lives, such as meeting someone, reliving a significant event, or even learning from past mistakes. This could be used for personal growth, emotional healing, or gaining new perspectives.\n\n3. **Scientific Exploration of the Past**  \n   Scientists and historians could use a time machine to directly observe and study historical events, ancient civilizations, or natural phenomena as they occurred. This would provide invaluable data and insights that are otherwise impossible to obtain through traditional methods.",
+      "answer_sha256": "bb8396e0877707ebbbac9782f88df14f093f0400d02ee653ea2bba631166f413",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "Sure! Here are three possible uses of a time machine:\n\n1. **Preventing Historical Disasters**: A time machine could be used to travel back in time to prevent major historical events, such as wars, natural disasters, or the assassination of key figures, potentially altering the course of history for the better.\n\n2. **Personal Time Travel for Learning or Experience**: Individuals might use a time machine to revisit important moments in their own lives, such as re-experiencing a significant event, meeting someone they lost touch with, or gaining insight into past decisions.\n\n3. **Scientific Research and Exploration**: A time machine could allow scientists to observe past events, study ancient civilizations, or witness natural phenomena that no longer occur, providing invaluable data for research and expanding human knowledge.",
+      "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

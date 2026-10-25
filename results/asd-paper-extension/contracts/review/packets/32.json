@@ -1,0 +1,49 @@
+{
+  "rule": {
+    "id": "alpaca:33631:turn1:property32",
+    "task_id": "alpaca:33631",
+    "turn": 1,
+    "check": "redaction_literals",
+    "criterion": "Remove supplied literal identifying strings. This is a literal-removal property, not a full privacy guarantee.",
+    "question_sha256": "8cbcb221c1b20285141c3546381d97fe45e104ffbf9fbee2ed490a78bfa0a89b",
+    "patterns": {
+      "first_name": "\\bJohn\\b",
+      "surname": "\\bSmith\\b",
+      "street_number": "\\b3456\\b",
+      "street_name": "\\bMain\\s+(?:Street|St\\.?)\\b",
+      "unit": "\\bApt\\.?\\s*2\\b",
+      "city": "\\bAnytown\\b",
+      "state": "\\bCA\\b",
+      "postal": "\\b78956\\b"
+    }
+  },
+  "questions": [
+    "Redact all the private data from the following document.\n\nInput:\nJohn Smith, 3456 Main Street, Apt 2, Anytown, CA, 78956"
+  ],
+  "answers": {
+    "A": {
+      "text": "John Smith, 3456 Main Street, Apt 2, Anytown, CA, 78956",
+      "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "John Smith, [REDACTED], [REDACTED], [REDACTED], [REDACTED], [REDACTED]",
+      "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "John Smith, [REDACTED], [REDACTED], [REDACTED], [REDACTED], [REDACTED]",
+      "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "John Smith, 3456 Main Street, Apt 2, Anytown, CA, 78956",
+      "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b",
+      "automatic_verdict": "fail",
+      "prior_answer": null
+    }
+  }
+}

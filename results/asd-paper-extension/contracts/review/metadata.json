@@ -1,0 +1,14 @@
+{
+  "plan_sha256": "7684f4063874ad1f86fbbe651365927277bc26d056dfde4f717a8b001e21993e",
+  "check_module_sha256": "6803361ddd0fd20d8ffbd1a7372e5a632b4e49802d6badfa7aad8dc750ffc79e",
+  "packet_helper_sha256": "0b2eacd329aa991d5507c39b17ebc741ddd12a2d6ae3c1759e6a275bde1b717b",
+  "primary_generation_sources": [
+    "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+    "1d39c56e5a81c896077258433b476af1a934ce6f"
+  ],
+  "check_plan_commit": "7cf0daf",
+  "property_cells": 136,
+  "manual_cells": 100,
+  "automatic_cells": 36,
+  "scope": "Explicit partial properties; method labels hidden in displayed packets. Agent-assisted review, not independent human quality grading."
+}

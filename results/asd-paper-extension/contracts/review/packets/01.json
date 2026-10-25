@@ -1,0 +1,40 @@
+{
+  "rule": {
+    "id": "mtbench:111:turn1:property1",
+    "task_id": "mtbench:111",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Final triangle area is 3 square units; allow equivalent exact or appropriately rounded forms.",
+    "question_sha256": "73cc8166d678cb3d63e20ec29c62be7b2a51cc57acf6974a13ca72678fd4bb1f",
+    "expected": "3"
+  },
+  "questions": [
+    "The vertices of a triangle are at points (0, 0), (-1, 1), and (3, 3). What is the area of the triangle?"
+  ],
+  "answers": {
+    "A": {
+      "text": "We are given the vertices of a triangle:\n\n- $ A = (0, 0) $\n- $ B = (-1, 1) $\n- $ C = (3, 3) $\n\nWe can use the **shoelace formula** to find the area of a triangle given its vertices.\n\n---\n\n### Step 1: Write the coordinates in order\n\nLet’s list the points in order (either clockwise or counterclockwise), and repeat the first point at the end:\n\n$$\n(0, 0),\\ (-1, 1),\\ (3, 3),\\ (0, 0)\n$$\n\n---\n\n### Step 2: Apply the shoelace formula\n\nThe formula is:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| x_1y_2 + x_2y_3 + x_3y_1 - (y_1x_2 + y_2x_3 + y_3x_1) \\right|\n$$\n\nSubstitute the values:\n\n- $ x_1 = 0, y_1 = 0 $\n- $ x_2 = -1, y_2 = 1 $\n- $ x_3 = 3, y_3 = 3 $\n\nNow compute:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| (0)(1) + (-1)(3) + (3)(0) - (0)(-1) - (1)(3) - (3)(0) \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| 0 - 3 + 0 - 0 - 3 - 0 \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| -6 \\right| = \\frac{1}{2} \\cdot 6 = 3\n$$\n\n---\n\n### ✅ Final Answer:\n\n$$\n\\boxed{3}\n$$\n\nSo, the area of the triangle is **3 square units**.",
+      "answer_sha256": "3db3481b26a807f3045c278d19b8e935b17f70673d2564fd9af40d575733b30c",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "We are given the vertices of a triangle as:\n\n- $ A = (0, 0) $\n- $ B = (-1, 1) $\n- $ C = (3, 3) $\n\nWe can use the **shoelace formula** to find the area of a triangle given its vertices.\n\n---\n\n### **Shoelace Formula:**\n\nFor a triangle with vertices $ (x_1, y_1), (x_2, y_2), (x_3, y_3) $, the area is:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| x_1y_2 + x_2y_3 + x_3y_1 - (y_1x_2 + y_2x_3 + y_3x_1) \\right|\n$$\n\nLet’s plug in the coordinates:\n\n- $ x_1 = 0, y_1 = 0 $\n- $ x_2 = -1, y_2 = 1 $\n- $ x_3 = 3, y_3 = 3 $\n\nNow compute:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| (0)(1) + (-1)(3) + (3)(0) - [(0)(-1) + (1)(3) + (3)(0)] \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| 0 - 3 + 0 - (0 + 3 + 0) \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| -3 - 3 \\right| = \\frac{1}{2} \\left| -6 \\right| = \\frac{1}{2} \\cdot 6 = 3\n$$\n\n---\n\n### ✅ Final Answer:\n\n$$\n\\boxed{3}\n$$\n\nThe area of the triangle is **3 square units**.",
+      "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "We are given the vertices of a triangle as:\n\n- $ A = (0, 0) $\n- $ B = (-1, 1) $\n- $ C = (3, 3) $\n\nWe can use the **shoelace formula** to find the area of a triangle given its vertices.\n\n---\n\n### **Shoelace Formula:**\n\nFor a triangle with vertices $ (x_1, y_1) $, $ (x_2, y_2) $, $ (x_3, y_3) $, the area is:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2) \\right|\n$$\n\nSubstitute the values:\n\n- $ x_1 = 0, y_1 = 0 $\n- $ x_2 = -1, y_2 = 1 $\n- $ x_3 = 3, y_3 = 3 $\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| 0(1 - 3) + (-1)(3 - 0) + 3(0 - 1) \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| 0 + (-1)(3) + 3(-1) \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| 0 - 3 - 3 \\right| = \\frac{1}{2} \\left| -6 \\right| = \\frac{1}{2} \\cdot 6 = 3\n$$\n\n---\n\n### ✅ Final Answer:\n\n$$\n\\boxed{3}\n$$\n\nSo, the area of the triangle is **3 square units**.",
+      "answer_sha256": "be5afc04e9b49ec32bb74d965a80a077240fdf472212acd96e9a695d4ba948ff",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "We are given the vertices of a triangle as:\n\n- $ A = (0, 0) $\n- $ B = (-1, 1) $\n- $ C = (3, 3) $\n\nWe can use the **shoelace formula** to find the area of a triangle given its vertices.\n\n---\n\n### **Shoelace Formula:**\n\nFor a triangle with vertices $ (x_1, y_1), (x_2, y_2), (x_3, y_3) $, the area is:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| x_1y_2 + x_2y_3 + x_3y_1 - (y_1x_2 + y_2x_3 + y_3x_1) \\right|\n$$\n\nLet’s plug in the coordinates:\n\n- $ x_1 = 0, y_1 = 0 $\n- $ x_2 = -1, y_2 = 1 $\n- $ x_3 = 3, y_3 = 3 $\n\nNow compute:\n\n$$\n\\text{Area} = \\frac{1}{2} \\left| (0)(1) + (-1)(3) + (3)(0) - [(0)(-1) + (1)(3) + (3)(0)] \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| 0 - 3 + 0 - (0 + 3 + 0) \\right|\n$$\n\n$$\n= \\frac{1}{2} \\left| -3 - 3 \\right| = \\frac{1}{2} \\left| -6 \\right| = \\frac{1}{2} \\cdot 6 = 3\n$$\n\n---\n\n### ✅ Final Answer:\n\n$$\n\\boxed{3}\n$$\n\nThe area of the triangle is **3 square units**.",
+      "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:9186:turn1:property23",
+    "task_id": "alpaca:9186",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Five distinct bird types are named. This checklist grades item count, not a complete geographic-frequency claim.",
+    "question_sha256": "d78f35b408d2cad9618d48dc4c2fa1c1e655719c5df7eba5226afa96b37c1b8d"
+  },
+  "questions": [
+    "Name 5 birds commonly found in North America."
+  ],
+  "answers": {
+    "A": {
+      "text": "Sure! Here are five birds commonly found in North America:\n\n1. **American Robin** – Known for its bright orange breast and melodious song, it's a common sight in backyards and parks across the continent.\n\n2. **Blue Jay** – A strikingly colorful bird with a blue body, white chest, and black markings, often seen in forests and suburban areas.\n\n3. **Red-tailed Hawk** – A common raptor with a distinctive reddish-brown tail, often seen soaring over open fields and rural areas.\n\n4. **House Sparrow** – A small, adaptable bird often found near humans, especially in urban and suburban environments.\n\n5. **Northern Cardinal** – Recognizable by its bright red plumage and distinctive crest, it's a popular backyard bird in many parts of North America.\n\nLet me know if you'd like more details about any of these birds!",
+      "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "Sure! Here are five birds commonly found in North America:\n\n1. **American Robin** – Known for its bright orange breast and melodious song, it's a common sight in backyards and parks across the continent.\n\n2. **Blue Jay** – A strikingly colorful bird with a blue body, white chest, and black markings, often seen in forests and suburban areas.\n\n3. **Red-tailed Hawk** – A common raptor with a distinctive reddish-brown tail, often seen soaring over open fields and rural areas.\n\n4. **House Sparrow** – A small, adaptable bird often found near humans, especially in urban and suburban environments.\n\n5. **Northern Cardinal** – Recognizable by its bright red plumage and distinctive crest, it's a popular backyard bird in many parts of North America.\n\nLet me know if you'd like more details about any of these birds!",
+      "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "Sure! Here are five birds commonly found in North America:\n\n1. **American Robin** – Known for its bright orange breast and melodious song, it's a common sight in backyards and parks.\n\n2. **Blue Jay** – A colorful and noisy bird with a distinctive blue and white plumage, often seen in forests and suburban areas.\n\n3. **Red-tailed Hawk** – A common raptor found in open country, known for its reddish tail and soaring flight.\n\n4. **House Sparrow** – A small, adaptable bird often found near humans, especially in urban and suburban areas.\n\n5. **Northern Cardinal** – Recognizable by its bright red plumage and distinctive crest, it's a popular backyard bird in many parts of North America.\n\nLet me know if you'd like more details about any of these!",
+      "answer_sha256": "fd20ea3e1d1eb9fc16125cd7e35c6b3c7d2214acef52c36130453c8079945c40",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "Sure! Here are five birds commonly found in North America:\n\n1. **American Robin** – Known for its bright orange breast and melodious song, it's a common sight in backyards and parks across the continent.\n\n2. **Blue Jay** – A striking bird with a blue body and a black head, it's often seen in forests and suburban areas.\n\n3. **Red-tailed Hawk** – A common raptor found in open areas, it's known for its distinctive red tail and soaring flight.\n\n4. **House Sparrow** – A small, adaptable bird often seen near humans, it's common in urban and suburban environments.\n\n5. **Northern Cardinal** – Recognizable by its bright red plumage and distinctive crest, it's a popular backyard bird in many parts of North America.\n\nLet me know if you'd like more details about any of these birds!",
+      "answer_sha256": "54e7a6b570ce1853ffb73478ac329b6e2d14d47b4595873a5e4397f9d0127bbe",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

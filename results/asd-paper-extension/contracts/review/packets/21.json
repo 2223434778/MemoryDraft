@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:7014:turn1:property21",
+    "task_id": "alpaca:7014",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "The revised sentence has fewer than 70 Unicode codepoints. Explicitly record the selected revised sentence and length; explanatory wrapper is not itself the sentence.",
+    "question_sha256": "1c3bbf4de43a22b5add216fa5d675e3630d912864330bfd6c698a7ca946aea0b"
+  },
+  "questions": [
+    "Edit the sentence to use less than 70 characters.\n\nInput:\nNo one in the family believe what happened, the whole thing was just too hard for everyone to comprehend."
+  ],
+  "answers": {
+    "A": {
+      "text": "No one believed the event; it was too hard to comprehend.",
+      "answer_sha256": "2a09b8c496ca440bc32d5678d4a43f2cdf15934c662d1d05597358e72ea1c79a",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "No one believed what happened; it was too hard to comprehend.",
+      "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "No one believes what happened; it was too hard to comprehend.",
+      "answer_sha256": "54ada9868e502b64aaee4b34a720687bc4d6c214b4e39fa599282cc54abebd32",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "No one believed what happened; it was too hard to comprehend.",
+      "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

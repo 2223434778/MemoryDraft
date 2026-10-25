@@ -1,0 +1,40 @@
+{
+  "rule": {
+    "id": "mtbench:90:turn2:property13",
+    "task_id": "mtbench:90",
+    "turn": 2,
+    "check": "gendered_pronouns",
+    "criterion": "No standalone he/him/his/she/her/hers/himself/herself, including contracted forms; they/them is allowed.",
+    "question_sha256": "4e806058923abbbecf6d9b9a5094a1ca02264fefef134e700e5ffc586a92b67a"
+  },
+  "questions": [
+    "Edit the following paragraph to correct any grammatical errors:\nShe didn't remembre where is her purse, so I thinks its in the car but he's say it's on kitchen table but he are not sure, and then they asked me to looking for it, she's say, \"Can you?\", and I responds with, \"Maybe, but ain't no sure,\" and he not heard me, and, \"What?\", he asks, \"Did you found it?\".",
+    "Modify your earlier reply and eliminate the use of gendered pronouns."
+  ],
+  "answers": {
+    "A": {
+      "text": "Sure! Here's the revised version with gendered pronouns removed:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but they said it's on the kitchen table, but they're not sure. Then they asked me to look for it. They said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" They didn't hear me, and they asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like further adjustments!",
+      "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2",
+      "automatic_verdict": "fail",
+      "prior_answer": "Here is the corrected version of your paragraph:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but he said it's on the kitchen table, but he's not sure. Then they asked me to look for it. She said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" He didn't hear me, and he asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like it to sound more formal or more casual!"
+    },
+    "B": {
+      "text": "Here is the revised version of the paragraph with grammatical errors corrected and gendered pronouns removed:\n\nShe didn't remember where her purse was, so I think it's in the car, but they said it's on the kitchen table, but they're not sure. Then they asked me to look for it. They said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" And they didn't hear me, and they asked, \"What? Did you find it?\"",
+      "answer_sha256": "baee5b2d5118be2b26d23546a275875288a718df821943abe140fdf97e88f705",
+      "automatic_verdict": "fail",
+      "prior_answer": "Here is the corrected version of the paragraph with grammatical and punctuation errors fixed:\n\nShe didn't remember where her purse was, so I think it's in the car, but he said it's on the kitchen table, but he's not sure. Then they asked me to look for it. She said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" And he didn't hear me, and he asked, \"What? Did you find it?\""
+    },
+    "C": {
+      "text": "Sure! Here's the revised version with gendered pronouns removed:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but they said it's on the kitchen table, but they're not sure. Then they asked me to look for it. They said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" They didn't hear me, and they asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like further adjustments!",
+      "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2",
+      "automatic_verdict": "fail",
+      "prior_answer": "Here is the corrected version of your paragraph:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but he said it's on the kitchen table, but he's not sure. Then they asked me to look for it. She said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" He didn't hear me, and he asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like it to sound more formal or more casual!"
+    },
+    "D": {
+      "text": "Sure! Here's the revised version of your paragraph with grammatical corrections and the use of gendered pronouns eliminated:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but they said it's on the kitchen table, but they're not sure. Then they asked me to look for it. They said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" They didn't hear me, and they asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like further adjustments!",
+      "answer_sha256": "e72e91d25c5dadd63c1be1bb3cca3efbf6dcf1ab8985ea0dc9f73aa19967730e",
+      "automatic_verdict": "fail",
+      "prior_answer": "Here is the corrected version of your paragraph:\n\n---\n\nShe didn't remember where her purse was, so I think it's in the car, but he said it's on the kitchen table, but he's not sure. Then they asked me to look for it. She said, \"Can you?\" and I responded with, \"Maybe, but I'm not sure.\" He didn't hear me, and he asked, \"What? Did you find it?\"  \n\n---\n\nLet me know if you'd like it to sound more formal or more casual!"
+    }
+  }
+}

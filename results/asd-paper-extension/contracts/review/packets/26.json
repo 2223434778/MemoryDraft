@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:7816:turn1:property26",
+    "task_id": "alpaca:7816",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "Five distinct essay components; do not require one canonical component vocabulary.",
+    "question_sha256": "1c61ad30f292b47d3b5d2d6e0de953bee334b316a5d4039dcb2f29679510c829"
+  },
+  "questions": [
+    "Generate a list of 5 of the most important components of an essay."
+  ],
+  "answers": {
+    "A": {
+      "text": "Sure! Here are 5 of the most important components of an essay:\n\n1. **Introduction**  \n   - Introduces the topic, provides background information, and presents the thesis statement.\n\n2. **Thesis Statement**  \n   - Clearly states the main idea or argument of the essay and guides the structure of the rest of the paper.\n\n3. **Body Paragraphs**  \n   - Develop the main points of the essay, supporting the thesis with evidence, examples, and explanations.\n\n4. **Conclusion**  \n   - Summarizes the main points, restates the thesis in a new way, and provides a closing thought or reflection.\n\n5. **Conclusion (or Final Paragraph)**  \n   - Reinforces the significance of the argument and leaves the reader with a lasting impression.\n\nLet me know if you'd like a more detailed explanation of any of these components!",
+      "answer_sha256": "d015f17a3826d6b2129818caf8a3fb569fa5f45ec695e7423c00730cae7c32d9",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "Sure! Here are 5 of the most important components of an essay:\n\n1. **Introduction**: This section introduces the topic, provides background information, and presents the thesis statement, which outlines the main argument or purpose of the essay.\n\n2. **Thesis Statement**: A clear and concise statement that presents the central idea or argument of the essay. It guides the structure and direction of the entire piece.\n\n3. **Body Paragraphs**: These paragraphs develop the main points of the essay. Each should focus on a single idea, support the thesis with evidence, and include analysis or explanation.\n\n4. **Conclusion**: This section summarizes the main points, restates the thesis in a new way, and provides a closing thought or reflection that leaves a lasting impression on the reader.\n\n5. **Conclusion (reiterated)**: Wait, that's a duplicate. Let me correct that.\n\nActually, the five most important components are:\n\n1. **Introduction**  \n2. **Thesis Statement**  \n3. **Body Paragraphs**  \n4. **Conclusion**  \n5. **Evidence and Support** (such as examples, data, quotes, or explanations that back up the thesis)\n\nLet me know if you'd like a more detailed explanation of any of these components!",
+      "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "Sure! Here are 5 of the most important components of an essay:\n\n1. **Introduction**: This section introduces the topic, provides background information, and presents the thesis statement, which outlines the main argument or purpose of the essay.\n\n2. **Thesis Statement**: A clear and concise statement that presents the central idea or argument of the essay. It guides the structure and direction of the entire piece.\n\n3. **Body Paragraphs**: These paragraphs develop the main points of the essay. Each should focus on a single idea, support the thesis with evidence, and include analysis or explanation.\n\n4. **Conclusion**: This section summarizes the main points, restates the thesis in a new way, and provides a closing thought or reflection that leaves a lasting impression on the reader.\n\n5. **Conclusion (reiterated)**: Wait, that's a duplicate. Let me correct that.\n\nActually, the five most important components are:\n\n1. **Introduction**  \n2. **Thesis Statement**  \n3. **Body Paragraphs**  \n4. **Conclusion**  \n5. **Evidence and Support** (such as examples, data, quotes, or explanations that back up the thesis)\n\nLet me know if you'd like a more detailed explanation of any of these components!",
+      "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "Sure! Here are five of the most important components of an essay:\n\n1. **Introduction**: This section introduces the topic, provides background information, and presents the thesis statement. It sets the tone and direction for the essay.\n\n2. **Thesis Statement**: A clear and concise statement that presents the main idea or argument of the essay. It guides the structure and content of the entire essay.\n\n3. **Body Paragraphs**: These are the core of the essay, where you develop your argument or present your ideas. Each paragraph should focus on a single point that supports the thesis.\n\n4. **Conclusion**: This section summarizes the main points, restates the thesis in a new way, and provides a closing thought or reflection. It leaves the reader with a final impression.\n\n5. **Conclusion (reiterated)**: While the conclusion is a separate component, it's important to ensure that it effectively wraps up the essay and reinforces the main argument or message.\n\nLet me know if you'd like a more detailed explanation of any of these components!",
+      "answer_sha256": "7365a3ff6f8220e57e7703467e19c4d07a5d01fc2ce8dbb42bc9105f4d85b462",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

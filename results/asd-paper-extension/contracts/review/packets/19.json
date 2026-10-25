@@ -1,0 +1,39 @@
+{
+  "rule": {
+    "id": "alpaca:22051:turn1:property19",
+    "task_id": "alpaca:22051",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "The childhood-memory description consists of a single sentence; handle abbreviations and quotes semantically.",
+    "question_sha256": "0ba6a17d9cd024996730d2faaaeec366969865e8f05fb8d48ab9d82cc6963eaa"
+  },
+  "questions": [
+    "Describe a special memory from your childhood in a single sentence."
+  ],
+  "answers": {
+    "A": {
+      "text": "One summer evening, I sat on the porch swing with my grandfather, listening to the crickets and watching the stars twinkle above as he told me stories about the night sky.",
+      "answer_sha256": "701d00b67f05a4b36a31b342052337c5ad9753a78e8707446804b44355dec161",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "One summer evening, I sat on the porch swing with my grandfather, listening to the crickets and sharing stories under the glow of the setting sun.",
+      "answer_sha256": "f113cc07ff11e8e525dbc7cfeb2d5d52ee29c02b5a8b10fa5e2c29d436e6bed2",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "One summer evening, I sat cross-legged on the porch steps, watching fireflies dance in the twilight, as my grandfather told me stories under the stars.",
+      "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "One summer evening, I sat cross-legged on the porch steps, watching fireflies dance in the twilight, as my grandfather told me stories under the stars.",
+      "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}

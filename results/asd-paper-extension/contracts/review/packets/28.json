@@ -1,0 +1,40 @@
+{
+  "rule": {
+    "id": "alpaca:14181:turn1:property28",
+    "task_id": "alpaca:14181",
+    "turn": 1,
+    "check": "manual",
+    "criterion": "15 millimeters equals 1.5 centimeters.",
+    "question_sha256": "5f126e76dc3362e6554dc6a622a719297416640c26da2d637e1168611926f219",
+    "expected": "1.5 cm"
+  },
+  "questions": [
+    "Convert the following measurement to the given unit.\n\nInput:\n15 millimeters to centimeters"
+  ],
+  "answers": {
+    "A": {
+      "text": "To convert **15 millimeters to centimeters**, we use the conversion factor:\n\n$$\n1 \\text{ centimeter} = 10 \\text{ millimeters}\n$$\n\nSo,\n\n$$\n15 \\text{ millimeters} = \\frac{15}{10} = 1.5 \\text{ centimeters}\n$$\n\n**Answer:** 1.5 centimeters.",
+      "answer_sha256": "0f1f834400bd4ac2af6f511f4000fc7e7b5a0ad4c15d55fa6a27d95241196985",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "B": {
+      "text": "To convert **15 millimeters to centimeters**, use the conversion factor:\n\n$$\n1 \\text{ centimeter} = 10 \\text{ millimeters}\n$$\n\nSo,\n\n$$\n15 \\text{ millimeters} = \\frac{15}{10} = 1.5 \\text{ centimeters}\n$$\n\n**Answer:** 1.5 centimeters.",
+      "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "C": {
+      "text": "To convert **15 millimeters to centimeters**, use the conversion factor:\n\n$$\n1 \\text{ centimeter} = 10 \\text{ millimeters}\n$$\n\nSo,\n\n$$\n15 \\text{ millimeters} = \\frac{15}{10} = 1.5 \\text{ centimeters}\n$$\n\n**Answer:** 1.5 centimeters.",
+      "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    },
+    "D": {
+      "text": "To convert **15 millimeters to centimeters**, we use the conversion factor:\n\n$$\n1 \\text{ centimeter} = 10 \\text{ millimeters}\n$$\n\nSo,\n\n$$\n15 \\text{ millimeters} = \\frac{15}{10} \\text{ centimeters} = 1.5 \\text{ centimeters}\n$$\n\n**Answer:** 1.5 centimeters.",
+      "answer_sha256": "634382779388479103441bd11076fd281aa2d8b60cf934d45147d2ebc06255e6",
+      "automatic_verdict": "needs_review",
+      "prior_answer": null
+    }
+  }
+}
