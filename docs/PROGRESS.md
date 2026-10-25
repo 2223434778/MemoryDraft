@@ -3,6 +3,8 @@
 ## 2026-10-25 — 独立扩样续跑恢复
 
 - 用户恢复额度后继续原任务，01:53:36 UTC服务器两卡19MiB/0%，新continuation root尚不存在，未重复启动旧失败会话。最后元数据补丁补齐身份比较右侧方法名及自身历史输入分歧记录；`python -m pytest -q tests/test_asd_extension_resume.py --basetemp artifacts/pytest-extension-resume-final --junitxml=artifacts/paper-extension-resume-final-local.xml`，17 passed/17.43s。原69专项与完整1055+7skip结果分别保留，不把新17项冒称全套回归。
+- 续跑源1d39c56e5a81c896077258433b476af1a934ce6f/2341 canonical Git blobs，source SHAfa31110fd6487fbb98de3bbe9e2e3b5705142053d0f206d97721d83d91fdabd5；完整ZIP38136357B/SHA6cbbc5e015bfb898720dbb6c489ab3db80ea288e630923c7676b22793ec59f49，实际由原6d源+17文件delta276925B/SHAcbccda7c8170c653d95354802708cffda49ed864d97691940ac1b43f975dd5f2重建，部署后2341 SHA一致。本机canonical新副本与原2330源/真实失败载荷的完整组复用预检均通过。
+- 新root`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension-continuation`，owned timeout PID3143281于01:55:36.915545 UTC启动，outer22800/worker21600秒；入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_paper_extension_continuation_pipeline`。原失败root/ZIP不改，两个新worker核验并复制83/89完整题原行字节；服务器181 passed/30.701s、0失败/错误后已开始剩余342题。暂未运行开放评分或更改其题干标准，不将已启动写作已完成。
 
 ## 2026-10-24 — 独立扩样中断与严格输出诊断
 
