@@ -1,5 +1,10 @@
 # MemoryDraft
 
+> [七任务独立扩样完成](docs/ASD_PAPER_EXTENSION_FINDINGS.md)：514新源任务/530匹配输入，四组9540主计时、640预算控制、320奖励评分及136局部性质检查完成。
+> 严格成本树在530自然请求上保留DFlash输出，在GSM/MATH/HumanEval/MBPP/MT/Alpaca自然时延分别省10.25%/6.19%/2.64%/14.87%/13.92%/17.15%。
+> 树+ASD较ASD在新GSM/MBPP/Alpaca省7.72%/10.21%/17.89%，MT自身历史双轮省12.93%；MATH慢5.50%、HumanEval正确53→52，MMLU格式合同损失保留。
+> 独立奖励偏好MT50%、Alpaca46.09%，不宣称全面质量保持；[完整表](docs/ASD_PAPER_EXTENSION_RESULTS.md)、[匿名判定](results/asd-paper-extension/open-contract-audit.json)与[审计](results/asd-paper-extension/audit.json)公开。与单token AR的一题数值分歧及续跑修订单列，不称论文原配置精确复现。
+
 > [七任务剩余指标补全](docs/ASD_PAPER_METRICS_FINDINGS.md)：747新固定计时、120独立奖励评分完成。
 > GSM严格DFlash/AR直接测得3.845×，组合/AR跨会话锚点估计4.709×；实际Draft接受长度ASD5.351→组合6.792。
 > 数学组合收益保持；开放奖励偏好MT为62.5%、Alpaca为25%，任务合同检查另列。完整[补充表](docs/ASD_PAPER_METRICS_RESULTS.md)与[文献基线](docs/ASD_LITERATURE_REFERENCE.md)区分实测、估计和原文报告值。

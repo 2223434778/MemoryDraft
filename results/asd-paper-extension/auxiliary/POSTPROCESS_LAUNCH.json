@@ -1,0 +1,12 @@
+{
+  "pid": 3191294,
+  "command": [
+    "timeout",
+    "27000",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "artifacts/finish_extension_server.py"
+  ],
+  "started_utc": "2026-10-25T03:04:28.420004+00:00",
+  "helper_sha256": "61859e3455be5bce81aeeaf2b99ea3336f939389ac265168fd6b01460510c5da"
+}

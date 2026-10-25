@@ -1,10 +1,22 @@
 # 项目进度
 
+## 2026-10-25 — 七任务独立扩样、预算控制和开放审查完成
+
+- 两worker均complete257源任务/4770主计时/320控制/32自身历史第二轮；全514源任务、530匹配输入、9540主计时、640控制、530自然AR、64真实自身历史第二轮完成。172完整源任务复用原行字节，342源任务在隔离续跑会话完整执行；两会话32预热及原失败/数值诊断另列。GSM/MATH/HumanEval/MBPP/MMLU/MT/Alpaca全部保留，无按结果筛题或新seed。
+- 正式完成观察05:51:48.895 UTC；2341源SHA前后一致，旧载荷不变。收尾观察器等两卡19MiB/0%后运行，两项实际前向分歧（323严格树/DFlash vs AR）均复现原轨迹、argmax成立，最大logits差1.52587890625e-5；未见其他身份差异。原正式ZIP17460709B/SHAcabf64683855b2c4741e78477044f72bb1688de8d84297bcd4b97083b101ec18保留；追加元数据/诊断后ZIP17500418B/SHA7040f141ad02b1264b9d21b810f8842cd2529acff692f00fbcfaa035622e5483，于05:54:04 UTC写receipt，5个≤4MiB块全部下载/校验。未上传模型/KV/logits/features。
+- 严格树对DFlash530自然输出、三阶段1590对照token/text/停止/输入完全相同；自然时延GSM/MATH/Human/MBPP/MT/Alpaca分别省10.25%/6.19%/2.64%/14.87%/13.92%/17.15%，MMLU近乎持平。组合较ASD新GSM自然省7.72%/共同128省9.63%（N127），正确114→117/128；MBPP省10.21%、31→32/64，Alpaca省17.89%/共同128省18.36%（N41）。MT匹配单轮省5.51%、按对话合并省10.12%、自身历史双轮省12.93%；各自输入/区间单列。新MATH慢5.50%、44→45/64（主42→43）；Human省3.26%但53→52；MMLU39→37/114，四组逐题首选项相同78/114。质量取舍不删改，不将固定TPS+48.42%的HumanEval当自然提速幅度。
+- 同一旧Skywork Reward V2 Qwen3-8B权重在3090/BF16/SDPA完成320行/223去重对话，8控制全过、重复差0、未评/裁剪0。监督源6d/2330文件前后一致，生成来源6d+1d39明确区分；05:56:41至05:58:27记录，子进程wall93.611s（源码前后核验另计）、权重校验13.957s、加载10.519s、任务前向38.171s，峰14.578GiB。组合MT7胜2平7负/50%，Alpaca26胜7平31负/46.09%；偏好不冒充准确率/官方评测。全部原始评分保留。
+- 34条事前题干规则、136方法单元，100语义单元及10自动失败匿名审阅，26自动通过保留；110判定SHA d4ff8dd6cb717b08b21b829c8e40865013c0bb60f211a7028d1684dd4d8d069c，于06:08:08 UTC锁定，先Git8c48406ca7f6473ae87369de60bc23dda8922482冻结再揭示方法/查看RM逐题分数。ASD与组合34条逐项判定相同，MT13/16、Alpaca15/18；严格组12/16、17/18。秘书题长循环、漏Europe/She-her/None-LCS、漏删姓名和重复结论均逐条留证，性质通过不等于整答正确。实际消息/答案SHA及原自动判定136项独立绑定通过。
+- 六个ASD/组合质量变化代码题以12个小反例/正确例核对：HE91把Is计作I、99负半数舍入错、103修复取整；MBPP190内部点误计、333修复return合同、74补长度检查。28个冻结评分变化case、8个MMLU合同变化、5个MATH得失及全部截断/输出SHA保留，不重写原测试成绩。7000首重复/控制发出位置轨迹、1117旧载荷、2341新/2330旧Git blobs、完整复用/资源独立审计通过；两卡峰42.799/36.392GiB、cache421054B、4图/正式新图0，相邻漂移>3%为2/1060，全保留。
+- 统计JSON/MD在本机冻结1d源重建逐字节相同，SHA分别1ad0bd0e077a0c808317c1df0b04797850635da37696043b089519427b85285a/0fcb6241c0c9c2680dabc2db2f4960188071f15316d7555ad23fc294fc5d7407。发布工具首次因后缀白名单漏.jsonl停止，不完整副本保留artifacts/asd-extension-publication-attempt-1；补允许元数据类型后120原载荷SHA绑定发布成功，未重跑/改变实验。UTF8显示入口修正仅影响读取。结果results/asd-paper-extension，结论ASD_PAPER_EXTENSION_FINDINGS，完整表ASD_PAPER_EXTENSION_RESULTS；README/路线/论文对应同步。当前工作为最终Git字节核验与推送，不启动新GPU实验。
+
 ## 2026-10-25 — 独立扩样续跑恢复
 
 - 用户恢复额度后继续原任务，01:53:36 UTC服务器两卡19MiB/0%，新continuation root尚不存在，未重复启动旧失败会话。最后元数据补丁补齐身份比较右侧方法名及自身历史输入分歧记录；`python -m pytest -q tests/test_asd_extension_resume.py --basetemp artifacts/pytest-extension-resume-final --junitxml=artifacts/paper-extension-resume-final-local.xml`，17 passed/17.43s。原69专项与完整1055+7skip结果分别保留，不把新17项冒称全套回归。
 - 续跑源1d39c56e5a81c896077258433b476af1a934ce6f/2341 canonical Git blobs，source SHAfa31110fd6487fbb98de3bbe9e2e3b5705142053d0f206d97721d83d91fdabd5；完整ZIP38136357B/SHA6cbbc5e015bfb898720dbb6c489ab3db80ea288e630923c7676b22793ec59f49，实际由原6d源+17文件delta276925B/SHAcbccda7c8170c653d95354802708cffda49ed864d97691940ac1b43f975dd5f2重建，部署后2341 SHA一致。本机canonical新副本与原2330源/真实失败载荷的完整组复用预检均通过。
 - 新root`/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension-continuation`，owned timeout PID3143281于01:55:36.915545 UTC启动，outer22800/worker21600秒；入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_asd_paper_extension_continuation_pipeline`。原失败root/ZIP不改，两个新worker核验并复制83/89完整题原行字节；服务器181 passed/30.701s、0失败/错误后已开始剩余342题。暂未运行开放评分或更改其题干标准，不将已启动写作已完成。
+- 03:49:18 UTC两worker各完成219源任务，合438/514；7956主计时、560控制、16自身历史MT第二轮。GSM/MATH/HumanEval/MBPP/MMLU已全部采集，MT继续，Alpaca尚未开始；不根据中途结果改参。03:03身份只读检查仍只有323的两个strict方法/同index602，未见其他差异，图数4、记录峰约36.1GiB。02:17硬件XML快照曾扁平混入最大/默认频率，原记录保留并于02:18:05显式current-clock查询纠正：89/84°C、SM1485/1665MHz、mem7600MHz、power272.37/298.99W（300W）；仅该时点，不冒称全程频率，未改硬件设置。
+- 03:04:28 UTC另启只读等待/收尾owned timeout PID3191294（27000秒），`PYTHONPATH=. ../.venv-dflash/bin/python -u artifacts/finish_extension_server.py`，helper SHA61859e3455be5bce81aeeaf2b99ea3336f939389ac265168fd6b01460510c5da。等待主正式ZIP关闭且两GPU空闲后才进行逐个身份分歧的实际前向诊断，最终另写带auxiliary/diagnostic元数据的final ZIP，原正式ZIP不覆盖。当前仍waiting_for_formal_pipeline；额外观察器/打包器均在artifacts，不修改2341冻结源或计时代码。
 
 ## 2026-10-24 — 独立扩样中断与严格输出诊断
 

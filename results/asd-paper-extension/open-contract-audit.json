@@ -1,0 +1,2557 @@
+{
+  "metadata": {
+    "plan_sha256": "7684f4063874ad1f86fbbe651365927277bc26d056dfde4f717a8b001e21993e",
+    "check_module_sha256": "6803361ddd0fd20d8ffbd1a7372e5a632b4e49802d6badfa7aad8dc750ffc79e",
+    "packet_helper_sha256": "0b2eacd329aa991d5507c39b17ebc741ddd12a2d6ae3c1759e6a275bde1b717b",
+    "primary_generation_sources": [
+      "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+      "1d39c56e5a81c896077258433b476af1a934ce6f"
+    ],
+    "check_plan_commit": "7cf0daf",
+    "property_cells": 136,
+    "manual_cells": 100,
+    "automatic_cells": 36,
+    "scope": "Explicit partial properties; method labels hidden in displayed packets. Agent-assisted review, not independent human quality grading."
+  },
+  "reviewer": "Agent-assisted anonymous explicit-property review; not human expert, official MT-Bench or AlpacaEval.",
+  "rows": [
+    {
+      "property_id": "mtbench:111:turn1:property1",
+      "task_id": "mtbench:111",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "3db3481b26a807f3045c278d19b8e935b17f70673d2564fd9af40d575733b30c",
+      "messages_sha256": "1f3bf4c92c1cc4a8b62499a0710b11e17e3f413b6e93edf858065eb37db0fa09",
+      "verdict": "pass",
+      "criterion": "Final triangle area is 3 square units; allow equivalent exact or appropriately rounded forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn1:property1",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "最终面积明确为3；鞋带式计算为1/2*|-6|=3。",
+        "answer_sha256": "3db3481b26a807f3045c278d19b8e935b17f70673d2564fd9af40d575733b30c"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn1:property1",
+      "task_id": "mtbench:111",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12",
+      "messages_sha256": "a6bde8198c25fa87884ec218fdb06cbfc2a482d4218a31e49097f7a29da4dff1",
+      "verdict": "pass",
+      "criterion": "Final triangle area is 3 square units; allow equivalent exact or appropriately rounded forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn1:property1",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "最终面积明确为3；鞋带式计算为1/2*|-6|=3。",
+        "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn1:property1",
+      "task_id": "mtbench:111",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "be5afc04e9b49ec32bb74d965a80a077240fdf472212acd96e9a695d4ba948ff",
+      "messages_sha256": "8046744ff7f1b6275f4ec8ce6ce3c4e3bf3b944ace1b24d04f55eb6e5e031958",
+      "verdict": "pass",
+      "criterion": "Final triangle area is 3 square units; allow equivalent exact or appropriately rounded forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn1:property1",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "最终面积明确为3；鞋带式计算为1/2*|-6|=3。",
+        "answer_sha256": "be5afc04e9b49ec32bb74d965a80a077240fdf472212acd96e9a695d4ba948ff"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn1:property1",
+      "task_id": "mtbench:111",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12",
+      "messages_sha256": "a6bde8198c25fa87884ec218fdb06cbfc2a482d4218a31e49097f7a29da4dff1",
+      "verdict": "pass",
+      "criterion": "Final triangle area is 3 square units; allow equivalent exact or appropriately rounded forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn1:property1",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "最终面积明确为3；鞋带式计算为1/2*|-6|=3。",
+        "answer_sha256": "45c2bdce22bbfb60db71595e5eed1fd72d63c432d78579e248cfb194d2a9ea12"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn2:property2",
+      "task_id": "mtbench:111",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "9356248f73229bd319d0e05e2db8e031184719c4355359a56a318ea7d8d77e1b",
+      "messages_sha256": "d035b3d432771cb07543d48dadf272558511b83e03ba4434f7f228be2e9a72c9",
+      "verdict": "pass",
+      "criterion": "Final circumcircle area is 5*pi; allow equivalent exact or numerical forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn2:property2",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "最终外接圆面积明确为5*pi；边长乘积/(4*3)给出R=sqrt(5)。",
+        "answer_sha256": "9356248f73229bd319d0e05e2db8e031184719c4355359a56a318ea7d8d77e1b"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn2:property2",
+      "task_id": "mtbench:111",
+      "turn": 2,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "f3b4dc74c302dc1e359d86149799ada401317ddc07ca7bcaf8f1082fba6bd75c",
+      "messages_sha256": "271a53f7f9019ff79f5cb291ae397bd830fd022b70f88fe6ec0ea76bd9bdc7ff",
+      "verdict": "pass",
+      "criterion": "Final circumcircle area is 5*pi; allow equivalent exact or numerical forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn2:property2",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "最终外接圆面积明确为5*pi；边长乘积/(4*3)给出R=sqrt(5)。",
+        "answer_sha256": "f3b4dc74c302dc1e359d86149799ada401317ddc07ca7bcaf8f1082fba6bd75c"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn2:property2",
+      "task_id": "mtbench:111",
+      "turn": 2,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "caeb78d87a94bb8004e23eacda43e1602d72b3a7d0e385a922a46fb781855322",
+      "messages_sha256": "5ac797b2c7c9891c42bd1c4d9eef0a35d483657c7301ae6b2726fad77a7b776b",
+      "verdict": "pass",
+      "criterion": "Final circumcircle area is 5*pi; allow equivalent exact or numerical forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn2:property2",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "最终外接圆面积明确为5*pi；边长乘积/(4*3)给出R=sqrt(5)。",
+        "answer_sha256": "caeb78d87a94bb8004e23eacda43e1602d72b3a7d0e385a922a46fb781855322"
+      }
+    },
+    {
+      "property_id": "mtbench:111:turn2:property2",
+      "task_id": "mtbench:111",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "f3b4dc74c302dc1e359d86149799ada401317ddc07ca7bcaf8f1082fba6bd75c",
+      "messages_sha256": "271a53f7f9019ff79f5cb291ae397bd830fd022b70f88fe6ec0ea76bd9bdc7ff",
+      "verdict": "pass",
+      "criterion": "Final circumcircle area is 5*pi; allow equivalent exact or numerical forms.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:111:turn2:property2",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "最终外接圆面积明确为5*pi；边长乘积/(4*3)给出R=sqrt(5)。",
+        "answer_sha256": "f3b4dc74c302dc1e359d86149799ada401317ddc07ca7bcaf8f1082fba6bd75c"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn1:property3",
+      "task_id": "mtbench:105",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "e04f0bc06bc5f22ebe43f4c971d8d49aca996c102091adddf8cb409c7fd28268",
+      "messages_sha256": "a14d89d0abf06758abb62940814293eda3ffc96d6bbc75682f72e46313adb9f0",
+      "verdict": "pass",
+      "criterion": "The secretary is Alice. Judge the final assignment, not mere name presence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn1:property3",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "最终明确Alice为秘书，第四车位黄色车对应Alice。",
+        "answer_sha256": "e04f0bc06bc5f22ebe43f4c971d8d49aca996c102091adddf8cb409c7fd28268"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn1:property3",
+      "task_id": "mtbench:105",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "f92a18fa1f11710f66e1348b624f7e264db976a53f417d2ddfc95df77ef3c612",
+      "messages_sha256": "3eaed9e9a797116810598eeff4c87c29e85056de1b85d73d444815238a7cd88d",
+      "verdict": "fail",
+      "criterion": "The secretary is Alice. Judge the final assignment, not mere name presence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn1:property3",
+        "label": "B",
+        "verdict": "fail",
+        "reason": "反复循环Cheryl(2)/Bert(3)/Enid(4)且与Enid在3号冲突，截断前未给出Alice为秘书的最终指派。",
+        "answer_sha256": "f92a18fa1f11710f66e1348b624f7e264db976a53f417d2ddfc95df77ef3c612"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn1:property3",
+      "task_id": "mtbench:105",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "f92a18fa1f11710f66e1348b624f7e264db976a53f417d2ddfc95df77ef3c612",
+      "messages_sha256": "3eaed9e9a797116810598eeff4c87c29e85056de1b85d73d444815238a7cd88d",
+      "verdict": "fail",
+      "criterion": "The secretary is Alice. Judge the final assignment, not mere name presence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn1:property3",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "与B文本相同：循环错误位置并截断，未给出秘书Alice的最终指派。",
+        "answer_sha256": "f92a18fa1f11710f66e1348b624f7e264db976a53f417d2ddfc95df77ef3c612"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn1:property3",
+      "task_id": "mtbench:105",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "27898e735533c2bbe991b54d87b2a38a774e61d9e2175f6306523e14a294da76",
+      "messages_sha256": "1f4f224b0259674a27180e3f53baee41f00ed978e24eb7df41174fc224699840",
+      "verdict": "pass",
+      "criterion": "The secretary is Alice. Judge the final assignment, not mere name presence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn1:property3",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "最终Answer明确Alice为秘书，依据David在5号、Alice邻接得4号。",
+        "answer_sha256": "27898e735533c2bbe991b54d87b2a38a774e61d9e2175f6306523e14a294da76"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn2:property4",
+      "task_id": "mtbench:105",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "4c1f375766bf8aa325ba7000d0a2d17f671d3a27b9b38522b09254b5b4f2b041",
+      "messages_sha256": "1fa8cb230c9bc8fb6bfd078051a5dc2d8d92bffc18f8d0d8b1275f31fe3c29d1",
+      "verdict": "pass",
+      "criterion": "Car colors from last to first: purple, yellow, green, blue, red.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn2:property4",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "最终倒序Purple, Yellow, Green, Blue, Red符合该属性；解释误称Cheryl为秘书，不能据此把整答当正确。",
+        "answer_sha256": "4c1f375766bf8aa325ba7000d0a2d17f671d3a27b9b38522b09254b5b4f2b041"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn2:property4",
+      "task_id": "mtbench:105",
+      "turn": 2,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "06c50aba86741c57a75dfdd20c3d7f257fe5a9dd55cfb0a846b04548f77dcee9",
+      "messages_sha256": "d279cb58dd5997c2ebba273941e8eeb66e3bd8a10181e4875da47eab5fa215c2",
+      "verdict": "pass",
+      "criterion": "Car colors from last to first: purple, yellow, green, blue, red.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn2:property4",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "按5到1号给出Purple, Yellow, Green, Blue, Red。",
+        "answer_sha256": "06c50aba86741c57a75dfdd20c3d7f257fe5a9dd55cfb0a846b04548f77dcee9"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn2:property4",
+      "task_id": "mtbench:105",
+      "turn": 2,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "4c1f375766bf8aa325ba7000d0a2d17f671d3a27b9b38522b09254b5b4f2b041",
+      "messages_sha256": "1fa8cb230c9bc8fb6bfd078051a5dc2d8d92bffc18f8d0d8b1275f31fe3c29d1",
+      "verdict": "pass",
+      "criterion": "Car colors from last to first: purple, yellow, green, blue, red.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn2:property4",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "最终五色倒序正确；相同文本的人名指派错误另记，此项只计颜色。",
+        "answer_sha256": "4c1f375766bf8aa325ba7000d0a2d17f671d3a27b9b38522b09254b5b4f2b041"
+      }
+    },
+    {
+      "property_id": "mtbench:105:turn2:property4",
+      "task_id": "mtbench:105",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "7aff11754d4aaa96979c43fb1560abe28c186a733b21db1c733119008e6acbdb",
+      "messages_sha256": "4a041ed66f0a78050a8ef6c4d0156d7220adf442267f93ac70f7809e1fdeac4b",
+      "verdict": "pass",
+      "criterion": "Car colors from last to first: purple, yellow, green, blue, red.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:105:turn2:property4",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确5到1号依次Purple, Yellow, Green, Blue, Red。",
+        "answer_sha256": "7aff11754d4aaa96979c43fb1560abe28c186a733b21db1c733119008e6acbdb"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn1:property5",
+      "task_id": "mtbench:113",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "0a36fa54e3ae82676003562737770e8f864e76ef6e02d2e19b63e0ddcf506259",
+      "messages_sha256": "c0ec2ddbb41c7e15039ff61474cfa5eaf7e0b5456f0888ed66e5e66ae0e5f2d8",
+      "verdict": "pass",
+      "criterion": "Neither blue nor green has probability 19%.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn1:property5",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "最终19%，由1-(0.58+0.45-0.22)=0.19得到。",
+        "answer_sha256": "0a36fa54e3ae82676003562737770e8f864e76ef6e02d2e19b63e0ddcf506259"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn1:property5",
+      "task_id": "mtbench:113",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "c779bd372bbb754348041f7067d6c706bd1d585044dd5db6299a55df8c7ec580",
+      "messages_sha256": "89e94706c1dc89311e2679d0fdf5c21c6ba5256b3c5e9402fbb5cab54fb144f5",
+      "verdict": "pass",
+      "criterion": "Neither blue nor green has probability 19%.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn1:property5",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "最终19%，由1-(0.58+0.45-0.22)=0.19得到。",
+        "answer_sha256": "c779bd372bbb754348041f7067d6c706bd1d585044dd5db6299a55df8c7ec580"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn1:property5",
+      "task_id": "mtbench:113",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "6bdd691a2023bdd98b2b4a3ec1ae2e7fe781f46c64daf21b35a211c41ba2f7bf",
+      "messages_sha256": "5ffa1255fb4357729b9e8970070a0babf46db93a960022259c8f527498e47f75",
+      "verdict": "pass",
+      "criterion": "Neither blue nor green has probability 19%.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn1:property5",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "最终19%，由1-(0.58+0.45-0.22)=0.19得到。",
+        "answer_sha256": "6bdd691a2023bdd98b2b4a3ec1ae2e7fe781f46c64daf21b35a211c41ba2f7bf"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn1:property5",
+      "task_id": "mtbench:113",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "6bdd691a2023bdd98b2b4a3ec1ae2e7fe781f46c64daf21b35a211c41ba2f7bf",
+      "messages_sha256": "5ffa1255fb4357729b9e8970070a0babf46db93a960022259c8f527498e47f75",
+      "verdict": "pass",
+      "criterion": "Neither blue nor green has probability 19%.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn1:property5",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "最终19%，由1-(0.58+0.45-0.22)=0.19得到。",
+        "answer_sha256": "6bdd691a2023bdd98b2b4a3ec1ae2e7fe781f46c64daf21b35a211c41ba2f7bf"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn2:property6",
+      "task_id": "mtbench:113",
+      "turn": 2,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "ba95f5e83b27937ee254a00de432387ba701b843908a7f7d13fac8025a17fb53",
+      "messages_sha256": "25e5da7e5fed20ea156f70001bb765d728c951358c22adaf3ddf4256263cd9f2",
+      "verdict": "pass",
+      "criterion": "Given that the student likes green, literal neither-color probability is zero. Accept an explicit ambiguity explanation that distinguishes neither from not-both; 23/45 alone answers a different question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn2:property6",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "明确指出已喜欢绿色者不可能两色都不喜欢，最终条件概率为0。",
+        "answer_sha256": "ba95f5e83b27937ee254a00de432387ba701b843908a7f7d13fac8025a17fb53"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn2:property6",
+      "task_id": "mtbench:113",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "947197997d99526fbcb13136fd823215263857aed654ddd4dd1f8c074d683b5d",
+      "messages_sha256": "3ec50052f31bd7aa5090e62e17400d3af849990e049219c795d8e27722fc4371",
+      "verdict": "pass",
+      "criterion": "Given that the student likes green, literal neither-color probability is zero. Accept an explicit ambiguity explanation that distinguishes neither from not-both; 23/45 alone answers a different question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn2:property6",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "明确指出已喜欢绿色者不可能两色都不喜欢，最终条件概率为0。",
+        "answer_sha256": "947197997d99526fbcb13136fd823215263857aed654ddd4dd1f8c074d683b5d"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn2:property6",
+      "task_id": "mtbench:113",
+      "turn": 2,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "00f4d3daa0410aced3c9719f4abf7154082d8ee1e5d77f315f6b053117eeea63",
+      "messages_sha256": "54e417e5a06fbf8fd3dbb2ed96a1688c04120dc7faff18a5ddff061ac19d2aaf",
+      "verdict": "pass",
+      "criterion": "Given that the student likes green, literal neither-color probability is zero. Accept an explicit ambiguity explanation that distinguishes neither from not-both; 23/45 alone answers a different question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn2:property6",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "明确指出已喜欢绿色者不可能两色都不喜欢，最终条件概率为0。",
+        "answer_sha256": "00f4d3daa0410aced3c9719f4abf7154082d8ee1e5d77f315f6b053117eeea63"
+      }
+    },
+    {
+      "property_id": "mtbench:113:turn2:property6",
+      "task_id": "mtbench:113",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "00f4d3daa0410aced3c9719f4abf7154082d8ee1e5d77f315f6b053117eeea63",
+      "messages_sha256": "54e417e5a06fbf8fd3dbb2ed96a1688c04120dc7faff18a5ddff061ac19d2aaf",
+      "verdict": "pass",
+      "criterion": "Given that the student likes green, literal neither-color probability is zero. Accept an explicit ambiguity explanation that distinguishes neither from not-both; 23/45 alone answers a different question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:113:turn2:property6",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确指出已喜欢绿色者不可能两色都不喜欢，最终条件概率为0。",
+        "answer_sha256": "00f4d3daa0410aced3c9719f4abf7154082d8ee1e5d77f315f6b053117eeea63"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn1:property7",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "json_groups",
+      "arm": "BudgetTree",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:137:turn1:property7",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "json_groups",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:137:turn1:property7",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "json_groups",
+      "arm": "ASD",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:137:turn1:property7",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "json_groups",
+      "arm": "DFlash",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:137:turn1:property8",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "fail",
+      "criterion": "Named-entity coverage and grouping: people Adamson Emerson/Dieter Zetsche/Herbert Diess; organizations Faraday/Daimler AG(or Daimler)/Volkswagen; locations Berlin/Europe. Allow aliases and duplicate mentions; do not require specific key capitalization.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn1:property8",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "三名人物和三家组织分组正确，但locations仅Berlin，漏掉题干Europe。",
+        "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn1:property8",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "fail",
+      "criterion": "Named-entity coverage and grouping: people Adamson Emerson/Dieter Zetsche/Herbert Diess; organizations Faraday/Daimler AG(or Daimler)/Volkswagen; locations Berlin/Europe. Allow aliases and duplicate mentions; do not require specific key capitalization.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn1:property8",
+        "label": "B",
+        "verdict": "fail",
+        "reason": "三名人物和三家组织分组正确，但locations仅Berlin，漏掉题干Europe。",
+        "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn1:property8",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "fail",
+      "criterion": "Named-entity coverage and grouping: people Adamson Emerson/Dieter Zetsche/Herbert Diess; organizations Faraday/Daimler AG(or Daimler)/Volkswagen; locations Berlin/Europe. Allow aliases and duplicate mentions; do not require specific key capitalization.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn1:property8",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "三名人物和三家组织分组正确，但locations仅Berlin，漏掉题干Europe。",
+        "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn1:property8",
+      "task_id": "mtbench:137",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b",
+      "messages_sha256": "e6da670fdddc0a4e3ec450e302d07e837a90f08ba1832e85b8922c348ad901c2",
+      "verdict": "fail",
+      "criterion": "Named-entity coverage and grouping: people Adamson Emerson/Dieter Zetsche/Herbert Diess; organizations Faraday/Daimler AG(or Daimler)/Volkswagen; locations Berlin/Europe. Allow aliases and duplicate mentions; do not require specific key capitalization.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn1:property8",
+        "label": "D",
+        "verdict": "fail",
+        "reason": "三名人物和三家组织分组正确，但locations仅Berlin，漏掉题干Europe。",
+        "answer_sha256": "f161582206a8451913e63b14ecb17d3601b815adb187cbbd8cadaa67cd26444b"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property9",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "single_line_json",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "details": {
+        "nontrimmed_lines": 1
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property9",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "single_line_json",
+      "arm": "DFlash",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "details": {
+        "nontrimmed_lines": 1
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property9",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "single_line_json",
+      "arm": "ASD",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "details": {
+        "nontrimmed_lines": 1
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property9",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "single_line_json",
+      "arm": "BudgetTree",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "details": {
+        "nontrimmed_lines": 1
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property10",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "criterion": "Entity string values are replaced by their first letters while retaining group structure. Inspect against this method's actual first answer; do not demand one fixed JSON key vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn2:property10",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "按该回答实际首轮对象逐值初始化为A/D/H、F/D/V、B，保留三组；此项不要求补回首轮漏掉的Europe。",
+        "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property10",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "criterion": "Entity string values are replaced by their first letters while retaining group structure. Inspect against this method's actual first answer; do not demand one fixed JSON key vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn2:property10",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "按该回答实际首轮对象逐值初始化为A/D/H、F/D/V、B，保留三组；此项不要求补回首轮漏掉的Europe。",
+        "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property10",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "criterion": "Entity string values are replaced by their first letters while retaining group structure. Inspect against this method's actual first answer; do not demand one fixed JSON key vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn2:property10",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "按该回答实际首轮对象逐值初始化为A/D/H、F/D/V、B，保留三组；此项不要求补回首轮漏掉的Europe。",
+        "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14"
+      }
+    },
+    {
+      "property_id": "mtbench:137:turn2:property10",
+      "task_id": "mtbench:137",
+      "turn": 2,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14",
+      "messages_sha256": "b3b8dc8b007b9ab7deeaca3df0108d45608dc9197ab34c194f812697ea5555fa",
+      "verdict": "pass",
+      "criterion": "Entity string values are replaced by their first letters while retaining group structure. Inspect against this method's actual first answer; do not demand one fixed JSON key vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:137:turn2:property10",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "按该回答实际首轮对象逐值初始化为A/D/H、F/D/V、B，保留三组；此项不要求补回首轮漏掉的Europe。",
+        "answer_sha256": "7d31ff7b62cb43548d282c1d49c164af72f1dba79c81209de5c59747f83a5e14"
+      }
+    },
+    {
+      "property_id": "mtbench:131:turn1:property11",
+      "task_id": "mtbench:131",
+      "turn": 1,
+      "check": "json_integer_ratings",
+      "arm": "ASD",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "messages_sha256": "d1ff686cde3f1d55ee38b3dc99c858c9a53a6817d481b8c80d01478db42077da",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn1:property11",
+      "task_id": "mtbench:131",
+      "turn": 1,
+      "check": "json_integer_ratings",
+      "arm": "BudgetTree",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "messages_sha256": "d1ff686cde3f1d55ee38b3dc99c858c9a53a6817d481b8c80d01478db42077da",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn1:property11",
+      "task_id": "mtbench:131",
+      "turn": 1,
+      "check": "json_integer_ratings",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "messages_sha256": "d1ff686cde3f1d55ee38b3dc99c858c9a53a6817d481b8c80d01478db42077da",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn1:property11",
+      "task_id": "mtbench:131",
+      "turn": 1,
+      "check": "json_integer_ratings",
+      "arm": "DFlash",
+      "answer_sha256": "d6a76193fc64c8699890182dd3ca5db593d229c3813c665e6cca09892150406f",
+      "messages_sha256": "d1ff686cde3f1d55ee38b3dc99c858c9a53a6817d481b8c80d01478db42077da",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn2:property12",
+      "task_id": "mtbench:131",
+      "turn": 2,
+      "check": "json_years",
+      "arm": "BudgetTree",
+      "answer_sha256": "58f3c37d3983694ca8316c45a4068569f343a2edb017437e4582056bfbdfd6ec",
+      "messages_sha256": "f8f06be2cf3033f42fd470fcda7ce17f26a99448c99fd945cffd0ff3f9f343af",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn2:property12",
+      "task_id": "mtbench:131",
+      "turn": 2,
+      "check": "json_years",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "58f3c37d3983694ca8316c45a4068569f343a2edb017437e4582056bfbdfd6ec",
+      "messages_sha256": "f8f06be2cf3033f42fd470fcda7ce17f26a99448c99fd945cffd0ff3f9f343af",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn2:property12",
+      "task_id": "mtbench:131",
+      "turn": 2,
+      "check": "json_years",
+      "arm": "ASD",
+      "answer_sha256": "58f3c37d3983694ca8316c45a4068569f343a2edb017437e4582056bfbdfd6ec",
+      "messages_sha256": "f8f06be2cf3033f42fd470fcda7ce17f26a99448c99fd945cffd0ff3f9f343af",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:131:turn2:property12",
+      "task_id": "mtbench:131",
+      "turn": 2,
+      "check": "json_years",
+      "arm": "DFlash",
+      "answer_sha256": "58f3c37d3983694ca8316c45a4068569f343a2edb017437e4582056bfbdfd6ec",
+      "messages_sha256": "f8f06be2cf3033f42fd470fcda7ce17f26a99448c99fd945cffd0ff3f9f343af",
+      "verdict": "pass",
+      "details": {}
+    },
+    {
+      "property_id": "mtbench:90:turn2:property13",
+      "task_id": "mtbench:90",
+      "turn": 2,
+      "check": "gendered_pronouns",
+      "arm": "BudgetTree",
+      "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2",
+      "messages_sha256": "1df1ec2f776e36164add643cd8afb447e9310d972589e7cc0a6ecc970a7d8ef7",
+      "verdict": "fail",
+      "details": {
+        "matches": [
+          "She",
+          "her"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "mtbench:90:turn2:property13",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "自动失败有效：修订段落仍以She开头并含her purse，未删除全部性别代词。",
+        "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2"
+      }
+    },
+    {
+      "property_id": "mtbench:90:turn2:property13",
+      "task_id": "mtbench:90",
+      "turn": 2,
+      "check": "gendered_pronouns",
+      "arm": "ASD",
+      "answer_sha256": "baee5b2d5118be2b26d23546a275875288a718df821943abe140fdf97e88f705",
+      "messages_sha256": "9a519ffccd2b8ef7a0630aa160c7c555e7529798f44dabdb381330280a6af214",
+      "verdict": "fail",
+      "details": {
+        "matches": [
+          "She",
+          "her"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "mtbench:90:turn2:property13",
+        "label": "B",
+        "verdict": "fail",
+        "reason": "自动失败有效：修订段落仍以She开头并含her purse，未删除全部性别代词。",
+        "answer_sha256": "baee5b2d5118be2b26d23546a275875288a718df821943abe140fdf97e88f705"
+      }
+    },
+    {
+      "property_id": "mtbench:90:turn2:property13",
+      "task_id": "mtbench:90",
+      "turn": 2,
+      "check": "gendered_pronouns",
+      "arm": "DFlash",
+      "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2",
+      "messages_sha256": "1df1ec2f776e36164add643cd8afb447e9310d972589e7cc0a6ecc970a7d8ef7",
+      "verdict": "fail",
+      "details": {
+        "matches": [
+          "She",
+          "her"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "mtbench:90:turn2:property13",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "自动失败有效：修订段落仍以She开头并含her purse，未删除全部性别代词。",
+        "answer_sha256": "eb88a925fe552355bd7b13301cebed7042daf1aeb1831ff759f69c6315f6cae2"
+      }
+    },
+    {
+      "property_id": "mtbench:90:turn2:property13",
+      "task_id": "mtbench:90",
+      "turn": 2,
+      "check": "gendered_pronouns",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "e72e91d25c5dadd63c1be1bb3cca3efbf6dcf1ab8985ea0dc9f73aa19967730e",
+      "messages_sha256": "b72bd61cc9058d2a9218d453d17b796cc651bdcbcc49454ae26d27adb05c221d",
+      "verdict": "fail",
+      "details": {
+        "matches": [
+          "She",
+          "her"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "mtbench:90:turn2:property13",
+        "label": "D",
+        "verdict": "fail",
+        "reason": "自动失败有效：修订段落仍以She开头并含her purse，未删除全部性别代词。",
+        "answer_sha256": "e72e91d25c5dadd63c1be1bb3cca3efbf6dcf1ab8985ea0dc9f73aa19967730e"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn1:property14",
+      "task_id": "mtbench:124",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "f64029d50f7f4abc9bb553b0b7b06170560b5d0beb387d18473f63b8d5aeab26",
+      "messages_sha256": "a8bd5a86e015a4941ebd1bb094b8f207f235478f5c0282fd2cd5c7c8fd024cec",
+      "verdict": "pass",
+      "criterion": "The provided zero-initialized LCS-length recurrence is correct. Do not invent a semantic bug; optional efficiency discussion is allowed.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn1:property14",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "明确确认原零初始化LCS递推正确，无臆造语义bug；递推与空串边界均正确。",
+        "answer_sha256": "f64029d50f7f4abc9bb553b0b7b06170560b5d0beb387d18473f63b8d5aeab26"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn1:property14",
+      "task_id": "mtbench:124",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "a0b957bee8273830f912713a0ad94596dc5b628985dc25c105018a3f8c030bcf",
+      "messages_sha256": "e86ae36e7e6f1710a76937bf24eeb2fe0023a40aa8cf1013f96d32e026debd51",
+      "verdict": "pass",
+      "criterion": "The provided zero-initialized LCS-length recurrence is correct. Do not invent a semantic bug; optional efficiency discussion is allowed.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn1:property14",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "明确确认原零初始化LCS递推正确，无臆造语义bug；递推与空串边界均正确。",
+        "answer_sha256": "a0b957bee8273830f912713a0ad94596dc5b628985dc25c105018a3f8c030bcf"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn1:property14",
+      "task_id": "mtbench:124",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "a0b957bee8273830f912713a0ad94596dc5b628985dc25c105018a3f8c030bcf",
+      "messages_sha256": "e86ae36e7e6f1710a76937bf24eeb2fe0023a40aa8cf1013f96d32e026debd51",
+      "verdict": "pass",
+      "criterion": "The provided zero-initialized LCS-length recurrence is correct. Do not invent a semantic bug; optional efficiency discussion is allowed.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn1:property14",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "明确确认原零初始化LCS递推正确，无臆造语义bug；递推与空串边界均正确。",
+        "answer_sha256": "a0b957bee8273830f912713a0ad94596dc5b628985dc25c105018a3f8c030bcf"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn1:property14",
+      "task_id": "mtbench:124",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "a32a84fb62ab8fe28e76bbc35d7bc5ba3088aa1b7898f048440dda667c2eca62",
+      "messages_sha256": "3ca98abfabb90319274a011c304c3f988511abcc9eb1cf7605e9960abe7d0522",
+      "verdict": "pass",
+      "criterion": "The provided zero-initialized LCS-length recurrence is correct. Do not invent a semantic bug; optional efficiency discussion is allowed.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn1:property14",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确确认原零初始化LCS递推正确，无臆造语义bug；递推与空串边界均正确。",
+        "answer_sha256": "a32a84fb62ab8fe28e76bbc35d7bc5ba3088aa1b7898f048440dda667c2eca62"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn2:property15",
+      "task_id": "mtbench:124",
+      "turn": 2,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "b4a86a1c5397a38aa85f7d24c9a3d9fadd50d9420e258bce632f4143ef1c7696",
+      "messages_sha256": "a0f1d25cd1bc7467cb8fbb7bde02689a61e956f07c8952bba1c8e05db655aa98",
+      "verdict": "fail",
+      "criterion": "Identify uninitialized None boundary cells as the bug. If corrected code is included, it must initialize the DP boundary to numeric zeros; code is not required by the question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn2:property15",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "错误宣称None初始化无bug且可被覆盖；dp第0行/列保持None，输入a/a即在None+1处抛TypeError，未修复数值零边界。",
+        "answer_sha256": "b4a86a1c5397a38aa85f7d24c9a3d9fadd50d9420e258bce632f4143ef1c7696"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn2:property15",
+      "task_id": "mtbench:124",
+      "turn": 2,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "8ce1f2f034771b865a3a7a60b890999e8a75cc5ed4cb2549da38eb345499fe30",
+      "messages_sha256": "bab96c9c197d1ba1ebceff453f886f13dbcf1f7a1adcef2fd6543f0686f63e05",
+      "verdict": "fail",
+      "criterion": "Identify uninitialized None boundary cells as the bug. If corrected code is included, it must initialize the DP boundary to numeric zeros; code is not required by the question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn2:property15",
+        "label": "B",
+        "verdict": "fail",
+        "reason": "错误宣称None初始化无bug且可被覆盖；dp第0行/列保持None，输入a/a即在None+1处抛TypeError，未修复数值零边界。",
+        "answer_sha256": "8ce1f2f034771b865a3a7a60b890999e8a75cc5ed4cb2549da38eb345499fe30"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn2:property15",
+      "task_id": "mtbench:124",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "8ce1f2f034771b865a3a7a60b890999e8a75cc5ed4cb2549da38eb345499fe30",
+      "messages_sha256": "bab96c9c197d1ba1ebceff453f886f13dbcf1f7a1adcef2fd6543f0686f63e05",
+      "verdict": "fail",
+      "criterion": "Identify uninitialized None boundary cells as the bug. If corrected code is included, it must initialize the DP boundary to numeric zeros; code is not required by the question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn2:property15",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "错误宣称None初始化无bug且可被覆盖；dp第0行/列保持None，输入a/a即在None+1处抛TypeError，未修复数值零边界。",
+        "answer_sha256": "8ce1f2f034771b865a3a7a60b890999e8a75cc5ed4cb2549da38eb345499fe30"
+      }
+    },
+    {
+      "property_id": "mtbench:124:turn2:property15",
+      "task_id": "mtbench:124",
+      "turn": 2,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "08f513560039dce43a64edbf332ee90e5e22e6a3d6076707989ee3f537d5d6fd",
+      "messages_sha256": "b63856430fb181dcd2da25a59c4d08d7fc01c7ce8b7dea3f81522effc9b20cdb",
+      "verdict": "fail",
+      "criterion": "Identify uninitialized None boundary cells as the bug. If corrected code is included, it must initialize the DP boundary to numeric zeros; code is not required by the question.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:124:turn2:property15",
+        "label": "D",
+        "verdict": "fail",
+        "reason": "错误宣称None初始化无bug且可被覆盖；dp第0行/列保持None，输入a/a即在None+1处抛TypeError，未修复数值零边界。",
+        "answer_sha256": "08f513560039dce43a64edbf332ee90e5e22e6a3d6076707989ee3f537d5d6fd"
+      }
+    },
+    {
+      "property_id": "mtbench:148:turn1:property16",
+      "task_id": "mtbench:148",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "8134946e5183781518a89a961d36145ccb95e8fdf7d85b2ac16d091508d7ce1f",
+      "messages_sha256": "39cb465642e3142c2b2f86058ea6a9902dc76bf26f509875e798690af1fa6af9",
+      "verdict": "pass",
+      "criterion": "The requested workflow has five steps. Count the workflow portion, not a separate component list.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:148:turn1:property16",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "工作流明确标注Step 1至Step 5共五步；后面的Summary of Key Components为独立组件清单，不另算步骤。",
+        "answer_sha256": "8134946e5183781518a89a961d36145ccb95e8fdf7d85b2ac16d091508d7ce1f"
+      }
+    },
+    {
+      "property_id": "mtbench:148:turn1:property16",
+      "task_id": "mtbench:148",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "6102f0f66ac35059ffc73dc3c43a846ff7f2d81b7cc9d9efed8fc68f4037d198",
+      "messages_sha256": "a41243eb750853598a511c916c8b5b03a2532b46e52b544f2d45e89865f353df",
+      "verdict": "pass",
+      "criterion": "The requested workflow has five steps. Count the workflow portion, not a separate component list.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:148:turn1:property16",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "工作流明确标注Step 1至Step 5共五步；后面的Summary of Key Components为独立组件清单，不另算步骤。",
+        "answer_sha256": "6102f0f66ac35059ffc73dc3c43a846ff7f2d81b7cc9d9efed8fc68f4037d198"
+      }
+    },
+    {
+      "property_id": "mtbench:148:turn1:property16",
+      "task_id": "mtbench:148",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "9930d0167c98d2a3b3194f29cafc7ea33993ca58cc79db4d5cea3296716b2749",
+      "messages_sha256": "ad1e7ad94259e6d484f95b0ecee4a2960e73a97364500b1a4fb78fc20530753c",
+      "verdict": "pass",
+      "criterion": "The requested workflow has five steps. Count the workflow portion, not a separate component list.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:148:turn1:property16",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "工作流明确标注Step 1至Step 5共五步；后面的Summary of Key Components为独立组件清单，不另算步骤。",
+        "answer_sha256": "9930d0167c98d2a3b3194f29cafc7ea33993ca58cc79db4d5cea3296716b2749"
+      }
+    },
+    {
+      "property_id": "mtbench:148:turn1:property16",
+      "task_id": "mtbench:148",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "8134946e5183781518a89a961d36145ccb95e8fdf7d85b2ac16d091508d7ce1f",
+      "messages_sha256": "39cb465642e3142c2b2f86058ea6a9902dc76bf26f509875e798690af1fa6af9",
+      "verdict": "pass",
+      "criterion": "The requested workflow has five steps. Count the workflow portion, not a separate component list.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "mtbench:148:turn1:property16",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "工作流明确标注Step 1至Step 5共五步；后面的Summary of Key Components为独立组件清单，不另算步骤。",
+        "answer_sha256": "8134946e5183781518a89a961d36145ccb95e8fdf7d85b2ac16d091508d7ce1f"
+      }
+    },
+    {
+      "property_id": "alpaca:28928:turn1:property17",
+      "task_id": "alpaca:28928",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "ASD",
+      "answer_sha256": "a78ac989902c9f892a4da80609a809efcaafd2e3fbe9bd9a4aac6470d1890b26",
+      "messages_sha256": "d2de1572df34cc3dcb54cf5e607e0a435d1c2e6c6f4d78d55f5ba3491c305fd3",
+      "verdict": "fail",
+      "details": {
+        "lexical_words": 257,
+        "whitespace_tokens": 257
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:28928:turn1:property17",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "按预先冻结正则计257词，空白切词也为257，超过250词上限。",
+        "answer_sha256": "a78ac989902c9f892a4da80609a809efcaafd2e3fbe9bd9a4aac6470d1890b26"
+      }
+    },
+    {
+      "property_id": "alpaca:28928:turn1:property17",
+      "task_id": "alpaca:28928",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "BudgetTree",
+      "answer_sha256": "08610838ee7d30dae3746fafa8183e17b2e897a90c1d769abefa682eff350fcf",
+      "messages_sha256": "ecc7b66e17a1f42608973f3f8f339795b785c5f059f59b452f8a5a1183811588",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 236,
+        "whitespace_tokens": 236
+      }
+    },
+    {
+      "property_id": "alpaca:28928:turn1:property17",
+      "task_id": "alpaca:28928",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "d5a9c1076e8335cb162ff8e87b019b6a9db05f2989261a2f141e01810c0e2926",
+      "messages_sha256": "de59cd086ca4aafca0eb0a6e5c38bc5726bf270ef9ed747aace74c67d927902e",
+      "verdict": "fail",
+      "details": {
+        "lexical_words": 255,
+        "whitespace_tokens": 255
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:28928:turn1:property17",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "按冻结正则计255词，空白切词也为255，超过250词上限。",
+        "answer_sha256": "d5a9c1076e8335cb162ff8e87b019b6a9db05f2989261a2f141e01810c0e2926"
+      }
+    },
+    {
+      "property_id": "alpaca:28928:turn1:property17",
+      "task_id": "alpaca:28928",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "DFlash",
+      "answer_sha256": "08610838ee7d30dae3746fafa8183e17b2e897a90c1d769abefa682eff350fcf",
+      "messages_sha256": "ecc7b66e17a1f42608973f3f8f339795b785c5f059f59b452f8a5a1183811588",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 236,
+        "whitespace_tokens": 236
+      }
+    },
+    {
+      "property_id": "alpaca:34447:turn1:property18",
+      "task_id": "alpaca:34447",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "ASD",
+      "answer_sha256": "34de4f4a09d2a361be7eafbb6e9a58f5c20009fcc73e3c3125acbf982fa57b42",
+      "messages_sha256": "1bcb9018e0aeff6866f5b6846c3a2d3221cdbdb8bf59f8472a14eb77b460a181",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 400,
+        "whitespace_tokens": 396
+      }
+    },
+    {
+      "property_id": "alpaca:34447:turn1:property18",
+      "task_id": "alpaca:34447",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "DFlash",
+      "answer_sha256": "d4d8a70282288413b8b60a9b133a15b57fdefd13dcd86f773ebe9e9ef5746162",
+      "messages_sha256": "afd585dd14554384d87bb739ba8c47dee1053c1751e75b117a03c237272c40dd",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 484,
+        "whitespace_tokens": 483
+      }
+    },
+    {
+      "property_id": "alpaca:34447:turn1:property18",
+      "task_id": "alpaca:34447",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "BudgetTree",
+      "answer_sha256": "d4d8a70282288413b8b60a9b133a15b57fdefd13dcd86f773ebe9e9ef5746162",
+      "messages_sha256": "afd585dd14554384d87bb739ba8c47dee1053c1751e75b117a03c237272c40dd",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 484,
+        "whitespace_tokens": 483
+      }
+    },
+    {
+      "property_id": "alpaca:34447:turn1:property18",
+      "task_id": "alpaca:34447",
+      "turn": 1,
+      "check": "word_limit",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "a972de63883fad1ca0e8d25a02e1fd2be007446b3d90e6895c278b85e3499192",
+      "messages_sha256": "42586fb7a6598e148a84db510f4c0f150a782f729f51e3d79c059ded4b87ac57",
+      "verdict": "pass",
+      "details": {
+        "lexical_words": 419,
+        "whitespace_tokens": 415
+      }
+    },
+    {
+      "property_id": "alpaca:22051:turn1:property19",
+      "task_id": "alpaca:22051",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "701d00b67f05a4b36a31b342052337c5ad9753a78e8707446804b44355dec161",
+      "messages_sha256": "0d9e637ec817b1534282b6ebaa8253c20228f60e1ccd9549fc38c2c89d4d5d9b",
+      "verdict": "pass",
+      "criterion": "The childhood-memory description consists of a single sentence; handle abbreviations and quotes semantically.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:22051:turn1:property19",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "仅一句完整儿童记忆描述，内部逗号/从句不另算句子，末尾一个句号。",
+        "answer_sha256": "701d00b67f05a4b36a31b342052337c5ad9753a78e8707446804b44355dec161"
+      }
+    },
+    {
+      "property_id": "alpaca:22051:turn1:property19",
+      "task_id": "alpaca:22051",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "f113cc07ff11e8e525dbc7cfeb2d5d52ee29c02b5a8b10fa5e2c29d436e6bed2",
+      "messages_sha256": "6b8fc12e933690831779277a2c1d278307a38a39dbc9ff1cdfe7ab279aa9502f",
+      "verdict": "pass",
+      "criterion": "The childhood-memory description consists of a single sentence; handle abbreviations and quotes semantically.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:22051:turn1:property19",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "仅一句完整儿童记忆描述，内部逗号/从句不另算句子，末尾一个句号。",
+        "answer_sha256": "f113cc07ff11e8e525dbc7cfeb2d5d52ee29c02b5a8b10fa5e2c29d436e6bed2"
+      }
+    },
+    {
+      "property_id": "alpaca:22051:turn1:property19",
+      "task_id": "alpaca:22051",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89",
+      "messages_sha256": "dfad17669fa9aaf1bc72346c905d926387e2ae7cd5d899e6dc324c99c7caf40c",
+      "verdict": "pass",
+      "criterion": "The childhood-memory description consists of a single sentence; handle abbreviations and quotes semantically.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:22051:turn1:property19",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "仅一句完整儿童记忆描述，内部逗号/从句不另算句子，末尾一个句号。",
+        "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89"
+      }
+    },
+    {
+      "property_id": "alpaca:22051:turn1:property19",
+      "task_id": "alpaca:22051",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89",
+      "messages_sha256": "dfad17669fa9aaf1bc72346c905d926387e2ae7cd5d899e6dc324c99c7caf40c",
+      "verdict": "pass",
+      "criterion": "The childhood-memory description consists of a single sentence; handle abbreviations and quotes semantically.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:22051:turn1:property19",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "仅一句完整儿童记忆描述，内部逗号/从句不另算句子，末尾一个句号。",
+        "answer_sha256": "fa87fffc1a5cb2f4c9e5fac1938fc348ecd01dde68024545961ef3450305cc89"
+      }
+    },
+    {
+      "property_id": "alpaca:42426:turn1:property20",
+      "task_id": "alpaca:42426",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "035353cc124c664f6e945c06735ced7fd9fec9a21b65b652ed2f1b22d62a2cff",
+      "messages_sha256": "00ed8a37452bd8797551b311b9fd0fb044934e71cd18e026648670481968cadb",
+      "verdict": "pass",
+      "criterion": "Exactly two continuation sentences, optionally preceded by the supplied opening sentence; exclude an explicit non-story introduction from narrative count.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:42426:turn1:property20",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "恰好两句续写；两句分别描述日出和微风，无额外叙事句。",
+        "answer_sha256": "035353cc124c664f6e945c06735ced7fd9fec9a21b65b652ed2f1b22d62a2cff"
+      }
+    },
+    {
+      "property_id": "alpaca:42426:turn1:property20",
+      "task_id": "alpaca:42426",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "9f2ac51cbb9c8e3793b4f64ddbce07dc491ec74f3b901bf80eae19bc8d4c74ea",
+      "messages_sha256": "ca377fbd930382893dfc86f626893392cedef22997173639f416d9c407b90a2c",
+      "verdict": "pass",
+      "criterion": "Exactly two continuation sentences, optionally preceded by the supplied opening sentence; exclude an explicit non-story introduction from narrative count.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:42426:turn1:property20",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "恰好两句续写；两句分别描述日出和微风，无额外叙事句。",
+        "answer_sha256": "9f2ac51cbb9c8e3793b4f64ddbce07dc491ec74f3b901bf80eae19bc8d4c74ea"
+      }
+    },
+    {
+      "property_id": "alpaca:42426:turn1:property20",
+      "task_id": "alpaca:42426",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "035353cc124c664f6e945c06735ced7fd9fec9a21b65b652ed2f1b22d62a2cff",
+      "messages_sha256": "00ed8a37452bd8797551b311b9fd0fb044934e71cd18e026648670481968cadb",
+      "verdict": "pass",
+      "criterion": "Exactly two continuation sentences, optionally preceded by the supplied opening sentence; exclude an explicit non-story introduction from narrative count.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:42426:turn1:property20",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "恰好两句续写；两句分别描述日出和微风，无额外叙事句。",
+        "answer_sha256": "035353cc124c664f6e945c06735ced7fd9fec9a21b65b652ed2f1b22d62a2cff"
+      }
+    },
+    {
+      "property_id": "alpaca:42426:turn1:property20",
+      "task_id": "alpaca:42426",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "c306c3f6d0b01ebe685f7afde240a5db669dd0edf38240a24c6c61bbd4c29bc8",
+      "messages_sha256": "a401a466f665f2fab947f99bb191ad6a56d8e5f9b6ea28a2f470dba106cf8f81",
+      "verdict": "pass",
+      "criterion": "Exactly two continuation sentences, optionally preceded by the supplied opening sentence; exclude an explicit non-story introduction from narrative count.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:42426:turn1:property20",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "恰好两句续写；两句分别描述日出和微风，无额外叙事句。",
+        "answer_sha256": "c306c3f6d0b01ebe685f7afde240a5db669dd0edf38240a24c6c61bbd4c29bc8"
+      }
+    },
+    {
+      "property_id": "alpaca:7014:turn1:property21",
+      "task_id": "alpaca:7014",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "2a09b8c496ca440bc32d5678d4a43f2cdf15934c662d1d05597358e72ea1c79a",
+      "messages_sha256": "451717f24edf6835f918c0778a9b587934262ea7680c1a454a288128f1d2a00b",
+      "verdict": "pass",
+      "criterion": "The revised sentence has fewer than 70 Unicode codepoints. Explicitly record the selected revised sentence and length; explanatory wrapper is not itself the sentence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7014:turn1:property21",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "选取修订句“No one believed the event; it was too hard to comprehend.”；Unicode码点长度57，小于70；无解释包装或其他候选句。",
+        "answer_sha256": "2a09b8c496ca440bc32d5678d4a43f2cdf15934c662d1d05597358e72ea1c79a"
+      }
+    },
+    {
+      "property_id": "alpaca:7014:turn1:property21",
+      "task_id": "alpaca:7014",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5",
+      "messages_sha256": "7a15dbdb07974eacf7681774208b11dda5dbd86b6ce0cd82b5936c0a5c373d0b",
+      "verdict": "pass",
+      "criterion": "The revised sentence has fewer than 70 Unicode codepoints. Explicitly record the selected revised sentence and length; explanatory wrapper is not itself the sentence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7014:turn1:property21",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "选取修订句“No one believed what happened; it was too hard to comprehend.”；Unicode码点长度61，小于70；无解释包装或其他候选句。",
+        "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5"
+      }
+    },
+    {
+      "property_id": "alpaca:7014:turn1:property21",
+      "task_id": "alpaca:7014",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "54ada9868e502b64aaee4b34a720687bc4d6c214b4e39fa599282cc54abebd32",
+      "messages_sha256": "cdc6187cc3be37fdb3d9fd1c64e3eaf0b3372f8e3db3f81ddc368d8dcee92ebe",
+      "verdict": "pass",
+      "criterion": "The revised sentence has fewer than 70 Unicode codepoints. Explicitly record the selected revised sentence and length; explanatory wrapper is not itself the sentence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7014:turn1:property21",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "选取修订句“No one believes what happened; it was too hard to comprehend.”；Unicode码点长度61，小于70；无解释包装或其他候选句。",
+        "answer_sha256": "54ada9868e502b64aaee4b34a720687bc4d6c214b4e39fa599282cc54abebd32"
+      }
+    },
+    {
+      "property_id": "alpaca:7014:turn1:property21",
+      "task_id": "alpaca:7014",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5",
+      "messages_sha256": "7a15dbdb07974eacf7681774208b11dda5dbd86b6ce0cd82b5936c0a5c373d0b",
+      "verdict": "pass",
+      "criterion": "The revised sentence has fewer than 70 Unicode codepoints. Explicitly record the selected revised sentence and length; explanatory wrapper is not itself the sentence.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7014:turn1:property21",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "选取修订句“No one believed what happened; it was too hard to comprehend.”；Unicode码点长度61，小于70；无解释包装或其他候选句。",
+        "answer_sha256": "5b7d86574a030c942d89b71a18d66487b865dd43c219e841cba2de2345a5a2a5"
+      }
+    },
+    {
+      "property_id": "alpaca:47290:turn1:property22",
+      "task_id": "alpaca:47290",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "b38abdff0cc051fd63aca0bff100893b41e79db84d7ccef2eb86d4db341bce23",
+      "messages_sha256": "9f8bbbe0a38591bbf4ae8f700c12bc0dec7c5641e68829e4c655f6932b02082c",
+      "verdict": "pass",
+      "criterion": "The first narrative sentence is exactly the supplied opening. An optional title is outside the narrative.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47290:turn1:property22",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "第一叙事句逐字为She had never seen anything like it before.，无改动。",
+        "answer_sha256": "b38abdff0cc051fd63aca0bff100893b41e79db84d7ccef2eb86d4db341bce23"
+      }
+    },
+    {
+      "property_id": "alpaca:47290:turn1:property22",
+      "task_id": "alpaca:47290",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "0285c9eb489cfcead62adb6cf1dd5298f1c5e38cb74676f5ff7a47dbb6250a26",
+      "messages_sha256": "b8a9f5a72c15c0758c5a5e8659b9d2c99b666c4a5d3215688e321c3c176532e2",
+      "verdict": "pass",
+      "criterion": "The first narrative sentence is exactly the supplied opening. An optional title is outside the narrative.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47290:turn1:property22",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "第一叙事句逐字为She had never seen anything like it before.，无改动。",
+        "answer_sha256": "0285c9eb489cfcead62adb6cf1dd5298f1c5e38cb74676f5ff7a47dbb6250a26"
+      }
+    },
+    {
+      "property_id": "alpaca:47290:turn1:property22",
+      "task_id": "alpaca:47290",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "b0d0fc52f9af9fb1404e32e9185c5bc72555025392ba29ceff03d09cfff9fb1f",
+      "messages_sha256": "dedaa61c7b7792150d8a3b240a51eb5f88a1c4483603ad8210d4e2c5f9cfee51",
+      "verdict": "pass",
+      "criterion": "The first narrative sentence is exactly the supplied opening. An optional title is outside the narrative.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47290:turn1:property22",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "第一叙事句逐字为She had never seen anything like it before.，无改动。",
+        "answer_sha256": "b0d0fc52f9af9fb1404e32e9185c5bc72555025392ba29ceff03d09cfff9fb1f"
+      }
+    },
+    {
+      "property_id": "alpaca:47290:turn1:property22",
+      "task_id": "alpaca:47290",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "0285c9eb489cfcead62adb6cf1dd5298f1c5e38cb74676f5ff7a47dbb6250a26",
+      "messages_sha256": "b8a9f5a72c15c0758c5a5e8659b9d2c99b666c4a5d3215688e321c3c176532e2",
+      "verdict": "pass",
+      "criterion": "The first narrative sentence is exactly the supplied opening. An optional title is outside the narrative.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47290:turn1:property22",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "第一叙事句逐字为She had never seen anything like it before.，无改动。",
+        "answer_sha256": "0285c9eb489cfcead62adb6cf1dd5298f1c5e38cb74676f5ff7a47dbb6250a26"
+      }
+    },
+    {
+      "property_id": "alpaca:9186:turn1:property23",
+      "task_id": "alpaca:9186",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d",
+      "messages_sha256": "93d172a3688bf4c587434fcf1456ff91e27cbed3587da0533befbdb9b6c43657",
+      "verdict": "pass",
+      "criterion": "Five distinct bird types are named. This checklist grades item count, not a complete geographic-frequency claim.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:9186:turn1:property23",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "给出American Robin、Blue Jay、Red-tailed Hawk、House Sparrow、Northern Cardinal五类不同鸟名；此项不评全部描述细节。",
+        "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d"
+      }
+    },
+    {
+      "property_id": "alpaca:9186:turn1:property23",
+      "task_id": "alpaca:9186",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d",
+      "messages_sha256": "93d172a3688bf4c587434fcf1456ff91e27cbed3587da0533befbdb9b6c43657",
+      "verdict": "pass",
+      "criterion": "Five distinct bird types are named. This checklist grades item count, not a complete geographic-frequency claim.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:9186:turn1:property23",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "给出American Robin、Blue Jay、Red-tailed Hawk、House Sparrow、Northern Cardinal五类不同鸟名；此项不评全部描述细节。",
+        "answer_sha256": "e446c7badff22c6127f879fbd318bdc9996a64f313a6b8ff94d555175181219d"
+      }
+    },
+    {
+      "property_id": "alpaca:9186:turn1:property23",
+      "task_id": "alpaca:9186",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "fd20ea3e1d1eb9fc16125cd7e35c6b3c7d2214acef52c36130453c8079945c40",
+      "messages_sha256": "a9c02418ad0b3fc0c690f7c2f2863e7deef4a01a41cda09346022069679985ea",
+      "verdict": "pass",
+      "criterion": "Five distinct bird types are named. This checklist grades item count, not a complete geographic-frequency claim.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:9186:turn1:property23",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "给出American Robin、Blue Jay、Red-tailed Hawk、House Sparrow、Northern Cardinal五类不同鸟名；此项不评全部描述细节。",
+        "answer_sha256": "fd20ea3e1d1eb9fc16125cd7e35c6b3c7d2214acef52c36130453c8079945c40"
+      }
+    },
+    {
+      "property_id": "alpaca:9186:turn1:property23",
+      "task_id": "alpaca:9186",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "54e7a6b570ce1853ffb73478ac329b6e2d14d47b4595873a5e4397f9d0127bbe",
+      "messages_sha256": "ff2211dce4ba709296e4395d4f223a0e2fe3bb49b9343cb28db3a4960c669ed0",
+      "verdict": "pass",
+      "criterion": "Five distinct bird types are named. This checklist grades item count, not a complete geographic-frequency claim.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:9186:turn1:property23",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "给出American Robin、Blue Jay、Red-tailed Hawk、House Sparrow、Northern Cardinal五类不同鸟名；此项不评全部描述细节。",
+        "answer_sha256": "54e7a6b570ce1853ffb73478ac329b6e2d14d47b4595873a5e4397f9d0127bbe"
+      }
+    },
+    {
+      "property_id": "alpaca:21001:turn1:property24",
+      "task_id": "alpaca:21001",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "ddaaf28146484f5c5e32fb42c3edd86eb8fbcccc92d19f7284bbcb8df4f02b66",
+      "messages_sha256": "598561c792f9e3bd5a2b3f8ca0f4a68f1946e635159da1970bf70a82a5cb9523",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed uses of a time machine; allow prose or lists.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:21001:turn1:property24",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "列出预防历史灾难、个人经历/学习、科学历史研究三种不同用途。",
+        "answer_sha256": "ddaaf28146484f5c5e32fb42c3edd86eb8fbcccc92d19f7284bbcb8df4f02b66"
+      }
+    },
+    {
+      "property_id": "alpaca:21001:turn1:property24",
+      "task_id": "alpaca:21001",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524",
+      "messages_sha256": "d1b7c4a9b7f3cd63ecb22d15e6255e4d7cc1bd2b5eb909f4127edfd8c702fbe5",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed uses of a time machine; allow prose or lists.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:21001:turn1:property24",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "列出预防历史灾难、个人经历/学习、科学历史研究三种不同用途。",
+        "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524"
+      }
+    },
+    {
+      "property_id": "alpaca:21001:turn1:property24",
+      "task_id": "alpaca:21001",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "bb8396e0877707ebbbac9782f88df14f093f0400d02ee653ea2bba631166f413",
+      "messages_sha256": "88d3366e23cc7ec28a47212e008595650685cf674e7f2c3ad350d26200bb3354",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed uses of a time machine; allow prose or lists.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:21001:turn1:property24",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "列出预防历史灾难、个人经历/学习、科学历史研究三种不同用途。",
+        "answer_sha256": "bb8396e0877707ebbbac9782f88df14f093f0400d02ee653ea2bba631166f413"
+      }
+    },
+    {
+      "property_id": "alpaca:21001:turn1:property24",
+      "task_id": "alpaca:21001",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524",
+      "messages_sha256": "d1b7c4a9b7f3cd63ecb22d15e6255e4d7cc1bd2b5eb909f4127edfd8c702fbe5",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed uses of a time machine; allow prose or lists.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:21001:turn1:property24",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "列出预防历史灾难、个人经历/学习、科学历史研究三种不同用途。",
+        "answer_sha256": "85ffef8ca68e1756986db15491540f5fd57fa1ca3ae8135ed15fe42739361524"
+      }
+    },
+    {
+      "property_id": "alpaca:11948:turn1:property25",
+      "task_id": "alpaca:11948",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50",
+      "messages_sha256": "0814e7e92634f1e32344d4656004360bd3f0737af065140c1608080af82013aa",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed protective actions; count only, not a complete cybersecurity assessment.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:11948:turn1:property25",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "列出独立密码、2FA、更新软件三个不同保护动作；仅检查数量。",
+        "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50"
+      }
+    },
+    {
+      "property_id": "alpaca:11948:turn1:property25",
+      "task_id": "alpaca:11948",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "c761a8805e3a0ec0b3bb3d881a92b95a82e81193b2176e9a233a49c132ef31d7",
+      "messages_sha256": "228f92fa609ed2477c4ec599cf57b330b0433815dda3a2684ecdd0499bb396b6",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed protective actions; count only, not a complete cybersecurity assessment.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:11948:turn1:property25",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "列出独立密码、2FA、更新软件三个不同保护动作；仅检查数量。",
+        "answer_sha256": "c761a8805e3a0ec0b3bb3d881a92b95a82e81193b2176e9a233a49c132ef31d7"
+      }
+    },
+    {
+      "property_id": "alpaca:11948:turn1:property25",
+      "task_id": "alpaca:11948",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "27398d38bc54e333fc861f9ab2529919f4ba9900ca0da335767722fedd802868",
+      "messages_sha256": "8f3f894c3a7d07d32fac65d392c8f848ada218c8d38ae59ae5764da6cbfe8642",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed protective actions; count only, not a complete cybersecurity assessment.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:11948:turn1:property25",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "列出独立密码、2FA、更新软件三个不同保护动作；仅检查数量。",
+        "answer_sha256": "27398d38bc54e333fc861f9ab2529919f4ba9900ca0da335767722fedd802868"
+      }
+    },
+    {
+      "property_id": "alpaca:11948:turn1:property25",
+      "task_id": "alpaca:11948",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50",
+      "messages_sha256": "0814e7e92634f1e32344d4656004360bd3f0737af065140c1608080af82013aa",
+      "verdict": "pass",
+      "criterion": "Three distinct proposed protective actions; count only, not a complete cybersecurity assessment.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:11948:turn1:property25",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "列出独立密码、2FA、更新软件三个不同保护动作；仅检查数量。",
+        "answer_sha256": "1b753a64f8b81b8fc6d82c51ad6f93466e711461bc0627c71f039ff69430ae50"
+      }
+    },
+    {
+      "property_id": "alpaca:7816:turn1:property26",
+      "task_id": "alpaca:7816",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "d015f17a3826d6b2129818caf8a3fb569fa5f45ec695e7423c00730cae7c32d9",
+      "messages_sha256": "5955bacd4511ca3a262dc9cd4481a3a4b3b92055ab4e3536e3124db21c01bf9e",
+      "verdict": "fail",
+      "criterion": "Five distinct essay components; do not require one canonical component vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7816:turn1:property26",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "编号4与5均为Conclusion/Final Paragraph，实际仅四个不同组件，没有第五种。",
+        "answer_sha256": "d015f17a3826d6b2129818caf8a3fb569fa5f45ec695e7423c00730cae7c32d9"
+      }
+    },
+    {
+      "property_id": "alpaca:7816:turn1:property26",
+      "task_id": "alpaca:7816",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d",
+      "messages_sha256": "dfc225b729992e0124825c233151a81690e4b1b9c030dcccd6a9fae684e7fd1f",
+      "verdict": "pass",
+      "criterion": "Five distinct essay components; do not require one canonical component vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7816:turn1:property26",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "主动纠正重复结论后，最终列表为Introduction/Thesis/Body/Conclusion/Evidence五个不同组件。",
+        "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d"
+      }
+    },
+    {
+      "property_id": "alpaca:7816:turn1:property26",
+      "task_id": "alpaca:7816",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d",
+      "messages_sha256": "dfc225b729992e0124825c233151a81690e4b1b9c030dcccd6a9fae684e7fd1f",
+      "verdict": "pass",
+      "criterion": "Five distinct essay components; do not require one canonical component vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7816:turn1:property26",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "与B文本相同，最终更正列表包含Evidence and Support作为第五种组件。",
+        "answer_sha256": "bf4b75339953d309a307561fe9ebb4a760a2d429e6bcc635bec570c6c9d2729d"
+      }
+    },
+    {
+      "property_id": "alpaca:7816:turn1:property26",
+      "task_id": "alpaca:7816",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "7365a3ff6f8220e57e7703467e19c4d07a5d01fc2ce8dbb42bc9105f4d85b462",
+      "messages_sha256": "b8ca73889471329675f0269def9f765ba47e55c12384df071507662d30917845",
+      "verdict": "fail",
+      "criterion": "Five distinct essay components; do not require one canonical component vocabulary.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:7816:turn1:property26",
+        "label": "D",
+        "verdict": "fail",
+        "reason": "编号4和5分别Conclusion与Conclusion(reiterated)，重复同一组件，未给出第五种。",
+        "answer_sha256": "7365a3ff6f8220e57e7703467e19c4d07a5d01fc2ce8dbb42bc9105f4d85b462"
+      }
+    },
+    {
+      "property_id": "alpaca:4271:turn1:property27",
+      "task_id": "alpaca:4271",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "183a42c381f7f90f4cf526a1ff5e057359c7a81da9d86419ae932c3f47a5d162",
+      "messages_sha256": "6673c53c12ee2df64e3fa5f6cb0a343008e5123e0022d8d8655737d2e3d8720d",
+      "verdict": "pass",
+      "criterion": "Five proposed protection items; count only, not medical efficacy advice.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:4271:turn1:property27",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "五个编号保护条目齐全；本项按事前规则只计五项，不评价医学效果或分类互斥。",
+        "answer_sha256": "183a42c381f7f90f4cf526a1ff5e057359c7a81da9d86419ae932c3f47a5d162"
+      }
+    },
+    {
+      "property_id": "alpaca:4271:turn1:property27",
+      "task_id": "alpaca:4271",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "d60dde0fed3706b495d259c7ace157fa8bdf9ff2b46015767706121498aa589a",
+      "messages_sha256": "e13c477d1059cecced4777081d6f9f5cb9d9f18be6bde9a6b41d7409707509c5",
+      "verdict": "pass",
+      "criterion": "Five proposed protection items; count only, not medical efficacy advice.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:4271:turn1:property27",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "五个编号保护条目齐全；本项按事前规则只计五项，不评价医学效果或分类互斥。",
+        "answer_sha256": "d60dde0fed3706b495d259c7ace157fa8bdf9ff2b46015767706121498aa589a"
+      }
+    },
+    {
+      "property_id": "alpaca:4271:turn1:property27",
+      "task_id": "alpaca:4271",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "1e664431405d10e00584095515df0dbc8adaa425fe8ea07a87c4c78012c05cfc",
+      "messages_sha256": "8ef6bee50ce40e522e1e32e4301c493a11e9ca04e61edaa490df107b03c2b425",
+      "verdict": "pass",
+      "criterion": "Five proposed protection items; count only, not medical efficacy advice.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:4271:turn1:property27",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "五个编号保护条目齐全；本项按事前规则只计五项，不评价医学效果或分类互斥。",
+        "answer_sha256": "1e664431405d10e00584095515df0dbc8adaa425fe8ea07a87c4c78012c05cfc"
+      }
+    },
+    {
+      "property_id": "alpaca:4271:turn1:property27",
+      "task_id": "alpaca:4271",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "183a42c381f7f90f4cf526a1ff5e057359c7a81da9d86419ae932c3f47a5d162",
+      "messages_sha256": "6673c53c12ee2df64e3fa5f6cb0a343008e5123e0022d8d8655737d2e3d8720d",
+      "verdict": "pass",
+      "criterion": "Five proposed protection items; count only, not medical efficacy advice.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:4271:turn1:property27",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "五个编号保护条目齐全；本项按事前规则只计五项，不评价医学效果或分类互斥。",
+        "answer_sha256": "183a42c381f7f90f4cf526a1ff5e057359c7a81da9d86419ae932c3f47a5d162"
+      }
+    },
+    {
+      "property_id": "alpaca:14181:turn1:property28",
+      "task_id": "alpaca:14181",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "0f1f834400bd4ac2af6f511f4000fc7e7b5a0ad4c15d55fa6a27d95241196985",
+      "messages_sha256": "596a81adee2323f2e4c046ca1b89e4c486a462364c60fcbab05d46ab536e6210",
+      "verdict": "pass",
+      "criterion": "15 millimeters equals 1.5 centimeters.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:14181:turn1:property28",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "明确15/10=1.5厘米。",
+        "answer_sha256": "0f1f834400bd4ac2af6f511f4000fc7e7b5a0ad4c15d55fa6a27d95241196985"
+      }
+    },
+    {
+      "property_id": "alpaca:14181:turn1:property28",
+      "task_id": "alpaca:14181",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec",
+      "messages_sha256": "60f3791611bfa755c40b76f7627833c584ad45dd97e1d3c69d84c98b4d4f4c7d",
+      "verdict": "pass",
+      "criterion": "15 millimeters equals 1.5 centimeters.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:14181:turn1:property28",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "明确15/10=1.5厘米。",
+        "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec"
+      }
+    },
+    {
+      "property_id": "alpaca:14181:turn1:property28",
+      "task_id": "alpaca:14181",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec",
+      "messages_sha256": "60f3791611bfa755c40b76f7627833c584ad45dd97e1d3c69d84c98b4d4f4c7d",
+      "verdict": "pass",
+      "criterion": "15 millimeters equals 1.5 centimeters.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:14181:turn1:property28",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "明确15/10=1.5厘米。",
+        "answer_sha256": "5858da0709bce2befe49329557add177b72645506390bbe6d6ba4cd0d186bdec"
+      }
+    },
+    {
+      "property_id": "alpaca:14181:turn1:property28",
+      "task_id": "alpaca:14181",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "634382779388479103441bd11076fd281aa2d8b60cf934d45147d2ebc06255e6",
+      "messages_sha256": "150f2667dc1a9d2487fbc38b7d4a6fcd8b2ce2a06e84a823de08afbbcc33dde3",
+      "verdict": "pass",
+      "criterion": "15 millimeters equals 1.5 centimeters.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:14181:turn1:property28",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确15/10=1.5厘米。",
+        "answer_sha256": "634382779388479103441bd11076fd281aa2d8b60cf934d45147d2ebc06255e6"
+      }
+    },
+    {
+      "property_id": "alpaca:43920:turn1:property29",
+      "task_id": "alpaca:43920",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "b5417d999788d73c24bfcf1b783cc762634d040ab459b8502e55f7118545aac0",
+      "messages_sha256": "17936a2aa014ec8612a343e0f41d1fcc9612e45b41180bfcdb0e7f8447c9d3d0",
+      "verdict": "pass",
+      "criterion": "13:10 converts to 1:10 PM; accept 01:10 and p.m. punctuation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:43920:turn1:property29",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "明确13:10转换为1:10 PM，小时减12且保留下午。",
+        "answer_sha256": "b5417d999788d73c24bfcf1b783cc762634d040ab459b8502e55f7118545aac0"
+      }
+    },
+    {
+      "property_id": "alpaca:43920:turn1:property29",
+      "task_id": "alpaca:43920",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "d382943877d1fa3e0db13c36c4ec2945613d3573b389d0e76d390f3cb547604e",
+      "messages_sha256": "be24a0073931cc56a0872e32ac829f3af350130b75b00e0689e60641c0d6fcfd",
+      "verdict": "pass",
+      "criterion": "13:10 converts to 1:10 PM; accept 01:10 and p.m. punctuation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:43920:turn1:property29",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "明确13:10转换为1:10 PM，小时减12且保留下午。",
+        "answer_sha256": "d382943877d1fa3e0db13c36c4ec2945613d3573b389d0e76d390f3cb547604e"
+      }
+    },
+    {
+      "property_id": "alpaca:43920:turn1:property29",
+      "task_id": "alpaca:43920",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "d382943877d1fa3e0db13c36c4ec2945613d3573b389d0e76d390f3cb547604e",
+      "messages_sha256": "be24a0073931cc56a0872e32ac829f3af350130b75b00e0689e60641c0d6fcfd",
+      "verdict": "pass",
+      "criterion": "13:10 converts to 1:10 PM; accept 01:10 and p.m. punctuation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:43920:turn1:property29",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "明确13:10转换为1:10 PM，小时减12且保留下午。",
+        "answer_sha256": "d382943877d1fa3e0db13c36c4ec2945613d3573b389d0e76d390f3cb547604e"
+      }
+    },
+    {
+      "property_id": "alpaca:43920:turn1:property29",
+      "task_id": "alpaca:43920",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "24e463b1e3749828115fa5f7d0705a12d6ae8479efbf03cfa5fe6ad8f88314b4",
+      "messages_sha256": "f5f24663731dd1b16b839784e3348d446df94933475c6f806e77e9661b87232d",
+      "verdict": "pass",
+      "criterion": "13:10 converts to 1:10 PM; accept 01:10 and p.m. punctuation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:43920:turn1:property29",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确13:10转换为1:10 PM，小时减12且保留下午。",
+        "answer_sha256": "24e463b1e3749828115fa5f7d0705a12d6ae8479efbf03cfa5fe6ad8f88314b4"
+      }
+    },
+    {
+      "property_id": "alpaca:12808:turn1:property30",
+      "task_id": "alpaca:12808",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "8d414e07112f5e7c517e91ed335bc18c49ee8fc7ba53775cf2d017f3aa75351e",
+      "messages_sha256": "903aa3d849cc839de268baeeb9e38943467727eb7f644329d4836bd7731571d8",
+      "verdict": "pass",
+      "criterion": "French translation of book: livre; equivalent appropriate nouns can be accepted with explanation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:12808:turn1:property30",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "明确将名词book译为法语livre。",
+        "answer_sha256": "8d414e07112f5e7c517e91ed335bc18c49ee8fc7ba53775cf2d017f3aa75351e"
+      }
+    },
+    {
+      "property_id": "alpaca:12808:turn1:property30",
+      "task_id": "alpaca:12808",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "55a2e8dcde74f19ee76c461c4839847cc07f20d723dc697fcdac67277bdf1587",
+      "messages_sha256": "5e10cb204d8d4a31f254e6ebfe1504befd69078f7f7ba633decc9127d00bd373",
+      "verdict": "pass",
+      "criterion": "French translation of book: livre; equivalent appropriate nouns can be accepted with explanation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:12808:turn1:property30",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "明确将名词book译为法语livre。",
+        "answer_sha256": "55a2e8dcde74f19ee76c461c4839847cc07f20d723dc697fcdac67277bdf1587"
+      }
+    },
+    {
+      "property_id": "alpaca:12808:turn1:property30",
+      "task_id": "alpaca:12808",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "7e61392e870ef61aa19a125e06530e1205de1dfc2a8af168b7e8b6835683dc18",
+      "messages_sha256": "97c27b32126f31c47d11dc835288dd584da49b8b284238913534c38356333cc9",
+      "verdict": "pass",
+      "criterion": "French translation of book: livre; equivalent appropriate nouns can be accepted with explanation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:12808:turn1:property30",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "明确将名词book译为法语livre。",
+        "answer_sha256": "7e61392e870ef61aa19a125e06530e1205de1dfc2a8af168b7e8b6835683dc18"
+      }
+    },
+    {
+      "property_id": "alpaca:12808:turn1:property30",
+      "task_id": "alpaca:12808",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "8d414e07112f5e7c517e91ed335bc18c49ee8fc7ba53775cf2d017f3aa75351e",
+      "messages_sha256": "903aa3d849cc839de268baeeb9e38943467727eb7f644329d4836bd7731571d8",
+      "verdict": "pass",
+      "criterion": "French translation of book: livre; equivalent appropriate nouns can be accepted with explanation.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:12808:turn1:property30",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "明确将名词book译为法语livre。",
+        "answer_sha256": "8d414e07112f5e7c517e91ed335bc18c49ee8fc7ba53775cf2d017f3aa75351e"
+      }
+    },
+    {
+      "property_id": "alpaca:1596:turn1:property31",
+      "task_id": "alpaca:1596",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80",
+      "messages_sha256": "b5c49b825a87e395d4494dbeedd1c4645a2492d22b9c22ed8526e814c7b2fbe3",
+      "verdict": "pass",
+      "criterion": "An appropriate Spanish greeting for good morning, e.g. Buenos dias with or without accent.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:1596:turn1:property31",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "输出Buenos días，符合西班牙语早晨问候。",
+        "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80"
+      }
+    },
+    {
+      "property_id": "alpaca:1596:turn1:property31",
+      "task_id": "alpaca:1596",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80",
+      "messages_sha256": "b5c49b825a87e395d4494dbeedd1c4645a2492d22b9c22ed8526e814c7b2fbe3",
+      "verdict": "pass",
+      "criterion": "An appropriate Spanish greeting for good morning, e.g. Buenos dias with or without accent.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:1596:turn1:property31",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "输出Buenos días，符合西班牙语早晨问候。",
+        "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80"
+      }
+    },
+    {
+      "property_id": "alpaca:1596:turn1:property31",
+      "task_id": "alpaca:1596",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80",
+      "messages_sha256": "b5c49b825a87e395d4494dbeedd1c4645a2492d22b9c22ed8526e814c7b2fbe3",
+      "verdict": "pass",
+      "criterion": "An appropriate Spanish greeting for good morning, e.g. Buenos dias with or without accent.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:1596:turn1:property31",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "输出Buenos días，符合西班牙语早晨问候。",
+        "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80"
+      }
+    },
+    {
+      "property_id": "alpaca:1596:turn1:property31",
+      "task_id": "alpaca:1596",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80",
+      "messages_sha256": "b5c49b825a87e395d4494dbeedd1c4645a2492d22b9c22ed8526e814c7b2fbe3",
+      "verdict": "pass",
+      "criterion": "An appropriate Spanish greeting for good morning, e.g. Buenos dias with or without accent.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:1596:turn1:property31",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "输出Buenos días，符合西班牙语早晨问候。",
+        "answer_sha256": "21aebc48383652046150c3663a57b1cb5bf957b5ece024deb9cbc087478cdf80"
+      }
+    },
+    {
+      "property_id": "alpaca:33631:turn1:property32",
+      "task_id": "alpaca:33631",
+      "turn": 1,
+      "check": "redaction_literals",
+      "arm": "ASD",
+      "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b",
+      "messages_sha256": "7667c32fc0d6ccd2432f44a305a9be7b393edc69426c2feffbeff9a7b31c46bd",
+      "verdict": "fail",
+      "details": {
+        "leaked_labels": [
+          "first_name",
+          "surname",
+          "street_number",
+          "street_name",
+          "unit",
+          "city",
+          "state",
+          "postal"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:33631:turn1:property32",
+        "label": "A",
+        "verdict": "fail",
+        "reason": "自动失败有效：原样保留题干姓名及完整地址标识，没有去除指定字面量。",
+        "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b"
+      }
+    },
+    {
+      "property_id": "alpaca:33631:turn1:property32",
+      "task_id": "alpaca:33631",
+      "turn": 1,
+      "check": "redaction_literals",
+      "arm": "BudgetTree",
+      "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c",
+      "messages_sha256": "fcfa5368b2ba02becb1644f0fb823deb93edfab902b894d32512782701248d1f",
+      "verdict": "fail",
+      "details": {
+        "leaked_labels": [
+          "first_name",
+          "surname"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:33631:turn1:property32",
+        "label": "B",
+        "verdict": "fail",
+        "reason": "地址部分替为REDACTED，但仍保留题干完整姓名，未满足所有字面量移除。",
+        "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c"
+      }
+    },
+    {
+      "property_id": "alpaca:33631:turn1:property32",
+      "task_id": "alpaca:33631",
+      "turn": 1,
+      "check": "redaction_literals",
+      "arm": "DFlash",
+      "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c",
+      "messages_sha256": "fcfa5368b2ba02becb1644f0fb823deb93edfab902b894d32512782701248d1f",
+      "verdict": "fail",
+      "details": {
+        "leaked_labels": [
+          "first_name",
+          "surname"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:33631:turn1:property32",
+        "label": "C",
+        "verdict": "fail",
+        "reason": "与B相同，保留完整姓名，自动失败有效。",
+        "answer_sha256": "aae1d08c57e3e0f01ee2bb4279638311cf2ddf08ec194ac727708f80c857118c"
+      }
+    },
+    {
+      "property_id": "alpaca:33631:turn1:property32",
+      "task_id": "alpaca:33631",
+      "turn": 1,
+      "check": "redaction_literals",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b",
+      "messages_sha256": "7667c32fc0d6ccd2432f44a305a9be7b393edc69426c2feffbeff9a7b31c46bd",
+      "verdict": "fail",
+      "details": {
+        "leaked_labels": [
+          "first_name",
+          "surname",
+          "street_number",
+          "street_name",
+          "unit",
+          "city",
+          "state",
+          "postal"
+        ]
+      },
+      "raw_automatic_verdict": "fail",
+      "agent_review": {
+        "property_id": "alpaca:33631:turn1:property32",
+        "label": "D",
+        "verdict": "fail",
+        "reason": "与A相同，原样保留全部识别字面量。",
+        "answer_sha256": "b1d278515bde676b7f26e0b247267d4e9a68f118f6ddf4238b7bcf1f4274632b"
+      }
+    },
+    {
+      "property_id": "alpaca:34902:turn1:property33",
+      "task_id": "alpaca:34902",
+      "turn": 1,
+      "check": "section_order",
+      "arm": "BudgetTree",
+      "answer_sha256": "9d42330db07a8c3d15bf8b3e9c7d2a717de0e91ea4aa482ace17be7c6a999ff5",
+      "messages_sha256": "09ce919419afee715f727c7f178c85fa43a5d8c5c6b8b65c7d824761fb2c9c5d",
+      "verdict": "pass",
+      "details": {
+        "section_labels": [
+          "footer",
+          "header",
+          "body",
+          "footer"
+        ]
+      }
+    },
+    {
+      "property_id": "alpaca:34902:turn1:property33",
+      "task_id": "alpaca:34902",
+      "turn": 1,
+      "check": "section_order",
+      "arm": "ASD",
+      "answer_sha256": "e3af7f36d23d995c032f78748cbab885242f1d1bc6757ac40d2cd47b7e8b2ae5",
+      "messages_sha256": "906561ec2dc9c68c45fc0cd7d4d190e86989153fff9cb27110364dc0e4cbbfd2",
+      "verdict": "pass",
+      "details": {
+        "section_labels": [
+          "header",
+          "body",
+          "footer"
+        ]
+      }
+    },
+    {
+      "property_id": "alpaca:34902:turn1:property33",
+      "task_id": "alpaca:34902",
+      "turn": 1,
+      "check": "section_order",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "1d7c551024abd76eae5060ee2d65d7a460312e36e5b50bf293728dd22e6d871f",
+      "messages_sha256": "d381a11579b8993e7b3e5a9265f0d95aea90c2cfac10c62a550bb0584d7f113c",
+      "verdict": "pass",
+      "details": {
+        "section_labels": [
+          "header",
+          "body",
+          "footer"
+        ]
+      }
+    },
+    {
+      "property_id": "alpaca:34902:turn1:property33",
+      "task_id": "alpaca:34902",
+      "turn": 1,
+      "check": "section_order",
+      "arm": "DFlash",
+      "answer_sha256": "9d42330db07a8c3d15bf8b3e9c7d2a717de0e91ea4aa482ace17be7c6a999ff5",
+      "messages_sha256": "09ce919419afee715f727c7f178c85fa43a5d8c5c6b8b65c7d824761fb2c9c5d",
+      "verdict": "pass",
+      "details": {
+        "section_labels": [
+          "footer",
+          "header",
+          "body",
+          "footer"
+        ]
+      }
+    },
+    {
+      "property_id": "alpaca:47322:turn1:property34",
+      "task_id": "alpaca:47322",
+      "turn": 1,
+      "check": "manual",
+      "arm": "DFlash",
+      "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa",
+      "messages_sha256": "4a3ca0ae89e637aec6e6d9dc910194fec5c4912b4be145d5ce7795ba80a028f7",
+      "verdict": "pass",
+      "criterion": "Python code computes triangle area for its declared interface (base/height, side lengths, or coordinates). Do not require one function name or an interface absent from the prompt.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47322:turn1:property34",
+        "label": "A",
+        "verdict": "pass",
+        "reason": "声明的base/height接口使用base*height/2，例base=10,height=5得25；提供的Heron替代在有效边长上公式也正确。",
+        "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa"
+      }
+    },
+    {
+      "property_id": "alpaca:47322:turn1:property34",
+      "task_id": "alpaca:47322",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree",
+      "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa",
+      "messages_sha256": "4a3ca0ae89e637aec6e6d9dc910194fec5c4912b4be145d5ce7795ba80a028f7",
+      "verdict": "pass",
+      "criterion": "Python code computes triangle area for its declared interface (base/height, side lengths, or coordinates). Do not require one function name or an interface absent from the prompt.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47322:turn1:property34",
+        "label": "B",
+        "verdict": "pass",
+        "reason": "声明的base/height接口使用base*height/2，例base=10,height=5得25；提供的Heron替代在有效边长上公式也正确。",
+        "answer_sha256": "707e9bf670c5389188731f2f35cb61de2b6c99ad32d2070d6f76af50e006f6fa"
+      }
+    },
+    {
+      "property_id": "alpaca:47322:turn1:property34",
+      "task_id": "alpaca:47322",
+      "turn": 1,
+      "check": "manual",
+      "arm": "ASD",
+      "answer_sha256": "1ec30a53d37968b21ac8041cf3ee19dbd833e661e318095c8d46f4f8324db713",
+      "messages_sha256": "68654a9ee1b7a4da775d8625e436510c881879af2c9d1794359700f34552386e",
+      "verdict": "pass",
+      "criterion": "Python code computes triangle area for its declared interface (base/height, side lengths, or coordinates). Do not require one function name or an interface absent from the prompt.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47322:turn1:property34",
+        "label": "C",
+        "verdict": "pass",
+        "reason": "声明的base/height接口使用base*height/2，例base=10,height=5得25；提供的Heron替代在有效边长上公式也正确。",
+        "answer_sha256": "1ec30a53d37968b21ac8041cf3ee19dbd833e661e318095c8d46f4f8324db713"
+      }
+    },
+    {
+      "property_id": "alpaca:47322:turn1:property34",
+      "task_id": "alpaca:47322",
+      "turn": 1,
+      "check": "manual",
+      "arm": "BudgetTree-ASD",
+      "answer_sha256": "adbd174dd0e1098c171e6a1eca84d49ab3e62c75ea38f55ee8af3fbcd3dcd4cd",
+      "messages_sha256": "d127835134f29e6da5fcf9dd7750551ad7da2b037571c679e3182d84cf8fc9ca",
+      "verdict": "pass",
+      "criterion": "Python code computes triangle area for its declared interface (base/height, side lengths, or coordinates). Do not require one function name or an interface absent from the prompt.",
+      "raw_automatic_verdict": "needs_review",
+      "agent_review": {
+        "property_id": "alpaca:47322:turn1:property34",
+        "label": "D",
+        "verdict": "pass",
+        "reason": "声明的base/height接口使用base*height/2，例base=10,height=5得25；提供的Heron替代在有效边长上公式也正确。",
+        "answer_sha256": "adbd174dd0e1098c171e6a1eca84d49ab3e62c75ea38f55ee8af3fbcd3dcd4cd"
+      }
+    }
+  ],
+  "summary": [
+    {
+      "benchmark": "alpaca",
+      "arm": "ASD",
+      "fail": 3,
+      "pass": 15
+    },
+    {
+      "benchmark": "alpaca",
+      "arm": "BudgetTree",
+      "pass": 17,
+      "fail": 1
+    },
+    {
+      "benchmark": "alpaca",
+      "arm": "BudgetTree-ASD",
+      "fail": 3,
+      "pass": 15
+    },
+    {
+      "benchmark": "alpaca",
+      "arm": "DFlash",
+      "pass": 17,
+      "fail": 1
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "ASD",
+      "pass": 13,
+      "fail": 3
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "BudgetTree",
+      "pass": 12,
+      "fail": 4
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "BudgetTree-ASD",
+      "pass": 13,
+      "fail": 3
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "DFlash",
+      "pass": 12,
+      "fail": 4
+    }
+  ],
+  "primary_scores_unchanged": true,
+  "scope": "Counts refer to selected properties, not full-answer accuracy or independent samples."
+}

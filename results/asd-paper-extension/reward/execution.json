@@ -1,0 +1,21 @@
+{
+  "status": "complete",
+  "source_commit": "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+  "source_sha256": "d39de7b926d6d49ca3750374ddfd52b012e12ee9e92bdfaa13623a41d3b81029",
+  "generation_source_commits": [
+    "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+    "1d39c56e5a81c896077258433b476af1a934ce6f"
+  ],
+  "reused_previously_verified_checkpoint": true,
+  "start_utc": "2026-10-25T05:56:41.941018+00:00",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "transformers": "4.52.2",
+  "supervisor_sha256": "e095c9855a320b8170df9a45d71cdb16ea1d855088914f8d249ff40d64d46e78",
+  "source_files_verified_before": 2330,
+  "pid": 29640,
+  "exit_code": 0,
+  "reward_status": "complete",
+  "wall_seconds": 93.61109280004166,
+  "end_utc": "2026-10-25T05:58:27.977420+00:00",
+  "source_files_verified_after": 2330
+}

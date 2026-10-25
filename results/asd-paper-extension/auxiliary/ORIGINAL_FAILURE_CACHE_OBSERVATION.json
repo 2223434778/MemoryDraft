@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-25T02:17:46.402564+00:00",
+  "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension",
+  "cache": [
+    {
+      "shard": 0,
+      "bytes": 415559,
+      "files": 52
+    },
+    {
+      "shard": 1,
+      "bytes": 415559,
+      "files": 52
+    }
+  ],
+  "scope": "Read after interrupted run; original completed-prefix graph counts remain in original provenance"
+}

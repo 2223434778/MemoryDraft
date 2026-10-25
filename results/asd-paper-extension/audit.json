@@ -1,0 +1,21 @@
+{
+  "source_commit": "1d39c56e5a81c896077258433b476af1a934ce6f",
+  "source_files": 2341,
+  "original_payloads": 120,
+  "old_inputs_and_payloads_verified": 1117,
+  "primary_raw": 9540,
+  "references": 530,
+  "frontier": 640,
+  "emitted_position_trajectories": 7000,
+  "resources_and_old_infra_preserved": true,
+  "reconstruction_numerically_equal": true,
+  "original_source_commit": "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+  "original_source_files": 2330,
+  "reused_complete_sources": 172,
+  "cross_geometry_observations": 4,
+  "strict_vs_ar_first_repeat_differences": 2,
+  "strict_AR_bit_identity_claim": false,
+  "actual_pass_diagnosed_comparisons": 2,
+  "maximum_first_difference_logit_delta": 1.52587890625e-05,
+  "numerical_diagnosis_scope": "Actual-pass first-divergence replay for every recorded token-identity case; no whole-sequence bit-identity claim"
+}

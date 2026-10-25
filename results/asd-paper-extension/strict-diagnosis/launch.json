@@ -1,0 +1,12 @@
+{
+  "pid": 2727063,
+  "command": [
+    "timeout",
+    "1200",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "artifacts/diagnose_extension_strict.py"
+  ],
+  "started_utc": "2026-10-24T14:27:39.816130+00:00",
+  "helper_sha256": "6b004de62526f9a04b406e888b5d82aa5162d4501fe5da31efd828723e8b4cc1"
+}

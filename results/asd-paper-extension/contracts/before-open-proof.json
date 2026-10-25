@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-24T12:38:06.246406+00:00",
+  "workers": [
+    {"shard": 0, "completed_tasks": 38, "current_benchmark": "gsm8k", "completed_benchmarks": ["gsm8k"], "primary_timed": 684, "frontier": 40},
+    {"shard": 1, "completed_tasks": 39, "current_benchmark": "gsm8k", "completed_benchmarks": ["gsm8k"], "primary_timed": 702, "frontier": 40}
+  ],
+  "no_open_response_generated": true,
+  "method": "Frozen worker order; completed and current source families precede MT/Alpaca; no rollout file exists.",
+  "property_plan_sha256": "7684f4063874ad1f86fbbe651365927277bc26d056dfde4f717a8b001e21993e"
+}

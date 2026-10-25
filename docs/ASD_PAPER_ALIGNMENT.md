@@ -21,4 +21,6 @@
 
 调用量字段以验证轮数为定义，不包含初始Target prefill；完整请求wall仍包含prefill及全部在线成本。共同128输出仅控制生成量，不要求不同近似路径的中间状态完全相同，不把它当同状态因果干预。
 
+2026-10-25执行补充：514源任务/530匹配输入、9540主计时/640控制/320奖励评分已完成。初始波次在math500:323的AR身份断言处停止；重放证明实际Target近并列排序在不同前向形状下交换，接受逻辑未变，按[续跑修订](ASD_EXTENSION_CONTINUATION_PROTOCOL.md)单列身份差异并保留所有失败证据。最终严格树与DFlash在530自然输入、三阶段1590对照上完全同输出；二者各在该一题与AR不同，不称全量AR逐字一致。1060相邻严格对照中2对漂移>3%全部保留。主报告跨平台重建逐字节相同；[完整本轮结论](ASD_PAPER_EXTENSION_FINDINGS.md)与文献、旧AR对照及开放代理的范围分开。
+
 核验文件Git blob：README `a999325c5109b5a61c0f019bc227d452a7415fc1`；EVALUATION `a81f6bf12146e73c164f0a6ab0876c6b64a6cc5f`；[适配文档](https://github.com/Kissmetothemoon/ASD/blob/9426ce7b3b8cafb2d34f675a5bb9db2ebf0259f6/docs/DEEPSPEC_DSPARK.md) `5925b34e374c28e5fe2325a4dec29faeead1f4e3`。本次只读复核，没有导入新的上游推理代码、改变库版本或修改正在生成的实验。

@@ -1,0 +1,12 @@
+{
+  "source_commit": "6d89480c52e0d89714778668c25ef7027a9f0ac8",
+  "source_sha256": "d39de7b926d6d49ca3750374ddfd52b012e12ee9e92bdfaa13623a41d3b81029",
+  "files_verified": 2330,
+  "base_commit": "4a33ae58c8c35d5f0219ed3366a5150d70d02274",
+  "delta_bytes": 1205416,
+  "delta_sha256": "56f6c366cef6aafa477c2ff9691bc57f126131a124824bbcb5f32cbc30826426",
+  "full_zip_bytes": 38110237,
+  "full_zip_sha256": "5e4dbe6b575aa9c8ff456afa11bcc51002b3cfbd21a4a2f79b121d8fc75daff0",
+  "partial_full_upload_bytes": 11567104,
+  "utc": "2026-10-24T11:53:10.024588+00:00"
+}

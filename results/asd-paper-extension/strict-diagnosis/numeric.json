@@ -1,0 +1,34 @@
+{
+  "index": 602,
+  "strict_repeat_matches": {
+    "equal": true,
+    "index": 1125,
+    "left_tokens": 1125,
+    "right_tokens": 1125,
+    "left_id": null,
+    "right_id": null
+  },
+  "shortened_ar_matches_full": true,
+  "strict_pass": {
+    "argmax_id": 2383,
+    "second_id": 1744,
+    "top_two_gap": 7.62939453125e-06,
+    "relative_first_over_second": -7.62939453125e-06
+  },
+  "ar_pass": {
+    "argmax_id": 1744,
+    "second_id": 2383,
+    "top_two_gap": 1.71661376953125e-05,
+    "relative_first_over_second": 1.71661376953125e-05
+  },
+  "full_prefix_pass": {
+    "argmax_id": 1744,
+    "second_id": 2383,
+    "top_two_gap": 1.1444091796875e-05,
+    "relative_first_over_second": 1.1444091796875e-05
+  },
+  "strict_vs_ar_max_abs": 1.52587890625e-05,
+  "strict_vs_full_max_abs": 1.52587890625e-05,
+  "context": " on the circle.\n\nWe can think of the circle as a",
+  "rule": "Every strict emitted token must equal its actual-pass argmax. No epsilon acceptance or prompt changes."
+}

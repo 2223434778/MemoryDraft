@@ -1,0 +1,7 @@
+{
+  "observed_utc": "2026-10-24T14:15:46.318528+00:00",
+  "source_files_verified_after_failure": 2330,
+  "source_sha256": "d39de7b926d6d49ca3750374ddfd52b012e12ee9e92bdfaa13623a41d3b81029",
+  "failed_results_zip_bytes": 6470691,
+  "failed_results_zip_sha256": "8bc43b76d55124012b364986d72d823dc8b064a8ae8ff1324c6d4ed72e39f691"
+}

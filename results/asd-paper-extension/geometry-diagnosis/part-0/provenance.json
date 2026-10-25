@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "shard": 0,
+  "source_commit": "1d39c56e5a81c896077258433b476af1a934ce6f",
+  "source_sha256": "fa31110fd6487fbb98de3bbe9e2e3b5705142053d0f206d97721d83d91fdabd5",
+  "files_verified_before": 2341,
+  "helper_sha256": "2894ef5a77bf57bd830fafecd6b21aceaa00cffae488807db9cb36e8193bdf4f",
+  "physical_gpu": "0",
+  "planned_comparisons": 0,
+  "comparisons": [],
+  "scope": "Actual-pass argmax and first-divergence diagnostics; no acceptance changes or speed evidence",
+  "files_verified_after": 2341
+}

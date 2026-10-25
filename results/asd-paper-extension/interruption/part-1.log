@@ -1,0 +1,105 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.43s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.43s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.42s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.33s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.01s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.18s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+completed gsm8k gsm8k:110 18 20
+completed gsm8k gsm8k:1048 36 40
+completed gsm8k gsm8k:584 54 40
+completed gsm8k gsm8k:966 72 40
+completed gsm8k gsm8k:1028 90 40
+completed gsm8k gsm8k:433 108 40
+completed gsm8k gsm8k:169 126 40
+completed gsm8k gsm8k:1027 144 40
+completed gsm8k gsm8k:199 162 40
+completed gsm8k gsm8k:1289 180 40
+completed gsm8k gsm8k:400 198 40
+completed gsm8k gsm8k:620 216 40
+completed gsm8k gsm8k:751 234 40
+completed gsm8k gsm8k:689 252 40
+completed gsm8k gsm8k:384 270 40
+completed gsm8k gsm8k:1106 288 40
+completed gsm8k gsm8k:1161 306 40
+completed gsm8k gsm8k:123 324 40
+completed gsm8k gsm8k:1258 342 40
+completed gsm8k gsm8k:1096 360 40
+completed gsm8k gsm8k:1067 378 40
+completed gsm8k gsm8k:749 396 40
+completed gsm8k gsm8k:569 414 40
+completed gsm8k gsm8k:184 432 40
+completed gsm8k gsm8k:349 450 40
+completed gsm8k gsm8k:224 468 40
+completed gsm8k gsm8k:1052 486 40
+completed gsm8k gsm8k:933 504 40
+completed gsm8k gsm8k:273 522 40
+completed gsm8k gsm8k:601 540 40
+completed gsm8k gsm8k:731 558 40
+completed gsm8k gsm8k:759 576 40
+completed gsm8k gsm8k:568 594 40
+completed gsm8k gsm8k:506 612 40
+completed gsm8k gsm8k:480 630 40
+completed gsm8k gsm8k:519 648 40
+completed gsm8k gsm8k:805 666 40
+completed gsm8k gsm8k:1235 684 40
+completed gsm8k gsm8k:1260 702 40
+completed gsm8k gsm8k:1054 720 40
+completed gsm8k gsm8k:1182 738 40
+completed gsm8k gsm8k:546 756 40
+completed gsm8k gsm8k:245 774 40
+completed gsm8k gsm8k:758 792 40
+completed gsm8k gsm8k:474 810 40
+completed gsm8k gsm8k:219 828 40
+completed gsm8k gsm8k:631 846 40
+completed gsm8k gsm8k:1091 864 40
+completed gsm8k gsm8k:165 882 40
+completed gsm8k gsm8k:191 900 40
+completed gsm8k gsm8k:97 918 40
+completed gsm8k gsm8k:833 936 40
+completed gsm8k gsm8k:891 954 40
+completed gsm8k gsm8k:854 972 40
+completed gsm8k gsm8k:540 990 40
+completed gsm8k gsm8k:984 1008 40
+completed gsm8k gsm8k:45 1026 40
+completed gsm8k gsm8k:556 1044 40
+completed gsm8k gsm8k:542 1062 40
+completed gsm8k gsm8k:411 1080 40
+completed gsm8k gsm8k:776 1098 40
+completed gsm8k gsm8k:872 1116 40
+completed gsm8k gsm8k:331 1134 40
+completed gsm8k gsm8k:648 1152 40
+completed math500 math500:327 1170 60
+completed math500 math500:79 1188 80
+completed math500 math500:406 1206 80
+completed math500 math500:260 1224 80
+completed math500 math500:168 1242 80
+completed math500 math500:222 1260 80
+completed math500 math500:391 1278 80
+completed math500 math500:445 1296 80
+completed math500 math500:31 1314 80
+completed math500 math500:311 1332 80
+completed math500 math500:402 1350 80
+completed math500 math500:343 1368 80
+completed math500 math500:499 1386 80
+completed math500 math500:124 1404 80
+completed math500 math500:484 1422 80
+completed math500 math500:378 1440 80
+completed math500 math500:482 1458 80
+completed math500 math500:228 1476 80
+completed math500 math500:330 1494 80
+completed math500 math500:177 1512 80
+completed math500 math500:328 1530 80
+completed math500 math500:361 1548 80
+completed math500 math500:379 1566 80
+completed math500 math500:451 1584 80
+completed math500 math500:233 1602 80
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension/scripts/run_asd_paper_extension.py", line 156, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension/scripts/run_asd_paper_extension.py", line 98, in main
+    row=run(arm,limit,stage=stage,repeat=repeat)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/asd-paper-extension/scripts/run_asd_paper_extension.py", line 87, in run
+    if row['token_ids']!=ref['token_ids'][:limit]:raise ValueError('Strict AR token mismatch')
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Strict AR token mismatch
