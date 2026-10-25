@@ -1,5 +1,10 @@
 # 项目进度
 
+## 2026-10-25 — 树 + ASD 架构通俗说明
+
+- 新增`docs/ASD_TREE_ARCHITECTURE.md`，从线性候选中断示例解释成本树与ASD的配合，覆盖DFlash单次分布复用、路径质量/成本选树、祖先attention、树上预算选路和KV/特征提交，并以已发布七任务结果解释接受长度增加与验证轮次减少带来的时延收益。明确BudgetTree-ASD与严格BudgetTree、Joint的对应关系，示例数字与实测数字分开。
+- README顶部加入架构入口；核对依据为`memorydraft/backends/{budget_tree,draft_tree,dflash_reuse,asd}.py`、`scripts/run_asd_tree.py`及冻结结果报告。11个本地链接、4个实现文件的代码标识、3行接受长度/轮次/时延实测数据、UTF8/代码块检查和`git diff --check`通过；`.venv\Scripts\python.exe -m results.asd-paper-extension.helpers.verify_publication --git`再次核验174份结果文件、2份报告哈希及面试版引用通过。仅修改3份说明文档，不更改推理实现和原实验载荷，不重跑GPU；发布到`codex/asd-splice`。
+
 ## 2026-10-25 — 七任务独立扩样、预算控制和开放审查完成
 
 - 两worker均complete257源任务/4770主计时/320控制/32自身历史第二轮；全514源任务、530匹配输入、9540主计时、640控制、530自然AR、64真实自身历史第二轮完成。172完整源任务复用原行字节，342源任务在隔离续跑会话完整执行；两会话32预热及原失败/数值诊断另列。GSM/MATH/HumanEval/MBPP/MMLU/MT/Alpaca全部保留，无按结果筛题或新seed。

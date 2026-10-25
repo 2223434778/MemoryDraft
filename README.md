@@ -1,5 +1,7 @@
 # MemoryDraft
 
+**算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
+
 > [七任务独立扩样完成](docs/ASD_PAPER_EXTENSION_FINDINGS.md)：514新源任务/530匹配输入，四组9540主计时、640预算控制、320奖励评分及136局部性质检查完成。
 > 严格成本树在530自然请求上保留DFlash输出，在GSM/MATH/HumanEval/MBPP/MT/Alpaca自然时延分别省10.25%/6.19%/2.64%/14.87%/13.92%/17.15%。
 > 树+ASD较ASD在新GSM/MBPP/Alpaca省7.72%/10.21%/17.89%，MT自身历史双轮省12.93%；MATH慢5.50%、HumanEval正确53→52，MMLU格式合同损失保留。
