@@ -1,10 +1,10 @@
 # MemoryDraft
 
-**DSpark等价优化：**[请求冷缓存与安全停搜](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成28匹配输入/448次计时，较原DSpark树组合在Alpaca/HumanEval/MT省时2.55%/4.26%/3.05%，112配对生成的选树、输出及ASD账本一致。扩样Alpaca较本轮DFlash组合省16.88%，代码与MT仍由DFlash更快；原模型/结果保留。[完整表](docs/DSPARK_TREE_OPT_RESULTS.md)。
+**当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 
-**新增底座验证：**[DSpark + 成本树 + ASD](docs/DSPARK_TREE_FINDINGS.md)已接入，七类28源任务/32匹配输入、1024主计时完成。DSpark组合在Alpaca较原组合省时2.63%，多数本轮任务仍由原DFlash组合更快；DSpark内部加入树后Alpaca省时10.45%、固定TPS增20.76%。[完整八组表](docs/DSPARK_TREE_RESULTS.md)与旧DFlash版本分别保留。
+**DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。
 
 > [七任务独立扩样完成](docs/ASD_PAPER_EXTENSION_FINDINGS.md)：514新源任务/530匹配输入，四组9540主计时、640预算控制、320奖励评分及136局部性质检查完成。
 > 严格成本树在530自然请求上保留DFlash输出，在GSM/MATH/HumanEval/MBPP/MT/Alpaca自然时延分别省10.25%/6.19%/2.64%/14.87%/13.92%/17.15%。

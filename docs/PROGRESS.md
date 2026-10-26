@@ -1,3 +1,9 @@
+# 2026-10-26 — 按用户决定停止DSpark，继续DFlash主线
+
+- 用户决定放弃DSpark后续研究，继续DFlash。后续研究主线为DFlash + 成本树 + ASD；停止DSpark优化、扩样和训练投入，已完成的正负结果、源码、权重目录与实验分支保留，不删除或重写旧记录。
+- 从已发布f56561438a68f7362ffc8cec61f409b248c5f4f0创建`codex/dflash-mainline`，原`codex/dspark-tree-opt`、`codex/dspark-tree`、`codex/asd-splice`及面试版引用不变。仅更新README和本进度文件，不修改推理实现、配置、Target或接受规则；当前CLI/服务默认严格验证，研究ASD显式启用。
+- 检查`memorydraft/runtime/config.py`及configs/runtime入口：DSpark仍只存在于独立实验路径，无需切换默认模型。命令`git switch -c codex/dflash-mainline`；文档检查`git diff --check`；发布校验`.venv\Scripts\python.exe -m results.dspark-tree-opt.helpers.verify_publication --git`、`-m results.dspark-tree.helpers.verify_publication --git`、`-m results.asd-paper-extension.helpers.verify_publication --git`。本次没有新GPU运行或新性能结论；历史结果路径保持`results/dspark-tree*`及`results/asd-paper-extension`。
+
 # 2026-10-26 — DSpark等价优化与复测完成
 
 - 发布提交前的覆盖检查发现manifest误收本地__pycache__字节码（Git正常忽略），已仅移除该非结果条目；21原ZIP成员和全部实验/报告字节不变。修正后逐一核对索引/最终Git blobs再推送，保留提交修正记录。
