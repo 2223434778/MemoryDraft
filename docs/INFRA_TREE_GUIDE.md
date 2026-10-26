@@ -54,7 +54,7 @@ profile复用`build_tree`、`target_verify`等已有阶段，单独运行，不�
 
 ## 验证与归档
 
-本机专项及CLI/服务回归已通过；真实A6000验收按[冻结协议](INFRA_TREE_ACCEPTANCE_PROTOCOL.md)进行，最终运行状态以`results/infra-tree-v04`为准。该验收证明部署入口和研究实现一致，不重算或扩大旧论文研究结论。
+本机完整1144项测试通过/7跳过，A6000专项150项通过；真实模型60次计时、12次同配置研究实现对照、取消恢复及JSON/SSE接口验收完成，正式新编译图0。真实模型接口使用ASGI TestClient，不是新增TCP容量测试。见[验收报告](INFRA_TREE_VALIDATION.md)、[冻结协议](INFRA_TREE_ACCEPTANCE_PROTOCOL.md)与`results/infra-tree-v04`。该验收证明部署入口和研究实现一致，不重算或扩大旧论文研究结论。
 
 旧发布工具的`--git`源保护检查面向发布时HEAD，新版runtime会合法演进；使用以下命令核验旧载荷和对应冻结Git源：
 
@@ -62,4 +62,4 @@ profile复用`build_tree`、`target_verify`等已有阶段，单独运行，不�
 python -m scripts.verify_frozen_releases
 ```
 
-不会重写已封存的旧结果、报告或验证脚本。v0.3固定引用及本地归档不变；新版独立副本与使用入口将在验收后记录。
+不会重写已封存的旧结果、报告或验证脚本。v0.3固定引用及本地归档不变；新版独立副本见[面试交付](INFRA_TREE_INTERVIEW.md)。

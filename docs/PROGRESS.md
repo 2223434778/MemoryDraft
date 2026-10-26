@@ -1,3 +1,11 @@
+# 2026-10-26 — Infra v0.4真实GPU验收完成
+
+- 成本树+DFlash+ASD已接入统一config/CLI/JSON-SSE/benchmark，部署指南INFRA_TREE_GUIDE、验收INFRA_TREE_VALIDATION、独立交付入口INFRA_TREE_INTERVIEW。严格BudgetTree和近似BudgetTree-ASD显式可选，原严格默认不变；近似评测不标为任务正确。生产路径没有研究脚本patch。
+- 实际GPU源2a779207cf98e929c5574f5ef82290bf70fc45f9（已推送），2628 canonical Git文件/sourceSHA279af9ebe7f67ad406a0ba611eaed48c5183616a41a47eb6309bc413398861bd；源ZIP65546416B/SHAcc877b2de9e39b31cb7578b96b78e71ded43793dca22895f48976ddb826cc22a。13:55:53 UTC在独立infra-tree-v04目录启动owned timeout PID275773，入口scripts.run_infra_tree_pipeline；执行前后源码SHA完全一致。
+- A6000专项150 passed/9.93s。真实CLI合成校准并输出绑定配置；6公开已观察请求、5方法、2重复=60主计时，另6 AR参考；36严格行token/prompt/snapshot一致，24近似行输入/预算合格且质量未评。严格树及组合的12组研究实现对照输出/轮次/账本一致，两方法取消后恢复。真实GPUengine ASGI TestClient的JSON/SSE token、成本表身份及ASD账本一致，不是新TCP容量测试。正式新图0，峰allocated34.596GiB。
+- 14:02:41 UTC收尾ZIP校验下载：153284B/SHAd02ffd728cf93cfba7c3148adbfba2e80698a47770c97b5e35f8a254b6a89fc5，15原始成员无损发布results/infra-tree-v04，含成本采样/逐请求行/接口结果/源码manifest/服务器测试。两卡结束19MiB/0%。本机1144 passed/7 skipped的完整XML、97项相关回归XML及干净wheel安装receipt并列保留，88包文件与实际GPU源一致。
+- 本机从原始行独立重建analysis和验收报告，命令.venv\Scripts\python.exe -m results.infra-tree-v04.helpers.audit --check；发布逐文件及Git审计用helpers.verify_publication --git；旧发布字节和固定Git对象用scripts.verify_frozen_releases核查（48/33/176个旧发布Git文件）。原v0.3独立本地副本423文件逐一SHA仍相同。新增v0.4固定分支/标签和独立导出沿用archive_infra --version 0.4，旧版路径不复用；实际归档manifest在独立目录保存，不上传权重或大trace。
+
 # 2026-10-26 — 成本树/ASD接入infra v0.4（GPU验收准备）
 
 - 用户要求将DFlash + 成本树 + ASD放入infra，已在codex/dflash-mainline实现显式CostTreeSpec、成本资产哈希/环境绑定、BudgetTree/BudgetTree-ASD方法、结果tree元数据和节点计数。复用原generate_reuse，不在生产入口patch研究函数；默认严格方法及旧v0.3交付保留。

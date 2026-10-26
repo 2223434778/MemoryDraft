@@ -418,6 +418,11 @@ results/dspark-tree/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-
 results/dspark-tree/**/*.log -whitespace
 results/dspark-tree/**/*.xml -whitespace
 docs/DSPARK*.md text eol=lf
+docs/INFRA_TREE*.md text eol=lf
+results/infra-tree-v04/** -text
+results/infra-tree-v04/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/infra-tree-v04/**/*.log -whitespace
+results/infra-tree-v04/**/*.xml -whitespace
 results/dspark-tree-opt/** -text
 results/dspark-tree-opt/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/dspark-tree-opt/**/*.log -whitespace

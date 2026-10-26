@@ -1,0 +1,86 @@
+[
+  {
+    "request_id": "gsm8k:1283",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 18,
+    "output_sha256": "8733a8a1204c3e0fde46c2ea258aae35b72ddf85953dc0e23f4f2e05d3dcaa45"
+  },
+  {
+    "request_id": "gsm8k:1283",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 15,
+    "output_sha256": "730c12aaa5ea6701ecda21806452decbf870db87326021e1742ff25c1845eedb"
+  },
+  {
+    "request_id": "gsm8k:110",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 22,
+    "output_sha256": "8a28ad4e1f49cdb5f4f379318323c7fd36543784f80543742e0b3f5f6bb6d6ae"
+  },
+  {
+    "request_id": "gsm8k:110",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 16,
+    "output_sha256": "daec0902f41ee6c1bff76696de059aa59772edd9d417a6a733ed25b75631f4fa"
+  },
+  {
+    "request_id": "humaneval:139",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 7,
+    "output_sha256": "a52bad2e6f4cbffcbb8c1bad2c437b439615624142ca2b3c382d70e6ca73f75f"
+  },
+  {
+    "request_id": "humaneval:139",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 7,
+    "output_sha256": "a52bad2e6f4cbffcbb8c1bad2c437b439615624142ca2b3c382d70e6ca73f75f"
+  },
+  {
+    "request_id": "mtbench:111:turn1",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 11,
+    "output_sha256": "f5d9c4748ff9bdf6bc2375a03e4355fc98f88a42e9ab0d81480e4cfab6b83c79"
+  },
+  {
+    "request_id": "mtbench:111:turn1",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 11,
+    "output_sha256": "7e40d910b1a2cdaeb697eabfba8e04078db8cff52360578bb0e48fa11621cba6"
+  },
+  {
+    "request_id": "alpaca:705",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 37,
+    "output_sha256": "d4244a1056492cc18044cb25db019ac8f1efdb51b6798865b1a8d74d84fa0df1"
+  },
+  {
+    "request_id": "alpaca:705",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 38,
+    "output_sha256": "5813a03a9c24fa2c3d6f04ae0bc0f43900c322d08d71c76218595ea9bce9064f"
+  },
+  {
+    "request_id": "alpaca:42416",
+    "method": "BudgetTree",
+    "exact": true,
+    "rounds": 28,
+    "output_sha256": "7cec09aa6145b98802d4ac41fb4f361bcb9d0a4fbf27380b412b03ff713d59cc"
+  },
+  {
+    "request_id": "alpaca:42416",
+    "method": "BudgetTree-ASD",
+    "exact": true,
+    "rounds": 25,
+    "output_sha256": "dbe3ac3fca97e75abc53ee0972300b76f64a3f38fbdd14e4c118d5bc52a0b1fd"
+  }
+]
