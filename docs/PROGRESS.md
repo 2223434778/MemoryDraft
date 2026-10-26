@@ -1,5 +1,7 @@
 # 2026-10-26 — DSpark等价优化与复测完成
 
+- 发布提交前的覆盖检查发现manifest误收本地__pycache__字节码（Git正常忽略），已仅移除该非结果条目；21原ZIP成员和全部实验/报告字节不变。修正后逐一核对索引/最终Git blobs再推送，保留提交修正记录。
+
 - 请求冷LRU64行Markov偏置缓存、保守上界停搜已实现，逐行FP32 GEMV及原ASD/Target/权重/块长不变。独立分支codex/dspark-tree-opt，封存源692ce0f72afcb2a706171fdd9d8a312e4b4deddc已推送；2586 canonical Git文件/sourceSHA6467d3045a97049d993a3a5f0124d0de4b736f51492b32bb90550d8a5fe79f68，源ZIP64266365B/SHA26d0b3eaf24f41cd71336f314d739427834904ab235432428f9be743eeb5cbf0，服务端执行前后逐文件核验一致。
 - 08:19:31 UTC在新目录/media/a6000/D/ZhaoBinHe/MemoryDraft/dspark-tree-opt以owned timeout PID73480启动scripts.run_dspark_tree_opt_pipeline。两卡官方骨干对照通过、164 passed/2 skipped；七族14源任务49真实GPU状态、四变体224消融行全部精确选树一致，构树耗时下降17.87%–67.88%。此前本机专项32、相关回归125 passed/2 skipped、后续参考覆盖/报告9 passed；旧扩展AR缺messages在部署前离线发现，保留来源、重建消息并核对实际prompt SHA/快照，未补造旧记录。
 - 正式Alpaca16/HumanEval4/MT4对话，24源/28匹配输入，四组448主计时完整完成；112次优化/原DSpark配对生成的完整选树摘要、token/text/停止/ASD账本相同。自然时延较原DSpark分别省2.55%/4.26%/3.05%，固定TPS增2.74%/4.34%/3.26%。Alpaca较本轮DFlash组合省16.88%、固定TPS增12.42%，原DSpark在本轮已省14.68%，不把扩样差异归为工程增量。HumanEval/MT仍较DFlash慢44.53%/16.40%；Human四组均4/4，开放质量未另重评。自然Human轮次DFlash43/DSpark65不变，说明短块瓶颈仍在。

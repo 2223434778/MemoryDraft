@@ -105,10 +105,6 @@
       "bytes": 183,
       "sha256": "ad7a69d15faa895a2252710e80c122a38c4cad6dd9084d9deabe51de8addf5c6"
     },
-    "helpers/__pycache__/verify_publication.cpython-313.pyc": {
-      "bytes": 5626,
-      "sha256": "6f821f30c2ec9527ea26d1d714e8077d854f1a064d90358a824ba9e0eed8244e"
-    },
     "helpers/audit.py": {
       "bytes": 4287,
       "sha256": "9bcfe21685972e98fbede7e420286e349e76d7d102522a21db86d8db6f17a12a"
