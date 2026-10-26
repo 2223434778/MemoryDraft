@@ -1289,3 +1289,9 @@ OMP_NUM_THREADS=4 PYTHONPATH=. HF_HUB_OFFLINE=1 .venv/bin/python -u scripts/run_
 - 新任务冻结为GSM8K test8..23及MATH-500 0..7，共24题；来源commit/SHA与许可说明在`data/research/asd-budget/records.json`。旧GSM8K0..7仅作已观察开发依据，不用新结果扫描价格。
 - 四组DFlash/ASD/ASD-Run/ASD-Utility；96机制+192自然EOS计时，总288生成。两物理A6000各跑一个benchmark，组内同卡交错。协议`docs/ASD_BUDGET_PROTOCOL.md`，输出`results/raw/asd-budget/{gsm8k,math500}`。
 - 首次本地命令`.venv\Scripts\python.exe -m pytest -q tests/test_asd.py tests/test_asd_budget.py --basetemp .test-tmp-asd-budget --junitxml=artifacts/asd-budget-tests-first-local.xml`：21 passed/8.13s。随后增加utility真实小Target/KV路径参数覆盖，将再跑相关检查；尚无本轮GPU性能结论。
+# 2026-10-26 — DSpark成本树等价优化（执行准备）
+
+- 用户授权优化DSpark后复测。新分支`codex/dspark-tree-opt`源自9677322，原DSpark/DFlash及面试版引用保留。新增请求冷LRU64行Markov偏置缓存和向上舍入的保守最优树搜索上界；保持原逐行GEMV、权重、候选块、Target输入和ASD规则，旧每卡树价格冻结。
+- 新模块`memorydraft/backends/dspark_tree_fast.py`；独立runner/pipeline/report及协议`docs/DSPARK_TREE_OPT_PROTOCOL.md`。计划Alpaca16、MT4对话、HumanEval4，24源/28匹配输入、四方法448主计时；七族各2源任务真实GPU状态四变体消融先行。旧AR仅复用输入/对话历史，旧时延不作本轮对照。
+- 首批`.venv\Scripts\python.exe -m pytest -q tests/test_dspark_tree_fast.py tests/test_dspark.py --basetemp artifacts/pytest-dspark-opt-first --junitxml=artifacts/dspark-opt-first-tests.xml`：24 passed/16.97s。加入报告完整矩阵/输入/选树/账本/定长/编译拒绝检查后，`... -m pytest -q tests/test_dspark_tree_fast.py tests/test_dspark.py tests/test_dspark_tree_opt_report.py --basetemp artifacts/pytest-dspark-opt-ready --junitxml=artifacts/dspark-opt-ready-tests.xml`：32 passed/11.54s。随机非单调成本、EOS及真实小Target路径通过；尚无优化GPU性能结果。
+- 服务端两卡19MiB/0%且新目录不存在。待源码封存后，以`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_dspark_tree_opt_pipeline`在独立`/media/a6000/D/ZhaoBinHe/MemoryDraft/dspark-tree-opt`运行；结果`results/raw/dspark-tree-opt`，不覆盖旧目录。
