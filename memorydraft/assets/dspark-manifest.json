@@ -1,0 +1,10 @@
+{
+  "repository": "deepseek-ai/dspark_qwen3_8b_block7",
+  "revision": "03326e5043815da1f81b109078b2889737c26017",
+  "upstream_code_commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+  "files": {
+    "config.json": {"bytes": 1201, "sha256": "e470e70a553616f0dce8f783f42cfd25b7bd7dfdcd57ead680a0623040725611"},
+    "model.safetensors": {"bytes": 4742170330, "sha256": "5c922d1f96c8d18dbdf005c40ea99878d9133d70eaa3be4bd1077ee5f2afc1e5"}
+  },
+  "weight_license_metadata": "No separate model card or license metadata; official public DeepSpec release. Code license recorded separately."
+}

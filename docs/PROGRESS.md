@@ -1,5 +1,12 @@
 # 项目进度
 
+## 2026-10-26 — DSpark 成本树独立接入与配对比较
+
+- 为用户要求新建`codex/dspark-tree`，已验证DFlash分支`codex/asd-splice`保持`8e7a80b5b1af3b09886659e3549691be3ce6493e`；DFlash原解码/构树/配置/结果未修改，面试版三个引用保持原值。
+- 锁定DeepSpec代码005e03b81cec38b7da6399833d609ee89a2587f2/MIT与官方DSpark-8B-block7检查点03326e5043815da1f81b109078b2889737c26017，4742170330B/SHA5c922d1f96c8d18dbdf005c40ea99878d9133d70eaa3be4bd1077ee5f2afc1e5本机下载核验通过，向A6000新模型目录传输中；模型无单独许可card元数据的事实保留，不上传权重。原始上游骨干/Markov文件重建到canonical Git blobs，待GPU与适配器逐状态核对。
+- 新增DSpark骨干加载/Markov条件分数、父token感知成本树、独立解码薄适配与8组runner/report；沿用既有TreeCosts、树mask/ASD/选中路径KV提交。置信度裁剪关闭，原生DSpark7候选与旧DFlash15候选分别保留。评测计划在新输出前固定于DSPARK_TREE_PROTOCOL：已观察七族各4源任务/32匹配输入，1024主计时与32 AR，质量/长度/截断单列，不冒充新保留集。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_dspark.py tests/test_dspark_report.py tests/test_budget_tree.py tests/test_draft_tree.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-dspark-ready --junitxml=artifacts/dspark-ready-tests.xml`：113 passed/2 skipped/15.95s。首版检查1项断言的排序方向错误、其余67通过，修正测试预期排序后DSpark15项及完整专项通过；失败XML保留。不把单测写作GPU性能结论，服务器实验待源封存、传输核验及骨干对照后启动。
+
 ## 2026-10-25 — 树 + ASD 架构通俗说明
 
 - 新增`docs/ASD_TREE_ARCHITECTURE.md`，从线性候选中断示例解释成本树与ASD的配合，覆盖DFlash单次分布复用、路径质量/成本选树、祖先attention、树上预算选路和KV/特征提交，并以已发布七任务结果解释接受长度增加与验证轮次减少带来的时延收益。明确BudgetTree-ASD与严格BudgetTree、Joint的对应关系，示例数字与实测数字分开。
