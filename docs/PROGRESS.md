@@ -1,3 +1,9 @@
+# 2026-10-26 — v0.4独立副本的离线核验兼容性
+
+- 首次v0.4导出候选20167c5338dc3ffc8b86a0abf7916e3331fd0d5d已完整生成2654文件，但在独立单分支clone中发现旧分支名称未带入，原verify_frozen_releases按名称查找失败。首副本/ZIP/bundle保留artifacts/infra-interview-v0.4-attempt-1，未发布这些v0.4引用。
+- 只修复历史核验工具：优先检查本地或origin同名引用并拒绝移动；名字不存在时检查硬编码冻结commit及其Git源和当前旧载荷，输出named_refs缺失状态。主仓库和实际独立单分支clone的两项检查均通过。runtime/pyproject与实际GPU源2a77920逐字未改，不重跑GPU或改写原验收；旧v0.3/研究固定引用完全不变。
+- 远程ls-remote确认本次v0.4分支/标签尚未发布，正式引用在补此兼容性修复后再固定，最终副本仍保存artifacts/infra-interview-v0.4。使用docs/INFRA_TREE_INTERVIEW.md及副本manifest定位确切release commit和ZIP/bundle SHA。
+
 # 2026-10-26 — Infra v0.4真实GPU验收完成
 
 - 成本树+DFlash+ASD已接入统一config/CLI/JSON-SSE/benchmark，部署指南INFRA_TREE_GUIDE、验收INFRA_TREE_VALIDATION、独立交付入口INFRA_TREE_INTERVIEW。严格BudgetTree和近似BudgetTree-ASD显式可选，原严格默认不变；近似评测不标为任务正确。生产路径没有研究脚本patch。

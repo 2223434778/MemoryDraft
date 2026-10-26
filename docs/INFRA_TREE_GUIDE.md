@@ -62,4 +62,6 @@ profile复用`build_tree`、`target_verify`等已有阶段，单独运行，不�
 python -m scripts.verify_frozen_releases
 ```
 
+单分支或离线副本可能没有旧分支名称，工具会核验已固定的commit对象并明确标注缺失的名称；若已有分支或标签被移动则拒绝，不把缺少名字误报为旧数据损坏。
+
 不会重写已封存的旧结果、报告或验证脚本。v0.3固定引用及本地归档不变；新版独立副本见[面试交付](INFRA_TREE_INTERVIEW.md)。

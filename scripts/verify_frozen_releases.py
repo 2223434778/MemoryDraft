@@ -13,9 +13,23 @@ REFS={'codex/infra-interview-v0.3':'27e36199f8a65acdb9a9c42ccb744ddfa9a9402b',
 
 
 def verify():
+    resolved={};named={}
     for reference,oid in REFS.items():
-        actual=subprocess.check_output(['git','rev-parse',reference],cwd=ROOT,text=True).strip()
-        if actual!=oid:raise ValueError('Frozen reference moved: '+reference)
+        candidates=[reference] if reference.endswith('^{}') else [reference,'origin/'+reference]
+        for candidate in candidates:
+            result=subprocess.run(['git','rev-parse','--verify','--quiet',candidate],cwd=ROOT,
+                                  text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+            if result.returncode==0:
+                if result.stdout.strip()!=oid:raise ValueError('Frozen reference moved: '+candidate)
+                named[reference]=candidate
+                break
+        else:
+            # Single-branch clones and offline bundles retain ancestor objects
+            # without necessarily retaining all historical branch names.
+            kind=subprocess.check_output(['git','cat-file','-t',oid],cwd=ROOT,text=True).strip()
+            if kind!='commit':raise ValueError('Frozen commit missing: '+oid)
+            named[reference]=None
+        resolved[reference]=oid
     reports=[]
     for study,reference in (('dspark-tree','codex/dspark-tree'),('dspark-tree-opt','codex/dspark-tree-opt'),
                              ('asd-paper-extension','codex/asd-splice')):
@@ -32,7 +46,7 @@ def verify():
         if study=='asd-paper-extension':
             paths+=['docs/ASD_PAPER_EXTENSION_FINDINGS.md','docs/ASD_PAPER_EXTENSION_RESULTS.md']
         archived=[]
-        for entry in subprocess.check_output(['git','ls-tree','-r','-z',reference,'--',*paths],cwd=ROOT).split(b'\0'):
+        for entry in subprocess.check_output(['git','ls-tree','-r','-z',resolved[reference],'--',*paths],cwd=ROOT).split(b'\0'):
             if entry:
                 metadata,name=entry.split(b'\t',1);archived.append((name.decode(),metadata.split()[2]))
         raw=subprocess.run(['git','cat-file','--batch'],cwd=ROOT,input=b''.join(oid+b'\n' for _,oid in archived),
@@ -48,7 +62,7 @@ def verify():
         if preservation.exists():
             protected=json.loads(preservation.read_bytes())['protected_git_objects']
             entries={}
-            for entry in subprocess.check_output(['git','ls-tree','-r','-z',reference],cwd=ROOT).split(b'\0'):
+            for entry in subprocess.check_output(['git','ls-tree','-r','-z',resolved[reference]],cwd=ROOT).split(b'\0'):
                 if entry:
                     metadata,name=entry.split(b'\t',1);entries[name.decode()]=metadata.split()[2].decode()
             for name,oid in protected.items():
@@ -56,7 +70,8 @@ def verify():
             count=len(protected)
         reports.append(dict(study=study,payloads=len(manifest['files']),archived_git_files=len(archived),
                             frozen_reference=reference,protected_source_objects=count))
-    return dict(frozen_refs=True,scope='published payloads unchanged; source checked at archived refs, not evolving HEAD',studies=reports)
+    return dict(frozen_commits=True,named_refs=named,
+                scope='published payloads unchanged; source checked at pinned commits; available named refs must match',studies=reports)
 
 
 if __name__=='__main__':print(json.dumps(verify(),indent=2))
