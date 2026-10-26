@@ -6,6 +6,8 @@
 - 锁定DeepSpec代码005e03b81cec38b7da6399833d609ee89a2587f2/MIT与官方DSpark-8B-block7检查点03326e5043815da1f81b109078b2889737c26017，4742170330B/SHA5c922d1f96c8d18dbdf005c40ea99878d9133d70eaa3be4bd1077ee5f2afc1e5本机下载核验通过，向A6000新模型目录传输中；模型无单独许可card元数据的事实保留，不上传权重。原始上游骨干/Markov文件重建到canonical Git blobs，待GPU与适配器逐状态核对。
 - 新增DSpark骨干加载/Markov条件分数、父token感知成本树、独立解码薄适配与8组runner/report；沿用既有TreeCosts、树mask/ASD/选中路径KV提交。置信度裁剪关闭，原生DSpark7候选与旧DFlash15候选分别保留。评测计划在新输出前固定于DSPARK_TREE_PROTOCOL：已观察七族各4源任务/32匹配输入，1024主计时与32 AR，质量/长度/截断单列，不冒充新保留集。
 - `.venv\Scripts\python.exe -m pytest -q tests/test_dspark.py tests/test_dspark_report.py tests/test_budget_tree.py tests/test_draft_tree.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-dspark-ready --junitxml=artifacts/dspark-ready-tests.xml`：113 passed/2 skipped/15.95s。首版检查1项断言的排序方向错误、其余67通过，修正测试预期排序后DSpark15项及完整专项通过；失败XML保留。不把单测写作GPU性能结论，服务器实验待源封存、传输核验及骨干对照后启动。
+- 源已固定62e801067dcb990ea9ae9a18ed1c09f02e0d04ab并推送，2531 canonical Git blobs/sourceSHA32c490f7b372c8cfad92c82d76c619eccde79a470f3a67b99a9419cf2cffe1d5；源码ZIP62547991B/SHA5726d3cddc04d1f6a561d95b572f23a9285b24f23cf64a23c935e4338f342de6，服务器逐文件核验通过。首次校验命令抄录SHA有误，断言在建root前停止，重新核对与更正后才部署，未启动错误源。官方权重全部SCP完成，独立目录models/dspark-qwen3-8b-block7。
+- 服务器151 passed/2 skipped/10.95s；两卡的官方源码对照均通过，真实权重context4/17的骨干最大差0、Markov greedy token相同，Target共享embed/lm_head逐块相等。2026-10-26 14:25:24（UTC06:25:24）在新root`/media/a6000/D/ZhaoBinHe/MemoryDraft/dspark-tree`启动owned timeout PID1464/12000s，入口`OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_dspark_tree_pipeline`，每worker10800s；LOAD29.26/34.60s、两卡各4预热图。14:31四个GSM源任务八组完成，进入MATH，尚无严格AR差异；继续完整矩阵，不以中途结果调参。原1851配置/结果/核心Git对象SHA映射保留，174旧发布文件核验再次通过。
 
 ## 2026-10-25 — 树 + ASD 架构通俗说明
 
