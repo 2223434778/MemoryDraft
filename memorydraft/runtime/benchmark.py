@@ -76,7 +76,8 @@ def summarize(rows, methods, *, baseline="AR", synthetic=False):
                                          mean_ttft_seconds=statistics.mean(ttft) if ttft else None,
                                          mean_tpot_seconds=statistics.mean(tpot) if tpot else None,
                                          peak_gpu_bytes=max(r["peak_gpu_bytes"] for r in selected),
-                                         strict_correct=all(r["correct"] for r in selected))
+                                         strict_correct=(all(r["correct"] for r in selected)
+                                             if all(r["correct"] is not None for r in selected) else None))
     base = result["methods"][baseline]["total_seconds"]
     for value in result["methods"].values():
         value["speedup"] = base / value["total_seconds"] if value["total_seconds"] else None
@@ -89,7 +90,7 @@ def compare(result, reference):
             and getattr(result, "execution_profile", "eager") == getattr(reference, "execution_profile", "eager"))
 
 
-def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
+def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True, allow_approximate=False):
     requests, methods = list(requests), list(methods)
     if not requests or len({r.id for r in requests}) != len(requests):
         raise ValueError("Provide nonempty requests with unique IDs")
@@ -97,7 +98,8 @@ def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
         raise ValueError("Benchmark methods must be unique and supported by the engine")
     if type(repeats) is not int or not 1 <= repeats <= 1000:
         raise ValueError("repeats must be in [1, 1000]")
-    if set(methods) & set(engine.describe().get("approximate_methods", [])):
+    approximate_methods = set(methods) & set(engine.describe().get("approximate_methods", []))
+    if approximate_methods and not allow_approximate:
         raise ValueError("Strict benchmark excludes approximate methods; use the ASD runtime acceptance runner")
     if "AR" not in methods:
         methods.insert(0, "AR")
@@ -105,6 +107,9 @@ def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
     output.mkdir(parents=True, exist_ok=False)
     info = {**provenance(engine), "status": "started", "repeats": repeats, "methods": methods,
             "request_sha256": hashlib.sha256(json.dumps([asdict(r) for r in requests], sort_keys=True).encode()).hexdigest()}
+    if approximate_methods:
+        info.update(approximate_methods=sorted(approximate_methods), quality_evaluated=False,
+                    comparison_policy="strict methods require AR token identity; approximate methods require identical input and valid ASD budget")
     write_json(output / "provenance.json", info)
     rows = []
     try:
@@ -122,15 +127,26 @@ def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
                 for method in order:
                     result = engine.generate(request, method)
                     row = {**asdict(result), "repeat": repeat, "correct": compare(result, reference)}
+                    if method in approximate_methods:
+                        try:
+                            validate_approximate(result, reference)
+                        except ValueError:
+                            write_json(output / "failure.json", {"result": asdict(result), "reference": asdict(reference)})
+                            raise
+                        row.update(correct=None, token_match_ar=result.token_ids == reference.token_ids,
+                                   quality_evaluated=False)
                     # Text stays local in responses; benchmark artifacts use token IDs and hashes.
                     row.pop("text")
                     with (output / "rows.jsonl").open("a", encoding="utf-8") as stream:
                         stream.write(json.dumps(row, ensure_ascii=False) + "\n")
                     rows.append(row)
-                    if not row["correct"]:
+                    if row["correct"] is False:
                         write_json(output / "failure.json", {"result": row, "reference": asdict(reference)})
                         raise RuntimeError("Strict token/prompt/snapshot mismatch: " + request.id + "/" + method)
         summary = summarize(rows, methods, synthetic=engine.describe().get("synthetic", False))
+        if approximate_methods:
+            summary.update(approximate_methods=sorted(approximate_methods), quality_evaluated=False,
+                note="Natural request timings; approximate outputs may differ. Token identity is not answer quality; evaluate task quality separately.")
         write_json(output / "summary.json", summary)
         info["status"] = "complete"
         return summary
@@ -140,6 +156,19 @@ def benchmark(engine, requests, methods, output, *, repeats=3, warmup=True):
     finally:
         info["rows"] = len(rows)
         write_json(output / "provenance.json", info)
+
+
+def validate_approximate(result, reference):
+    if (not result.approximate or result.prompt_sha256 != reference.prompt_sha256
+            or result.snapshot_id != reference.snapshot_id or result.execution_profile != reference.execution_profile):
+        raise ValueError("Approximate benchmark input/profile differs")
+    policy = result.asd
+    if (not policy or any(not isinstance(policy.get(k), (int, float)) or not math.isfinite(policy[k])
+                          for k in ("budget", "spent", "gate", "cap", "blocks", "relaxed_tokens"))
+            or not 0 <= policy["spent"] <= policy["budget"] or policy["gate"] < 0 or policy["cap"] < 0
+            or policy["blocks"] != result.counters["rounds"]
+            or not 0 <= policy["relaxed_tokens"] <= policy["cap"]*policy["blocks"]):
+        raise ValueError("Invalid approximate request budget accounting")
 
 
 def profile_request(engine, request, method, output):
@@ -197,6 +226,10 @@ def check_regression(current, baseline, *, max_slowdown=.10):
     if ((new[0]["engine"].get("draft_adapter") or {}).get("sha256") !=
             (old[0]["engine"].get("draft_adapter") or {}).get("sha256")):
         raise ValueError("Incomparable regression environment: draft_adapter")
+    for key in ("sha256", "min_nodes", "max_nodes", "top_k", "spine_mode"):
+        if ((new[0]["engine"].get("cost_tree") or {}).get(key) !=
+                (old[0]["engine"].get("cost_tree") or {}).get(key)):
+            raise ValueError("Incomparable regression environment: cost_tree")
     if not new[0]["engine"]["target_revision"]:
         raise ValueError("Regression requires a pinned Target revision")
 

@@ -59,6 +59,7 @@ class GenerationResult:
     approximate: bool = False
     asd: dict | None = None
     draft_adapter_sha256: str | None = None
+    tree: dict | None = None
 
 
 TokenCallback = Callable[[list[int]], None]

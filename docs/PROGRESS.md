@@ -1,3 +1,11 @@
+# 2026-10-26 — 成本树/ASD接入infra v0.4（GPU验收准备）
+
+- 用户要求将DFlash + 成本树 + ASD放入infra，已在codex/dflash-mainline实现显式CostTreeSpec、成本资产哈希/环境绑定、BudgetTree/BudgetTree-ASD方法、结果tree元数据和节点计数。复用原generate_reuse，不在生产入口patch研究函数；默认严格方法及旧v0.3交付保留。
+- 新CLI calibrate-tree在合成前缀测离线成本，自动输出带SHA的运行配置；benchmark新增--allow-approximate，近似correct=null/quality_evaluated=false且检查输入/账本，严格回归拒绝近似并核对成本表策略。JSON/SSE、请求新账本、取消恢复和研究输出等价已覆盖。
+- 本机首轮HTTP测试在受限Windows loopback处停滞并结束owned进程；允许本机loopback重跑39 passed/9.08s，后续含CLI/校准/队列回归97 passed/12.70s。最终命令.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/pytest-infra-v04-full --junitxml=artifacts/infra-v04-full-tests.xml -o faulthandler_timeout=45：1144 passed/7 skipped/190.16s。原始XML保留artifacts。
+- 离线wheel 183025B/SHA6c914ff8a3d0381501db4581b948d202c4e4e89a8790511203018ee3fdfeea5c；首次pip被沙箱临时目录权限阻断，正常本地权限重跑成功。全新无Torch/无FastAPI环境中安装0.4.0，隔离-I从已安装site-packages执行CLI帮助、calibrate-tree帮助和demo infer三项通过；receipt artifacts/infra-v04-installation.json。不将CPU/demo结果当GPU性能。
+- 冻结协议docs/INFRA_TREE_ACCEPTANCE_PROTOCOL.md和部署说明INFRA_TREE_GUIDE.md已写。计划独立A6000目录infra-tree-v04，真实CLI校准、6公开已观察请求/5方法/2次=60计时、12研究等价、取消恢复及JSON/SSE检查；此处尚无GPU验收结论。旧结果通过scripts.verify_frozen_releases在各冻结refs及发布字节核验，合法runtime改动不再拿旧HEAD源码保护作当前版本校验。
+
 # 2026-10-26 — 按用户决定停止DSpark，继续DFlash主线
 
 - 用户决定放弃DSpark后续研究，继续DFlash。后续研究主线为DFlash + 成本树 + ASD；停止DSpark优化、扩样和训练投入，已完成的正负结果、源码、权重目录与实验分支保留，不删除或重写旧记录。

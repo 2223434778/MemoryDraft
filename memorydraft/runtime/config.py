@@ -29,6 +29,7 @@ class RuntimeConfig:
     asd: dict = field(default_factory=dict)
     draft_adapter: dict = field(default_factory=dict)
     prefix_cache: dict = field(default_factory=dict)
+    cost_tree: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -37,6 +38,16 @@ class RuntimeConfig:
             raise ValueError("Unknown execution_profile")
         if self.execution_profile != "eager" and self.backend != "dflash":
             raise ValueError("RMSNorm execution requires the audited dflash backend")
+        if type(self.cost_tree) is not dict:
+            raise ValueError("cost_tree must be an object")
+        if self.cost_tree:
+            if self.backend != "dflash":
+                raise ValueError("Cost tree requires the audited dflash backend")
+            from memorydraft.runtime.cost_tree import CostTreeSpec
+            try:
+                CostTreeSpec(**self.cost_tree)
+            except TypeError as error:
+                raise ValueError("Invalid cost_tree fields") from error
         if type(self.asd) is not dict or type(self.draft_adapter) is not dict:
             raise ValueError("asd and draft_adapter must be objects")
         if self.asd:
@@ -103,6 +114,9 @@ class RuntimeConfig:
         if isinstance(value.get("prefix_cache"), dict) and value["prefix_cache"].get("path"):
             candidate = Path(value["prefix_cache"]["path"]).expanduser()
             value["prefix_cache"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
+        if isinstance(value.get("cost_tree"), dict) and value["cost_tree"].get("path"):
+            candidate = Path(value["cost_tree"]["path"]).expanduser()
+            value["cost_tree"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
         return cls(**value)
 
     def as_dict(self):

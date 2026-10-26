@@ -1,5 +1,7 @@
 # MemoryDraft
 
+**Infra v0.4集成：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。旧v0.3面试版保留；GPU接入验收按[冻结协议](docs/INFRA_TREE_ACCEPTANCE_PROTOCOL.md)记录。
+
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。

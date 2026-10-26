@@ -52,6 +52,16 @@ class InferenceEngine:
             self._adapter_info = merge_draft_adapter(draft, self._adapter_spec)
         elif getattr(draft, "_memorydraft_adapter_sha256", None) is not None:
             raise ValueError("An adapted draft requires its matching draft_adapter config")
+        from memorydraft.runtime.cost_tree import CostTreeSpec
+        self._tree_spec = CostTreeSpec(**config.cost_tree) if config.cost_tree else None
+        self._tree_config = None
+        if self._tree_spec is not None:
+            if draft is None:
+                raise ValueError("Cost tree requires a loaded DFlash draft")
+            self._tree_config = self._tree_spec.load(self)
+            self.methods += ("BudgetTree",)
+            if self._asd_config is not None:
+                self.methods += ("BudgetTree-ASD",)
         self.lock = threading.Lock()
         self.reuse = ReuseConfig(**config.reuse)
         if config.retrieval.startswith("ot"):
@@ -90,6 +100,9 @@ class InferenceEngine:
             verify_dflash_assets(Path(config.draft))
         if config.draft_adapter:
             DraftAdapterSpec(**config.draft_adapter).verify()
+        if config.cost_tree:
+            from memorydraft.runtime.cost_tree import CostTreeSpec
+            CostTreeSpec(**config.cost_tree).read()
         torch.set_num_threads(config.threads)
         torch.set_float32_matmul_precision("highest")
         torch.backends.cuda.matmul.allow_tf32 = False
@@ -111,10 +124,11 @@ class InferenceEngine:
                 "gpu": torch.cuda.get_device_name(self.target.device) if self.target.device.type == "cuda" else None,
                 "target_revision": self.config.target_revision,
                 "execution_profile": self.execution_profile,
-                "approximate_methods": ["ASD"] if self._asd_config is not None else [],
+                "approximate_methods": [m for m in self.methods if m in {"ASD", "BudgetTree-ASD"}],
                 "asd": None if self._asd_config is None else {"budget": self._asd_config.budget,
                     "gate": self._asd_config.gate, "cap": self._asd_config.cap, "selection": "longest", "value": "remaining"},
                 "draft_adapter": self._adapter_info,
+                "cost_tree": self._tree_spec.describe() if self._tree_spec is not None else None,
                 "prefix_cache": self._prefix_cache.describe() if self._prefix_cache is not None else None,
                 "regional_compilation": None if self._regional is None else {
                     "backend": self._regional.backend.name, "graphs": len(self._regional.backend.events),
@@ -147,6 +161,10 @@ class InferenceEngine:
             current_adapter = DraftAdapterSpec(**self.config.draft_adapter) if self.config.draft_adapter else None
             if current_asd != self._asd_config or current_adapter != self._adapter_spec:
                 raise ValueError("Reload the engine to change ASD or draft_adapter configuration")
+            from memorydraft.runtime.cost_tree import CostTreeSpec
+            current_tree = CostTreeSpec(**self.config.cost_tree) if self.config.cost_tree else None
+            if current_tree != self._tree_spec:
+                raise ValueError("Reload the engine to change cost_tree configuration")
             from memorydraft.runtime.prefix_cache import PrefixCacheSpec
             current_prefix = PrefixCacheSpec(**self.config.prefix_cache) if self.config.prefix_cache else None
             if current_prefix != self._prefix_spec:
@@ -239,6 +257,10 @@ class InferenceEngine:
             check()
             counters = {}
             verifier = ASDVerifier(self._asd_config) if method == "ASD" else None
+            tree_info = None
+            if method == "BudgetTree-ASD":
+                from memorydraft.backends.budget_tree import TreeASDVerifier
+                verifier = TreeASDVerifier(self._asd_config)
             if method == "AR":
                 class Streamer:
                     prompt_seen = False
@@ -265,17 +287,24 @@ class InferenceEngine:
                     )
             else:
                 verification = {"verifier": verifier, "incremental_stop": True} if verifier is not None else {}
+                if method in {"BudgetTree", "BudgetTree-ASD"}:
+                    verification.update(tree_config=self._tree_config, incremental_stop=True)
                 if self._prefix_cache is not None:
                     verification["prefill"] = self._prefix_cache.prefill
                 detail = generate_reuse(self.target, self.draft, ids, max_new_tokens=request.max_new_tokens,
                                         stop_token_ids=self.stops, matcher=matcher, config=self.reuse,
                                         on_tokens=commit, should_stop=should_stop, profile=profile, **verification)
                 output = detail.sequences
-                counters = {"rounds": len(detail.rounds), "reuse_rounds": sum(r["route"] == "R" for r in detail.rounds),
+                if method in {"BudgetTree", "BudgetTree-ASD"}:
+                    tree_info = self._tree_spec.describe()
+                    counters.update(tree_rounds=len(detail.rounds),
+                        tree_verification_nodes=sum(r["tree_nodes"] for r in detail.rounds),
+                        tree_built_nodes=sum(r["tree_budget"]["built_nodes"] for r in detail.rounds))
+                counters.update({"rounds": len(detail.rounds), "reuse_rounds": sum(r["route"] == "R" for r in detail.rounds),
                             "reuse_accepted_tokens": sum(r["accepted"] for r in detail.rounds if r["route"] == "R"),
                             "draft_rounds": sum(r["route"] == "D" for r in detail.rounds),
                             "index_bytes": index.bytes_used if index else 0,
-                            "feature_peak_tokens": detail.feature_peak_tokens, "buffer_flushes": detail.buffer_flushes}
+                            "feature_peak_tokens": detail.feature_peak_tokens, "buffer_flushes": detail.buffer_flushes})
                 counters.update(getattr(matcher, "stats", {}))
                 if self._prefix_cache is not None:
                     counters.update(self._prefix_cache.last)
@@ -295,7 +324,8 @@ class InferenceEngine:
                                     latency, first, "eos" if tokens and tokens[-1] in self.stops else "length", peak, counters,
                                     execution_profile=self.execution_profile, approximate=verifier is not None,
                                     asd=None if verifier is None else {**verifier.summary(), "gate": self._asd_config.gate, "cap": self._asd_config.cap},
-                                    draft_adapter_sha256=self._adapter_spec.sha256 if self._adapter_spec is not None and method != "AR" else None)
+                                    draft_adapter_sha256=self._adapter_spec.sha256 if self._adapter_spec is not None and method != "AR" else None,
+                                    tree=tree_info)
         finally:
             try:
                 self.synchronize()

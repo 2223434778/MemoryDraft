@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import asdict
+from dataclasses import asdict, replace
 import json
 from pathlib import Path
 
@@ -9,6 +9,10 @@ from memorydraft.runtime.contracts import GenerationRequest
 
 
 def add_commands(sub):
+    calibration = sub.add_parser("calibrate-tree", help="Measure a local synthetic tree cost table")
+    calibration.add_argument("--config", required=True)
+    calibration.add_argument("--output", required=True)
+    calibration.add_argument("--runtime-config", help="Write a ready-to-use config bound to the measured asset")
     load = sub.add_parser("load-test")
     load.add_argument("--url", default="http://127.0.0.1:8000")
     load.add_argument("--request", required=True)
@@ -25,6 +29,8 @@ def add_commands(sub):
             parser.add_argument("--method", default="AR")
             parser.add_argument("--output", required=True)
         elif name == "benchmark":
+            parser.add_argument("--allow-approximate", action="store_true",
+                                help="Include explicit ASD methods; task quality must be evaluated separately")
             parser.add_argument("--requests", required=True, help="JSONL generation requests")
             parser.add_argument("--methods", nargs="+", default=["AR"])
             parser.add_argument("--repeats", type=int, default=3)
@@ -47,6 +53,13 @@ def run(args):
         print(json.dumps(result, indent=2))
         return
     config = RuntimeConfig.load(args.config)
+    if args.command == "benchmark" and args.allow_approximate and args.baseline:
+        raise ValueError("Strict regression cannot use approximate benchmarks")
+    if args.command == "calibrate-tree" and args.runtime_config:
+        if Path(args.runtime_config).exists():
+            raise FileExistsError("Preserve existing runtime config: " + args.runtime_config)
+        if Path(args.runtime_config).resolve() == Path(args.output).resolve():
+            raise ValueError("Calibration and runtime config must have different output paths")
     if args.command == "serve":
         import uvicorn
         from memorydraft.serving.app import create_app
@@ -58,10 +71,21 @@ def run(args):
     engine = load_engine(config)
     try:
         from memorydraft.runtime.benchmark import benchmark, check_regression, profile_request
-        if args.command == "benchmark":
+        if args.command == "calibrate-tree":
+            from memorydraft.runtime.tree_calibration import calibrate_tree
+            result = calibrate_tree(engine, args.output)
+            if args.runtime_config:
+                prepared = replace(config, cost_tree={"path": result["path"], "sha256": result["sha256"]})
+                destination = Path(args.runtime_config)
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                with destination.open("x", encoding="utf-8") as stream:
+                    json.dump(asdict(prepared), stream, indent=2)
+                result["runtime_config"] = str(destination.resolve())
+        elif args.command == "benchmark":
             requests = [GenerationRequest.from_dict(json.loads(line))
                         for line in Path(args.requests).read_text(encoding="utf-8").splitlines() if line.strip()]
-            result = benchmark(engine, requests, args.methods, args.output, repeats=args.repeats)
+            result = benchmark(engine, requests, args.methods, args.output, repeats=args.repeats,
+                               allow_approximate=args.allow_approximate)
             if args.baseline:
                 result["regression"] = check_regression(args.output, args.baseline, max_slowdown=args.max_slowdown)
                 if not result["regression"]["passed"]:

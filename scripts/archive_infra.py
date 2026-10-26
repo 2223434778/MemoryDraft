@@ -17,7 +17,9 @@ def git(*args, **kwargs):
     return subprocess.run(["git", *args], cwd=ROOT, check=True, stdout=subprocess.PIPE, **kwargs).stdout
 
 
-def export(reference, destination):
+def export(reference, destination, *, version="0.3"):
+    if version not in {"0.3", "0.4"}:
+        raise ValueError("Unknown infra archive version")
     destination = Path(destination).resolve()
     if not destination.is_relative_to(ROOT / "artifacts"):
         raise ValueError("Interview exports must stay under this workspace's artifacts directory")
@@ -37,7 +39,7 @@ def export(reference, destination):
             entries.append((name.decode("utf-8"), oid, mode))
     batch = git("cat-file", "--batch", input=("\n".join(e[1] for e in entries) + "\n").encode())
     stream, hashes = io.BytesIO(batch), {}
-    archive = destination / "MemoryDraft-infra-v0.3.zip"
+    archive = destination / f"MemoryDraft-infra-v{version}.zip"
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as output:
         for name, oid, mode in entries:
             header = stream.readline().decode().split()
@@ -56,20 +58,21 @@ def export(reference, destination):
             item.external_attr = int(mode, 8) << 16
             output.writestr(item, data)
             hashes[name] = hashlib.sha256(data).hexdigest()
-    bundle = destination / "MemoryDraft-infra-v0.3.bundle"
+    bundle = destination / f"MemoryDraft-infra-v{version}.bundle"
     git("bundle", "create", str(bundle), reference)
     subprocess.run(["git", "bundle", "verify", str(bundle)], cwd=project, check=True,
                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if any(hashlib.sha256((project / name).read_bytes()).hexdigest() != digest for name, digest in hashes.items()):
         raise ValueError("Export differs from committed source")
-    manifest = {"commit": commit, "reference": reference, "files": hashes,
+    manifest = {"commit": commit, "reference": reference, "version": version, "files": hashes,
                 "archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
                 "bundle_sha256": hashlib.sha256(bundle.read_bytes()).hexdigest(),
                 "scope": "Tracked source, synthetic/public evidence and independent Git history; excludes weights, environments and private data."}
     (destination / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     (destination / "START_HERE.md").write_text(
         "# MemoryDraft infra interview copy\n\n"
-        f"Frozen commit: `{commit}`. Independent repository: `project/`.\n\n"
+        f"Frozen commit: `{commit}`. Independent repository: `project/`.\n\n" +
+        ("Read project/docs/INFRA_TREE_GUIDE.md first for the cost-tree/ASD release.\n\n" if version == "0.4" else "") +
         "Read project/README.md, project/docs/INFRA_GUIDE.md, project/docs/INFRA_VALIDATION.md "
         "and project/docs/RUNTIME_MIGRATION_RESULTS.md.\n\n"
         "Install into a new environment: `python -m pip install -e \".[serve,client,test]\"`. "
@@ -84,8 +87,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ref", default="codex/infra-interview-v0.3")
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--version", choices=("0.3", "0.4"), default="0.3")
     args = parser.parse_args()
-    print(json.dumps(export(args.ref, args.output), indent=2))
+    print(json.dumps(export(args.ref, args.output, version=args.version), indent=2))
 
 
 if __name__ == "__main__":
