@@ -1,0 +1,19 @@
+{
+  "release_commit": "ea04290366b3caa809aba93b9417c7e7a148ce48",
+  "release_branch": "codex/infra-interview-v0.4",
+  "release_tag": "infra-v0.4-interview",
+  "gpu_source_commit": "2a779207cf98e929c5574f5ef82290bf70fc45f9",
+  "independent_files_verified": 2654,
+  "archive_bytes": 65682675,
+  "archive_sha256": "18fda224c91517832fd28dc5a0ca09797e004334023026920cfc0b4c2699f3a2",
+  "bundle_bytes": 51488333,
+  "bundle_sha256": "9ec486cfb21c81f01d9827a29fcdee41bb3e8f6e905ff0a0411ad33eec3d659b",
+  "independent_git_clean": true,
+  "offline_bundle_verified": true,
+  "standalone_audit_commands_passed": 3,
+  "original_v03_unchanged": true,
+  "original_v03_files_verified": 423,
+  "local_copy": "artifacts/infra-interview-v0.4/project",
+  "runtime_package_files_match_gpu_source": 88,
+  "first_export_preserved": "artifacts/infra-interview-v0.4-attempt-1"
+}

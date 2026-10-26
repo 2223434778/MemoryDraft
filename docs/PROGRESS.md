@@ -1,3 +1,9 @@
+# 2026-10-26 — Infra v0.4独立交付完成
+
+- 正式冻结codex/infra-interview-v0.4 / infra-v0.4-interview于ea04290366b3caa809aba93b9417c7e7a148ce48，独立副本artifacts/infra-interview-v0.4/project的2654文件逐项SHA一致、Git工作区干净。源码ZIP 65682675B/SHA18fda224c91517832fd28dc5a0ca09797e004334023026920cfc0b4c2699f3a2，bundle 51488333B/SHA9ec486cfb21c81f01d9827a29fcdee41bb3e8f6e905ff0a0411ad33eec3d659b；ZIP成员全部逐字节核对，bundle verify通过。
+- 在独立单分支副本实际执行历史冻结检查、发布--git检查、验收报告--check均通过；缺少旧分支名称时按固定commit复核且如实标注。旧v0.3独立副本423文件及全部固定引用未改。新runtime包88文件与真实GPU源2a77920相同，CPU完整1144/7skip、服务器150、60GPU计时/12等价及JSON/SSE结论不变。
+- 最终交付校验单results/infra-tree-v04/delivery.json，使用入口docs/INFRA_TREE_INTERVIEW.md和INFRA_TREE_GUIDE.md。独立release保留自身冻结提交，后续DFlash主线的校验单/进度提交不移动release引用；代码、报告、固定分支和tag统一推送，无模型权重或大trace上传。
+
 # 2026-10-26 — v0.4独立副本的离线核验兼容性
 
 - 首次v0.4导出候选20167c5338dc3ffc8b86a0abf7916e3331fd0d5d已完整生成2654文件，但在独立单分支clone中发现旧分支名称未带入，原verify_frozen_releases按名称查找失败。首副本/ZIP/bundle保留artifacts/infra-interview-v0.4-attempt-1，未发布这些v0.4引用。

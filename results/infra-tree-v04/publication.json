@@ -156,6 +156,10 @@
     "validation.log": {
       "bytes": 884,
       "sha256": "c235bc2364ce9ce0652aaf2213d2a3e8e2b3aebe7aee7f4f4aacf7314455d027"
+    },
+    "delivery.json": {
+      "bytes": 854,
+      "sha256": "13e2bf2984a0da322a97cda9b4297391364b52e169254fecf75ca493f5d2c76f"
     }
   },
   "reports": {
