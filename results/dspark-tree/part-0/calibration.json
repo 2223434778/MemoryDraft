@@ -1,0 +1,395 @@
+{
+  "costs": {
+    "contexts": [
+      128,
+      1024
+    ],
+    "nodes": [
+      8,
+      12,
+      16,
+      20,
+      24,
+      32
+    ],
+    "seconds": [
+      [
+        0.055600056890398264,
+        0.055882954970002174,
+        0.05658707208931446,
+        0.05869320500642061,
+        0.059399833204224706,
+        0.06012967205606401
+      ],
+      [
+        0.060587913962081075,
+        0.061931727919727564,
+        0.06316671916283667,
+        0.06758624082431197,
+        0.06845661182887852,
+        0.06975258514285088
+      ]
+    ],
+    "draft_seconds": 0.008323390618897974,
+    "auxiliary_seconds": 0.0005766251124441624
+  },
+  "replays": [
+    {
+      "context": 128,
+      "nodes": 8,
+      "repeat": 0,
+      "seconds": 0.05743682384490967,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 8,
+      "repeat": 1,
+      "seconds": 0.055886734975501895,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 8,
+      "repeat": 2,
+      "seconds": 0.055600056890398264,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 8,
+      "repeat": 3,
+      "seconds": 0.05536727188155055,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 12,
+      "repeat": 0,
+      "seconds": 0.05603809887543321,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 12,
+      "repeat": 1,
+      "seconds": 0.05591987608931959,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 12,
+      "repeat": 2,
+      "seconds": 0.055861413944512606,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 12,
+      "repeat": 3,
+      "seconds": 0.055882954970002174,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 16,
+      "repeat": 0,
+      "seconds": 0.05650987010449171,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 16,
+      "repeat": 1,
+      "seconds": 0.05664367391727865,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 16,
+      "repeat": 2,
+      "seconds": 0.05658707208931446,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 16,
+      "repeat": 3,
+      "seconds": 0.05651311110705137,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 20,
+      "repeat": 0,
+      "seconds": 0.059184599202126265,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 20,
+      "repeat": 1,
+      "seconds": 0.058793548960238695,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 20,
+      "repeat": 2,
+      "seconds": 0.058664956130087376,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 20,
+      "repeat": 3,
+      "seconds": 0.05869320500642061,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 24,
+      "repeat": 0,
+      "seconds": 0.05930536217056215,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 24,
+      "repeat": 1,
+      "seconds": 0.0594276140909642,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 24,
+      "repeat": 2,
+      "seconds": 0.05937464302405715,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 24,
+      "repeat": 3,
+      "seconds": 0.059399833204224706,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 32,
+      "repeat": 0,
+      "seconds": 0.06023534503765404,
+      "warmup": true
+    },
+    {
+      "context": 128,
+      "nodes": 32,
+      "repeat": 1,
+      "seconds": 0.06012967205606401,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 32,
+      "repeat": 2,
+      "seconds": 0.0604170102160424,
+      "warmup": false
+    },
+    {
+      "context": 128,
+      "nodes": 32,
+      "repeat": 3,
+      "seconds": 0.06011962192133069,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 8,
+      "repeat": 0,
+      "seconds": 0.06252083298750222,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 8,
+      "repeat": 1,
+      "seconds": 0.06092555192299187,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 8,
+      "repeat": 2,
+      "seconds": 0.060587913962081075,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 8,
+      "repeat": 3,
+      "seconds": 0.060551902977749705,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 12,
+      "repeat": 0,
+      "seconds": 0.06250938191078603,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 12,
+      "repeat": 1,
+      "seconds": 0.06188246700912714,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 12,
+      "repeat": 2,
+      "seconds": 0.06197212799452245,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 12,
+      "repeat": 3,
+      "seconds": 0.061931727919727564,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 16,
+      "repeat": 0,
+      "seconds": 0.06311961682513356,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 16,
+      "repeat": 1,
+      "seconds": 0.06316671916283667,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 16,
+      "repeat": 2,
+      "seconds": 0.06322425999678671,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 16,
+      "repeat": 3,
+      "seconds": 0.06316300784237683,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 20,
+      "repeat": 0,
+      "seconds": 0.06748065818101168,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 20,
+      "repeat": 1,
+      "seconds": 0.0674996490124613,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 20,
+      "repeat": 2,
+      "seconds": 0.06758624082431197,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 20,
+      "repeat": 3,
+      "seconds": 0.0678346969652921,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 24,
+      "repeat": 0,
+      "seconds": 0.06858087610453367,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 24,
+      "repeat": 1,
+      "seconds": 0.06860808585770428,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 24,
+      "repeat": 2,
+      "seconds": 0.06845661182887852,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 24,
+      "repeat": 3,
+      "seconds": 0.06842691195197403,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 32,
+      "repeat": 0,
+      "seconds": 0.06990759004838765,
+      "warmup": true
+    },
+    {
+      "context": 1024,
+      "nodes": 32,
+      "repeat": 1,
+      "seconds": 0.0697431149892509,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 32,
+      "repeat": 2,
+      "seconds": 0.07066568895243108,
+      "warmup": false
+    },
+    {
+      "context": 1024,
+      "nodes": 32,
+      "repeat": 3,
+      "seconds": 0.06975258514285088,
+      "warmup": false
+    }
+  ],
+  "draft_seconds": [
+    0.00873751100152731,
+    0.008624197915196419,
+    0.008329441072419286,
+    0.008355221012607217,
+    0.00827239896170795,
+    0.008347332011908293,
+    0.008257008856162429,
+    0.008317340165376663,
+    0.008269279031082988,
+    0.00887564499862492,
+    0.008229668950662017,
+    0.008211828069761395
+  ],
+  "auxiliary_seconds": [
+    0.024441359099000692,
+    0.0006341361440718174,
+    0.0005766251124441624,
+    0.0005680839531123638
+  ],
+  "method": "synthetic128/1024; median3; measured table; no roofline fit"
+}

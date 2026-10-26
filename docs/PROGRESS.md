@@ -1,5 +1,15 @@
 # 项目进度
 
+## 2026-10-26 — DSpark 八组比较完成，保留原 DFlash 主方案
+
+- 独立实现DSpark官方权重加载、逐父token条件分数的best-first成本树和树上ASD，原DFlash解码/构树/配置未改。七族各4个已观察源任务，28源任务/32匹配输入、1024主计时、32自然AR全部完成；两worker各16输入/512计时。自然4096/EOS两次、共同128/EOS一次、固定256忽略EOS一次，正反顺序配对，无结果筛除或主参数变更。MT使用统一AR首轮历史。
+- DSpark组合较DFlash组合的自然配对时延变化：GSM+16.61%、MATH+44.95%、HumanEval+50.90%、MBPP+22.81%、MMLU−1.48%、MT+20.14%、Alpaca−2.63%。五族正确数分别同为3/4、2/4、4/4、3/4、3/4；MATH正确集合变化：156由30度正确变60错误，327由4096截断变正常结束/15正确。开放回答未新裁判，不宣称质量保持。原生DSpark7与DFlash15及训练检查点差别明确列出。
+- 保留新底座的场景收益：Alpaca中DSpark树+ASD较线性ASD自然省10.45%、固定TPS增20.76%、共同128两题省14.55%；接受长度2.632→3.917、验证152→120，输出552→590。相对原组合Alpaca共同128两题省11.78%、固定TPS增10.71%，自然省2.63%。当前继续保留DFlash组合为主，DSpark自由生成候选独立保存。
+- 机制差别：HumanEval原组合接受10.233→DSpark6.262、轮43→65；MATH10.431→6.348、633→910，DSpark原生深度上限7。离线校准辅助构树DFlash约0.58ms、DSpark约9.3ms，骨干均约8.3ms；不把校准当在线因果profile。Human固定TPS增14.47%但自然慢50.90%，约53%固定token在首次EOS ID之后，指标分别报告。
+- 源62e801067dcb990ea9ae9a18ed1c09f02e0d04ab/2531 canonical Git blobs前后全部一致；2026-10-26 14:25:24启动、15:00:13确认完成，PID1464已退出，两卡19MiB/0%。原始ZIP1600197B/SHA256cbf14e2dbaa69513c9c60203c535f6ac70a4b941301dc14e26c78efe4d985dd7，CRC和27原始成员核验通过。原始数据results/dspark-tree，auxiliary保存启动/完成/硬件片段，模型和全logits/KV未发布。
+- 本机113 passed/2 skipped与补充20 passed、服务器151 passed/2 skipped分别保留；两卡官方源码context4/17骨干差0、Markov greedy一致，128自然严格对照均与AR相同、质量重复无变化、正式新图[0,0]、峰allocated40.128GiB。本机重建analysis.json/report.md逐字节相同，SHA分别eff6a14c3a385734ca2b966680083c5bc0ef568a744d036d829dbf825b0db4ee/85cf83d5f764db4fb4292414cb852edc59089550492c3657c26b66632ae45e94。
+- 派生完整表命令`.venv\Scripts\python.exe -m results.dspark-tree.helpers.finalize_results`；新增DSPARK_TREE_FINDINGS/RESULTS和README入口。1851旧Git对象、原codex/asd-splice=8e7a80b、旧174发布文件和面试版三个引用核验通过；新结果以publication.json封存，字节检查入口`.venv\Scripts\python.exe -m results.dspark-tree.helpers.verify_publication --git`。发布分支codex/dspark-tree；后续若研究长窗口或条件投影批处理，独立登记，不改本轮结果。
+
 ## 2026-10-26 — DSpark 成本树独立接入与配对比较
 
 - 为用户要求新建`codex/dspark-tree`，已验证DFlash分支`codex/asd-splice`保持`8e7a80b5b1af3b09886659e3549691be3ce6493e`；DFlash原解码/构树/配置/结果未修改，面试版三个引用保持原值。

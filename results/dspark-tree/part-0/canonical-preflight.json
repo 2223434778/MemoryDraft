@@ -1,0 +1,100 @@
+[
+  {
+    "id": "gsm8k:1283",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "60",
+      "expected_answer": "60",
+      "error": null
+    }
+  },
+  {
+    "id": "gsm8k:85",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "44",
+      "expected_answer": "44",
+      "error": null
+    }
+  },
+  {
+    "id": "math500:156",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "30^\\circ",
+      "expected_answer": "30^\\circ",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "math500:349",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "10080",
+      "expected_answer": "10080",
+      "metric": "normalized boxed exact match, not general symbolic equivalence",
+      "error": null,
+      "scalar_equivalent": true,
+      "secondary_correct": true,
+      "needs_review": false
+    }
+  },
+  {
+    "id": "humaneval:139",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "5551e6c68e5401fd49b8cfc6b842cb34f6c62c7e95faf04dee26e10d2d9213d5"
+    }
+  },
+  {
+    "id": "humaneval:35",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "HumanEval original tests withheld from prompt, single greedy completion",
+      "code_sha256": "a6a2de58e92fbea8af292daa98e6c74b7e62ed442f943fd950d9202b3a2cd75a"
+    }
+  },
+  {
+    "id": "mbpp:356",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "2e29597107af9eefffc548292dd03167a34594858906d2b7e7d4b09f31c696d1"
+    }
+  },
+  {
+    "id": "mbpp:247",
+    "quality": {
+      "correct": true,
+      "error": null,
+      "metric": "MBPP original tests withheld from prompt, single greedy completion",
+      "code_sha256": "25a78ad179336b7a805f4962eeb915617923ea2867037115b8ee96033a5bc107"
+    }
+  },
+  {
+    "id": "mmlu:4100",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "D",
+      "expected_answer": "D",
+      "metric": "zero-shot generated choice exact match"
+    }
+  },
+  {
+    "id": "mmlu:6968",
+    "quality": {
+      "correct": true,
+      "parsed_answer": "A",
+      "expected_answer": "A",
+      "metric": "zero-shot generated choice exact match"
+    }
+  }
+]

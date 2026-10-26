@@ -1,0 +1,20 @@
+{
+  "upstream_commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+  "reference_source_sha256": {
+    "modeling.py": "9ad90bcb926b32b5144e8a27816ef18b51e9e5ee083108c5fbd8f63bc92b3953",
+    "markov_head.py": "6659bcdc12d923d4fc16cc2280c03078c2110a4792305e1f3f42b5468f75ef46"
+  },
+  "status": "passed",
+  "cases": [
+    {
+      "context": 4,
+      "max_hidden_difference": 0.0,
+      "greedy_token_sha256": "9f5250237781be300899586c03ea8b51df14e9b3be3b7c52c1e60b5fc10f50c8"
+    },
+    {
+      "context": 17,
+      "max_hidden_difference": 0.0,
+      "greedy_token_sha256": "8f4dcb60df669069d174e928f63d807f3bd8c5b4103712f790f661d2ac0734dc"
+    }
+  ]
+}

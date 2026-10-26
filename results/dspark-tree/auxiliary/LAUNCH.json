@@ -1,0 +1,12 @@
+{
+  "pid": 1464,
+  "command": [
+    "timeout",
+    "12000",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_dspark_tree_pipeline"
+  ],
+  "started_utc": "2026-10-26T06:25:24.877242+00:00"
+}

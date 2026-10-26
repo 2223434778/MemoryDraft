@@ -1,0 +1,829 @@
+{
+  "protected_old_files": 1851,
+  "protected_refs": {
+    "codex/asd-splice": "8e7a80b5b1af3b09886659e3549691be3ce6493e",
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.3": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "infra-v0.3-interview^{}": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b"
+  },
+  "object_map_sha256": "b865a1cb1f61d1532aaf075a0c4b28936e248d1d212d10f4ebcd3af10e7ab3cc",
+  "strict_natural_comparisons": [
+    {
+      "request_id": "gsm8k:1283",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1283",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1283",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1283",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:85",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:85",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:85",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:85",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:156",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:156",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:156",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:156",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:349",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:349",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:349",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:349",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:139",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:139",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:139",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:139",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:35",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:35",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:35",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:35",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:356",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:356",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:356",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:356",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:247",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:247",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:247",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:247",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:4100",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:4100",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:4100",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:4100",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:6968",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:6968",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:6968",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:6968",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn1",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn1",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn1",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn1",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn2",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn2",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn2",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:111:turn2",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn1",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn1",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn1",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn1",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn2",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn2",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn2",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:90:turn2",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:705",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:705",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:705",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:705",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:22051",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:22051",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:22051",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:22051",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:110",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:110",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:110",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:110",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1048",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1048",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1048",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "gsm8k:1048",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:327",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:327",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:327",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:327",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:79",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:79",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:79",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "math500:79",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:100",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:100",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:100",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:100",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:39",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:39",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:39",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "humaneval:39",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:182",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:182",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:182",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:182",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:193",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:193",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:193",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mbpp:193",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:13098",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:13098",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:13098",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:13098",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:1079",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:1079",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:1079",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mmlu:1079",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn1",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn1",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn1",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn1",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn2",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn2",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn2",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:137:turn2",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn1",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn1",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn1",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn1",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn2",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn2",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn2",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "mtbench:124:turn2",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:42416",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:42416",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:42416",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:42416",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:40839",
+      "arm": "DSpark",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:40839",
+      "arm": "DFlash-Tree",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:40839",
+      "arm": "DFlash",
+      "equal_ar": true
+    },
+    {
+      "request_id": "alpaca:40839",
+      "arm": "DSpark-Tree",
+      "equal_ar": true
+    }
+  ],
+  "strict_equal_ar": 128,
+  "quality_changes": [
+    {
+      "request_id": "math500:156",
+      "benchmark": "math500",
+      "dflash_quality": {
+        "correct": true,
+        "parsed_answer": "30^\\circ",
+        "expected_answer": "30^\\circ",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": null,
+        "scalar_equivalent": true,
+        "secondary_correct": true,
+        "needs_review": false
+      },
+      "dspark_quality": {
+        "correct": false,
+        "parsed_answer": "60",
+        "expected_answer": "30^\\circ",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": null,
+        "scalar_equivalent": false,
+        "secondary_correct": false,
+        "needs_review": false
+      },
+      "dflash_finish": "eos",
+      "dspark_finish": "eos"
+    },
+    {
+      "request_id": "math500:327",
+      "benchmark": "math500",
+      "dflash_quality": {
+        "correct": false,
+        "parsed_answer": null,
+        "expected_answer": "15",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": "missing boxed final answer",
+        "scalar_equivalent": null,
+        "secondary_correct": false,
+        "needs_review": true
+      },
+      "dspark_quality": {
+        "correct": true,
+        "parsed_answer": "15",
+        "expected_answer": "15",
+        "metric": "normalized boxed exact match, not general symbolic equivalence",
+        "error": null,
+        "scalar_equivalent": true,
+        "secondary_correct": true,
+        "needs_review": false
+      },
+      "dflash_finish": "length",
+      "dspark_finish": "eos"
+    }
+  ],
+  "repeat_quality_changes": [],
+  "fixed_after_eos": [
+    {
+      "benchmark": "gsm8k",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 115,
+      "fraction": 0.1123046875
+    },
+    {
+      "benchmark": "gsm8k",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 63,
+      "fraction": 0.0615234375
+    },
+    {
+      "benchmark": "math500",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 66,
+      "fraction": 0.064453125
+    },
+    {
+      "benchmark": "math500",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 54,
+      "fraction": 0.052734375
+    },
+    {
+      "benchmark": "humaneval",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 539,
+      "fraction": 0.5263671875
+    },
+    {
+      "benchmark": "humaneval",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 552,
+      "fraction": 0.5390625
+    },
+    {
+      "benchmark": "mbpp",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 746,
+      "fraction": 0.728515625
+    },
+    {
+      "benchmark": "mbpp",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 739,
+      "fraction": 0.7216796875
+    },
+    {
+      "benchmark": "mmlu",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 1011,
+      "fraction": 0.9873046875
+    },
+    {
+      "benchmark": "mmlu",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 1012,
+      "fraction": 0.98828125
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 2048,
+      "tokens_after_first_observed_eos_id": 717,
+      "fraction": 0.35009765625
+    },
+    {
+      "benchmark": "mtbench",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 2048,
+      "tokens_after_first_observed_eos_id": 724,
+      "fraction": 0.353515625
+    },
+    {
+      "benchmark": "alpaca",
+      "arm": "DFlash-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 585,
+      "fraction": 0.5712890625
+    },
+    {
+      "benchmark": "alpaca",
+      "arm": "DSpark-Tree-ASD",
+      "eos_id": 151645,
+      "tokens": 1024,
+      "tokens_after_first_observed_eos_id": 580,
+      "fraction": 0.56640625
+    }
+  ],
+  "all_primary_rows": 1024,
+  "references": 32,
+  "source_commit": "62e801067dcb990ea9ae9a18ed1c09f02e0d04ab",
+  "new_graphs": [
+    0,
+    0
+  ]
+}

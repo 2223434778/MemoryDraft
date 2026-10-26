@@ -1,0 +1,19 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.42s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.43s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.42s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.31s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.00s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:05<00:00,  1.17s/it]
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+{"completed": 1, "request_id": "gsm8k:1283", "benchmark": "gsm8k"}
+{"completed": 2, "request_id": "gsm8k:85", "benchmark": "gsm8k"}
+{"completed": 3, "request_id": "math500:156", "benchmark": "math500"}
+{"completed": 4, "request_id": "math500:349", "benchmark": "math500"}
+{"completed": 5, "request_id": "humaneval:139", "benchmark": "humaneval"}
+{"completed": 6, "request_id": "humaneval:35", "benchmark": "humaneval"}
+{"completed": 7, "request_id": "mbpp:356", "benchmark": "mbpp"}
+{"completed": 8, "request_id": "mbpp:247", "benchmark": "mbpp"}
+{"completed": 9, "request_id": "mmlu:4100", "benchmark": "mmlu"}
+{"completed": 10, "request_id": "mmlu:6968", "benchmark": "mmlu"}
+{"completed": 11, "request_id": "mtbench:111:turn1", "benchmark": "mtbench"}
+{"completed": 12, "request_id": "mtbench:111:turn2", "benchmark": "mtbench"}
+{"completed": 13, "request_id": "mtbench:90:turn1", "benchmark": "mtbench"}
+{"completed": 14, "request_id": "mtbench:90:turn2", "benchmark": "mtbench"}
+{"completed": 15, "request_id": "alpaca:705", "benchmark": "alpaca"}
+{"completed": 16, "request_id": "alpaca:22051", "benchmark": "alpaca"}

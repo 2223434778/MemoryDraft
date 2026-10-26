@@ -413,3 +413,8 @@ data/workloads/asd-shared-prefix/** -text
 results/asd-shared-prefix/** -text
 results/asd-shared-prefix/**/*.log -whitespace
 results/asd-shared-prefix/**/*.xml -whitespace
+results/dspark-tree/** -text
+results/dspark-tree/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/dspark-tree/**/*.log -whitespace
+results/dspark-tree/**/*.xml -whitespace
+docs/DSPARK*.md text eol=lf
