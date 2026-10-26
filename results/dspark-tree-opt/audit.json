@@ -1,0 +1,66 @@
+{
+  "report_rebuilt_bytes": {
+    "analysis.json": "2919e3e6852233c4adced96554e41bdb7ac49485a2ae98ed8ba230d79a09b5ad",
+    "report.md": "458a9519934f5e991439f98ef87974c6eb5ac0a64497d1017fe80ddfe305627e"
+  },
+  "rows": 448,
+  "requests": 28,
+  "exact_fast_reference_generations": 112,
+  "gpu_replay_rows": 224,
+  "unique_gpu_states": 49,
+  "formal_new_graphs": 0,
+  "old_reference_origins": {
+    "results/dspark-tree/part-0/references.jsonl.gz": 8,
+    "results/asd-paper-extension/part-0/references.jsonl.gz": 6,
+    "results/dspark-tree/part-1/references.jsonl.gz": 8,
+    "results/asd-paper-extension/part-1/references.jsonl.gz": 6
+  },
+  "reconstructed_reference_messages": 12,
+  "maximum_cache_bytes": 38895616,
+  "maximum_peak_gpu_bytes": 42180431360,
+  "natural_mechanism": [
+    {
+      "benchmark": "alpaca",
+      "requests": 16,
+      "rounds": 1057,
+      "cache_hits": 10662,
+      "cache_misses": 8487,
+      "cache_hit_fraction": 0.5567914773617422,
+      "old_nodes_per_round": 32.0,
+      "fast_nodes_per_round": 28.846736045411543,
+      "old_conditionals_per_round": 19.306527909176914,
+      "fast_conditionals_per_round": 18.116367076631978,
+      "original_dspark_vs_dflash_time_ratio": 0.8532049848223189
+    },
+    {
+      "benchmark": "humaneval",
+      "requests": 4,
+      "rounds": 65,
+      "cache_hits": 313,
+      "cache_misses": 211,
+      "cache_hit_fraction": 0.5973282442748091,
+      "old_nodes_per_round": 32.0,
+      "fast_nodes_per_round": 10.353846153846154,
+      "old_conditionals_per_round": 14.584615384615384,
+      "fast_conditionals_per_round": 8.061538461538461,
+      "correct": {
+        "DFlash-Tree-ASD": 4,
+        "DSpark-ASD": 4,
+        "DSpark-Tree-ASD": 4,
+        "DSpark-Tree-ASD-Fast": 4
+      }
+    },
+    {
+      "benchmark": "mtbench",
+      "requests": 8,
+      "rounds": 298,
+      "cache_hits": 2132,
+      "cache_misses": 1546,
+      "cache_hit_fraction": 0.5796628602501359,
+      "old_nodes_per_round": 32.0,
+      "fast_nodes_per_round": 18.58053691275168,
+      "old_conditionals_per_round": 16.916107382550337,
+      "fast_conditionals_per_round": 12.342281879194632
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "pid": 73480,
+  "root": "/media/a6000/D/ZhaoBinHe/MemoryDraft/dspark-tree-opt",
+  "command": [
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=20",
+    "12000",
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_dspark_tree_opt_pipeline"
+  ],
+  "utc": "2026-10-26T08:19:31.233634+00:00",
+  "source_files": 2586,
+  "source_sha256": "6467d3045a97049d993a3a5f0124d0de4b736f51492b32bb90550d8a5fe79f68",
+  "zip_sha256": "26d0b3eaf24f41cd71336f314d739427834904ab235432428f9be743eeb5cbf0"
+}

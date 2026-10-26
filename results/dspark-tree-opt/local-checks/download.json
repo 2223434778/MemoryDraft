@@ -1,0 +1,14 @@
+{
+  "bytes": 1155114,
+  "sha256": "1297a8c074f597379ddb7a80d2d91cd17358c501367a57e9987409bafb0eaf15",
+  "remote_path": "/media/a6000/D/ZhaoBinHe/MemoryDraft/dspark-tree-opt-results.zip",
+  "utc": "2026-10-26T08:37:42.246342+00:00",
+  "execution_verification": {
+    "status": "complete",
+    "commit": "692ce0f72afcb2a706171fdd9d8a312e4b4deddc",
+    "files_verified_before": 2586,
+    "worker_timeout_seconds": 10800,
+    "files_verified_after": 2586
+  },
+  "zip_crc_verified": true
+}

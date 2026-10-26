@@ -418,3 +418,7 @@ results/dspark-tree/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-
 results/dspark-tree/**/*.log -whitespace
 results/dspark-tree/**/*.xml -whitespace
 docs/DSPARK*.md text eol=lf
+results/dspark-tree-opt/** -text
+results/dspark-tree-opt/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/dspark-tree-opt/**/*.log -whitespace
+results/dspark-tree-opt/**/*.xml -whitespace
