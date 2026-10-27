@@ -2,6 +2,10 @@
 results/chat-inline-ui/** -text
 results/chat-inline-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 tests/test_inline_presentation.py text eol=lf
+tests/test_output_limits.py text eol=lf
+results/chat-long-output/** -text
+results/chat-long-output/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/chat-long-output/**/*.xml -whitespace
 results/chat-visualization/** -text
 results/chat-live-ui/** -text
 results/chat-live-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

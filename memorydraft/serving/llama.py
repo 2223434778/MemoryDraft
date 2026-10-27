@@ -23,9 +23,13 @@ class NativeTokenizer:
         self.client = client
         response = client.get("/props")
         response.raise_for_status()
+        props = response.json()
+        self.context_length = props.get("default_generation_settings", {}).get("n_ctx")
+        if type(self.context_length) is not int or self.context_length < 1:
+            raise ValueError("Native server must report its actual context length")
         self.special_ids = set()
         for key in ("bos_token", "eos_token"):
-            text = response.json().get(key)
+            text = props.get(key)
             if text:
                 response_tokens = client.post("/tokenize", json={"content": text, "add_special": False, "parse_special": True})
                 response_tokens.raise_for_status()
@@ -54,7 +58,7 @@ class NativeTokenizer:
 class LlamaEngine:
     methods = ("AR",)
 
-    def __init__(self, url="http://127.0.0.1:8012", *, model="qwen3.8-27b-q8", context=12288, transport=None):
+    def __init__(self, url="http://127.0.0.1:8012", *, model="qwen3.8-27b-q8", context=None, transport=None):
         parsed = urlsplit(url)
         if parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "::1"} or parsed.username or parsed.password:
             raise ValueError("llama.cpp must bind to loopback")
@@ -63,6 +67,11 @@ class LlamaEngine:
         try:
             self.client.get("/health").raise_for_status()
             self.tokenizer = NativeTokenizer(self.client)
+            native_context = self.tokenizer.context_length
+            if context is None:
+                context = native_context
+            if type(context) is not int or not 1 <= context <= native_context:
+                raise ValueError("Adapter context exceeds the native server context")
         except Exception:
             self.client.close()
             raise

@@ -1,3 +1,15 @@
+# 2026-10-27 — 网页单次输出提高到16384 tokens并完成双模型实测
+
+- 按用户要求尽量提高单次回答长度。线上原配置为网页／8B runtime输出1024，接口／请求契约硬上限4096，27B原生总窗口12288但适配器输入固定8192。增加共享 `MAX_OUTPUT_TOKENS=16384`，同步请求、runtime、HTTP生成／计数、聊天配置与过程轮次校验；保留整数／越界验证。网页默认输出16384，新增可配置 `MEMORYDRAFT_CHAT_TIMEOUT_SECONDS`，线上从600延长至3600秒。
+- 27B原生总窗口扩大到32768；适配器从 `/props.default_generation_settings.n_ctx` 获取真实窗口并拒绝无效／夸大配置，避免提高输出预算后仍按12288裁剪。两个模型输入上限仍8192。EOS／停止不变；未改Target prompt、模型权重、FP32／rmsnorm执行、ASD接受条件、成本表或冻结研究版本。研究runtime默认输出1024继续保留。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_output_limits.py tests/test_llama_serving.py tests/test_chat.py tests/test_serving.py tests/test_runtime.py tests/test_speculation.py --basetemp artifacts/pytest-long-output -o faulthandler_timeout=45`：107 passed，30.91s。新增覆盖4097／8192／16384、越界／bool拒绝、长预算转发、4096轮之后的有界过程记录、环境期限和原生窗口发现。
+- 共享运行时契约改变，追加一次完整回归：`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/pytest-long-output-full --junitxml=artifacts/long-output-full.xml -o faulthandler_timeout=60`：1202 passed / 7 skipped，202.99s，零失败／错误，原有multipart弃用警告1项。原始JUnit保存为 `results/chat-long-output/tests-full.xml`。
+- GPU执行命令：`systemd-run --user --unit memorydraft-long-output-check --property=RuntimeMaxSec=3700 --property=WorkingDirectory=<chat-root>/current --setenv=PYTHONPATH=. <venv>/python <chat-root>/private/validate_chat_output_limits.py --env <chat-root>/private/inference.env --output <chat-root>/private/long-output-check.json`。线上初版脚本固定两个已部署地址；归档脚本仅把地址抽成 `--url`／`--large-url` 参数以便复用，请求与校验逻辑未变，复用命令见结果README。
+- 实际Qwen3-8B成本树ASD与27B AR各生成16384 tokens，均以length结束，流式计数与最终IDs长度一致。8B为1511轮、268.62s，PyTorch分配峰值43174730240B；27B为746.17s。nvidia-smi采样整卡占用峰值分别48610／28584MiB，不等同PyTorch实际分配。另三种8B方法在16384预算下正常自然EOS，长任务后服务恢复通过。该合成计数任务只检验长度／稳定性，不检查数字序列质量、不作为速度比较；未穷举最大输入加最大输出的组合。
+- 阿里云执行：`cd <gateway-root>/current && PYTHONPATH=. <venv>/python <gateway-root>/private/validate_chat_output_gateway.py --env <gateway-root>/private/gateway.env --output <gateway-root>/private/long-output-gateway-check.json`。使用本机临时SQLite和原网关代码连接真实A6000，四种8B模式及27B AR共5组，均确认token-count／generate转发16384、任务期限3600、完成原文与保存一致。未创建生产测试账号、未删除用户记录，临时测试数据库自动清理。
+- 打包 `.venv\Scripts\python.exe -m scripts.package_chat_service --output artifacts/chat-long-output-source.zip`：109文件，源码SHA `66e8ec2e678a18fb89e65364c2537937b239e8a3b06814a45e17900eaab6489c`，ZIP SHA `eb760b1b08099938ee3332d1f3b8ee278fe353ebeed3fe867817fc72519d51de`。两机以独立release安装并原子切换；变更前确认worker无运行／排队及网关无active会话，私有运行配置／原生unit／网关环境均独立备份。重启原生27B与适配器、8B加载新限制，网关重启后两项长度参数和active状态核对通过。
+- `.venv\Scripts\python.exe artifacts/chat-live-preview/report-long.py`：线上七个静态文件与源码相同；109个发布源码与暂存Git逐字节SHA匹配，旧main／infra v0.4分支／标签未移动，成本表SHA `ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c`不变。配置模板及部署说明同步更新，结果 `results/chat-long-output/acceptance.json`、`gpu.json`、`gateway.json`。
+
 # 2026-10-27 — 放大字体、统一动画菜单、正文内实时投机简览
 
 - 默认及手机正文提高至 17px，辅助说明同步放大。新增 `select-menu.js`，保留原模型能力与原生 select 状态，通过统一圆角菜单提供淡入／上移、选中标记、真实禁用、方向键／Home／End／Escape；修复打开时 visibility 过渡阻止立即聚焦的问题，复测首尾选项及焦点返回通过。

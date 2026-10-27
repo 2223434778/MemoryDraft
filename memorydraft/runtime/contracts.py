@@ -4,6 +4,9 @@ from dataclasses import dataclass, field
 from typing import Callable, Protocol
 
 
+MAX_OUTPUT_TOKENS = 16384
+
+
 class RequestCancelled(RuntimeError):
     """Cooperative cancellation; no partial result may be committed to memory."""
 
@@ -19,8 +22,8 @@ class GenerationRequest:
     def __post_init__(self):
         if not self.id or not self.user_id or type(self.order) is not int or self.order < 0:
             raise ValueError("Nonempty request/user IDs and a nonnegative integer order are required")
-        if type(self.max_new_tokens) is not int or not 1 <= self.max_new_tokens <= 4096:
-            raise ValueError("max_new_tokens must be an integer in [1, 4096]")
+        if type(self.max_new_tokens) is not int or not 1 <= self.max_new_tokens <= MAX_OUTPUT_TOKENS:
+            raise ValueError(f"max_new_tokens must be an integer in [1, {MAX_OUTPUT_TOKENS}]")
         if not self.messages or len(self.messages) > 128:
             raise ValueError("Expected between 1 and 128 messages")
         for message in self.messages:

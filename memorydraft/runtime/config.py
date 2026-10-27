@@ -4,6 +4,8 @@ from dataclasses import asdict, dataclass, field
 import json
 from pathlib import Path
 
+from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
+
 
 @dataclass(frozen=True)
 class RuntimeConfig:
@@ -92,7 +94,7 @@ class RuntimeConfig:
         if self.dtype != "float32" or self.attention != "eager":
             raise ValueError("The validated runtime profile requires float32/eager")
         if any(type(v) is not int or v < 1 for v in
-               (self.threads, self.max_input_tokens, self.max_new_tokens)) or self.max_new_tokens > 4096:
+               (self.threads, self.max_input_tokens, self.max_new_tokens)) or self.max_new_tokens > MAX_OUTPUT_TOKENS:
             raise ValueError("Invalid thread or token limits")
         if self.backend != "demo" and not self.target:
             raise ValueError("A local target model directory is required")

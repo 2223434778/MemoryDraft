@@ -14,6 +14,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 
 from memorydraft.runtime import GenerationRequest, RequestCancelled
+from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
 from memorydraft.serving.worker import InferenceWorker, QueueFull
 from memorydraft.serving.text import PrefixText
 from memorydraft.serving.inline import InlinePresentation
@@ -32,7 +33,7 @@ class GenerateBody(BaseModel):
     user_id: StrictStr = Field(min_length=1, max_length=128)
     order: StrictInt = Field(ge=0)
     messages: list[Message] = Field(min_length=1, max_length=128)
-    max_new_tokens: StrictInt = Field(default=128, ge=1, le=4096)
+    max_new_tokens: StrictInt = Field(default=128, ge=1, le=MAX_OUTPUT_TOKENS)
     method: StrictStr = "AR"
     stream: bool = False
     text_stream: bool = False
@@ -43,7 +44,7 @@ class GenerateBody(BaseModel):
 class TokenCountBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     messages: list[Message] = Field(min_length=1, max_length=128)
-    max_new_tokens: StrictInt = Field(default=1024, ge=1, le=4096)
+    max_new_tokens: StrictInt = Field(default=1024, ge=1, le=MAX_OUTPUT_TOKENS)
 
 
 def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=None):

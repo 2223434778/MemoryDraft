@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-10-27T12:09:58.075253+00:00",
+  "source_sha256": "66e8ec2e678a18fb89e65364c2537937b239e8a3b06814a45e17900eaab6489c",
+  "files": 109,
+  "archive_sha256": "eb760b1b08099938ee3332d1f3b8ee278fe353ebeed3fe867817fc72519d51de",
+  "limits": {
+    "old_output_tokens": 1024,
+    "output_tokens": 16384,
+    "input_tokens": 8192,
+    "gateway_deadline_seconds": 3600,
+    "native_27b_context": 32768
+  },
+  "tests": {
+    "related_passed": 107,
+    "related_seconds": 30.91,
+    "full_passed": 1202,
+    "full_skipped": 7,
+    "full_seconds": 202.99,
+    "failures": 0,
+    "errors": 0
+  },
+  "real_gpu_long_output_checks": 2,
+  "gateway_mode_checks": 5,
+  "deployment": {
+    "gateway_active": true,
+    "gateway_switch_active_chats": 0,
+    "production_static_files_match": 7,
+    "previous_source": "a6e9aa5e40bc",
+    "private_config_backups_preserved": true,
+    "cost_table_sha256": "ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c"
+  },
+  "scope": "Short-input output-length/stability checks; not a speed benchmark or exhaustive maximum-input stress test. Target prompts, weights, FP32 profile, acceptance rules and cost table unchanged.",
+  "evidence_sha256": {
+    "gateway.json": "7c7c889feb241f14f88122df25bb974e60eb1b57bc9c821a6d6fa5767a1818a3",
+    "gpu.json": "ec1906c4cb5a9142f95cd65e369b56e669f657bf5a7c355efb3eaf69b22912b7",
+    "tests-full.xml": "9aa9f64a30ff44a9ac05853509a138ff8060379bb0d5a1a401743e293050dbd7"
+  },
+  "frozen_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.4": "ea04290366b3caa809aba93b9417c7e7a148ce48",
+    "infra-v0.4-interview^{}": "ea04290366b3caa809aba93b9417c7e7a148ce48"
+  }
+}

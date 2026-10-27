@@ -69,7 +69,7 @@ MEMORYDRAFT_CHAT_MODELS='[{"id":"qwen3.8-27b-q8","label":"Qwen3.8-27B · Q8","ur
 
 内部服务仍使用原 Bearer 鉴权；llama.cpp 本身只监听 loopback，外部通过适配器访问。不得把密钥或私有环境文件提交 Git。新模型适配器复用现有单执行线程、队列、取消、token 计数及 SSE 接口；普通生成的 token ID 来自原生 `/completion`，不以字符或重新编码内容伪造生成 token。
 
-准备大模型：`python -m scripts.prepare_chat_model --root /path/to/chat-service/large-model --proxy http://127.0.0.1:YOUR_PROXY_PORT --patch deploy/chat/llama-stream-token-ids.patch`。脚本固定权重和上游版本，校验 28,595,763,648 字节文件及 SHA，使用显式 CUDA 12.1 工具链编译，避免机器上旧 CUDA 库混入链接。只在该独立目录保存下载和构建；不修改旧 DFlash venv。原生模型使用 GPU1、12,288 context、单 slot、flash attention、关闭 thinking；适配器用 `python -m uvicorn memorydraft.serving.llama:app --factory --host YOUR_A6000_TAILSCALE_IP --port 8011 --workers 1`，从环境读取内部鉴权。
+准备大模型：`python -m scripts.prepare_chat_model --root /path/to/chat-service/large-model --proxy http://127.0.0.1:YOUR_PROXY_PORT --patch deploy/chat/llama-stream-token-ids.patch`。脚本固定权重和上游版本，校验 28,595,763,648 字节文件及 SHA，使用显式 CUDA 12.1 工具链编译，避免机器上旧 CUDA 库混入链接。只在该独立目录保存下载和构建；不修改旧 DFlash venv。原生模型使用 GPU1、32,768 context、单 slot、flash attention、关闭 thinking；适配器从原生 `/props` 发现实际窗口。网页输出上限提高到16,384，输入历史上限仍为8,192，详见[长度设置](CHAT_DEPLOYMENT.md)。适配器用 `python -m uvicorn memorydraft.serving.llama:app --factory --host YOUR_A6000_TAILSCALE_IP --port 8011 --workers 1`，从环境读取内部鉴权。
 
 这台服务器首次连续请求暴露了 CUDA graph 路径的 `stack smashing`。关闭上下文检查点／缓存未解决；GDB 回溯定位到 `ggml_cuda_graph_launch_chunk`，原生后端单独设置 `GGML_CUDA_DISABLE_GRAPHS=1`。这个运行设置只作用于新模型进程，原 DFlash 执行配置及成本表保持。构建时也关闭上游内置 Web UI，避免下载未固定的前端资源；聊天界面由本项目提供。
 

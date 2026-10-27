@@ -5,6 +5,7 @@ from collections import OrderedDict
 import json
 
 from memorydraft.chat.upstream import UpstreamError
+from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
 
 
 class TraceHistory:
@@ -17,7 +18,7 @@ class TraceHistory:
         if not isinstance(value, dict):
             raise UpstreamError("模型返回了无效的过程事件")
         number, phase = value.get("round"), value.get("phase")
-        if (value.get("version") != 1 or type(number) is not int or not 1 <= number <= 4096
+        if (value.get("version") != 1 or type(number) is not int or not 1 <= number <= MAX_OUTPUT_TOKENS
                 or phase not in {"draft", "verified"} or len(json.dumps(value)) > 65536):
             raise UpstreamError("模型返回了无效的过程事件")
         if phase == "draft":

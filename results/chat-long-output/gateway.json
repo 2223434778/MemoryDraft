@@ -1,0 +1,100 @@
+{
+  "isolated_temporary_sqlite": true,
+  "production_test_accounts_created": 0,
+  "production_records_deleted": 0,
+  "checks": [
+    {
+      "model": "qwen3-8b",
+      "method": "AR",
+      "forwarded_limits": [
+        {
+          "path": "/v1/token-count",
+          "max_new_tokens": 16384,
+          "timeout_seconds": null
+        },
+        {
+          "path": "/v1/generate",
+          "max_new_tokens": 16384,
+          "timeout_seconds": 3600.0
+        }
+      ],
+      "stored_equals_complete": true,
+      "text_sha256": "b59aa61bc9d935a7b927d275b3f595db1c6d8a55aa7ed807918197258193b206"
+    },
+    {
+      "model": "qwen3-8b",
+      "method": "DFlash",
+      "forwarded_limits": [
+        {
+          "path": "/v1/token-count",
+          "max_new_tokens": 16384,
+          "timeout_seconds": null
+        },
+        {
+          "path": "/v1/generate",
+          "max_new_tokens": 16384,
+          "timeout_seconds": 3600.0
+        }
+      ],
+      "stored_equals_complete": true,
+      "text_sha256": "b59aa61bc9d935a7b927d275b3f595db1c6d8a55aa7ed807918197258193b206"
+    },
+    {
+      "model": "qwen3-8b",
+      "method": "ASD",
+      "forwarded_limits": [
+        {
+          "path": "/v1/token-count",
+          "max_new_tokens": 16384,
+          "timeout_seconds": null
+        },
+        {
+          "path": "/v1/generate",
+          "max_new_tokens": 16384,
+          "timeout_seconds": 3600.0
+        }
+      ],
+      "stored_equals_complete": true,
+      "text_sha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    },
+    {
+      "model": "qwen3-8b",
+      "method": "BudgetTree-ASD",
+      "forwarded_limits": [
+        {
+          "path": "/v1/token-count",
+          "max_new_tokens": 16384,
+          "timeout_seconds": null
+        },
+        {
+          "path": "/v1/generate",
+          "max_new_tokens": 16384,
+          "timeout_seconds": 3600.0
+        }
+      ],
+      "stored_equals_complete": true,
+      "text_sha256": "b59aa61bc9d935a7b927d275b3f595db1c6d8a55aa7ed807918197258193b206"
+    },
+    {
+      "model": "qwen3.8-27b-q8",
+      "method": "AR",
+      "forwarded_limits": [
+        {
+          "path": "/v1/token-count",
+          "max_new_tokens": 16384,
+          "timeout_seconds": null
+        },
+        {
+          "path": "/v1/generate",
+          "max_new_tokens": 16384,
+          "timeout_seconds": 3600.0
+        }
+      ],
+      "stored_equals_complete": true,
+      "text_sha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526"
+    }
+  ],
+  "configured_output_limit": 16384,
+  "configured_deadline": 3600.0,
+  "passed": true
+}

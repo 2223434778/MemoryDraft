@@ -8,6 +8,8 @@ import re
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
+
 
 @dataclass(frozen=True)
 class ChatConfig:
@@ -17,8 +19,8 @@ class ChatConfig:
     invite_code: str = field(repr=False)
     public_origin: str
     method: str = "BudgetTree-ASD"
-    max_new_tokens: int = 1024
-    timeout_seconds: float = 600
+    max_new_tokens: int = MAX_OUTPUT_TOKENS
+    timeout_seconds: float = 3600
     model_id: str = "qwen3-8b"
     model_label: str = "Qwen3-8B"
     models: tuple[dict, ...] = ()
@@ -47,7 +49,8 @@ class ChatConfig:
                     raise ValueError("Use HTTPS outside loopback/Tailscale")
         if self.method not in {"AR", "DFlash", "BudgetTree", "ASD", "BudgetTree-ASD"}:
             raise ValueError("Unsupported chat method")
-        if not 1 <= self.max_new_tokens <= 4096 or not 1 <= self.timeout_seconds <= 3600:
+        if (type(self.max_new_tokens) is not int or not 1 <= self.max_new_tokens <= MAX_OUTPUT_TOKENS
+                or not 1 <= self.timeout_seconds <= 3600):
             raise ValueError("Invalid generation limits")
 
     @property
@@ -65,7 +68,8 @@ class ChatConfig:
                    invite_code=os.environ["MEMORYDRAFT_INVITE_CODE"],
                    public_origin=os.environ["MEMORYDRAFT_PUBLIC_ORIGIN"].rstrip("/"),
                    method=os.environ.get("MEMORYDRAFT_CHAT_METHOD", "BudgetTree-ASD"),
-                   max_new_tokens=int(os.environ.get("MEMORYDRAFT_CHAT_MAX_TOKENS", "1024")),
+                   max_new_tokens=int(os.environ.get("MEMORYDRAFT_CHAT_MAX_TOKENS", str(MAX_OUTPUT_TOKENS))),
+                   timeout_seconds=float(os.environ.get("MEMORYDRAFT_CHAT_TIMEOUT_SECONDS", "3600")),
                    model_id=os.environ.get("MEMORYDRAFT_CHAT_MODEL_ID", "qwen3-8b"),
                    model_label=os.environ.get("MEMORYDRAFT_CHAT_MODEL_LABEL", "Qwen3-8B"),
                    models=tuple(json.loads(os.environ.get("MEMORYDRAFT_CHAT_MODELS", "[]"))))

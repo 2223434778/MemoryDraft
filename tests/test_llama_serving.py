@@ -10,13 +10,13 @@ from memorydraft.serving.llama import LlamaEngine
 from test_serving import BODY, req
 
 
-def native(*, incomplete=False):
+def native(*, incomplete=False, context=12288):
     def handler(request):
         body = json.loads(request.content or b"{}")
         if request.url.path == "/health":
             return httpx.Response(200, json={"status": "ok"})
         if request.url.path == "/props":
-            return httpx.Response(200, json={"eos_token": "<eos>"})
+            return httpx.Response(200, json={"eos_token": "<eos>", "default_generation_settings": {"n_ctx": context}})
         if request.url.path == "/apply-template":
             assert body["chat_template_kwargs"] == {"enable_thinking": False}
             return httpx.Response(200, json={"prompt": "formatted"})
@@ -66,3 +66,18 @@ def test_native_cancel_and_incomplete_stream_do_not_return_success():
 def test_native_backend_cannot_be_redirected_to_external_host():
     with pytest.raises(ValueError, match="loopback"):
         LlamaEngine("http://example.com")
+
+
+def test_native_context_is_discovered_and_reserves_long_output():
+    engine = LlamaEngine(transport=native(context=32768))
+    with TestClient(create_app(lambda: engine)) as client:
+        response = client.post("/v1/token-count", json={"messages": BODY["messages"], "max_new_tokens": 16384})
+        assert response.json() == {"input_tokens": 2, "input_limit": 8192}
+        assert client.post("/v1/generate", json={**BODY, "max_new_tokens": 16384}).status_code == 200
+
+
+def test_native_adapter_rejects_unreported_or_overstated_context():
+    with pytest.raises(ValueError, match="actual context"):
+        LlamaEngine(transport=native(context=None))
+    with pytest.raises(ValueError, match="exceeds"):
+        LlamaEngine(context=32768, transport=native(context=12288))
