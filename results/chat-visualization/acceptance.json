@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-10-27T09:09:06.977468+00:00",
+  "recorded_at": "2026-10-27T09:11:14.025576+00:00",
   "source_sha256": "27193113011eb12b05da68be6d7ffbbae05bf2793440665bcd72d2ce114107ae",
   "source_files": 105,
   "archive_sha256": "84b0b32c988aaff6d11e9c62d29f3437336ba4695bcd96791b40bb9d89f8cd02",
@@ -31,13 +31,15 @@
     "passed": true
   },
   "test_data_cleanup": {
-    "status": "awaiting explicit user approval",
+    "status": "completed after explicit user approval",
     "accounts": 1,
     "automatic_review_rejected_production_deletion": true,
     "reason": "Irreversible production database deletion needs explicit authorization and backup confirmation.",
     "scoped_private_backup_created": true,
     "backup_sha256": "20f1fa9f1b896b97e978c81298c1c8eee286290772b7ff211fb7eba4d357938e",
-    "deletion_executed": false
+    "deletion_executed": true,
+    "other_accounts_preserved": true,
+    "report": "cleanup.json"
   },
   "browser": {
     "real_chrome": true,

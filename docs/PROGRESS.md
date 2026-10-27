@@ -9,8 +9,8 @@
 - 准备命令 `python scripts/prepare_chat_model.py --root <chat-root>/large-model --proxy http://127.0.0.1:7897 --patch <chat-root>/private/llama-stream-token-ids.patch`。初次构建混入系统 CUDA11.1 的 cuBLAS，改显式 CUDA12.1 根目录后编译通过；关闭上游内置 UI 下载。小 MIT 补丁保留未完成 UTF-8 字节的流式真实 ID，patch SHA `64ccbc2d435069fe9406424543a59b9d4dcecf7985ac7ebdceff5a6b1543c354` 记录在模型清单。
 - 连续请求初测触发原生 `stack smashing`；关闭上下文缓存未解决，GDB 定位到 `ggml_cuda_graph_launch_chunk`。仅给新模型设置 `GGML_CUDA_DISABLE_GRAPHS=1` 后，`scripts/validate_chat_large_model.py` 两组中文／emoji／罕见字请求的流式 ID 与原生完整 ID、解码均一致；实际网页切换并保存回答通过。没有进行新模型长期压力或质量对比评测，排障和最终固定版本均保留在报告。
 - 两机最终 105 文件源码 SHA `27193113011eb12b05da68be6d7ffbbae05bf2793440665bcd72d2ce114107ae`，发布 ZIP SHA `84b0b32c988aaff6d11e9c62d29f3437336ba4695bcd96791b40bb9d89f8cd02`。`scripts/install_chat_release.py` 校验清单后创建独立 release，原子切换；数据库／私有环境仍在 release 外。最终重启后的成本树 ASD 恢复生成通过。原成本表 SHA `ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c` 保持，旧 infra 面试分支／标签及独立目录未改动。
-- 验收浏览器会话已关闭。自动审批拒绝从生产 SQLite 删除本次生成的一个合成测试账号及其对话，理由为缺少不可逆删除的明确授权与独立备份确认；删除命令未执行，测试账号保留，等待用户明确选择。该清理不影响功能交付。
-- 随后仅查询该精确测试 ID，已在阿里云权限受限的 private 目录生成该账号的独立备份，未导出其他账号、未执行删除。备份 SHA `20f1fa9f1b896b97e978c81298c1c8eee286290772b7ff211fb7eba4d357938e`；原始备份含私有认证字段，不提交 Git。最终 105 个发布源码文件逐一与暂存 Git blob 比对相同，凭据模式检查无命中。
+- 验收浏览器会话已关闭。自动审批最初拒绝从生产 SQLite 删除合成测试账号，理由为缺少不可逆删除的明确授权与独立备份确认。完成独立备份后，用户明确回复“允许清理该测试账号及对话”；随后核验精确 ID、唯一测试用户名和备份 SHA，在事务中清理该一个账号及合成对话，其他账号集合前后保持相同。结果 `results/chat-visualization/cleanup.json`。
+- 清理前仅查询该精确测试 ID，在阿里云权限受限的 private 目录生成该账号的独立备份，未导出其他账号。备份 SHA `20f1fa9f1b896b97e978c81298c1c8eee286290772b7ff211fb7eba4d357938e`；原始备份含私有认证字段，不提交 Git。最终 105 个发布源码文件逐一与暂存 Git blob 比对相同，凭据模式检查无命中。
 
 # 2026-10-27 — 原Chrome仍502的Clash接口定位与实际恢复
 
