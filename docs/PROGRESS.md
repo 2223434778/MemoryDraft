@@ -1,3 +1,9 @@
+# 2026-10-27 — 用户浏览器HTTP 502修复
+
+- 用户报告聊天网址502。实际对比：客户端`curl --noproxy '*'`为200，阿里云本机HTTP为200、网关active；显式通过已配置本地代理为502，定位为客户端代理路径。Windows当前用户ProxyOverride缺少聊天服务器Tailscale IP。
+- 在忽略目录保存`artifacts/chat-deploy/proxy-bypass-backup-20261027-145607.json`，仅为当前用户系统代理追加该IP直连例外，原ProxyEnable/ProxyServer及其他排除项均保留，使用WinINet通知刷新。随后独立Chrome沿用系统代理、没有`--no-proxy-server`参数，实际成功打开登录页。没有修改服务器程序或模型配置，无需GPU/单元测试复跑。
+- 排障流程补入`docs/CHAT_DEPLOYMENT.md`。本次系统代理变更发生在最初部署验收之后；原验收记录“测试时未改系统设置”描述的是当时状态，保留其原始结果。
+
 # 2026-10-27 — 阿里云网页与A6000真实聊天部署完成
 
 - 新分支`codex/chat-gateway`承载`memorydraft/chat/`：邀请码注册、scrypt密码哈希、HttpOnly会话、CSRF/Origin校验、用户会话隔离和阿里云本地SQLite。手机/电脑网页支持流式回答、代码块、多轮历史和停止；GPU仍复用原DFlash+成本树+ASD，最多两用户活跃、单GPU串行排队，不声称新增batch并行或算法收益。

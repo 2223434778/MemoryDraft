@@ -53,3 +53,9 @@ flowchart LR
 证据与源码身份见[验收记录](../results/chat-deployment/acceptance.json)、[首版跨机原始结果](../results/chat-deployment/cross-host.json)。最终两机101文件源码SHA为`704189f767b142efd20cd1496000949a51b80e319c2b885a6f8720cbc3d99b3d`；首版和最终版的模型推理/网关Python代码相同，最终差别是手机标题、Markdown空行、favicon及README。部署清单记录实际打包字节，可能包含Windows工作区换行，不将其混作Git树哈希。
 
 这些检查证明当前小规模服务链路可用；耗时包含冷编译、队列及网络，不作为算法加速对照或更高并发容量承诺。当前模型常驻A6000 GPU0；后续进行同卡研究计时时应先停止聊天推理服务，或选空闲GPU并独立确认配置。
+
+## 客户端出现HTTP 502
+
+先比较直连和代理路径：`curl --noproxy '*' http://YOUR_ALIYUN_TAILSCALE_IP:8080/`。如果服务器和客户端直连均为200，而走本机代理为502，应将阿里云的具体Tailscale IP加入系统代理排除列表；不是只确认Tailscale显示在线。Windows内置的“本地地址绕过”不一定覆盖这个IP，需要明确添加。[Windows代理设置说明](https://support.microsoft.com/en-us/windows/experience/connectivity-networking/use-a-proxy-server-in-windows)
+
+2026-10-27用户实际访问故障中，保留现有Windows代理及其其他排除项，仅追加聊天服务器IP，并刷新系统代理配置后，未带禁用代理参数的独立Chrome成功打开登录页。修改前的排除列表保存在本机忽略目录`artifacts/chat-deploy/proxy-bypass-backup-*.json`，不上传到仓库。用户已有浏览器可刷新页面，必要时关闭该标签页后重新打开；手机等其他设备需独立确认Tailscale和代理绕过设置。
