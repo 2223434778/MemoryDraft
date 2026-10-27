@@ -81,3 +81,9 @@ rules:
 ```
 
 用安装包自带Clash `-t`校验后加载，核对原有12个selector组的选项全部相同；强制经过原Clash端口访问由502变200，客户端直连仍为200，用户也确认原Chrome已显示登录页。当前修改写入正在使用的本地profile；订阅自动更新可能覆盖手工内容，长期使用应通过Clash Mixin/预处理保留专用组和规则。原配置备份仅在本机忽略目录`artifacts/chat-deploy/clash-*-backup-*`，含私有订阅数据，不得提交GitHub。本轮没有更换Clash版本、全局改变出口网卡或开启TUN。
+
+2026-10-27再次发生502：服务器和电脑直连均200，强制经过Clash为502。当前订阅文件在21:24被改写，专用组及单IP规则已缺失；恢复该组／规则后，当前代理首页与脚本均200，12个原selector选项、9816条原规则、11个原组保留，用户确认原Chrome恢复。网页服务仍为树流版本，无需回滚。
+
+为保留更新后的路由，在Clash for Windows 0.19.10「设置 → 配置 → 配置文件预处理」中保存了预处理器，并重新打开确认保存。可复用模板是 [clash-preprocessor.example.yml](../deploy/chat/clash-preprocessor.example.yml)：先替换Tailscale IPv4，再把其中条目合并进现有`parsers`数组，不覆盖其他用户预处理器。模板为HTTP(S)订阅更新补回这一个主机的专用组与前置规则；重复运行会去重，其余配置保持。保留旧专用组名是为了兼容已有配置，与网页品牌无关。
+
+该版本安装包源码确认了`reg`／`code`及 `module.exports.parse(raw, { yaml })` 接口。预处理器不调用网络、不改变订阅URL；当前订阅副本通过幂等、其他设置保持和核心`-t`检查。为了不更换正在使用的节点，没有实际刷新远程订阅，因此不将本轮结果声称为订阅刷新后的端到端测试。模板测试命令：`node --test tests/clash_preprocessor.test.cjs`。安全结果见 [恢复记录](../results/chat-route-recovery/acceptance.json)，原订阅和带凭据备份只保留本机忽略目录。

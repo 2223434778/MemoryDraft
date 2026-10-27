@@ -1,3 +1,13 @@
+# 2026-10-27 — 树流访问502的代理规则恢复与订阅预处理保护
+
+- 用户反馈改版后再次502，明确地址为原Tailscale网页。首批只读对照：阿里云服务active／本机HTTP200、Windows直连首页和app.js均200，但强制经当前Clash7890均502；线上仍为7a55330a26d2，无应用异常日志。当前Clash运行规则9816，只有整个Tailscale网段DIRECT，之前的聊天专用组及单IP规则均缺失。订阅文件mtime为21:24:53，早于22:05网页发布；未识别具体写入者，不把文件改写无条件归因于某个自动更新动作。
+- 在本机忽略目录 `artifacts/chat-deploy/route-recovery-20261027-222653` 保存原配置、当前12个selector选择及候选；原配置SHA `a135420d319bb942448d7caecc0675f4eeb09920007dcbcee9351ed0ec638c3e`，只增加聊天/32规则和DIRECT@Tailscale专用组后的SHA `fa6f2b0a0833a31762ecfaebd60ea3589abab93701e4c5e8e449ea4e46a1c301`。未将订阅URL、节点、凭据或GUI截图上传。
+- `.venv\Scripts\python.exe artifacts/chat-deploy/prepare_route_recovery.py`：已安装Clash核心2022.01.27的`-t -f <candidate> -d <private-probe>`通过；隐藏隔离核心临时17911代理返回200，探针进程关闭。`.venv\Scripts\python.exe artifacts/chat-deploy/apply_route_recovery.py`：原子写回当前订阅并通过现有控制接口PUT /configs加载，保留原混合端口7890、Rule模式、12个selector选择、9816条原规则及11个原组；失败路径有回滚。加载后当前代理首页／脚本均200，用户随后在原Chrome Ctrl+F5确认已经正常显示。
+- 应用自带源码核验CFW0.19.10 `profileParsersText`、`reg`／`code`与`module.exports.parse(raw,{yaml})`接口；新增无网络调用的 `deploy/chat/clash-preprocessor.example.yml`。只补回一个主机的组与前置规则，重复执行去重，不动其他配置。当前订阅副本经Node变换、幂等／其他字段保持断言及Clash核心-t检查通过；一次副本检查因Windows默认GBK读取Node UTF-8 JSON失败，显式UTF-8后通过。
+- 使用computer-use技能在当前Clash「设置→配置→配置文件预处理」的空设置中保存渲染后的配置，重新打开核对文本仍在，再关闭编辑器并恢复Clash窗口最小化。定位时因滚动后的坐标变化误开文件夹选择框，立即取消且未选择／修改目录；未改变全局出口、TUN、系统代理或节点选择。没有触发远程订阅刷新，因此不宣称已做刷新后的端到端测试。
+- `node --test tests/clash_preprocessor.test.cjs tests/chat_ui.test.cjs tests/chat_process_view.test.cjs`：13 passed，新预处理专项3项覆盖仅新增目标规则、幂等及非法配置／未设地址失败。`.venv\Scripts\python.exe artifacts/chat-deploy/report_route_recovery.py`：最终直连／当前代理的首页及脚本四项200，原12个selector保持，当前规则9817，预处理匹配当前订阅，旧main／infra v0.4引用不动。用户原浏览器恢复结果记录在 `results/chat-route-recovery/acceptance.json`。
+- 本轮不改网页发布源码、不重启云端服务或GPU，树流界面及16384输出配置保持；更新 `docs/CHAT_DEPLOYMENT.md` 的持久化说明，备份和私有原配置仅保存在本机忽略目录。
+
 # 2026-10-27 — 网页更名树流、玻璃质感、圆形勾选与独立过程视图
 
 - 按用户四点要求，网页标题、登录／侧栏／顶部、输入提示和assistant名称统一为「树流」，原创树与水流标识替换叠页M，并增加同款SVG favicon。README改为当前产品名，底层包名、Cookie、SQLite与旧研究／infra归档保留兼容；本轮没有修改域名DNS、监听地址或认证配置。

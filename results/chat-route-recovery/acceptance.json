@@ -1,0 +1,62 @@
+{
+  "created_at": "2026-10-27T22:45:30.836793+08:00",
+  "diagnosis": {
+    "before_server_local_http": 200,
+    "before_windows_direct_http": 200,
+    "before_clash_http": 502,
+    "dedicated_group_missing_before": true,
+    "host_rule_missing_before": true,
+    "subscription_file_modified_local": "2026-10-27T21:24:53.812489+08:00",
+    "subscription_update_cause": "Exact writer not identified. The active subscription had been rewritten and the prior manual host rule/group were absent."
+  },
+  "after": {
+    "http": {
+      "direct/": 200,
+      "direct/static/app.js": 200,
+      "clash/": 200,
+      "clash/static/app.js": 200
+    },
+    "original_selector_choices_preserved": 12,
+    "rule_count": 9817,
+    "dedicated_group_present": true,
+    "mode": "rule",
+    "mixed_port": 7890,
+    "gui_preprocessor_saved_and_reopened": true,
+    "actual_profile_preprocessor_validation_passed": true,
+    "actual_subscription_refresh_executed": false,
+    "user_confirmed_original_chrome_recovered": true
+  },
+  "isolation_probe_http": 200,
+  "core_validation_passed": true,
+  "preserved": {
+    "selector_choices": 12,
+    "original_rules": 9816,
+    "original_groups": 11,
+    "mode": "rule",
+    "mixed_port": 7890
+  },
+  "persistent_preprocessor": {
+    "saved_in_cfw_settings": true,
+    "reopened_and_visually_verified": true,
+    "matches_current_subscription": true,
+    "idempotence_and_actual_profile_preservation_passed": true,
+    "actual_profile_core_validation_passed": true,
+    "actual_remote_subscription_refresh_executed": false,
+    "network_requests_in_parser": false,
+    "parser_unit_tests_passed": 3,
+    "template_sha256": "c69e76615b7733b62da9a6017a9fc2abbab292245c537471a9e0f2f7ef9bec13",
+    "rendered_config_sha256": "02cacfb913581a90664b51cfd4756450e3c14e8f5de20bd66594ae6dc0c322af"
+  },
+  "user_confirmed_original_chrome_recovered": true,
+  "application_release_changed": false,
+  "application_source_release": "7a55330a26d2",
+  "server_or_gpu_restarted": false,
+  "private_backups_committed": false,
+  "gui_screenshots_committed": false,
+  "gui_note": "A coordinate action briefly opened a folder picker while the settings scroll position settled. It was cancelled without choosing or changing any directory. The empty parser setting was then edited, saved and reopened for verification.",
+  "frozen_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.4": "ea04290366b3caa809aba93b9417c7e7a148ce48",
+    "infra-v0.4-interview^{}": "ea04290366b3caa809aba93b9417c7e7a148ce48"
+  }
+}

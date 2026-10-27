@@ -1,0 +1,22 @@
+# Merge this entry into Clash for Windows Settings > Profiles > Parsers.
+# Replace the address before saving. This parser performs no network requests.
+parsers:
+  - reg: '^https?://'
+    code: |
+      module.exports.parse = (raw, { yaml }) => {
+        const config = yaml.parse(raw);
+        const address = 'YOUR_ALIYUN_TAILSCALE_IP';
+        if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(address)) throw new Error('Set the chat Tailscale IPv4 address');
+        const name = 'MemoryDraft-Tailscale';
+        const rule = `IP-CIDR,${address}/32,${name},no-resolve`;
+        if (!config || typeof config !== 'object' || Array.isArray(config)) throw new Error('Expected a configuration object');
+        const groups = config['proxy-groups'] || [];
+        const rules = config.rules || [];
+        if (!Array.isArray(groups) || !Array.isArray(rules)) throw new Error('Expected group and rule arrays');
+        config['proxy-groups'] = [
+          { name, type: 'select', proxies: ['DIRECT'], 'interface-name': 'Tailscale' },
+          ...groups.filter(group => group.name !== name)
+        ];
+        config.rules = [rule, ...rules.filter(value => value !== rule)];
+        return yaml.stringify(config);
+      };
