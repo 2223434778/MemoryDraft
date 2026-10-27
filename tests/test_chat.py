@@ -234,3 +234,102 @@ def test_static_page_host_validation_and_invite_rate_limit(config):
         for _ in range(12):
             assert client.post("/api/register", json={"username": "alice", "password": "test-password-123", "invite_code": "bad"}, headers={"Origin": ORIGIN}).status_code == 403
         assert client.post("/api/register", json={"username": "alice", "password": "test-password-123", "invite_code": INVITE}, headers={"Origin": ORIGIN}).status_code == 429
+
+
+def test_history_question_edit_replays_only_earlier_context_and_preserves_original(config):
+    calls = []
+    with TestClient(create_chat_app(config, transport=transport(calls)), base_url=ORIGIN) as client:
+        register(client)
+        source = client.post("/api/conversations").json()["id"]
+        url = f"/api/conversations/{source}"
+        for question in ("问题一", "问题二", "未来的问题"):
+            assert client.post(url + "/messages", json={"content": question}).status_code == 200
+        original = client.get(url).json()
+        fork = client.post(url + "/fork", json={"message_id": original["messages"][2]["id"], "content": "修改的问题二"})
+        assert fork.status_code == 200
+        branch = fork.json()
+        assert branch["prompt"] == "修改的问题二" and branch["id"] != source
+        branch_url = f"/api/conversations/{branch['id']}"
+        prefix = client.get(branch_url).json()["messages"]
+        assert [m["content"] for m in prefix] == ["问题一", "你好，世界。"]
+        assert client.post(branch_url + "/messages", json={"content": branch["prompt"]}).status_code == 200
+        generation = [body for path, body, _ in calls if path == "/v1/generate"][-1]
+        assert generation["messages"] == [{"role": "user", "content": "问题一"},
+            {"role": "assistant", "content": "你好，世界。"}, {"role": "user", "content": "修改的问题二"}]
+        assert client.get(url).json() == original
+        first = client.post(url + "/fork", json={"message_id": original["messages"][0]["id"]}).json()
+        assert first["prompt"] == "问题一"
+        assert client.get(f"/api/conversations/{first['id']}").json()["messages"] == []
+
+
+def test_history_answer_edit_clears_trace_and_remaps_turns(config):
+    calls = []
+    with TestClient(create_chat_app(config, transport=transport(calls)), base_url=ORIGIN) as client:
+        account = register(client).json()["user"]["id"]
+        source = client.post("/api/conversations").json()["id"]
+        store = client.app.state.store
+        answer, _, _ = store.begin_turn(account, source, "原提问")
+        store.finish(answer, "原回答", "complete", {"speculation": {"rounds": ["old"]}, "method": "ASD"})
+        later, _, _ = store.begin_turn(account, source, "未来提问")
+        store.finish(later, "未来回答", "complete", {})
+        result = client.post(f"/api/conversations/{source}/fork", json={"message_id": answer, "content": "人工编辑的回答"})
+        assert result.status_code == 200
+        branch = result.json()
+        assert branch["prompt"] is None
+        saved = client.get(f"/api/conversations/{branch['id']}").json()["messages"]
+        assert [m["content"] for m in saved] == ["原提问", "人工编辑的回答"]
+        assert saved[-1]["metadata"] == {"history_edit": True, "history_restored": False}
+        with store.connect() as db:
+            source_turns = {r[0] for r in db.execute("SELECT turn_id FROM messages WHERE conversation_id=?", (source,))}
+            branch_turns = {r[0] for r in db.execute("SELECT turn_id FROM messages WHERE conversation_id=?", (branch["id"],))}
+        assert source_turns.isdisjoint(branch_turns)
+        assert {m["id"] for m in saved}.isdisjoint({answer, later})
+        assert client.delete(f"/api/conversations/{source}").status_code == 200
+        assert client.post(f"/api/conversations/{branch['id']}/messages", json={"content": "继续"}).status_code == 200
+        generation = [body for path, body, _ in calls if path == "/v1/generate"][-1]
+        assert generation["messages"] == [{"role": "user", "content": "原提问"},
+            {"role": "assistant", "content": "人工编辑的回答"}, {"role": "user", "content": "继续"}]
+
+
+@pytest.mark.parametrize("status", ["complete", "cancelled", "failed", "interrupted"])
+def test_history_rewind_keeps_selected_answer_and_excludes_later_messages(tmp_path, status):
+    store = ChatStore(tmp_path / "chat.db")
+    account = store.create_user("alice", "hash")["id"]
+    source = store.new_conversation(account)["id"]
+    answer, _, _ = store.begin_turn(account, source, "提问")
+    store.finish(answer, "已有的回答片段", status, {"speculation": {"rounds": ["trace"]}})
+    later, _, _ = store.begin_turn(account, source, "后面的提问")
+    store.finish(later, "后面的回答", "complete", {})
+    branch = store.fork_conversation(account, source, answer)
+    rows = store.conversation(account, branch["id"])["messages"]
+    assert len(rows) == 2 and rows[-1]["status"] == "complete"
+    assert ("speculation" in rows[-1]["metadata"]) == (status == "complete")
+    if status != "complete":
+        assert rows[-1]["metadata"]["history_restored"]
+    _, _, history = store.begin_turn(account, branch["id"], "继续")
+    assert history == [{"role": "user", "content": "提问"}, {"role": "assistant", "content": "已有的回答片段"}]
+    assert len(store.conversation(account, source)["messages"]) == 4
+
+
+def test_history_fork_ownership_csrf_validation_and_active_protection(config):
+    with TestClient(create_chat_app(config, transport=transport([])), base_url=ORIGIN) as client:
+        account = register(client).json()["user"]["id"]
+        source = client.post("/api/conversations").json()["id"]
+        url = f"/api/conversations/{source}"
+        client.post(url + "/messages", json={"content": "原提问"})
+        original = client.get(url).json()
+        body = {"message_id": original["messages"][0]["id"]}
+        for changes in ({"content": " "}, {"content": "x" * 16385}, {"content": 42}, {"user_id": account}):
+            assert client.post(url + "/fork", json={**body, **changes}).status_code == 422
+        assert client.post(url + "/fork", json={"message_id": "missing"}).status_code == 404
+        assert client.post(url + "/fork", json=body, headers={"X-CSRF-Token": "wrong"}).status_code == 403
+        other = client.post("/api/conversations").json()["id"]
+        assert client.post(f"/api/conversations/{other}/fork", json=body).status_code == 404
+        running, _, _ = client.app.state.store.begin_turn(account, other, "正在生成")
+        assert client.post(url + "/fork", json=body).status_code == 409
+        client.app.state.store.finish(running, "", "cancelled", {})
+        assert client.get(url).json() == original
+        assert len(client.get("/api/conversations").json()) == 2
+        client.cookies.clear(); register(client, "bob")
+        assert client.post(url + "/fork", json=body).status_code == 404
+        assert client.get("/api/conversations").json() == []

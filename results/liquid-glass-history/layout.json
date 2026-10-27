@@ -1,0 +1,28 @@
+{
+  "layouts": [
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "editorTop": 155,
+      "editorBottom": 435.5625,
+      "scrollTop": 76,
+      "scrollBottom": 588.625,
+      "saveVisible": true
+    },
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "editorTop": 155,
+      "editorBottom": 435.5625,
+      "scrollTop": 76,
+      "scrollBottom": 525.9375,
+      "saveVisible": true
+    }
+  ],
+  "desktop": {
+    "width": 1440,
+    "documentWidth": 1440,
+    "sidebarX": 0,
+    "processOpacity": "1"
+  }
+}

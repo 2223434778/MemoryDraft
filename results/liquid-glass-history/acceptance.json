@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-28",
+  "timezone": "Asia/Shanghai",
+  "source_sha256": "5d7f36e419e5414bfb82d0c1cfb9bc3ac7770db82cababd703f010f05cd62f27",
+  "source_files": 111,
+  "archive_sha256": "ce733353303e56a5053f17237ee6b0ae6b2eb6339739fc1f22cee5a6a17ecbcc",
+  "python_tests": 45,
+  "node_tests": 13,
+  "python_scope": [
+    "tests/test_chat.py",
+    "tests/test_chat_package.py",
+    "tests/test_speculation.py"
+  ],
+  "node_scope": [
+    "tests/chat_glass.test.cjs",
+    "tests/chat_ui.test.cjs",
+    "tests/chat_process_view.test.cjs"
+  ],
+  "browser_database": "isolated local synthetic database; production conversations not read or changed by acceptance requests",
+  "real_gpu_generations": 4,
+  "browser_errors": [],
+  "browser_report": "browser.json",
+  "layout_report": "layout.json",
+  "deployment": {
+    "previous_release": "7a55330a26d2",
+    "gateway_release": "5d7f36e419e5",
+    "source_sha256": "5d7f36e419e5414bfb82d0c1cfb9bc3ac7770db82cababd703f010f05cd62f27",
+    "changed_files": [
+      "memorydraft/chat/app.py",
+      "memorydraft/chat/static/app.js",
+      "memorydraft/chat/static/glass.js",
+      "memorydraft/chat/static/icons.js",
+      "memorydraft/chat/static/index.html",
+      "memorydraft/chat/static/style.css",
+      "memorydraft/chat/store.py"
+    ],
+    "private_database_backup": true,
+    "active_chats_at_check": 0,
+    "gateway_active": true,
+    "http_status": 200,
+    "inference_restarted": false,
+    "database_schema_changed": false
+  },
+  "direct_static_checks": [
+    {
+      "asset": "index.html",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "app.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "glass.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "style.css",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "icons.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "select-menu.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "process.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "trace-state.js",
+      "status": 200,
+      "matches_local": true
+    },
+    {
+      "asset": "favicon.svg",
+      "status": 200,
+      "matches_local": true
+    }
+  ],
+  "clash_proxy_statuses": [
+    200,
+    200
+  ],
+  "unauthenticated_fork_status": 401,
+  "inference_release": "7a55330a26d2",
+  "preserved_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.4": "ea04290366b3caa809aba93b9417c7e7a148ce48",
+    "infra-v0.4-interview^{}": "ea04290366b3caa809aba93b9417c7e7a148ce48"
+  },
+  "limits": [
+    "Mobile viewport layouts checked in desktop Chrome; no physical iOS device tested.",
+    "Live GPU flow checks preceded the final editor scroll-into-view adjustment; final layout checks reloaded that final source without further generation.",
+    "Not a model performance benchmark; no claim of physical optical refraction."
+  ]
+}

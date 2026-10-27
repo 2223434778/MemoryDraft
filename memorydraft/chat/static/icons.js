@@ -15,6 +15,7 @@ window.Icons = {
     close: ["m6 6 12 12M18 6 6 18"],
     left: ["M20 12H4m5-5-5 5 5 5"],
     right: ["M4 12h16m-5-5 5 5-5 5"],
+    rewind: ["M4 10h10a6 6 0 0 1 0 12", "m9 5-5 5 5 5"],
     trash: ["M4 6h16M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7m4-7v7"]
   },
   make(name) {

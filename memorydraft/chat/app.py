@@ -45,6 +45,12 @@ class ChatBody(BaseModel):
     visualize: bool = False
 
 
+class ForkBody(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    message_id: StrictStr = Field(min_length=1, max_length=64)
+    content: StrictStr | None = Field(default=None, min_length=1, max_length=262144)
+
+
 def sse(name, value):
     return "event: " + name + "\ndata: " + json.dumps(value, ensure_ascii=False) + "\n\n"
 
@@ -190,6 +196,11 @@ def create_chat_app(config: ChatConfig, *, transport=None):
     def delete_conversation(conversation_id: str, request: Request, account=Depends(user)):
         request.app.state.store.delete_conversation(account["id"], conversation_id)
         return {"ok": True}
+
+    @app.post("/api/conversations/{conversation_id}/fork")
+    def fork_conversation(conversation_id: str, body: ForkBody, request: Request, account=Depends(user)):
+        return request.app.state.store.fork_conversation(account["id"], conversation_id,
+                                                         body.message_id, body.content)
 
     @app.post("/api/conversations/{conversation_id}/cancel")
     def cancel(conversation_id: str, request: Request, account=Depends(user)):

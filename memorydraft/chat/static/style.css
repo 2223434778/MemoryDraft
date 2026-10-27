@@ -130,3 +130,39 @@ textarea {color:#294248}textarea::placeholder {color:#718c91}.send {background:#
 @media(max-width:760px) {.wordmark {font-size:22px}.topbar {gap:4px}.header-actions {gap:2px}.pill-button {font-size:12px;padding:9px 10px;gap:4px}.pill-button .ui-icon {width:14px;height:14px}#delete-chat {font-size:12px;padding:4px}.model-status {font-size:12px}.visualize-option {font-size:13px}.composer {border-radius:27px}.auth-card {padding:25px 23px}.sidebar {background:#f5faf8e8}.process-panel {background:#f6fbf9e8}}
 @media(prefers-reduced-transparency:reduce) {:root {--glass:#f8fbfa}.sidebar,.process-panel,.composer,.select-menu,.auth-card {-webkit-backdrop-filter:none;backdrop-filter:none}}
 @media(prefers-reduced-motion:reduce) {*,*::before,*::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Pointer highlights stay local to a surface; controls keep their normal hit boxes. */
+body {background:radial-gradient(ellipse at 88% 6%,#c8e8e1b8,transparent 48%),radial-gradient(ellipse at 12% 90%,#d8dff5b0,transparent 50%),radial-gradient(ellipse at 55% 40%,#fff9f1b3,transparent 58%),#edf3f3;background-attachment:fixed}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+  :root {--glass:rgba(255,255,255,.48)}
+  .sidebar,.process-panel,.composer,.select-menu,.auth-card {-webkit-backdrop-filter:blur(32px) saturate(165%);backdrop-filter:blur(32px) saturate(165%)}
+}
+:is(.pill-button,.new-chat,.icon-button,.select-trigger,.select-option,.suggestions button,.send,.stop,.primary,.message-action,.editor-button,.composer) {position:relative;isolation:isolate;--glass-x:50%;--glass-y:0%;--glass-angle:135deg}
+:is(.pill-button,.new-chat,.icon-button,.select-trigger,.suggestions button,.send,.stop,.primary,.message-action,.editor-button) {background-color:#ffffff57;box-shadow:inset 0 1px 0 #ffffffed,inset 0 -1px 0 #c4d9d938,0 3px 12px #365c6510;transition:box-shadow .22s,background-color .22s,scale .16s}
+:is(.pill-button,.new-chat,.icon-button,.select-trigger,.select-option,.suggestions button,.send,.stop,.primary,.message-action,.editor-button,.composer)::before {content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse 120px 65px at var(--glass-x) var(--glass-y),#ffffffd9,transparent 75%),linear-gradient(var(--glass-angle),#ffffff00 30%,#d0eee63d 52%,#ffffff00 72%);opacity:0;transition:opacity .25s;z-index:-1}
+.glass-tracking::before {opacity:.85}
+@supports (mask-composite:exclude) {
+  :is(.pill-button,.new-chat,.icon-button,.select-trigger,.suggestions button,.send,.stop,.primary,.message-action,.editor-button,.composer)::after {content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--glass-angle),#ffffffed,#afcfc961,#ffffff,#c4d1ed70,#ffffffed);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;opacity:.7}
+  .glass-tracking::after {opacity:1}
+}
+:is(.pill-button,.new-chat,.icon-button,.select-trigger,.suggestions button,.send,.stop,.primary,.message-action,.editor-button):active:not(:disabled) {scale:.975}
+.composer::before {background:radial-gradient(ellipse 260px 110px at var(--glass-x) var(--glass-y),#ffffffd9,transparent 75%)}
+.message-actions {display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-top:12px}
+.message-action,.editor-button {display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid #ffffffb8;border-radius:18px;color:#526f76;padding:8px 11px;font-size:13px;line-height:1.4;min-height:36px}
+.message-action .ui-icon {width:14px;height:14px}
+.message-action:hover:not(:disabled),.editor-button:hover:not(:disabled) {background-color:#ffffffe0;box-shadow:inset 0 1px 0 #fff,0 4px 15px #345d651c}
+.message-action:disabled {opacity:.4}
+.generating .message-actions {display:none}
+.message.user .message-main:has(.message-editor) {max-width:100%}
+.message-editor {margin-top:12px;animation:message-enter .22s ease-out}
+.message-editor label {display:block;font-size:14px;color:#526e74}
+.message-editor textarea {display:block;resize:vertical;min-height:135px;max-height:50dvh;margin-top:10px;padding:13px 15px;background:#ffffff91;border:1px solid #ffffff;border-radius:17px;box-shadow:inset 0 2px 6px #355a6408;font-size:17px;line-height:1.8}
+.message-editor textarea:focus-visible {outline:2px solid #6dada0;outline-offset:2px}
+.editor-hint {font-size:12px;line-height:1.8;color:#6c848b;margin:10px 2px}
+.editor-actions {display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.editor-button {padding:10px 16px;font-size:14px}
+.editor-save {background:linear-gradient(135deg,#3a887c,#467e8c);color:#fff;border-color:#ffffff70}
+.editor-save:hover:not(:disabled) {background-color:#397f77}
+@media(max-width:760px) {.message-actions {gap:5px}.message-action {font-size:12px;min-height:38px;padding:8px 10px}.message.user .message-main {max-width:96%}.message-editor textarea {padding:11px;font-size:17px}.editor-hint {font-size:12px}.editor-button {min-height:42px}}
+@media(prefers-reduced-transparency:reduce) {.sidebar,.process-panel,.composer,.select-menu,.auth-card {background:#f8fbfa;-webkit-backdrop-filter:none;backdrop-filter:none}.message-action,.editor-button:not(.editor-save),.pill-button,.select-trigger {background-color:#edf4f1}}
+@media(prefers-reduced-motion:reduce),(hover:none),(pointer:coarse) {.glass-tracking::before {opacity:0}:is(.pill-button,.new-chat,.icon-button,.select-trigger,.suggestions button,.send,.stop,.primary,.message-action,.editor-button):active {scale:1}}

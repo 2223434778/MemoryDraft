@@ -2,6 +2,7 @@
 const $ = (id) => document.getElementById(id);
 let csrf = "", selected = null, registerMode = false, controller = null, busy = false;
 let catalog = [], activeMessage = null;
+let messageViews = [], editing = null;
 const deleting = new Set();
 const modeLabels = {AR: "普通生成", DFlash: "投机解码", ASD: "ASD", "BudgetTree-ASD": "ASD + 成本树"};
 
@@ -20,6 +21,7 @@ const post = (path, body = {}) => api(path, {method: "POST", body: JSON.stringif
 const notice = (text = "") => { $("notice").textContent = text; };
 
 function showAuth() {
+  closeEditor(false); messageViews = [];
   SelectMenu.closeAll();
   $("auth").hidden = false;
   $("workspace").hidden = true;
@@ -61,6 +63,7 @@ async function enter(result) {
   $("auth").hidden = true;
   $("workspace").hidden = false;
   selected = null;
+  closeEditor(false); messageViews = [];
   $("messages").replaceChildren();
   $("welcome").hidden = false;
   $("delete-chat").hidden = true;
@@ -128,10 +131,11 @@ async function list() {
 
 async function openChat(id) {
   const data = await (await api("/api/conversations/" + id)).json();
+  closeEditor(false); messageViews = [];
   selected = id; ProcessView.reset();
   $("messages").replaceChildren(); $("welcome").hidden = data.messages.length > 0;
   $("delete-chat").hidden = false; $("sidebar").classList.remove("open"); notice();
-  for (const message of data.messages) appendMessage(message.role, message.content, message.status, message.metadata);
+  for (const message of data.messages) appendMessage(message.role, message.content, message.status, message.metadata, message.id);
   const latest = [...data.messages].reverse().find((m) => m.metadata?.speculation);
   if (latest && !$("process-panel").hidden) ProcessView.load(latest.metadata.speculation, latest.metadata.method, latest.metadata.model_label);
   await list(); scrollBottom();
@@ -219,7 +223,7 @@ function streamText(target, text) {
   ProcessView.syncBody(target, text);
 }
 
-function appendMessage(role, text, status = "complete", metadata = {}) {
+function appendMessage(role, text, status = "complete", metadata = {}, id = null) {
   const article = document.createElement("article"); article.className = "message " + role;
   const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.append(Icons.make("brand"));
   const main = document.createElement("div"); main.className = "message-main";
@@ -232,17 +236,102 @@ function appendMessage(role, text, status = "complete", metadata = {}) {
   const process = document.createElement("button"); process.type = "button";
   process.className = "message-process"; process.append(Icons.make("draft"), document.createTextNode("查看详细推理过程")); process.hidden = true;
   process.disabled = busy;
-  const message = {body, meta, process, main, article, text};
-  main.append(name, body, meta, process); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
+  const actions = document.createElement("div"); actions.className = "message-actions";
+  const edit = document.createElement("button"), rewind = document.createElement("button");
+  for (const button of [edit, rewind]) { button.type = "button"; button.className = "message-action"; }
+  edit.append(Icons.make("draft"), document.createTextNode(role === "user" ? "编辑提问" : "编辑回答"));
+  rewind.append(Icons.make("rewind"), document.createTextNode(role === "user" ? "回到这里重新提问" : "从这里继续"));
+  const message = {id, role, status, body, meta, process, main, article, actions, edit, rewind, text};
+  edit.onclick = () => editMessage(message);
+  rewind.onclick = () => branchMessage(message);
+  actions.append(edit, rewind);
+  main.append(name, body, meta, process, actions); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
+  messageViews.push(message); updateHistoryActions();
   decorateMessage(message, metadata);
   return message;
 }
 function decorateMessage(message, metadata) {
+  if (metadata.history_edit || metadata.history_restored) message.meta.textContent = metadata.history_edit ? "已编辑 · 作为后续对话上下文" : "已恢复这段回答 · 作为后续对话上下文";
   if (metadata.model_label && !message.meta.textContent) message.meta.textContent = `${metadata.model_label} · ${modeLabels[metadata.method] || metadata.method}`;
   if (metadata.speculation?.rounds?.length) {
     message.process.hidden = false;
     message.process.onclick = () => ProcessView.load(metadata.speculation, metadata.method, metadata.model_label);
   }
+}
+
+function updateHistoryActions() {
+  for (const message of messageViews) {
+    const disabled = busy || !message.id || message.status === "generating" || !message.text.trim();
+    message.edit.disabled = disabled; message.rewind.disabled = disabled;
+  }
+}
+function closeEditor(focus = true) {
+  if (!editing) return;
+  const {message, form} = editing; editing = null;
+  form.remove(); message.body.hidden = false; message.actions.hidden = false;
+  message.article.classList.remove("editing");
+  if (focus && message.edit.isConnected) message.edit.focus();
+}
+function editMessage(message) {
+  if (busy || !message.id) return;
+  closeEditor(false);
+  const form = document.createElement("form"); form.className = "message-editor";
+  const label = document.createElement("label"), input = document.createElement("textarea");
+  label.textContent = message.role === "user" ? "修改这条提问" : "修改这段回答";
+  input.value = message.text; input.required = true; input.rows = Math.min(12, Math.max(4, message.text.split("\n").length + 1));
+  input.maxLength = message.role === "user" ? 16384 : 262144;
+  label.append(input);
+  const hint = document.createElement("p"); hint.className = "editor-hint";
+  hint.textContent = "修改会创建新的对话分支，原对话保留。Ctrl / ⌘ + Enter 保存，Esc 取消。";
+  const buttons = document.createElement("div"); buttons.className = "editor-actions";
+  const cancel = document.createElement("button"), save = document.createElement("button");
+  cancel.type = "button"; cancel.className = "editor-button"; cancel.textContent = "取消";
+  save.type = "submit"; save.className = "editor-button editor-save";
+  save.textContent = message.role === "user" ? "保存并重新生成" : "保存并继续";
+  cancel.onclick = () => closeEditor();
+  form.onsubmit = event => {
+    event.preventDefault();
+    if (!input.value.trim()) { input.focus(); return; }
+    branchMessage(message, input.value, message.role === "user");
+  };
+  input.onkeydown = event => {
+    if (busy || event.isComposing) return;
+    if (event.key === "Escape") { event.preventDefault(); closeEditor(); }
+    else if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) { event.preventDefault(); form.requestSubmit(); }
+  };
+  buttons.append(cancel, save); form.append(label, hint, buttons);
+  message.body.hidden = true; message.actions.hidden = true; message.article.classList.add("editing");
+  message.main.append(form); editing = {message, form, input};
+  input.focus({preventScroll: true}); form.scrollIntoView({block: "nearest"});
+}
+async function branchMessage(message, content = null, regenerate = false) {
+  if (busy || !selected || !message.id) return;
+  setBusy(true); notice("正在回到这条消息…");
+  let shouldGenerate = false;
+  try {
+    const body = {message_id: message.id}; if (content !== null) body.content = content;
+    const fork = await (await post("/api/conversations/" + selected + "/fork", body)).json();
+    await openChat(fork.id);
+    $("prompt").value = fork.prompt ?? "";
+    notice(fork.prompt !== null ? "已回到这条提问之前，可以修改后发送。原对话已保留。" : "已回到这条回答之后，可以继续对话。原对话已保留。");
+    shouldGenerate = regenerate && fork.prompt !== null;
+  } catch (error) { notice(error.message); }
+  finally { setBusy(false); }
+  if (shouldGenerate) $("chat-form").requestSubmit();
+  else if (!editing) $("prompt").focus();
+}
+async function syncHistoryIds() {
+  const id = selected;
+  if (!id) return;
+  const data = await (await api("/api/conversations/" + id)).json();
+  if (selected !== id) return;
+  data.messages.forEach((saved, index) => {
+    const message = messageViews[index];
+    if (message?.role === saved.role && message.text === saved.content) {
+      message.id = saved.id; message.status = saved.status;
+    }
+  });
+  updateHistoryActions();
 }
 
 function scrollBottom() { $("scroll-area").scrollTop = $("scroll-area").scrollHeight; }
@@ -253,10 +342,13 @@ function setBusy(value) {
   selectModel();
   for (const button of $("history").querySelectorAll("button")) button.disabled = value;
   for (const button of document.querySelectorAll(".message-process")) button.disabled = value;
+  updateHistoryActions();
+  if (editing) for (const input of editing.form.querySelectorAll("button,textarea")) input.disabled = value;
 }
 
 $("new-chat").onclick = () => {
   if (busy) return;
+  closeEditor(false); messageViews = [];
   selected = null; $("messages").replaceChildren(); $("welcome").hidden = false;
   ProcessView.reset(); $("delete-chat").hidden = true;
   $("sidebar").classList.remove("open"); notice(); $("prompt").focus(); list().catch((e) => notice(e.message));
@@ -305,6 +397,7 @@ $("chat-form").onsubmit = async (event) => {
   if (!content || busy) return;
   const model = catalog.find((m) => m.id === $("model-select").value), method = $("method-select").value;
   if (!model?.ready || !model.methods.includes(method)) { notice("请选择可用的模型和推理模式"); return; }
+  closeEditor(false);
   // Collect actual events so either view can be opened independently mid-answer.
   const visualize = model.visualization && method !== "AR";
   ProcessView.reset(method, model.label);
@@ -357,7 +450,8 @@ $("chat-form").onsubmit = async (event) => {
   } finally {
     controller = null; activeMessage = null; ProcessView.finish(); message?.article.classList.remove("generating");
     if (message) markdown(message.body, message.text);
-    setBusy(false); await list().catch(() => {}); $("prompt").focus();
+    setBusy(false);
+    await syncHistoryIds().catch(() => {}); await list().catch(() => {}); $("prompt").focus();
   }
 };
 

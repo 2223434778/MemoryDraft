@@ -133,6 +133,47 @@ class ChatStore:
                 raise StoreError(409, "请先停止当前回答")
             db.execute("DELETE FROM conversations WHERE id=?", (conversation_id,))
 
+    def fork_conversation(self, user_id, conversation_id, message_id, content=None):
+        new_id, now = uuid.uuid4().hex, time.time()
+        with self.connect() as db:
+            db.execute("BEGIN IMMEDIATE")
+            source = self.owner(db, user_id, conversation_id)
+            if db.execute("SELECT 1 FROM active WHERE user_id=?", (user_id,)).fetchone():
+                raise StoreError(409, "请先停止当前回答，再编辑或回退")
+            rows = list(db.execute("SELECT * FROM messages WHERE conversation_id=? ORDER BY created,rowid",
+                                   (conversation_id,)))
+            index = next((i for i, row in enumerate(rows) if row["id"] == message_id), None)
+            if index is None:
+                raise StoreError(404, "消息不存在")
+            chosen = rows[index]
+            if chosen["status"] == "generating" or chosen["role"] not in {"user", "assistant"}:
+                raise StoreError(409, "这条消息暂时不能编辑或回退")
+            value = chosen["content"] if content is None else content
+            if not isinstance(value, str) or not value.strip():
+                raise StoreError(422, "消息内容不能为空")
+            limit = 16384 if chosen["role"] == "user" else 262144
+            if len(value) > limit:
+                raise StoreError(422, "消息内容超过长度限制")
+            title = source["title"].removesuffix(" · 分支")[:40] + " · 分支"
+            db.execute("INSERT INTO conversations VALUES (?, ?, ?, ?, ?)",
+                       (new_id, user_id, title, now, now))
+            # A selected question returns to the composer; the normal send path creates its turn.
+            prefix = rows[:index + (chosen["role"] == "assistant")]
+            turn_ids = {}
+            for row in prefix:
+                turn_id = turn_ids.setdefault(row["turn_id"], uuid.uuid4().hex)
+                text, status, metadata = row["content"], row["status"], row["metadata"]
+                if row["id"] == message_id:
+                    text, status = value, "complete"
+                    if value != row["content"] or row["status"] != "complete":
+                        # Edited/restored text is user-selected context, not a new model trace.
+                        metadata = json.dumps({"history_edit": value != row["content"],
+                                               "history_restored": row["status"] != "complete"})
+                db.execute("INSERT INTO messages VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                           (uuid.uuid4().hex, new_id, turn_id, row["role"], text, status,
+                            row["created"], metadata))
+        return {"id": new_id, "title": title, "prompt": value if chosen["role"] == "user" else None}
+
     def begin_turn(self, user_id, conversation_id, content, *, max_active=2):
         turn_id, assistant_id, now = uuid.uuid4().hex, uuid.uuid4().hex, time.time()
         with self.connect() as db:
@@ -144,7 +185,8 @@ class ChatStore:
                 raise StoreError(429, "当前已有两人在使用，请稍后重试")
             history = [dict(row) for row in db.execute(
                 "SELECT m.role,m.content FROM messages m WHERE m.conversation_id=? AND EXISTS "
-                "(SELECT 1 FROM messages a WHERE a.turn_id=m.turn_id AND a.role='assistant' AND a.status='complete') "
+                "(SELECT 1 FROM messages a WHERE a.conversation_id=m.conversation_id AND a.turn_id=m.turn_id "
+                "AND a.role='assistant' AND a.status='complete') "
                 "ORDER BY m.created,m.rowid", (conversation_id,))]
             for role, value, status, message_id in (("user", content, "complete", uuid.uuid4().hex),
                                                    ("assistant", "", "generating", assistant_id)):

@@ -1,0 +1,71 @@
+{
+  "gpuRuns": [
+    {
+      "method": "BudgetTree-ASD",
+      "visualize": true,
+      "speculationEvents": 14,
+      "complete": true
+    },
+    {
+      "method": "BudgetTree-ASD",
+      "visualize": true,
+      "speculationEvents": 24,
+      "complete": true
+    },
+    {
+      "method": "BudgetTree-ASD",
+      "visualize": true,
+      "speculationEvents": 12,
+      "complete": true
+    },
+    {
+      "method": "BudgetTree-ASD",
+      "visualize": true,
+      "speculationEvents": 14,
+      "complete": true
+    }
+  ],
+  "layouts": [
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "editorWidth": 295,
+      "textareaWidth": 295
+    },
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "editorWidth": 225,
+      "textareaWidth": 225
+    }
+  ],
+  "reflection": {
+    "first": {
+      "x": "10.0px",
+      "angle": "-79.9deg",
+      "highlight": "radial-gradient(120px 65px at 10px 7px, rgba(255, 255, 255, 0.85), rgba(0, 0, 0, 0) 75%), linear-gradient(-79.9deg, rgba(255, 255, 255, 0) 30%, rgba(208, 238, 230, 0.24) 52%, rgba(255, 255, 255, 0) 72%)"
+    },
+    "second": {
+      "x": "150.0px",
+      "angle": "100.1deg",
+      "highlight": "radial-gradient(120px 65px at 150px 32px, rgba(255, 255, 255, 0.85), rgba(0, 0, 0, 0) 75%), linear-gradient(100.1deg, rgba(255, 255, 255, 0) 30%, rgba(208, 238, 230, 0.24) 52%, rgba(255, 255, 255, 0) 72%)"
+    }
+  },
+  "reducedMotion": true,
+  "cancelPreservesOriginal": true,
+  "questionEdit": {
+    "originalPreserved": true,
+    "branchMessages": 4,
+    "regenerated": true
+  },
+  "answerEdit": {
+    "branchMessages": 2,
+    "traceCleared": true
+  },
+  "rewind": {
+    "answerMessages": 2,
+    "firstQuestionMessages": 0,
+    "promptRestored": true
+  },
+  "pageErrors": []
+}
