@@ -17,6 +17,8 @@ data/raw/
 *.bin
 results/raw/
 artifacts/
+output/playwright/
+.playwright-cli/
 build/
 dist/
 .DS_Store

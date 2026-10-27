@@ -1,4 +1,11 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/chat-deployment/** -text
+memorydraft/chat/** text eol=lf
+memorydraft/serving/text.py text eol=lf
+deploy/chat/** text eol=lf
+scripts/*chat*.py text eol=lf
+tests/test_chat.py text eol=lf
+docs/CHAT_DEPLOYMENT.md text eol=lf
 results/asd-budget-tree/** -text
 results/asd-budget-tree/**/*.log -whitespace
 results/asd-budget-tree/**/*.xml -whitespace

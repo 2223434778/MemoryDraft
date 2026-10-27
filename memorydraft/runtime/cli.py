@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, replace
 import json
+import os
 from pathlib import Path
 
 from memorydraft.runtime.config import RuntimeConfig, load_engine
@@ -63,7 +64,8 @@ def run(args):
     if args.command == "serve":
         import uvicorn
         from memorydraft.serving.app import create_app
-        app = create_app(lambda: load_engine(config), queue_capacity=args.queue_capacity, event_capacity=args.event_capacity)
+        app = create_app(lambda: load_engine(config), queue_capacity=args.queue_capacity,
+                         event_capacity=args.event_capacity, api_key=os.environ.get("MEMORYDRAFT_API_KEY"))
         uvicorn.run(app, host=args.host, port=args.port, workers=1, access_log=False)
         return
     if Path(args.output).exists():

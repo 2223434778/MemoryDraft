@@ -1,0 +1,23 @@
+[Unit]
+Description=MemoryDraft chat gateway
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=admin
+WorkingDirectory=/home/admin/MemoryDraft-chat/current
+EnvironmentFile=/home/admin/MemoryDraft-chat/private/gateway.env
+ExecStart=/home/admin/MemoryDraft-chat/venv/bin/python -m memorydraft.chat --host YOUR_ALIYUN_TAILSCALE_IP --port 8080
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/admin/MemoryDraft-chat/data
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

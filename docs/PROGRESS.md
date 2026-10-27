@@ -1,3 +1,13 @@
+# 2026-10-27 — 阿里云网页与A6000真实聊天部署完成
+
+- 新分支`codex/chat-gateway`承载`memorydraft/chat/`：邀请码注册、scrypt密码哈希、HttpOnly会话、CSRF/Origin校验、用户会话隔离和阿里云本地SQLite。手机/电脑网页支持流式回答、代码块、多轮历史和停止；GPU仍复用原DFlash+成本树+ASD，最多两用户活跃、单GPU串行排队，不声称新增batch并行或算法收益。
+- 推理服务仅增加可选`MEMORYDRAFT_API_KEY`、内部token计数、显式`text_stream=true`完整前缀文本快照及等待心跳，原严格方法和默认token SSE保持兼容。按实际Target tokenizer与原模板裁剪完整旧轮次；失败/取消不进入后续完成历史。私有环境文件、邀请码、SSH密钥和数据库位于忽略目录/服务器私有目录，不进Git。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_chat.py tests/test_serving.py tests/test_runtime_cost_tree.py tests/test_runtime_asd.py --basetemp artifacts/pytest-chat-integration --junitxml=artifacts/chat-integration-tests.xml -o faulthandler_timeout=40`：**69 passed/46.12s**。完整`... -m pytest -q --basetemp artifacts/pytest-chat-full --junitxml=artifacts/chat-full-tests.xml -o faulthandler_timeout=45`：**1156 passed/7 skipped/216.19s**。最后仅静态资源修复后12项chat专项13.75s再次通过，`node --check memorydraft/chat/static/app.js`通过。
+- 两机独立release部署，最终101文件源码SHA`704189f767b142efd20cd1496000949a51b80e319c2b885a6f8720cbc3d99b3d`，ZIP SHA`97d38aab01f217dee6410d0f8463cf2685f9ad528d90273b5d43abb9ccef60a7`。阿里云`/home/admin/MemoryDraft-chat`的systemd系统服务`memorydraft-chat`已enabled；A6000原授权根下`chat-service`的用户服务`memorydraft-chat-inference`已enabled、Linger=yes，模型常驻GPU0，GPU1保留空闲。继续使用原成本表SHA`ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c`，环境绑定未改。
+- 首版源码SHA38b13eba47a1部署后，实际运行`python private/validate_deployment.py --env private/gateway.env --output private/deployment-check.json --private private/check`（源码`scripts/validate_chat_deployment.py`）：6真实跨机流式请求通过两账号隔离、多轮持久化、排队、停止和恢复。并发第二请求实际queue_seconds=1.8211；这是容量/连通验收，不是新的加速benchmark。原始脱敏结果`results/chat-deployment/cross-host.json`保留。
+- 按Playwright技能在独立Chrome验证真实网页代码回答、390×844手机布局/历史导航、停止按钮、重启后登录和历史保留，最终页面console errors/warnings均0。首次浏览器502来自本机系统代理，独立测试浏览器用`--no-proxy-server`直连解决，不改系统代理；手机长标题截断和Markdown空行显示已修。最终版再次真实停止后恢复完成，临时两账号及其合成聊天已按精确用户ID删除，其他数据未动。
+- 新入口`docs/CHAT_DEPLOYMENT.md`及`deploy/chat/`。当前没有域名，只监听两机Tailscale地址；手机/电脑须接入获准Tailscale网络。公网域名/HTTPS/备案以后单独配置，没有开放公网明文账号入口。访问说明与邀请码仅保存本机`artifacts/chat-deploy/access.txt`。旧冻结引用及历史发布检查`scripts.verify_frozen_releases`通过；infra v0.3/v0.4独立版本不移动。
+
 # 2026-10-26 — Infra v0.4独立交付完成
 
 - 正式冻结codex/infra-interview-v0.4 / infra-v0.4-interview于ea04290366b3caa809aba93b9417c7e7a148ce48，独立副本artifacts/infra-interview-v0.4/project的2654文件逐项SHA一致、Git工作区干净。源码ZIP 65682675B/SHA18fda224c91517832fd28dc5a0ca09797e004334023026920cfc0b4c2699f3a2，bundle 51488333B/SHA9ec486cfb21c81f01d9827a29fcdee41bb3e8f6e905ff0a0411ad33eec3d659b；ZIP成员全部逐字节核对，bundle verify通过。

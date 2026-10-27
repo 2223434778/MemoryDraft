@@ -1,0 +1,154 @@
+{
+  "created_at": "2026-10-27T06:40:26.463256+00:00",
+  "real_model": true,
+  "checks": {
+    "two_registrations": true,
+    "cross_user_isolation": true,
+    "real_budget_tree_asd": true,
+    "multi_turn_persistence": true,
+    "two_user_queue": true,
+    "stop_persisted": true,
+    "generation_after_stop": true
+  },
+  "first_turn": {
+    "events": {
+      "accepted": 1,
+      "context": 1,
+      "waiting": 1,
+      "text": 16,
+      "complete": 1
+    },
+    "characters": 44,
+    "text_sha256": "8fb16c33308ca245f148d827be38a26e4d9ea606526e63acbce6e129b5b8a168",
+    "wall_seconds": 5.358302218373865,
+    "first_text_seconds": 3.696930679026991,
+    "metadata": {
+      "dropped_turns": 0,
+      "input_tokens": 19,
+      "method": "BudgetTree-ASD",
+      "approximate": true,
+      "finish_reason": "eos",
+      "latency_seconds": 5.261254615150392,
+      "server_seconds": 5.2741053542122245,
+      "queue_seconds": 0.00026436918415129185,
+      "server_ttft_seconds": 3.611200441373512
+    }
+  },
+  "second_turn": {
+    "events": {
+      "accepted": 1,
+      "context": 1,
+      "waiting": 1,
+      "observed_queued": 1,
+      "text": 4,
+      "complete": 1
+    },
+    "characters": 14,
+    "text_sha256": "1f4d07e332ea084742994e29a197c5519e24a643871d55858db347552839a749",
+    "wall_seconds": 0.42689224891364574,
+    "first_text_seconds": 0.20318030985072255,
+    "metadata": {
+      "dropped_turns": 0,
+      "input_tokens": 69,
+      "method": "BudgetTree-ASD",
+      "approximate": true,
+      "finish_reason": "eos",
+      "latency_seconds": 0.360058861784637,
+      "server_seconds": 0.3614552980288863,
+      "queue_seconds": 0.0009040299337357283,
+      "server_ttft_seconds": 0.14052461180835962
+    }
+  },
+  "simultaneous_requests": [
+    {
+      "events": {
+        "accepted": 1,
+        "context": 1,
+        "waiting": 1,
+        "observed_queued": 1,
+        "text": 27,
+        "complete": 1
+      },
+      "characters": 109,
+      "text_sha256": "e590d78b49361020e47e70bf9a63d65996909e2fcb4a1ff9518ccbfe9dc072dc",
+      "wall_seconds": 2.075376278255135,
+      "first_text_seconds": 0.18044258933514357,
+      "metadata": {
+        "dropped_turns": 0,
+        "input_tokens": 110,
+        "method": "BudgetTree-ASD",
+        "approximate": true,
+        "finish_reason": "eos",
+        "latency_seconds": 2.0058204219676554,
+        "server_seconds": 2.007113954052329,
+        "queue_seconds": 0.0007717250846326351,
+        "server_ttft_seconds": 0.1183357392437756
+      }
+    },
+    {
+      "events": {
+        "accepted": 1,
+        "context": 1,
+        "waiting": 2,
+        "observed_queued": 1,
+        "text": 162,
+        "complete": 1
+      },
+      "characters": 388,
+      "text_sha256": "1ac4a3dbdb3decf070deeb21416d6a45ce3e5de251265c534a369edd12c40564",
+      "wall_seconds": 13.483782269060612,
+      "first_text_seconds": 1.9622683101333678,
+      "metadata": {
+        "dropped_turns": 0,
+        "input_tokens": 33,
+        "method": "BudgetTree-ASD",
+        "approximate": true,
+        "finish_reason": "eos",
+        "latency_seconds": 11.588202835060656,
+        "server_seconds": 13.40975680318661,
+        "queue_seconds": 1.821114984108135,
+        "server_ttft_seconds": 1.8910000862088054
+      }
+    }
+  ],
+  "cancelled": {
+    "events": {
+      "accepted": 1,
+      "context": 1,
+      "waiting": 1,
+      "observed_queued": 1,
+      "text": 1,
+      "stopped": 1
+    },
+    "characters": 1,
+    "text_sha256": "b70bb4acc0484cf040de4c07c60f9db722283da2c4a672c39291de621e92c33f",
+    "wall_seconds": 0.29345810366794467,
+    "first_text_seconds": 0.2850665529258549,
+    "metadata": {}
+  },
+  "recovered": {
+    "events": {
+      "accepted": 1,
+      "context": 1,
+      "waiting": 1,
+      "observed_queued": 1,
+      "text": 2,
+      "complete": 1
+    },
+    "characters": 5,
+    "text_sha256": "ea73dafa2cdb13ebd19e02784186f5512dfe17f6adc94033e0a32853ce8a36ee",
+    "wall_seconds": 0.33163597993552685,
+    "first_text_seconds": 0.24298793682828546,
+    "metadata": {
+      "dropped_turns": 0,
+      "input_tokens": 189,
+      "method": "BudgetTree-ASD",
+      "approximate": true,
+      "finish_reason": "eos",
+      "latency_seconds": 0.2629612179007381,
+      "server_seconds": 0.26406351500190794,
+      "queue_seconds": 0.000705573009327054,
+      "server_ttft_seconds": 0.18340792506933212
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-27",
+  "scope": "Private Tailscale friend chat, not a new algorithm benchmark",
+  "source_sha256": "704189f767b142efd20cd1496000949a51b80e319c2b885a6f8720cbc3d99b3d",
+  "archive_sha256": "97d38aab01f217dee6410d0f8463cf2685f9ad528d90273b5d43abb9ccef60a7",
+  "source_files": 101,
+  "cost_sha256": "ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c",
+  "tests": [
+    {
+      "artifact": "chat-integration-tests.xml",
+      "sha256": "e9c0a513d81886cdf0879670ad6bc006a303ec6663000ded5be28aeabc9b1b88",
+      "tests": 69,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "artifact": "chat-full-tests.xml",
+      "sha256": "ce31dae23623bc7d387dbc43d7680719e5f6c16ee730d842a9591fe28f7fecc8",
+      "tests": 1163,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 7
+    }
+  ],
+  "final_chat_tests_passed": 12,
+  "cross_host_checks": {
+    "two_registrations": true,
+    "cross_user_isolation": true,
+    "real_budget_tree_asd": true,
+    "multi_turn_persistence": true,
+    "two_user_queue": true,
+    "stop_persisted": true,
+    "generation_after_stop": true
+  },
+  "browser": {
+    "real_chrome": true,
+    "desktop_viewport": [
+      1280,
+      900
+    ],
+    "mobile_size_viewport": [
+      390,
+      844
+    ],
+    "real_code_question": true,
+    "history_navigation": true,
+    "stop_button": true,
+    "final_console_errors": 0,
+    "final_console_warnings": 0,
+    "proxy_note": "First navigation used a system proxy and got 502; isolated test browser used direct routing. System settings unchanged."
+  },
+  "final_release_checks": {
+    "post_restart_login_history": true,
+    "browser_stop_persisted": true,
+    "generation_after_stop": true,
+    "gateway_without_torch": true,
+    "synthetic_accounts_removed": 2,
+    "other_user_data_untouched": true,
+    "services_enabled": true,
+    "inference_user_linger": true,
+    "inference_running_at_handoff": 0,
+    "inference_queued_at_handoff": 0
+  },
+  "limits": [
+    "One gateway worker, one GPU execution worker; two active users queue.",
+    "Private Tailscale access only; no public HTTPS/domain configured.",
+    "No task-quality or new acceleration claim; ASD is approximate."
+  ]
+}
