@@ -1,4 +1,6 @@
-# MemoryDraft
+# 树流
+
+网页产品名为「树流」，使用原创树与水流标识。底层 Python 包名及历史研究、infra 冻结版本继续保留 MemoryDraft 名称，兼容现有部署与数据。
 
 **朋友聊天网页：**[双机部署说明](docs/CHAT_DEPLOYMENT.md)提供阿里云账号/SQLite历史、手机/电脑网页及A6000成本树ASD推理转发。无域名时先通过Tailscale访问，后续可接HTTPS入口；账号、数据库和部署凭据不进入仓库。
 

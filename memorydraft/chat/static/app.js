@@ -1,7 +1,7 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
 let csrf = "", selected = null, registerMode = false, controller = null, busy = false;
-let catalog = [];
+let catalog = [], activeMessage = null;
 const deleting = new Set();
 const modeLabels = {AR: "普通生成", DFlash: "投机解码", ASD: "ASD", "BudgetTree-ASD": "ASD + 成本树"};
 
@@ -20,6 +20,7 @@ const post = (path, body = {}) => api(path, {method: "POST", body: JSON.stringif
 const notice = (text = "") => { $("notice").textContent = text; };
 
 function showAuth() {
+  SelectMenu.closeAll();
   $("auth").hidden = false;
   $("workspace").hidden = true;
   csrf = "";
@@ -92,7 +93,7 @@ function selectModel() {
   }
   if (!model?.methods.includes($("method-select").value)) $("method-select").value = model?.methods[0] || "";
   const speculative = $("method-select").value !== "AR";
-  $("visualize").disabled = busy || !speculative || !model?.visualization;
+  $("visualize").disabled = !speculative || !model?.visualization;
   $("send").disabled = !model?.ready || !$("method-select").value;
   $("model-status").textContent = model?.ready ? `${model.label} · 已就绪` : "模型暂时离线";
   $("model-status").classList.toggle("online", Boolean(model?.ready));
@@ -222,14 +223,14 @@ function appendMessage(role, text, status = "complete", metadata = {}) {
   const article = document.createElement("article"); article.className = "message " + role;
   const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.append(Icons.make("brand"));
   const main = document.createElement("div"); main.className = "message-main";
-  const name = document.createElement("p"); name.className = "message-name"; name.textContent = role === "user" ? "你" : "MemoryDraft";
+  const name = document.createElement("p"); name.className = "message-name"; name.textContent = role === "user" ? "你" : "树流";
   const body = document.createElement("div"); body.className = "message-body";
   if (role === "user") body.textContent = text; else markdown(body, text);
   const meta = document.createElement("p"); meta.className = "message-meta";
   const labels = {cancelled: "已停止", interrupted: "上次连接已中断", failed: "生成失败", generating: "正在生成…"};
   meta.textContent = labels[status] || (metadata.finish_reason === "length" ? "已达到本次回答长度上限" : "");
   const process = document.createElement("button"); process.type = "button";
-  process.className = "message-process"; process.append(Icons.make("draft"), document.createTextNode("查看推理过程")); process.hidden = true;
+  process.className = "message-process"; process.append(Icons.make("draft"), document.createTextNode("查看详细推理过程")); process.hidden = true;
   process.disabled = busy;
   const message = {body, meta, process, main, article, text};
   main.append(name, body, meta, process); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
@@ -289,16 +290,24 @@ $("stop").onclick = () => {
   if (controller) controller.abort();
 };
 
+$("visualize").onchange = () => {
+  ProcessView.setInlineVisible($("visualize").checked);
+  if (activeMessage) {
+    ProcessView.detach(activeMessage.body);
+    markdown(activeMessage.body, activeMessage.text, ProcessView.ranges(activeMessage.text.length));
+    ProcessView.syncBody(activeMessage.body, activeMessage.text);
+  }
+};
+
 $("chat-form").onsubmit = async (event) => {
   event.preventDefault();
   const content = $("prompt").value.trim();
   if (!content || busy) return;
   const model = catalog.find((m) => m.id === $("model-select").value), method = $("method-select").value;
   if (!model?.ready || !model.methods.includes(method)) { notice("请选择可用的模型和推理模式"); return; }
-  const visualize = $("visualize").checked && model.visualization && method !== "AR";
+  // Collect actual events so either view can be opened independently mid-answer.
+  const visualize = model.visualization && method !== "AR";
   ProcessView.reset(method, model.label);
-  if (visualize && matchMedia("(min-width:1191px)").matches) ProcessView.open();
-  else if (!visualize) ProcessView.open(false);
   setBusy(true); notice("正在提交…");
   let message = null, completed = false;
   try {
@@ -308,8 +317,8 @@ $("chat-form").onsubmit = async (event) => {
     }
     $("welcome").hidden = true; $("prompt").value = "";
     appendMessage("user", content); message = appendMessage("assistant", "", "generating"); scrollBottom();
-    message.article.classList.add("generating");
-    if (visualize) ProcessView.attach(message.body);
+    message.article.classList.add("generating"); activeMessage = message;
+    if (visualize) ProcessView.attach(message.body, $("visualize").checked);
     controller = new AbortController();
     const response = await api("/api/conversations/" + selected + "/messages", {method: "POST", body: JSON.stringify({content, model: model.id, method, visualize}), signal: controller.signal});
     const reader = response.body.getReader(), decoder = new TextDecoder();
@@ -346,7 +355,7 @@ $("chat-form").onsubmit = async (event) => {
     notice(stopped ? "已停止生成" : error.message);
     if (message) message.meta.textContent = stopped ? "已停止" : "本次回答未完成";
   } finally {
-    controller = null; ProcessView.finish(); message?.article.classList.remove("generating");
+    controller = null; activeMessage = null; ProcessView.finish(); message?.article.classList.remove("generating");
     if (message) markdown(message.body, message.text);
     setBusy(false); await list().catch(() => {}); $("prompt").focus();
   }

@@ -228,7 +228,7 @@ def test_config_prevents_public_plain_http_and_credential_urls(config, origin):
 def test_static_page_host_validation_and_invite_rate_limit(config):
     with TestClient(create_chat_app(config, transport=transport([])), base_url=ORIGIN) as client:
         response = client.get("/")
-        assert response.status_code == 200 and "MemoryDraft" in response.text
+        assert response.status_code == 200 and "树流" in response.text and "MemoryDraft" not in response.text
         assert "frame-ancestors 'none'" in response.headers["Content-Security-Policy"]
         assert client.get("/", headers={"Host": "evil.example"}).status_code == 400
         for _ in range(12):

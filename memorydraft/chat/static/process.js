@@ -125,9 +125,13 @@ window.ProcessView = (() => {
   function move(direction) {
     trace.move(direction); render();
   }
-  function attach(body) {
+  function attach(body, visible = true) {
     const root = document.createElement("span"); root.className = "inline-speculation";
-    root.setAttribute("aria-hidden", "true"); inline = {body, root, text: ""}; renderInline();
+    root.setAttribute("aria-hidden", "true"); inline = {body, root, text: "", visible}; renderInline();
+  }
+  function setInlineVisible(visible) {
+    if (!inline) return;
+    inline.visible = visible; inline.root.remove(); renderInline();
   }
   function detach(body) { if (inline?.body === body) inline.root.remove(); }
   function syncBody(body, text) {
@@ -136,13 +140,13 @@ window.ProcessView = (() => {
   }
   function ranges(length) {
     const verified = trace.latest?.verified || trace.previousVerified?.verified, value = verified?.inline;
-    if (!inline || !value || ![value.start, value.accepted_end, value.end].every(Number.isInteger)
+    if (!inline?.visible || !value || ![value.start, value.accepted_end, value.end].every(Number.isInteger)
         || value.start < 0 || value.start > value.accepted_end || value.accepted_end > value.end || value.end > length) return [];
     return [{start:value.start,end:value.accepted_end,kind:"accepted"},
       {start:value.accepted_end,end:value.end,kind:"correction"}].filter(r=>r.end>r.start);
   }
   function renderInline() {
-    if (!inline || trace.finished) return;
+    if (!inline?.visible || trace.finished) return;
     const {root, body, text} = inline, row = trace.latest;
     root.remove(); root.replaceChildren(); root.dataset.round = trace.total;
     root.dataset.phase = !row ? "waiting" : row.verified ? "verified" : "draft";
@@ -173,5 +177,5 @@ window.ProcessView = (() => {
   el("process-close").onclick = () => open(false);
   el("round-prev").onclick = () => move(-1); el("round-next").onclick = () => move(1);
   el("trace-live").onclick = () => { trace.live(); render(); };
-  return {open, reset, add, load, attach, detach, syncBody, ranges, finish: () => { trace.finish(); inline?.root.remove(); inline = null; render(); }};
+  return {open, reset, add, load, attach, setInlineVisible, detach, syncBody, ranges, finish: () => { trace.finish(); inline?.root.remove(); inline = null; render(); }};
 })();

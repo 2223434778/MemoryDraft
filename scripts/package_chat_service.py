@@ -10,7 +10,7 @@ import zipfile
 
 def package(root: Path, destination: Path):
     paths = sorted(p for p in (root / "memorydraft").rglob("*") if p.is_file()
-                   and "__pycache__" not in p.parts and p.suffix in {".py", ".json", ".txt", ".html", ".css", ".js"})
+                   and "__pycache__" not in p.parts and p.suffix in {".py", ".json", ".txt", ".html", ".css", ".js", ".svg"})
     paths += [root / "pyproject.toml", root / "README.md"]
     manifest = {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
     identity = hashlib.sha256(json.dumps(manifest, sort_keys=True).encode()).hexdigest()

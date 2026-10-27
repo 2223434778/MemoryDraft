@@ -3,6 +3,7 @@ window.SelectMenu = (() => {
   const menus = new Map();
   function close(menu, focus = false) {
     menu.wrap.classList.remove("select-open"); menu.button.setAttribute("aria-expanded", "false");
+    menu.list.classList.remove("is-open");
     menu.list.setAttribute("aria-hidden", "true"); menu.list.inert = true;
     if (focus) menu.button.focus();
   }
@@ -14,6 +15,7 @@ window.SelectMenu = (() => {
     menu.list.style.left = Math.max(12, Math.min(rect.left, innerWidth - width - 12)) + "px";
     menu.list.style.bottom = (innerHeight - rect.top + 8) + "px";
     menu.wrap.classList.add("select-open"); menu.button.setAttribute("aria-expanded", "true");
+    menu.list.classList.add("is-open");
     menu.list.setAttribute("aria-hidden", "false"); menu.list.inert = false;
     const options = [...menu.list.querySelectorAll("button:not(:disabled)")];
     (edge === "last" ? options.at(-1) : options.find(o => o.dataset.value === menu.native.value) || options[0])?.focus();
@@ -49,7 +51,8 @@ window.SelectMenu = (() => {
     list.id = id + "-menu"; list.className = "select-menu"; list.setAttribute("role", "listbox");
     list.setAttribute("aria-label", native.getAttribute("aria-label") + "选项");
     list.setAttribute("aria-hidden", "true"); list.inert = true;
-    native.hidden = true; wrap.append(button, list);
+    // Glass surfaces establish a containing block; keep fixed menus in a portal.
+    native.hidden = true; wrap.append(button); document.body.append(list);
     const menu = {native, wrap, button, label, list}; menus.set(id, menu);
     button.onclick = () => wrap.classList.contains("select-open") ? close(menu) : open(menu);
     button.onkeydown = event => {
@@ -71,8 +74,9 @@ window.SelectMenu = (() => {
     refresh(id);
   }
   document.addEventListener("pointerdown", event => {
-    for (const menu of menus.values()) if (!menu.wrap.contains(event.target)) close(menu);
+    for (const menu of menus.values()) if (!menu.wrap.contains(event.target) && !menu.list.contains(event.target)) close(menu);
   });
   window.addEventListener("resize", () => { for (const menu of menus.values()) close(menu); });
-  return {refresh, refreshAll: () => { for (const id of menus.keys()) refresh(id); }};
+  return {refresh, refreshAll: () => { for (const id of menus.keys()) refresh(id); },
+    closeAll: () => { for (const menu of menus.values()) close(menu); }};
 })();

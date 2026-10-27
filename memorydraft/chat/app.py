@@ -72,7 +72,7 @@ def create_chat_app(config: ChatConfig, *, transport=None):
                 for _, signal in app.state.streams.values():
                     signal.set()
 
-    app = FastAPI(title="MemoryDraft Chat", lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
+    app = FastAPI(title="树流", lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=[urlsplit(config.public_origin).hostname])
 
     @app.exception_handler(StoreError)

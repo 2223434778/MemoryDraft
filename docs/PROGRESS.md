@@ -1,3 +1,15 @@
+# 2026-10-27 — 网页更名树流、玻璃质感、圆形勾选与独立过程视图
+
+- 按用户四点要求，网页标题、登录／侧栏／顶部、输入提示和assistant名称统一为「树流」，原创树与水流标识替换叠页M，并增加同款SVG favicon。README改为当前产品名，底层包名、Cookie、SQLite与旧研究／infra归档保留兼容；本轮没有修改域名DNS、监听地址或认证配置。
+- 侧栏、登录卡、输入框、菜单与详细面板增加半透明、26px背景模糊、细高光和柔和阴影。新菜单portal到body，并在认证退出时关闭，避免backdrop-filter改变fixed定位。26px圆形原生勾选控件保留28px命中区、44px标签、Space与焦点样式，增加回弹／勾画／光圈；减少动画和减少透明度提供对应样式。
+- 顶部改为「展示详细推理过程」，只控制详细面板。输入框「展示推理过程」只控制正文简览；取消提交时自动展开／关闭，允许生成中独立切换。为支持临时打开任一视图，支持观察的投机网页请求持续收集真实事件，两个视图关闭也有事件成本；原始API仍可visualize=false关闭观察。正文关闭时立即去除临时标记，完成／停止时清理，实际保存文本不变。
+- `node --test tests/chat_ui.test.cjs tests/chat_process_view.test.cjs`：10 passed，新增直接运行生产ProcessView的四组合、独立切换、隐藏后打开、结束清理测试。`node --check` 检查 `app.js`、`process.js`、`select-menu.js`、`icons.js` 均通过。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_chat.py tests/test_speculation.py tests/test_output_limits.py --basetemp artifacts/pytest-shuliu-glass-final -o faulthandler_timeout=45`：46 passed，23.75s；首轮仅旧页面断言仍期待MemoryDraft，按新品牌更新后通过。发布器允许SVG并新增安装检查：`tests/test_chat_package.py --basetemp artifacts/pytest-shuliu-package`，1 passed，0.18s，验证favicon进入清单／安装且不包含.env。没有把上一阶段1202／7作为本轮重跑。
+- Playwright技能独立Chrome、本地临时SQLite连接真实A6000，`npx.cmd --yes --package @playwright/cli playwright-cli -s=shuliu-glass run-code --filename=output/playwright/check-shuliu-glass.js`：四组合真实事件分别150／150／192／150，保存与complete原文一致，完成后标记0，详情状态未被勾选联动；生成中两种视图各自开关、关闭后再开详情通过，页面JS错误0。320／390文档宽等于viewport，portal菜单及长标题未溢出，27B的三个不支持方法继续禁用。
+- 默认动效用 `check-shuliu-motion.js` 单独检查：26px圆形，0.28s回弹，0.23s勾画，原生命中区28px；减少动画时animation=none／transition=0s。最终组合运行继承了前一轮的减少动画设置，归档入口已显式重置媒体设置，默认动效结果单列。首次DFlash请求发生网关连接中断，模型服务指标failed=0、cancelled=1，根因未确定；后续组合通过。检查脚本另修正动画中缩放尺寸误判及AR下控件本应禁用的测试前置状态，未放宽推理或连接超时。
+- `.venv\Scripts\python.exe -m scripts.package_chat_service --output artifacts/shuliu-glass-source.zip`：110文件，源码SHA `7a55330a26d2eac9365326f346494b9592765facf0fa440ae13cd9772cb41f8c`，ZIP SHA `fbb1cb7c6aeb12d9e8763bef452f1dcab17ba21ea00cd634d9b725c2c3a89de9`。两机安装独立release，以无活跃会话保护原子切换；A6000仅chat/app.py标题在Python中不同，推理／27B三个GPU进程不重载。阿里云只重启网关，数据库和私有环境不修改，原16384／3600设置复核保持。
+- 首次发布遇到自动审批额度不足，安装和切换均未执行，不是安全性裁决；用户返回后先核对两机仍在66e8ec2e678a，再完成相同审批动作，未绕过检查。`.venv\Scripts\python.exe artifacts/chat-live-preview/report-shuliu.py`：线上八个静态资源含SVG逐字匹配，旧main／infra v0.4引用保持，报告与合成截图 `results/shuliu-glass-ui/`。源码身份及暂存Git一致性检查继续用于提交前复核。
+
 # 2026-10-27 — 网页单次输出提高到16384 tokens并完成双模型实测
 
 - 按用户要求尽量提高单次回答长度。线上原配置为网页／8B runtime输出1024，接口／请求契约硬上限4096，27B原生总窗口12288但适配器输入固定8192。增加共享 `MAX_OUTPUT_TOKENS=16384`，同步请求、runtime、HTTP生成／计数、聊天配置与过程轮次校验；保留整数／越界验证。网页默认输出16384，新增可配置 `MEMORYDRAFT_CHAT_TIMEOUT_SECONDS`，线上从600延长至3600秒。
