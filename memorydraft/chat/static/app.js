@@ -74,7 +74,8 @@ async function updateModels() {
     $("model-select").replaceChildren();
     for (const model of catalog) {
       const option = document.createElement("option"); option.value = model.id;
-      option.textContent = model.label + (model.ready ? "" : " · 离线"); option.disabled = !model.ready;
+      option.textContent = model.label + (model.methods.length === 1 && model.methods[0] === "AR" ? " · 仅普通生成" : "") + (model.ready ? "" : " · 离线");
+      option.disabled = !model.ready;
       $("model-select").append(option);
     }
     $("model-select").value = catalog.find((m) => m.id === data.default_model && m.ready)?.id || catalog.find((m) => m.ready)?.id || "";
@@ -83,7 +84,11 @@ async function updateModels() {
 }
 function selectModel() {
   const model = catalog.find((m) => m.id === $("model-select").value);
-  for (const option of $("method-select").options) option.disabled = !model?.methods.includes(option.value);
+  for (const option of $("method-select").options) {
+    option.dataset.label ||= option.textContent;
+    option.disabled = !model?.methods.includes(option.value);
+    option.textContent = option.dataset.label + (option.disabled ? " · 尚未接入" : "");
+  }
   if (!model?.methods.includes($("method-select").value)) $("method-select").value = model?.methods[0] || "";
   const speculative = $("method-select").value !== "AR";
   $("visualize").disabled = busy || !speculative || !model?.visualization;
@@ -91,7 +96,7 @@ function selectModel() {
   $("model-status").textContent = model?.ready ? `${model.label} · 已就绪` : "模型暂时离线";
   $("model-status").classList.toggle("online", Boolean(model?.ready));
   $("capability-note").textContent = model?.methods.length === 1 && model.methods[0] === "AR" ?
-    "此模型当前提供普通生成；投机与成本树需要匹配的 Draft 和验证实现。" :
+    "该模型尚未接入投机解码、ASD 和成本树。请选择 Qwen3-8B 使用这三种模式；当前模型只能普通生成。" :
     speculative && !model?.visualization ? "当前服务尚未提供过程事件。" : "";
 }
 $("model-select").onchange = selectModel; $("method-select").onchange = selectModel;

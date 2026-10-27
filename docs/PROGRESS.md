@@ -1,3 +1,9 @@
+# 2026-10-27 — 明确区分 27B 普通生成与 8B 加速能力
+
+- 用户发现 Qwen3.8-27B 不能选择 ASD。线上只读核对：该适配器真实 methods 只有 AR，Qwen3-8B 提供 DFlash／ASD／成本树等；27B 的相应 Draft 和验证实现尚未接入，不能通过开放前端选项宣称支持。
+- `app.js` 为 AR-only 模型标注“仅普通生成”，禁用方法标注“尚未接入”，输入框下明确提示切换 Qwen3-8B；`style.css` 提高说明可见度。`node --check memorydraft/chat/static/app.js` 通过；隔离浏览器三项检查通过：27B 三种禁用方法说明、仅AR选择、切回8B时全部模式及标签恢复。未修改推理算法，也未新增生产测试账号。
+- 两机107文件 release SHA `25522fbc33239caa92e028db941f9af79003d5121582a107abe7fee04ea49365`，ZIP SHA `7b70e9b1b0b20a976a8efc24b22f9fc16e63bb54e3553fc120ab1a29565fe66a`。无活跃聊天时切换网关，GPU进程不重载；结果 `results/chat-live-ui/capabilities.json`。
+
 # 2026-10-27 — 最近对话删除、原创图标、页面动画与实时 Draft
 
 - 按用户四点要求，在 `codex/chat-live-draft` 实现侧栏逐条删除：桌面悬停／键盘聚焦、手机常驻按钮，先确认再调用原鉴权 DELETE；取消保留、删除其他对话保留当前回答、删除当前对话回欢迎页，生成时禁用。旧服务器 API 不变。
