@@ -59,3 +59,19 @@ flowchart LR
 先比较直连和代理路径：`curl --noproxy '*' http://YOUR_ALIYUN_TAILSCALE_IP:8080/`。如果服务器和客户端直连均为200，而走本机代理为502，应将阿里云的具体Tailscale IP加入系统代理排除列表；不是只确认Tailscale显示在线。Windows内置的“本地地址绕过”不一定覆盖这个IP，需要明确添加。[Windows代理设置说明](https://support.microsoft.com/en-us/windows/experience/connectivity-networking/use-a-proxy-server-in-windows)
 
 2026-10-27用户实际访问故障中，保留现有Windows代理及其其他排除项，仅追加聊天服务器IP，并刷新系统代理配置后，未带禁用代理参数的独立Chrome成功打开登录页。修改前的排除列表保存在本机忽略目录`artifacts/chat-deploy/proxy-bypass-backup-*.json`，不上传到仓库。用户已有浏览器可刷新页面，必要时关闭该标签页后重新打开；手机等其他设备需独立确认Tailscale和代理绕过设置。
+
+随后用户反馈原Chrome仍为502，说明上述新会话检查不足以确认实际客户端恢复。进一步检查Clash日志发现：原规则已经把整个Tailscale网段交给DIRECT，但其拨号仍超时。Windows正常直连使用Tailscale源地址，运行中的Clash却使用以太网源地址并停在SynSent。临时隔离实例的对照中，全局绑定以太网返回502；以太网全局绑定保持时，给专用select组指定`interface-name: Tailscale`则返回200。
+
+最终只为聊天地址添加以下专用组和前置规则，其他原有组、规则、端口和代理模式保留。示例应合并进已有列表，不能用它替换整份订阅；替换示例IP后使用。
+
+```yaml
+proxy-groups:
+  - name: MemoryDraft-Tailscale
+    type: select
+    proxies: [DIRECT]
+    interface-name: Tailscale
+rules:
+  - IP-CIDR,YOUR_ALIYUN_TAILSCALE_IP/32,MemoryDraft-Tailscale,no-resolve
+```
+
+用安装包自带Clash `-t`校验后加载，核对原有12个selector组的选项全部相同；强制经过原Clash端口访问由502变200，客户端直连仍为200，用户也确认原Chrome已显示登录页。当前修改写入正在使用的本地profile；订阅自动更新可能覆盖手工内容，长期使用应通过Clash Mixin/预处理保留专用组和规则。原配置备份仅在本机忽略目录`artifacts/chat-deploy/clash-*-backup-*`，含私有订阅数据，不得提交GitHub。本轮没有更换Clash版本、全局改变出口网卡或开启TUN。

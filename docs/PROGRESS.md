@@ -1,4 +1,11 @@
-# 2026-10-27 — 用户浏览器HTTP 502修复
+# 2026-10-27 — 原Chrome仍502的Clash接口定位与实际恢复
+
+- 用户反馈原Chrome仍502，确认Windows代理例外未被重置；新Chrome成功不能代替原客户端验收。用户说明使用Clash Rule模式、未开TUN。读取现有Chrome窗口的工具授权超时，未关闭、重启或修改其标签页/扩展。
+- 进一步日志证明原Clash已有100.64/10的DIRECT规则，仍拨号超时。前置单IP DIRECT规则未改善，不能归因为单纯缺规则。目标TCP实际用以太网源地址、SynSent；正常系统路由则选择Tailscale。临时独立Clash的基线直连200、指定以太网502，保持以太网全局设置但专用select组指定Tailscale后200，定位到Clash出站接口路径。
+- 最小生效修改：当前profile增加MemoryDraft-Tailscale select组（DIRECT、interface-name=Tailscale），仅将聊天服务器/32前置规则指向该组；官方已安装Clash程序`-t`校验通过。保留原Rule模式、端口、其余9816规则及12个selector组选择。强制通过当前127.0.0.1:7890代理访问最终HTTP200，原生直连HTTP200；用户在原Chrome刷新后明确确认已正常显示登录页。
+- 原配置及候选仅保存在忽略目录`artifacts/chat-deploy/clash-routing-backup-20261027-151531`和`clash-interface-backup-20261027-152352`；包含订阅数据，不提交。临时probe实例已逐个关闭。没有改变服务器代码或GPU配置，也没有更换用户代理软件；订阅更新可能覆盖手工profile修改，部署文档列出需保留的专用组和规则。
+
+# 2026-10-27 — 用户浏览器HTTP 502修复（第一轮，原客户端尚未确认）
 
 - 用户报告聊天网址502。实际对比：客户端`curl --noproxy '*'`为200，阿里云本机HTTP为200、网关active；显式通过已配置本地代理为502，定位为客户端代理路径。Windows当前用户ProxyOverride缺少聊天服务器Tailscale IP。
 - 在忽略目录保存`artifacts/chat-deploy/proxy-bypass-backup-20261027-145607.json`，仅为当前用户系统代理追加该IP直连例外，原ProxyEnable/ProxyServer及其他排除项均保留，使用WinINet通知刷新。随后独立Chrome沿用系统代理、没有`--no-proxy-server`参数，实际成功打开登录页。没有修改服务器程序或模型配置，无需GPU/单元测试复跑。
