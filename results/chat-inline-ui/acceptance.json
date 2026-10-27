@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-27T11:37:17.637723+00:00",
+  "source_sha256": "a6e9aa5e40bc2f23b61d6e79796f97f94308f655e5dc0af743d6b1b007d20abc",
+  "files": 109,
+  "archive_sha256": "ed55ea3d5219d396d0311de84b097387a7cecd9d0d9c5499e7172f01e0a4c22a",
+  "checks": {
+    "python_related_passed": 60,
+    "python_seconds": 27.38,
+    "javascript_state_passed": 5,
+    "javascript_syntax_files_checked": 3,
+    "production_static_files_match": 7
+  },
+  "browser": {
+    "isolated_local_sqlite": true,
+    "production_test_accounts_created": 0,
+    "production_records_deleted": 0,
+    "real_gpu_methods": [
+      "DFlash",
+      "BudgetTree-ASD"
+    ],
+    "pending_preview_and_accepted_body_highlights_observed": true,
+    "stored_equals_complete_event_text_both_methods": true,
+    "old_card_absent": true,
+    "final_preview_and_highlights_absent": true,
+    "body_font_px": 17,
+    "mobile": {
+      "viewport": [
+        390,
+        844
+      ],
+      "document_width": 390,
+      "menu_left": 58,
+      "menu_right": 378
+    },
+    "menus": {
+      "escape_restores_focus": true,
+      "unsupported_27b_modes_disabled": 3,
+      "keyboard_home": "AR",
+      "keyboard_end": "BudgetTree-ASD",
+      "open_transition_seconds": 0.16
+    },
+    "reduced_motion_transition": "0s",
+    "unchecked": {
+      "inline_nodes": 0,
+      "details_hidden": true
+    },
+    "stopped": {
+      "inline_nodes": 0,
+      "method_menu_enabled": true
+    }
+  },
+  "observed_issues": [
+    "Expired local browser cookie refreshed; production accounts unused.",
+    "Initial CDP SSE body inspection unavailable; switched test observer to native fetch clone.",
+    "Menu opening visibility transition blocked immediate option focus; fixed and keyboard retest passed.",
+    "First GPU paired run failed strict counters/ASD metadata assertion after token equality passed; specific difference was not captured. Added diagnostic payload without weakening assertions; subsequent four-method paired run passed. Original cause remains undetermined.",
+    "Installer first rejected archive SHA supplied instead of source identity before extraction; corrected argument and both installs verified."
+  ],
+  "deployment": {
+    "both_source_releases": "a6e9aa5e40bc",
+    "gateway_active": true,
+    "active_chats_at_gateway_switch": 0,
+    "final_static_only_inference_switch_restarted_gpu": false,
+    "earlier_backend_presentation_update_restarted_inference_adapter": true,
+    "native_27b_model_restarted": false
+  },
+  "scope": "UI correctness smoke checks, not a performance benchmark; no Target, draft weights, acceptance or cost-table changes.",
+  "screenshots": {
+    "inline-code-accepted.png": "5fef048416c5ed9737f4a4ed71d024f5a02cf6a5eb94d7b08537f13ad6a476c4",
+    "inline-mobile-draft.png": "c81e41a077f56c2596ef776b1712212869515ba0804490197ddde83343fbb3f7",
+    "inline-mobile-menu.png": "f6bb8a8a7f360d581a4cdac851601148f2845ac0f26e8286112231b3b39ff64b",
+    "inline-model-menu-final.png": "5f3db0112fdcb7a3aeaef7aec8b1afb6882cefb332381ce0847d3a4e36e861cf"
+  },
+  "frozen_refs": {
+    "main": "27e36199f8a65acdb9a9c42ccb744ddfa9a9402b",
+    "codex/infra-interview-v0.4": "ea04290366b3caa809aba93b9417c7e7a148ce48",
+    "infra-v0.4-interview^{}": "ea04290366b3caa809aba93b9417c7e7a148ce48"
+  }
+}

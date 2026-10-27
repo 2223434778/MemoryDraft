@@ -2,6 +2,8 @@
 // Original line artwork; no third-party logo or icon assets.
 window.Icons = {
   paths: {
+    chevron: ["m6 9 6 6 6-6"],
+    check: ["m5 12 4 4L19 5"],
     brand: ["M9 3h9a3 3 0 0 1 3 3v9", "M6 7h9a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-8a3 3 0 0 1 3-3Z", "M7 17v-6l3 3 3-3v6"],
     menu: ["M4 8h16M4 16h11"],
     add: ["M12 5v14M5 12h14"],

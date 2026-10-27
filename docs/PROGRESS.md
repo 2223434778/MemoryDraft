@@ -1,3 +1,14 @@
+# 2026-10-27 — 放大字体、统一动画菜单、正文内实时投机简览
+
+- 默认及手机正文提高至 17px，辅助说明同步放大。新增 `select-menu.js`，保留原模型能力与原生 select 状态，通过统一圆角菜单提供淡入／上移、选中标记、真实禁用、方向键／Home／End／Escape；修复打开时 visibility 过渡阻止立即聚焦的问题，复测首尾选项及焦点返回通过。
+- 移除正文下的实时卡片，黄色候选直接接入正在生成的段落或代码末尾，实际正文接受部分标绿、Target 补充标蓝，未采用预览精简标红划线。完整候选／树和历史轮次继续在右侧。生成完成、停止及错误收尾清除临时 DOM；代码复制使用已确认原文。关闭展示不创建正文观察器，并关闭详细面板。
+- 新增 `memorydraft/serving/inline.py`，对实际 ID 前缀做上下文解码，发送有界片段及 UTF-16 源位置，覆盖中文碎字节、emoji、tokenizer 空白清理和真实树路径。纯展示层，无模型调用，不改变 Target 输入、接受规则、KV、权重、FP32／rmsnorm 配置或成本表。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_inline_presentation.py tests/test_speculation.py tests/test_chat.py tests/test_serving.py --basetemp artifacts/pytest-inline-answer -o faulthandler_timeout=40`：60 passed，27.38s；`node --test tests/chat_ui.test.cjs`：5 passed；`node --check memorydraft/chat/static/app.js`、`process.js`、`select-menu.js` 均通过。没有把此前完整回归的数字当成本轮新跑结果。
+- Playwright CLI 独立 Chrome、本地隔离 SQLite，真实 A6000 DFlash 中文代码／emoji 与成本树中文回答均观察到正文内黄色预览及绿色接受，保存文本与 SSE complete 原文一致，完成后无残留；390×844 文档宽390，菜单58..378，无横向溢出。关闭展示／停止清理通过，减少动画设置为0s。测试会话过期后重新生成本地会话；原 CDP 无法读取 SSE 体改用测试端 fetch clone。未新建生产账号或删除生产记录。
+- GPU 命令：`systemd-run --user --unit memorydraft-inline-observer-diagnostic --property=RuntimeMaxSec=900 --property=WorkingDirectory=<chat-root>/current --setenv=PYTHONPATH=. <venv>/python <chat-root>/private/validate_chat_visualization.py --env <chat-root>/private/inference.env --url http://100.91.41.7:8010 --output <chat-root>/private/inline-observer-check.json`。最终 AR/DFlash/ASD/BudgetTree-ASD 四对输出 ID、计数、ASD metadata 严格一致。首轮 token 相同后在计数／ASD metadata 断言失败，未捕获具体差异；增加诊断信息后重跑通过，未放宽规则，原失败原因尚未定位。结果仅支持小规模观察器正确性，不是性能基准。
+- `.venv\Scripts\python.exe -m scripts.package_chat_service --output artifacts/chat-inline-source-final.zip`：109文件，源码 SHA `a6e9aa5e40bc2f23b61d6e79796f97f94308f655e5dc0af743d6b1b007d20abc`，ZIP SHA `ed55ea3d5219d396d0311de84b097387a7cecd9d0d9c5499e7172f01e0a4c22a`。两机使用 `private/install_chat_release.py --archive <zip> --root <chat-root> --sha256 <source-sha>` 校验安装到独立 release；初次误传 ZIP SHA 被安装器在解包前拒绝，修正后通过。网关确认 active=0 后原子切换并重启；A6000 先上线后端观察层，最终切换验证所有 Python 字节与已运行版本相同，不重复重载 GPU，27B 原生模型始终未重启。
+- `.venv\Scripts\python.exe artifacts/chat-live-preview/report-inline.py`：线上七个静态文件逐字匹配，旧 main／infra v0.4 分支及标签未移动。报告与合成截图 `results/chat-inline-ui/`；设计／使用说明更新 `docs/CHAT_VISUALIZATION.md`。生产数据库和私有配置始终位于 release 之外。
+
 # 2026-10-27 — 明确区分 27B 普通生成与 8B 加速能力
 
 - 用户发现 Qwen3.8-27B 不能选择 ASD。线上只读核对：该适配器真实 methods 只有 AR，Qwen3-8B 提供 DFlash／ASD／成本树等；27B 的相应 Draft 和验证实现尚未接入，不能通过开放前端选项宣称支持。

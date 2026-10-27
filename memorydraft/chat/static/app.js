@@ -76,6 +76,7 @@ async function updateModels() {
       const option = document.createElement("option"); option.value = model.id;
       option.textContent = model.label + (model.methods.length === 1 && model.methods[0] === "AR" ? " · 仅普通生成" : "") + (model.ready ? "" : " · 离线");
       option.disabled = !model.ready;
+      option.dataset.shortLabel = model.label;
       $("model-select").append(option);
     }
     $("model-select").value = catalog.find((m) => m.id === data.default_model && m.ready)?.id || catalog.find((m) => m.ready)?.id || "";
@@ -98,6 +99,7 @@ function selectModel() {
   $("capability-note").textContent = model?.methods.length === 1 && model.methods[0] === "AR" ?
     "该模型尚未接入投机解码、ASD 和成本树。请选择 Qwen3-8B 使用这三种模式；当前模型只能普通生成。" :
     speculative && !model?.visualization ? "当前服务尚未提供过程事件。" : "";
+  SelectMenu.refreshAll();
 }
 $("model-select").onchange = selectModel; $("method-select").onchange = selectModel;
 
@@ -134,49 +136,70 @@ async function openChat(id) {
   await list(); scrollBottom();
 }
 
-function inline(parent, text) {
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
-  for (const part of parts) {
-    if (part.startsWith("`") && part.endsWith("`")) {
-      const node = document.createElement("code"); node.textContent = part.slice(1, -1); parent.append(node);
-    } else if (part.startsWith("**") && part.endsWith("**")) {
-      const node = document.createElement("strong"); node.textContent = part.slice(2, -2); parent.append(node);
-    } else parent.append(document.createTextNode(part));
+function paintText(parent, text, base, ranges) {
+  const cuts = new Set([0, text.length]);
+  for (const range of ranges) for (const point of [range.start, range.end]) if (point > base && point < base + text.length) cuts.add(point - base);
+  const points = [...cuts].sort((a, b) => a - b);
+  for (let i = 1; i < points.length; i++) {
+    const start = points[i - 1], end = points[i], range = ranges.find(r => r.start <= base + start && r.end > base + start);
+    const node = document.createTextNode(text.slice(start, end));
+    if (range) { const span = document.createElement("span"); span.className = "confirmed-token " + range.kind; span.append(node); parent.append(span); }
+    else parent.append(node);
   }
 }
 
-function markdown(target, text) {
+function inline(parent, text, base = 0, ranges = []) {
+  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
+  let offset = 0;
+  for (const part of parts) {
+    if (part.startsWith("`") && part.endsWith("`")) {
+      const node = document.createElement("code"); paintText(node, part.slice(1, -1), base + offset + 1, ranges); parent.append(node);
+    } else if (part.startsWith("**") && part.endsWith("**")) {
+      const node = document.createElement("strong"); paintText(node, part.slice(2, -2), base + offset + 2, ranges); parent.append(node);
+    } else paintText(parent, part, base + offset, ranges);
+    offset += part.length;
+  }
+}
+
+function markdown(target, text, ranges = []) {
   target.replaceChildren();
   // Parse fenced blocks without interpreting model output as HTML.
   let position = 0;
   const expression = /```[^\n]*\n([\s\S]*?)(?:```|$)/g;
-  function prose(value) {
-    value = value.replace(/^\n+|\n+$/g, "").replace(/\n{3,}/g, "\n\n");
+  function prose(value, base) {
+    const leading = /^\n*/.exec(value)[0].length;
+    value = value.slice(leading).replace(/\n+$/g, ""); base += leading;
     if (!value) return;
+    let blank = false;
     for (const line of value.split("\n")) {
       const heading = /^#{1,4}\s+/.exec(line);
-      const node = document.createElement(heading ? "h2" : "div");
-      inline(node, heading ? line.slice(heading[0].length) : line);
-      if (!line) node.append(document.createElement("br")); target.append(node);
+      if (line || !blank) {
+        const node = document.createElement(heading ? "h2" : "div");
+        inline(node, heading ? line.slice(heading[0].length) : line, base + (heading?.[0].length || 0), ranges);
+        if (!line) node.append(document.createElement("br")); target.append(node);
+      }
+      blank = !line; base += line.length + 1;
     }
   }
   for (const match of text.matchAll(expression)) {
-    prose(text.slice(position, match.index));
+    prose(text.slice(position, match.index), position);
     const pre = document.createElement("pre"), code = document.createElement("code");
-    code.textContent = match[1];
+    const codeText = match[1];
+    paintText(code, codeText, match.index + match[0].indexOf("\n") + 1, ranges);
     const button = document.createElement("button"); button.type = "button"; button.className = "copy-code"; button.textContent = "复制";
     button.onclick = async () => {
-      try { await navigator.clipboard.writeText(code.textContent); button.textContent = "已复制"; }
+      try { await navigator.clipboard.writeText(codeText); button.textContent = "已复制"; }
       catch { button.textContent = "请选中复制"; }
     };
     pre.append(button, code); target.append(pre); position = match.index + match[0].length;
   }
-  prose(text.slice(position));
+  prose(text.slice(position), position);
 }
 
 function streamText(target, text) {
+  ProcessView.detach(target);
   const previous = target.textContent;
-  markdown(target, text);
+  markdown(target, text, ProcessView.ranges(text.length));
   const current = target.textContent;
   let shared = 0;
   while (shared < previous.length && shared < current.length && previous[shared] === current[shared]) shared++;
@@ -192,6 +215,7 @@ function streamText(target, text) {
     const span = document.createElement("span"); span.className = "text-reveal";
     tail.replaceWith(span); span.append(tail);
   }
+  ProcessView.syncBody(target, text);
 }
 
 function appendMessage(role, text, status = "complete", metadata = {}) {
@@ -207,7 +231,7 @@ function appendMessage(role, text, status = "complete", metadata = {}) {
   const process = document.createElement("button"); process.type = "button";
   process.className = "message-process"; process.append(Icons.make("draft"), document.createTextNode("查看推理过程")); process.hidden = true;
   process.disabled = busy;
-  const message = {body, meta, process, main, article};
+  const message = {body, meta, process, main, article, text};
   main.append(name, body, meta, process); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
   decorateMessage(message, metadata);
   return message;
@@ -274,6 +298,7 @@ $("chat-form").onsubmit = async (event) => {
   const visualize = $("visualize").checked && model.visualization && method !== "AR";
   ProcessView.reset(method, model.label);
   if (visualize && matchMedia("(min-width:1191px)").matches) ProcessView.open();
+  else if (!visualize) ProcessView.open(false);
   setBusy(true); notice("正在提交…");
   let message = null, completed = false;
   try {
@@ -284,7 +309,7 @@ $("chat-form").onsubmit = async (event) => {
     $("welcome").hidden = true; $("prompt").value = "";
     appendMessage("user", content); message = appendMessage("assistant", "", "generating"); scrollBottom();
     message.article.classList.add("generating");
-    if (visualize) ProcessView.attach(message.main);
+    if (visualize) ProcessView.attach(message.body);
     controller = new AbortController();
     const response = await api("/api/conversations/" + selected + "/messages", {method: "POST", body: JSON.stringify({content, model: model.id, method, visualize}), signal: controller.signal});
     const reader = response.body.getReader(), decoder = new TextDecoder();
@@ -303,12 +328,12 @@ $("chat-form").onsubmit = async (event) => {
         const data = JSON.parse(payload);
         if (name === "waiting") notice(data.queued ? "前面有一个回答正在生成，请稍候…" : "模型正在思考…");
         if (name === "context" && data.dropped_turns) notice("对话较长，本次使用最近能放入模型的历史。");
-        if (name === "text") { streamText(message.body, data.text); notice("正在生成…"); scrollBottom(); }
+        if (name === "text") { message.text = data.text; streamText(message.body, data.text); notice("正在生成…"); scrollBottom(); }
         if (name === "speculation") { ProcessView.add(data); scrollBottom(); }
         if (name === "error") throw new Error(data.message);
-        if (name === "stopped") { completed = true; markdown(message.body, data.text); message.meta.textContent = "已停止"; notice("已停止生成"); }
+        if (name === "stopped") { completed = true; message.text = data.text; markdown(message.body, data.text); message.meta.textContent = "已停止"; notice("已停止生成"); }
         if (name === "complete") {
-          completed = true; markdown(message.body, data.text);
+          completed = true; message.text = data.text; markdown(message.body, data.text);
           message.meta.textContent = data.metadata.finish_reason === "length" ? "已达到本次回答长度上限" : "";
           decorateMessage(message, data.metadata);
           notice(); scrollBottom();
@@ -322,6 +347,7 @@ $("chat-form").onsubmit = async (event) => {
     if (message) message.meta.textContent = stopped ? "已停止" : "本次回答未完成";
   } finally {
     controller = null; ProcessView.finish(); message?.article.classList.remove("generating");
+    if (message) markdown(message.body, message.text);
     setBusy(false); await list().catch(() => {}); $("prompt").focus();
   }
 };

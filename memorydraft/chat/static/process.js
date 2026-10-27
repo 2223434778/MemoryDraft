@@ -41,7 +41,7 @@ window.ProcessView = (() => {
     const children = tree.parents.map(() => []);
     tree.parents.forEach((p, i) => { if (i) children[p].push(i); });
     const leaves = children.map((nodes, i) => nodes.length ? -1 : i).filter((i) => i >= 0);
-    const y = [], gap = 35, width = 94; let leaf = 0;
+    const y = [], gap = 35, width = 112; let leaf = 0;
     function place(i) {
       children[i].sort((a, b) => Number(selected.has(b)) - Number(selected.has(a)));
       // Place the adopted path at the top so it is visible without scrolling.
@@ -53,15 +53,15 @@ window.ProcessView = (() => {
       height: Math.max(70, leaves.length * gap + 20), role: "img", "aria-label": "实际候选树，绿色为采用路径，红色为未采用分支"});
     tree.parents.forEach((parent, i) => {
       if (!i) return;
-      graph.append(svg("path", {d: `M ${tree.depths[parent] * width + 84} ${y[parent]} L ${tree.depths[i] * width + 10} ${y[i]}`,
+      graph.append(svg("path", {d: `M ${tree.depths[parent] * width + 104} ${y[parent]} L ${tree.depths[i] * width + 10} ${y[i]}`,
         class: "tree-edge" + (selected.has(i) ? " selected" : "")}));
     });
     tree.tokens.forEach((token, i) => {
       const group = svg("g", {class: "tree-node " + (i ? state(i) : "root"), transform: `translate(${tree.depths[i] * width + 10},${y[i] - 12})`});
       group.append(svg("title", {}, `${i ? token.text : "已确认起点: " + token.text} · Token ${token.id}${relaxed.includes(i) ? " · ASD 近似放行" : ""}`));
-      group.append(svg("rect", {width: 74, height: 24}));
+      group.append(svg("rect", {width: 94, height: 24}));
       const label = Array.from(token.text);
-      group.append(svg("text", {x: 37, y: 16, "text-anchor": "middle"}, label.length > 9 ? label.slice(0, 8).join("") + "…" : token.text));
+      group.append(svg("text", {x: 47, y: 16, "text-anchor": "middle"}, label.length > 7 ? label.slice(0, 6).join("") + "…" : token.text));
       graph.append(group);
     });
     el("tree-canvas").replaceChildren(graph);
@@ -125,74 +125,53 @@ window.ProcessView = (() => {
   function move(direction) {
     trace.move(direction); render();
   }
-  function attach(container) {
-    const root = document.createElement("section"), header = document.createElement("div");
-    root.className = "live-draft running"; root.setAttribute("aria-label", "实时 Draft 过程");
-    header.className = "live-draft-header";
-    const title = document.createElement("span"), status = document.createElement("span");
-    title.append(Icons.make("draft"), document.createTextNode("Draft 实时过程")); status.className = "live-draft-status";
-    header.append(title, status);
-    const live = document.createElement("div"), previous = document.createElement("div"), note = document.createElement("p");
-    live.className = "live-round"; previous.className = "live-previous"; note.className = "live-draft-note";
-    note.textContent = "黄：草稿　绿：采用　红：拒绝 / 丢弃　蓝：Target 补充";
-    root.append(header, live, previous, note); container.insertBefore(root, container.querySelector(".message-meta"));
-    inline = {root, status, live, previous}; renderInline();
+  function attach(body) {
+    const root = document.createElement("span"); root.className = "inline-speculation";
+    root.setAttribute("aria-hidden", "true"); inline = {body, root, text: ""}; renderInline();
   }
-  function paths(tree, verified) {
-    const parents = new Set(tree.parents.slice(1)), result = [];
-    tree.parents.forEach((_, i) => {
-      if (parents.has(i)) return;
-      const path = []; while (i > 0) { path.unshift(i); i = tree.parents[i]; }
-      result.push(path);
-    });
-    const last = verified?.selected_path?.at(-1);
-    return result.sort((a, b) => Number(b.includes(last)) - Number(a.includes(last)));
+  function detach(body) { if (inline?.body === body) inline.root.remove(); }
+  function syncBody(body, text) {
+    if (inline?.body !== body) return;
+    inline.text = text; renderInline();
   }
-  function inlineRound(target, row, previous = false) {
-    const draft = row?.draft, verified = row?.verified;
-    target.hidden = !draft;
-    if (!draft) return;
-    const key = `${draft.round}:${Boolean(verified)}:${trace.finished}`;
-    if (target.dataset.key === key) return;
-    target.dataset.key = key; target.replaceChildren();
-    const title = document.createElement("p"); title.className = "live-round-label";
-    title.textContent = `${previous ? "上一轮验证" : "当前草稿"} · 第 ${draft.round} 轮 · ` +
-      (verified ? `采用 ${verified.accepted} 个词元` : trace.finished ? "未完成验证" : "Target 验证中");
-    target.append(title);
-    function tokens(items, state, relaxed = []) {
-      const line = document.createElement("div"); line.className = "token-strip";
-      strip(line, items, state, relaxed);
-      if (verified) for (const node of line.children) node.classList.add("verified-transition");
-      target.append(line);
-    }
-    if (!draft.tree) {
-      tokens(draft.proposal, (i) => !verified ? "pending" : i < verified.accepted ? "accepted" : "rejected", verified?.relaxed || []);
-    } else {
-      const tree = draft.tree, selected = new Set(verified?.selected_path || []);
-      const shown = paths(tree, verified).slice(0, previous ? 1 : 3);
-      shown.forEach((path, index) => {
-        const label = document.createElement("small"); label.textContent = `候选 ${index + 1}`; target.append(label);
-        tokens(path.map((i) => tree.tokens[i]), (i) => !verified ? "pending" : selected.has(path[i]) ? "accepted" : "rejected",
-          path.map((i, j) => verified?.relaxed?.includes(i) ? j : -1));
-      });
-    }
-    if (verified?.correction?.length) tokens(verified.correction, "correction");
+  function ranges(length) {
+    const verified = trace.latest?.verified || trace.previousVerified?.verified, value = verified?.inline;
+    if (!inline || !value || ![value.start, value.accepted_end, value.end].every(Number.isInteger)
+        || value.start < 0 || value.start > value.accepted_end || value.accepted_end > value.end || value.end > length) return [];
+    return [{start:value.start,end:value.accepted_end,kind:"accepted"},
+      {start:value.accepted_end,end:value.end,kind:"correction"}].filter(r=>r.end>r.start);
   }
   function renderInline() {
-    if (!inline) return;
-    inline.root.classList.toggle("running", !trace.finished);
-    inline.root.dataset.round = trace.total;
-    inline.root.dataset.phase = !trace.latest ? "waiting" : trace.latest.verified ? "verified" : "draft";
-    inline.status.textContent = trace.finished ? "已结束" : "实时";
-    if (!trace.latest) {
-      inline.live.hidden = false; inline.live.textContent = trace.finished ? "本次没有草稿事件" : "等待小模型起草…";
-      inline.previous.hidden = true; return;
+    if (!inline || trace.finished) return;
+    const {root, body, text} = inline, row = trace.latest;
+    root.remove(); root.replaceChildren(); root.dataset.round = trace.total;
+    root.dataset.phase = !row ? "waiting" : row.verified ? "verified" : "draft";
+    const status = document.createElement("span"); status.className = "spec-status";
+    status.textContent = !row ? "起草中…" : row.verified ? `采用 ${row.verified.accepted}` : "草稿";
+    root.append(status);
+    function piece(value, kind, limit) {
+      if (!value) return;
+      const span = document.createElement("span"); span.className = "spec-preview " + kind;
+      const compact = value.replace(/\s+/g, " ");
+      const characters = Array.from(compact);
+      span.textContent = characters.slice(0, limit).join("") + (characters.length > limit ? "…" : "");
+      span.title = kind === "rejected" ? "拒绝 / 未采用的候选片段" : "临时 Draft 预览";
+      root.append(span);
     }
-    inlineRound(inline.live, trace.latest); inlineRound(inline.previous, trace.previousVerified, true);
+    if (row?.verified) {
+      const value = row.verified.inline;
+      if (value && text.length < value.end) {
+        piece(value.accepted, "accepted", 18); piece(value.target, "correction", 8);
+      }
+      piece(value?.rejected, "rejected", 10);
+    } else piece(row?.draft?.inline?.candidate, "pending", 18);
+    let parent = body.lastElementChild || body;
+    if (parent.tagName === "PRE") parent = parent.querySelector("code");
+    parent.append(root);
   }
   el("process-toggle").onclick = () => open(el("process-panel").hidden);
   el("process-close").onclick = () => open(false);
   el("round-prev").onclick = () => move(-1); el("round-next").onclick = () => move(1);
   el("trace-live").onclick = () => { trace.live(); render(); };
-  return {open, reset, add, load, attach, finish: () => { trace.finish(); renderInline(); render(); }};
+  return {open, reset, add, load, attach, detach, syncBody, ranges, finish: () => { trace.finish(); inline?.root.remove(); inline = null; render(); }};
 })();

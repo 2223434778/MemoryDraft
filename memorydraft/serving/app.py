@@ -16,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from memorydraft.runtime import GenerationRequest, RequestCancelled
 from memorydraft.serving.worker import InferenceWorker, QueueFull
 from memorydraft.serving.text import PrefixText
+from memorydraft.serving.inline import InlinePresentation
 from memorydraft import __version__
 
 
@@ -155,6 +156,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
 
         async def stream():
             decoder = PrefixText(worker.engine) if body.text_stream else None
+            presentation = InlinePresentation(worker.engine) if body.visualize and body.text_stream and body.method != "AR" else None
             heartbeat = time.perf_counter()
             try:
                 yield event("start", {"request_id": generation.id, "method": body.method,
@@ -168,7 +170,10 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                     except queue.Empty:
                         tokens = None
                     if isinstance(tokens, dict):
-                        yield event("speculation", tokens["speculation"])
+                        value = tokens["speculation"]
+                        if presentation is not None:
+                            value = {**value, "inline": presentation.present(value, decoder.tokens)}
+                        yield event("speculation", value)
                     elif tokens:
                         value = {"token_ids": tokens}
                         if decoder is not None:

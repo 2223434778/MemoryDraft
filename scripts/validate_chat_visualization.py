@@ -37,7 +37,11 @@ async def inference(url, key, output):
                 if name == "complete":
                     actual = value
             assert actual is not None and actual["token_ids"] == baseline["token_ids"]
-            assert actual["asd"] == baseline["asd"] and actual["counters"] == baseline["counters"]
+            assert actual["asd"] == baseline["asd"] and actual["counters"] == baseline["counters"], {
+                "method": method, "asd": [baseline["asd"], actual["asd"]],
+                "counter_differences": {k: [baseline["counters"].get(k), actual["counters"].get(k)]
+                    for k in baseline["counters"].keys() | actual["counters"].keys()
+                    if baseline["counters"].get(k) != actual["counters"].get(k)}}
             assert actual["prompt_sha256"] == baseline["prompt_sha256"]
             assert phases == ["draft", "verified"] * (len(phases) // 2)
             assert bool(phases) == (method != "AR")

@@ -1,4 +1,7 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/chat-inline-ui/** -text
+results/chat-inline-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/test_inline_presentation.py text eol=lf
 results/chat-visualization/** -text
 results/chat-live-ui/** -text
 results/chat-live-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
