@@ -1,0 +1,19 @@
+[Unit]
+Description=MemoryDraft protected large-model AR adapter
+After=memorydraft-chat-large-model.service
+Requires=memorydraft-chat-large-model.service
+
+[Service]
+Type=simple
+WorkingDirectory=YOUR_A6000_CHAT_ROOT/current
+EnvironmentFile=YOUR_A6000_CHAT_ROOT/private/inference.env
+Environment=PYTHONPATH=.
+Environment=MEMORYDRAFT_LLAMA_URL=http://127.0.0.1:8012
+ExecStart=YOUR_A6000_PYTHON -m uvicorn memorydraft.serving.llama:app --factory --host YOUR_A6000_TAILSCALE_IP --port 8011 --workers 1
+Restart=on-failure
+RestartSec=10
+UMask=0077
+TimeoutStopSec=120
+
+[Install]
+WantedBy=default.target

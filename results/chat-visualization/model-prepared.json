@@ -1,0 +1,18 @@
+{
+  "model": {
+    "repo": "ggml-org/Qwen3.8-27B-GGUF",
+    "revision": "a316ea527fde32c12487be7574e2db5ac2ad2a7e",
+    "filename": "Qwen3.8-27B-Q8_0.gguf",
+    "sha256": "aab65c67ef0dad127960efef9247f1832bca105faa1c7a052cc039b223cf86a1",
+    "bytes": 28595763648,
+    "license": "Apache-2.0"
+  },
+  "runtime": {
+    "repo": "https://github.com/ggml-org/llama.cpp",
+    "tag": "b11907",
+    "commit": "4b851fbee8867136a0c561c8a3521f2fe7d53252",
+    "license": "MIT",
+    "binary_sha256": "3e9c08e6d108c4e7e30fd6aae9c9c759bfc065dcef29ccf7fda7b99955ec0aeb",
+    "stream_token_patch_sha256": "64ccbc2d435069fe9406424543a59b9d4dcecf7985ac7ebdceff5a6b1543c354"
+  }
+}

@@ -1,6 +1,8 @@
 "use strict";
 const $ = (id) => document.getElementById(id);
 let csrf = "", selected = null, registerMode = false, controller = null, busy = false;
+let catalog = [];
+const modeLabels = {AR: "普通生成", DFlash: "投机解码", ASD: "ASD", "BudgetTree-ASD": "ASD + 成本树"};
 
 async function api(path, options = {}) {
   const response = await fetch(path, {...options, credentials: "same-origin", headers: {
@@ -20,6 +22,7 @@ function showAuth() {
   $("auth").hidden = false;
   $("workspace").hidden = true;
   csrf = "";
+  ProcessView.reset(); ProcessView.open(false);
 }
 
 function authMode(isRegister) {
@@ -52,24 +55,45 @@ $("auth-form").onsubmit = async (event) => {
 async function enter(result) {
   csrf = result.csrf;
   $("account-name").textContent = result.user.username;
+  $("greeting").textContent = "你好，" + result.user.username;
   $("auth").hidden = true;
   $("workspace").hidden = false;
   selected = null;
   $("messages").replaceChildren();
   $("welcome").hidden = false;
-  $("chat-title").textContent = "新的对话";
   $("delete-chat").hidden = true;
+  ProcessView.reset();
   await list();
-  updateStatus();
+  await updateModels();
 }
 
-async function updateStatus() {
+async function updateModels() {
   try {
-    const status = await (await api("/api/status")).json();
-    $("model-status").textContent = status.ready ? (status.synthetic ? "演示模式 · 未连接真实模型" : "模型已就绪") : "模型暂时离线，可稍后重试";
-    $("model-status").classList.toggle("online", status.ready && !status.synthetic);
-  } catch { $("model-status").textContent = "连接状态未知"; }
+    const data = await (await api("/api/models")).json(); catalog = data.models;
+    $("model-select").replaceChildren();
+    for (const model of catalog) {
+      const option = document.createElement("option"); option.value = model.id;
+      option.textContent = model.label + (model.ready ? "" : " · 离线"); option.disabled = !model.ready;
+      $("model-select").append(option);
+    }
+    $("model-select").value = catalog.find((m) => m.id === data.default_model && m.ready)?.id || catalog.find((m) => m.ready)?.id || "";
+    $("method-select").value = data.default_method; selectModel();
+  } catch { $("model-status").textContent = "连接状态未知，请刷新重试"; $("send").disabled = true; }
 }
+function selectModel() {
+  const model = catalog.find((m) => m.id === $("model-select").value);
+  for (const option of $("method-select").options) option.disabled = !model?.methods.includes(option.value);
+  if (!model?.methods.includes($("method-select").value)) $("method-select").value = model?.methods[0] || "";
+  const speculative = $("method-select").value !== "AR";
+  $("visualize").disabled = busy || !speculative || !model?.visualization;
+  $("send").disabled = !model?.ready || !$("method-select").value;
+  $("model-status").textContent = model?.ready ? `${model.label} · 已就绪` : "模型暂时离线";
+  $("model-status").classList.toggle("online", Boolean(model?.ready));
+  $("capability-note").textContent = model?.methods.length === 1 && model.methods[0] === "AR" ?
+    "此模型当前提供普通生成；投机与成本树需要匹配的 Draft 和验证实现。" :
+    speculative && !model?.visualization ? "当前服务尚未提供过程事件。" : "";
+}
+$("model-select").onchange = selectModel; $("method-select").onchange = selectModel;
 
 async function list() {
   const conversations = await (await api("/api/conversations")).json();
@@ -89,10 +113,12 @@ async function list() {
 
 async function openChat(id) {
   const data = await (await api("/api/conversations/" + id)).json();
-  selected = id; $("chat-title").textContent = data.title;
+  selected = id; ProcessView.reset();
   $("messages").replaceChildren(); $("welcome").hidden = data.messages.length > 0;
   $("delete-chat").hidden = false; $("sidebar").classList.remove("open"); notice();
   for (const message of data.messages) appendMessage(message.role, message.content, message.status, message.metadata);
+  const latest = [...data.messages].reverse().find((m) => m.metadata?.speculation);
+  if (latest && !$("process-panel").hidden) ProcessView.load(latest.metadata.speculation, latest.metadata.method, latest.metadata.model_label);
   await list(); scrollBottom();
 }
 
@@ -138,7 +164,7 @@ function markdown(target, text) {
 
 function appendMessage(role, text, status = "complete", metadata = {}) {
   const article = document.createElement("article"); article.className = "message " + role;
-  const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.textContent = role === "user" ? "你" : "M";
+  const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.textContent = "✦";
   const main = document.createElement("div"); main.className = "message-main";
   const name = document.createElement("p"); name.className = "message-name"; name.textContent = role === "user" ? "你" : "MemoryDraft";
   const body = document.createElement("div"); body.className = "message-body";
@@ -146,24 +172,43 @@ function appendMessage(role, text, status = "complete", metadata = {}) {
   const meta = document.createElement("p"); meta.className = "message-meta";
   const labels = {cancelled: "已停止", interrupted: "上次连接已中断", failed: "生成失败", generating: "正在生成…"};
   meta.textContent = labels[status] || (metadata.finish_reason === "length" ? "已达到本次回答长度上限" : "");
-  main.append(name, body, meta); article.append(avatar, main); $("messages").append(article);
-  return {body, meta};
+  const process = document.createElement("button"); process.type = "button";
+  process.className = "message-process"; process.textContent = "✦ 查看推理过程"; process.hidden = true;
+  process.disabled = busy;
+  const message = {body, meta, process};
+  main.append(name, body, meta, process); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
+  decorateMessage(message, metadata);
+  return message;
+}
+function decorateMessage(message, metadata) {
+  if (metadata.model_label && !message.meta.textContent) message.meta.textContent = `${metadata.model_label} · ${modeLabels[metadata.method] || metadata.method}`;
+  if (metadata.speculation?.rounds?.length) {
+    message.process.hidden = false;
+    message.process.onclick = () => ProcessView.load(metadata.speculation, metadata.method, metadata.model_label);
+  }
 }
 
 function scrollBottom() { $("scroll-area").scrollTop = $("scroll-area").scrollHeight; }
 function setBusy(value) {
   busy = value; $("send").hidden = value; $("stop").hidden = !value;
   $("new-chat").disabled = value; $("logout").disabled = value; $("delete-chat").disabled = value;
+  $("model-select").disabled = value; $("method-select").disabled = value;
+  selectModel();
   for (const button of $("history").querySelectorAll("button")) button.disabled = value;
+  for (const button of document.querySelectorAll(".message-process")) button.disabled = value;
 }
 
 $("new-chat").onclick = () => {
   if (busy) return;
   selected = null; $("messages").replaceChildren(); $("welcome").hidden = false;
-  $("chat-title").textContent = "新的对话"; $("delete-chat").hidden = true;
+  ProcessView.reset(); $("delete-chat").hidden = true;
   $("sidebar").classList.remove("open"); notice(); $("prompt").focus(); list().catch((e) => notice(e.message));
 };
-$("menu").onclick = () => $("sidebar").classList.toggle("open");
+function toggleSidebar() {
+  if (matchMedia("(max-width:760px)").matches) $("sidebar").classList.toggle("open");
+  else $("workspace").classList.toggle("sidebar-collapsed");
+}
+$("menu").onclick = toggleSidebar; $("sidebar-close").onclick = toggleSidebar;
 $("logout").onclick = async () => { try { await post("/api/logout"); showAuth(); } catch (error) { notice(error.message); } };
 $("delete-chat").onclick = async () => {
   if (!selected || !confirm("删除这个会话及其中的全部消息？")) return;
@@ -183,17 +228,22 @@ $("chat-form").onsubmit = async (event) => {
   event.preventDefault();
   const content = $("prompt").value.trim();
   if (!content || busy) return;
+  const model = catalog.find((m) => m.id === $("model-select").value), method = $("method-select").value;
+  if (!model?.ready || !model.methods.includes(method)) { notice("请选择可用的模型和推理模式"); return; }
+  const visualize = $("visualize").checked && model.visualization && method !== "AR";
+  ProcessView.reset(method, model.label);
+  if (visualize && matchMedia("(min-width:1191px)").matches) ProcessView.open();
   setBusy(true); notice("正在提交…");
   let message = null, completed = false;
   try {
     if (!selected) {
       const conversation = await (await post("/api/conversations")).json(); selected = conversation.id;
-      $("chat-title").textContent = content.slice(0, 40); $("delete-chat").hidden = false;
+      $("delete-chat").hidden = false;
     }
     $("welcome").hidden = true; $("prompt").value = "";
     appendMessage("user", content); message = appendMessage("assistant", "", "generating"); scrollBottom();
     controller = new AbortController();
-    const response = await api("/api/conversations/" + selected + "/messages", {method: "POST", body: JSON.stringify({content}), signal: controller.signal});
+    const response = await api("/api/conversations/" + selected + "/messages", {method: "POST", body: JSON.stringify({content, model: model.id, method, visualize}), signal: controller.signal});
     const reader = response.body.getReader(), decoder = new TextDecoder();
     let buffer = "";
     while (true) {
@@ -211,11 +261,13 @@ $("chat-form").onsubmit = async (event) => {
         if (name === "waiting") notice(data.queued ? "前面有一个回答正在生成，请稍候…" : "模型正在思考…");
         if (name === "context" && data.dropped_turns) notice("对话较长，本次使用最近能放入模型的历史。");
         if (name === "text") { markdown(message.body, data.text); notice("正在生成…"); scrollBottom(); }
+        if (name === "speculation") ProcessView.add(data);
         if (name === "error") throw new Error(data.message);
         if (name === "stopped") { completed = true; markdown(message.body, data.text); message.meta.textContent = "已停止"; notice("已停止生成"); }
         if (name === "complete") {
           completed = true; markdown(message.body, data.text);
           message.meta.textContent = data.metadata.finish_reason === "length" ? "已达到本次回答长度上限" : "";
+          decorateMessage(message, data.metadata);
           notice(); scrollBottom();
         }
       }
@@ -226,7 +278,7 @@ $("chat-form").onsubmit = async (event) => {
     notice(stopped ? "已停止生成" : error.message);
     if (message) message.meta.textContent = stopped ? "已停止" : "本次回答未完成";
   } finally {
-    controller = null; setBusy(false); await list().catch(() => {}); $("prompt").focus();
+    controller = null; ProcessView.finish(); setBusy(false); await list().catch(() => {}); $("prompt").focus();
   }
 };
 

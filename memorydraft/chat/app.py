@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import asyncio
-from contextlib import asynccontextmanager
+from contextlib import AsyncExitStack, asynccontextmanager
 import json
 from pathlib import Path
 import re
@@ -20,6 +20,7 @@ from urllib.parse import urlsplit
 from memorydraft.chat.config import ChatConfig
 from memorydraft.chat.security import LoginLimiter, password_hash, verify_password
 from memorydraft.chat.store import ChatStore, StoreError
+from memorydraft.chat.trace import TraceHistory
 from memorydraft.chat.upstream import ChatStopped, UpstreamError, events, fit_context, until_stopped
 
 
@@ -39,6 +40,9 @@ class RegisterBody(LoginBody):
 class ChatBody(BaseModel):
     model_config = ConfigDict(extra="forbid")
     content: StrictStr = Field(min_length=1, max_length=16384)
+    model: StrictStr | None = Field(default=None, max_length=64)
+    method: StrictStr | None = Field(default=None, max_length=32)
+    visualize: bool = False
 
 
 def sse(name, value):
@@ -53,12 +57,15 @@ def create_chat_app(config: ChatConfig, *, transport=None):
         app.state.limiter = LoginLimiter()
         app.state.hash_slots = asyncio.Semaphore(2)
         app.state.dummy_password = await asyncio.to_thread(password_hash, secrets.token_urlsafe(32))
-        async with httpx.AsyncClient(base_url=config.upstream_url,
-                headers={"Authorization": "Bearer " + config.upstream_key},
-                transport=transport, trust_env=False, follow_redirects=False,
-                timeout=httpx.Timeout(connect=5, read=25, write=10, pool=5),
-                limits=httpx.Limits(max_connections=8, max_keepalive_connections=4)) as client:
-            app.state.upstream = client
+        async with AsyncExitStack() as stack:
+            app.state.upstreams = {}
+            for model in config.catalog():
+                app.state.upstreams[model["id"]] = await stack.enter_async_context(httpx.AsyncClient(base_url=model["url"],
+                    headers={"Authorization": "Bearer " + config.upstream_key},
+                    transport=transport, trust_env=False, follow_redirects=False,
+                    timeout=httpx.Timeout(connect=5, read=25, write=10, pool=5),
+                    limits=httpx.Limits(max_connections=8, max_keepalive_connections=4)))
+            app.state.upstream = app.state.upstreams[config.model_id]
             try:
                 yield
             finally:
@@ -152,6 +159,21 @@ def create_chat_app(config: ChatConfig, *, transport=None):
         except (httpx.HTTPError, ValueError):
             return {"ready": False, "method": config.method}
 
+    async def capabilities(request, model):
+        try:
+            response = await request.app.state.upstreams[model["id"]].get("/healthz", timeout=5)
+            health = response.json() if response.status_code == 200 else {}
+        except (httpx.HTTPError, ValueError):
+            health = {}
+        methods = [m for m in ("AR", "DFlash", "ASD", "BudgetTree-ASD") if m in health.get("methods", [])]
+        return {"id": model["id"], "label": model["label"], "methods": methods,
+                "ready": health.get("status") == "ready", "visualization": health.get("speculation_events", False)}
+
+    @app.get("/api/models")
+    async def models(request: Request, account=Depends(user)):
+        items = await asyncio.gather(*(capabilities(request, model) for model in config.catalog()))
+        return {"models": items, "default_model": config.model_id, "default_method": config.method}
+
     @app.get("/api/conversations")
     def conversations(request: Request, account=Depends(user)):
         return request.app.state.store.conversations(account["id"])
@@ -182,23 +204,39 @@ def create_chat_app(config: ChatConfig, *, transport=None):
         content = body.content.strip()
         if not content:
             raise HTTPException(422, "请输入消息")
+        model_id, method = body.model or config.model_id, body.method or config.method
+        model = next((m for m in config.catalog() if m["id"] == model_id), None)
+        if model is None or method not in {"AR", "DFlash", "ASD", "BudgetTree-ASD"}:
+            raise HTTPException(422, "不支持的模型或推理模式")
+        if body.model is not None or body.method is not None or body.visualize:
+            available = await capabilities(request, model)
+            if not available["ready"]:
+                raise HTTPException(503, "所选模型暂时离线")
+            if method not in available["methods"]:
+                raise HTTPException(422, "所选模型尚不支持此推理模式")
+            if body.visualize and method != "AR" and not available["visualization"]:
+                raise HTTPException(422, "所选模型尚未提供真实过程事件")
+        upstream = request.app.state.upstreams[model_id]
         store = request.app.state.store
         assistant_id, turn_id, history = store.begin_turn(account["id"], conversation_id, content)
         signal = asyncio.Event()
         request.app.state.streams[conversation_id] = (account["id"], signal)
 
         async def stream():
-            text, final_status, metadata = "", "cancelled", {}
+            text, final_status = "", "cancelled"
+            metadata = {"model": model_id, "model_label": model["label"], "method": method}
+            history_trace = TraceHistory()
             source = None
             try:
-                yield sse("accepted", {"assistant_id": assistant_id, "method": config.method})
-                messages, dropped, tokens = await until_stopped(fit_context(request.app.state.upstream,
+                yield sse("accepted", {"assistant_id": assistant_id, "method": method, "model": model_id})
+                messages, dropped, tokens = await until_stopped(fit_context(upstream,
                     history + [{"role": "user", "content": content}], config.max_new_tokens), signal)
-                metadata = {"dropped_turns": dropped + max(0, (len(history) - 120) // 2), "input_tokens": tokens}
-                yield sse("context", metadata)
-                source = events(request.app.state.upstream, {"id": turn_id, "user_id": account["id"],
+                metadata.update(dropped_turns=dropped + max(0, (len(history) - 120) // 2), input_tokens=tokens)
+                yield sse("context", {"dropped_turns": metadata["dropped_turns"], "input_tokens": tokens})
+                source = events(upstream, {"id": turn_id, "user_id": account["id"],
                     "order": time.time_ns(), "messages": messages, "max_new_tokens": config.max_new_tokens,
-                    "method": config.method, "stream": True, "text_stream": True,
+                    "method": method, "stream": True, "text_stream": True,
+                    "visualize": body.visualize and method != "AR",
                     "timeout_seconds": config.timeout_seconds})
                 saved = time.monotonic()
                 while True:
@@ -208,6 +246,9 @@ def create_chat_app(config: ChatConfig, *, transport=None):
                         break
                     if name in {"start", "waiting"}:
                         yield sse("waiting", {"queued": value.get("queued", False)})
+                    elif name == "speculation" and body.visualize:
+                        history_trace.add(value)
+                        yield sse("speculation", value)
                     elif name == "tokens":
                         if not isinstance(value.get("text"), str):
                             raise UpstreamError("模型服务需要升级文本流接口")
@@ -228,9 +269,13 @@ def create_chat_app(config: ChatConfig, *, transport=None):
                         text = value["text"]
                         if len(text) > 262144:
                             raise UpstreamError("模型回答超过长度限制")
+                        if value.get("method", method) != method:
+                            raise UpstreamError("模型服务返回了不匹配的推理模式")
                         metadata.update({k: value[k] for k in ("method", "approximate", "finish_reason",
                             "latency_seconds", "server_seconds", "queue_seconds", "server_ttft_seconds") if k in value})
                         final_status = "complete"
+                        if history_trace.total:
+                            metadata["speculation"] = history_trace.export()
                         store.finish(assistant_id, text, final_status, metadata)
                         yield sse("complete", {"text": text, "metadata": metadata})
                         return
@@ -249,6 +294,8 @@ def create_chat_app(config: ChatConfig, *, transport=None):
                 with anyio.CancelScope(shield=True):
                     if source is not None:
                         await source.aclose()
+                if history_trace.total:
+                    metadata["speculation"] = history_trace.export()
                 store.finish(assistant_id, text, final_status, metadata)
                 if request.app.state.streams.get(conversation_id) == (account["id"], signal):
                     request.app.state.streams.pop(conversation_id, None)

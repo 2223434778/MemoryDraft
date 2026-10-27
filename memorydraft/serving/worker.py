@@ -21,6 +21,7 @@ class Job:
     timeout_seconds: float
     stream: bool
     event_capacity: int
+    visualize: bool = False
     key: str = field(default_factory=lambda: uuid.uuid4().hex)
     submitted: float = field(default_factory=time.perf_counter)
     cancelled: threading.Event = field(default_factory=threading.Event)
@@ -31,7 +32,7 @@ class Job:
     finished: float | None = None
 
     def __post_init__(self):
-        self.events: queue.Queue[list[int]] = queue.Queue(self.event_capacity)
+        self.events: queue.Queue[list[int] | dict] = queue.Queue(self.event_capacity)
 
     def should_stop(self):
         return self.cancelled.is_set() or time.perf_counter() >= self.submitted + self.timeout_seconds
@@ -46,6 +47,9 @@ class Job:
             except queue.Full:
                 continue
         raise RequestCancelled("Stream cancelled or timed out")
+
+    def emit_event(self, value):
+        self.emit({"speculation": value})
 
     @property
     def queue_seconds(self):
@@ -67,7 +71,7 @@ class InferenceWorker:
         self.thread = threading.Thread(target=self._run, name="memorydraft-inference", daemon=True)
         self.thread.start()
 
-    def submit(self, request, method, *, timeout_seconds=60.0, stream=False):
+    def submit(self, request, method, *, timeout_seconds=60.0, stream=False, visualize=False):
         if method not in self.engine.methods:
             raise ValueError("Unsupported method: " + method)
         if not 0 < timeout_seconds <= 3600:
@@ -84,7 +88,7 @@ class InferenceWorker:
             if len(self.pending) >= self.queue_capacity:
                 self.counts["rejected"] += 1
                 raise QueueFull("Inference queue is full")
-            job = Job(request, method, timeout_seconds, stream, self.event_capacity)
+            job = Job(request, method, timeout_seconds, stream, self.event_capacity, visualize=visualize)
             self.pending.append(job)
             self.counts["submitted"] += 1
             self.condition.notify()
@@ -124,7 +128,11 @@ class InferenceWorker:
             try:
                 if job.should_stop():
                     raise RequestCancelled("Request expired before execution")
-                result = self.engine.generate(job.request, job.method, on_tokens=job.emit, should_stop=job.should_stop)
+                options = dict(on_tokens=job.emit, should_stop=job.should_stop)
+                if job.visualize and job.method != "AR":
+                    from memorydraft.serving.speculation import payload
+                    options["on_event"] = lambda value: job.emit_event(payload(self.engine, value))
+                result = self.engine.generate(job.request, job.method, **options)
                 if job.should_stop():
                     raise RequestCancelled("Request expired during execution")
                 job.result = result

@@ -1,0 +1,18 @@
+[Unit]
+Description=MemoryDraft Qwen3.8-27B Q8 local model
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=YOUR_A6000_CHAT_ROOT/large-model
+Environment=CUDA_VISIBLE_DEVICES=1
+Environment=GGML_CUDA_DISABLE_GRAPHS=1
+Environment=LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64
+ExecStart=YOUR_A6000_CHAT_ROOT/large-model/build/bin/llama-server --model YOUR_A6000_CHAT_ROOT/large-model/model/Qwen3.8-27B-Q8_0.gguf --alias qwen3.8-27b-q8 --host 127.0.0.1 --port 8012 --n-gpu-layers 99 --ctx-size 12288 --parallel 1 --threads 8 --batch-size 512 --ubatch-size 256 --flash-attn on --jinja --reasoning off --no-context-shift
+Restart=on-failure
+RestartSec=10
+UMask=0077
+TimeoutStopSec=120
+
+[Install]
+WantedBy=default.target

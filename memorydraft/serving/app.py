@@ -35,6 +35,7 @@ class GenerateBody(BaseModel):
     method: StrictStr = "AR"
     stream: bool = False
     text_stream: bool = False
+    visualize: bool = False
     timeout_seconds: float = Field(default=60.0, gt=0, le=3600)
 
 
@@ -70,7 +71,8 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                 "synthetic": description.get("synthetic", False),
                 "approximate_methods": description.get("approximate_methods", []),
                 "draft_adapter_sha256": (description.get("draft_adapter") or {}).get("sha256"),
-                "cost_tree": description.get("cost_tree"), "text_stream": True}
+                "cost_tree": description.get("cost_tree"), "text_stream": True,
+                "speculation_events": description.get("speculation_events", False)}
 
     @app.post("/v1/token-count")
     async def token_count(body: TokenCountBody, request: Request):
@@ -117,7 +119,12 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
             generation = GenerationRequest(body.id, body.user_id, body.order,
                                            tuple(m.model_dump() for m in body.messages), body.max_new_tokens)
             worker = request.app.state.worker
-            job = worker.submit(generation, body.method, timeout_seconds=body.timeout_seconds, stream=body.stream)
+            if body.visualize and not body.stream:
+                raise ValueError("Visualization requires streaming")
+            if body.visualize and body.method != "AR" and not worker.engine.describe().get("speculation_events"):
+                raise ValueError("This engine does not provide speculation events")
+            job = worker.submit(generation, body.method, timeout_seconds=body.timeout_seconds,
+                                stream=body.stream, visualize=body.visualize)
         except ValueError as error:
             raise HTTPException(422, str(error)) from error
         except QueueFull as error:
@@ -160,7 +167,9 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                         tokens = job.events.get_nowait()
                     except queue.Empty:
                         tokens = None
-                    if tokens:
+                    if isinstance(tokens, dict):
+                        yield event("speculation", tokens["speculation"])
+                    elif tokens:
                         value = {"token_ids": tokens}
                         if decoder is not None:
                             value["text"] = decoder.append(tokens)

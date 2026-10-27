@@ -1,3 +1,17 @@
+# 2026-10-27 — Gemini 风格聊天界面、真实投机／树过程与可选大模型
+
+- 用户授权重做前端、选择双 A6000 可运行的基础模型并部署。分支 `codex/chat-speculation-ui`；浅色侧栏、居中消息、圆角输入框、右下模型／四模式选择、手机抽屉布局完成。DFlash/ASD 显示真实黄色草稿→绿色采用／红色丢弃，成本树显示真实父子关系、候选路径及最终提交路径；ASD 近似放行单独标记。正文不等待显示动画。
+- `generate_reuse` 增加默认关闭的观察回调；事件发生于实际 Target 验证前后，裁剪 EOS 和输出上限，不改变 Target、KV 提交或接受规则。服务共用有界队列及取消；网关验证模型能力和事件形状，消息 metadata 保存最近 16 轮，过程不进入后续 prompt。老请求格式继续可用。新增前端、协议、适配器测试和 `docs/CHAT_VISUALIZATION.md`。
+- 本地首轮受沙箱 loopback 限制，在 asyncio socketpair 初始化处阻塞，停止该次执行后在允许网络的执行环境重跑。`.venv\Scripts\python.exe -m pytest -q tests/test_speculation.py tests/test_chat.py tests/test_serving.py --basetemp artifacts/pytest-chat-process-net -o faulthandler_timeout=40`：53 passed；推理兼容组 `tests/test_llama_serving.py tests/test_dflash_reuse.py tests/test_runtime_asd.py tests/test_runtime_cost_tree.py`：84 passed / 2 skipped。
+- 完整命令 `.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/pytest-chat-visual-full --junitxml=artifacts/chat-visual-full.xml -o faulthandler_timeout=60`：1184 passed / 7 skipped，223.31s。随后修正可选原生适配器的 EOS 显示，最后 `tests/test_llama_serving.py --basetemp artifacts/pytest-llama-final`：3 passed。两个静态 JS 均通过 `node --check`。最终仅增加颜色停留／树图布局等显示细节；没有再次扩大重复测试。
+- 真实 GPU 用 `scripts/validate_chat_visualization.py --env private/inference.env --url http://100.91.41.7:8010 --output private/gpu-visual-check.json`，AR/DFlash/ASD/BudgetTree-ASD 四组开关配对输出 token、计数、ASD 预算一致；真实网关四模式生成和过程落库通过。Chrome 实际观察黄色、绿色／红色，轮次 36→35→36；390×844 下文档宽度 390，停止后模式选择恢复。合成截图及结果在 `results/chat-visualization/`，不作为新算法速度测试。
+- Qwen3.8-27B Q8_0 固定 GGUF revision `a316ea527fde32c12487be7574e2db5ac2ad2a7e`、28,595,763,648B、SHA `aab65c67ef0dad127960efef9247f1832bca105faa1c7a052cc039b223cf86a1`；llama.cpp MIT 固定 `b11907` / `4b851fbee8867136a0c561c8a3521f2fe7d53252`，模型 Apache-2.0。双卡 SYS 互连，故独立驻留空闲 GPU1，约 26.7GiB；原 Qwen3-8B/DFlash 在 GPU0 保留全部四模式。新混合架构当前只开放 AR，不声称已支持原树验证。
+- 准备命令 `python scripts/prepare_chat_model.py --root <chat-root>/large-model --proxy http://127.0.0.1:7897 --patch <chat-root>/private/llama-stream-token-ids.patch`。初次构建混入系统 CUDA11.1 的 cuBLAS，改显式 CUDA12.1 根目录后编译通过；关闭上游内置 UI 下载。小 MIT 补丁保留未完成 UTF-8 字节的流式真实 ID，patch SHA `64ccbc2d435069fe9406424543a59b9d4dcecf7985ac7ebdceff5a6b1543c354` 记录在模型清单。
+- 连续请求初测触发原生 `stack smashing`；关闭上下文缓存未解决，GDB 定位到 `ggml_cuda_graph_launch_chunk`。仅给新模型设置 `GGML_CUDA_DISABLE_GRAPHS=1` 后，`scripts/validate_chat_large_model.py` 两组中文／emoji／罕见字请求的流式 ID 与原生完整 ID、解码均一致；实际网页切换并保存回答通过。没有进行新模型长期压力或质量对比评测，排障和最终固定版本均保留在报告。
+- 两机最终 105 文件源码 SHA `27193113011eb12b05da68be6d7ffbbae05bf2793440665bcd72d2ce114107ae`，发布 ZIP SHA `84b0b32c988aaff6d11e9c62d29f3437336ba4695bcd96791b40bb9d89f8cd02`。`scripts/install_chat_release.py` 校验清单后创建独立 release，原子切换；数据库／私有环境仍在 release 外。最终重启后的成本树 ASD 恢复生成通过。原成本表 SHA `ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c` 保持，旧 infra 面试分支／标签及独立目录未改动。
+- 验收浏览器会话已关闭。自动审批拒绝从生产 SQLite 删除本次生成的一个合成测试账号及其对话，理由为缺少不可逆删除的明确授权与独立备份确认；删除命令未执行，测试账号保留，等待用户明确选择。该清理不影响功能交付。
+- 随后仅查询该精确测试 ID，已在阿里云权限受限的 private 目录生成该账号的独立备份，未导出其他账号、未执行删除。备份 SHA `20f1fa9f1b896b97e978c81298c1c8eee286290772b7ff211fb7eba4d357938e`；原始备份含私有认证字段，不提交 Git。最终 105 个发布源码文件逐一与暂存 Git blob 比对相同，凭据模式检查无命中。
+
 # 2026-10-27 — 原Chrome仍502的Clash接口定位与实际恢复
 
 - 用户反馈原Chrome仍502，确认Windows代理例外未被重置；新Chrome成功不能代替原客户端验收。用户说明使用Clash Rule模式、未开TUN。读取现有Chrome窗口的工具授权超时，未关闭、重启或修改其标签页/扩展。

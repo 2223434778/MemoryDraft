@@ -2,6 +2,8 @@
 
 **朋友聊天网页：**[双机部署说明](docs/CHAT_DEPLOYMENT.md)提供阿里云账号/SQLite历史、手机/电脑网页及A6000成本树ASD推理转发。无域名时先通过Tailscale访问，后续可接HTTPS入口；账号、数据库和部署凭据不进入仓库。
 
+**新版聊天界面：**[界面与真实解码过程](docs/CHAT_VISUALIZATION.md)提供 Gemini 风格布局、输入框模型／四模式选择，以及实际草稿接受、丢弃、ASD 预算和成本树路径展示。过程开关不改变模型输出规则；较大模型按真实后端能力开放模式。
+
 **Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。

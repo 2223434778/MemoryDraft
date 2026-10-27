@@ -125,6 +125,7 @@ class InferenceEngine:
                 "target_revision": self.config.target_revision,
                 "execution_profile": self.execution_profile,
                 "approximate_methods": [m for m in self.methods if m in {"ASD", "BudgetTree-ASD"}],
+                "speculation_events": self.draft is not None,
                 "asd": None if self._asd_config is None else {"budget": self._asd_config.budget,
                     "gate": self._asd_config.gate, "cap": self._asd_config.cap, "selection": "longest", "value": "remaining"},
                 "draft_adapter": self._adapter_info,
@@ -144,7 +145,7 @@ class InferenceEngine:
             torch.cuda.synchronize(self.target.device)
 
     @torch.inference_mode()
-    def generate(self, request, method, *, on_tokens=None, should_stop=None, profile=False):
+    def generate(self, request, method, *, on_tokens=None, should_stop=None, profile=False, on_event=None):
         if method not in self.methods:
             raise ValueError("Unsupported method: " + method)
         if request.max_new_tokens > self.config.max_new_tokens:
@@ -291,6 +292,8 @@ class InferenceEngine:
                     verification.update(tree_config=self._tree_config, incremental_stop=True)
                 if self._prefix_cache is not None:
                     verification["prefill"] = self._prefix_cache.prefill
+                if on_event is not None:
+                    verification["on_event"] = on_event
                 detail = generate_reuse(self.target, self.draft, ids, max_new_tokens=request.max_new_tokens,
                                         stop_token_ids=self.stops, matcher=matcher, config=self.reuse,
                                         on_tokens=commit, should_stop=should_stop, profile=profile, **verification)

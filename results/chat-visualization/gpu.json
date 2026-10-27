@@ -1,0 +1,112 @@
+{
+  "real_gpu": true,
+  "checks": [
+    {
+      "method": "AR",
+      "identical_tokens": true,
+      "identical_counters": true,
+      "identical_asd": true,
+      "rounds": 0,
+      "output_tokens": 58,
+      "token_sha256": "75aca59392df63de2c619a8d1540fdaa469a111ab2c65be028971161be46d562",
+      "asd": null,
+      "tree": null
+    },
+    {
+      "method": "DFlash",
+      "identical_tokens": true,
+      "identical_counters": true,
+      "identical_asd": true,
+      "rounds": 24,
+      "output_tokens": 58,
+      "token_sha256": "75aca59392df63de2c619a8d1540fdaa469a111ab2c65be028971161be46d562",
+      "asd": null,
+      "tree": null
+    },
+    {
+      "method": "ASD",
+      "identical_tokens": true,
+      "identical_counters": true,
+      "identical_asd": true,
+      "rounds": 24,
+      "output_tokens": 61,
+      "token_sha256": "e390eab0eddbe2a4c2c01853b13bf77bda4cb2958676419ac3d84366d18ce6b8",
+      "asd": {
+        "budget": 8,
+        "spent": 7.7400360107421875,
+        "relaxed_tokens": 6,
+        "blocks": 24,
+        "value": "remaining",
+        "selection": "longest",
+        "regret_price": 2.0,
+        "shortened_blocks": 0,
+        "foregone_proposal_tokens": 0,
+        "approximate": true,
+        "gate": 0.25,
+        "cap": 2
+      },
+      "tree": null
+    },
+    {
+      "method": "BudgetTree-ASD",
+      "identical_tokens": true,
+      "identical_counters": true,
+      "identical_asd": true,
+      "rounds": 17,
+      "output_tokens": 61,
+      "token_sha256": "a84379b8c2846778d75e4661f3728c01d85cf7046b7c49a72552d1f5b6f691f1",
+      "asd": {
+        "budget": 8,
+        "spent": 7.530597686767578,
+        "relaxed_tokens": 5,
+        "blocks": 17,
+        "value": "remaining",
+        "selection": "longest",
+        "regret_price": 2.0,
+        "shortened_blocks": 0,
+        "foregone_proposal_tokens": 0,
+        "approximate": true,
+        "gate": 0.25,
+        "cap": 2
+      },
+      "tree": {
+        "path": "/media/a6000/D/ZhaoBinHe/MemoryDraft/chat-service/private/costs.json",
+        "sha256": "ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c",
+        "min_nodes": 8,
+        "max_nodes": 32,
+        "top_k": 4,
+        "proposal": "cost_tree",
+        "spine_mode": "none"
+      }
+    }
+  ],
+  "purpose": "observer correctness; not a speed benchmark",
+  "health": {
+    "status": "ready",
+    "methods": [
+      "AR",
+      "DFlash",
+      "R+DFlash",
+      "ASD",
+      "BudgetTree",
+      "BudgetTree-ASD"
+    ],
+    "synthetic": false,
+    "approximate_methods": [
+      "ASD",
+      "BudgetTree-ASD"
+    ],
+    "draft_adapter_sha256": null,
+    "cost_tree": {
+      "path": "/media/a6000/D/ZhaoBinHe/MemoryDraft/chat-service/private/costs.json",
+      "sha256": "ab72a7946fa14ac33c6bc081ff5cf683bcbae6b60ef8ca74bc7c4bcead46c30c",
+      "min_nodes": 8,
+      "max_nodes": 32,
+      "top_k": 4,
+      "proposal": "cost_tree",
+      "spine_mode": "none"
+    },
+    "text_stream": true,
+    "speculation_events": true
+  }
+}

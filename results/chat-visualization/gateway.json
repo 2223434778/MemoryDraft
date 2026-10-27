@@ -1,0 +1,46 @@
+{
+  "models": {
+    "models": [
+      {
+        "id": "qwen3-8b",
+        "label": "Qwen3-8B",
+        "methods": [
+          "AR",
+          "DFlash",
+          "ASD",
+          "BudgetTree-ASD"
+        ],
+        "ready": true,
+        "visualization": true
+      }
+    ],
+    "default_model": "qwen3-8b",
+    "default_method": "BudgetTree-ASD"
+  },
+  "checks": [
+    {
+      "method": "AR",
+      "characters": 143,
+      "rounds": 0,
+      "persisted": true
+    },
+    {
+      "method": "DFlash",
+      "characters": 143,
+      "rounds": 49,
+      "persisted": true
+    },
+    {
+      "method": "ASD",
+      "characters": 120,
+      "rounds": 33,
+      "persisted": true
+    },
+    {
+      "method": "BudgetTree-ASD",
+      "characters": 140,
+      "rounds": 36,
+      "persisted": true
+    }
+  ]
+}

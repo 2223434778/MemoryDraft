@@ -56,7 +56,8 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    verify_length: Callable[[int], int] | None = None,
                    incremental_stop: bool = False,
                    round_action: Callable[[int, int, tuple], str] | None = None,
-                   tree_config=None, prefill=None) -> ReuseGeneration:
+                   tree_config=None, prefill=None,
+                   on_event: Callable[[dict], None] | None = None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -231,6 +232,10 @@ guided R may replace a block after its draft forward has already run.
                 verify_kwargs["attention_mask"] = tree.mask(start, target.dtype)
         else:
             verify_positions = positions[:, start:start + block.shape[1]]
+        if on_event is not None:
+            on_event(dict(phase="draft", round=step + 1, offset=start - prompt + 1,
+                proposal_ids=block[0, 1:].tolist(), tree=None if tree is None else dict(
+                    token_ids=tree.tokens[0].tolist(), parents=list(tree.parents), depths=list(tree.depths))))
         with mark("target_verify"):
             output = target(verify_block, position_ids=verify_positions,
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True, **verify_kwargs)
@@ -299,6 +304,27 @@ guided R may replace a block after its draft forward has already run.
                     result.rounds[-1]["tree_budget"] = tree.budget_metadata
         step += 1
         available = min(start + 1, limit)
+        if on_event is not None:
+            # Observe the actual published suffix, including EOS/output limits.
+            # The anchor was already published and is never counted twice.
+            committed = ids[0, old_start + 1:available].tolist()
+            ended = next((i for i, token in enumerate(committed) if token in stops), None)
+            if ended is not None:
+                committed = committed[:ended + 1]
+            visible = min(accepted, len(committed))
+            selected_path = path[:visible + 1] if tree is not None else None
+            predictions = posterior[0].tolist()
+            if tree is None:
+                relaxed = [i for i, token in enumerate(committed[:visible]) if token != predictions[i]]
+            else:
+                relaxed = [node for parent, node in zip(selected_path, selected_path[1:])
+                           if int(tree.tokens[0, node]) != predictions[parent]]
+            on_event(dict(phase="verified", round=step, accepted=visible,
+                committed_ids=committed, correction_ids=committed[visible:],
+                selected_path=selected_path, relaxed=relaxed, stopped=ended is not None,
+                strict_accepted=decision.strict_accepted if decision is not None else accepted,
+                asd=None if verifier is None else dict(relaxed=len(relaxed), regret=decision.regret,
+                    spent=verifier.spent, budget=verifier.config.budget)))
         with mark("publish_stop"):
             publish(available)
             if stops:

@@ -1,5 +1,7 @@
 # MemoryDraft 朋友聊天网页
 
+新版的模型／模式选择、真实草稿与树图、事件接口及可选大模型说明见[聊天过程可视化](CHAT_VISUALIZATION.md)。本页下方首版验收的 SHA 和数量保留，当前版本验收另存 `results/chat-visualization/`。
+
 浏览器通过阿里云登录、读取自己的会话，并接收流式文本。阿里云只安装`.[web]`，不需要Torch或模型权重；A6000复用已验收的DFlash、成本树和ASD推理运行时。旧infra v0.3/v0.4的冻结分支、标签、独立副本不修改。
 
 ```mermaid
