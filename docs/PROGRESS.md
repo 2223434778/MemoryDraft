@@ -1,3 +1,11 @@
+# 2026-10-27 — 投机解码草稿重复的原始 token 定位
+
+- 用户观察到黄色草稿重复文字。只读核对 `memorydraft/backends/dflash_reuse.py`：每轮将非锚点位置重新 mask，一次非因果 Draft 前向预测最多15个位置，事件直接取实际 `proposal_ids`；严格 DFlash 使用 Target argmax 的最长一致前缀。展示层按相同 tokenizer 解码，不修改候选。论文核对：DFlash 官方并行起草说明；D-Loop（2026-10-05，arXiv:2610.06011）将相邻位置冗余复制称为 repetition trap。这支持机制解释，不单凭文献断言部署无其他问题。
+- 线上源码 release `7a55330a26d2`，Qwen3-8B + 配套 DFlash、FP32/eager、原 rmsnorm 执行配置不变。一个合成中文请求先 AR、后 DFlash，各输出上限128，正常进入服务队列；未读取用户聊天或额外加载 GPU 模型。执行：`systemd-run --user --unit memorydraft-draft-repetition-check --property=RuntimeMaxSec=700 --property=WorkingDirectory=/media/a6000/D/ZhaoBinHe/MemoryDraft/chat-service/current --setenv=PYTHONPATH=. /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python /media/a6000/D/ZhaoBinHe/MemoryDraft/chat-service/private/probe-draft-repetition.py`。
+- 原始结果 `results/chat-draft-repetition/check.json`：58轮、822个候选、实际接受70；57轮包含相邻相同 ID、44轮涉及文字，361对相邻重复中0对被完整接受。例：“帮助”ID100364连续4次、“以下”ID87752连续2次。58/58轮的 inline.candidate 与原始候选上下文解码相同；事件 token 标签对应 ID、接受前缀及流式最终 IDs 断言全部通过。最终128个 IDs 与 AR 完全一致，二者 SHA-256 均 `7fd12cdcdcbd50b124fdd820fc4ca332457d8acca4e192fbd4cf77d63964b2fc`。
+- 归档脚本 `results/chat-draft-repetition/check.py` 仅将现场路径／URL／输出参数化，检查逻辑不变。复用命令（已部署环境）：`PYTHONPATH=. <venv>/python <repo>/results/chat-draft-repetition/check.py --chat-root <chat-root> --url http://<inference-host>:8010 --output <private-output.json>`；鉴权从既有私有环境读取，不输出值。本机仅做归档脚本语法及结果一致性检查，不将旧完整测试计作本轮重跑。
+- 本轮只定位该合成复现，不能将70/822当作所有任务的接受率，也未计时比较。未对用户原始请求做追踪，不能排除其他输入的独立显示／运行问题。更新 `docs/CHAT_VISUALIZATION.md`；没有修改生成、前端、权重、惩罚、验证规则或线上服务，无需重新部署。
+
 # 2026-10-27 — 树流访问502的代理规则恢复与订阅预处理保护
 
 - 用户反馈改版后再次502，明确地址为原Tailscale网页。首批只读对照：阿里云服务active／本机HTTP200、Windows直连首页和app.js均200，但强制经当前Clash7890均502；线上仍为7a55330a26d2，无应用异常日志。当前Clash运行规则9816，只有整个Tailscale网段DIRECT，之前的聊天专用组及单IP规则均缺失。订阅文件mtime为21:24:53，早于22:05网页发布；未识别具体写入者，不把文件改写无条件归因于某个自动更新动作。
