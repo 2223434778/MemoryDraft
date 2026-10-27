@@ -1,10 +1,10 @@
 "use strict";
-// Display only observed backend events. Playback timing never delays answer text.
+// Render real events immediately, without a timed playback queue.
 window.ProcessView = (() => {
   const el = (id) => document.getElementById(id);
   const ns = "http://www.w3.org/2000/svg";
-  let rows = new Map(), current = 0, follow = true, timer = null, shownAt = 0;
-  let mode = "", model = "", finished = false, total = 0;
+  let trace = new TraceState(), inline = null;
+  let mode = "", model = "";
   const labels = {AR: "普通生成", DFlash: "投机解码", ASD: "ASD", "BudgetTree-ASD": "ASD + 成本树"};
 
   function open(value = true) {
@@ -12,10 +12,10 @@ window.ProcessView = (() => {
     el("workspace").classList.toggle("process-open", value);
     el("process-toggle").classList.toggle("active", value);
     el("process-toggle").setAttribute("aria-expanded", String(value));
+    if (value) render();
   }
   function reset(method = "", label = "") {
-    clearTimeout(timer); timer = null; rows = new Map(); current = total = 0;
-    follow = true; finished = false; mode = method; model = label;
+    trace = new TraceState(); inline = null; mode = method; model = label;
     render();
   }
   function chip(token, state, relaxed = false) {
@@ -88,6 +88,7 @@ window.ProcessView = (() => {
       (verified.selected_path || []).slice(1).map((n, i) => relaxed.includes(n) ? i : -1));
   }
   function render() {
+    const {rows, current, total, finished, follow} = trace;
     const row = rows.get(current), draft = row?.draft, verified = row?.verified;
     el("process-mode").textContent = mode ? `${model} · ${labels[mode] || mode}` : "选择投机模式，开始一段对话";
     el("stat-round").textContent = current || "—";
@@ -103,8 +104,8 @@ window.ProcessView = (() => {
     el("linear-section").hidden = !draft || Boolean(draft.tree);
     el("tree-section").hidden = !draft?.tree;
     el("asd-note").hidden = !verified?.asd;
-    if (draft?.tree) treeView(draft.tree, verified);
-    else if (draft) {
+    if (draft?.tree && !el("process-panel").hidden) treeView(draft.tree, verified);
+    else if (draft && !draft.tree && !el("process-panel").hidden) {
       strip(el("draft-tokens"), draft.proposal, (i) => !verified ? "pending" : i < verified.accepted ? "accepted" : "rejected", verified?.relaxed || []);
       el("correction-block").hidden = !verified?.correction?.length;
       strip(el("correction-tokens"), verified?.correction || [], "correction");
@@ -112,56 +113,86 @@ window.ProcessView = (() => {
     if (verified?.asd) el("asd-note").textContent = `ASD 本轮近似放行 ${verified.asd.relaxed} 个词元（虚线标记）。累计预算 ${Number(verified.asd.spent).toFixed(3)} / ${verified.asd.budget}。`;
     el("process-note").textContent = (draft?.tree ?
       "树来自本轮实际候选。起点已确认；绿色为采用路径，红色为未采用分支，不代表每个分支都逐一判错。蓝色为 Target 补充。" :
-      "事件来自实际解码。黄色展示至少 180ms，可能为短暂回放；回答输出不等待动画。#编号表示无法单独显示的词元片段。") +
+      "事件到达即更新，当前状态跟随最新轮次。动画只平滑颜色，不排队回放。#编号表示无法单独显示的词元片段。") +
       (rows.size && rows.size < total ? ` 当前保留最近 ${rows.size} 轮。` : "");
   }
-  function advance() {
-    clearTimeout(timer); timer = null;
-    if (!follow) return;
-    const row = rows.get(current);
-    if (row?.pending) {
-      const remaining = Math.max(0, 180 - (performance.now() - shownAt));
-      if (remaining) { timer = setTimeout(advance, remaining); return; }
-      row.verified = row.pending; delete row.pending; row.verifiedAt = performance.now(); render();
-      timer = setTimeout(advance, 160); return;
-    }
-    const next = [...rows.keys()].find((number) => number > current);
-    if (next && (!row || row.verified)) {
-      const remaining = row?.verifiedAt ? 160 - (performance.now() - row.verifiedAt) : 0;
-      if (remaining > 0) { timer = setTimeout(advance, remaining); return; }
-      // Keep playback bounded if a very fast backend gets ahead of the display.
-      current = rows.size > 12 ? [...rows.keys()].at(-1) : next;
-      shownAt = performance.now(); render(); timer = setTimeout(advance, 180);
-    }
-  }
   function add(event) {
-    if (event.version !== 1) return;
-    const row = rows.get(event.round) || {}; rows.set(event.round, row);
-    total = Math.max(total, event.round);
-    if (event.phase === "draft") row.draft = event;
-    else row.pending = event;
-    while (rows.size > 64) rows.delete(rows.keys().next().value);
-    if (!current || !rows.has(current)) { current = event.round; shownAt = performance.now(); }
-    if (follow) { render(); advance(); }
+    trace.add(event); renderInline(); render();
   }
   function load(history, method, label) {
-    reset(method, label); finished = true;
-    for (const row of history?.rounds || []) {
-      const number = row.draft?.round || row.verified?.round;
-      if (number) rows.set(number, row);
-    }
-    total = history?.round_count || 0; current = [...rows.keys()].at(-1) || 0; render(); open();
+    reset(method, label); trace.load(history); open();
   }
   function move(direction) {
-    follow = false; clearTimeout(timer);
-    // A user explicitly browsing past rounds can see completed verification immediately.
-    for (const row of rows.values()) if (row.pending) { row.verified = row.pending; delete row.pending; }
-    const keys = [...rows.keys()], index = keys.indexOf(current) + direction;
-    current = keys[Math.max(0, Math.min(keys.length - 1, index))] || 0; render();
+    trace.move(direction); render();
+  }
+  function attach(container) {
+    const root = document.createElement("section"), header = document.createElement("div");
+    root.className = "live-draft running"; root.setAttribute("aria-label", "实时 Draft 过程");
+    header.className = "live-draft-header";
+    const title = document.createElement("span"), status = document.createElement("span");
+    title.append(Icons.make("draft"), document.createTextNode("Draft 实时过程")); status.className = "live-draft-status";
+    header.append(title, status);
+    const live = document.createElement("div"), previous = document.createElement("div"), note = document.createElement("p");
+    live.className = "live-round"; previous.className = "live-previous"; note.className = "live-draft-note";
+    note.textContent = "黄：草稿　绿：采用　红：拒绝 / 丢弃　蓝：Target 补充";
+    root.append(header, live, previous, note); container.insertBefore(root, container.querySelector(".message-meta"));
+    inline = {root, status, live, previous}; renderInline();
+  }
+  function paths(tree, verified) {
+    const parents = new Set(tree.parents.slice(1)), result = [];
+    tree.parents.forEach((_, i) => {
+      if (parents.has(i)) return;
+      const path = []; while (i > 0) { path.unshift(i); i = tree.parents[i]; }
+      result.push(path);
+    });
+    const last = verified?.selected_path?.at(-1);
+    return result.sort((a, b) => Number(b.includes(last)) - Number(a.includes(last)));
+  }
+  function inlineRound(target, row, previous = false) {
+    const draft = row?.draft, verified = row?.verified;
+    target.hidden = !draft;
+    if (!draft) return;
+    const key = `${draft.round}:${Boolean(verified)}:${trace.finished}`;
+    if (target.dataset.key === key) return;
+    target.dataset.key = key; target.replaceChildren();
+    const title = document.createElement("p"); title.className = "live-round-label";
+    title.textContent = `${previous ? "上一轮验证" : "当前草稿"} · 第 ${draft.round} 轮 · ` +
+      (verified ? `采用 ${verified.accepted} 个词元` : trace.finished ? "未完成验证" : "Target 验证中");
+    target.append(title);
+    function tokens(items, state, relaxed = []) {
+      const line = document.createElement("div"); line.className = "token-strip";
+      strip(line, items, state, relaxed);
+      if (verified) for (const node of line.children) node.classList.add("verified-transition");
+      target.append(line);
+    }
+    if (!draft.tree) {
+      tokens(draft.proposal, (i) => !verified ? "pending" : i < verified.accepted ? "accepted" : "rejected", verified?.relaxed || []);
+    } else {
+      const tree = draft.tree, selected = new Set(verified?.selected_path || []);
+      const shown = paths(tree, verified).slice(0, previous ? 1 : 3);
+      shown.forEach((path, index) => {
+        const label = document.createElement("small"); label.textContent = `候选 ${index + 1}`; target.append(label);
+        tokens(path.map((i) => tree.tokens[i]), (i) => !verified ? "pending" : selected.has(path[i]) ? "accepted" : "rejected",
+          path.map((i, j) => verified?.relaxed?.includes(i) ? j : -1));
+      });
+    }
+    if (verified?.correction?.length) tokens(verified.correction, "correction");
+  }
+  function renderInline() {
+    if (!inline) return;
+    inline.root.classList.toggle("running", !trace.finished);
+    inline.root.dataset.round = trace.total;
+    inline.root.dataset.phase = !trace.latest ? "waiting" : trace.latest.verified ? "verified" : "draft";
+    inline.status.textContent = trace.finished ? "已结束" : "实时";
+    if (!trace.latest) {
+      inline.live.hidden = false; inline.live.textContent = trace.finished ? "本次没有草稿事件" : "等待小模型起草…";
+      inline.previous.hidden = true; return;
+    }
+    inlineRound(inline.live, trace.latest); inlineRound(inline.previous, trace.previousVerified, true);
   }
   el("process-toggle").onclick = () => open(el("process-panel").hidden);
   el("process-close").onclick = () => open(false);
   el("round-prev").onclick = () => move(-1); el("round-next").onclick = () => move(1);
-  el("trace-live").onclick = () => { follow = true; current = [...rows.keys()].at(-1) || 0; shownAt = 0; render(); advance(); };
-  return {open, reset, add, load, finish: () => { finished = true; advance(); render(); }};
+  el("trace-live").onclick = () => { trace.live(); render(); };
+  return {open, reset, add, load, attach, finish: () => { trace.finish(); renderInline(); render(); }};
 })();

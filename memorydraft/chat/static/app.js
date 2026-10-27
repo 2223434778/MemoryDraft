@@ -2,6 +2,7 @@
 const $ = (id) => document.getElementById(id);
 let csrf = "", selected = null, registerMode = false, controller = null, busy = false;
 let catalog = [];
+const deleting = new Set();
 const modeLabels = {AR: "普通生成", DFlash: "投机解码", ASD: "ASD", "BudgetTree-ASD": "ASD + 成本树"};
 
 async function api(path, options = {}) {
@@ -103,11 +104,17 @@ async function list() {
     empty.textContent = "你的对话会出现在这里"; $("history").append(empty);
   }
   for (const conversation of conversations) {
+    const row = document.createElement("div"); row.className = "history-row";
+    row.classList.toggle("active", conversation.id === selected);
     const button = document.createElement("button"); button.type = "button";
     button.className = "history-item"; button.textContent = conversation.title;
     button.classList.toggle("active", conversation.id === selected); button.disabled = busy;
     button.onclick = () => openChat(conversation.id).catch((e) => notice(e.message));
-    $("history").append(button);
+    const remove = document.createElement("button"); remove.type = "button"; remove.className = "history-delete";
+    remove.setAttribute("aria-label", "删除对话：" + conversation.title); remove.title = "删除对话";
+    remove.append(Icons.make("trash")); remove.disabled = busy || deleting.has(conversation.id);
+    remove.onclick = () => removeConversation(conversation.id, conversation.title);
+    row.append(button, remove); $("history").append(row);
   }
 }
 
@@ -162,9 +169,29 @@ function markdown(target, text) {
   prose(text.slice(position));
 }
 
+function streamText(target, text) {
+  const previous = target.textContent;
+  markdown(target, text);
+  const current = target.textContent;
+  let shared = 0;
+  while (shared < previous.length && shared < current.length && previous[shared] === current[shared]) shared++;
+  const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT), additions = [];
+  let node, offset = 0;
+  while ((node = walker.nextNode())) {
+    const end = offset + node.length;
+    if (end > shared && !node.parentElement.closest("button")) additions.push([node, Math.max(0, shared - offset)]);
+    offset = end;
+  }
+  for (const [node, start] of additions) {
+    const tail = start ? node.splitText(start) : node;
+    const span = document.createElement("span"); span.className = "text-reveal";
+    tail.replaceWith(span); span.append(tail);
+  }
+}
+
 function appendMessage(role, text, status = "complete", metadata = {}) {
   const article = document.createElement("article"); article.className = "message " + role;
-  const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.textContent = "✦";
+  const avatar = document.createElement("span"); avatar.className = "avatar"; avatar.append(Icons.make("brand"));
   const main = document.createElement("div"); main.className = "message-main";
   const name = document.createElement("p"); name.className = "message-name"; name.textContent = role === "user" ? "你" : "MemoryDraft";
   const body = document.createElement("div"); body.className = "message-body";
@@ -173,9 +200,9 @@ function appendMessage(role, text, status = "complete", metadata = {}) {
   const labels = {cancelled: "已停止", interrupted: "上次连接已中断", failed: "生成失败", generating: "正在生成…"};
   meta.textContent = labels[status] || (metadata.finish_reason === "length" ? "已达到本次回答长度上限" : "");
   const process = document.createElement("button"); process.type = "button";
-  process.className = "message-process"; process.textContent = "✦ 查看推理过程"; process.hidden = true;
+  process.className = "message-process"; process.append(Icons.make("draft"), document.createTextNode("查看推理过程")); process.hidden = true;
   process.disabled = busy;
-  const message = {body, meta, process};
+  const message = {body, meta, process, main, article};
   main.append(name, body, meta, process); article.append(...(role === "user" ? [main] : [avatar, main])); $("messages").append(article);
   decorateMessage(message, metadata);
   return message;
@@ -211,10 +238,19 @@ function toggleSidebar() {
 $("menu").onclick = toggleSidebar; $("sidebar-close").onclick = toggleSidebar;
 $("logout").onclick = async () => { try { await post("/api/logout"); showAuth(); } catch (error) { notice(error.message); } };
 $("delete-chat").onclick = async () => {
-  if (!selected || !confirm("删除这个会话及其中的全部消息？")) return;
-  try { await api("/api/conversations/" + selected, {method: "DELETE"}); $("new-chat").click(); }
-  catch (error) { notice(error.message); }
+  if (selected) await removeConversation(selected);
 };
+async function removeConversation(id, title = "当前对话") {
+  if (busy || deleting.has(id) || !confirm(`删除“${title}”及其中的全部消息？此操作无法撤销。`)) return;
+  deleting.add(id);
+  try {
+    await api("/api/conversations/" + id, {method: "DELETE"});
+    if (id === selected) $("new-chat").click();
+    else await list();
+  }
+  catch (error) { notice(error.message); }
+  finally { deleting.delete(id); }
+}
 for (const button of document.querySelectorAll("[data-prompt]")) button.onclick = () => { $("prompt").value = button.dataset.prompt; $("prompt").focus(); };
 $("prompt").onkeydown = (event) => {
   if (event.key === "Enter" && !event.shiftKey && !event.isComposing) { event.preventDefault(); $("chat-form").requestSubmit(); }
@@ -242,6 +278,8 @@ $("chat-form").onsubmit = async (event) => {
     }
     $("welcome").hidden = true; $("prompt").value = "";
     appendMessage("user", content); message = appendMessage("assistant", "", "generating"); scrollBottom();
+    message.article.classList.add("generating");
+    if (visualize) ProcessView.attach(message.main);
     controller = new AbortController();
     const response = await api("/api/conversations/" + selected + "/messages", {method: "POST", body: JSON.stringify({content, model: model.id, method, visualize}), signal: controller.signal});
     const reader = response.body.getReader(), decoder = new TextDecoder();
@@ -260,8 +298,8 @@ $("chat-form").onsubmit = async (event) => {
         const data = JSON.parse(payload);
         if (name === "waiting") notice(data.queued ? "前面有一个回答正在生成，请稍候…" : "模型正在思考…");
         if (name === "context" && data.dropped_turns) notice("对话较长，本次使用最近能放入模型的历史。");
-        if (name === "text") { markdown(message.body, data.text); notice("正在生成…"); scrollBottom(); }
-        if (name === "speculation") ProcessView.add(data);
+        if (name === "text") { streamText(message.body, data.text); notice("正在生成…"); scrollBottom(); }
+        if (name === "speculation") { ProcessView.add(data); scrollBottom(); }
         if (name === "error") throw new Error(data.message);
         if (name === "stopped") { completed = true; markdown(message.body, data.text); message.meta.textContent = "已停止"; notice("已停止生成"); }
         if (name === "complete") {
@@ -278,7 +316,8 @@ $("chat-form").onsubmit = async (event) => {
     notice(stopped ? "已停止生成" : error.message);
     if (message) message.meta.textContent = stopped ? "已停止" : "本次回答未完成";
   } finally {
-    controller = null; ProcessView.finish(); setBusy(false); await list().catch(() => {}); $("prompt").focus();
+    controller = null; ProcessView.finish(); message?.article.classList.remove("generating");
+    setBusy(false); await list().catch(() => {}); $("prompt").focus();
   }
 };
 

@@ -1,5 +1,8 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
 results/chat-visualization/** -text
+results/chat-live-ui/** -text
+results/chat-live-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+tests/chat_ui.test.cjs text eol=lf
 results/chat-visualization/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 deploy/chat/*.patch -whitespace
 memorydraft/serving/llama.py text eol=lf

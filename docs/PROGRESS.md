@@ -1,3 +1,13 @@
+# 2026-10-27 — 最近对话删除、原创图标、页面动画与实时 Draft
+
+- 按用户四点要求，在 `codex/chat-live-draft` 实现侧栏逐条删除：桌面悬停／键盘聚焦、手机常驻按钮，先确认再调用原鉴权 DELETE；取消保留、删除其他对话保留当前回答、删除当前对话回欢迎页，生成时禁用。旧服务器 API 不变。
+- 所有星形标识替换为原创叠页 M／线条 SVG；新增欢迎语分步淡入、侧栏展开、聚焦／悬停、正文新片段淡入、生成呼吸与细条动画。遵守减少动态效果设置，不引入第三方素材或网络依赖。
+- 去掉此前 180ms/160ms 定时回放，新增 `TraceState` 立即应用真实事件，最多保留64轮。回答下方实时卡片显示当前草稿及上一轮验证，手机无需打开侧面板；树候选来自真实父子关系。历史面板暂停浏览不阻止卡片跟随最新事件，普通 AR 不显示草稿卡片。状态更新与动画解耦，未添加模型等待。
+- `node --test tests/chat_ui.test.cjs`：5 passed，覆盖即时验证、1000轮突发无回放积压、保留上限和历史／实时状态分离。四个 JS `node --check` 通过；`.venv\Scripts\python.exe -m pytest -q tests/test_chat.py tests/test_speculation.py tests/test_llama_serving.py --basetemp artifacts/pytest-chat-live -o faulthandler_timeout=40`：40 passed / 26.37s。本轮全部推理 Python 文件与旧发布版本字节相同，未重复全量 GPU／Python 评测。
+- 本地隔离预览 `PYTHONPATH=. .venv\Scripts\python.exe artifacts/chat-live-preview/server.py` 监听127.0.0.1:8840，使用独立临时 SQLite 接真实 A6000。Chrome 实测 DFlash／ASD／成本树过程与 AR；成本树124事件/62轮、ASD110事件/55轮均0显示轮次／阶段错位，同步DOM更新最慢分别0.6ms/0.5ms（不含网络／推理，不作性能基准）。删除取消／其他／当前三个场景通过；手机390×844实时生成中卡片可见、文档宽度390，减少动态效果为none。没有注册或删除生产账号。
+- 两机校验并切到107文件 release，源码 SHA `17f46ec452b8057b320a842b90c2162b4b320e360ad5731a6bf3a61b864f0167`，ZIP SHA `84d2d6d3b1a6f0c119953a5d17b1127a99b680720323843508e3bfa49ca4b015`。网关在 active 聊天数0时重启；推理 Python／权重／成本表不变，GPU进程无需重载。正式数据库与私有环境目录保持，冻结 infra 分支／标签不改。验收与合成截图在 `results/chat-live-ui/`。
+- 生产根页及四个 JS／一个 CSS 共六个文件与本机源码 SHA 一致；107个发布文件与暂存 Git blob 逐一一致，凭据模式检查无命中。本地预览和独立验收浏览器均已关闭，临时 SQLite 留在忽略目录。
+
 # 2026-10-27 — Gemini 风格聊天界面、真实投机／树过程与可选大模型
 
 - 用户授权重做前端、选择双 A6000 可运行的基础模型并部署。分支 `codex/chat-speculation-ui`；浅色侧栏、居中消息、圆角输入框、右下模型／四模式选择、手机抽屉布局完成。DFlash/ASD 显示真实黄色草稿→绿色采用／红色丢弃，成本树显示真实父子关系、候选路径及最终提交路径；ASD 近似放行单独标记。正文不等待显示动画。
