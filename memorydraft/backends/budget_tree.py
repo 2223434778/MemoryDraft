@@ -179,6 +179,10 @@ The local denominator is the original proposal horizon, independent of width.
         return RegretBudget(self.config.budget, max(0., self.config.budget-self.spent),
                             self.config.gate, self.config.cap)
 
+    def edge_permissions(self, tree, logits, predictions, tokens, *, horizon, stop_token_ids):
+        """Optional additional constraints; the original verifier permits every edge."""
+        return None
+
     def decide_tree(self, tree, logits, *, horizon, stop_token_ids=()):
         n = len(tree.parents)
         if (logits.ndim != 2 or logits.shape[0] != n or tree.tokens.shape != (1, n)
@@ -194,6 +198,8 @@ The local denominator is the original proposal horizon, independent of width.
         candidates, tokens = proposed.tolist(), tree.tokens[0].tolist()
         if not all(math.isfinite(v) for v in (*maxima, *candidates)):
             raise ValueError("Non-finite Target tree scores")
+        permissions = self.edge_permissions(tree, logits, predictions, tokens,
+            horizon=horizon, stop_token_ids=stop_token_ids)
         paths, costs, counts, feasible = [[0]], [0.], [0], [True]
         strict_path, _, _ = tree.select(top_ids.unsqueeze(0))
         stop_at = next((j+1 for j, i in enumerate(strict_path) if tokens[i] in stop_token_ids), len(strict_path))
@@ -207,6 +213,7 @@ The local denominator is the original proposal horizon, independent of width.
             allowed = not mismatch or (self.config.budget > 0 and self.config.gate > 0
                 and self.config.cap > 0 and regret/(horizon-tree.depths[i]+1) <= self.config.gate)
             feasible.append(feasible[parent] and tokens[parent] not in stop_token_ids and allowed
+                and (permissions is None or permissions[i])
                 and counts[i] <= self.config.cap and costs[i] <= max(0., self.config.budget-self.spent))
         chosen = max((i for i in range(n) if feasible[i]),
                      key=lambda i: (tree.depths[i], -costs[i], -i))

@@ -1,3 +1,10 @@
+# 2026-10-28 — 分支漂移门控实现与七任务评价启动
+
+- 用户授权直接实现“换一个token会怎样改变Target后续预测”，并在多个重要数据集评价。独立分支`codex/branch-drift`新增`backends/branch_drift.py`：成对Top-2构树、完整词表固定T=1 JS/ln2门控、真实argmax兄弟缺失回退、停止保护；默认阈值0.10。原树ASD只增加默认空的边权限钩子；原组合及聊天部署参数不变。
+- 新增`evaluation/branch_drift.py`、`scripts/run_branch_drift.py`、独立奖励评分与源码打包脚本、协议及测试。确定性选取既有扩样公开数据：GSM16/MATH12/HumanEval16/MBPP16/MMLU57学科各1/MT8双轮/Alpaca16，141源任务149匹配输入。六组自然+五组128/EOS共1639计时；使用旧AR输出参考，不沿用旧AR时延作为同窗对照。CoverageTree-ASD阈值1并使用相同兄弟覆盖/停止保护/JS计算，供归因。
+- 首轮核心相关测试发现摘要字段`missing_reference`与计数器重名；修正为`missing_reference_policy`后102 passed/2 skipped。新增集成检查初次受系统pytest临时目录WinError5影响，改用工作区`--basetemp artifacts/pytest-branch-drift-integration`后50 passed/12.44s，含HTTP/SSE、runtime默认模式；最终距离扣费精度对齐后18核心测试再次通过。XML保存在`artifacts/branch-drift-*.xml`，GPU/多数据集结果此时尚未生成。
+- 本机命令：`.venv\Scripts\python.exe -m pytest -q tests/test_branch_drift.py tests/test_budget_tree.py tests/test_joint_tree.py tests/test_dflash_reuse.py`；集成命令追加`tests/test_branch_drift_evaluation.py tests/test_runtime_cost_tree.py tests/test_speculation.py --basetemp artifacts/pytest-branch-drift-integration`。准确最终命令、源码SHA和GPU结果随后追加。
+
 # 2026-10-28 — DFlash + 成本树 + ASD实验统一汇总
 
 - 用户询问研究实验是否已总结到GitHub，并授权缺失时立即整理。通过GitHub连接器读取远端 `codex/chat-live-draft/docs/ASD_PAPER_EXTENSION_FINDINGS.md`，确认原七任务扩样报告已存在；仓库默认分支为 `main`，仍保留旧版，未将“默认首页看不到”误报为未上传。
