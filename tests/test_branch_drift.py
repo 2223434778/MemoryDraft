@@ -79,6 +79,13 @@ def test_zero_budget_has_no_approximation_or_counterfactual_work():
     assert verifier.summary()['branch_drift'].get('compared_edges', 0) == 0
 
 
+def test_anchor_only_tree_has_no_floating_point_empty_indices():
+    tree=DraftTree(torch.tensor([[2]]),(-1,),(0,),1)
+    verifier=BranchDriftVerifier()
+    path,recovery,decision=verifier.decide_tree(tree,torch.tensor([[0.,1.,0.]]),horizon=0)
+    assert path==[0] and recovery==1 and decision.relaxed==0 and verifier.spent==0
+
+
 def test_invalid_distribution_does_not_mutate_budget():
     tree, logits = example()
     logits[1, 0] = float('-inf')

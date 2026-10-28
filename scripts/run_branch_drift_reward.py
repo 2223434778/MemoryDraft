@@ -1,6 +1,7 @@
 """Independent reward proxy for matched open-ended branch-drift generations."""
 import argparse
 from collections import defaultdict
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -30,6 +31,9 @@ def main():
     out.mkdir(exist_ok=False)
     manifest = json.loads((ROOT/'configs/asd-reward-model.json').read_bytes())
     info = dict(status='started',model=manifest['repo'],revision=manifest['revision'],
+        dtype='bfloat16',attention='sdpa',device='cuda:0',max_input_tokens=manifest['max_input_tokens'],
+        scorer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        model_manifest_sha256=hashlib.sha256((ROOT/'configs/asd-reward-model.json').read_bytes()).hexdigest(),
         interpretation='Independent trained reward proxy, not official MT-Bench/AlpacaEval or correctness')
     write(out/'provenance.json',info)
     try:
@@ -63,7 +67,7 @@ def main():
         tasks = json.loads((root/'tasks.json').read_bytes())
         selected = {r['id']:r for r in tasks if r['benchmark'] in ('alpaca','mtbench')}
         refs = {r['request_id']:r for r in json.loads((root/'references.json').read_bytes())}
-        rows = [json.loads(line) for line in (root/'rows.jsonl').read_text().splitlines()]
+        rows = [json.loads(line) for line in (root/'rows.jsonl').read_text(encoding='utf-8').splitlines()]
         cells = defaultdict(dict)
         cache = {}
         for row in rows:
@@ -103,7 +107,10 @@ def main():
                         wins=values.count(1.),ties=values.count(.5),losses=values.count(0.),
                         preference_rate=sum(values)/len(values) if values else None))
         write(out/'analysis.json',summary)
-        info.update(status='completed',rows=sum(len(v) for v in cells.values()),unique_inputs=len(cache))
+        scores=[value[1] for answers in cells.values() for value in answers.values()]
+        info.update(status='completed',rows=len(scores),scored_rows=sum(v is not None for v in scores),
+            unscored_rows=sum(v is None for v in scores),unique_inputs=len(cache),
+            gpu=torch.cuda.get_device_name(0),torch=str(torch.__version__))
     except BaseException as error:
         info.update(status='failed',error=type(error).__name__+': '+str(error))
         raise

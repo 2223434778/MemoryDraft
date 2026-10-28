@@ -117,7 +117,7 @@ class BranchDriftVerifier(TreeASDVerifier):
         remaining = max(0., self.config.budget-self.spent)
         parent_rows = torch.tensor(tree.parents[1:], device=logits.device, dtype=torch.long)
         candidate_ids = tree.tokens[0, 1:]
-        best_ids = torch.tensor([predictions[p] for p in tree.parents[1:]], device=logits.device)
+        best_ids = torch.tensor([predictions[p] for p in tree.parents[1:]], device=logits.device,dtype=torch.long)
         best_scores = logits[parent_rows, best_ids].tolist()
         proposed_scores = logits[parent_rows, candidate_ids].tolist()
         for i, parent in enumerate(tree.parents[1:], 1):
