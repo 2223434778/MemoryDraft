@@ -4,6 +4,7 @@ import pytest
 
 from memorydraft.evaluation.asd_paper import BENCHMARKS
 from memorydraft.evaluation.branch_drift import ARMS, PREFIX_ARMS, summarize
+from tests.test_runtime import engine
 
 
 def matrix():
@@ -49,3 +50,15 @@ def test_short_eos_excluded_only_from_common128_and_quality_loss_kept():
     assert actual['natural']['identical_ar'] == 0
     assert actual['natural']['ar_prefix_fraction'] == pytest.approx(2/3)
     assert actual['natural']['BudgetTree-ASD']['lost'] == ['gsm8k:example']
+
+
+@pytest.mark.parametrize('arm', ['CoverageTree-ASD', 'DriftTree-ASD'])
+def test_study_execution_keeps_typed_costs_and_selects_real_paired_tree(engine, arm):
+    from memorydraft.backends.budget_tree import BudgetTreeConfig
+    from scripts.run_branch_drift import execute
+    from tests.test_budget_tree import costs
+    row = execute(engine, dict(id='study-fixture',benchmark='gsm8k',question='w1 w2',answer='#### 2'),
+                  arm,19,BudgetTreeConfig(costs(),2,12,4))
+    assert row['arm'] == arm and len(row['token_ids']) == 19
+    assert row['asd']['branch_drift']['max_js'] == (1. if arm=='CoverageTree-ASD' else .1)
+    assert all(r['tree_budget']['sibling_pairs'] for r in row['rounds'])

@@ -24,7 +24,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def execute(engine, record, arm, limit, tree_config):
     if arm not in ('CoverageTree-ASD', 'DriftTree-ASD'):
         return common.execute(engine, record, arm, limit, tree_config, request_factory=request_for)
-    paired = PairedTreeConfig(**asdict(tree_config))
+    paired = PairedTreeConfig(tree_config.costs,tree_config.min_nodes,tree_config.max_nodes,
+                              tree_config.top_k,tree_config.spine_mode)
     threshold = 1. if arm == 'CoverageTree-ASD' else .10
     factory = lambda config: BranchDriftVerifier(config, drift=DriftConfig(max_js=threshold))
     engine.synchronize()
