@@ -46,4 +46,4 @@ CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. \
   --model-directory artifacts/models/skywork-reward-v2-qwen3-8b
 ```
 
-服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/branch-drift`。模型目录以实际核实路径为准；聊天8B在GPU0继续运行，空闲27B服务在评测期间暂时暂停，结束后恢复。模型加载、预热和奖励评分单列，在线门控/传输/构树/KV开销计入wall。结果发布于`results/branch-drift/`，失败记录与执行命令同步更新PROGRESS。
+服务器隔离目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/branch-drift-v2`。首次`branch-drift`目录只执行了服务器单元测试，因停止测试的全零Top-K并列顺序在Linux与Windows不同而失败；已修正测试输入为无并列分数，未修改算法或用该失败启动产生任何性能数据。聊天8B在GPU0继续运行，空闲27B服务在评测期间暂时暂停，结束后恢复。模型加载、预热和奖励评分单列，在线门控/传输/构树/KV开销计入wall。结果发布于`results/branch-drift/`，失败记录与执行命令同步更新PROGRESS。

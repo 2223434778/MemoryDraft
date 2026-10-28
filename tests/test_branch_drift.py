@@ -104,7 +104,7 @@ def test_paired_groups_are_ancestor_closed_bounded_and_not_split(count):
 
 def test_paired_tree_never_expands_stop_and_handles_empty_horizon():
     config = PairedTreeConfig(costs(), 2, 8, 2)
-    tree = build_paired_tree(torch.tensor([[4, 0, 0]]), torch.zeros(1, 2, 4), config, 10,
+    tree = build_paired_tree(torch.tensor([[4, 0, 0]]), torch.tensor([[[4., 3., 1., 0.]]*2]), config, 10,
                              stop_token_ids=(0, 1))
     assert len(tree.parents) == 3
     empty = build_paired_tree(torch.tensor([[4]]), torch.zeros(1, 0, 4), config, 10)
