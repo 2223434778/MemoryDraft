@@ -1,3 +1,17 @@
+# 2026-10-28 — 分支漂移门控七任务评价完成
+
+- 用户要求直接实现并多领域评价，未再拆成多轮GPU试探/调参。完成141源任务/149匹配输入、六组自然+五组128/EOS共1639条新计时，另192独立奖励评分全部成功。模型Qwen3-8B/匹配DFlash、FP32/eager/RMSNorm、线程4、B8/.25/M2，成对树≤32节点、固定T=1完整词表JS/ln2阈值.10；Coverage同构树/停止/覆盖/距离计算，阈值1。
+- GPU实际源`d7662c04544ebdb0bc55a8448284f1d34b5b5119`，打包498文件SHA在运行前后保持，ZIP SHA`6f8421f045a70778563ba8de0fc9de8da7959ab6e74d1c8c1c0d39c5508f9f05`。隔离根`/media/a6000/D/ZhaoBinHe/MemoryDraft/branch-drift-v3`，GPU1；正式生成12:05:57–13:02:51 UTC，加载20.8304秒、峰allocated38691459584B/36.03GiB。原8B聊天在GPU0继续；27B模型/适配服务自动恢复exit0，三服务active，原生health=ok。
+- 实际命令：`CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_branch_drift`，由`systemd-run --user --unit=memorydraft-branch-drift-v3`启动独立守护脚本，原命令/恢复逻辑见`results/branch-drift/launch-main.py`及`execution.json`。模型只读使用现有`models`符号链接，成本表读取旧物理GPU1的已核验SHA，未重新拟合。
+- Drift相对原BudgetTree-ASD自然时延：GSM+10.53%、MATH+13.41%、HumanEval+1.01%、MBPP+4.21%、MMLU−2.44%、MT−2.50%、Alpaca+17.83%。所有直接配对结果单列，不能除两个平均比值。正确数分别15→16/16、10→8/12、13→12/16、9→9/16、17→28/57（仅字母合同）。AR完全相同输出60→106/149，Coverage为75；近似token538→90，Coverage421。
+- MMLU六组逐题首选项均相同、可提取首选项均40/57；17→28是格式合同恢复，不称知识正确率提高。Coverage也达28/57、自然快3.34%，因此收益不独归JS。MT共同128的10题慢12.24%、长度比均值.9102；Alpaca共同128的12题慢13.43%、长度比1.1308，完整请求与等生成量分开报告。
+- 本机RTX3090运行`.venv\Scripts\python.exe -m scripts.run_branch_drift_reward --model-directory artifacts/models/skywork-reward-v2-qwen3-8b`。固定Skywork Reward V2 revision`6f19fdefb933293d4898bdb59a96f7223d998659`，14文件校验、8/8控制通过，192/192评分、136去重输入、0超长未评分。Drift相对原组合MT8胜3平5负/59.38%，Alpaca10胜1平5负/65.62%；相对Coverage为37.50%/65.62%。非官方MT-Bench/AlpacaEval、非正确率；源码SHA和实际包版本见reward元数据。
+- HumanEval76是单步JS的实际漏检：唯一例外JS .042759、regret2.011280，`if x < 1`→`if x == 1`使`is_simple_power(1,12)`返回False而AR返回True，原测试失败。完整差异与代码SHA见`case-review.json`；未根据此例改变主阈值再挑选结果。
+- 首目录Linux全零Top-K夹具并列失败；第二目录先缺失模型符号链接，再遇`asdict`递归把TreeCosts转字典的适配问题，均在正式行生成前修复。奖励初次Windows默认GBK读取UTF-8输出失败，改显式UTF-8后完成。失败记录保留于`startup-failures/`，不计性能样本、不掩盖失败。
+- 最终服务器109 passed/8.92s，本机runtime/SSE50 passed/12.44s、报告相关45 passed/27.21s、最终核心/评价24 passed/9.62s，XML保存。GPU完成后仅为合法空树补显式long索引（实际所有记录horizon≥1）、修正离线UTF-8读取、补报告元数据；接受策略/阈值和原计时未变。各测试批有重叠，不相加为独立测试数。
+- 下载ZIP SHA`2a4060dca01ff051b5b1b48828e34309bbbe90197f4bee6029ab8f102b22374c`，18载荷逐文件校验；Windows`summarize`独立重建与服务器analysis相同。完整矩阵、输入/快照、预算账本、所选已许可兄弟计数/JS累计边界核对通过；严格树/DFlash与本批冻结AR身份差异0。发布约2.1MB压缩公开轮级摘要，不含权重/KV/完整logits/私聊。
+- 新增`BRANCH_DRIFT_FINDINGS.md`、生成`BRANCH_DRIFT_RESULTS.md`，更新README/实验总览/协议，原始证据`results/branch-drift/`附payload SHA。离线复核`.venv\Scripts\python.exe -m scripts.write_branch_drift_report`。默认保留原组合；本轮确认更高保真与局部完整请求收益，未显示JS的通用增量吞吐优势。旧`main`、infra v0.4分支和标签保持原引用。
+
 # 2026-10-28 — 分支漂移门控实现与七任务评价启动
 
 - 用户授权直接实现“换一个token会怎样改变Target后续预测”，并在多个重要数据集评价。独立分支`codex/branch-drift`新增`backends/branch_drift.py`：成对Top-2构树、完整词表固定T=1 JS/ln2门控、真实argmax兄弟缺失回退、停止保护；默认阈值0.10。原树ASD只增加默认空的边权限钩子；原组合及聊天部署参数不变。

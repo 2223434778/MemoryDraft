@@ -10,7 +10,9 @@
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
-**实验总览（2026-10-28）：**[DFlash + 成本树 + ASD完整总结](docs/ASD_TREE_EXPERIMENT_SUMMARY.md)汇总历次开发／独立扩样、七任务自然时延、直接ASD／DFlash对照、质量取舍、接受长度与验证轮数证据，以及infra交付和原始结果入口。最新文档位于`codex/chat-live-draft`分支；默认`main`保留旧版本。
+**实验总览（2026-10-28）：**[DFlash + 成本树 + ASD完整总结](docs/ASD_TREE_EXPERIMENT_SUMMARY.md)汇总历次开发／独立扩样、七任务自然时延、直接ASD／DFlash对照、质量取舍、接受长度与验证轮数证据，以及infra交付和原始结果入口。原总览位于`codex/chat-live-draft`，下方分支漂移续研位于`codex/branch-drift`；默认`main`保留旧版本。
+
+**分支漂移门控候选（2026-10-28）：**[七任务结论](docs/BRANCH_DRIFT_FINDINGS.md)与[完整实测表](docs/BRANCH_DRIFT_RESULTS.md)在`codex/branch-drift`。149匹配输入、1639新计时、192奖励评分完成，AR逐token一致输出60→106；MMLU格式合同恢复、MT自然时延/偏好有局部正结果，其他任务保留速度与质量取舍。单步JS仍会放过关键代码条件错误，原组合继续保留。
 
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 

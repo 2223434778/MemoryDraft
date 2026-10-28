@@ -1,0 +1,20 @@
+{
+  "status": "completed",
+  "model": "Skywork/Skywork-Reward-V2-Qwen3-8B",
+  "revision": "6f19fdefb933293d4898bdb59a96f7223d998659",
+  "dtype": "bfloat16",
+  "attention": "sdpa",
+  "device": "cuda:0",
+  "max_input_tokens": 16384,
+  "scorer_sha256": "d296be143ab8b2fa160379e31b90c58e410f50436dc62bb5af17b8b6380006de",
+  "model_manifest_sha256": "e9010f6ab9851cb79011f44419d076ef4db366cda17a41377704706ecd45bbd5",
+  "interpretation": "Independent trained reward proxy, not official MT-Bench/AlpacaEval or correctness",
+  "load_seconds": 9.155963300028816,
+  "controls_passed": 8,
+  "rows": 192,
+  "scored_rows": 192,
+  "unscored_rows": 0,
+  "unique_inputs": 136,
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "torch": "2.6.0+cu124"
+}

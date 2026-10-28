@@ -1,4 +1,9 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/branch-drift/** -text
+results/branch-drift/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/branch-drift/**/*.xml -whitespace
+results/branch-drift/**/*.log -whitespace
+results/branch-drift/**/*.py whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 tests/chat_glass.test.cjs text eol=lf
 results/liquid-glass-history/** -text
 results/liquid-glass-history/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

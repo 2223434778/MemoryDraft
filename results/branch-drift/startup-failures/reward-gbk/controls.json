@@ -1,0 +1,50 @@
+[
+  {
+    "id": "arithmetic",
+    "good": 11.3125,
+    "bad": -3.5625,
+    "passed": true
+  },
+  {
+    "id": "code",
+    "good": 14.4375,
+    "bad": -8.5,
+    "passed": true
+  },
+  {
+    "id": "json",
+    "good": 8.5625,
+    "bad": -7.25,
+    "passed": true
+  },
+  {
+    "id": "capital",
+    "good": 11.375,
+    "bad": -9.25,
+    "passed": true
+  },
+  {
+    "id": "reverse",
+    "good": 9.5,
+    "bad": -3.8125,
+    "passed": true
+  },
+  {
+    "id": "count",
+    "good": 3.078125,
+    "bad": -8.0,
+    "passed": true
+  },
+  {
+    "id": "maximum",
+    "good": 8.9375,
+    "bad": -4.40625,
+    "passed": true
+  },
+  {
+    "id": "translation",
+    "good": 1.8671875,
+    "bad": -9.375,
+    "passed": true
+  }
+]

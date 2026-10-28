@@ -1,0 +1,4651 @@
+{
+  "timed_generations": 1639,
+  "reference_generations": 149,
+  "reference_policy": "Frozen prior AR outputs; AR latency not compared across sessions",
+  "families": {
+    "gsm8k": {
+      "DFlash": {
+        "natural": {
+          "n": 16,
+          "seconds": 53.55166651844047,
+          "tokens": 4715,
+          "tps": 88.04581269896417,
+          "calls": 729,
+          "scored": 16,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.1071311878867782,
+            "length_ratio": 1.07979479913495,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.1241100690530141,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1957496066368956,
+            "length_ratio": 1.0387832744871006,
+            "lost": [],
+            "gained": [
+              "gsm8k:620"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.1451266367337856,
+            "length_ratio": 1.0305963085368692,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0831891131889848,
+            "length_ratio": 0.9978837396970641,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 47.957823605742306,
+          "tokens": 4427,
+          "tps": 92.3102773886079,
+          "calls": 650,
+          "scored": 16,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.08149504727627059,
+          "relaxed": 105,
+          "spent": 119.32088088989258,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9284427220346412,
+            "length_ratio": 0.9657077751493288,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0426414490440445,
+            "length_ratio": 0.9657077751493288,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0981168781080475,
+            "length_ratio": 0.98816671182606,
+            "lost": [],
+            "gained": [
+              "gsm8k:620"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0362485112866024,
+            "length_ratio": 0.9671696026817537,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0038557020906855,
+            "length_ratio": 0.963252825218716,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 25.737494542030618,
+          "tokens": 2048,
+          "tps": 79.57262493656923,
+          "calls": 338,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 16,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.18359375,
+          "relaxed": 84,
+          "spent": 101.76988410949707,
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0749771866354436,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1668717109118947,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0842404794421203,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0371190619381212,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 16,
+          "seconds": 47.475961309159175,
+          "tokens": 4715,
+          "tps": 99.31341820118914,
+          "calls": 597,
+          "scored": 16,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8926244010771933,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9870959966652075,
+            "length_ratio": 1.07979479913495,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.065954014868051,
+            "length_ratio": 1.0387832744871006,
+            "lost": [],
+            "gained": [
+              "gsm8k:620"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0202989337573647,
+            "length_ratio": 1.0305963085368692,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.96381393178462,
+            "length_ratio": 0.9978837396970641,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 24.058160092681646,
+          "tokens": 2048,
+          "tps": 85.1270418066172,
+          "calls": 290,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 16,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9439025366272544,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.089983563738716,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.012553918557986,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9629406235686658,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 44.91471507330425,
+          "tokens": 4556,
+          "tps": 101.43668934700486,
+          "calls": 562,
+          "scored": 16,
+          "correct": 15,
+          "truncated": 0,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.07354332251300615,
+          "relaxed": 107,
+          "spent": 115.88477325439453,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8564996595547972,
+            "length_ratio": 0.9761218901718626,
+            "lost": [
+              "gsm8k:620"
+            ],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9381475872347836,
+            "length_ratio": 1.035621737661891,
+            "lost": [
+              "gsm8k:620"
+            ],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9604620688954901,
+            "length_ratio": 0.9761218901718626,
+            "lost": [
+              "gsm8k:620"
+            ],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9694746808369592,
+            "length_ratio": 0.9904109941454645,
+            "lost": [
+              "gsm8k:620"
+            ],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9230922947574725,
+            "length_ratio": 0.9735304623924129,
+            "lost": [
+              "gsm8k:620"
+            ],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 22.269890597555786,
+          "tokens": 2048,
+          "tps": 91.96273286698484,
+          "calls": 266,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 16,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.16455078125,
+          "relaxed": 78,
+          "spent": 90.47161293029785,
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8764888054506639,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9340854765264041,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9406928396845036,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.897131632886356,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 46.2715638729278,
+          "tokens": 4611,
+          "tps": 99.65083550369836,
+          "calls": 569,
+          "scored": 16,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.10232377074213947,
+          "relaxed": 77,
+          "spent": 76.65186500549316,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9013238069311105,
+            "length_ratio": 0.9998652498007821,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9731948458742139,
+            "length_ratio": 1.0488131394565752,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0121036826495182,
+            "length_ratio": 0.9998652498007821,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0664627807507185,
+            "length_ratio": 1.0241890204366688,
+            "lost": [],
+            "gained": [
+              "gsm8k:620"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9717256189769705,
+            "length_ratio": 0.9966186022702208,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 964.0,
+            "missing_reference": 357.0,
+            "compared_edges": 598.0,
+            "compared_js_sum": 445.3769016518082,
+            "compared_js_max": 1.0,
+            "permitted_edges": 598.0,
+            "selected_exceptions": 77.0,
+            "selected_compared_edges": 77.0,
+            "selected_js_sum": 60.428181418844886,
+            "stop_blocked": 9.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 23.744878116296604,
+          "tokens": 2048,
+          "tps": 86.2501795111096,
+          "calls": 281,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 16,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.21826171875,
+          "relaxed": 46,
+          "spent": 45.45475959777832,
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9378666376307586,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9976292744798153,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.081646918313587,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9587907597456677,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 625.0,
+            "missing_reference": 223.0,
+            "compared_edges": 402.0,
+            "compared_js_sum": 283.53393429785814,
+            "compared_js_max": 1.0,
+            "permitted_edges": 402.0,
+            "selected_exceptions": 46.0,
+            "selected_compared_edges": 46.0,
+            "selected_js_sum": 34.24429031634881
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 49.19062009989284,
+          "tokens": 4720,
+          "tps": 95.95325268140465,
+          "calls": 606,
+          "scored": 16,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 7,
+          "ar_prefix_fraction": 0.6947581877644837,
+          "relaxed": 12,
+          "spent": 9.851167678833008,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9280757416725838,
+            "length_ratio": 1.0028323780791122,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0256014605477528,
+            "length_ratio": 1.082329191075606,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0399187305641013,
+            "length_ratio": 1.0028323780791122,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1053190897904779,
+            "length_ratio": 1.0410874233804626,
+            "lost": [],
+            "gained": [
+              "gsm8k:620"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0573513786882385,
+            "length_ratio": 1.0322914615297867,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 1148.0,
+            "missing_reference": 382.0,
+            "compared_edges": 755.0,
+            "compared_js_sum": 565.5651227561737,
+            "compared_js_max": 1.0,
+            "drift_blocked": 609.0,
+            "selected_exceptions": 12.0,
+            "selected_compared_edges": 12.0,
+            "selected_js_sum": 0.1519428633918959,
+            "permitted_edges": 146.0,
+            "stop_blocked": 11.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 24.968806192278862,
+          "tokens": 2048,
+          "tps": 82.0223435685646,
+          "calls": 297,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 16,
+          "identical_ar": 11,
+          "ar_prefix_fraction": 0.8740234375,
+          "relaxed": 6,
+          "spent": 4.517606735229492,
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9847695935143684,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0417151222126626,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.132041781309038,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.052894490264925,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 698.0,
+            "missing_reference": 227.0,
+            "compared_edges": 471.0,
+            "compared_js_sum": 341.22995528957847,
+            "compared_js_max": 1.0,
+            "drift_blocked": 374.0,
+            "selected_exceptions": 6.0,
+            "selected_compared_edges": 6.0,
+            "selected_js_sum": 0.15128437203277756,
+            "permitted_edges": 97.0
+          }
+        }
+      }
+    },
+    "math500": {
+      "DFlash": {
+        "natural": {
+          "n": 12,
+          "seconds": 116.04369420511648,
+          "tokens": 12810,
+          "tps": 110.38945362560851,
+          "calls": 1486,
+          "scored": 12,
+          "correct": 8,
+          "truncated": 0,
+          "identical_ar": 12,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 0.9964205637383124,
+            "length_ratio": 0.9448533470500688,
+            "lost": [
+              "math500:101",
+              "math500:222"
+            ],
+            "gained": [
+              "math500:224",
+              "math500:372"
+            ]
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.056888792121392,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0290399616384507,
+            "length_ratio": 0.9338408620567056,
+            "lost": [
+              "math500:101",
+              "math500:222",
+              "math500:328"
+            ],
+            "gained": [
+              "math500:372"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.0446119393006872,
+            "length_ratio": 1.0243986740028697,
+            "lost": [
+              "math500:101"
+            ],
+            "gained": [
+              "math500:372",
+              "math500:445"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9041908464389239,
+            "length_ratio": 0.8993089070801155,
+            "lost": [
+              "math500:101"
+            ],
+            "gained": [
+              "math500:372"
+            ]
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 12,
+          "seconds": 139.4657942703925,
+          "tokens": 15313,
+          "tps": 109.79753193325361,
+          "calls": 1740,
+          "scored": 12,
+          "correct": 8,
+          "truncated": 0,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.0557766841638125,
+          "relaxed": 141,
+          "spent": 92.7553482055664,
+          "DFlash": {
+            "n": 12,
+            "ratio": 1.2434848388655704,
+            "length_ratio": 1.27722826164374,
+            "lost": [
+              "math500:224",
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101",
+              "math500:222"
+            ]
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.3050583502237518,
+            "length_ratio": 1.27722826164374,
+            "lost": [
+              "math500:224",
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101",
+              "math500:222"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0540684345608167,
+            "length_ratio": 0.9876629236129092,
+            "lost": [
+              "math500:224",
+              "math500:328"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.4469975053379744,
+            "length_ratio": 1.5294732443185999,
+            "lost": [
+              "math500:224"
+            ],
+            "gained": [
+              "math500:222",
+              "math500:445"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9629508881568991,
+            "length_ratio": 0.9794047979147643,
+            "lost": [
+              "math500:224"
+            ],
+            "gained": [
+              "math500:222"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 12,
+          "seconds": 14.906964558176696,
+          "tokens": 1536,
+          "tps": 103.03908579144509,
+          "calls": 186,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.2864583333333333,
+          "relaxed": 61,
+          "spent": 53.59181022644043,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 0.9599270230535317,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 0.9883263789771897,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.9513104730818721,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9418153087476971,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 12,
+          "seconds": 111.35626892698929,
+          "tokens": 12810,
+          "tps": 115.03618182824421,
+          "calls": 1332,
+          "scored": 12,
+          "correct": 8,
+          "truncated": 0,
+          "identical_ar": 12,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 12,
+            "ratio": 0.9481072228077201,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 0.9443065638994272,
+            "length_ratio": 0.9448533470500688,
+            "lost": [
+              "math500:101",
+              "math500:222"
+            ],
+            "gained": [
+              "math500:224",
+              "math500:372"
+            ]
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 0.9780989447518186,
+            "length_ratio": 0.9338408620567056,
+            "lost": [
+              "math500:101",
+              "math500:222",
+              "math500:328"
+            ],
+            "gained": [
+              "math500:372"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.994516076653022,
+            "length_ratio": 1.0243986740028697,
+            "lost": [
+              "math500:101"
+            ],
+            "gained": [
+              "math500:372",
+              "math500:445"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.8535532945274987,
+            "length_ratio": 0.8993089070801155,
+            "lost": [
+              "math500:101"
+            ],
+            "gained": [
+              "math500:372"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 12,
+          "seconds": 15.645006762817502,
+          "tokens": 1536,
+          "tps": 98.17828929614234,
+          "calls": 182,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 12,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0553175133919586,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0358170120177812,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.9957734012803665,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9826515956645283,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 12,
+          "seconds": 126.38953721243888,
+          "tokens": 14963,
+          "tps": 118.38796414650837,
+          "calls": 1503,
+          "scored": 12,
+          "correct": 10,
+          "truncated": 1,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.06126296981971027,
+          "relaxed": 136,
+          "spent": 89.38640785217285,
+          "DFlash": {
+            "n": 12,
+            "ratio": 1.299595652592578,
+            "length_ratio": 1.4447237163167346,
+            "lost": [
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101",
+              "math500:222",
+              "math500:328"
+            ]
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0476791679914577,
+            "length_ratio": 1.1177395199812852,
+            "lost": [],
+            "gained": [
+              "math500:224",
+              "math500:328"
+            ]
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.3709083845939092,
+            "length_ratio": 1.4447237163167346,
+            "lost": [
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101",
+              "math500:222",
+              "math500:328"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.5849967189541596,
+            "length_ratio": 1.8069769713779005,
+            "lost": [],
+            "gained": [
+              "math500:222",
+              "math500:445",
+              "math500:328"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9820948365058483,
+            "length_ratio": 1.058235840435766,
+            "lost": [],
+            "gained": [
+              "math500:222",
+              "math500:328"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 12,
+          "seconds": 15.09753629914485,
+          "tokens": 1536,
+          "tps": 101.73845384872509,
+          "calls": 174,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.3287760416666667,
+          "relaxed": 61,
+          "spent": 53.21359634399414,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0203822312806503,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 0.972559125977923,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.9612900204855773,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9545545124598265,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 12,
+          "seconds": 134.27555757202208,
+          "tokens": 15267,
+          "tps": 113.6990251692767,
+          "calls": 1496,
+          "scored": 12,
+          "correct": 7,
+          "truncated": 1,
+          "identical_ar": 0,
+          "ar_prefix_fraction": 0.10617944917766847,
+          "relaxed": 116,
+          "spent": 87.99517822265625,
+          "DFlash": {
+            "n": 12,
+            "ratio": 1.0683668165218365,
+            "length_ratio": 1.115076646002233,
+            "lost": [
+              "math500:372",
+              "math500:445"
+            ],
+            "gained": [
+              "math500:101"
+            ]
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0482981481767315,
+            "length_ratio": 1.0498501227876404,
+            "lost": [
+              "math500:222",
+              "math500:445"
+            ],
+            "gained": [
+              "math500:224"
+            ]
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.1343570634506381,
+            "length_ratio": 1.115076646002233,
+            "lost": [
+              "math500:372",
+              "math500:445"
+            ],
+            "gained": [
+              "math500:101"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.1524467305982788,
+            "length_ratio": 1.0875667372623443,
+            "lost": [
+              "math500:222",
+              "math500:445",
+              "math500:328"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 1.0037416587177102,
+            "length_ratio": 1.0487080625653502,
+            "lost": [
+              "math500:445"
+            ],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 1392.0,
+            "missing_reference": 377.0,
+            "compared_edges": 1015.0,
+            "compared_js_sum": 818.1547233526748,
+            "compared_js_max": 1.0,
+            "permitted_edges": 1015.0,
+            "selected_exceptions": 116.0,
+            "selected_compared_edges": 116.0,
+            "selected_js_sum": 90.82471139312048
+          }
+        },
+        "prefix": {
+          "n": 12,
+          "seconds": 15.804057623958215,
+          "tokens": 1536,
+          "tps": 97.19023029070051,
+          "calls": 180,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 2,
+          "ar_prefix_fraction": 0.4928385416666667,
+          "relaxed": 28,
+          "spent": 31.699234008789062,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0680684633536301,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0162411953055754,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0445809010847744,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9943478314569045,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 546.0,
+            "missing_reference": 168.0,
+            "compared_edges": 378.0,
+            "compared_js_sum": 301.3436082822685,
+            "compared_js_max": 1.0,
+            "permitted_edges": 378.0,
+            "selected_exceptions": 28.0,
+            "selected_compared_edges": 28.0,
+            "selected_js_sum": 22.33812068780383
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 12,
+          "seconds": 150.1267372118309,
+          "tokens": 16470,
+          "tps": 109.70730667889359,
+          "calls": 1672,
+          "scored": 12,
+          "correct": 8,
+          "truncated": 1,
+          "identical_ar": 3,
+          "ar_prefix_fraction": 0.4937937068225325,
+          "relaxed": 32,
+          "spent": 34.94084167480469,
+          "DFlash": {
+            "n": 12,
+            "ratio": 1.3119395727349912,
+            "length_ratio": 1.3701686428904987,
+            "lost": [
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101"
+            ]
+          },
+          "ASD": {
+            "n": 12,
+            "ratio": 1.111012935196497,
+            "length_ratio": 1.0700216306573151,
+            "lost": [
+              "math500:222"
+            ],
+            "gained": [
+              "math500:224"
+            ]
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.3745590012326967,
+            "length_ratio": 1.3701686428904987,
+            "lost": [
+              "math500:372"
+            ],
+            "gained": [
+              "math500:101"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.1340698308758106,
+            "length_ratio": 1.030881694544736,
+            "lost": [
+              "math500:222",
+              "math500:328"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.5921432444324957,
+            "length_ratio": 1.74093917405431,
+            "lost": [],
+            "gained": [
+              "math500:445"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 4303.0,
+            "missing_reference": 1124.0,
+            "compared_edges": 3176.0,
+            "compared_js_sum": 2589.095480143726,
+            "compared_js_max": 1.0,
+            "drift_blocked": 2811.0,
+            "selected_exceptions": 32.0,
+            "selected_compared_edges": 32.0,
+            "selected_js_sum": 0.5335267235000789,
+            "permitted_edges": 365.0,
+            "stop_blocked": 3.0
+          }
+        },
+        "prefix": {
+          "n": 12,
+          "seconds": 15.976129554910585,
+          "tokens": 1536,
+          "tps": 96.14343666409988,
+          "calls": 182,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 9,
+          "ar_prefix_fraction": 0.818359375,
+          "relaxed": 3,
+          "spent": 6.884294509887695,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.07624792432932,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0213309787563725,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.056467441711835,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.0129738184890034,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 572.0,
+            "missing_reference": 175.0,
+            "compared_edges": 397.0,
+            "compared_js_sum": 323.57940019039,
+            "compared_js_max": 1.0,
+            "drift_blocked": 342.0,
+            "selected_exceptions": 3.0,
+            "selected_compared_edges": 3.0,
+            "selected_js_sum": 0.07037883163132364,
+            "permitted_edges": 55.0
+          }
+        }
+      }
+    },
+    "humaneval": {
+      "DFlash": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.81888805842027,
+          "tokens": 1213,
+          "tps": 94.6259920885434,
+          "calls": 139,
+          "scored": 16,
+          "correct": 13,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.969404071826321,
+            "length_ratio": 0.9268127875221714,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0565202814191703,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0335118473029898,
+            "length_ratio": 0.9583769865743974,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.044362719321705,
+            "length_ratio": 1.0012102016287283,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0275725835427145,
+            "length_ratio": 1.0010775862068966,
+            "lost": [],
+            "gained": [
+              "humaneval:76"
+            ]
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 13.458121043164283,
+          "tokens": 1379,
+          "tps": 102.46601257167535,
+          "calls": 148,
+          "scored": 16,
+          "correct": 13,
+          "truncated": 0,
+          "identical_ar": 9,
+          "ar_prefix_fraction": 0.7800093528592946,
+          "relaxed": 10,
+          "spent": 15.971092224121094,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0524247072092416,
+            "length_ratio": 1.1610572848959368,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.1186639616149525,
+            "length_ratio": 1.1610572848959368,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0935180900132784,
+            "length_ratio": 1.1171247302880558,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.1073917329186453,
+            "length_ratio": 1.162073945917833,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0893823049470899,
+            "length_ratio": 1.1621348711028334,
+            "lost": [],
+            "gained": [
+              "humaneval:76"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 12.584156413329765,
+          "tokens": 1274,
+          "tps": 101.23841107462044,
+          "calls": 136,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 3,
+          "identical_ar": 10,
+          "ar_prefix_fraction": 0.7893521363644492,
+          "relaxed": 9,
+          "spent": 15.458995819091797,
+          "ASD": {
+            "n": 3,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 0.9682566684766402,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 0.9683762923945013,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 0.9264071557274849,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 0.9271264252636648,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.179003493394703,
+          "tokens": 1213,
+          "tps": 99.59763954890661,
+          "calls": 122,
+          "scored": 16,
+          "correct": 13,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9536557439836217,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9276801821425057,
+            "length_ratio": 0.9268127875221714,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 0.9755288733146033,
+            "length_ratio": 0.9583769865743974,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9916967249757137,
+            "length_ratio": 1.0012102016287283,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9739399382979547,
+            "length_ratio": 1.0010775862068966,
+            "lost": [],
+            "gained": [
+              "humaneval:76"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 11.716026011155918,
+          "tokens": 1147,
+          "tps": 97.900089920237,
+          "calls": 116,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 1,
+            "ratio": 1.0327840050647952,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 1.00012354566899,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 0.9567784926129173,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 0.9575213426852143,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.822346540633589,
+          "tokens": 1274,
+          "tps": 99.35778883862922,
+          "calls": 130,
+          "scored": 16,
+          "correct": 13,
+          "truncated": 0,
+          "identical_ar": 11,
+          "ar_prefix_fraction": 0.8174192169821748,
+          "relaxed": 8,
+          "spent": 11.210662841796875,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9964381201139575,
+            "length_ratio": 1.0548241950690969,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.967579540514021,
+            "length_ratio": 0.9796138295491518,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0408784508835558,
+            "length_ratio": 1.0548241950690969,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.047221364993128,
+            "length_ratio": 1.0592062407063778,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0193421447182118,
+            "length_ratio": 1.0559017812759934,
+            "lost": [],
+            "gained": [
+              "humaneval:76"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 12.28012506547384,
+          "tokens": 1206,
+          "tps": 98.20746886289675,
+          "calls": 123,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 12,
+          "ar_prefix_fraction": 0.8267620004873294,
+          "relaxed": 7,
+          "spent": 10.69852066040039,
+          "ASD": {
+            "n": 1,
+            "ratio": 1.0326564248359518,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 0.9998764695926566,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 0.9566603013759875,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 0.9574030596837124,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.305059190141037,
+          "tokens": 1213,
+          "tps": 98.5773397150231,
+          "calls": 120,
+          "scored": 16,
+          "correct": 13,
+          "truncated": 0,
+          "identical_ar": 13,
+          "ar_prefix_fraction": 0.9325248827269184,
+          "relaxed": 5,
+          "spent": 5.807029724121094,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9722599725144425,
+            "length_ratio": 0.9998645511775098,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.947189122423074,
+            "length_ratio": 0.9264971527937038,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0221772181096849,
+            "length_ratio": 0.9998645511775098,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0034225337833977,
+            "length_ratio": 0.9601839933553636,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9877725376134243,
+            "length_ratio": 1.0010334582493976,
+            "lost": [],
+            "gained": [
+              "humaneval:76"
+            ]
+          },
+          "drift": {
+            "selected_exceptions": 5.0,
+            "selected_compared_edges": 5.0,
+            "selected_js_sum": 3.0426138095699704,
+            "eligible_edges": 62.0,
+            "missing_reference": 31.0,
+            "compared_edges": 16.0,
+            "compared_js_sum": 8.106900895504626,
+            "compared_js_max": 1.0,
+            "permitted_edges": 16.0,
+            "stop_blocked": 15.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 11.838313706219196,
+          "tokens": 1145,
+          "tps": 96.71985625777768,
+          "calls": 114,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 14,
+          "ar_prefix_fraction": 0.941867666232073,
+          "relaxed": 4,
+          "spent": 5.294933319091797,
+          "ASD": {
+            "n": 1,
+            "ratio": 1.0794389851346997,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.0451739955703299,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 1.0453031222908236,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.0007764075781724,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "selected_exceptions": 4.0,
+            "selected_compared_edges": 4.0,
+            "selected_js_sum": 2.0427592449032224,
+            "eligible_edges": 59.0,
+            "missing_reference": 31.0,
+            "compared_edges": 14.0,
+            "compared_js_sum": 7.107046330836176,
+            "compared_js_max": 1.0,
+            "permitted_edges": 14.0,
+            "stop_blocked": 14.0
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.464048258028924,
+          "tokens": 1212,
+          "tps": 97.23967485598189,
+          "calls": 122,
+          "scored": 16,
+          "correct": 12,
+          "truncated": 0,
+          "identical_ar": 15,
+          "ar_prefix_fraction": 0.9644396551724138,
+          "relaxed": 1,
+          "spent": 2.011280059814453,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9833760650775557,
+            "length_ratio": 0.9989406779661016,
+            "lost": [
+              "humaneval:76"
+            ],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9575597815741271,
+            "length_ratio": 0.9257534654882732,
+            "lost": [
+              "humaneval:76"
+            ],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0326885509019237,
+            "length_ratio": 0.9989406779661016,
+            "lost": [
+              "humaneval:76"
+            ],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.010059535476794,
+            "length_ratio": 0.957317664540499,
+            "lost": [
+              "humaneval:76"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0152585898412598,
+            "length_ratio": 1.0002336391287283,
+            "lost": [
+              "humaneval:76"
+            ],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "selected_exceptions": 1.0,
+            "selected_compared_edges": 1.0,
+            "selected_js_sum": 0.0427592433989048,
+            "eligible_edges": 63.0,
+            "missing_reference": 31.0,
+            "compared_edges": 17.0,
+            "compared_js_sum": 9.106896589319739,
+            "compared_js_max": 1.0,
+            "drift_blocked": 9.0,
+            "stop_blocked": 15.0,
+            "permitted_edges": 8.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 11.985639891820028,
+          "tokens": 1146,
+          "tps": 95.61441945057295,
+          "calls": 116,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 15,
+          "ar_prefix_fraction": 0.9644396551724138,
+          "relaxed": 1,
+          "spent": 2.011280059814453,
+          "ASD": {
+            "n": 1,
+            "ratio": 1.0786015507168947,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.0443631441108783,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 1.044492170654186,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 0.9992241947628929,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "selected_exceptions": 1.0,
+            "selected_compared_edges": 1.0,
+            "selected_js_sum": 0.0427592433989048,
+            "eligible_edges": 60.0,
+            "missing_reference": 31.0,
+            "compared_edges": 15.0,
+            "compared_js_sum": 8.107042024651287,
+            "compared_js_max": 1.0,
+            "drift_blocked": 8.0,
+            "stop_blocked": 14.0,
+            "permitted_edges": 7.0
+          }
+        }
+      }
+    },
+    "mbpp": {
+      "DFlash": {
+        "natural": {
+          "n": 16,
+          "seconds": 13.697884604800493,
+          "tokens": 770,
+          "tps": 56.21305933108457,
+          "calls": 177,
+          "scored": 16,
+          "correct": 8,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0883548265563274,
+            "length_ratio": 1.013591438714794,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.2182200517210922,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.3366786359525582,
+            "length_ratio": 1.0201038087413346,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.3435845687425898,
+            "length_ratio": 0.9780032893140667,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.2603385790358386,
+            "length_ratio": 0.9836734693877551,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 12.24240352655761,
+          "tokens": 745,
+          "tps": 60.85406336948962,
+          "calls": 156,
+          "scored": 16,
+          "correct": 9,
+          "truncated": 0,
+          "identical_ar": 10,
+          "ar_prefix_fraction": 0.7014654867245328,
+          "relaxed": 14,
+          "spent": 15.81863021850586,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9367221460926128,
+            "length_ratio": 0.9897625482821895,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.1278896794034092,
+            "length_ratio": 0.9897625482821895,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.217107733059462,
+            "length_ratio": 1.0068902566610114,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.2352533258008251,
+            "length_ratio": 0.9704775284795725,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.158958466346919,
+            "length_ratio": 0.9725901530082904,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 12.019526978954673,
+          "tokens": 727,
+          "tps": 60.48490937063702,
+          "calls": 153,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 10,
+          "ar_prefix_fraction": 0.7014654867245328,
+          "relaxed": 14,
+          "spent": 15.81863021850586,
+          "ASD": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.1004430616041696,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 1.0994010101493707,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 1.4105056875946436,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.1437074648078893,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 16,
+          "seconds": 11.636651668231934,
+          "tokens": 770,
+          "tps": 66.17023710541241,
+          "calls": 138,
+          "scored": 16,
+          "correct": 8,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8356656077238158,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8999760831200874,
+            "length_ratio": 1.013591438714794,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1089978063581465,
+            "length_ratio": 1.0201038087413346,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.1146793920860643,
+            "length_ratio": 0.9780032893140667,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.038453233317359,
+            "length_ratio": 0.9836734693877551,
+            "lost": [
+              "mbpp:403"
+            ],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 11.542152961948887,
+          "tokens": 752,
+          "tps": 65.15248952939064,
+          "calls": 137,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 1,
+            "ratio": 0.9087248899023009,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 0.9990530619064653,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 1.2817616256660116,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.039315440037989,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 10.471499406732619,
+          "tokens": 819,
+          "tps": 78.21229493394485,
+          "calls": 121,
+          "scored": 16,
+          "correct": 9,
+          "truncated": 0,
+          "identical_ar": 8,
+          "ar_prefix_fraction": 0.68541498301966,
+          "relaxed": 12,
+          "spent": 15.152948379516602,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8264637450619033,
+            "length_ratio": 1.0362365987693694,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8833927362836129,
+            "length_ratio": 1.0514982457643969,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9937819807484795,
+            "length_ratio": 1.0362365987693694,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0425632442248518,
+            "length_ratio": 0.9767654265913291,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9917772669483989,
+            "length_ratio": 1.0061819700099708,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 10.062916640657932,
+          "tokens": 782,
+          "tps": 77.71106806553765,
+          "calls": 116,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 2,
+          "identical_ar": 8,
+          "ar_prefix_fraction": 0.68541498301966,
+          "relaxed": 12,
+          "spent": 15.152948379516602,
+          "ASD": {
+            "n": 1,
+            "ratio": 0.9095862117355472,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 1.0009478356352042,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 2,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 2,
+            "ratio": 1.0939003707066886,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.0403005402482748,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 10.385494717629626,
+          "tokens": 843,
+          "tps": 81.17090450866893,
+          "calls": 118,
+          "scored": 16,
+          "correct": 9,
+          "truncated": 0,
+          "identical_ar": 8,
+          "ar_prefix_fraction": 0.6132743178710081,
+          "relaxed": 10,
+          "spent": 14.47795295715332,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8024033729385164,
+            "length_ratio": 1.056153506167279,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8609275480990506,
+            "length_ratio": 1.0745420656470068,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9663168129939218,
+            "length_ratio": 1.056153506167279,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 0.9931744807961318,
+            "length_ratio": 1.0380171326904988,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9659449575177266,
+            "length_ratio": 1.027790606731189,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 104.0,
+            "compared_edges": 54.0,
+            "compared_js_sum": 47.35840507381774,
+            "compared_js_max": 1.0,
+            "permitted_edges": 54.0,
+            "selected_exceptions": 10.0,
+            "selected_compared_edges": 10.0,
+            "selected_js_sum": 9.045230478048325,
+            "missing_reference": 47.0,
+            "stop_blocked": 3.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 10.065324716968462,
+          "tokens": 819,
+          "tps": 81.36846281961499,
+          "calls": 114,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 2,
+          "identical_ar": 8,
+          "ar_prefix_fraction": 0.6134288817199289,
+          "relaxed": 10,
+          "spent": 14.47795295715332,
+          "ASD": {
+            "n": 1,
+            "ratio": 0.7089655921241373,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 0.7801762667690987,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 2,
+            "ratio": 0.9423122654822902,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 2,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 0.8108492400043212,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 100.0,
+            "compared_edges": 50.0,
+            "compared_js_sum": 43.35840507381774,
+            "compared_js_max": 1.0,
+            "permitted_edges": 50.0,
+            "selected_exceptions": 10.0,
+            "selected_compared_edges": 10.0,
+            "selected_js_sum": 9.045230478048325,
+            "missing_reference": 47.0,
+            "stop_blocked": 3.0
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 10.82859719125554,
+          "tokens": 795,
+          "tps": 73.41671187492223,
+          "calls": 124,
+          "scored": 16,
+          "correct": 9,
+          "truncated": 0,
+          "identical_ar": 14,
+          "ar_prefix_fraction": 0.8928850446428571,
+          "relaxed": 2,
+          "spent": 2.0391883850097656,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8287410476509416,
+            "length_ratio": 1.0282689144736843,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8864188354904854,
+            "length_ratio": 1.040935188714794,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9936333206478085,
+            "length_ratio": 1.0282689144736843,
+            "lost": [],
+            "gained": [
+              "mbpp:403"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.042148993048031,
+            "length_ratio": 1.0333919598226626,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0633008512951232,
+            "length_ratio": 0.9942257977349107,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 130.0,
+            "compared_edges": 61.0,
+            "compared_js_sum": 49.00921621818625,
+            "compared_js_max": 1.0,
+            "drift_blocked": 49.0,
+            "selected_exceptions": 2.0,
+            "selected_compared_edges": 2.0,
+            "selected_js_sum": 0.07811150990892202,
+            "missing_reference": 63.0,
+            "permitted_edges": 12.0,
+            "stop_blocked": 6.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 10.662023146636784,
+          "tokens": 777,
+          "tps": 72.87547488068397,
+          "calls": 122,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 1,
+          "identical_ar": 14,
+          "ar_prefix_fraction": 0.8928850446428571,
+          "relaxed": 2,
+          "spent": 2.0391883850097656,
+          "ASD": {
+            "n": 1,
+            "ratio": 0.874349456281613,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 1,
+            "ratio": 0.9621717925824793,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 1,
+            "ratio": 0.9612606754595583,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 1,
+            "ratio": 1.2332748810304992,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 1,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 128.0,
+            "compared_edges": 60.0,
+            "compared_js_sum": 49.009214441863975,
+            "compared_js_max": 1.0,
+            "drift_blocked": 49.0,
+            "selected_exceptions": 2.0,
+            "selected_compared_edges": 2.0,
+            "selected_js_sum": 0.07811150990892202,
+            "missing_reference": 63.0,
+            "permitted_edges": 11.0,
+            "stop_blocked": 5.0
+          }
+        }
+      }
+    },
+    "mmlu": {
+      "DFlash": {
+        "natural": {
+          "n": 57,
+          "seconds": 43.83590905694291,
+          "tokens": 3241,
+          "tps": 73.93481895835527,
+          "calls": 489,
+          "scored": 57,
+          "correct": 28,
+          "truncated": 0,
+          "identical_ar": 57,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 0.9896791697252978,
+            "length_ratio": 0.9883971977388567,
+            "lost": [
+              "mmlu:2567"
+            ],
+            "gained": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ]
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 1.000956314745421,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 0.9797109552853056,
+            "length_ratio": 0.8368484612874839,
+            "lost": [],
+            "gained": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0158965183412167,
+            "length_ratio": 1.0102548164185097,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 1.0058771512521405,
+            "length_ratio": 1.010319952791764,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 57,
+          "seconds": 42.801742389565334,
+          "tokens": 3297,
+          "tps": 77.02957440358264,
+          "calls": 474,
+          "scored": 57,
+          "correct": 16,
+          "truncated": 0,
+          "identical_ar": 32,
+          "ar_prefix_fraction": 0.7380636732545853,
+          "relaxed": 73,
+          "spent": 85.54703140258789,
+          "DFlash": {
+            "n": 57,
+            "ratio": 1.044327759252895,
+            "length_ratio": 1.7289240404969226,
+            "lost": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ],
+            "gained": [
+              "mmlu:2567"
+            ]
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 1.0440738363270419,
+            "length_ratio": 1.7289240404969226,
+            "lost": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ],
+            "gained": [
+              "mmlu:2567"
+            ]
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 1.0126621736533818,
+            "length_ratio": 1.1644471821252087,
+            "lost": [
+              "mmlu:3275",
+              "mmlu:789",
+              "mmlu:4675"
+            ],
+            "gained": [
+              "mmlu:2567",
+              "mmlu:2009"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0588130937532159,
+            "length_ratio": 1.7395194611887639,
+            "lost": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ],
+            "gained": [
+              "mmlu:2567"
+            ]
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 1.0469488987664382,
+            "length_ratio": 1.737087066909593,
+            "lost": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ],
+            "gained": [
+              "mmlu:2567"
+            ]
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 57,
+          "seconds": 22.06228466075845,
+          "tokens": 1046,
+          "tps": 47.41122762596251,
+          "calls": 187,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 6,
+          "identical_ar": 32,
+          "ar_prefix_fraction": 0.7525584795321637,
+          "relaxed": 58,
+          "spent": 75.85488700866699,
+          "ASD": {
+            "n": 6,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 6,
+            "ratio": 0.9637108265376294,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 6,
+            "ratio": 1.0525795935252549,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 6,
+            "ratio": 0.9861251866453125,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 6,
+            "ratio": 0.942498117297234,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 57,
+          "seconds": 41.754811354214326,
+          "tokens": 3241,
+          "tps": 77.61979745294394,
+          "calls": 429,
+          "scored": 57,
+          "correct": 28,
+          "truncated": 0,
+          "identical_ar": 57,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 57,
+            "ratio": 1.0006761147908527,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 0.9881249701172414,
+            "length_ratio": 0.9883971977388567,
+            "lost": [
+              "mmlu:2567"
+            ],
+            "gained": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ]
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 0.9785348794680169,
+            "length_ratio": 0.8368484612874839,
+            "lost": [],
+            "gained": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0143370719009783,
+            "length_ratio": 1.0102548164185097,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 1.004724463131564,
+            "length_ratio": 1.010319952791764,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 57,
+          "seconds": 22.05443926155567,
+          "tokens": 992,
+          "tps": 44.97960651981802,
+          "calls": 176,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 6,
+          "identical_ar": 57,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 6,
+            "ratio": 1.0522711855077254,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 6,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 6,
+            "ratio": 1.1008965686164949,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 6,
+            "ratio": 1.018401505419703,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 6,
+            "ratio": 0.9790897376949333,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 57,
+          "seconds": 40.8014866868034,
+          "tokens": 3352,
+          "tps": 82.15386918938303,
+          "calls": 415,
+          "scored": 57,
+          "correct": 17,
+          "truncated": 0,
+          "identical_ar": 37,
+          "ar_prefix_fraction": 0.7769424473652741,
+          "relaxed": 64,
+          "spent": 79.7365665435791,
+          "DFlash": {
+            "n": 57,
+            "ratio": 1.0335972585374562,
+            "length_ratio": 1.6120067322829361,
+            "lost": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ],
+            "gained": []
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 1.010870390631013,
+            "length_ratio": 1.183166927478046,
+            "lost": [
+              "mmlu:2567",
+              "mmlu:2009"
+            ],
+            "gained": [
+              "mmlu:3275",
+              "mmlu:789",
+              "mmlu:4675"
+            ]
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 1.0326933019689364,
+            "length_ratio": 1.6120067322829361,
+            "lost": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0454279310203545,
+            "length_ratio": 1.622103020636494,
+            "lost": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 1.036464962460737,
+            "length_ratio": 1.621768818417031,
+            "lost": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 57,
+          "seconds": 21.6636141508352,
+          "tokens": 1061,
+          "tps": 48.97613078836594,
+          "calls": 170,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 6,
+          "identical_ar": 37,
+          "ar_prefix_fraction": 0.7919407894736842,
+          "relaxed": 46,
+          "spent": 67.78003120422363,
+          "ASD": {
+            "n": 6,
+            "ratio": 0.9618876520315123,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 6,
+            "ratio": 0.9215255405708,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 6,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 6,
+            "ratio": 0.9346887076822997,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 6,
+            "ratio": 0.8996015069480418,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 57,
+          "seconds": 38.71304595004767,
+          "tokens": 2988,
+          "tps": 77.18328348163264,
+          "calls": 381,
+          "scored": 57,
+          "correct": 28,
+          "truncated": 0,
+          "identical_ar": 51,
+          "ar_prefix_fraction": 0.9007522709282523,
+          "relaxed": 42,
+          "spent": 34.270952224731445,
+          "DFlash": {
+            "n": 57,
+            "ratio": 0.9907472932876649,
+            "length_ratio": 0.9911690738911805,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 0.9774151567733435,
+            "length_ratio": 0.9789645268879839,
+            "lost": [
+              "mmlu:2567"
+            ],
+            "gained": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ]
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 0.989580994720844,
+            "length_ratio": 0.9911690738911805,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 0.9665911081540178,
+            "length_ratio": 0.8277835476242024,
+            "lost": [],
+            "gained": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 0.9919262249911441,
+            "length_ratio": 1.0003584738197808,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 595.0,
+            "compared_edges": 353.0,
+            "compared_js_sum": 285.4383958955258,
+            "compared_js_max": 1.0,
+            "permitted_edges": 353.0,
+            "selected_exceptions": 42.0,
+            "selected_compared_edges": 42.0,
+            "selected_js_sum": 38.52004957012832,
+            "missing_reference": 203.0,
+            "stop_blocked": 39.0
+          }
+        },
+        "prefix": {
+          "n": 57,
+          "seconds": 21.93129300675355,
+          "tokens": 992,
+          "tps": 45.23217120370068,
+          "calls": 171,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 6,
+          "identical_ar": 51,
+          "ar_prefix_fraction": 0.917077850877193,
+          "relaxed": 26,
+          "spent": 22.371829986572266,
+          "ASD": {
+            "n": 6,
+            "ratio": 1.0478806233628204,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 6,
+            "ratio": 0.9899509138397814,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 6,
+            "ratio": 1.0864761983680737,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 6,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 6,
+            "ratio": 0.9683016455203995,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 311.0,
+            "compared_edges": 177.0,
+            "compared_js_sum": 130.2701351608413,
+            "compared_js_max": 1.0,
+            "permitted_edges": 177.0,
+            "selected_exceptions": 26.0,
+            "selected_compared_edges": 26.0,
+            "selected_js_sum": 24.483868760988116,
+            "missing_reference": 97.0,
+            "stop_blocked": 37.0
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 57,
+          "seconds": 40.23127809166908,
+          "tokens": 2913,
+          "tps": 72.40634993903441,
+          "calls": 401,
+          "scored": 57,
+          "correct": 28,
+          "truncated": 0,
+          "identical_ar": 54,
+          "ar_prefix_fraction": 0.9630368841919106,
+          "relaxed": 6,
+          "spent": 7.403957366943359,
+          "DFlash": {
+            "n": 57,
+            "ratio": 0.9987186425939848,
+            "length_ratio": 0.9915456929152326,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 57,
+            "ratio": 0.9844429266759398,
+            "length_ratio": 0.9776047465269084,
+            "lost": [
+              "mmlu:2567"
+            ],
+            "gained": [
+              "mmlu:341",
+              "mmlu:3275",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:789",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:4675",
+              "mmlu:14010",
+              "mmlu:1476"
+            ]
+          },
+          "BudgetTree": {
+            "n": 57,
+            "ratio": 0.9978946437491351,
+            "length_ratio": 0.9915456929152326,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 57,
+            "ratio": 0.9755619021319012,
+            "length_ratio": 0.8278583836108672,
+            "lost": [],
+            "gained": [
+              "mmlu:341",
+              "mmlu:6747",
+              "mmlu:9311",
+              "mmlu:434",
+              "mmlu:13692",
+              "mmlu:3550",
+              "mmlu:9993",
+              "mmlu:10469",
+              "mmlu:14010",
+              "mmlu:2009",
+              "mmlu:1476"
+            ]
+          },
+          "CoverageTree-ASD": {
+            "n": 57,
+            "ratio": 1.0098875595735792,
+            "length_ratio": 1.000742513727585,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 57,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 847.0,
+            "compared_edges": 534.0,
+            "compared_js_sum": 437.67628949059355,
+            "compared_js_max": 1.0,
+            "permitted_edges": 69.0,
+            "drift_blocked": 465.0,
+            "selected_exceptions": 6.0,
+            "selected_compared_edges": 6.0,
+            "selected_js_sum": 0.11188336028442336,
+            "missing_reference": 273.0,
+            "stop_blocked": 40.0
+          }
+        },
+        "prefix": {
+          "n": 57,
+          "seconds": 22.24471557792276,
+          "tokens": 992,
+          "tps": 44.59486103677277,
+          "calls": 175,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 6,
+          "identical_ar": 55,
+          "ar_prefix_fraction": 0.9956140350877193,
+          "relaxed": 2,
+          "spent": 3.0296592712402344,
+          "ASD": {
+            "n": 6,
+            "ratio": 1.075680691526151,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 6,
+            "ratio": 1.0233953675536973,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 6,
+            "ratio": 1.123437878163841,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 6,
+            "ratio": 1.041364035477379,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 6,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 331.0,
+            "compared_edges": 178.0,
+            "compared_js_sum": 139.05161828665013,
+            "compared_js_max": 1.0,
+            "permitted_edges": 29.0,
+            "drift_blocked": 149.0,
+            "selected_exceptions": 2.0,
+            "selected_compared_edges": 2.0,
+            "selected_js_sum": 0.007978717188393603,
+            "missing_reference": 116.0,
+            "stop_blocked": 37.0
+          }
+        }
+      }
+    },
+    "mtbench": {
+      "DFlash": {
+        "natural": {
+          "n": 16,
+          "seconds": 88.58628797368146,
+          "tokens": 5008,
+          "tps": 56.532451178988914,
+          "calls": 1152,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9528516113619431,
+            "length_ratio": 0.9194494830507682,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.1494732094038254,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1065566805222806,
+            "length_ratio": 0.916080327641597,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.087528491609475,
+            "length_ratio": 0.9433772681685062,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.1475916443522656,
+            "length_ratio": 1.006306564312371,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 89.92419183137827,
+          "tokens": 5287,
+          "tps": 58.793967366578514,
+          "calls": 1174,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 2,
+          "ar_prefix_fraction": 0.16658546184653192,
+          "relaxed": 105,
+          "spent": 98.32340049743652,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.075893447971707,
+            "length_ratio": 1.1254928843421252,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.2381765047953117,
+            "length_ratio": 1.1254928843421252,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1727096075709667,
+            "length_ratio": 1.0136597771415798,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.161166555238191,
+            "length_ratio": 1.045809985913062,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.2346686663241477,
+            "length_ratio": 1.130785682861973,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 34.63580656610429,
+          "tokens": 1824,
+          "tps": 52.66226431074438,
+          "calls": 433,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 11,
+          "identical_ar": 2,
+          "ar_prefix_fraction": 0.20276614872778762,
+          "relaxed": 82,
+          "spent": 89.1561222076416,
+          "ASD": {
+            "n": 11,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 10,
+            "ratio": 1.0278527443442722,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 11,
+            "ratio": 1.126443656430875,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 11,
+            "ratio": 1.0388294629860233,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 10,
+            "ratio": 1.0150696431748798,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 16,
+          "seconds": 75.41953324130736,
+          "tokens": 5008,
+          "tps": 66.40189596475933,
+          "calls": 916,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8749888562020001,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8340999849435298,
+            "length_ratio": 0.9194494830507682,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 0.9660965922045207,
+            "length_ratio": 0.916080327641597,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9493055188011944,
+            "length_ratio": 0.9433772681685062,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9960390139847373,
+            "length_ratio": 1.006306564312371,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 32.095930674578995,
+          "tokens": 1787,
+          "tps": 55.67684009908961,
+          "calls": 372,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 10,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 10,
+            "ratio": 1.0036034186259704,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 10,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 10,
+            "ratio": 1.1073612978705198,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 10,
+            "ratio": 1.0209857380721048,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 10,
+            "ratio": 0.9892042044932045,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 79.06642059725709,
+          "tokens": 5394,
+          "tps": 68.22112294011099,
+          "calls": 958,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 3,
+          "ar_prefix_fraction": 0.2374196061922326,
+          "relaxed": 95,
+          "spent": 96.26333999633789,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.920656958153956,
+            "length_ratio": 1.104138963195591,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8635574737536171,
+            "length_ratio": 0.9987847385949407,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0564206249639208,
+            "length_ratio": 1.104138963195591,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9954952018137024,
+            "length_ratio": 1.0344446549308364,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.053507917744025,
+            "length_ratio": 1.110529663636864,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 30.53943191235885,
+          "tokens": 1839,
+          "tps": 60.2172301461765,
+          "calls": 351,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 11,
+          "identical_ar": 3,
+          "ar_prefix_fraction": 0.3083911487277876,
+          "relaxed": 69,
+          "spent": 81.30121803283691,
+          "ASD": {
+            "n": 11,
+            "ratio": 0.8989803574093066,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 10,
+            "ratio": 0.9111741364436451,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 11,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 11,
+            "ratio": 0.9229135634626053,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 10,
+            "ratio": 0.9008017107729605,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 80.63598342030309,
+          "tokens": 5184,
+          "tps": 64.28891643795264,
+          "calls": 965,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 2,
+          "ar_prefix_fraction": 0.2193935333276725,
+          "relaxed": 75,
+          "spent": 84.33310127258301,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.9508071739029952,
+            "length_ratio": 1.0872999873588811,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8982282055745505,
+            "length_ratio": 0.9825110507533347,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0920837889774468,
+            "length_ratio": 1.0872999873588811,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0458752376829097,
+            "length_ratio": 0.9871875588216231,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0922619430232936,
+            "length_ratio": 1.0936588533377105,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 1070.0,
+            "compared_edges": 642.0,
+            "compared_js_sum": 520.0655837740334,
+            "compared_js_max": 1.0,
+            "permitted_edges": 642.0,
+            "selected_exceptions": 75.0,
+            "selected_compared_edges": 75.0,
+            "selected_js_sum": 64.2411839071055,
+            "missing_reference": 424.0,
+            "stop_blocked": 4.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 33.012815232388675,
+          "tokens": 1824,
+          "tps": 55.25127097341533,
+          "calls": 379,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 11,
+          "identical_ar": 2,
+          "ar_prefix_fraction": 0.3092015006859525,
+          "relaxed": 52,
+          "spent": 66.58070945739746,
+          "ASD": {
+            "n": 11,
+            "ratio": 0.9826206810466643,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 10,
+            "ratio": 0.9914113824823709,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 11,
+            "ratio": 1.0933858104968817,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 11,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 10,
+            "ratio": 0.9793489835070908,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 760.0,
+            "compared_edges": 446.0,
+            "compared_js_sum": 354.7459430028298,
+            "compared_js_max": 1.0,
+            "permitted_edges": 446.0,
+            "selected_exceptions": 52.0,
+            "selected_compared_edges": 52.0,
+            "selected_js_sum": 45.01362989196232,
+            "missing_reference": 311.0,
+            "stop_blocked": 3.0
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 74.3137160281185,
+          "tokens": 4929,
+          "tps": 66.32692137390877,
+          "calls": 883,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 6,
+          "ar_prefix_fraction": 0.6530304138430891,
+          "relaxed": 16,
+          "spent": 13.127935409545898,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8837227368269669,
+            "length_ratio": 0.9940240684345941,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8416419933982893,
+            "length_ratio": 0.9123569453035985,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0077397039441836,
+            "length_ratio": 0.9940240684345941,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 0.9749921571768341,
+            "length_ratio": 0.9101838293942351,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.9589265874096082,
+            "length_ratio": 0.9372871908582384,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 2368.0,
+            "compared_edges": 1521.0,
+            "compared_js_sum": 1232.6069346638274,
+            "compared_js_max": 1.0,
+            "drift_blocked": 1317.0,
+            "selected_exceptions": 16.0,
+            "selected_compared_edges": 16.0,
+            "selected_js_sum": 0.18946217016962663,
+            "permitted_edges": 204.0,
+            "missing_reference": 837.0,
+            "stop_blocked": 10.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 32.23725247220136,
+          "tokens": 1787,
+          "tps": 55.43276374253529,
+          "calls": 367,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 10,
+          "identical_ar": 12,
+          "ar_prefix_fraction": 0.8718776877866973,
+          "relaxed": 4,
+          "spent": 1.9985923767089844,
+          "ASD": {
+            "n": 10,
+            "ratio": 1.0165992734069194,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 10,
+            "ratio": 1.0141418011486862,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 10,
+            "ratio": 1.1224481549229715,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 10,
+            "ratio": 1.0344935037557306,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 10,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 929.0,
+            "compared_edges": 550.0,
+            "compared_js_sum": 434.4357418664017,
+            "compared_js_max": 1.0,
+            "drift_blocked": 464.0,
+            "selected_exceptions": 4.0,
+            "selected_compared_edges": 4.0,
+            "selected_js_sum": 0.010303436446733372,
+            "permitted_edges": 86.0,
+            "missing_reference": 377.0,
+            "stop_blocked": 2.0
+          }
+        }
+      }
+    },
+    "alpaca": {
+      "DFlash": {
+        "natural": {
+          "n": 16,
+          "seconds": 137.55779266520403,
+          "tokens": 5661,
+          "tps": 41.1536118042986,
+          "calls": 1917,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.1799897062030054,
+            "length_ratio": 1.065927117727341,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.2376080531152336,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.4357562807982103,
+            "length_ratio": 1.1216068452220525,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.3534210357735903,
+            "length_ratio": 1.093285919866671,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.2158185136569233,
+            "length_ratio": 0.9918297266660195,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        }
+      },
+      "ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 122.22860125266016,
+          "tokens": 5394,
+          "tps": 44.13042401467067,
+          "calls": 1699,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.1426489917922576,
+          "relaxed": 107,
+          "spent": 113.7451114654541,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8700954412778197,
+            "length_ratio": 0.9513050600980202,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0747546612994152,
+            "length_ratio": 0.9513050600980202,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.2167102875994584,
+            "length_ratio": 1.0493857760327823,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.149602027173103,
+            "length_ratio": 1.0257809487067584,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0534231270544108,
+            "length_ratio": 0.943084622951816,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 41.111267547355965,
+          "tokens": 1860,
+          "tps": 45.24307108403969,
+          "calls": 579,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.1968530631291329,
+          "relaxed": 89,
+          "spent": 108.29803466796875,
+          "ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0642397500516514,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.1811762066916387,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.054347963643406,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 1.0549689160929645,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree": {
+        "natural": {
+          "n": 16,
+          "seconds": 112.66066052136011,
+          "tokens": 5661,
+          "tps": 50.24824081274308,
+          "calls": 1479,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.809617450667036,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9532396777893102,
+            "length_ratio": 1.065927117727341,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.1575530987994738,
+            "length_ratio": 1.1216068452220525,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0900609845606715,
+            "length_ratio": 1.093285919866671,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.982120339313331,
+            "length_ratio": 0.9918297266660195,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 37.605711253359914,
+          "tokens": 1883,
+          "tps": 50.072181518219836,
+          "calls": 496,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 14,
+          "identical_ar": 16,
+          "ar_prefix_fraction": 1.0,
+          "relaxed": 0,
+          "spent": 0.0,
+          "ASD": {
+            "n": 12,
+            "ratio": 0.9534163882483088,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 14,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.125358242974099,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.9932940342364779,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 14,
+            "ratio": 0.9898791513018116,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "BudgetTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 98.95077106100507,
+          "tokens": 4989,
+          "tps": 50.41901085262069,
+          "calls": 1297,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.12225341865858362,
+          "relaxed": 116,
+          "spent": 108.68122482299805,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.7288642963797791,
+            "length_ratio": 0.9231747633265374,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8405989132919398,
+            "length_ratio": 0.9671946978500261,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9001590833209188,
+            "length_ratio": 0.9231747633265374,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 0.958510587072066,
+            "length_ratio": 0.9895035517940781,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.883473789434093,
+            "length_ratio": 0.9152404505844567,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {}
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 34.435196217149496,
+          "tokens": 1852,
+          "tps": 53.78218228585736,
+          "calls": 451,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.15398987140778336,
+          "relaxed": 91,
+          "spent": 94.48945426940918,
+          "ASD": {
+            "n": 12,
+            "ratio": 0.854980147053277,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 0.9099578324454289,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 0.899117764818014,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 0.9019896770626463,
+            "length_ratio": 1.0
+          },
+          "drift": {}
+        }
+      },
+      "CoverageTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 102.96425270824693,
+          "tokens": 5145,
+          "tps": 49.96879853611477,
+          "calls": 1334,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.1806069792280703,
+          "relaxed": 96,
+          "spent": 99.54896926879883,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.7648619778397663,
+            "length_ratio": 0.9357215555242573,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.8838429976736946,
+            "length_ratio": 0.9845484238044779,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 0.9428586530636117,
+            "length_ratio": 0.9357215555242573,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.0664656797007264,
+            "length_ratio": 1.0304745765782277,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 0.9239689850601469,
+            "length_ratio": 0.9267441175738143,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 1302.0,
+            "missing_reference": 620.0,
+            "compared_edges": 679.0,
+            "compared_js_sum": 541.0274434007184,
+            "compared_js_max": 1.0,
+            "permitted_edges": 679.0,
+            "selected_exceptions": 96.0,
+            "selected_compared_edges": 96.0,
+            "selected_js_sum": 78.84962757330504,
+            "stop_blocked": 3.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 37.65571973146871,
+          "tokens": 1873,
+          "tps": 49.7401195185427,
+          "calls": 489,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 12,
+          "identical_ar": 1,
+          "ar_prefix_fraction": 0.2666814390089924,
+          "relaxed": 65,
+          "spent": 81.08963394165039,
+          "ASD": {
+            "n": 12,
+            "ratio": 0.9607849469084316,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 12,
+            "ratio": 1.0102267609058335,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.1322199866749838,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 12,
+            "ratio": 1.0015367170749951,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 951.0,
+            "missing_reference": 453.0,
+            "compared_edges": 497.0,
+            "compared_js_sum": 383.0900691320702,
+            "compared_js_max": 1.0,
+            "permitted_edges": 497.0,
+            "selected_exceptions": 65.0,
+            "selected_compared_edges": 65.0,
+            "selected_js_sum": 51.268104912072886,
+            "stop_blocked": 1.0
+          }
+        }
+      },
+      "DriftTree-ASD": {
+        "natural": {
+          "n": 16,
+          "seconds": 114.9490957732778,
+          "tokens": 5731,
+          "tps": 49.856851517158994,
+          "calls": 1480,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 0,
+          "identical_ar": 7,
+          "ar_prefix_fraction": 0.6703699320107666,
+          "relaxed": 21,
+          "spent": 34.59522247314453,
+          "DFlash": {
+            "n": 16,
+            "ratio": 0.8254347016118548,
+            "length_ratio": 1.008883272913827,
+            "lost": [],
+            "gained": []
+          },
+          "ASD": {
+            "n": 16,
+            "ratio": 0.9695695251573209,
+            "length_ratio": 1.0749155271292208,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree": {
+            "n": 16,
+            "ratio": 1.0192758078858661,
+            "length_ratio": 1.008883272913827,
+            "lost": [],
+            "gained": []
+          },
+          "BudgetTree-ASD": {
+            "n": 16,
+            "ratio": 1.178278239835812,
+            "length_ratio": 1.1307594169212627,
+            "lost": [],
+            "gained": []
+          },
+          "CoverageTree-ASD": {
+            "n": 16,
+            "ratio": 1.1081049664327953,
+            "length_ratio": 1.1009963209586449,
+            "lost": [],
+            "gained": []
+          },
+          "DriftTree-ASD": {
+            "n": 16,
+            "ratio": 1.0,
+            "length_ratio": 1.0,
+            "lost": [],
+            "gained": []
+          },
+          "drift": {
+            "eligible_edges": 3805.0,
+            "missing_reference": 1657.0,
+            "compared_edges": 2142.0,
+            "compared_js_sum": 1688.4522246155473,
+            "compared_js_max": 1.0,
+            "permitted_edges": 328.0,
+            "selected_exceptions": 21.0,
+            "selected_compared_edges": 21.0,
+            "selected_js_sum": 0.3784355390403107,
+            "drift_blocked": 1814.0,
+            "stop_blocked": 6.0
+          }
+        },
+        "prefix": {
+          "n": 16,
+          "seconds": 38.035587101243436,
+          "tokens": 1883,
+          "tps": 49.506268826291944,
+          "calls": 493,
+          "scored": 0,
+          "correct": 0,
+          "truncated": 14,
+          "identical_ar": 10,
+          "ar_prefix_fraction": 0.81787109375,
+          "relaxed": 7,
+          "spent": 10.38581657409668,
+          "ASD": {
+            "n": 12,
+            "ratio": 0.9604897909566962,
+            "length_ratio": 1.0
+          },
+          "BudgetTree": {
+            "n": 14,
+            "ratio": 1.0111434767498424,
+            "length_ratio": 1.0
+          },
+          "BudgetTree-ASD": {
+            "n": 12,
+            "ratio": 1.1342655548724765,
+            "length_ratio": 1.0
+          },
+          "CoverageTree-ASD": {
+            "n": 12,
+            "ratio": 1.000871591135262,
+            "length_ratio": 1.0
+          },
+          "DriftTree-ASD": {
+            "n": 14,
+            "ratio": 1.0,
+            "length_ratio": 1.0
+          },
+          "drift": {
+            "eligible_edges": 1251.0,
+            "missing_reference": 569.0,
+            "compared_edges": 682.0,
+            "compared_js_sum": 520.6210953559316,
+            "compared_js_max": 1.0,
+            "permitted_edges": 127.0,
+            "selected_exceptions": 7.0,
+            "selected_compared_edges": 7.0,
+            "selected_js_sum": 0.1401742811922304,
+            "drift_blocked": 555.0
+          }
+        }
+      }
+    }
+  }
+}

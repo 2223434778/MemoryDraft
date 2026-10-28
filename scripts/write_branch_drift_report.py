@@ -1,14 +1,16 @@
 """Rebuild public tables directly from the completed branch-drift evaluation."""
 import argparse
 from collections import defaultdict
+import difflib
 import gzip
 import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import statistics
 
-from memorydraft.evaluation.asd_paper import BENCHMARKS
+from memorydraft.evaluation.asd_paper import BENCHMARKS, quality_ok
 from memorydraft.evaluation.branch_drift import ARMS, prefix_length, summarize
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,12 +32,23 @@ def main():
         raise ValueError('Refuse to publish incomplete generation results')
     refs = json.loads((source/'references.json').read_bytes())
     rows = [json.loads(line) for line in (source/'rows.jsonl').read_text(encoding='utf-8').splitlines()]
+    for row in rows:
+        if row['arm'] not in ('CoverageTree-ASD','DriftTree-ASD'):
+            continue
+        drift=row['asd']['branch_drift']
+        count=row['asd']['relaxed_tokens']
+        if (drift.get('selected_exceptions',0)!=count or drift.get('selected_compared_edges',0)!=count
+                or not 0 <= drift.get('selected_js_sum',0) <= drift['max_js']*count+1e-6):
+            raise ValueError('Selected exception lacks a valid sibling JS check: '+row['request_id'])
     analysis = summarize(rows,refs)
     if analysis != json.loads((source/'analysis.json').read_bytes()):
         raise ValueError('Independent report reconstruction differs from server analysis')
-    for name in ('analysis.json','provenance.json','cost-table.json','tasks.json','references.json'):
+    for name in ('analysis.json','provenance.json','cost-table.json','tasks.json'):
         shutil.copyfile(source/name,out/name)
-    for name in ('rows.jsonl','warmup.jsonl'):
+    # Token-ID reference arrays are compressed to keep the review diff readable.
+    if (out/'references.json').exists():
+        (out/'references.json').unlink()
+    for name in ('rows.jsonl','warmup.jsonl','references.json'):
         with (source/name).open('rb') as f, gzip.GzipFile(filename=str(out/(name+'.gz')),mode='wb',mtime=0) as z:
             shutil.copyfileobj(f,z)
     reward = source/'reward/analysis.json'
@@ -58,15 +71,44 @@ def main():
                 interpretation='Retained cross-forward identity difference; not automatically attributed to numeric error'))
     audit = dict(timed_generations=len(rows),matched_inputs=len(refs),
         all_prompts_and_snapshots_match=True,all_request_ledgers_reconcile=True,
+        all_selected_drift_exceptions_have_covered_bounded_js=True,
+        minimum_recorded_proposal_horizon=min(b['proposed'] for r in rows for b in r['rounds']),
         strict_vs_frozen_ar_differences=strict,
         strict_tree_vs_linear_natural_differences=[])
     natural = {(r['request_id'],r['arm']):r for r in rows if r['stage']=='natural'}
     for identity in ref_index:
         if natural[identity,'BudgetTree']['token_ids'] != natural[identity,'DFlash']['token_ids']:
             audit['strict_tree_vs_linear_natural_differences'].append(identity)
+    mmlu_cases=[]
+    for identity,reference in ref_index.items():
+        if reference['benchmark']!='mmlu':
+            continue
+        choices={}
+        for arm in ARMS:
+            match=re.match(r'^\s*\(?([ABCD])\b',natural[identity,arm]['text'])
+            choices[arm]=match[1] if match else None
+        mmlu_cases.append(dict(request_id=identity,choices=choices,
+            expected=natural[identity,'ASD']['quality']['expected_answer']))
+    audit['mmlu_leading_choice_diagnostic']=dict(
+        rule='Same leading-choice parser as prior extension; diagnostic only, primary grades unchanged',
+        all_methods_equal_per_request=all(len(set(r['choices'].values()))==1 for r in mmlu_cases),
+        correct={arm:sum(r['choices'][arm]==r['expected'] for r in mmlu_cases) for arm in ARMS},
+        cases=mmlu_cases)
     (out/'audit.json').write_text(json.dumps(audit,indent=2)+'\n',encoding='utf-8')
+    reviews=[]
+    for row in rows:
+        if row['stage']!='natural' or row['arm']!='DriftTree-ASD' or row['benchmark']!='humaneval':
+            continue
+        reference=ref_index[row['request_id']]
+        if quality_ok(reference['quality']) is True and quality_ok(row['quality']) is False:
+            reviews.append(dict(request_id=row['request_id'],candidate_quality=row['quality'],
+                ar_quality=reference['quality'],asd=row['asd'],
+                first_difference=prefix_length(row['token_ids'],reference['token_ids']),
+                diff=list(difflib.unified_diff(reference['text'].splitlines(),row['text'].splitlines(),
+                    fromfile='AR',tofile='Drift',n=2))))
+    (out/'case-review.json').write_text(json.dumps(reviews,indent=2)+'\n',encoding='utf-8')
     lines = ['# 分支漂移门控：七任务实测结果','',
-        '六方法同窗自然EOS比较；另五方法测128/EOS前缀。负数表示时延减少。配对比值按题平均；单次计时。',
+        '六方法同窗自然EOS比较；另五方法测128/EOS前缀。负数表示时延减少。配对比值按题平均；单次计时。各列均直接配对，不能将两个平均比值相除来推导方法间的比值。',
         '冻结旧AR输出仅供质量和轨迹参考，不用于本轮AR时延加速比。MT第二轮共享冻结AR首轮历史。','',
         '|任务|输入数|Drift vs 原树ASD|vs ASD|vs 严格树|vs Coverage|正确：原树ASD → Drift|AR逐token相同：原树ASD → Drift|',
         '|---|---:|---:|---:|---:|---:|---|---|']
@@ -92,6 +134,13 @@ def main():
         '|任务|方法|正确/可评分|输出token|验证轮|近似token|与AR相同|上限截断|',
         '|---|---|---:|---:|---:|---:|---:|---:|']
     for benchmark in BENCHMARKS:
+        reference_rows=[r for r in refs if r['benchmark']==benchmark]
+        reference_quality=[quality_ok(r['quality']) for r in reference_rows]
+        scored=sum(q is not None for q in reference_quality)
+        correct=sum(q is True for q in reference_quality)
+        lines.append('|'+ '|'.join([benchmark,'AR冻结参考',f'{correct}/{scored}' if scored else '—',
+            str(sum(len(r['token_ids']) for r in reference_rows)),'历史参考，不作同窗计时','0',
+            str(len(reference_rows)),str(sum(r['finish_reason']=='length' for r in reference_rows))])+'|')
         for arm in ARMS:
             v=analysis['families'][benchmark][arm]['natural']
             lines.append('|'+ '|'.join([benchmark,arm,f"{v['correct']}/{v['scored']}" if v['scored'] else '—',
@@ -126,9 +175,11 @@ def main():
     (ROOT/'docs/BRANCH_DRIFT_RESULTS.md').write_text('\n'.join(lines),encoding='utf-8')
     files = {str(p.relative_to(out)).replace('\\','/'):dict(bytes=p.stat().st_size,
         sha256=hashlib.sha256(p.read_bytes()).hexdigest()) for p in sorted(out.rglob('*'))
-        if p.is_file() and p.name!='publication.json'}
+        if p.is_file() and p.name!='publication.json' and '__pycache__' not in p.parts and p.suffix!='.pyc'}
     (out/'publication.json').write_text(json.dumps(dict(files=files),indent=2)+'\n',encoding='utf-8')
-    print(json.dumps(dict(rows=len(rows),references=len(refs),files=len(files),audit=audit)))
+    print(json.dumps(dict(rows=len(rows),references=len(refs),files=len(files),
+        strict_ar_differences=len(strict),strict_tree_linear_differences=len(audit['strict_tree_vs_linear_natural_differences']),
+        mmlu_leading_choices_equal=audit['mmlu_leading_choice_diagnostic']['all_methods_equal_per_request'])))
 
 
 if __name__=='__main__':
