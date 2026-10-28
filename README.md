@@ -10,6 +10,8 @@
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
+**实验总览（2026-10-28）：**[DFlash + 成本树 + ASD完整总结](docs/ASD_TREE_EXPERIMENT_SUMMARY.md)汇总历次开发／独立扩样、七任务自然时延、直接ASD／DFlash对照、质量取舍、接受长度与验证轮数证据，以及infra交付和原始结果入口。最新文档位于`codex/chat-live-draft`分支；默认`main`保留旧版本。
+
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 
 **DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。

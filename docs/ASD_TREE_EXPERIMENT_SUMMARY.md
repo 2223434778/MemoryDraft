@@ -1,0 +1,141 @@
+# DFlash + 成本树 + ASD：实验总览
+
+更新于2026-10-28。这份文档汇总已经完成的实验，不新增GPU运行，也不重新挑选任务或参数。
+
+**目前最值得保留的成果是成本受控候选树，以及它与ASD在具体场景中的组合收益。** 七任务独立扩样中，组合相对普通ASD在GSM8K、MBPP、Alpaca的自然回答时延分别降低7.72%、10.21%、17.89%；MT-Bench按各方法自身历史进行真实双轮生成时降低12.93%。严格成本树也能独立改善DFlash的速度，且保留本轮DFlash输出。MATH、HumanEval和MMLU存在不同的速度或质量取舍，完整保留在下表中。
+
+分阶段报告、原始结果、代码和部署验收均已提交GitHub。当前汇总所在分支为 `codex/chat-live-draft`；仓库默认 `main` 保留旧版本，直接查看默认首页不会看到这里的最新内容。
+
+## 1. 这套方法是什么
+
+实验名称是 **BudgetTree-ASD**。底座为Qwen3-8B Target和与它配套的官方DFlash Draft，原生block=16：一个已确认锚点，最多15个候选位置。
+
+```text
+已确认前缀与Target特征
+  → DFlash并行预测各位置的候选分布
+  → 每位置取Top-4，按概率与实测GPU成本选择8～32节点的候选树
+  → Target用tree attention一次验证多个分支
+  → ASD在请求剩余预算内选择可行的最长连续路径
+  → 只提交这条路径对应的token、KV、特征和预算
+```
+
+树覆盖线性Top-1草稿没有提供的替代接续；ASD允许在预算内越过少量分歧，继续利用后续候选。每条分支的Target分数来自它自己的祖先上下文，不能串用其他分支的验证结果。
+
+构树借鉴BASTION的best-first路径概率思想，结合每张GPU实测节点成本；ASD来自原论文，DFlash复用官方模型。项目完成的是这些机制的适配、组合、状态提交、多任务评测和infra落地。构树只使用请求当时可用的Draft预测、成本表和预算，不使用未来Target分数或标准答案。详细解释见[通俗架构说明](ASD_TREE_ARCHITECTURE.md)、[第一阶段实现与来源](ASD_TREE_FINDINGS.md)。
+
+## 2. 对照组与统一设置
+
+|名称|实际含义|验证规则|
+|---|---|---|
+|AR|只用Target逐token生成|严格贪心|
+|DFlash|DFlash线性草稿|严格最长一致前缀|
+|ASD|同一DFlash线性草稿 + ASD|允许预算内近似接受|
+|BudgetTree|DFlash + 成本受控树|严格沿树匹配|
+|BudgetTree-ASD|DFlash + 成本受控树 + ASD|允许预算内近似接受，当前组合主线|
+|JointTree-ASD|进一步让剩余regret预算参与主干／树形分配|研究候选与消融|
+
+主要研究使用两张A6000，各卡独立运行组内对照；不是两卡并行加速一个请求。共享Target/Draft、输入、FP32、eager attention及RMSNorm工程底座；ASD主参数为 `B=8, gate=.25, cap=2`。模型加载、预热、离线校准和离线质量评分单列；在线构树、Top-K、传输、mask、选择、验证和KV整理均计入请求wall。
+
+RMSNorm等工程改进在各对照间共享，其收益不重复计入树的算法增量。近似ASD可能改变中间token、回答长度和最终答案，任务正确率与逐token身份分别检查。
+
+## 3. 已完成哪些实验
+
+|批次|任务范围|完成量|报告与原始结果|
+|---|---|---|---|
+|成本树 + ASD开发检查|六类各8题，共48个已观察开发请求|四组960次计时 + 48条AR参考|[结论](ASD_TREE_FINDINGS.md) · [结果](../results/asd-budget-tree/)|
+|剩余预算联合构树|同一48题，增加Joint与主干消融|六组1440次计时 + 48条AR参考|[结论](ASD_JOINT_TREE_FINDINGS.md) · [结果](../results/asd-joint-tree/)|
+|首轮七任务扩样|241个新源任务，249个匹配输入|五组4980次计时 + 249条AR参考|[结论](ASD_PAPER_FINDINGS.md) · [结果](../results/asd-paper/)|
+|AR／接受长度／开放质量补全|复用上述249个输入|747次新固定长度计时、120条独立奖励评分|[结论](ASD_PAPER_METRICS_FINDINGS.md) · [结果](../results/asd-paper-metrics/)|
+|更大规模独立扩样|514个新源任务，530个匹配输入，七任务四组|9540条主计时、530条AR参考、640次预算控制、64次自身历史第二轮生成、320条奖励评分|[结论](ASD_PAPER_EXTENSION_FINDINGS.md) · [结果](../results/asd-paper-extension/)|
+|infra v0.4部署验收|6个已观察公开请求，五方法两重复|60次计时、12次研究／运行时对照；本机1144测试、服务器专项150测试通过|[验收](INFRA_TREE_VALIDATION.md) · [结果](../results/infra-tree-v04/)|
+
+这些批次有任务复用，不能把各行样本量直接相加后宣称独立问题总数。计时重复、质量评分也不是新增独立问题。最后一轮9540是原始计时行；将严格前／后控制合并后，`analysis.json.timed_generations`为8480，`raw_timed_generations`仍为9540。
+
+## 4. 主表：最大一轮独立扩样
+
+以下全部使用**自然停止的完整回答时延**。变化率为同题配对时延比的均值，负数更快、正数更慢。三列分别直接读取与对应基线的配对统计，不能将不同列的均值相除来推导另一个基线。
+
+|任务／匹配输入数|组合 vs ASD|组合 vs DFlash|严格成本树 vs DFlash|自然质量：ASD → 组合|
+|---|---:|---:|---:|---|
+|GSM8K／128|-7.72%|-14.90%|-10.25%|114 → 117／128|
+|MATH-500／64|+5.50%|+2.44%|-6.19%|44 → 45／64，含有限标量等价补充|
+|HumanEval／64|-3.26%|-1.46%|-2.64%|53 → 52／64|
+|MBPP／64|-10.21%|-20.15%|-14.87%|31 → 32／64|
+|MMLU／114|+1.30%|+3.41%|-0.09%|39 → 37／114，仅字母输出合同|
+|MT-Bench／32|-5.51%|-13.64%|-13.92%|开放回答，单列偏好与任务性质|
+|Alpaca／64|-17.89%|-19.67%|-17.15%|开放回答，单列偏好与任务性质|
+
+来源：[analysis.json](../results/asd-paper-extension/analysis.json)的 `families.<task>.<method>.natural.<baseline>.ratio`，质量来自同一自然组及[质量复核](../results/asd-paper-extension/quality-audit.json)。完整结果还包括区间、每题长度、截断和失分／得分集合，见[完整表](ASD_PAPER_EXTENSION_RESULTS.md)。
+
+- MATH的保守主评分为42 → 43／64；44 → 45使用既定有限标量等价补充，不能混成另一套新评分。
+- MT-Bench为16个源对话、32个匹配轮次。主表第二轮共享同题严格AR首轮历史；按对话合并两轮，组合相对ASD省10.12%。各方法使用自身真实历史另行生成时省12.93%，两种输入定义分别报告。
+- 严格成本树与DFlash在530个自然请求上输出token、文本、停止一致；包含其他阶段共1590组对照。它说明树本身存在计算收益。某题严格组与单token AR存在有限精度分歧，不能将这一结果扩大成全量逐字等同AR。
+- 组合在GSM8K／MBPP的正确数有净增加，也有具体题目的得失；这不是所有题都保持相同答案的保证。
+
+## 5. 为什么加速：更长实际接受前缀，更少验证轮
+
+最大扩样首个自然重复的轨迹如下。接受长度是**实际输出的Draft token数／验证轮数**，排除Target首token、纠正和bonus；裁去末轮没有真正输出的候选。
+
+|任务|实际Draft接受长度：ASD → 组合|验证轮数：ASD → 组合|自然输出token：ASD → 组合|
+|---|---:|---:|---:|
+|GSM8K|5.440 → 6.648|5673 → 4750|36594 → 36338|
+|MBPP|4.564 → 5.879|567 → 463|3189 → 3217|
+|Alpaca|1.951 → 2.848|7489 → 5578|22106 → 21468|
+
+共同达到128个输出token的配对中，组合相对ASD的时延变化为GSM8K -9.63%（127题）、Alpaca -18.36%（41题）。MBPP为-6.97%，但只有3题，不能代表全部代码任务。这提供了固定生成量下的计算增量证据，不能将所有收益都解释成回答更短。
+
+树增加了每轮候选与验证节点成本。例如GSM验证节点／输出token从2.480增至3.674；它通过更少的昂贵验证轮换取端到端收益，候选并非越多越好。MATH的接受长度也提高，但逐题输出长度比均值增加11.08%，自然时延仍变慢，说明只看接受长度不足以判断实际加速。
+
+早期开发检查也保留了清晰的分解：共同7题、各128token时，线性ASD为157轮，第一组合126轮，Joint为122轮。该结果支持树和ASD的互补机制；对应同状态／固定主干分析见[第一阶段](ASD_TREE_FINDINGS.md)、[Joint消融](ASD_JOINT_TREE_FINDINGS.md)。后续七任务没有确认Joint对第一组合的稳定新增收益，因此当前通用主线仍是BudgetTree-ASD。
+
+## 6. 质量、负结果和适用场景
+
+**已有收益可以保留，同时应按场景选用严格树或树 + ASD。**
+
+- GSM8K：组合在两轮独立扩样均有自然与共同128时延收益；适合作为当前组合的代表场景。
+- MBPP：最新扩样有速度与正确数净改善；旧249请求批次曾慢71.85%、正确14 → 12／32，不能用新一批结果覆盖旧失败，也不能推广为全部代码任务。
+- HumanEval：最大扩样快3.26%，正确数53 → 52／64，存在功能正确性取舍。严格成本树保留DFlash结果，是另一条可用路径。
+- MATH：旧32题批次快11.42%、正确26 → 28；新64题批次慢5.50%、正确44 → 45。切分和任务路径改变会影响结果，不能概括为稳定提速或稳定退化。最新批次还保留长循环／截断和真实数学错误。
+- MMLU：当前组合不占优势。仅字母输出合同从39降至37／114；各方法可提取的首选项虽同为78／114，但该诊断不能替换原定输出合同评分。
+- MT-Bench／Alpaca：有实际自然时延收益。最大扩样的独立奖励模型偏好相对ASD为50.00%／46.09%，分别是7胜2平7负、26胜7平31负；不能仅凭速度声称开放回答质量全面提高。任务性质检查与偏好分开保存。
+
+开放质量来自固定独立偏好训练权重Skywork Reward V2及单列的任务性质审查。它不是官方GPT-4 MT-Bench分数、AlpacaEval胜率或通用正确率。早期未通过换序控制的裁判结果仍留档，没有冒充有效主证据。
+
+固定256-token吞吐还要单独看：某些短回答在EOS后继续计算。例如HumanEval固定TPS增益48.42%，自然回答时延只改善3.26%；前者不能写成正常代码回答提速48.42%。
+
+## 7. AR、论文指标和其他路线
+
+AR基线已经补测：在旧249个匹配输入上执行747次固定长度三连计时。GSM8K严格DFlash／AR为同窗直接实测3.845×；组合／AR的4.709×是借助DFlash锚点做的跨会话校准估计，不能标成组合与AR本轮同窗实测。详见[指标补全](ASD_PAPER_METRICS_FINDINGS.md)。
+
+评测覆盖ASD论文的七个任务名，但模型、硬件、数据子集、提示／质量协议和重复次数存在明确差异。这里是Qwen3-8B／DFlash／A6000，论文主表采用另一配对；Stanford Alpaca子集也不等同于AlpacaEval。因此本项目新方法的增量以本机同环境直接对照为准，文献数值仅作单独注明的参考，见[论文对应关系](ASD_PAPER_ALIGNMENT.md)和[文献基线](ASD_LITERATURE_REFERENCE.md)。
+
+DSpark曾单独适配和优化。它在部分Alpaca场景保留正结果，但没有取代DFlash作为当前主线；原版本、等价构树优化、完整正负结果都已归档，见[DSpark比较](DSPARK_TREE_FINDINGS.md)和[优化复测](DSPARK_TREE_OPT_FINDINGS.md)。ASD-Run、Utility、置信度等探索见[候选统一比较](ASD_COMPARISON_FINDINGS.md)，不将其局部结果混算为本组合的增量。
+
+## 8. 已经完成的infra交付
+
+成本树已进入统一runtime、CLI、JSON／SSE服务、benchmark及树过程可视化。支持严格BudgetTree与显式近似BudgetTree-ASD，成本表绑定模型／运行环境哈希，异设备需要重新校准。真实部署验收完成研究实现与运行时的输出、轮次、预算、停止及取消恢复对照，详见[infra v0.4验收](INFRA_TREE_VALIDATION.md)。
+
+研究成果与面试交付分别保留：当前聊天网页已有组合推理入口；面试版 `codex/infra-interview-v0.4`／`infra-v0.4-interview` 独立冻结，说明见[面试版位置](INFRA_TREE_INTERVIEW.md)。网页交互验收和少量部署计时不替代上述多任务研究评测。
+
+## 9. 从哪里复核
+
+|内容|入口|
+|---|---|
+|算法通俗解释|[ASD_TREE_ARCHITECTURE.md](ASD_TREE_ARCHITECTURE.md)|
+|最大扩样的主结论、全表和协议|[结论](ASD_PAPER_EXTENSION_FINDINGS.md) · [全表](ASD_PAPER_EXTENSION_RESULTS.md) · [协议](ASD_PAPER_EXTENSION_PROTOCOL.md)|
+|原始统计、来源和重建审计|[analysis.json](../results/asd-paper-extension/analysis.json) · [audit.json](../results/asd-paper-extension/audit.json)|
+|数学／代码／格式质量复核|[quality-audit.json](../results/asd-paper-extension/quality-audit.json)|
+|开放偏好与匿名任务性质|[reward-analysis.json](../results/asd-paper-extension/reward-analysis.json) · [open-contract-audit.json](../results/asd-paper-extension/open-contract-audit.json)|
+|早期七任务与AR指标补全|[七任务](ASD_PAPER_FINDINGS.md) · [指标补全](ASD_PAPER_METRICS_FINDINGS.md)|
+|执行源、数值分歧和中断续跑|[源码清单](../results/asd-paper-extension/ASD_PAPER_EXTENSION_CONTINUATION_SOURCE_MANIFEST.json) · [续跑协议](ASD_EXTENSION_CONTINUATION_PROTOCOL.md)|
+|部署与复现命令|[INFRA_TREE_GUIDE.md](INFRA_TREE_GUIDE.md) · [PROGRESS.md](PROGRESS.md)|
+
+既有离线复核入口（不启动新的GPU生成）：
+
+```powershell
+.venv\Scripts\python.exe -m results.asd-paper-extension.inspect_results
+.venv\Scripts\python.exe -m results.asd-paper-metrics.inspect_results
+.venv\Scripts\python.exe -m results.infra-tree-v04.helpers.audit --check
+```
+
+本次总览对主表直接配对比值、样本与计时计数、接受长度和相关相对链接做静态核对；没有重跑旧完整测试或把本次文档提交当作实验执行源码。

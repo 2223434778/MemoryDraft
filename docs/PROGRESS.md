@@ -1,3 +1,10 @@
+# 2026-10-28 — DFlash + 成本树 + ASD实验统一汇总
+
+- 用户询问研究实验是否已总结到GitHub，并授权缺失时立即整理。通过GitHub连接器读取远端 `codex/chat-live-draft/docs/ASD_PAPER_EXTENSION_FINDINGS.md`，确认原七任务扩样报告已存在；仓库默认分支为 `main`，仍保留旧版，未将“默认首页看不到”误报为未上传。
+- 新增 `docs/ASD_TREE_EXPERIMENT_SUMMARY.md`，统一方法名称／共享设置、六个开发／扩样／指标／infra批次、最大530匹配输入七任务主表、接受长度和验证轮数来源、Joint／DSpark定位、质量取舍、AR估计口径、论文对应及原始数据入口。`README.md` 添加总览链接与实际分支说明。未修改实现、参数、评分、旧统计或线上部署。
+- 新主表从 `results/asd-paper-extension/analysis.json` 直接取同题配对均值，分别对ASD和DFlash，不用两个平均比值相除。组合较DFlash的GSM／MBPP／Alpaca自然时延分别低14.90%／20.15%／19.67%；相对ASD仍为既有7.72%／10.21%／17.89%。MATH、HumanEval和MMLU的速度／质量取舍全部保留。明确9540原始计时与8480合并严格前后控制后的统计行的区别，不把重复或评分次数当独立任务。
+- `.venv\Scripts\python.exe artifacts/check-asd-tree-summary.py`：7行直接配对主表、3行实际Draft接受长度／轮数／输出量、各批计数、奖励胜平负、42个相对链接和冻结main／infra引用通过；`git diff --check`通过。本轮只做文档与既有JSON核对，未重跑GPU、旧完整测试或新的质量评估，不将文档提交冒充历史执行源。
+
 # 2026-10-28 — 树流鼠标液态玻璃与历史消息编辑／回退分支
 
 - 用户授权增强液态玻璃、编辑历史及任意消息处回退。新增 `static/glass.js`：精细鼠标的局部高光和反射方向随位置变化，单帧合并、无空闲循环，离开／失焦／隐藏时清理；触屏、粗指针及减少动画／透明度偏好不启用跟随。面板强化透明、饱和模糊及反射边缘，保留字号、四种推理模式、两种过程视图和真实事件。
