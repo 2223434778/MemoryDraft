@@ -61,7 +61,7 @@ DFlash为824 token/7.81秒，正常EOS且答案90°正确；新版为4096 token/
 
 ## 5. 改进重点
 
-优先约束当前近似token的分歧强度，例如增加独立于剩余后缀长度的概率比上限；它能过滤这里已观察到的高regret例外，但尚未做反事实验证，不能保证该题必然恢复。
+优先约束当前近似token的分歧强度，例如增加独立于剩余后缀长度的候选/首选概率比下限（等价于regret上限）；它能过滤这里已观察到的高regret例外，但尚未做反事实验证，不能保证该题必然恢复。
 再考虑重复周期检测与有计时的纠错/重生成策略。直接把4096上限改短只会更早截断错误答案，不是保持质量的加速。单纯优化JS算子难以解决这道题多写3272token的问题。
 
 诊断证据见[analysis.json](../results/branch-drift-math-diagnosis/analysis.json)。复核命令：`python -m scripts.diagnose_branch_drift_math`。原始7任务成绩、输出及参数保持。
