@@ -14,6 +14,8 @@
 
 **分支漂移门控候选（2026-10-28）：**[七任务结论](docs/BRANCH_DRIFT_FINDINGS.md)与[完整实测表](docs/BRANCH_DRIFT_RESULTS.md)在`codex/branch-drift`。149匹配输入、1639新计时、192奖励评分完成，AR逐token一致输出60→106；MMLU格式合同恢复、MT自然时延/偏好有局部正结果，其他任务保留速度与质量取舍。单步JS仍会放过关键代码条件错误，原组合继续保留。
 
+**MATH-500耗时诊断：**[逐题归因](docs/BRANCH_DRIFT_MATH_DIAGNOSIS.md)定位到372题的249-token周期循环，贡献本批净新增耗时75.29%；其余11题配对平均慢4.14%。原12题成绩保留，未重跑GPU或删除坏题。
+
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 
 **DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。

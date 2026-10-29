@@ -1,3 +1,12 @@
+# 2026-10-28实测补充 — MATH-500耗时归因
+
+- 用户要求检查新版MATH-500为何耗时久。新增离线`scripts/diagnose_branch_drift_math.py`、4个相关测试，读取已发布12题六组自然输出；没有生成新GPU样本、改参数、删题或改评分。新增`docs/BRANCH_DRIFT_MATH_DIAGNOSIS.md`及独立证据`results/branch-drift-math-diagnosis/analysis.json`，README补入口。原37个发布payload运行前后SHA不变。
+- 相对DFlash，总wall116.043694→150.126737秒，净增34.083043秒；逐题配对平均仍慢31.19%。372题824→4096token、7.805878→33.467666秒，额外25.661788秒占净新增75.29%。其后3000token为精确249-token周期，包含12个完整周期，第1097token起重复，直到length上限。原DFlash/严格树正常EOS并给正确90°。
+- 372接受5个近似例外，首个regret3.101007对应候选/首选概率比4.50%；所选JS累计0.055477仍未阻止循环轨迹。首次与AR分歧为第54token，落在首例外区间54–57。最后例外区间1258–1263，之后至少2833token无新增例外但仍循环，说明仅停止花预算不能恢复原上下文。未保存逐边替代logits，不把单个例外说成已通过反事实确认的唯一原因。
+- 不计372的11题仅作归因诊断，配对均值+4.14%，不替换正式12题成绩。101题+5.81秒同时错误10/169→正确850；445题+2.83秒且两组正确。总输出12810→16470（+28.57%），汇总TPS110.39→109.71（−0.62%），不是所有token计算慢31%。轮/token下降12.49%，请求wall/轮摊销上升14.98%；这是恒等分解，包含prefill/CPU，不能全归因JS。
+- 零例外且输出完全相同的95/224/465三题，相对DFlash均值−0.21%、相对严格树+4.48%；与现有共同128相对原组合+5.65%一致，存在较小的构树/检查/额外轮次成本。主优先级是避免失控长路径，其次才是算子优化；独立当前token概率上限、重复检测与有计时的纠错仅列为后续方向，尚未实施或宣称修复。
+- 实际命令：`.venv\Scripts\python.exe -m scripts.diagnose_branch_drift_math`；`.venv\Scripts\python.exe -m pytest -q tests/test_branch_drift_math.py --basetemp artifacts/pytest-math-diagnosis --junitxml=artifacts/math-diagnosis-tests.xml --tb=short`，4 passed/4.16s。确认源统计均值、完整12题覆盖、时间因子恒等式、重复后缀及输入SHA；原服务/旧推理方法/七任务发布结果未修改。
+
 # 2026-10-28 — 分支漂移门控七任务评价完成
 
 - 用户要求直接实现并多领域评价，未再拆成多轮GPU试探/调参。完成141源任务/149匹配输入、六组自然+五组128/EOS共1639条新计时，另192独立奖励评分全部成功。模型Qwen3-8B/匹配DFlash、FP32/eager/RMSNorm、线程4、B8/.25/M2，成对树≤32节点、固定T=1完整词表JS/ln2阈值.10；Coverage同构树/停止/覆盖/距离计算，阈值1。
