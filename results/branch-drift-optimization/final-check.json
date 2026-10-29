@@ -1,0 +1,10 @@
+{
+  "relative_links": 5,
+  "strict_AR_identity": 66,
+  "rebuild_byte_identical": true,
+  "frozen_refs_unchanged": true,
+  "source_files": 504,
+  "eager_lazy_decision_pairs": 132,
+  "matched_inputs": 66,
+  "timings": 924
+}

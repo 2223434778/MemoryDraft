@@ -1,4 +1,13 @@
-# 2026-10-29 — 按需JS、门控节点分配与独立token分歧对照实现
+# 2026-10-29 — 按需JS、门控节点分配与独立token分歧对照：924计时完成
+
+- 完成七任务62源/66匹配输入×七方法×自然4096/EOS和128/EOS，共924计时，全部矩阵/输入快照/预算通过。132个eager/lazy配对的token、停止、逐轮路径/接受长度/regret与预算全部相同；本机独立重建analysis与服务器相同。Lazy自然JS5848→737（−87.40%），自然wall总和301.203→300.805秒（−0.13%），不称87%整体提速。
+- 组合GateCap相对ASD自然时延GSM+6.91%、MATH−4.95%、HE−4.82%、MBPP−0.94%、MMLU−2.08%、MT−11.08%、Alpaca−1.45%；AR一致14→50/66，旧Drift/Lazy39、独立GateTree/TokenCap45。正确数GSM8→8、MATH8→8、HE7→7、MBPP5→4、MMLU合同1→5；开放回答不新增偏好评分。相对严格树仅MMLU更快，其他慢0.58%–4.61%，强基线保留。
+- 372旧4096/33.5s循环错误，三个新策略均824/约7.6–8.0s正常EOS且正确，其中GateTree/GateCap与AR一致，TokenCap仍有token差异；HE76也恢复59token零近似且正确。新增/保留取舍：GateTree/GateCap在MATH101达到4096且错误、TokenCap也答错，旧Drift3539正常结束且正确；独立TokenCap的MATH总正确降至7/12，但MBPP保持5/8且比ASD快11.05%。不删除失败、不将更像AR等同更正确。
+- GateCap相对Lazy共同128在GSM/MATH/MMLU/MT/Alpaca为−3.26%/−2.88%/−1.11%/−1.19%/+0.68%，有效数8/12/4/6/7；代码共同128为0题。相对ASD的MATH共同128仍慢3.94%，完整回答收益含路径/长度变化。构树入口计时包含待完成Draft GPU工作，不归因全为CPU构树；未记录项用—，不扣在线成本。
+- GPU实际源2755f1466c8ebf18f0c3191fec600ff82202b643，504文件前后SHA一致，隔离根`/media/a6000/D/ZhaoBinHe/MemoryDraft/branch-drift-optimization-v1`。04:59:34–05:42:07 UTC生成，加载20.18s、峰allocated38688559616B。全量上传超时后用核验旧ZIP+61KB增量重建，实际ZIP SHA5c01b18d15fd912eb81adb4788ec96034bdb7c19169b7aa5a8ec4c4c935ec2d5；一次系统Python3.8启动失败在解包/停服务前，随后用原venv。生成前服务器122 passed/8.60s，结束27B/适配服务恢复exit0、三服务active、health=ok。
+- 下载ZIP SHA89b15145755aee5a1478267e94d605e6921a968089afc5939c63a327ae7b9c15，6分片/10载荷校验。本机最终后处理/入口`.venv\Scripts\python.exe -m pytest -q tests/test_branch_drift_optimization.py tests/test_branch_drift_evaluation.py --basetemp artifacts/pytest-drift-opt-final --junitxml=artifacts/drift-opt-final.xml --tb=short`：19 passed/10.50s。两个新增离线合成夹具字段遗漏修复后通过，失败XML保留本机；未改变GPU正式生成策略。
+- 报告复核`.venv\Scripts\python.exe -m scripts.report_branch_drift_optimization`；发布`results/branch-drift-optimization`，协议/完整表/结论为`docs/BRANCH_DRIFT_OPTIMIZATION_*.md`。后续保留Lazy精简、GateCap候选与MBPP上的独立TokenCap取舍；默认线上及原研究/infra冻结版本保持。
+- 最终`.venv\Scripts\python.exe artifacts/check-drift-optimization.py`核对全部公开payload SHA、严格树66个token/text/停止原因AR身份、5个相对链接、main/infra分支与标签冻结引用；公开压缩输入重建逐字节一致。初次额外断言发现TokenCap372虽同长度且正确但非AR逐token相同，已修正文案；GateTree/组合该题确与AR相同。结果数据与策略未改。
 
 - 用户授权三个方向直接实现。`BranchDriftVerifier`新增显式lazy检查，沿用最长/最低regret/最低索引排序，按赢家候选路径检查并缓存JS，保留eager默认；新增独立max_token_regret。`GateTreeConfig`使用qr*(qr/q0)的Draft启发式与单节点扩展，优先严格主干，最终Target覆盖/JS/EOS验证不放宽。不是校准的安全概率，节点重分配不保证整条轨迹一致率单调提高。
 - 新脚本`run_branch_drift_optimization`固定七组：ASD/严格树/原Drift/Lazy/GateTree/TokenCap/GateCap；B8/.25/M2、JS .1、raw regret ln4、分配指数1。62既有公开源任务/66匹配输入、自然4096/EOS及128/EOS，预定924计时；MATH12全部保留、HumanEval优先76，属于开发诊断子集，不称新保留集。协议`docs/BRANCH_DRIFT_OPTIMIZATION_PROTOCOL.md`。

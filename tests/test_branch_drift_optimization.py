@@ -94,3 +94,56 @@ def test_runtime_dispatch_keeps_typed_costs_and_explicit_options(engine, arm):
     assert (config['max_token_regret'] is not None) == (arm in ('TokenCap-ASD', 'GateCap-ASD'))
     assert all(r['tree_budget']['sibling_pairs'] == (arm not in ('GateTree-ASD', 'GateCap-ASD'))
                for r in row['rounds'])
+
+
+def study_matrix():
+    from memorydraft.evaluation.asd_paper import BENCHMARKS
+    from scripts.run_branch_drift_optimization import ARMS
+    refs, rows = [], []
+    for benchmark in BENCHMARKS:
+        ref = dict(request_id=benchmark+':audit', benchmark=benchmark, token_ids=[1],
+                   prompt_sha256='same', snapshot_id='same')
+        refs.append(ref)
+        for stage in ('natural', 'prefix'):
+            for arm in ARMS:
+                rows.append(dict(ref, stage=stage, arm=arm, latency_seconds=1., max_new_tokens=4096,
+                    finish_reason='eos', rounds=[], asd=dict(spent=0., relaxed_tokens=0,
+                        branch_drift=dict(max_token_regret=math.log(4))),
+                    quality=dict(correct=None) if stage == 'natural' else None))
+    return rows, refs
+
+
+def test_study_audit_rejects_lazy_output_or_budget_changes():
+    from copy import deepcopy
+    from scripts.run_branch_drift_optimization import summarize_results
+    rows, refs = study_matrix()
+    assert summarize_results(rows, refs)['timed_generations'] == len(refs)*14
+    bad = deepcopy(rows)
+    next(r for r in bad if r['arm'] == 'LazyDrift-ASD')['token_ids'] = [2]
+    with pytest.raises(ValueError, match='decision mismatch'):
+        summarize_results(bad, refs)
+    bad = deepcopy(rows)
+    next(r for r in bad if r['arm'] == 'LazyDrift-ASD')['asd']['spent'] = .1
+    with pytest.raises(ValueError, match='decision mismatch'):
+        summarize_results(bad, refs)
+
+
+def test_report_rebuilds_compressed_publication_without_changing_payload(tmp_path, monkeypatch):
+    import json
+    from scripts import report_branch_drift_optimization as report
+    from scripts.run_branch_drift_optimization import summarize_results
+    rows, refs = study_matrix()
+    source = tmp_path/'source'
+    source.mkdir()
+    (source/'rows.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows), encoding='utf-8')
+    for name, value in dict(references=refs, analysis=summarize_results(rows, refs),
+                            provenance=dict(status='completed'), tasks=[], **{'cost-table': {}}).items():
+        (source/(name+'.json')).write_text(json.dumps(value), encoding='utf-8')
+    monkeypatch.setattr(report, 'ROOT', tmp_path)
+    args = ['report', '--input', 'source', '--output', 'public', '--report', 'report.md']
+    monkeypatch.setattr('sys.argv', args)
+    report.main()
+    before = {p.name: p.read_bytes() for p in (tmp_path/'public').iterdir()}
+    monkeypatch.setattr('sys.argv', ['report', '--input', 'public', '--output', 'public', '--report', 'report.md'])
+    report.main()
+    assert before == {p.name: p.read_bytes() for p in (tmp_path/'public').iterdir()}

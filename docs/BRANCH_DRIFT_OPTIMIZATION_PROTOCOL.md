@@ -31,3 +31,5 @@ CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. \
 ```
 
 运行于独立目录；先检查27B空闲，再暂时释放GPU1，结束自动恢复27B及适配器。GPU0聊天保持。结果追加至PROGRESS和独立报告。
+
+结果复核时补充计时定义：allocation_seconds从构树入口计时，可能包含尚未完成的Draft GPU工作，不能全归因CPU构树。gate/JS也只是相应CPU取值边界的wall，JS包含在gate中；本轮未额外同步作kernel级分项剖析，所有这些工作原样计入请求总wall。未记录的严格树构建时间不用0冒充测量。

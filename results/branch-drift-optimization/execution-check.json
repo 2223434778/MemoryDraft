@@ -1,0 +1,52 @@
+{
+  "services": {
+    "memorydraft-chat-inference": "active",
+    "memorydraft-chat-large-model": "active",
+    "memorydraft-chat-large-adapter": "active"
+  },
+  "large_model_health": "ok",
+  "physical_gpu_0_memory_MiB": 48380,
+  "physical_gpu_1_memory_MiB": 28574,
+  "source_commit": "2755f1466c8ebf18f0c3191fec600ff82202b643",
+  "source_archive_sha256": "5c01b18d15fd912eb81adb4788ec96034bdb7c19169b7aa5a8ec4c4c935ec2d5",
+  "local_full_archive_sha256": "c03ef1659074e58eaea3ac9968e139a7a61ae1cb7b6bb6523b80a6b6b52be878",
+  "delta_sha256": "1dffd15e43bb6c304686044f588065dc59b9c3950ce0b65eaa653939d267c626",
+  "transport": "Full SFTP upload incomplete, reconstructed verified 504 source payloads using immutable previous ZIP plus delta; ZIP metadata differs, file SHA equal",
+  "startup": "System Python3.8 Path.is_relative_to unavailable before extraction/services; launched with original project venv",
+  "transfer": {
+    "archive_sha256": "89b15145755aee5a1478267e94d605e6921a968089afc5939c63a327ae7b9c15",
+    "bytes": 2169432,
+    "parts": [
+      {
+        "name": "transfer-00.bin",
+        "bytes": 393216,
+        "sha256": "ba3adbcfbbbec9db09ab74e7d11562e802679d8e37033fa5b0733aeb65639b56"
+      },
+      {
+        "name": "transfer-01.bin",
+        "bytes": 393216,
+        "sha256": "817167444c950c3cfb63f871d2ec7e4866479cd70c40460f317ca21ef7ae6d63"
+      },
+      {
+        "name": "transfer-02.bin",
+        "bytes": 393216,
+        "sha256": "9c80f4b5c6ce8dbe57ec11eb3d1add1c5d37570df5b4cba5fe531567a8e3b931"
+      },
+      {
+        "name": "transfer-03.bin",
+        "bytes": 393216,
+        "sha256": "63f39edf39d4373492c46e3fde97255d7acb2a2c8ebdf3c493d37545b0867a6b"
+      },
+      {
+        "name": "transfer-04.bin",
+        "bytes": 393216,
+        "sha256": "5d2db2c3ceef971c3f772c5904f4e03440c871e1e2ec9f58e53cdca1fb1ceece"
+      },
+      {
+        "name": "transfer-05.bin",
+        "bytes": 203352,
+        "sha256": "1f85ba3f8d42f7970dc6808924a1988bf8dc769ef5823ceb86eb695e0df0ca30"
+      }
+    ]
+  }
+}

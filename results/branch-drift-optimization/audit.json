@@ -1,0 +1,11 @@
+{
+  "timed_generations": 924,
+  "matched_inputs": 66,
+  "eager_lazy_decision_pairs": 132,
+  "eager_lazy_tokens_paths_stop_and_budget_equal": true,
+  "input_snapshot_and_matrix_valid": true,
+  "server_analysis_rebuilt_equal": true,
+  "max_nodes": 32,
+  "cap": 2,
+  "raw_regret_check": "sum per block <= count*ln4; per-edge rule tested separately"
+}

@@ -1,4 +1,9 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/branch-drift-optimization/** -text
+results/branch-drift-optimization/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/branch-drift-optimization/**/*.xml -whitespace
+scripts/report_branch_drift_optimization.py text eol=lf
+docs/BRANCH_DRIFT_OPTIMIZATION*.md text eol=lf
 results/branch-drift-math-diagnosis/** -text
 results/branch-drift-math-diagnosis/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/branch-drift-math-diagnosis/**/*.xml -whitespace
