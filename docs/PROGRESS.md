@@ -1,3 +1,9 @@
+# 2026-10-29 — 按需JS、门控节点分配与独立token分歧对照实现
+
+- 用户授权三个方向直接实现。`BranchDriftVerifier`新增显式lazy检查，沿用最长/最低regret/最低索引排序，按赢家候选路径检查并缓存JS，保留eager默认；新增独立max_token_regret。`GateTreeConfig`使用qr*(qr/q0)的Draft启发式与单节点扩展，优先严格主干，最终Target覆盖/JS/EOS验证不放宽。不是校准的安全概率，节点重分配不保证整条轨迹一致率单调提高。
+- 新脚本`run_branch_drift_optimization`固定七组：ASD/严格树/原Drift/Lazy/GateTree/TokenCap/GateCap；B8/.25/M2、JS .1、raw regret ln4、分配指数1。62既有公开源任务/66匹配输入、自然4096/EOS及128/EOS，预定924计时；MATH12全部保留、HumanEval优先76，属于开发诊断子集，不称新保留集。协议`docs/BRANCH_DRIFT_OPTIMIZATION_PROTOCOL.md`。
+- 本机`.venv\Scripts\python.exe -m pytest -q tests/test_branch_drift.py tests/test_branch_drift_optimization.py tests/test_branch_drift_evaluation.py tests/test_budget_tree.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-drift-opt --junitxml=artifacts/drift-opt-tests.xml --tb=short`：98 passed/2 skipped，13.72s。含120随机树×连续两轮预算/停止/并列/JS阈值对照及四新入口。前一核心批49 passed/27.78s，测试批重叠不相加。GPU结果随后追加，不将单测称实测加速。
+
 # 2026-10-28实测补充 — MATH-500耗时归因
 
 - 用户要求检查新版MATH-500为何耗时久。新增离线`scripts/diagnose_branch_drift_math.py`、4个相关测试，读取已发布12题六组自然输出；没有生成新GPU样本、改参数、删题或改评分。新增`docs/BRANCH_DRIFT_MATH_DIAGNOSIS.md`及独立证据`results/branch-drift-math-diagnosis/analysis.json`，README补入口。原37个发布payload运行前后SHA不变。

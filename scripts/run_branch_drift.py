@@ -36,18 +36,19 @@ def execute(engine, record, arm, limit, tree_config):
     return row
 
 
-def main():
+def main(*, study='branch-drift', arms=ARMS, prefix_arms=PREFIX_ARMS,
+         execution=execute, summarize_results=summarize, select_records=records, settings=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', default='results/raw/branch-drift')
+    parser.add_argument('--output', default='results/raw/'+study)
     args = parser.parse_args()
     out = ROOT/args.output
     out.mkdir(parents=True, exist_ok=False)
-    pool = records(ROOT)
+    pool = select_records(ROOT)
     refs = references(ROOT, pool)
     indexed = {r['request_id']: r for r in refs}
     write(out/'references.json', refs)
     write(out/'tasks.json', pool)
-    info = dict(status='started', arms=ARMS, prefix_arms=PREFIX_ARMS,
+    info = dict(status='started', arms=arms, prefix_arms=prefix_arms, settings=settings,
         selected_tasks=len(pool), matched_inputs=len(refs), max_js=.10,
         selection='Deterministic subset of previously evaluated extension tasks; no outcome selection',
         reference_policy='Reuse prior strict AR tokens, never reuse latency as same-session timing',
@@ -63,8 +64,8 @@ def main():
         tree_config, cost_source = frozen_config(ROOT, int(os.environ['CUDA_VISIBLE_DEVICES']))
         write(out/'cost-table.json', cost_source)
         warm = dict(id='warmup', benchmark='gsm8k', question='What is 3 plus 4?', answer='#### 7')
-        for arm in ARMS:
-            append(out/'warmup.jsonl', execute(engine, warm, arm,64,tree_config))
+        for arm in arms:
+            append(out/'warmup.jsonl', execution(engine, warm, arm,64,tree_config))
         info['runtime'] = provenance(engine)
         info['started_utc'] = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())
         write(out/'provenance.json', info)
@@ -75,11 +76,11 @@ def main():
                           if task['benchmark'] == 'mtbench' else task)
                 ref = indexed[record['id']]
                 cache = {}
-                for stage, limit, arms in (('natural',4096,ARMS), ('prefix',128,PREFIX_ARMS)):
-                    order = list(arms)
+                for stage, limit, stage_arms in (('natural',4096,arms), ('prefix',128,prefix_arms)):
+                    order = list(stage_arms)
                     random.Random('branch-drift:'+record['id']+':'+stage).shuffle(order)
                     for arm in order:
-                        row = execute(engine,record,arm,limit,tree_config)
+                        row = execution(engine,record,arm,limit,tree_config)
                         row.update(stage=stage,repeat=0,stop_policy='natural-eos',
                             context_policy='shared frozen strict-AR first-turn history' if turn == 2 else 'original request')
                         if (row['prompt_sha256'],row['snapshot_id']) != (ref['prompt_sha256'],ref['snapshot_id']):
@@ -96,7 +97,7 @@ def main():
                                     last_task=record['id'], last_arm=arm, last_stage=stage)
                         write(out/'provenance.json',info)
             print(json.dumps(dict(completed=task_index+1,total=len(pool),benchmark=task['benchmark'],rows=len(rows))),flush=True)
-        write(out/'analysis.json',summarize(rows,refs))
+        write(out/'analysis.json',summarize_results(rows,refs))
         info.update(status='completed',completed_tasks=len(pool),finished_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()))
     except BaseException as error:
         info.update(status='failed',error=type(error).__name__+': '+str(error))

@@ -1,5 +1,6 @@
 """Package tracked source and small public evaluation inputs, never private assets."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import subprocess
@@ -7,13 +8,17 @@ import zipfile
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output', default='artifacts/branch-drift-source.zip')
+    args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     names = subprocess.check_output(['git','ls-files','-z','--','memorydraft','scripts','tests','configs',
-        'data/research/asd-paper-extension','docs/BRANCH_DRIFT_PROTOCOL.md','pyproject.toml',
+        'data/research/asd-paper-extension','docs/BRANCH_DRIFT_PROTOCOL.md',
+        'docs/BRANCH_DRIFT_OPTIMIZATION_PROTOCOL.md','pyproject.toml',
         'results/asd-budget-tree/publication.json','results/asd-budget-tree/part-1/calibration.json',
         'results/asd-paper-extension/part-0/references.jsonl.gz',
         'results/asd-paper-extension/part-1/references.jsonl.gz'],cwd=root).decode().split('\0')
-    path = root/'artifacts/branch-drift-source.zip'
+    path = root/args.output
     files = {}
     with zipfile.ZipFile(path,'x',zipfile.ZIP_DEFLATED) as archive:
         for name in sorted(n for n in names if n):

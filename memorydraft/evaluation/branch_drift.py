@@ -51,7 +51,7 @@ def prefix_length(left, right):
     return next((i for i, (a, b) in enumerate(zip(left, right)) if a != b), min(len(left), len(right)))
 
 
-def summarize(rows, refs):
+def summarize(rows, refs, *, arms=ARMS, prefix_arms=PREFIX_ARMS):
     indexed = {r['request_id']: r for r in refs}
     cells = {}
     for row in rows:
@@ -68,17 +68,17 @@ def summarize(rows, refs):
         if row['asd'] and not math.isclose(sum(b['regret'] for b in row['rounds']),
                                           row['asd']['spent'], abs_tol=1e-7):
             raise ValueError('Regret accounting mismatch')
-    expected = {(i, s, a) for i in indexed for s, arms in (('natural', ARMS), ('prefix', PREFIX_ARMS)) for a in arms}
+    expected = {(i, s, a) for i in indexed for s, stage_arms in (('natural', arms), ('prefix', prefix_arms)) for a in stage_arms}
     if set(cells) != expected:
         raise ValueError('Incomplete benchmark matrix')
     families = {}
     for benchmark in BENCHMARKS:
         ids = [i for i, r in indexed.items() if r['benchmark'] == benchmark]
         family = {}
-        for arm in ARMS:
+        for arm in arms:
             values = {}
-            for stage, arms in (('natural', ARMS), ('prefix', PREFIX_ARMS)):
-                if arm not in arms:
+            for stage, stage_arms in (('natural', arms), ('prefix', prefix_arms)):
+                if arm not in stage_arms:
                     continue
                 selected = [cells[i, stage, arm] for i in ids]
                 tokens = sum(len(r['token_ids']) for r in selected)
@@ -94,7 +94,7 @@ def summarize(rows, refs):
                         /max(1, min(len(r['token_ids']), len(indexed[r['request_id']]['token_ids']))) for r in selected),
                     relaxed=sum((r['asd'] or {}).get('relaxed_tokens', 0) for r in selected),
                     spent=sum((r['asd'] or {}).get('spent', 0.) for r in selected))
-                for baseline in arms:
+                for baseline in stage_arms:
                     pairs = [(r, cells[r['request_id'], stage, baseline]) for r in selected]
                     common = [(a, b) for a, b in pairs if stage == 'natural' or len(a['token_ids']) == len(b['token_ids']) == 128]
                     v[baseline] = dict(n=len(common), ratio=statistics.mean(a['latency_seconds']/b['latency_seconds']
@@ -108,7 +108,7 @@ def summarize(rows, refs):
                 counters = defaultdict(float)
                 for r in selected:
                     for k, value in (r['asd'] or {}).get('branch_drift', {}).items():
-                        if type(value) in (int, float) and k not in ('max_js', 'temperature'):
+                        if type(value) in (int, float) and k not in ('max_js', 'temperature', 'max_token_regret'):
                             if k.endswith('_max'):
                                 counters[k] = max(counters[k], value)
                             else:
