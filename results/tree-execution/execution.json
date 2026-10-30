@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "started_utc": "2026-10-30T09:55:38Z",
+  "archive_sha256": "8e9256d92e98e2d91deecccc783884b9e55fa8a18c3277f571f8a7deb06a8132",
+  "study": "tree-execution",
+  "source_files_verified_before": 521,
+  "initial_active_services": {
+    "memorydraft-chat-large-adapter.service": true,
+    "memorydraft-chat-large-model.service": true
+  },
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_tree_execution"
+  ],
+  "restore_exit_codes": {
+    "memorydraft-chat-large-model.service": 0,
+    "memorydraft-chat-large-adapter.service": 0
+  },
+  "finished_utc": "2026-10-30T10:09:02Z",
+  "source_files_verified_after": 521
+}

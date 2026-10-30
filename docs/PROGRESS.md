@@ -1,8 +1,14 @@
-# 2026-10-30 — 树验证执行优化：实现完成，GPU直接对比待执行
+# 2026-10-30 — 树验证执行优化：七任务198计时完成
+
+- 七任务66匹配输入×原高保真/仅去重/缓存+去重，共198次自然4096/EOS计时完成。132个优化/基线配对的token、文本、停止、逐轮接受/路径/raw regret/反馈、累计账本全部相同；本轮基线66个输出/输入身份复现上一轮。输出均23605token/3151轮/13个近似token，AR一致均56/66，全部原正确/错误保持。数学9/12、GSM8/8、HE7/8、MBPP4/8，MMLU仍为格式合同5/14，开放聊天未新增偏好评分。
+- 混合总wall：原255.793s、仅去重255.221s（−0.22%）、缓存+去重253.159s（−1.03%）；缓存相对仅去重总wall另省0.81%。缓存+去重逐任务配对均值：GSM−0.45%、MATH−1.02%、HE−0.29%、MBPP−0.57%、MMLU−0.10%、MT−0.85%、Alpaca−0.43%。单次既有开发输入的点估计，不承诺所有请求稳定提速；未将节点/接受路径或输出变化算成收益。
+- 峰allocated原38103703552B（35.49GiB）、缓存38509075456B（35.86GiB），增加约0.38GiB；131567次KV更新/5079次分配，扩容历史复制9365438464B。后者不是动态缓存流量的实测对照，不据此宣称带宽瓶颈占比。保留为显式工程选项，不继续密集扫描块大小。
+- 实际GPU源`ff50208b7c8912aae1cb118c015b006873f57729`，521文件前后SHA一致；根`/media/a6000/D/ZhaoBinHe/MemoryDraft/tree-execution-v1`，GPU1。实际ZIP SHA`8e9256d92e98e2d91deecccc783884b9e55fa8a18c3277f571f8a7deb06a8132`。生成2026-10-30 09:56:16–10:09:01 UTC，加载20.64s单列；A6000测试78 passed/8.72s，结束三服务active、27B health=ok。独立研究目录，线上旧版本及main/infra冻结版本保持。
+- 3分片/10载荷SHA核验，下载ZIP SHA`6cb3f40045952eb68785426694fbf373f65c5c5c4ad0bf494c7092b5c432be52`。本机重建analysis与服务器相同；公开结果`results/tree-execution`、报告`docs/TREE_EXECUTION_RESULTS.md`，复现`.venv\Scripts\python.exe -m scripts.report_tree_execution --input results/tree-execution`。报告脚本为完成后的后处理，不冒充GPU运行源。
 
 - 用户授权缓存追加优化和重复计算合并，保留当前最小增量接受策略。新增请求隔离BufferedDynamicCache（256token块、几何扩容、有效前缀view），兼容本机legacy与A6000层式缓存，沿用crop/选中树后缀整理。分数复用显式开启，默认路径保留；strict选择、JS门控、反馈和SSE复用同一次Target摘要，不改权重/精度/规则。
 - 本机`.venv\Scripts\python.exe -m pytest -q tests/test_buffered_cache.py tests/test_tree_execution.py tests/test_gate_min_gain.py tests/test_branch_drift_optimization.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-tree-execution --junitxml=artifacts/tree-execution-tests.xml --tb=short`：76 passed/2 skipped，14.71s。包含扩容/crop/覆盖拒绝尾部/树提交、真实Qwen小模型的输出/SSE/EOS/预算和反馈一致；跳过既有Linux外部组件，不将本机测试称GPU性能证据。
-- 协议`docs/TREE_EXECUTION_PROTOCOL.md`：七任务66输入，只比较原高保真/分数复用/缓存+复用的198次自然完整回答。任何输出差异都不作为本次保持输出的优化接纳；结果随后追加。
+- 协议`docs/TREE_EXECUTION_PROTOCOL.md`：七任务66输入，只比较原高保真/分数复用/缓存+复用的198次自然完整回答。任何输出差异都不作为本次保持输出的优化接纳；本轮实际差异0。
 
 # 2026-10-30 — 最小增量接受：七任务198计时完成
 

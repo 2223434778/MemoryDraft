@@ -1,0 +1,19 @@
+{
+  "reporter_sha256": "fddd340aba4c322c44498d2e501e80fb69299a74f37011b2804c523e35b65fe3",
+  "report_sha256": "747c6ddade80c9deda5e2d24fab8c29faab3597946d17539a32663a8cb6e459c",
+  "payloads": {
+    "analysis.json": "d11260152a8352dee34dec192b14596304a8b5be8f83bd0cbc74ba0a11299a85",
+    "audit.json": "9701c98f930e7b64768fdc2699007d62f2963b2bfb39f1c7dade6f17e1ae7493",
+    "cost-table.json": "d628848b79554059bb76db6ac74124e66cb2254640c18c60c69296657c54df9b",
+    "execution.json": "be4bf1f4903ac4de084957fef248f193187fa0b197c1fa31a9c006a47e09545f",
+    "local-tests.xml": "c4d78329d4282ca4e301c7cdcd84959d8e5edd0fc308444e2a3e20ed42a8baaa",
+    "provenance.json": "27b9b52b83b8044514f6d34dda116df902ebc9f9c1ce141a5612e8217e6afaca",
+    "references.json.gz": "af8ca4ce4a1697645227ef4f04804583401707a631618fe3f57702a4f4c7d55d",
+    "rows.jsonl.gz": "9651d2e57a16222b4a4cda5b1efbcd87e075ce63122b50fadb7ab64b0b64bf6a",
+    "server-tests.xml": "c246059cab99f316423dbbb497b168b7b624b7190ae99fc3465c1cd240dd19cf",
+    "source-manifest.json": "a87a5212fc2afdee13e59180d3e8806c54669f7b839042ec01a17caa62a0e183",
+    "tasks.json": "e202f83751575bc1800849d8aef296dc85ccdb728c6504b9fd599a2c8dd45ce5",
+    "totals.json": "9b600fc8becf849cfa8bbd8bcd0de576d0618bc1a3c80662589c42ecf78556b9",
+    "transfer.json": "bb7ce623343060a1c31c6ebbf8fd44d9962b94926eb57f7cd60b473cffbf0b26"
+  }
+}

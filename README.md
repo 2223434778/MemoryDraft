@@ -24,6 +24,8 @@
 
 **最小增量接受（2026-10-30）：**[198计时直接对比](docs/GATE_MIN_GAIN_RESULTS.md)。只在近似路径至少多推进2token时接受近似，AR一致49→56/66，总wall较原反馈增加2.88%，仍较ASD少13.67%；数学/代码正确集合保持，MATH仍9/12。作为更高保真档保留，原反馈及线上默认继续保留。
 
+**保持输出的执行优化（2026-10-30）：**[198计时对比](docs/TREE_EXECUTION_RESULTS.md)。分数复用总wall省0.22%，加按块扩容KV后共省1.03%，峰allocated增加约0.38GiB。132对输出/停止/路径/反馈/预算全部相同，AR一致保持56/66。可选缓存与旧实现均保留。
+
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 
 **DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。
