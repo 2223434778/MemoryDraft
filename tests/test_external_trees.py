@@ -5,7 +5,7 @@ import torch
 
 from memorydraft.evaluation.asd_paper import request_for
 from memorydraft.memory.store import Snapshot
-from scripts.run_external_trees import external_execute, result_tokens, load_upstreams, UPSTREAMS, collect_bastion
+from scripts.run_external_trees import external_execute, result_tokens, load_upstreams, UPSTREAMS, collect_bastion, analyze, ARMS
 
 
 @pytest.mark.parametrize('arm,budget', [('DDTree-32',31),('DDTree-128',127),('BASTION',None)])
@@ -77,3 +77,23 @@ def test_upstream_calibration_context_prefill_cannot_build_gradients():
         return 'probe'
     assert collect_bastion(SimpleNamespace(collect_calibration_data=collect),target='same-model')=='probe'
     assert observed==[(False,True)] and torch.is_grad_enabled()
+
+
+def test_analysis_keeps_strict_divergence_and_uses_same_session_ar():
+    rows=[]
+    for benchmark in ('gsm8k','math500','humaneval','mbpp','mmlu','mtbench','alpaca'):
+        for arm in ARMS:
+            changed=benchmark=='gsm8k' and arm=='DDTree-32'
+            rows.append(dict(request_id=benchmark,benchmark=benchmark,stage='natural',arm=arm,
+                token_ids=[2] if changed else [1],text='changed' if changed else 'same',
+                prompt_sha256='input',snapshot_id='snapshot',latency_seconds=2 if arm=='AR' else 1,
+                asd=None,rounds=[],max_new_tokens=4096,finish_reason='eos',
+                quality=dict(correct=not changed)))
+    result=analyze(rows)
+    assert result['strict_identity_differences']==[dict(id='gsm8k',arm='DDTree-32')]
+    value=result['families']['gsm8k']['DDTree-32']['natural']
+    assert value['correct']==0 and value['AR']['ratio']==.5
+    assert value['AR']['lost']==['gsm8k']
+    rows[-1]['prompt_sha256']='different'
+    with pytest.raises(ValueError,match='Input'):
+        analyze(rows)
