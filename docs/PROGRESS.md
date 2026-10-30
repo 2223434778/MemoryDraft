@@ -1,3 +1,9 @@
+# 2026-10-30 — 树验证执行优化：实现完成，GPU直接对比待执行
+
+- 用户授权缓存追加优化和重复计算合并，保留当前最小增量接受策略。新增请求隔离BufferedDynamicCache（256token块、几何扩容、有效前缀view），兼容本机legacy与A6000层式缓存，沿用crop/选中树后缀整理。分数复用显式开启，默认路径保留；strict选择、JS门控、反馈和SSE复用同一次Target摘要，不改权重/精度/规则。
+- 本机`.venv\Scripts\python.exe -m pytest -q tests/test_buffered_cache.py tests/test_tree_execution.py tests/test_gate_min_gain.py tests/test_branch_drift_optimization.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-tree-execution --junitxml=artifacts/tree-execution-tests.xml --tb=short`：76 passed/2 skipped，14.71s。包含扩容/crop/覆盖拒绝尾部/树提交、真实Qwen小模型的输出/SSE/EOS/预算和反馈一致；跳过既有Linux外部组件，不将本机测试称GPU性能证据。
+- 协议`docs/TREE_EXECUTION_PROTOCOL.md`：七任务66输入，只比较原高保真/分数复用/缓存+复用的198次自然完整回答。任何输出差异都不作为本次保持输出的优化接纳；结果随后追加。
+
 # 2026-10-30 — 最小增量接受：七任务198计时完成
 
 - 仅实现用户指定第一项，三组自然4096/EOS对比198计时完成。新方案AR完全一致49→56/66（74.24%→84.85%），总wall248.324→255.476秒（+2.88%，达到本轮≤3%目标），仍较ASD295.916秒少13.67%。全部在线构树、门控、反馈与提交成本计入计时；总时间比区别于逐题均值，单次开发测量不保证普遍上限。

@@ -170,10 +170,14 @@ class TreeASDVerifier(ASDVerifier):
 Every edge uses its parent's Target row; sibling states are never mixed.
 The local denominator is the original proposal horizon, independent of width.
 """
-    def __init__(self, config=ASDConfig(budget=8), *, record=False):
+    def __init__(self, config=ASDConfig(budget=8), *, record=False, reuse_scores=False):
         if config.value != "remaining" or config.selection != "longest":
             raise ValueError("Tree ASD currently supports the original remaining/longest rule")
         super().__init__(config, record=record)
+        if type(reuse_scores) is not bool:
+            raise ValueError('Score reuse must be a boolean')
+        self.reuse_scores = reuse_scores
+        self.current_scores = None
 
     def construction_budget(self) -> RegretBudget:
         return RegretBudget(self.config.budget, max(0., self.config.budget-self.spent),
@@ -202,10 +206,13 @@ The local denominator is the original proposal horizon, independent of width.
         candidates, tokens = proposed.tolist(), tree.tokens[0].tolist()
         if not all(math.isfinite(v) for v in (*maxima, *candidates)):
             raise ValueError("Non-finite Target tree scores")
+        if self.reuse_scores:
+            self.current_scores = dict(maxima=maxima, predictions=predictions, candidates=candidates, tokens=tokens)
         permissions = self.edge_permissions(tree, logits, predictions, tokens,
             horizon=horizon, stop_token_ids=stop_token_ids)
         paths, costs, counts, feasible = [[0]], [0.], [0], [True]
-        strict_path, _, _ = tree.select(top_ids.unsqueeze(0))
+        strict_path, _, _ = (tree.select_predictions(predictions, tokens) if self.reuse_scores
+                             else tree.select(top_ids.unsqueeze(0)))
         stop_at = next((j+1 for j, i in enumerate(strict_path) if tokens[i] in stop_token_ids), len(strict_path))
         strict_path = strict_path[:stop_at]
         for i, parent in enumerate(tree.parents[1:], 1):

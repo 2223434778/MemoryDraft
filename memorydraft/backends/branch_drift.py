@@ -158,8 +158,8 @@ def sibling_js(logits, pairs):
 
 
 class BranchDriftVerifier(TreeASDVerifier):
-    def __init__(self, config=ASDConfig(budget=8), *, drift=DriftConfig(), record=False):
-        super().__init__(config, record=record)
+    def __init__(self, config=ASDConfig(budget=8), *, drift=DriftConfig(), record=False, reuse_scores=False):
+        super().__init__(config, record=record, reuse_scores=reuse_scores)
         self.drift = drift
         self.counters = Counter()
         self.last_edges = []
@@ -170,11 +170,15 @@ class BranchDriftVerifier(TreeASDVerifier):
         pairs = []
         self.last_edges = []
         remaining = max(0., self.config.budget-self.spent)
-        parent_rows = torch.tensor(tree.parents[1:], device=logits.device, dtype=torch.long)
-        candidate_ids = tree.tokens[0, 1:]
-        best_ids = torch.tensor([predictions[p] for p in tree.parents[1:]], device=logits.device,dtype=torch.long)
-        best_scores = logits[parent_rows, best_ids].tolist()
-        proposed_scores = logits[parent_rows, candidate_ids].tolist()
+        if self.reuse_scores:
+            best_scores = [self.current_scores['maxima'][p] for p in tree.parents[1:]]
+            proposed_scores = self.current_scores['candidates']
+        else:
+            parent_rows = torch.tensor(tree.parents[1:], device=logits.device, dtype=torch.long)
+            candidate_ids = tree.tokens[0, 1:]
+            best_ids = torch.tensor([predictions[p] for p in tree.parents[1:]], device=logits.device,dtype=torch.long)
+            best_scores = logits[parent_rows, best_ids].tolist()
+            proposed_scores = logits[parent_rows, candidate_ids].tolist()
         regrets = [max(0., a-b) for a, b in zip(best_scores, proposed_scores)]
         for i, parent in enumerate(tree.parents[1:], 1):
             if tokens[i] == predictions[parent]:

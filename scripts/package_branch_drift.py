@@ -15,7 +15,7 @@ def main():
     names = subprocess.check_output(['git','ls-files','-z','--','memorydraft','scripts','tests','configs',
         'data/research/asd-paper-extension','docs/BRANCH_DRIFT_PROTOCOL.md',
         'docs/BRANCH_DRIFT_OPTIMIZATION_PROTOCOL.md','docs/GATE_WIDTH_PROTOCOL.md',
-        'docs/GATE_MIN_GAIN_PROTOCOL.md','pyproject.toml',
+        'docs/GATE_MIN_GAIN_PROTOCOL.md','docs/TREE_EXECUTION_PROTOCOL.md','pyproject.toml',
         'results/asd-budget-tree/publication.json','results/asd-budget-tree/part-1/calibration.json',
         'results/asd-paper-extension/part-0/references.jsonl.gz',
         'results/asd-paper-extension/part-1/references.jsonl.gz'],cwd=root).decode().split('\0')

@@ -30,7 +30,7 @@ class FeedbackWidthVerifier(BranchDriftVerifier):
         path, prediction, _ = result
         terminal = path[-1]
         depth = tree.depths[terminal]
-        tokens = tree.tokens[0].tolist()
+        tokens = self.current_scores['tokens'] if self.reuse_scores else tree.tokens[0].tolist()
         miss = False
         if depth < horizon and prediction not in stop_token_ids and tokens[terminal] not in stop_token_ids:
             ranks = tree.width_candidates[depth]

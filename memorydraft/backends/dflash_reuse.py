@@ -36,6 +36,7 @@ class ReuseGeneration:
     rounds: list[dict] = field(default_factory=list)
     feature_peak_tokens: int = 0
     buffer_flushes: int = 0
+    cache_statistics: dict = field(default_factory=dict)
 
 
 def _features(output, layers):
@@ -57,7 +58,8 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    incremental_stop: bool = False,
                    round_action: Callable[[int, int, tuple], str] | None = None,
                    tree_config=None, prefill=None,
-                   on_event: Callable[[dict], None] | None = None) -> ReuseGeneration:
+                   on_event: Callable[[dict], None] | None = None,
+                   cache_factory: Callable[[], DynamicCache] | None = None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -69,6 +71,8 @@ guided R may replace a block after its draft forward has already run.
         raise ValueError("Expected one nonempty token sequence")
     if max_new_tokens < 0 or any(route not in {"R", "D"} for route in route_sequence):
         raise ValueError("Invalid generation budget or diagnostic route")
+    if cache_factory is not None and prefill is not None:
+        raise ValueError('Custom KV storage cannot adopt a prefix-cache prefill')
     if round_action is not None and (matcher is not None or route_sequence or verify_length is not None
                                      or draft_block_size is not None or not trace):
         raise ValueError("Round allocation requires traced, exclusive model drafting")
@@ -97,7 +101,8 @@ guided R may replace a block after its draft forward has already run.
     ids = torch.full((1, limit + extra), draft.mask_token_id, device=input_ids.device, dtype=torch.long)
     ids[:, :prompt] = input_ids
     positions = torch.arange(ids.shape[1], device=ids.device).unsqueeze(0)
-    target_cache, draft_cache = DynamicCache(), DynamicCache()
+    factory = DynamicCache if cache_factory is None else cache_factory
+    target_cache, draft_cache = factory(), factory()
     def mark(name):
         return torch.profiler.record_function("memorydraft::" + name) if profile else nullcontext()
 
@@ -118,6 +123,13 @@ guided R may replace a block after its draft forward has already run.
     stops = set(stop_token_ids)
     published = prompt
 
+    def finish(end):
+        result.sequences = ids[:, :end].clone()
+        if cache_factory is not None:
+            result.cache_statistics = {name: cache.summary() for name, cache in
+                (('target', target_cache), ('draft', draft_cache)) if hasattr(cache, 'summary')}
+        return result
+
     def publish(end):
         nonlocal published
         if on_tokens and end > published:
@@ -130,8 +142,7 @@ guided R may replace a block after its draft forward has already run.
 
     publish(prompt + 1)
     if int(ids[0, prompt]) in stops:
-        result.sequences = ids[:, :prompt + 1].clone()
-        return result
+        return finish(prompt + 1)
     while start + 1 < limit:
         if should_stop and should_stop():
             from memorydraft.runtime.contracts import RequestCancelled
@@ -242,7 +253,8 @@ guided R may replace a block after its draft forward has already run.
             output = target(verify_block, position_ids=verify_positions,
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True, **verify_kwargs)
         with mark("accept_decision"):
-            posterior = output.logits.argmax(dim=-1)
+            reuse_scores = tree is not None and verifier is not None and verifier.reuse_scores
+            posterior = None if reuse_scores else output.logits.argmax(dim=-1)
             decision = None
             if tree is not None:
                 if verifier is None:
@@ -315,7 +327,7 @@ guided R may replace a block after its draft forward has already run.
                 committed = committed[:ended + 1]
             visible = min(accepted, len(committed))
             selected_path = path[:visible + 1] if tree is not None else None
-            predictions = posterior[0].tolist()
+            predictions = verifier.current_scores['predictions'] if reuse_scores else posterior[0].tolist()
             if tree is None:
                 relaxed = [i for i, token in enumerate(committed[:visible]) if token != predictions[i]]
             else:
@@ -336,7 +348,5 @@ guided R may replace a block after its draft forward has already run.
                 generated = ids[0, checked_from:available].tolist()
                 ended = next((i for i, token in enumerate(generated) if token in stops), None)
                 if ended is not None:
-                    result.sequences = ids[:, :checked_from + ended + 1].clone()
-                    return result
-    result.sequences = ids[:, :min(start + 1, limit)].clone()
-    return result
+                    return finish(checked_from + ended + 1)
+    return finish(min(start + 1, limit))

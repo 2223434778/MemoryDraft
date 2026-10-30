@@ -492,3 +492,10 @@ scripts/*gate_min_gain*.py text eol=lf
 tests/test_gate_min_gain.py text eol=lf
 docs/GATE_MIN_GAIN*.md text eol=lf
 results/gate-min-gain/** -text
+
+memorydraft/backends/buffered_cache.py text eol=lf
+scripts/*tree_execution*.py text eol=lf
+tests/test_tree_execution.py text eol=lf
+tests/test_buffered_cache.py text eol=lf
+docs/TREE_EXECUTION*.md text eol=lf
+results/tree-execution/** -text

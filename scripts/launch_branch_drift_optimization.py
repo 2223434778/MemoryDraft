@@ -25,7 +25,7 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--archive-sha', required=True)
     parser.add_argument('--owned', action='store_true')
-    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width', 'gate-min-gain'), default='branch-drift-optimization')
+    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width', 'gate-min-gain', 'tree-execution'), default='branch-drift-optimization')
     args = parser.parse_args()
     root = args.root.resolve()
     python = root.parent/'.venv-dflash/bin/python'
@@ -79,6 +79,11 @@ def main():
             commands[0] = [str(python), '-m', 'pytest', '-q', 'tests/test_gate_min_gain.py',
                 'tests/test_gate_width.py', 'tests/test_budget_tree.py', 'tests/test_branch_drift.py',
                 '--basetemp', 'artifacts/pytest-server-min-gain', '--junitxml=server-tests.xml', '--tb=short']
+        if args.study == 'tree-execution':
+            commands[0] = [str(python), '-m', 'pytest', '-q', 'tests/test_buffered_cache.py',
+                'tests/test_tree_execution.py', 'tests/test_gate_min_gain.py', 'tests/test_branch_drift_optimization.py',
+                'tests/test_dflash_reuse.py', '--basetemp', 'artifacts/pytest-server-tree-execution',
+                '--junitxml=server-tests.xml', '--tb=short']
         for command in commands:
             info['command'] = command
             save()

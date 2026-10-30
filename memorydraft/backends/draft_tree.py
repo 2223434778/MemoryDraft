@@ -42,6 +42,9 @@ class DraftTree:
 
     def select(self, posterior: torch.Tensor):
         predictions, tokens = posterior[0].tolist(), self.tokens[0].tolist()
+        return self.select_predictions(predictions, tokens)
+
+    def select_predictions(self, predictions, tokens):
         children = [[] for _ in tokens]
         for node, parent in enumerate(self.parents[1:], 1):
             children[parent].append(node)
