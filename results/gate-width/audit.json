@@ -1,0 +1,14 @@
+{
+  "timings": 792,
+  "matched_inputs": 66,
+  "matrix_inputs_snapshots_budget_valid": true,
+  "gate_parameters_unchanged": true,
+  "feedback_past_four_rounds_replayed": true,
+  "server_analysis_rebuilt_equal": true,
+  "strict_ar_differences": [],
+  "previous_baseline_identity": {
+    "pairs": 396,
+    "differences": [],
+    "timing_policy": "Only compare identities; old latency is not a same-session baseline"
+  }
+}

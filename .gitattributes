@@ -1,4 +1,10 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
+results/gate-width/** -text
+results/gate-width/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/gate-width/**/*.xml -whitespace
+docs/GATE_WIDTH*.md text eol=lf
+scripts/report_gate_width.py text eol=lf
+scripts/check_gate_width.py text eol=lf
 results/branch-drift-gsm-diagnosis/** -text
 docs/BRANCH_DRIFT_GSM_DIAGNOSIS.md text eol=lf
 scripts/diagnose_branch_drift_gsm.py text eol=lf

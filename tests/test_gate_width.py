@@ -88,5 +88,68 @@ def test_runtime_width_dispatch_and_request_local_snapshot(engine, arm):
     if arm == 'WidthFeedback-ASD':
         assert penalties[0] == 1. and all(p in (0., .5, 1.) for p in penalties)
         assert row['asd']['width_feedback']['blocks'] == len(row['rounds'])
+        history = []
+        for block in row['rounds']:
+            meta = block['tree_budget']
+            count = sum(history[-4:])
+            assert meta['gate_penalty'] == (1. if not count else .5 if count == 1 else 0.)
+            history.append(meta['width_recoverable_miss'])
     else:
         assert set(penalties) == ({.5} if arm == 'WidthHalf-ASD' else {0.})
+
+
+def width_matrix():
+    from copy import deepcopy
+    from scripts.run_gate_width import ARMS
+    from tests.test_branch_drift_optimization import study_matrix
+    original, refs = study_matrix()
+    for ref in refs:
+        ref.update(text='same', finish_reason='eos')
+    rows = []
+    for ref in refs:
+        for stage in ('natural', 'prefix'):
+            template = next(r for r in original if r['request_id'] == ref['request_id'] and r['stage'] == stage)
+            for arm in ARMS:
+                row = deepcopy(template)
+                row['arm'] = arm
+                row['text'] = 'same'
+                row['asd']['branch_drift'] = dict(max_js=.1, max_token_regret=math.log(4),
+                                                  protect_stop=True, evaluation='lazy')
+                rows.append(row)
+    return rows, refs
+
+
+def test_width_audit_rejects_changed_gate_and_future_feedback():
+    from copy import deepcopy
+    from scripts.run_gate_width import summarize_results
+    rows, refs = width_matrix()
+    assert summarize_results(rows, refs)['timed_generations'] == 84
+    bad = deepcopy(rows)
+    next(r for r in bad if r['arm'] == 'WidthZero-ASD')['asd']['branch_drift']['max_js'] = .2
+    with pytest.raises(ValueError, match='fidelity'):
+        summarize_results(bad, refs)
+    bad = deepcopy(rows)
+    next(r for r in bad if r['arm'] == 'WidthFeedback-ASD')['rounds'] = [dict(tree_nodes=8,
+        tree_budget=dict(gate_penalty=.5, width_recoverable_miss=True))]
+    with pytest.raises(ValueError, match='future'):
+        summarize_results(bad, refs)
+
+
+def test_width_report_rebuilds_compressed_inputs(tmp_path, monkeypatch):
+    import json
+    from scripts import report_gate_width as report
+    from scripts.run_gate_width import summarize_results
+    rows, refs = width_matrix()
+    source = tmp_path/'source'
+    source.mkdir()
+    (source/'rows.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows), encoding='utf-8')
+    for name, value in dict(references=refs, analysis=summarize_results(rows, refs),
+                            provenance=dict(status='completed'), tasks=[], **{'cost-table': {}}).items():
+        (source/(name+'.json')).write_text(json.dumps(value), encoding='utf-8')
+    monkeypatch.setattr(report, 'ROOT', tmp_path)
+    monkeypatch.setattr('sys.argv', ['report', '--input', 'source', '--output', 'public', '--report', 'report.md'])
+    report.main()
+    before = {p.name: p.read_bytes() for p in (tmp_path/'public').iterdir()}
+    monkeypatch.setattr('sys.argv', ['report', '--input', 'public', '--output', 'public', '--report', 'report.md'])
+    report.main()
+    assert before == {p.name: p.read_bytes() for p in (tmp_path/'public').iterdir()}

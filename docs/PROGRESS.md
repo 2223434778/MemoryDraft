@@ -1,4 +1,14 @@
-# 2026-10-30 — 保真门控固定的宽度对照实现与实测启动
+# 2026-10-30 — 保真门控固定的宽度对照：792计时完成
+
+- 完成同一62源/66匹配输入、六组自然4096/EOS和128/EOS共792行。数据/门槛/预算/固定系数与逐轮反馈历史重放通过，本机独立analysis与服务器一致；ASD/严格树/GateCap的396个自然/前缀请求token/text/停止/输入身份全部复现前轮，旧时延不作为本轮同窗基线。严格树66/66与冻结AR一致。
+- GSM当前组合337轮、平均19.30节点；固定.5为337/23.27，固定0为322/28.52，反馈323/25.44。反馈较当前组合自然快1.44%，仍慢ASD5.38%，正确均8/8；AR一致6→5。七个同输出请求304→289轮、配对快2.52%。750仍395token/4.42s，ASD231/3.16s；覆盖改善未消除较长输出成本，不宣称GSM已反超。
+- MATH三新方案均只新增101正确、无新增丢分，正确8→9/12且截断1→0。反馈较ASD/当前组合/严格树自然分别省10.83%/3.80%/3.24%，AR一致保持7/12；101由4096/31.55s截断错误→2194/19.23s正常正确。372仍824正常正确。反馈MATH共同128却慢当前组合0.94%，完整收益含更短正确路径，不全部归为每token效率。
+- 反馈相对ASD自然GSM+5.38%、MATH−10.83%、HE−4.12%、MBPP−3.58%、MMLU−3.84%、MT−12.70%、Alpaca−3.25%；相对旧组合除HE慢0.73%外其余更快。AR一致ASD14/66、旧组合50、固定.5为47、固定0为48、反馈49。MBPP4/8保持旧组合成绩，仍低于ASD5/8；MMLU仅字母合同5/14，不称知识提升；开放任务无新增偏好评分。
+- 自然wall总和旧组合264.956→反馈248.690s（−6.14%，混合工作量口径），输出25036→22978、轮3315→3071；反馈0/.5/1实际1259/1141/671轮。反馈更新摘要约0.086s，不包含所有快照/构树开销，全部在线工作仍计入wall。保留反馈为数学等场景候选，不继续密集扫GSM系数、不按数据集标签新增线上路由。
+- 正式源3ccf98e0b60199be140f3f39fdd1326e8d2e3c29，510文件前后SHA一致，gate-width-v2/GPU1，07:08:08–07:43:01 UTC生成，加载20.44s、峰allocated38620201472B。实际ZIP SHA9c171e63b5034260c2a5ad984565b61d79aa98edac95f65cd41788638a9c82f5。v1缺少artifacts父目录的预检失败已保留，正式v2服务器134 passed/8.93s；服务finally恢复exit0、三服务active、27B health=ok。
+- 下载ZIP SHAd26c5586fc20cebbc26eb73135f7af1959a17107b1c81f7f3b7f29ebcbfa8833，5分片/12载荷核验。本机新增元数据3 passed/9.28s、后处理2 passed/9.20s、最终`.venv\Scripts\python.exe -m pytest -q tests/test_gate_width.py --basetemp artifacts/pytest-gate-width-final-audit --junitxml=artifacts/gate-width-final-audit.xml --tb=short`：12 passed/9.03s。测试重叠不相加。后处理合成引用缺失text字段修复后通过，不影响GPU生成。
+- `.venv\Scripts\python.exe -m scripts.report_gate_width`从压缩输入独立重建；发布`results/gate-width`及`docs/GATE_WIDTH_FINDINGS.md`/`GATE_WIDTH_RESULTS.md`，复核入口`python -m scripts.check_gate_width`。新报告/测试追加不冒充GPU执行源。默认线上和旧infra/研究版本保持。
+- 最终`.venv\Scripts\python.exe -m scripts.check_gate_width --record`核对792/66、396旧基线身份、严格AR66、510源文件、7个相对链接、全payload SHA、压缩公开数据重建逐字节一致与main/infra冻结引用。记录`final-check.json`后刷新publication，再用不带--record的同命令复核。
 
 - 用户授权根据GSM慢因直接实现/实测。固定惩罚1/.5/0，加上基于过去4轮可覆盖漏选的反馈组；共ASD、严格成本树、GateCap、WidthHalf、WidthZero、WidthFeedback六组。沿用上轮62源/66输入，七类任务自然4096/EOS与128/EOS，共预定792计时；规则预先固定于`GATE_WIDTH_PROTOCOL.md`。
 - `FeedbackTreeConfig`通过不可变WidthBudget接收当前请求的宽度快照；反馈复用已提交终点的Target恢复token，若属Draft第2–4候选且未覆盖则记miss，过去4轮0/1/≥2次miss选择下一轮惩罚1/.5/0。EOS/超horizon/候选池外不触发，使用当前请求历史，不多调Target。JS/.25原ASDgate/B8/cap2/raw regret ln4/真实兄弟覆盖/EOS保护/32节点均保持。

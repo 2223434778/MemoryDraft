@@ -1,0 +1,45 @@
+{
+  "services": {
+    "memorydraft-chat-inference": "active",
+    "memorydraft-chat-large-model": "active",
+    "memorydraft-chat-large-adapter": "active"
+  },
+  "large_model_health": "ok",
+  "physical_gpu_0_memory_MiB": 48380,
+  "physical_gpu_1_memory_MiB": 28574,
+  "source_commit": "3ccf98e0b60199be140f3f39fdd1326e8d2e3c29",
+  "source_archive_sha256": "9c171e63b5034260c2a5ad984565b61d79aa98edac95f65cd41788638a9c82f5",
+  "local_source_archive_sha256": "3e030edce44209f9cb565ff469f90d0c27a5b0f603a2b5e5a4d974d77ec70aa2",
+  "transport": {
+    "archive_sha256": "d26c5586fc20cebbc26eb73135f7af1959a17107b1c81f7f3b7f29ebcbfa8833",
+    "bytes": 1861948,
+    "parts": [
+      {
+        "name": "transfer-00.bin",
+        "bytes": 393216,
+        "sha256": "8d38f07baad7722427b1a2df50cff2daaefc5cb06a296dfacda89416fbb6601b"
+      },
+      {
+        "name": "transfer-01.bin",
+        "bytes": 393216,
+        "sha256": "e9f9917748045288ff296e747a9e687600b272b682fdca39f3eb6ac9f9010f97"
+      },
+      {
+        "name": "transfer-02.bin",
+        "bytes": 393216,
+        "sha256": "2922ed41b2be168a8e5e8e5df5f8e12d91eccd94ee099737240dcc36dd66d1e5"
+      },
+      {
+        "name": "transfer-03.bin",
+        "bytes": 393216,
+        "sha256": "f671b7df208273cf2ea39ad5b48d1cead77dadeb5e1aa0448f44555182a96d47"
+      },
+      {
+        "name": "transfer-04.bin",
+        "bytes": 289084,
+        "sha256": "9a770b1b14692cf31cc397da898043c136b1acf1e05e70f5307cdab09e5ba24a"
+      }
+    ]
+  },
+  "source_policy": "All 510 reconstructed payload SHA match local source manifest; ZIP metadata differs"
+}

@@ -20,6 +20,8 @@
 
 **GSM8K耗时诊断（2026-10-30）：**[逐题与树分配归因](docs/BRANCH_DRIFT_GSM_DIAGNOSIS.md)说明组合多输出7.21%、TPS基本不变，750题贡献净新增wall的77.56%；另有树变窄后验证轮数增加的优化空间。未重跑GPU、未删除慢题或放宽验证。
 
+**宽度对照与反馈调宽（2026-10-30）：**[结论](docs/GATE_WIDTH_FINDINGS.md)与[792计时全表](docs/GATE_WIDTH_RESULTS.md)。门控不变，反馈GSM验证337→323轮、较旧组合快1.44%，仍慢ASD5.38%；MATH较ASD快10.83%、正确8→9/12且无截断。全66输入AR一致ASD14→反馈49，旧组合50；保留各任务取舍与原方案。
+
 **算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
 
 **DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。

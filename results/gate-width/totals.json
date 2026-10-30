@@ -1,0 +1,604 @@
+{
+  "gsm8k": {
+    "ASD": {
+      "seconds": 24.169527001911774,
+      "tokens": 2412,
+      "calls": 328,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 25.016458170255646,
+      "tokens": 2586,
+      "calls": 315,
+      "mean_nodes": 28.263492063492063,
+      "mean_depth": 9.682539682539682,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 25.976778419921175,
+      "tokens": 2586,
+      "calls": 337,
+      "mean_nodes": 19.29673590504451,
+      "mean_depth": 9.682492581602373,
+      "penalty_counts": [
+        0,
+        0,
+        337
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 26.381930402014405,
+      "tokens": 2581,
+      "calls": 337,
+      "mean_nodes": 23.272997032640948,
+      "mean_depth": 9.516320474777448,
+      "penalty_counts": [
+        0,
+        337,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 25.71110372012481,
+      "tokens": 2563,
+      "calls": 322,
+      "mean_nodes": 28.518633540372672,
+      "mean_depth": 9.444099378881987,
+      "penalty_counts": [
+        322,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 25.56062566000037,
+      "tokens": 2593,
+      "calls": 323,
+      "mean_nodes": 25.436532507739937,
+      "mean_depth": 9.674922600619196,
+      "penalty_counts": [
+        167,
+        119,
+        37
+      ],
+      "recoverable_misses": 131,
+      "feedback_seconds": 0.008982069324702024
+    }
+  },
+  "math500": {
+    "ASD": {
+      "seconds": 139.5640452906955,
+      "tokens": 15313,
+      "calls": 1740,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 111.4388945759274,
+      "tokens": 12810,
+      "calls": 1332,
+      "mean_nodes": 24.135135135135137,
+      "mean_depth": 9.744744744744745,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 111.9422164533753,
+      "tokens": 13592,
+      "calls": 1369,
+      "mean_nodes": 17.201607012417824,
+      "mean_depth": 10.287070854638422,
+      "penalty_counts": [
+        0,
+        0,
+        1369
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 108.69139422220178,
+      "tokens": 12281,
+      "calls": 1329,
+      "mean_nodes": 19.357411587659893,
+      "mean_depth": 9.542513167795335,
+      "penalty_counts": [
+        0,
+        1329,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 109.18621569825336,
+      "tokens": 12596,
+      "calls": 1300,
+      "mean_nodes": 24.338461538461537,
+      "mean_depth": 9.785384615384615,
+      "penalty_counts": [
+        1300,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 99.50365810212679,
+      "tokens": 11681,
+      "calls": 1216,
+      "mean_nodes": 21.76480263157895,
+      "mean_depth": 9.837171052631579,
+      "penalty_counts": [
+        523,
+        443,
+        250
+      ],
+      "recoverable_misses": 426,
+      "feedback_seconds": 0.0344492478761822
+    }
+  },
+  "humaneval": {
+    "ASD": {
+      "seconds": 6.111283013829961,
+      "tokens": 660,
+      "calls": 70,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 5.691258386941627,
+      "tokens": 613,
+      "calls": 60,
+      "mean_nodes": 26.85,
+      "mean_depth": 11.5,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 5.754741020034999,
+      "tokens": 613,
+      "calls": 62,
+      "mean_nodes": 19.56451612903226,
+      "mean_depth": 11.741935483870968,
+      "penalty_counts": [
+        0,
+        0,
+        62
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 5.726253323955461,
+      "tokens": 613,
+      "calls": 61,
+      "mean_nodes": 22.60655737704918,
+      "mean_depth": 11.60655737704918,
+      "penalty_counts": [
+        0,
+        61,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 5.723222608678043,
+      "tokens": 613,
+      "calls": 60,
+      "mean_nodes": 26.85,
+      "mean_depth": 11.5,
+      "penalty_counts": [
+        60,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 5.800972506636754,
+      "tokens": 613,
+      "calls": 62,
+      "mean_nodes": 22.548387096774192,
+      "mean_depth": 11.806451612903226,
+      "penalty_counts": [
+        18,
+        18,
+        26
+      ],
+      "recoverable_misses": 18,
+      "feedback_seconds": 0.0017231390811502934
+    }
+  },
+  "mbpp": {
+    "ASD": {
+      "seconds": 6.56532373954542,
+      "tokens": 338,
+      "calls": 83,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 6.7767706795129925,
+      "tokens": 363,
+      "calls": 81,
+      "mean_nodes": 25.91358024691358,
+      "mean_depth": 6.654320987654321,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 7.00556479813531,
+      "tokens": 363,
+      "calls": 86,
+      "mean_nodes": 17.313953488372093,
+      "mean_depth": 6.872093023255814,
+      "penalty_counts": [
+        0,
+        0,
+        86
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 6.924933332717046,
+      "tokens": 363,
+      "calls": 84,
+      "mean_nodes": 20.011904761904763,
+      "mean_depth": 6.809523809523809,
+      "penalty_counts": [
+        0,
+        84,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 6.816327502252534,
+      "tokens": 363,
+      "calls": 81,
+      "mean_nodes": 25.91358024691358,
+      "mean_depth": 6.654320987654321,
+      "penalty_counts": [
+        81,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 6.811130871297792,
+      "tokens": 363,
+      "calls": 82,
+      "mean_nodes": 21.585365853658537,
+      "mean_depth": 6.829268292682927,
+      "penalty_counts": [
+        30,
+        21,
+        31
+      ],
+      "recoverable_misses": 28,
+      "feedback_seconds": 0.0023098106030374765
+    }
+  },
+  "mmlu": {
+    "ASD": {
+      "seconds": 24.135842497926205,
+      "tokens": 2211,
+      "calls": 310,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 24.516145661706105,
+      "tokens": 2419,
+      "calls": 293,
+      "mean_nodes": 26.55631399317406,
+      "mean_depth": 9.255972696245733,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 23.568316837772727,
+      "tokens": 2284,
+      "calls": 290,
+      "mean_nodes": 17.720689655172414,
+      "mean_depth": 9.341379310344827,
+      "penalty_counts": [
+        0,
+        0,
+        290
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 23.58330224477686,
+      "tokens": 2294,
+      "calls": 286,
+      "mean_nodes": 20.954545454545453,
+      "mean_depth": 9.223776223776223,
+      "penalty_counts": [
+        0,
+        286,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 22.788982056081295,
+      "tokens": 2174,
+      "calls": 270,
+      "mean_nodes": 26.451851851851853,
+      "mean_depth": 9.092592592592593,
+      "penalty_counts": [
+        270,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 22.60667958552949,
+      "tokens": 2174,
+      "calls": 271,
+      "mean_nodes": 22.922509225092252,
+      "mean_depth": 9.180811808118081,
+      "penalty_counts": [
+        109,
+        102,
+        60
+      ],
+      "recoverable_misses": 100,
+      "feedback_seconds": 0.007513011340051889
+    }
+  },
+  "mtbench": {
+    "ASD": {
+      "seconds": 55.95310745690949,
+      "tokens": 3639,
+      "calls": 719,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 50.93494888511486,
+      "tokens": 3589,
+      "calls": 609,
+      "mean_nodes": 23.72906403940887,
+      "mean_depth": 6.55008210180624,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 51.17202543094754,
+      "tokens": 3538,
+      "calls": 635,
+      "mean_nodes": 14.930708661417324,
+      "mean_depth": 6.788976377952756,
+      "penalty_counts": [
+        0,
+        0,
+        635
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 48.51181752374396,
+      "tokens": 3504,
+      "calls": 593,
+      "mean_nodes": 18.17369308600337,
+      "mean_depth": 6.822934232715008,
+      "penalty_counts": [
+        0,
+        593,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 48.500253182137385,
+      "tokens": 3589,
+      "calls": 577,
+      "mean_nodes": 24.138648180242633,
+      "mean_depth": 6.8214904679376085,
+      "penalty_counts": [
+        577,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 50.365714565850794,
+      "tokens": 3545,
+      "calls": 609,
+      "mean_nodes": 19.88341543513957,
+      "mean_depth": 6.699507389162561,
+      "penalty_counts": [
+        253,
+        240,
+        116
+      ],
+      "recoverable_misses": 213,
+      "feedback_seconds": 0.017231524223461747
+    }
+  },
+  "alpaca": {
+    "ASD": {
+      "seconds": 39.89217269956134,
+      "tokens": 1843,
+      "calls": 561,
+      "mean_nodes": null,
+      "mean_depth": null,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "BudgetTree": {
+      "seconds": 38.332422371255234,
+      "tokens": 2011,
+      "calls": 506,
+      "mean_nodes": 24.729249011857707,
+      "mean_depth": 5.027667984189724,
+      "penalty_counts": [
+        0,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "GateCap-ASD": {
+      "seconds": 39.53605192061514,
+      "tokens": 2060,
+      "calls": 536,
+      "mean_nodes": 15.23134328358209,
+      "mean_depth": 5.2388059701492535,
+      "penalty_counts": [
+        0,
+        0,
+        536
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthHalf-ASD": {
+      "seconds": 40.418724230024964,
+      "tokens": 2104,
+      "calls": 542,
+      "mean_nodes": 18.05350553505535,
+      "mean_depth": 5.156826568265683,
+      "penalty_counts": [
+        0,
+        542,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthZero-ASD": {
+      "seconds": 40.03347939811647,
+      "tokens": 2087,
+      "calls": 525,
+      "mean_nodes": 24.44,
+      "mean_depth": 5.055238095238095,
+      "penalty_counts": [
+        525,
+        0,
+        0
+      ],
+      "recoverable_misses": 0,
+      "feedback_seconds": 0
+    },
+    "WidthFeedback-ASD": {
+      "seconds": 38.04091352131218,
+      "tokens": 2009,
+      "calls": 508,
+      "mean_nodes": 19.383858267716537,
+      "mean_depth": 5.177165354330708,
+      "penalty_counts": [
+        159,
+        198,
+        151
+      ],
+      "recoverable_misses": 139,
+      "feedback_seconds": 0.014266968471929431
+    }
+  }
+}

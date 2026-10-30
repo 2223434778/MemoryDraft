@@ -26,3 +26,5 @@ CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. \
 ```
 
 运行于独立gate-width-v1目录。确认27B无活动生成后暂时释放GPU1，finally恢复原先active服务；GPU0聊天保持。旧实验、默认服务与infra冻结引用保留。
+
+执行补充：v1在生成前因pytest临时目录父目录缺失失败，保留失败元数据；补齐启动脚本后实际运行于gate-width-v2。正式源3ccf98e，792计时及结果见[结论](GATE_WIDTH_FINDINGS.md)和[完整表](GATE_WIDTH_RESULTS.md)。数据、门槛、系数和反馈规则未因预检失败改变。
