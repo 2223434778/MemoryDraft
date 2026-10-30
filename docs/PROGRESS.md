@@ -1,5 +1,7 @@
 # 2026-10-30 — Infra v0.5接入：运行时完成，实机验收待执行
 
+- 完整回归1299 passed/7 skipped/227.78s，原生环境命令`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/pytest-infra-v05-full --junitxml=artifacts/infra-v05-full.xml --tb=short`。A6000 v1专项145 passed/11.46s，七研究对照、benchmark、取消/HTTP/SSE均通过；末尾CLI子进程因父进程仍持有模型造成双份驻留OOM。仅调整验收脚本先运行独立CLI，再创建父engine；不改产品模型、策略或预算。v1失败source/日志保留，v2新隔离目录完成后续验收。
+
 - 用户授权将最新高保真反馈树与执行优化接入infra。新增TreePolicySpec、显式tree_policy配置和基础配置文件；BudgetTree-ASD在配置启用时使用MinGainFeedbackVerifier/FeedbackTreeConfig/分数复用/按块KV，不patch研究脚本。其他方法与空tree_policy的v0.4行为保留。预算、宽度反馈与缓存按请求隔离。
 - 健康/SSE start与complete元数据公开策略及缓存计数；拒绝请求级覆盖。成本资产新增策略环境绑定（仅新配置），合成校准使用匹配缓存和构树；旧资产schema/环境保持。运行时变更策略需重载，buffered KV与公共前缀缓存组合在配置阶段拒绝。
 - 本机原生环境专项66 passed/9.21s，命令`.venv\Scripts\python.exe -m pytest -q tests/test_runtime_tree_policy.py tests/test_runtime_cost_tree.py tests/test_runtime_asd.py tests/test_buffered_cache.py tests/test_tree_execution.py --basetemp artifacts/pytest-infra-fidelity-native --junitxml=artifacts/infra-fidelity-targeted-native.xml --tb=short`。初始研究对照测试用了不同prompt模板，已统一为同一request_for；一次沙箱HTTP测试挂起，终止本次pytest后在原生环境通过。推理规则未放宽。

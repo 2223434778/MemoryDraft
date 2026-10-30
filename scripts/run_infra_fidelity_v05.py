@@ -37,15 +37,23 @@ def main():
             '--output',str(out/'costs.json'),'--runtime-config',str(out/'runtime.json')],
             check=True,stdout=log,stderr=subprocess.STDOUT,timeout=300)
     config = RuntimeConfig.load(out/'runtime.json')
+    records = select_records(ROOT)
+    selected = []
+    for task in ('gsm8k','math500','humaneval','mbpp','mmlu','mtbench','alpaca'):
+        record = next(r for r in records if r['benchmark']==task)
+        selected.append(conversation_record(record,1,None) if task=='mtbench' else record)
+    requests = [request_for(r,128) for r in selected]
+    request_path = out/'request.json'
+    write_json(request_path,asdict(requests[-1]))
+    # Run the independent CLI before retaining a parent engine on the GPU.
+    with (out/'cli.log').open('x') as log:
+        subprocess.run([sys.executable,'-m','memorydraft','infer','--config',str(out/'runtime.json'),
+            '--request',str(request_path),'--method','BudgetTree-ASD','--output',str(out/'cli-answer.json')],
+            check=True,stdout=log,stderr=subprocess.STDOUT,timeout=300)
+    cli = json.loads((out/'cli-answer.json').read_bytes())
     engine = load_engine(config)
     info = dict(status='started', purpose='infra deployment acceptance, not a new quality/performance benchmark', limit=128)
     try:
-        records = select_records(ROOT)
-        selected = []
-        for task in ('gsm8k','math500','humaneval','mbpp','mmlu','mtbench','alpaca'):
-            record = next(r for r in records if r['benchmark']==task)
-            selected.append(conversation_record(record,1,None) if task=='mtbench' else record)
-        requests = [request_for(r,128) for r in selected]
         equivalent = []
         for record, request in zip(selected, requests):
             expected = research_execute(engine,record,'BufferedKV-ASD',128,engine._tree_config)
@@ -63,6 +71,7 @@ def main():
         summary = benchmark(engine,requests[:1],methods,out/'benchmark',repeats=1,warmup=False,allow_approximate=True)
         assert summary['methods']['BudgetTree']['strict_correct'] and summary['methods']['DFlash']['strict_correct']
         reference = engine.generate(requests[-1],'BudgetTree-ASD')
+        assert cli['token_ids'] == reference.token_ids and stable(cli['asd']) == stable(reference.asd)
         tokens = []
         try:
             engine.generate(requests[-1],'BudgetTree-ASD',on_tokens=tokens.extend,should_stop=lambda:len(tokens)>1)
@@ -96,23 +105,13 @@ def main():
             assert client.post('/v1/generate',json={**body,'tree_policy':{}}).status_code==422
             write_json(out/'http.json',dict(health=health,json=complete,sse_complete=final,
                 speculation_events=sum(name=='speculation' for name,data in events),stream_exact=True))
-        info['http_json_sse_exact'] = True
+        info.update(status='completed', http_json_sse_exact=True, cli_exact=True)
     except BaseException as error:
         info.update(status='failed',error=type(error).__name__+': '+str(error))
         raise
     finally:
         engine.close()
         write_json(out/'verification.json',info)
-    request_path = out/'request.json'
-    write_json(request_path,asdict(requests[-1]))
-    with (out/'cli.log').open('x') as log:
-        subprocess.run([sys.executable,'-m','memorydraft','infer','--config',str(out/'runtime.json'),
-            '--request',str(request_path),'--method','BudgetTree-ASD','--output',str(out/'cli-answer.json')],
-            check=True,stdout=log,stderr=subprocess.STDOUT,timeout=300)
-    cli = json.loads((out/'cli-answer.json').read_bytes())
-    assert cli['token_ids'] == reference.token_ids and stable(cli['asd']) == stable(reference.asd)
-    info.update(status='completed', cli_exact=True)
-    write_json(out/'verification.json',info)
     print(json.dumps(dict(status=info['status'],research_equivalence=7,http_json_sse_exact=True,cli_exact=True)),flush=True)
 
 
