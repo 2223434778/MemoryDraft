@@ -51,3 +51,29 @@ class FeedbackWidthVerifier(BranchDriftVerifier):
     def summary(self):
         return dict(super().summary(), width_feedback=dict(window=4, next_penalty=self.width_penalty,
             signal='uncovered Target argmax in Draft ranks 2-4 at committed boundary', **self.width_counts))
+
+
+class MinGainFeedbackVerifier(FeedbackWidthVerifier):
+    """Spend approximation budget only for a sufficient verified length gain."""
+    def __init__(self, *args, min_extra_tokens=2, **kwargs):
+        if type(min_extra_tokens) is not int or min_extra_tokens < 1:
+            raise ValueError('Minimum extra tokens must be a positive integer')
+        super().__init__(*args, **kwargs)
+        self.min_extra_tokens = min_extra_tokens
+        self.gain_counts = Counter()
+
+    def _select_endpoint(self, tree, costs, counts, feasible, strict_path):
+        chosen = super()._select_endpoint(tree, costs, counts, feasible, strict_path)
+        extra = tree.depths[chosen]-tree.depths[strict_path[-1]]
+        fallback = counts[chosen] > 0 and extra < self.min_extra_tokens
+        self.gain_counts['strict_fallbacks'] += int(fallback)
+        self.gain_counts['foregone_tokens'] += extra if fallback else 0
+        tree.budget_metadata.update(min_extra_tokens=self.min_extra_tokens,
+            min_gain_candidate_extra=extra, min_gain_strict_fallback=fallback)
+        # Select before the base verifier charges budget or commits KV; width
+        # feedback then observes the actual selected boundary, including fallback.
+        return strict_path[-1] if fallback else chosen
+
+    def summary(self):
+        return dict(super().summary(), min_gain=dict(min_extra_tokens=self.min_extra_tokens,
+                                                    **self.gain_counts))

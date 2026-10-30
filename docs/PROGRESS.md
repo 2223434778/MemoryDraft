@@ -1,3 +1,9 @@
+# 2026-10-30 — 最小增量接受：实现完成，直接对比待执行
+
+- 用户仅授权第一项：近似路径只领先严格路径1个token时提交严格路径，至少领先2才近似接受。`TreeASDVerifier`提取原选择为默认hook；`MinGainFeedbackVerifier`在预算与KV提交前回退，继承宽度反馈观察实际提交边界。旧类默认选择不变。
+- 新增`run_gate_min_gain.py`与协议`GATE_MIN_GAIN_PROTOCOL.md`：ASD/原反馈/新反馈，七任务66匹配输入，仅自然4096/EOS共198计时；不加复杂验证、前缀、反事实、种子或阈值扫描。
+- 本机`.venv\Scripts\python.exe -m pytest -q tests/test_gate_min_gain.py tests/test_gate_width.py tests/test_budget_tree.py tests/test_branch_drift.py --basetemp artifacts/pytest-gate-min-gain --junitxml=artifacts/gate-min-gain-tests.xml --tb=short`：63 passed/14.41s。含1/2 token阈值、预算记账、真实回退边界反馈、停止/零预算与runtime入口。结果随后追加。
+
 # 2026-10-30 — 保真门控固定的宽度对照：792计时完成
 
 - 完成同一62源/66匹配输入、六组自然4096/EOS和128/EOS共792行。数据/门槛/预算/固定系数与逐轮反馈历史重放通过，本机独立analysis与服务器一致；ASD/严格树/GateCap的396个自然/前缀请求token/text/停止/输入身份全部复现前轮，旧时延不作为本轮同窗基线。严格树66/66与冻结AR一致。

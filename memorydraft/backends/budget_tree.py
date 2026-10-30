@@ -183,6 +183,10 @@ The local denominator is the original proposal horizon, independent of width.
         """Optional additional constraints; the original verifier permits every edge."""
         return None
 
+    def _select_endpoint(self, tree, costs, counts, feasible, strict_path):
+        return max((i for i in range(len(tree.parents)) if feasible[i]),
+                   key=lambda i: (tree.depths[i], -costs[i], -i))
+
     def decide_tree(self, tree, logits, *, horizon, stop_token_ids=()):
         n = len(tree.parents)
         if (logits.ndim != 2 or logits.shape[0] != n or tree.tokens.shape != (1, n)
@@ -215,8 +219,7 @@ The local denominator is the original proposal horizon, independent of width.
             feasible.append(feasible[parent] and tokens[parent] not in stop_token_ids and allowed
                 and (permissions is None or permissions[i])
                 and counts[i] <= self.config.cap and costs[i] <= max(0., self.config.budget-self.spent))
-        chosen = max((i for i in range(n) if feasible[i]),
-                     key=lambda i: (tree.depths[i], -costs[i], -i))
+        chosen = self._select_endpoint(tree, costs, counts, feasible, strict_path)
         path, amount = paths[chosen], costs[chosen]
         if self.spent+amount > self.config.budget or not math.isfinite(amount):
             raise ValueError("Exceeded tree ASD request budget")

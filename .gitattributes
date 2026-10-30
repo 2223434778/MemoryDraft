@@ -487,3 +487,8 @@ results/dspark-tree-opt/** -text
 results/dspark-tree-opt/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/dspark-tree-opt/**/*.log -whitespace
 results/dspark-tree-opt/**/*.xml -whitespace
+
+scripts/*gate_min_gain*.py text eol=lf
+tests/test_gate_min_gain.py text eol=lf
+docs/GATE_MIN_GAIN*.md text eol=lf
+results/gate-min-gain/** -text

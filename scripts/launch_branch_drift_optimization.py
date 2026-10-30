@@ -25,7 +25,7 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--archive-sha', required=True)
     parser.add_argument('--owned', action='store_true')
-    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width'), default='branch-drift-optimization')
+    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width', 'gate-min-gain'), default='branch-drift-optimization')
     args = parser.parse_args()
     root = args.root.resolve()
     python = root.parent/'.venv-dflash/bin/python'
@@ -75,6 +75,10 @@ def main():
             [str(python), '-u', '-m', 'scripts.run_'+args.study.replace('-', '_')]]
         if args.study == 'gate-width':
             commands[0].insert(4, 'tests/test_gate_width.py')
+        if args.study == 'gate-min-gain':
+            commands[0] = [str(python), '-m', 'pytest', '-q', 'tests/test_gate_min_gain.py',
+                'tests/test_gate_width.py', 'tests/test_budget_tree.py', 'tests/test_branch_drift.py',
+                '--basetemp', 'artifacts/pytest-server-min-gain', '--junitxml=server-tests.xml', '--tb=short']
         for command in commands:
             info['command'] = command
             save()
