@@ -42,7 +42,7 @@ def main():
             handle.extractall(root)
         (root/'models').symlink_to(root.parent/'models', target_is_directory=True)
         print(json.dumps(dict(verified_files=verify(root))), flush=True)
-        unit = 'memorydraft-'+args.study+'-v1'
+        unit = 'memorydraft-'+root.name
         subprocess.run(['systemd-run', '--user', '--unit='+unit,
             '--property=Type=exec', '--working-directory='+str(root),
             '--setenv=CUDA_VISIBLE_DEVICES=1', '--setenv=OMP_NUM_THREADS=4',
@@ -67,6 +67,7 @@ def main():
                   for u in UNITS}
         info['initial_active_services'] = states
         subprocess.run(['systemctl', '--user', 'stop', *UNITS], check=True)
+        (root/'artifacts').mkdir(exist_ok=True)
         commands = [[str(python), '-m', 'pytest', '-q', 'tests/test_branch_drift.py',
             'tests/test_branch_drift_optimization.py', 'tests/test_branch_drift_evaluation.py',
             'tests/test_budget_tree.py', 'tests/test_joint_tree.py', 'tests/test_dflash_reuse.py',
