@@ -5,7 +5,7 @@ import torch
 
 from memorydraft.evaluation.asd_paper import request_for
 from memorydraft.memory.store import Snapshot
-from scripts.run_external_trees import external_execute, result_tokens, load_upstreams, UPSTREAMS
+from scripts.run_external_trees import external_execute, result_tokens, load_upstreams, UPSTREAMS, collect_bastion
 
 
 @pytest.mark.parametrize('arm,budget', [('DDTree-32',31),('DDTree-128',127),('BASTION',None)])
@@ -67,3 +67,13 @@ def test_upstream_identity_checked_before_import(tmp_path):
     (tmp_path/'UPSTREAM_TREES.json').write_text(json.dumps(manifest))
     with pytest.raises(ValueError,match='identity'):
         load_upstreams(tmp_path)
+
+
+def test_upstream_calibration_context_prefill_cannot_build_gradients():
+    observed=[]
+    def collect(**kwargs):
+        observed.append((torch.is_grad_enabled(),torch.is_inference_mode_enabled()))
+        assert kwargs=={'target':'same-model'}
+        return 'probe'
+    assert collect_bastion(SimpleNamespace(collect_calibration_data=collect),target='same-model')=='probe'
+    assert observed==[(False,True)] and torch.is_grad_enabled()

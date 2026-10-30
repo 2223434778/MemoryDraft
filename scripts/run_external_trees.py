@@ -68,6 +68,12 @@ def result_tokens(output, prompt, limit, stops):
     return tokens
 
 
+@torch.inference_mode()
+def collect_bastion(calibration, **kwargs):
+    # The upstream outer context-prefill loop is not decorated, unlike its probes.
+    return calibration.collect_calibration_data(**kwargs)
+
+
 def external_execute(engine, record, arm, limit, dd, bastion, profile):
     request = request_for(record, limit)
     engine.synchronize()
@@ -166,7 +172,7 @@ def main():
         # Both cost models are recalibrated on synthetic inputs on this GPU.
         started = time.perf_counter()
         tree = common.calibrate(engine,warm,out)
-        calibration.collect_calibration_data(target=engine.target,tokenizer=engine.tokenizer,
+        collect_bastion(calibration,target=engine.target,tokenizer=engine.tokenizer,
             device=engine.target.device,model_name_or_path='Qwen/Qwen3-8B',gpu_type='a6000',
             output_path=out/'bastion-probe.jsonl',attn_implementation='eager')
         params = calibration.fit_linear_calibration(out/'bastion-probe.jsonl',sigma_scale=30.)
