@@ -32,6 +32,7 @@ class RuntimeConfig:
     draft_adapter: dict = field(default_factory=dict)
     prefix_cache: dict = field(default_factory=dict)
     cost_tree: dict = field(default_factory=dict)
+    tree_policy: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -69,6 +70,20 @@ class RuntimeConfig:
                 raise ValueError("Public prefix caching requires the audited dflash backend")
             from memorydraft.runtime.prefix_cache import PrefixCacheSpec
             PrefixCacheSpec(**self.prefix_cache)
+        if type(self.tree_policy) is not dict:
+            raise ValueError('tree_policy must be an object')
+        if self.tree_policy:
+            if self.backend != 'dflash' or not self.asd:
+                raise ValueError('tree_policy requires dflash and explicit ASD settings')
+            from memorydraft.runtime.tree_policy import TreePolicySpec
+            try:
+                policy = TreePolicySpec(**self.tree_policy)
+            except TypeError as error:
+                raise ValueError('Invalid tree_policy fields') from error
+            if policy.buffered_kv and self.prefix_cache:
+                raise ValueError('Buffered tree KV cannot adopt a public prefix cache')
+            if self.cost_tree and self.cost_tree.get('top_k', 4) < 2:
+                raise ValueError('High-fidelity tree requires top_k >= 2')
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",

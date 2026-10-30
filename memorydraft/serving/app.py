@@ -73,7 +73,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                 "synthetic": description.get("synthetic", False),
                 "approximate_methods": description.get("approximate_methods", []),
                 "draft_adapter_sha256": (description.get("draft_adapter") or {}).get("sha256"),
-                "cost_tree": description.get("cost_tree"), "text_stream": True,
+                "cost_tree": description.get("cost_tree"), "tree_policy": description.get("tree_policy"), "text_stream": True,
                 "speculation_events": description.get("speculation_events", False)}
 
     @app.post("/v1/token-count")
@@ -162,6 +162,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
             try:
                 yield event("start", {"request_id": generation.id, "method": body.method,
                     "approximate": body.method in worker.engine.describe().get("approximate_methods", []),
+                    "tree_policy": worker.engine.describe().get("tree_policy") if body.method == 'BudgetTree-ASD' else None,
                     "queued": job.started is None})
                 while True:
                     if await request.is_disconnected():

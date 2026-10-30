@@ -48,12 +48,14 @@ def calibrate_tree(engine, output, *, contexts=(128, 1024), nodes=(8, 12, 16, 20
         def capture(confirmed, tokens, logits, budget):
             if not captured:
                 captured.append((int(confirmed[-1]), list(tokens), logits.detach().clone()))
+        cache_factory = engine._tree_policy.cache_factory() if engine._tree_policy is not None else None
         messages = [{"role": "user", "content": "List the integers from one to twenty."}]
         ids = engine.tokenizer.apply_chat_template(messages, add_generation_prompt=True,
             return_tensors="pt", **engine.config.template_options).to(engine.target.device)
         with patch.object(engine.draft, "forward", measured):
             # Ignore EOS only for this explicitly synthetic calibration workload.
-            generate_reuse(engine.target, engine.draft, ids, max_new_tokens=64, on_draft=capture)
+            generate_reuse(engine.target, engine.draft, ids, max_new_tokens=64, on_draft=capture,
+                           cache_factory=cache_factory)
         if not captured or not draft_times:
             raise ValueError("Calibration did not execute Draft")
         text_ids = engine.tokenizer.encode("Calculate carefully using the supplied facts. " * max(contexts),
@@ -63,7 +65,7 @@ def calibrate_tree(engine, output, *, contexts=(128, 1024), nodes=(8, 12, 16, 20
             ids = torch.tensor([text_ids[:context]], device=engine.target.device)
             if ids.shape[1] != context:
                 raise ValueError("Synthetic prefix too short")
-            cache = DynamicCache()
+            cache = cache_factory() if cache_factory is not None else DynamicCache()
             initial = engine.target(ids, past_key_values=cache, use_cache=True, logits_to_keep=1)
             anchor = int(initial.logits[0, -1].argmax())
             times = []
@@ -93,9 +95,15 @@ def calibrate_tree(engine, output, *, contexts=(128, 1024), nodes=(8, 12, 16, 20
         block = torch.tensor([[anchor, *tokens]], device=logits.device)
         auxiliary = []
         config = BudgetTreeConfig(costs, nodes[0], nodes[-1], min(4, logits.shape[-1]))
+        builder, build_kwargs = build_budget_tree, {}
+        if engine._tree_policy is not None:
+            from memorydraft.backends.branch_drift import build_paired_tree
+            config = engine._tree_policy.bind(config)
+            builder = build_paired_tree
+            build_kwargs['regret_budget'] = engine._tree_policy.verifier(engine._asd_config).construction_budget()
         for _ in range(repeats):
             engine.synchronize();begin = time.perf_counter()
-            build_budget_tree(block, logits.unsqueeze(0), config, contexts[0], stop_token_ids=engine.stops)
+            builder(block, logits.unsqueeze(0), config, contexts[0], stop_token_ids=engine.stops, **build_kwargs)
             engine.synchronize();auxiliary.append(time.perf_counter()-begin)
         costs = replace(costs, auxiliary_seconds=statistics.median(auxiliary[1:]))
         data = dict(schema=1, environment=cost_environment(engine), costs=asdict(costs), measurement=dict(

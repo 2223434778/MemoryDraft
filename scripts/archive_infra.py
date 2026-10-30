@@ -18,7 +18,7 @@ def git(*args, **kwargs):
 
 
 def export(reference, destination, *, version="0.3"):
-    if version not in {"0.3", "0.4"}:
+    if version not in {"0.3", "0.4", "0.5"}:
         raise ValueError("Unknown infra archive version")
     destination = Path(destination).resolve()
     if not destination.is_relative_to(ROOT / "artifacts"):
@@ -72,7 +72,8 @@ def export(reference, destination, *, version="0.3"):
     (destination / "START_HERE.md").write_text(
         "# MemoryDraft infra interview copy\n\n"
         f"Frozen commit: `{commit}`. Independent repository: `project/`.\n\n" +
-        ("Read project/docs/INFRA_TREE_GUIDE.md first for the cost-tree/ASD release.\n\n" if version == "0.4" else "") +
+        ("Read project/docs/INFRA_FIDELITY_GUIDE.md first for the high-fidelity/optimized tree release.\n\n" if version == "0.5" else
+         "Read project/docs/INFRA_TREE_GUIDE.md first for the cost-tree/ASD release.\n\n" if version == "0.4" else "") +
         "Read project/README.md, project/docs/INFRA_GUIDE.md, project/docs/INFRA_VALIDATION.md "
         "and project/docs/RUNTIME_MIGRATION_RESULTS.md.\n\n"
         "Install into a new environment: `python -m pip install -e \".[serve,client,test]\"`. "
@@ -87,7 +88,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ref", default="codex/infra-interview-v0.3")
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--version", choices=("0.3", "0.4"), default="0.3")
+    parser.add_argument("--version", choices=("0.3", "0.4", "0.5"), default="0.3")
     args = parser.parse_args()
     print(json.dumps(export(args.ref, args.output, version=args.version), indent=2))
 

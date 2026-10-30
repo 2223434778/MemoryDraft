@@ -499,3 +499,10 @@ tests/test_tree_execution.py text eol=lf
 tests/test_buffered_cache.py text eol=lf
 docs/TREE_EXECUTION*.md text eol=lf
 results/tree-execution/** -text
+
+memorydraft/runtime/tree_policy.py text eol=lf
+scripts/*infra_fidelity*.py text eol=lf
+tests/test_runtime_tree_policy.py text eol=lf
+configs/runtime-dflash-fidelity-base.json text eol=lf
+docs/INFRA_FIDELITY*.md text eol=lf
+results/infra-fidelity-v05/** -text

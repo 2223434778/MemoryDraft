@@ -17,13 +17,17 @@ def cost_environment(engine):
     """Use relocatable model identities; never equate different GPU profiles."""
     config = engine.config
     draft = json.loads(resources.files("memorydraft").joinpath("assets/dflash-manifest.json").read_text())
-    return dict(target_revision=config.target_revision, draft_revision=draft["revision"],
+    environment = dict(target_revision=config.target_revision, draft_revision=draft["revision"],
                 draft_adapter_sha256=(engine._adapter_info or {}).get("sha256"),
                 torch=str(torch.__version__), transformers=transformers.__version__,
                 gpu=torch.cuda.get_device_name(engine.target.device) if engine.target.device.type == "cuda" else "cpu",
                 dtype=str(engine.target.dtype), attention=config.attention,
                 execution_profile=config.execution_profile, threads=config.threads,
                 draft_block_size=engine.draft.block_size)
+    if config.tree_policy:
+        from memorydraft.runtime.tree_policy import TreePolicySpec
+        environment['tree_policy'] = TreePolicySpec(**config.tree_policy).describe()
+    return environment
 
 
 @dataclass(frozen=True)

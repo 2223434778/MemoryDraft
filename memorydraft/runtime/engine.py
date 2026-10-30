@@ -53,12 +53,17 @@ class InferenceEngine:
         elif getattr(draft, "_memorydraft_adapter_sha256", None) is not None:
             raise ValueError("An adapted draft requires its matching draft_adapter config")
         from memorydraft.runtime.cost_tree import CostTreeSpec
+        from memorydraft.runtime.tree_policy import TreePolicySpec
+        self._tree_policy = TreePolicySpec(**config.tree_policy) if config.tree_policy else None
         self._tree_spec = CostTreeSpec(**config.cost_tree) if config.cost_tree else None
         self._tree_config = None
+        self._policy_tree_config = None
         if self._tree_spec is not None:
             if draft is None:
                 raise ValueError("Cost tree requires a loaded DFlash draft")
             self._tree_config = self._tree_spec.load(self)
+            if self._tree_policy is not None:
+                self._policy_tree_config = self._tree_policy.bind(self._tree_config)
             self.methods += ("BudgetTree",)
             if self._asd_config is not None:
                 self.methods += ("BudgetTree-ASD",)
@@ -130,6 +135,7 @@ class InferenceEngine:
                     "gate": self._asd_config.gate, "cap": self._asd_config.cap, "selection": "longest", "value": "remaining"},
                 "draft_adapter": self._adapter_info,
                 "cost_tree": self._tree_spec.describe() if self._tree_spec is not None else None,
+                "tree_policy": self._tree_policy.describe() if self._tree_policy is not None else None,
                 "prefix_cache": self._prefix_cache.describe() if self._prefix_cache is not None else None,
                 "regional_compilation": None if self._regional is None else {
                     "backend": self._regional.backend.name, "graphs": len(self._regional.backend.events),
@@ -166,6 +172,10 @@ class InferenceEngine:
             current_tree = CostTreeSpec(**self.config.cost_tree) if self.config.cost_tree else None
             if current_tree != self._tree_spec:
                 raise ValueError("Reload the engine to change cost_tree configuration")
+            from memorydraft.runtime.tree_policy import TreePolicySpec
+            current_policy = TreePolicySpec(**self.config.tree_policy) if self.config.tree_policy else None
+            if current_policy != self._tree_policy:
+                raise ValueError('Reload the engine to change tree_policy configuration')
             from memorydraft.runtime.prefix_cache import PrefixCacheSpec
             current_prefix = PrefixCacheSpec(**self.config.prefix_cache) if self.config.prefix_cache else None
             if current_prefix != self._prefix_spec:
@@ -261,7 +271,8 @@ class InferenceEngine:
             tree_info = None
             if method == "BudgetTree-ASD":
                 from memorydraft.backends.budget_tree import TreeASDVerifier
-                verifier = TreeASDVerifier(self._asd_config)
+                verifier = (self._tree_policy.verifier(self._asd_config) if self._tree_policy is not None
+                            else TreeASDVerifier(self._asd_config))
             if method == "AR":
                 class Streamer:
                     prompt_seen = False
@@ -290,6 +301,9 @@ class InferenceEngine:
                 verification = {"verifier": verifier, "incremental_stop": True} if verifier is not None else {}
                 if method in {"BudgetTree", "BudgetTree-ASD"}:
                     verification.update(tree_config=self._tree_config, incremental_stop=True)
+                if method == 'BudgetTree-ASD' and self._tree_policy is not None:
+                    verification.update(tree_config=self._policy_tree_config,
+                                        cache_factory=self._tree_policy.cache_factory())
                 if self._prefix_cache is not None:
                     verification["prefill"] = self._prefix_cache.prefill
                 if on_event is not None:
@@ -300,6 +314,10 @@ class InferenceEngine:
                 output = detail.sequences
                 if method in {"BudgetTree", "BudgetTree-ASD"}:
                     tree_info = self._tree_spec.describe()
+                    if method == 'BudgetTree-ASD' and self._tree_policy is not None:
+                        tree_info['verification'] = self._tree_policy.describe()
+                        for name in ('allocations', 'updates', 'history_copy_bytes', 'capacity_bytes'):
+                            counters['kv_'+name] = sum(c.get(name, 0) for c in detail.cache_statistics.values())
                     counters.update(tree_rounds=len(detail.rounds),
                         tree_verification_nodes=sum(r["tree_nodes"] for r in detail.rounds),
                         tree_built_nodes=sum(r["tree_budget"]["built_nodes"] for r in detail.rounds))

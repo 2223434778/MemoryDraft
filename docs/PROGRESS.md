@@ -1,3 +1,10 @@
+# 2026-10-30 — Infra v0.5接入：运行时完成，实机验收待执行
+
+- 用户授权将最新高保真反馈树与执行优化接入infra。新增TreePolicySpec、显式tree_policy配置和基础配置文件；BudgetTree-ASD在配置启用时使用MinGainFeedbackVerifier/FeedbackTreeConfig/分数复用/按块KV，不patch研究脚本。其他方法与空tree_policy的v0.4行为保留。预算、宽度反馈与缓存按请求隔离。
+- 健康/SSE start与complete元数据公开策略及缓存计数；拒绝请求级覆盖。成本资产新增策略环境绑定（仅新配置），合成校准使用匹配缓存和构树；旧资产schema/环境保持。运行时变更策略需重载，buffered KV与公共前缀缓存组合在配置阶段拒绝。
+- 本机原生环境专项66 passed/9.21s，命令`.venv\Scripts\python.exe -m pytest -q tests/test_runtime_tree_policy.py tests/test_runtime_cost_tree.py tests/test_runtime_asd.py tests/test_buffered_cache.py tests/test_tree_execution.py --basetemp artifacts/pytest-infra-fidelity-native --junitxml=artifacts/infra-fidelity-targeted-native.xml --tb=short`。初始研究对照测试用了不同prompt模板，已统一为同一request_for；一次沙箱HTTP测试挂起，终止本次pytest后在原生环境通过。推理规则未放宽。
+- 新增`run_infra_fidelity_v05`，准备七任务各一个公共输入的128/EOS部署检查、同表研究对照、严格/近似benchmark隔离、JSON/SSE可视化、取消恢复与真实CLI。完整回归同时运行。版本0.5.0及独立面试归档工具已准备，旧v0.3/v0.4引用保持；结果随后追加。
+
 # 2026-10-30 — 树验证执行优化：七任务198计时完成
 
 - 七任务66匹配输入×原高保真/仅去重/缓存+去重，共198次自然4096/EOS计时完成。132个优化/基线配对的token、文本、停止、逐轮接受/路径/raw regret/反馈、累计账本全部相同；本轮基线66个输出/输入身份复现上一轮。输出均23605token/3151轮/13个近似token，AR一致均56/66，全部原正确/错误保持。数学9/12、GSM8/8、HE7/8、MBPP4/8，MMLU仍为格式合同5/14，开放聊天未新增偏好评分。
