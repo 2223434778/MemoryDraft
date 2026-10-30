@@ -1,0 +1,30 @@
+{
+  "backend": "dflash",
+  "target": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/qwen3-8b",
+  "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "draft": "/media/a6000/D/ZhaoBinHe/MemoryDraft/models/dflash-qwen3-8b",
+  "device": "cuda:0",
+  "dtype": "float32",
+  "attention": "eager",
+  "threads": 4,
+  "max_input_tokens": 8192,
+  "max_new_tokens": 16384,
+  "execution_profile": "rmsnorm-inductor",
+  "template_options": {
+    "enable_thinking": false
+  },
+  "asd": {
+    "budget": 8,
+    "gate": 0.25,
+    "cap": 2
+  },
+  "tree_policy": {
+    "mode": "min-gain-feedback",
+    "max_js": 0.1,
+    "max_token_regret": 1.3862943611198906,
+    "min_extra_tokens": 2,
+    "reuse_scores": true,
+    "buffered_kv": true,
+    "cache_block_tokens": 256
+  }
+}

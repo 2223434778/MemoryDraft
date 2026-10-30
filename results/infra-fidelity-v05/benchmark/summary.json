@@ -1,0 +1,88 @@
+{
+  "synthetic": false,
+  "baseline": "AR",
+  "methods": {
+    "AR": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 6.269712040899321,
+      "output_tokens": 128,
+      "tokens_per_second": 20.41561066361826,
+      "p50_seconds": 6.269712040899321,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.1339015478733927,
+      "mean_tpot_seconds": 0.04831346844902306,
+      "peak_gpu_bytes": 37037816832,
+      "strict_correct": true,
+      "speedup": 1.0
+    },
+    "DFlash": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 1.6677219949197024,
+      "output_tokens": 128,
+      "tokens_per_second": 76.75140124668258,
+      "p50_seconds": 1.6677219949197024,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.1354983658529818,
+      "mean_tpot_seconds": 0.012064752984777327,
+      "peak_gpu_bytes": 37094227456,
+      "strict_correct": true,
+      "speedup": 3.7594467543142263
+    },
+    "BudgetTree": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 1.800272529013455,
+      "output_tokens": 128,
+      "tokens_per_second": 71.10034616266888,
+      "p50_seconds": 1.800272529013455,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.13505140109919012,
+      "mean_tpot_seconds": 0.013111977385151692,
+      "peak_gpu_bytes": 37134703104,
+      "strict_correct": true,
+      "speedup": 3.482646066001523
+    },
+    "ASD": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 1.830918509978801,
+      "output_tokens": 128,
+      "tokens_per_second": 69.91026596889996,
+      "p50_seconds": 1.830918509978801,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.1327480119653046,
+      "mean_tpot_seconds": 0.013371421244200758,
+      "peak_gpu_bytes": 37094227456,
+      "strict_correct": null,
+      "speedup": 3.424353408810048
+    },
+    "BudgetTree-ASD": {
+      "observations": 1,
+      "independent_requests": 1,
+      "total_seconds": 1.7940919280517846,
+      "output_tokens": 128,
+      "tokens_per_second": 71.3452850428885,
+      "p50_seconds": 1.7940919280517846,
+      "p95_seconds": null,
+      "p99_seconds": null,
+      "mean_ttft_seconds": 0.13399850903078914,
+      "mean_tpot_seconds": 0.013071601724574767,
+      "peak_gpu_bytes": 37164048384,
+      "strict_correct": null,
+      "speedup": 3.494643692928065
+    }
+  },
+  "percentile_policy": "P95 requires >=20 observations; P99 requires >=100. Repeats are not independent requests.",
+  "approximate_methods": [
+    "ASD",
+    "BudgetTree-ASD"
+  ],
+  "quality_evaluated": false,
+  "note": "Natural request timings; approximate outputs may differ. Token identity is not answer quality; evaluate task quality separately."
+}

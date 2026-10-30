@@ -6,6 +6,8 @@
 
 **新版聊天界面：**[界面与真实解码过程](docs/CHAT_VISUALIZATION.md)提供 Gemini 风格布局、输入框模型／四模式选择，以及实际草稿接受、丢弃、ASD 预算和成本树路径展示。过程开关不改变模型输出规则；较大模型按真实后端能力开放模式。
 
+**Infra v0.5已接入：**[高保真反馈树与执行优化](docs/INFRA_FIDELITY_GUIDE.md)将JS/当前token约束、反馈调宽、最小增量接受及KV/分数复用接入正式配置、CLI、JSON/SSE；旧方法保留。完整1299测试通过，A6000专项145项及七任务研究等价/真实CLI/可视化/取消恢复验收通过，见[报告](docs/INFRA_FIDELITY_VALIDATION.md)。独立分支`codex/infra-interview-v0.5`、标签`infra-v0.5-interview`与本机完整副本保留，旧v0.3/v0.4不移动。
+
 **Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。

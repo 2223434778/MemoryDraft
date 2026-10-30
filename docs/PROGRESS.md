@@ -1,11 +1,16 @@
-# 2026-10-30 — Infra v0.5接入：运行时完成，实机验收待执行
+# 2026-10-30 — Infra v0.5接入完成：配置、CLI、API与独立副本
+
+- 完成七任务各一个公共输入、128/EOS的正式运行时/同成本表研究实现7/7对照，token/文本输入身份/预算摘要一致；真实CLI也一致。五方法小批benchmark保持严格DFlash/树AR身份与近似隔离；取消恢复、HTTP JSON/SSE/真实投机事件、策略元数据和客户端覆盖422检查通过。这是部署小批验收，不重新估计研究加速比或准确率。
+- 实际GPU执行源`d465958621ad5ace852b5e9e6bf4eabe443fd0b3`，527文件前后SHA一致，目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-fidelity-v05-v2`，GPU1。actual ZIP SHA`a684e3221f3b184ac25dba43d349c39c534f8002e7de3ac3bfe506d4224eefb6`；owner 10:33:37–10:36:09 UTC，A6000专项145 passed/12.89s，finally两服务恢复0，三服务active、27B health=ok。产品runtime与b954dd8源码相同，v2仅调整CLI/父模型驻留顺序。
+- 实机代码/校准资产另存`/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-interview-v0.5`，144文件SHA核验，版本0.5.0及配置/成本读取通过；模型共享引用，未新启动驻留模型或切换聊天服务。服务器RELEASE.json保留运行时来源；本机新v0.5分支/标签和完整project/ZIP/bundle单独封存，v0.3/v0.4及main冻结引用保持。
+- 22载荷传输SHA核验，下载ZIP SHA`4cb254af58a1a9e8f403d587e31732f1f7f2dc68b9be3a009a1c32136f4fc9d2`。报告`docs/INFRA_FIDELITY_VALIDATION.md`，证据`results/infra-fidelity-v05/`；复现`.venv\Scripts\python.exe -m scripts.report_infra_fidelity_v05 --input results/infra-fidelity-v05`。v1 OOM的源码/执行/测试/CLI失败日志保留在failed-cli/。旧研究195个载荷/257个Git报告文件及已固定源引用核验通过，不覆写旧数据。
 
 - 完整回归1299 passed/7 skipped/227.78s，原生环境命令`.venv\Scripts\python.exe -m pytest -q --basetemp artifacts/pytest-infra-v05-full --junitxml=artifacts/infra-v05-full.xml --tb=short`。A6000 v1专项145 passed/11.46s，七研究对照、benchmark、取消/HTTP/SSE均通过；末尾CLI子进程因父进程仍持有模型造成双份驻留OOM。仅调整验收脚本先运行独立CLI，再创建父engine；不改产品模型、策略或预算。v1失败source/日志保留，v2新隔离目录完成后续验收。
 
 - 用户授权将最新高保真反馈树与执行优化接入infra。新增TreePolicySpec、显式tree_policy配置和基础配置文件；BudgetTree-ASD在配置启用时使用MinGainFeedbackVerifier/FeedbackTreeConfig/分数复用/按块KV，不patch研究脚本。其他方法与空tree_policy的v0.4行为保留。预算、宽度反馈与缓存按请求隔离。
 - 健康/SSE start与complete元数据公开策略及缓存计数；拒绝请求级覆盖。成本资产新增策略环境绑定（仅新配置），合成校准使用匹配缓存和构树；旧资产schema/环境保持。运行时变更策略需重载，buffered KV与公共前缀缓存组合在配置阶段拒绝。
 - 本机原生环境专项66 passed/9.21s，命令`.venv\Scripts\python.exe -m pytest -q tests/test_runtime_tree_policy.py tests/test_runtime_cost_tree.py tests/test_runtime_asd.py tests/test_buffered_cache.py tests/test_tree_execution.py --basetemp artifacts/pytest-infra-fidelity-native --junitxml=artifacts/infra-fidelity-targeted-native.xml --tb=short`。初始研究对照测试用了不同prompt模板，已统一为同一request_for；一次沙箱HTTP测试挂起，终止本次pytest后在原生环境通过。推理规则未放宽。
-- 新增`run_infra_fidelity_v05`，准备七任务各一个公共输入的128/EOS部署检查、同表研究对照、严格/近似benchmark隔离、JSON/SSE可视化、取消恢复与真实CLI。完整回归同时运行。版本0.5.0及独立面试归档工具已准备，旧v0.3/v0.4引用保持；结果随后追加。
+- 新增`run_infra_fidelity_v05`，完成七任务各一个公共输入的128/EOS部署检查、同表研究对照、严格/近似benchmark隔离、JSON/SSE可视化、取消恢复与真实CLI。版本0.5.0及独立面试归档工具已接入，旧v0.3/v0.4引用保持。
 
 # 2026-10-30 — 树验证执行优化：七任务198计时完成
 

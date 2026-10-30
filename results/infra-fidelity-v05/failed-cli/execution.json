@@ -1,0 +1,24 @@
+{
+  "status": "failed",
+  "started_utc": "2026-10-30T10:28:04Z",
+  "archive_sha256": "d55e367f060e7aa084eed1546c3391f563f4ea03f22c056c82bfd24d89101df9",
+  "study": "infra-fidelity-v05",
+  "source_files_verified_before": 527,
+  "initial_active_services": {
+    "memorydraft-chat-large-adapter.service": true,
+    "memorydraft-chat-large-model.service": true
+  },
+  "command": [
+    "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python",
+    "-u",
+    "-m",
+    "scripts.run_infra_fidelity_v05"
+  ],
+  "error": "CalledProcessError: Command '['/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python', '-u', '-m', 'scripts.run_infra_fidelity_v05']' returned non-zero exit status 1.",
+  "restore_exit_codes": {
+    "memorydraft-chat-large-model.service": 0,
+    "memorydraft-chat-large-adapter.service": 0
+  },
+  "finished_utc": "2026-10-30T10:30:25Z",
+  "source_files_verified_after": 527
+}

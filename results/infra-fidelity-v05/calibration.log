@@ -1,0 +1,30 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.49s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:03<00:04,  1.55s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:03,  1.53s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.40s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.06s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.25s/it]
+{
+  "path": "/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-fidelity-v05-v2/results/raw/infra-fidelity-v05/costs.json",
+  "sha256": "067b98be73f42b7316d8e0a13b0c25493b16ee1092a7ab61a890f98c7f363007",
+  "calibration_seconds": 6.740102264098823,
+  "environment": {
+    "target_revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "draft_revision": "9b41424b7109f9c5413454f481b09a82b85333f4",
+    "draft_adapter_sha256": null,
+    "torch": "2.5.1+cu124",
+    "transformers": "4.57.3",
+    "gpu": "NVIDIA RTX A6000",
+    "dtype": "torch.float32",
+    "attention": "eager",
+    "execution_profile": "rmsnorm-inductor",
+    "threads": 4,
+    "draft_block_size": 16,
+    "tree_policy": {
+      "mode": "min-gain-feedback",
+      "max_js": 0.1,
+      "max_token_regret": 1.3862943611198906,
+      "min_extra_tokens": 2,
+      "reuse_scores": true,
+      "buffered_kv": true,
+      "cache_block_tokens": 256
+    }
+  },
+  "runtime_config": "/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-fidelity-v05-v2/results/raw/infra-fidelity-v05/runtime.json"
+}

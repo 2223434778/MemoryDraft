@@ -68,4 +68,8 @@ git clone -b codex/infra-interview-v0.5 https://github.com/2223434778/MemoryDraf
 
 本机`artifacts/infra-interview-v0.5/START_HERE.md`是离线入口；ZIP和bundle排除环境、权重和私聊。`manifest.json`绑定确切release commit及所有文件字节。可以重点讲述：将近似研究模块接入可配置服务、成本资产与策略绑定、请求隔离、真实流式投机过程、输出保持的缓存优化，以及失败/取消恢复。
 
+A6000上另有独立可运行目录`/media/a6000/D/ZhaoBinHe/MemoryDraft/infra-interview-v0.5`，包含核验代码、`runtime/runtime.json`和`runtime/costs.json`，模型通过共享目录引用。`RELEASE.json`记录运行时源commit和144文件SHA；它是部署副本，本机project/ZIP/bundle是包含Git历史的完整面试副本。
+
+该目录没有启动额外模型，也未切换聊天后端。物理GPU1目前由27B服务使用，运行新8B实例前需释放该卡；独立入口与具体命令见服务器目录的README。当前服务保持运行，部署验收时已临时释放并自动恢复27B。
+
 接入结果见[INFRA_FIDELITY_VALIDATION.md](INFRA_FIDELITY_VALIDATION.md)，执行源码与公开证据位于`results/infra-fidelity-v05/`。旧研究和冻结面试版本不覆盖。
