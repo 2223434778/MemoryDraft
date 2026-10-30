@@ -25,6 +25,7 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--archive-sha', required=True)
     parser.add_argument('--owned', action='store_true')
+    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width'), default='branch-drift-optimization')
     args = parser.parse_args()
     root = args.root.resolve()
     python = root.parent/'.venv-dflash/bin/python'
@@ -41,15 +42,16 @@ def main():
             handle.extractall(root)
         (root/'models').symlink_to(root.parent/'models', target_is_directory=True)
         print(json.dumps(dict(verified_files=verify(root))), flush=True)
-        subprocess.run(['systemd-run', '--user', '--unit=memorydraft-branch-drift-optimization-v1',
+        unit = 'memorydraft-'+args.study+'-v1'
+        subprocess.run(['systemd-run', '--user', '--unit='+unit,
             '--property=Type=exec', '--working-directory='+str(root),
             '--setenv=CUDA_VISIBLE_DEVICES=1', '--setenv=OMP_NUM_THREADS=4',
             '--setenv=HF_HUB_OFFLINE=1', '--setenv=PYTHONPATH=.', str(python),
             str(root/'scripts/launch_branch_drift_optimization.py'), '--root', str(root),
-            '--archive-sha', args.archive_sha, '--owned'], check=True)
+            '--archive-sha', args.archive_sha, '--study', args.study, '--owned'], check=True)
         return
     info = dict(status='starting', started_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
-                archive_sha256=args.archive_sha)
+                archive_sha256=args.archive_sha, study=args.study)
     states = {}
     def save():
         (root/'execution.json').write_text(json.dumps(info, indent=2)+'\n')
@@ -69,7 +71,9 @@ def main():
             'tests/test_branch_drift_optimization.py', 'tests/test_branch_drift_evaluation.py',
             'tests/test_budget_tree.py', 'tests/test_joint_tree.py', 'tests/test_dflash_reuse.py',
             '--basetemp', 'artifacts/pytest-server-opt', '--junitxml=server-tests.xml', '--tb=short'],
-            [str(python), '-u', '-m', 'scripts.run_branch_drift_optimization']]
+            [str(python), '-u', '-m', 'scripts.run_'+args.study.replace('-', '_')]]
+        if args.study == 'gate-width':
+            commands[0].insert(4, 'tests/test_gate_width.py')
         for command in commands:
             info['command'] = command
             save()

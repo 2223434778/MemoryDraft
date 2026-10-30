@@ -218,9 +218,9 @@ guided R may replace a block after its draft forward has already run.
             with mark("build_tree"):
                 if isinstance(tree_config, BudgetTreeConfig):
                     from memorydraft.backends.budget_tree import build_budget_tree
-                    from memorydraft.backends.branch_drift import PairedTreeConfig, build_paired_tree
+                    from memorydraft.backends.branch_drift import FeedbackTreeConfig, PairedTreeConfig, build_paired_tree
                     snapshot = None
-                    if tree_config.spine_mode != "none":
+                    if tree_config.spine_mode != "none" or isinstance(tree_config, FeedbackTreeConfig):
                         if not isinstance(verifier, TreeASDVerifier):
                             raise ValueError("Budget-dependent tree construction requires a tree ASD verifier")
                         snapshot = verifier.construction_budget()

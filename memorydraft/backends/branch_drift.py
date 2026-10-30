@@ -14,7 +14,7 @@ import time
 import torch
 
 from memorydraft.backends.asd import ASDConfig
-from memorydraft.backends.budget_tree import BudgetTreeConfig, TreeASDVerifier
+from memorydraft.backends.budget_tree import BudgetTreeConfig, RegretBudget, TreeASDVerifier
 from memorydraft.backends.draft_tree import DraftTree
 
 
@@ -34,6 +34,20 @@ class GateTreeConfig(PairedTreeConfig):
             raise ValueError('Invalid gate allocation penalty')
 
 
+class FeedbackTreeConfig(GateTreeConfig):
+    """Use request-local width feedback carried by the verifier snapshot."""
+
+
+@dataclass(frozen=True)
+class WidthBudget(RegretBudget):
+    gate_penalty: float = 1.
+
+    def __post_init__(self):
+        super().__post_init__()
+        if type(self.gate_penalty) not in (int, float) or self.gate_penalty not in (0., .5, 1.):
+            raise ValueError('Invalid feedback width snapshot')
+
+
 def build_paired_tree(block, logits, config, context, *, stop_token_ids=(), regret_budget=None):
     started = time.perf_counter()
     if (not isinstance(config, PairedTreeConfig) or config.spine_mode != "none" or config.top_k < 2
@@ -51,12 +65,16 @@ def build_paired_tree(block, logits, config, context, *, stop_token_ids=(), regr
     tokens, parents, depths, masses = [int(block[0, 0])], [-1], [0], [1.]
     queue = []
     gate_allocation = isinstance(config, GateTreeConfig)
+    feedback = isinstance(config, FeedbackTreeConfig)
+    if feedback and not isinstance(regret_budget, WidthBudget):
+        raise ValueError('Feedback tree requires a width budget snapshot')
+    penalty = regret_budget.gate_penalty if feedback else config.gate_penalty if gate_allocation else 0.
 
     def weight(depth, rank):
         probability = weights[depth][rank]
         if gate_allocation and rank:
             # Near ties keep alternatives; large Draft disagreements favor depth.
-            probability *= (probability/max(weights[depth][0], 1e-30))**config.gate_penalty
+            probability *= (probability/max(weights[depth][0], 1e-30))**penalty
         return probability
 
     def expand(node):
@@ -101,7 +119,10 @@ def build_paired_tree(block, logits, config, context, *, stop_token_ids=(), regr
         allocation='draft-ratio-survival-proxy' if gate_allocation else 'paired',
         allocation_seconds=time.perf_counter()-started)
     if gate_allocation:
-        tree.budget_metadata['gate_penalty'] = config.gate_penalty
+        tree.budget_metadata['gate_penalty'] = penalty
+    if feedback:
+        tree.width_candidates = tuple(tuple(row) for row in candidate_ids)
+        tree.budget_metadata['width_feedback'] = True
     return tree
 
 

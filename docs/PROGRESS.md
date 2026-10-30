@@ -1,3 +1,10 @@
+# 2026-10-30 — 保真门控固定的宽度对照实现与实测启动
+
+- 用户授权根据GSM慢因直接实现/实测。固定惩罚1/.5/0，加上基于过去4轮可覆盖漏选的反馈组；共ASD、严格成本树、GateCap、WidthHalf、WidthZero、WidthFeedback六组。沿用上轮62源/66输入，七类任务自然4096/EOS与128/EOS，共预定792计时；规则预先固定于`GATE_WIDTH_PROTOCOL.md`。
+- `FeedbackTreeConfig`通过不可变WidthBudget接收当前请求的宽度快照；反馈复用已提交终点的Target恢复token，若属Draft第2–4候选且未覆盖则记miss，过去4轮0/1/≥2次miss选择下一轮惩罚1/.5/0。EOS/超horizon/候选池外不触发，使用当前请求历史，不多调Target。JS/.25原ASDgate/B8/cap2/raw regret ln4/真实兄弟覆盖/EOS保护/32节点均保持。
+- `.venv\Scripts\python.exe -m pytest -q tests/test_gate_width.py tests/test_branch_drift.py tests/test_branch_drift_optimization.py tests/test_dflash_reuse.py --basetemp artifacts/pytest-gate-width-final --junitxml=artifacts/gate-width-local-final.xml --tb=short`：83 passed/2 skipped，12.50s。初次2个新反馈测试误认为far夹具终点Target首选为3，实际为1；修正夹具rank/停止值后通过，未调整算法/真实任务参数。
+- 后续服务器隔离`gate-width-v1`、GPU1；确认27B空闲后暂时释放该卡并finally恢复服务。GPU0聊天/旧研究及infra引用保持，真实结果随后追加。
+
 # 2026-10-30 — GSM8K慢6.91%的已有日志诊断
 
 - 只读取已发布924计时，新增`diagnose_branch_drift_gsm.py`、`BRANCH_DRIFT_GSM_DIAGNOSIS.md`与诊断JSON；未新增GPU生成或修改旧推理/评分。脚本核对source publication所有payload和112个GSM格、正式8题配对均值及时间分解，原文件前后SHA相同。
