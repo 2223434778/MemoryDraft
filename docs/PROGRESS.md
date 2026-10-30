@@ -1,3 +1,9 @@
+# 2026-10-30 — 官方DDTree/BASTION基线补全：实施中
+
+- 用户授权第一步补齐外部树基线。核验BASTION `1989b80b304f01710946d7fb68af330c03d97461`、DDTree `c96427a185677bf4133ed865dd1626a5041aef9b`与MIT许可；公开代码仅置隔离third_party快照，逐文件SHA绑定。
+- 新增`run_external_trees.py`、适配器合同测试、`EXTERNAL_TREES_PROTOCOL.md`；共享原Qwen3-8B/DFlash/FP32/eager/RMSNorm执行栈，调用官方generation与校准，不冒充原论文环境复现。九组含同窗口AR/严格D/ASD/旧树/旧组合/当前方案/DDTree32/128/官方BASTION；既有66输入，共594自然4096/EOS计时。
+- 本机快速检查14 passed/13.70s，命令`.venv\Scripts\python.exe -m pytest -q tests/test_external_trees.py tests/test_tree_execution.py --basetemp artifacts/pytest-external-trees --junitxml=artifacts/external-trees-tests.xml --tb=short`。服务器实际结果与命令随后补充；当前不宣称性能结论。
+
 # 2026-10-30 — Infra v0.5接入完成：配置、CLI、API与独立副本
 
 - 完成七任务各一个公共输入、128/EOS的正式运行时/同成本表研究实现7/7对照，token/文本输入身份/预算摘要一致；真实CLI也一致。五方法小批benchmark保持严格DFlash/树AR身份与近似隔离；取消恢复、HTTP JSON/SSE/真实投机事件、策略元数据和客户端覆盖422检查通过。这是部署小批验收，不重新估计研究加速比或准确率。
