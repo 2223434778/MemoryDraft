@@ -506,3 +506,8 @@ tests/test_runtime_tree_policy.py text eol=lf
 configs/runtime-dflash-fidelity-base.json text eol=lf
 docs/INFRA_FIDELITY*.md text eol=lf
 results/infra-fidelity-v05/** -text
+
+scripts/*external_trees*.py text eol=lf
+tests/test_external_trees.py text eol=lf
+docs/EXTERNAL_TREES*.md text eol=lf
+results/external-trees/** -text

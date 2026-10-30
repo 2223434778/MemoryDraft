@@ -49,6 +49,18 @@ def main():
         and any(r[k]!=frozen[r['request_id']][k] for k in ('token_ids','text','finish_reason','prompt_sha256','snapshot_id'))]
     write(out/'reference-audit.json',dict(new_ar_vs_frozen_differences=reference_audit))
     slowest={arm:max((r for r in rows if r['arm']==arm),key=lambda r:r['latency_seconds']) for arm in ARMS}
+    indexed={(r['request_id'],r['arm']):r for r in rows}
+    same_output={}
+    for baseline in ('DFlash','DDTree-32','BASTION','BudgetTree'):
+        pairs=[(r,indexed[r['request_id'],baseline]) for r in rows if r['arm']=='BufferedKV-ASD']
+        pairs=[(a,b) for a,b in pairs if all(a[k]==b[k] for k in ('token_ids','text','finish_reason'))]
+        same_output[baseline]=dict(n=len(pairs),paired_ratio=statistics.mean(a['latency_seconds']/b['latency_seconds'] for a,b in pairs),
+            total_ratio=sum(a['latency_seconds'] for a,b in pairs)/sum(b['latency_seconds'] for a,b in pairs),
+            current_calls=sum(len(a['rounds']) for a,b in pairs),baseline_calls=sum(len(b['rounds']) for a,b in pairs))
+    dd_pairs=[(indexed[r['request_id'],'DDTree-32'],r) for r in rows if r['arm']=='BASTION']
+    execution_audit=dict(same_output=same_output,bastion_node_sizes=sorted({b['tree_nodes'] for a,bastion in dd_pairs for b in bastion['rounds']}),
+        dd32_bastion_equal_advances=sum([b['advance'] for b in a['rounds']]==[b['advance'] for b in btree['rounds']] for a,btree in dd_pairs))
+    write(out/'execution-audit.json',execution_audit)
     lines=['# 官方DDTree/BASTION与当前组合：直接比较','',
         '七任务、既有62开发源题/66匹配输入、九组594次自然4096/EOS生成。每格一次，逐请求打乱方法顺序。',
         '共同Qwen3-8B/DFlash、单A6000、FP32/eager/RMSNorm；外部官方生成算法共享已加载模型，非原文BF16/SDPA环境复现。','',
@@ -70,6 +82,12 @@ def main():
     lines+=['','## 每组最慢请求','','|方法|请求|秒|输出token|停止|','|---|---|---:|---:|---|']
     for arm,r in slowest.items():
         lines.append(f"|{arm}|{r['request_id']}|{r['latency_seconds']:.3f}|{len(r['token_ids'])}|{r['finish_reason']}|")
+    lines+=['','## 相同输出的辅助归因','',
+        '主结果保留全部66输入。下面只在完整token/文本/停止均相同的子集上比较当前方案，用于区分执行效率与输出路径变化，不替代主表。',
+        '|对照|同输出请求数|当前配对wall变化|当前总wall变化|当前/对照验证轮|','|---|---:|---:|---:|---:|']
+    for baseline,v in same_output.items():
+        lines.append(f"|{baseline}|{v['n']}|{pct(v['paired_ratio'])}|{pct(v['total_ratio'])}|{v['current_calls']}/{v['baseline_calls']}|")
+    lines+=[f"本轮BASTION实际节点规模为{execution_audit['bastion_node_sizes']}；与DDTree32逐轮推进长度完全相同的请求{execution_audit['dd32_bastion_equal_advances']}/66。因此两者接近的表现应结合实际相同的预算/推进轨迹解释。"]
     lines+=['','## 质量与执行边界','',
         '数学采用既有答案等价评分，代码采用原始隐藏测试的单次greedy通过率。MMLU为零样本生成字母合同，格式错误计错；这批开发题不等同完整MMLU知识能力。',
         'MT/Alpaca本轮没有新增裁判评分，表中—不代表质量相同。AR一致性只是保真度，不代替正确率。',
@@ -86,6 +104,9 @@ def main():
     report.write_bytes('\n'.join(lines).encode())
     write(out/'publication.json',dict(reporter_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         report_sha256=hashlib.sha256(report.read_bytes()).hexdigest(),
+        findings_sha256=hashlib.sha256((ROOT/'docs/EXTERNAL_TREES_FINDINGS.md').read_bytes()).hexdigest(),
+        protocol_sha256=hashlib.sha256((ROOT/'docs/EXTERNAL_TREES_PROTOCOL.md').read_bytes()).hexdigest(),
+        preparer_sha256=hashlib.sha256((ROOT/'scripts/prepare_external_trees.py').read_bytes()).hexdigest(),
         payloads={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file() and p.name!='publication.json'}))
     print(json.dumps(dict(totals=totals,strict_differences=analysis['strict_identity_differences']),indent=2))
 

@@ -1,4 +1,12 @@
-# 2026-10-30 — 官方DDTree/BASTION基线补全：实施中
+# 2026-10-31 — 官方DDTree/BASTION基线补全：九组594计时完成
+
+- 官方DDTree总32/128节点与BASTION、同窗口AR/DFlash/ASD/本项目严格树/原组合/当前方案，共594自然4096/EOS生成全部完成。五严格方法330个输出均与同窗AR完全一致，AR66个输出/输入身份复现旧冻结引用；本机从下载数据独立重建analysis与服务器完全相同。
+- 混合总wall：AR1257.316s、DFlash291.423s、ASD296.780s、严格成本树263.316s、原组合282.545s、当前253.650s、DDTree32为265.687s、DDTree128为445.613s、BASTION269.167s。当前较DFlash/DDTree32/BASTION总wall少12.96%/4.53%/5.76%，含输出长度变化；56同输出请求较BASTION配对少0.64%、总wall少1.66%，不把所有收益归为执行效率。
+- 当前相对BASTION逐题配对wall：GSM−1.54%、MATH−4.84%、HE+0.01%、MBPP+2.38%、MMLU−2.92%、MT−3.38%、Alpaca+1.47%。当前GSM8/8、MATH9/12、HE7/8、MBPP4/8、MMLU合同5/14；严格组分别8/8、8/12、7/8、4/8、5/14。普通ASD MBPP5/8仍高于当前；旧组合本轮MATH10/12但更慢。开放聊天未新增裁判分，不能据AR一致宣称质量保持。
+- 本轮BASTION实际全程32节点，66请求推进长度均与DDTree32相同。DDTree128轮数2789低于DD32的3102但耗时更长，符合当前FP32/eager大树验证开销；不推广至官方BF16/其他GPU。我们的成本表也本轮重新校准，旧组合的近似轨迹/分数可变，原已发布成绩保留。
+- 实际GPU源`b8e7e2b7d55a8995e5accd44449b9bc9b04aed4c`，556文件前后SHA一致；隔离`external-trees-v2`，ZIP SHA`deb923f95f80a51f070aa7caa82b26d2af19a2f630f5f92cc09e4ed52af36189`。生成2026-10-30 15:59:48–17:00:15 UTC（当地跨至10-31 01:00:15），加载18.81s/合成校准515.24s单列；服务器25 passed/4.84s，finally两服务start退出0、三个聊天服务active、27B health=ok。
+- 本机核心15 passed/9.78s、最终上游准备/汇总10 passed/6.85s（批次重叠不相加）。报告重建命令`.venv\Scripts\python.exe -m scripts.report_external_trees --input results/external-trees`。公开`results/external-trees`及`EXTERNAL_TREES_FINDINGS/RESULTS/PROTOCOL.md`。新增跨平台上游准备入口，只允许恢复已发布LF/CRLF字节，不改上游算法；最终准备/报告为GPU执行后追加，不冒充冻结运行源。
+- 下载ZIP1350407B、4分片/19载荷SHA核验，ZIP SHA`ee19e04f44ba4ddfb8ce5c25419fe3431807e231df26fe71a118a44cfe8d4f7d`。v1预生成OOM源码/日志保留；main与infra v0.3/v0.4/v0.5冻结引用不移动，线上服务代码不更新。
 
 - v1在BASTION合成校准前缀计算OOM，正式594生成尚未开始。定位官方collect_calibration_data外层前缀调用未禁用梯度（内部测量已有inference_mode）；适配器补推理模式上下文，不改官方选择/预算/精度。v1源码`e7a0839`、556文件、失败日志保留，finally已恢复27B服务；新目录v2重启。服务器专项24 passed/4.87s。
 
