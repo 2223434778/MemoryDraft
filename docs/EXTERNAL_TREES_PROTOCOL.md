@@ -16,3 +16,19 @@
 
 命令：`CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_external_trees`。
 本机快速检查：`.venv\Scripts\python.exe -m pytest -q tests/test_external_trees.py tests/test_tree_execution.py --basetemp artifacts/pytest-external-trees --tb=short`。
+
+## 独立准备官方代码
+
+先在项目根目录安装原DFlash运行环境，并准备相同模型权重。下面步骤只下载公开代码，不在生成请求中调用网络：
+
+```bash
+git clone https://github.com/kaist-ai-osi-lab/BASTION.git artifacts/upstream-bastion
+git -C artifacts/upstream-bastion checkout --detach 1989b80b304f01710946d7fb68af330c03d97461
+git clone https://github.com/liranringel/ddtree.git artifacts/upstream-ddtree
+git -C artifacts/upstream-ddtree checkout --detach c96427a185677bf4133ed865dd1626a5041aef9b
+python -m scripts.prepare_external_trees --bastion artifacts/upstream-bastion --ddtree artifacts/upstream-ddtree
+python -m pip install --target .deps loguru==0.7.3 ninja==1.13.0
+```
+
+准备脚本拒绝已修改的上游或不同commit，复制必要Python代码与许可；已发布结果存在时，还会核对其逐文件SHA。运行环境还需既有的scipy/datasets/rich等依赖与可用C++编译器。正式入口拒绝覆盖已存在的结果目录，可用`--output results/raw/external-trees-new`另开一轮。
+本轮快照来自Windows的CRLF检出；准备脚本仅允许LF/CRLF转换以恢复发布SHA，任何其他字节变化均拒绝，不依赖操作系统的Git自动换行设置。

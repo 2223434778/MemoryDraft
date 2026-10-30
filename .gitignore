@@ -30,3 +30,7 @@ dist/
 *.tar.gz
 download.log
 SOURCE_MANIFEST.json
+UPSTREAM_TREES.json
+third_party/bastion/
+third_party/ddtree/
+.deps/

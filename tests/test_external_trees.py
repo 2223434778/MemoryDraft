@@ -97,3 +97,12 @@ def test_analysis_keeps_strict_divergence_and_uses_same_session_ar():
     rows[-1]['prompt_sha256']='different'
     with pytest.raises(ValueError,match='Input'):
         analyze(rows)
+
+
+def test_portable_upstream_checkout_preserves_published_bytes():
+    import hashlib
+    from scripts.prepare_external_trees import published_bytes
+    raw=b'line1\r\nline2\r\n'
+    assert published_bytes(raw.replace(b'\r\n',b'\n'),hashlib.sha256(raw).hexdigest())==raw
+    with pytest.raises(ValueError,match='beyond'):
+        published_bytes(b'changed code\n',hashlib.sha256(raw).hexdigest())

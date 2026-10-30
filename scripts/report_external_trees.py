@@ -44,6 +44,11 @@ def main():
             peak_gpu_bytes=max(r['peak_gpu_bytes'] for r in selected))
         totals[arm]['tps']=totals[arm]['tokens']/seconds
     write(out/'totals.json',totals)
+    frozen={r['request_id']:r for r in json.loads((source/'frozen-references.json').read_bytes())}
+    reference_audit=[r['request_id'] for r in rows if r['arm']=='AR'
+        and any(r[k]!=frozen[r['request_id']][k] for k in ('token_ids','text','finish_reason','prompt_sha256','snapshot_id'))]
+    write(out/'reference-audit.json',dict(new_ar_vs_frozen_differences=reference_audit))
+    slowest={arm:max((r for r in rows if r['arm']==arm),key=lambda r:r['latency_seconds']) for arm in ARMS}
     lines=['# 官方DDTree/BASTION与当前组合：直接比较','',
         '七任务、既有62开发源题/66匹配输入、九组594次自然4096/EOS生成。每格一次，逐请求打乱方法顺序。',
         '共同Qwen3-8B/DFlash、单A6000、FP32/eager/RMSNorm；外部官方生成算法共享已加载模型，非原文BF16/SDPA环境复现。','',
@@ -62,10 +67,14 @@ def main():
             v=family[arm]['natural']
             quality=f"{v['correct']}/{v['scored']}" if v['scored'] else '—'
             lines.append(f"|{benchmark}|{arm}|{pct(v['DFlash']['ratio'])}|{pct(v['ASD']['ratio'])}|{pct(v['BASTION']['ratio'])}|{quality}|{v['truncated']}|{v['identical_ar']}/{v['n']}|{v['tps']:.2f}|")
+    lines+=['','## 每组最慢请求','','|方法|请求|秒|输出token|停止|','|---|---|---:|---:|---|']
+    for arm,r in slowest.items():
+        lines.append(f"|{arm}|{r['request_id']}|{r['latency_seconds']:.3f}|{len(r['token_ids'])}|{r['finish_reason']}|")
     lines+=['','## 质量与执行边界','',
         '数学采用既有答案等价评分，代码采用原始隐藏测试的单次greedy通过率。MMLU为零样本生成字母合同，格式错误计错；这批开发题不等同完整MMLU知识能力。',
         'MT/Alpaca本轮没有新增裁判评分，表中—不代表质量相同。AR一致性只是保真度，不代替正确率。',
         f"严格方法与本窗口AR的完整输出差异：{len(analysis['strict_identity_differences'])}；详情见analysis.json。所有差异保留，不从成绩中剔除。",
+        f"本轮AR与旧冻结AR完整输出/输入身份差异：{len(reference_audit)}；见reference-audit.json。旧AR只用于输入/历史核验，不代替本轮实测时延。",
         'DDTree32/128为总节点上限，官方API传31/127。BASTION保留默认32..8192自适应，未为使其变快或变慢另调预算。',
         'DDTree启用官方默认可选C++整理并记录是否成功；BASTION统计模式的内部同步计入实测，官方统计时钟不替代共同wall。',
         '这是统一执行栈的算法比较；若需比较各系统生产上限，需另外统一BF16并允许各自支持的优化后端。','',
