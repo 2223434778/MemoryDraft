@@ -1,8 +1,14 @@
-# 2026-10-30 — 最小增量接受：实现完成，直接对比待执行
+# 2026-10-30 — 最小增量接受：七任务198计时完成
+
+- 仅实现用户指定第一项，三组自然4096/EOS对比198计时完成。新方案AR完全一致49→56/66（74.24%→84.85%），总wall248.324→255.476秒（+2.88%，达到本轮≤3%目标），仍较ASD295.916秒少13.67%。全部在线构树、门控、反馈与提交成本计入计时；总时间比区别于逐题均值，单次开发测量不保证普遍上限。
+- 相对原反馈逐任务配对耗时：GSM−1.03%、MATH+2.71%、HumanEval−0.29%、MBPP+0.14%、MMLU+1.52%、MT+0.18%、Alpaca+0.42%。AR一致GSM5→7/8、MATH7→9/12、MMLU11→13/14、MT3→4/8，代码与Alpaca不变。GSM8/8、MATH9/12、HE7/8、MBPP4/8的正确集合均未改变，MMLU字母合同5/14不变；开放回答不新增偏好评分。原MBPP相对ASD5→4的取舍仍在。
+- 新方案回退20轮/放弃当轮推进20token，实际近似token35→13、验证3071→3151轮、输出22978→23605token。101题仍正确且正常结束，但2194→2716token、19.206→25.303秒，是额外耗时的主要来源；372保持824token正确，无截断。不是把原轨迹22个低增量块直接删掉后的性能推算。
+- GPU实际源`d7618fd99a2767478dcaed0a760f4826f92685aa`，515文件前后SHA相同；隔离根`/media/a6000/D/ZhaoBinHe/MemoryDraft/gate-min-gain-v1`，实际ZIP SHA`8f478f3e199e68527939c10e8a1d9f5e80b42c81084e7d8a0a996c7ee0b089f2`。源清单/执行命令/精确时间见`results/gate-min-gain`。加载20.89s、峰allocated38339675136B，GPU1，服务器63 passed/5.20s；结束三服务active、27B health=ok。独立目录运行，不覆盖线上/旧组合/infra冻结版本。
+- 下载3分片/10载荷SHA校验；本机重建analysis与服务器相同，132个原基线输入/token/文本/停止身份完全复现上一轮。报告及数据为`docs/GATE_MIN_GAIN_RESULTS.md`、`results/gate-min-gain/`；复现`.venv\Scripts\python.exe -m scripts.report_gate_min_gain --input results/gate-min-gain`。保留为高保真研究候选，不新增第二项门控或复杂验证实验。
 
 - 用户仅授权第一项：近似路径只领先严格路径1个token时提交严格路径，至少领先2才近似接受。`TreeASDVerifier`提取原选择为默认hook；`MinGainFeedbackVerifier`在预算与KV提交前回退，继承宽度反馈观察实际提交边界。旧类默认选择不变。
 - 新增`run_gate_min_gain.py`与协议`GATE_MIN_GAIN_PROTOCOL.md`：ASD/原反馈/新反馈，七任务66匹配输入，仅自然4096/EOS共198计时；不加复杂验证、前缀、反事实、种子或阈值扫描。
-- 本机`.venv\Scripts\python.exe -m pytest -q tests/test_gate_min_gain.py tests/test_gate_width.py tests/test_budget_tree.py tests/test_branch_drift.py --basetemp artifacts/pytest-gate-min-gain --junitxml=artifacts/gate-min-gain-tests.xml --tb=short`：63 passed/14.41s。含1/2 token阈值、预算记账、真实回退边界反馈、停止/零预算与runtime入口。结果随后追加。
+- 本机`.venv\Scripts\python.exe -m pytest -q tests/test_gate_min_gain.py tests/test_gate_width.py tests/test_budget_tree.py tests/test_branch_drift.py --basetemp artifacts/pytest-gate-min-gain --junitxml=artifacts/gate-min-gain-tests.xml --tb=short`：63 passed/14.41s。含1/2 token阈值、预算记账、真实回退边界反馈、停止/零预算与runtime入口。
 
 # 2026-10-30 — 保真门控固定的宽度对照：792计时完成
 

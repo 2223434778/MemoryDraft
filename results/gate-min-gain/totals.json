@@ -1,0 +1,29 @@
+{
+  "ASD": {
+    "seconds": 295.915538005298,
+    "identical_ar": 14,
+    "tokens": 26416,
+    "calls": 3811,
+    "exceptions": 355,
+    "fallbacks": 0,
+    "foregone_tokens": 0
+  },
+  "WidthFeedback-ASD": {
+    "seconds": 248.32435725722462,
+    "identical_ar": 49,
+    "tokens": 22978,
+    "calls": 3071,
+    "exceptions": 35,
+    "fallbacks": 0,
+    "foregone_tokens": 0
+  },
+  "MinGainFeedback-ASD": {
+    "seconds": 255.4764589422848,
+    "identical_ar": 56,
+    "tokens": 23605,
+    "calls": 3151,
+    "exceptions": 13,
+    "fallbacks": 20,
+    "foregone_tokens": 20
+  }
+}
