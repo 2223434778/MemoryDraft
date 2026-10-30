@@ -44,7 +44,8 @@ def load_upstreams(root):
             if hashlib.sha256((root/'third_party'/name/path).read_bytes()).hexdigest() != digest:
                 raise ValueError('Changed upstream file: '+name+'/'+path)
     # DDTree's released modules use top-level imports; preserve their own globals.
-    sys.path[:0] = [str(root/'third_party/ddtree'), str(root/'third_party/bastion')]
+    sys.path[:0] = [str(root/'.deps'), str(root/'third_party/ddtree'), str(root/'third_party/bastion')]
+    os.environ['PATH'] = str(root/'.deps/bin')+os.pathsep+os.environ['PATH']
     dd = importlib.import_module('ddtree')
     bastion = importlib.import_module('bastion.tree_draft')
     calibration = importlib.import_module('bastion.cost_model')
