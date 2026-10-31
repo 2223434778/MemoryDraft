@@ -55,3 +55,18 @@ def test_official_scorer_smoke_when_dependencies_prepared():
     import json
     io=json.dumps(dict(inputs=['1\n'],outputs=['2\n'],fn_name=None))
     assert score(dict(benchmark='livecodebench',input_output=io),'print(int(input())+1)')['correct']
+
+
+def test_expanded_summary_pairs_quality_and_preserves_environment_errors():
+    from scripts.report_expanded_suite import summarize,ARMS
+    rows=[]
+    for arm in ARMS:
+        rows.append(dict(request_id='x',arm=arm,benchmark='ifeval',prompt_sha256='p',snapshot_id='s',
+            latency_seconds=2 if arm=='DFlash' else 1,token_ids=[1],max_new_tokens=3,finish_reason='eos',
+            quality=dict(correct=arm!='ASD',instructions=[arm!='ASD'],loose_correct=True,loose_instructions=[True]),
+            rounds=[],ttft_seconds=.1,peak_gpu_bytes=1))
+    result=summarize(rows)
+    assert result['families']['ifeval']['BufferedKV-ASD']['DFlash']['paired_ratio']==.5
+    assert result['families']['ifeval']['ASD']['DFlash']['lost']==['x']
+    rows[1]['prompt_sha256']='different'
+    with pytest.raises(ValueError,match='inputs'):summarize(rows)
