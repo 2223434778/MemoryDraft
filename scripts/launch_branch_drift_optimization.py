@@ -25,7 +25,7 @@ def main():
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--archive-sha', required=True)
     parser.add_argument('--owned', action='store_true')
-    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width', 'gate-min-gain', 'tree-execution', 'infra-fidelity-v05', 'external-trees'), default='branch-drift-optimization')
+    parser.add_argument('--study', choices=('branch-drift-optimization', 'gate-width', 'gate-min-gain', 'tree-execution', 'infra-fidelity-v05', 'external-trees', 'expanded-suite'), default='branch-drift-optimization')
     args = parser.parse_args()
     root = args.root.resolve()
     python = root.parent/'.venv-dflash/bin/python'
@@ -94,6 +94,10 @@ def main():
             commands[0] = [str(python), '-m', 'pytest', '-q', 'tests/test_external_trees.py',
                 'tests/test_tree_execution.py', 'tests/test_gate_min_gain.py',
                 '--basetemp', 'artifacts/pytest-server-external', '--junitxml=server-tests.xml', '--tb=short']
+        if args.study == 'expanded-suite':
+            commands[0] = [str(python), '-m', 'pytest', '-q', 'tests/test_expanded_suite.py',
+                'tests/test_tree_execution.py', '--basetemp', 'artifacts/pytest-expanded',
+                '--junitxml=server-tests.xml', '--tb=short']
         for command in commands:
             info['command'] = command
             save()

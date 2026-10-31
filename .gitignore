@@ -34,3 +34,6 @@ UPSTREAM_TREES.json
 third_party/bastion/
 third_party/ddtree/
 .deps/
+.nltk/
+third_party/expanded/
+data/research/expanded-suite/tasks.json.gz
