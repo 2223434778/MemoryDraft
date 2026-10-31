@@ -511,3 +511,12 @@ scripts/*external_trees*.py text eol=lf
 tests/test_external_trees.py text eol=lf
 docs/EXTERNAL_TREES*.md text eol=lf
 results/external-trees/** -text
+
+memorydraft/evaluation/expanded_suite.py text eol=lf
+scripts/*expanded*.py text eol=lf
+tests/test_expanded_suite.py text eol=lf
+docs/EXPANDED_*.md text eol=lf
+data/research/expanded-suite/manifest.json -text
+results/expanded-suite/** -text
+results/expanded-suite/**/*.log -whitespace
+results/expanded-suite/**/*.xml -whitespace

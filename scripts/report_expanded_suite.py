@@ -70,14 +70,16 @@ def main():
     if info['status']!='completed':raise ValueError('Unfinished generation')
     data=(source/'rows.jsonl').read_bytes() if (source/'rows.jsonl').exists() else gzip.decompress((source/'rows.jsonl.gz').read_bytes())
     rows=[json.loads(s) for s in data.decode().splitlines()]
-    revision=json.loads((source/'quality-v2-manifest.json').read_bytes())
+    quality_version=3 if (source/'quality-v3-manifest.json').exists() else 2
+    prefix=f'quality-v{quality_version}-'
+    revision=json.loads((source/(prefix+'manifest.json')).read_bytes())
     if (source/'rows.jsonl').exists() and hashlib.sha256(data).hexdigest()!=revision['generation_rows_sha256']:
         raise ValueError('Rescoring changed generation rows')
-    quality={(r['request_id'],r['arm']):r['quality'] for r in (json.loads(s) for s in (source/'quality-v2-scores.jsonl').read_text().splitlines())}
+    quality={(r['request_id'],r['arm']):r['quality'] for r in (json.loads(s) for s in (source/(prefix+'scores.jsonl')).read_text().splitlines())}
     for r in rows:
         key=r['request_id'],r['arm']
-        if key in quality and r.get('quality_revision')!=2:
-            r['initial_quality']=r['quality'];r['quality']=quality[key];r['quality_revision']=2
+        if key in quality and r.get('quality_revision',0)<quality_version:
+            r.setdefault('initial_quality',r['quality']);r['quality']=quality[key];r['quality_revision']=quality_version
         r['quality'].pop('metadata',None)
         r['rounds']=[{k:b[k] for k in ('advance','accepted','strict_accepted','relaxed_tokens','regret','tree_nodes','route') if k in b} for b in r['rounds']]
     analysis=summarize(rows)
@@ -112,7 +114,7 @@ def main():
         lines.append(f"|{a}|{v['seconds']:.3f}|{v['tokens']}|{v['tokens']/v['seconds']:.2f}|{v['same_dflash']}/{analysis['requests']}|")
     lines+=['','## 评分与范围','',
         'IFEval官方strict/loose；LiveCodeBench v6-only按难度固定8/8/8，官方全测试2s/test；CanItEdit descriptive32，原生成评分及修订评分同时保留。',
-        f"编辑规范答案可运行{revision['canonical_scored']}/32，未评分{revision['unavailable']}。修订只修复对象方法/科学依赖误拦，统一重评全部编辑输出，不修改token、时间或测试。",
+        f"编辑规范答案可运行{revision['canonical_scored']}/32，未评分{revision['unavailable']}。评分修订{quality_version}修复对象方法、科学依赖及源码检查环境；统一重评全部编辑输出，不修改token、时间或测试，旧评分保留。",
         'LongBench仅四个子集各8，3840-token首尾截取，保留原始长度/截取标记；不称完整长文榜单。QA128/摘要512输出上限，其他代码/指令2048、AIME4096，截断均计入结果。',
         '未做新参数扫描，三组同题配对，不能把单次子集点估计外推为所有请求稳定保证。原始长文/完整测试载荷不另行发布，数据版本/题目ID/SHA及获取/评分代码可复核。','',
         '## 执行记录','',f"生成{info.get('started_utc')}至{info.get('finished_utc')}，加载{info.get('load_seconds',0):.2f}s、一次合成校准{info.get('calibration_seconds',0):.2f}s另列。",
