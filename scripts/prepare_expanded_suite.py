@@ -74,7 +74,7 @@ def main():
         digests={}
         for path in files:
             dest=target/Path(path).name;shutil.copyfile(source/path,dest)
-            digests[str(dest.relative_to(ROOT))]=hashlib.sha256(dest.read_bytes()).hexdigest()
+            digests[dest.relative_to(ROOT).as_posix()]=hashlib.sha256(dest.read_bytes()).hexdigest()
         upstream[name]=dict(commit=commit,license=license,files=digests)
     counts={b:sum(r['benchmark']==b for r in records) for b in dict.fromkeys(r['benchmark'] for r in records)}
     manifest=dict(seed=SEED,count=len(records),counts=counts,tasks_sha256=hashlib.sha256(raw).hexdigest(),upstream=upstream,

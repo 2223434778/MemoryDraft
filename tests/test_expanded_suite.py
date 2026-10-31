@@ -5,6 +5,10 @@ from scripts.run_expanded_suite import clipped
 
 
 def test_new_data_counts_and_hidden_tests_not_in_prompt():
+    import json
+    from memorydraft.evaluation.expanded_suite import ROOT
+    manifest=json.loads((ROOT/'data/research/expanded-suite/manifest.json').read_bytes())
+    assert all('\\' not in p for u in manifest['upstream'].values() for p in u['files'])
     pool=load_records()
     assert len(pool)==182
     for r in pool:
