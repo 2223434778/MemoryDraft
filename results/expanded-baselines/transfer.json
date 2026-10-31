@@ -1,0 +1,82 @@
+{
+  "archive_bytes": 4358861,
+  "archive_sha256": "1fb76b5bc42c8d94f1e5d40f0708a96455aae727a9e50a12b909878d4b11cae2",
+  "parts": [
+    {
+      "name": "part-000.bin",
+      "bytes": 409600,
+      "sha256": "88b55293de80d62bfe1107dd0f5cf3bd9ee4e3e6577619ebd5fe8f53d04cb44e"
+    },
+    {
+      "name": "part-001.bin",
+      "bytes": 409600,
+      "sha256": "5ec16165c0bb2733eaf9f9b659968fcaadb3ccaad77defc2e79e2a5b0f45e57b"
+    },
+    {
+      "name": "part-002.bin",
+      "bytes": 409600,
+      "sha256": "7d1eebb9f3d638bad234243832f85e9e1a7f1cebc715b22ab8c2e109433bddf2"
+    },
+    {
+      "name": "part-003.bin",
+      "bytes": 409600,
+      "sha256": "874248303ce80dc5f2c8ee38611dbe1658cad56b2b1217cdf2ee136c326ce3bd"
+    },
+    {
+      "name": "part-004.bin",
+      "bytes": 409600,
+      "sha256": "48d0e81ee4868bf5a330f29d6d2c53aa8a24841cb8df898bf36710440bb34435"
+    },
+    {
+      "name": "part-005.bin",
+      "bytes": 409600,
+      "sha256": "9842c1c08d074660a165d9379d805b900c3145eb52955f6a05156ba40eb85c0c"
+    },
+    {
+      "name": "part-006.bin",
+      "bytes": 409600,
+      "sha256": "17f1567c97e41a88437dfcfea7e37bd5d10d319c4149c65bfa97c99725d9de81"
+    },
+    {
+      "name": "part-007.bin",
+      "bytes": 409600,
+      "sha256": "b3d1f90605e65f62bce16c3216fc406785666ec0e431f0cb3534d088793f3bb7"
+    },
+    {
+      "name": "part-008.bin",
+      "bytes": 409600,
+      "sha256": "0725c14dcf22ece14c3d96a957439cb4ce2a093ee72480bd40c9db90d5aeabd0"
+    },
+    {
+      "name": "part-009.bin",
+      "bytes": 409600,
+      "sha256": "cd506aa30fd896e9ecc81757c99aa454b29d8d29f98baca0a99e298eae6b5b75"
+    },
+    {
+      "name": "part-010.bin",
+      "bytes": 262861,
+      "sha256": "65a590c7cb556f3a2bf73eb999e926e83cc2f20e6f3f3465a719db838c0de8a6"
+    }
+  ],
+  "payloads": {
+    "bastion-profile.json": "c3d4f3913a9dd169fea052f2598e37adaea50db7d47111cebddcd47b3ed5c8e4",
+    "tree-costs.json": "55f8a7170e3154eb847af53aa76cd346042b9b9288a6947829ce4fbde4dadef2",
+    "frozen-inputs.json": "3a5cc61aed56547c50af863e32893608dceece26f7a5015428b3354175171b8c",
+    "rows.jsonl": "ceec4afda825a836d07da8cb885ed77fdd18fa1ffc0d4071b33e5f329376d67e",
+    "upstreams.json": "56dc7a46b2cb8bf2f8668246504e07b3e446e230c73fda0d21c2f6114c22895b",
+    "provenance.json": "26f1824c5228642ac2ddb87ccf8f912123556f97120ec88fd7a67e3c65f9b0b0",
+    "bastion-calibration.json": "c97bdca5106f1069750da7771cc72b33db1795209d792920bc8631a7479859cc",
+    "warmup.jsonl": "7aa9c33d99a7db0eda55af8028b96258482a23de911206f65732094d7fb4aa79",
+    "tasks-metadata.json": "b83a4096279b0bee965808f313322f65ee42b4719633a7e3e32aa74925db86f8",
+    "execution.json": "5b28c13f139d05e949c38bb9115a4af96123348fb16f8f5974b67e2f2860a63b",
+    "source-manifest.json": "9cfe45d475caccb23f9979635736c671b158f8770ef41577f93ddcc3f83e035a",
+    "server-tests.xml": "fe9949642a9f002b011b291d0361ba23c7101a046103659565334cb72bea19eb",
+    "LICENSE-bastion": "08a6dda4c9d088087c437a9e47233b643228f64097afa326b3beb9b5a2266584",
+    "LICENSE-ddtree": "d39ced5531817c1e3d9efe4d5e39d8ba445b9c1ed3885b225ffa25accfb5eeec",
+    "LICENSE-instruction_following_eval": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-lcb": "98b9c773a2c272476d91488006d096d3585e7b6b514a1975f84f6ba9d9335119",
+    "LICENSE-longbench": "daa110ebb8a90b4d89cb5110f774127c4628cdb3c953358e644bed723a129e7e",
+    "LICENSE-canitedit": "5f9bca5c91fed067438814248f77116e18da08394790af497bf6c3acba65dce9",
+    "service-restoration.json": "ca37dd0828a89f5bb92b8453b8f9bec54696b0c58e4dac763dcd18473d8a5522"
+  }
+}

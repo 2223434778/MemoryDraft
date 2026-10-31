@@ -1,0 +1,2293 @@
+{
+  "generations": 910,
+  "requests": 182,
+  "families": {
+    "ifeval": {
+      "AR": {
+        "n": 64,
+        "seconds": 1295.047325330088,
+        "tokens": 25939,
+        "tps": 20.029383863163876,
+        "correct": 52,
+        "scored": 64,
+        "score": null,
+        "truncated": 1,
+        "same_dflash": 64,
+        "calls": 0,
+        "mean_ttft": 0.08650311461315141,
+        "peak_gpu_bytes": 37659949568,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_instructions": {
+          "passed": 84,
+          "total": 97
+        },
+        "loose_correct": 51,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.569521692967553,
+          "total_ratio": 1.5445745285567052,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.9315959751218956,
+          "total_ratio": 1.917667500143785,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 2.0048521582261345,
+          "total_ratio": 1.9792985143256305,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.8658818227459086,
+          "total_ratio": 1.803158868299924,
+          "lost": [
+            "ifeval:3425"
+          ],
+          "gained": [
+            "ifeval:1127"
+          ]
+        },
+        "same_ar": 64
+      },
+      "DFlash": {
+        "n": 64,
+        "seconds": 838.4492307666223,
+        "tokens": 25939,
+        "tps": 30.936876137727623,
+        "correct": 52,
+        "scored": 64,
+        "score": null,
+        "truncated": 1,
+        "same_dflash": 64,
+        "calls": 11575,
+        "mean_ttft": 0.08712898143130587,
+        "peak_gpu_bytes": 37794381312,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_instructions": {
+          "passed": 84,
+          "total": 97
+        },
+        "loose_correct": 51,
+        "AR": {
+          "paired_ratio": 0.6866456471724753,
+          "total_ratio": 0.6474274834341782,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.2455284043600852,
+          "total_ratio": 1.2415506436816024,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.2941217550438011,
+          "total_ratio": 1.281452256094851,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.203630283558191,
+          "total_ratio": 1.1674146083354406,
+          "lost": [
+            "ifeval:3425"
+          ],
+          "gained": [
+            "ifeval:1127"
+          ]
+        },
+        "same_ar": 64
+      },
+      "BudgetTree": {
+        "n": 64,
+        "seconds": 675.3242286439054,
+        "tokens": 25939,
+        "tps": 38.409698482293734,
+        "correct": 52,
+        "scored": 64,
+        "score": null,
+        "truncated": 1,
+        "same_dflash": 64,
+        "calls": 8927,
+        "mean_ttft": 0.08684774272478535,
+        "peak_gpu_bytes": 37803154432,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_instructions": {
+          "passed": 84,
+          "total": 97
+        },
+        "loose_correct": 51,
+        "AR": {
+          "paired_ratio": 0.5496590535634566,
+          "total_ratio": 0.5214668340184213,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.8082588004367223,
+          "total_ratio": 0.8054443893119607,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0414355599523757,
+          "total_ratio": 1.0321385298427515,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 0.9679558541916934,
+          "total_ratio": 0.9402875462846009,
+          "lost": [
+            "ifeval:3425"
+          ],
+          "gained": [
+            "ifeval:1127"
+          ]
+        },
+        "same_ar": 64
+      },
+      "BASTION": {
+        "n": 64,
+        "seconds": 654.296113474993,
+        "tokens": 25939,
+        "tps": 39.644129723218015,
+        "correct": 52,
+        "scored": 64,
+        "score": null,
+        "truncated": 1,
+        "same_dflash": 64,
+        "calls": 8144,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 39028313600,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_instructions": {
+          "passed": 84,
+          "total": 97
+        },
+        "loose_correct": 51,
+        "AR": {
+          "paired_ratio": 0.5272753736101511,
+          "total_ratio": 0.5052295006348304,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.7764906418656676,
+          "total_ratio": 0.7803646177559828,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9627734865846687,
+          "total_ratio": 0.968862193481288,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 0.9311775838842334,
+          "total_ratio": 0.9110090545964366,
+          "lost": [
+            "ifeval:3425"
+          ],
+          "gained": [
+            "ifeval:1127"
+          ]
+        },
+        "same_ar": 64
+      },
+      "BufferedKV-ASD": {
+        "n": 64,
+        "seconds": 718.2103297149297,
+        "tokens": 28239,
+        "tps": 39.318565650828994,
+        "correct": 52,
+        "scored": 64,
+        "score": null,
+        "truncated": 3,
+        "same_dflash": 55,
+        "calls": 9636,
+        "mean_ttft": 0.08731590300158132,
+        "peak_gpu_bytes": 38479212544,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_instructions": {
+          "passed": 85,
+          "total": 97
+        },
+        "loose_correct": 52,
+        "AR": {
+          "paired_ratio": 0.5762122403877167,
+          "total_ratio": 0.5545823041886664,
+          "lost": [
+            "ifeval:1127"
+          ],
+          "gained": [
+            "ifeval:3425"
+          ]
+        },
+        "DFlash": {
+          "paired_ratio": 0.8478120157787684,
+          "total_ratio": 0.8565937010381008,
+          "lost": [
+            "ifeval:1127"
+          ],
+          "gained": [
+            "ifeval:3425"
+          ]
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0513361771740206,
+          "total_ratio": 1.0635044608974602,
+          "lost": [
+            "ifeval:1127"
+          ],
+          "gained": [
+            "ifeval:3425"
+          ]
+        },
+        "BASTION": {
+          "paired_ratio": 1.0932454815838026,
+          "total_ratio": 1.0976839307519124,
+          "lost": [
+            "ifeval:1127"
+          ],
+          "gained": [
+            "ifeval:3425"
+          ]
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 55
+      }
+    },
+    "livecodebench": {
+      "AR": {
+        "n": 24,
+        "seconds": 245.2021548121702,
+        "tokens": 4633,
+        "tps": 18.894613726167993,
+        "correct": 8,
+        "scored": 24,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 24,
+        "calls": 0,
+        "mean_ttft": 0.435155999866159,
+        "peak_gpu_bytes": 37641687552,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 3.9606164740952856,
+          "total_ratio": 3.9115635716517696,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 4.283021355762391,
+          "total_ratio": 4.276654939987655,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 4.159839420105601,
+          "total_ratio": 4.173209233317855,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 4.258238840127813,
+          "total_ratio": 4.275219698701295,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 24
+      },
+      "DFlash": {
+        "n": 24,
+        "seconds": 62.686480820411816,
+        "tokens": 4633,
+        "tps": 73.90748275171022,
+        "correct": 8,
+        "scored": 24,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 24,
+        "calls": 698,
+        "mean_ttft": 0.43433410112629645,
+        "peak_gpu_bytes": 38211640832,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.2603469028458901,
+          "total_ratio": 0.2556522428134081,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0923925083537178,
+          "total_ratio": 1.093336427146885,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.06126745991541,
+          "total_ratio": 1.0668903002273329,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0840124223240037,
+          "total_ratio": 1.092969504493049,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 24
+      },
+      "BudgetTree": {
+        "n": 24,
+        "seconds": 57.33503363095224,
+        "tokens": 4633,
+        "tps": 80.80574313117489,
+        "correct": 8,
+        "scored": 24,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 24,
+        "calls": 583,
+        "mean_ttft": 0.43454099968463805,
+        "peak_gpu_bytes": 38211640832,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.237620797639767,
+          "total_ratio": 0.23382760920217865,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9212913691885207,
+          "total_ratio": 0.9146315582016681,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9720644424460876,
+          "total_ratio": 0.9758115377271709,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 0.9934172967446042,
+          "total_ratio": 0.9996644009613823,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 24
+      },
+      "BASTION": {
+        "n": 24,
+        "seconds": 58.75625714007765,
+        "tokens": 4633,
+        "tps": 78.85117646201854,
+        "correct": 8,
+        "scored": 24,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 24,
+        "calls": 572,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 38837598208,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.24448093220911016,
+          "total_ratio": 0.23962373897197653,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9481923103132582,
+          "total_ratio": 0.9373034882657759,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0298095018188178,
+          "total_ratio": 1.0247880470128157,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0233367711132424,
+          "total_ratio": 1.0244441291294513,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 24
+      },
+      "BufferedKV-ASD": {
+        "n": 24,
+        "seconds": 57.35428167274222,
+        "tokens": 4633,
+        "tps": 80.77862480146528,
+        "correct": 8,
+        "scored": 24,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 23,
+        "calls": 592,
+        "mean_ttft": 0.4379944571507319,
+        "peak_gpu_bytes": 38385807360,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.23958483484511317,
+          "total_ratio": 0.23390610786710564,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.927226284388326,
+          "total_ratio": 0.9149386107198199,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0076071815414236,
+          "total_ratio": 1.0003357117031424,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9797479939669836,
+          "total_ratio": 0.9761391290804474,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 23
+      }
+    },
+    "canitedit": {
+      "AR": {
+        "n": 32,
+        "seconds": 667.4111979648005,
+        "tokens": 12328,
+        "tps": 18.47137122900084,
+        "correct": 17,
+        "scored": 31,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 32,
+        "calls": 0,
+        "mean_ttft": 0.5688447792126681,
+        "peak_gpu_bytes": 38393556480,
+        "evaluation_errors": [
+          "canitedit:78_llm_inference"
+        ],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 6.037509996032073,
+          "total_ratio": 6.314909617694445,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 6.159920301543954,
+          "total_ratio": 6.459185914300219,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 5.883177990563223,
+          "total_ratio": 6.072643563247218,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 6.217209253201343,
+          "total_ratio": 6.546043305161232,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 32
+      },
+      "DFlash": {
+        "n": 32,
+        "seconds": 105.68816315196455,
+        "tokens": 12328,
+        "tps": 116.64503982602186,
+        "correct": 17,
+        "scored": 31,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 32,
+        "calls": 1126,
+        "mean_ttft": 0.5659243304107804,
+        "peak_gpu_bytes": 39342240768,
+        "evaluation_errors": [
+          "canitedit:78_llm_inference"
+        ],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.17397586124462155,
+          "total_ratio": 0.1583553939074582,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0241525659384318,
+          "total_ratio": 1.0228469297805167,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.982655744212435,
+          "total_ratio": 0.9616358635176037,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.034963015303698,
+          "total_ratio": 1.0366012661240864,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 32
+      },
+      "BudgetTree": {
+        "n": 32,
+        "seconds": 103.3274481985718,
+        "tokens": 12328,
+        "tps": 119.31002086017254,
+        "correct": 17,
+        "scored": 31,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 32,
+        "calls": 1040,
+        "mean_ttft": 0.5663897242411622,
+        "peak_gpu_bytes": 39342240768,
+        "evaluation_errors": [
+          "canitedit:78_llm_inference"
+        ],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.16975001884292726,
+          "total_ratio": 0.15481827172462473,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9787238699660215,
+          "total_ratio": 0.9776633931086647,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9593552919717755,
+          "total_ratio": 0.9401561812616012,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0104184011531299,
+          "total_ratio": 1.0134471111396122,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 32
+      },
+      "BASTION": {
+        "n": 32,
+        "seconds": 109.90455655986443,
+        "tokens": 12328,
+        "tps": 112.17005359814179,
+        "correct": 17,
+        "scored": 31,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 32,
+        "calls": 1019,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 41148298752,
+        "evaluation_errors": [
+          "canitedit:78_llm_inference"
+        ],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.17627714788257579,
+          "total_ratio": 0.16467292861583188,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0218024158962815,
+          "total_ratio": 1.0398946606900275,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.043869694760396,
+          "total_ratio": 1.0636530609819468,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0547792037928412,
+          "total_ratio": 1.0779561219069598,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 32
+      },
+      "BufferedKV-ASD": {
+        "n": 32,
+        "seconds": 101.95642876951024,
+        "tokens": 12329,
+        "tps": 120.92420408203773,
+        "correct": 17,
+        "scored": 31,
+        "score": null,
+        "truncated": 0,
+        "same_dflash": 31,
+        "calls": 1047,
+        "mean_ttft": 0.5677672076053568,
+        "peak_gpu_bytes": 39368513536,
+        "evaluation_errors": [
+          "canitedit:78_llm_inference"
+        ],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.16783472042114803,
+          "total_ratio": 0.15276403674438715,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9690658713537027,
+          "total_ratio": 0.964691084874958,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9900410478897258,
+          "total_ratio": 0.9867313143509866,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9498263779678635,
+          "total_ratio": 0.9276815444314641,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 31
+      }
+    },
+    "longbench-qasper": {
+      "AR": {
+        "n": 8,
+        "seconds": 38.788444322766736,
+        "tokens": 111,
+        "tps": 2.861677026187125,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.431422886660385,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 0,
+        "mean_ttft": 4.01690768316621,
+        "peak_gpu_bytes": 42345129472,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0801294454989698,
+          "total_ratio": 1.0764524976148009,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.1045194529876063,
+          "total_ratio": 1.0976344591192002,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0852514278203307,
+          "total_ratio": 1.0786393574662678,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0969166266981638,
+          "total_ratio": 1.0915907333033839,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "DFlash": {
+        "n": 8,
+        "seconds": 36.03358662710525,
+        "tokens": 111,
+        "tps": 3.080459382206027,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.431422886660385,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 37,
+        "mean_ttft": 3.991404417611193,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.931455382360184,
+          "total_ratio": 0.9289773605577543,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0212419549937481,
+          "total_ratio": 1.0196775626897927,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0042671022121539,
+          "total_ratio": 1.0020315432927256,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0146227798975276,
+          "total_ratio": 1.014063078233481,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BudgetTree": {
+        "n": 8,
+        "seconds": 35.33821665355936,
+        "tokens": 111,
+        "tps": 3.1410753148127464,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.431422886660385,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 29,
+        "mean_ttft": 4.003508111985866,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.9142489742680172,
+          "total_ratio": 0.9110501148100368,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9802876814705773,
+          "total_ratio": 0.9807021715395152,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9832868444015491,
+          "total_ratio": 0.9826945104582677,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 0.9942609061817117,
+          "total_ratio": 0.9944938629016201,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BASTION": {
+        "n": 8,
+        "seconds": 35.960531251039356,
+        "tokens": 111,
+        "tps": 3.086717468802461,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.431422886660385,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 27,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.9293210803241772,
+          "total_ratio": 0.9270939291043557,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9973670856940249,
+          "total_ratio": 0.997972575507903,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0173223315260507,
+          "total_ratio": 1.0176102434251537,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.01165842563238,
+          "total_ratio": 1.012007141912139,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BufferedKV-ASD": {
+        "n": 8,
+        "seconds": 35.533871019026265,
+        "tokens": 111,
+        "tps": 3.123780123493051,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.431422886660385,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 34,
+        "mean_ttft": 3.995382081979187,
+        "peak_gpu_bytes": 44562492416,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.9190201637503173,
+          "total_ratio": 0.9160942553751708,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9857700864905014,
+          "total_ratio": 0.9861319492491738,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0063361164839688,
+          "total_ratio": 1.0055366225009321,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9896760434394889,
+          "total_ratio": 0.9881353189964134,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      }
+    },
+    "longbench-multifieldqa_en": {
+      "AR": {
+        "n": 8,
+        "seconds": 37.83469774341211,
+        "tokens": 145,
+        "tps": 3.8324609062126798,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.5560308555399719,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 0,
+        "mean_ttft": 3.651896986644715,
+        "peak_gpu_bytes": 42345129472,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.1657025631126325,
+          "total_ratio": 1.1236661100203507,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.1906201144628203,
+          "total_ratio": 1.148648487999337,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.1856826179608075,
+          "total_ratio": 1.139300807007899,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.2009699892142318,
+          "total_ratio": 1.1504358708074898,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "DFlash": {
+        "n": 8,
+        "seconds": 33.67076519085094,
+        "tokens": 145,
+        "tps": 4.30640643828907,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.5560308555399719,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 41,
+        "mean_ttft": 3.6537027253652923,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.8953228211888681,
+          "total_ratio": 0.889944077766917,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.020542203972537,
+          "total_ratio": 1.0222329193309336,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0145200964206484,
+          "total_ratio": 1.0139140059917489,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0255254280716475,
+          "total_ratio": 1.0238235900757515,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BudgetTree": {
+        "n": 8,
+        "seconds": 32.93844734807499,
+        "tokens": 145,
+        "tps": 4.402150425237764,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.5560308555399719,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 34,
+        "mean_ttft": 3.6508606263669208,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.8781482767073401,
+          "total_ratio": 0.8705883570540836,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9800433220767097,
+          "total_ratio": 0.97825063259997,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9940612159016674,
+          "total_ratio": 0.9918620177633982,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.00490413670359,
+          "total_ratio": 1.0015560746623764,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BASTION": {
+        "n": 8,
+        "seconds": 33.20869915187359,
+        "tokens": 145,
+        "tps": 4.3663258032743295,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.5560308555399719,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 30,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 44490877952,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.8844558030097366,
+          "total_ratio": 0.8777313189360946,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9860867186547315,
+          "total_ratio": 0.986276936791953,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0061296297263145,
+          "total_ratio": 1.0082047523656088,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0109280428478642,
+          "total_ratio": 1.0097735942352526,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BufferedKV-ASD": {
+        "n": 8,
+        "seconds": 32.887272296939045,
+        "tokens": 145,
+        "tps": 4.409000499974446,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.5560308555399719,
+        "truncated": 0,
+        "same_dflash": 8,
+        "calls": 35,
+        "mean_ttft": 3.651541303988779,
+        "peak_gpu_bytes": 44562492416,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.8761626283152675,
+          "total_ratio": 0.869235761310277,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9755355789346489,
+          "total_ratio": 0.976730766602097,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9954217586733201,
+          "total_ratio": 0.9984463429440024,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9893807177896122,
+          "total_ratio": 0.9903210043409241,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      }
+    },
+    "longbench-multi_news": {
+      "AR": {
+        "n": 8,
+        "seconds": 229.19895859924145,
+        "tokens": 3668,
+        "tps": 16.003563115718883,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.26462302129986387,
+        "truncated": 4,
+        "same_dflash": 8,
+        "calls": 0,
+        "mean_ttft": 1.9378499399754219,
+        "peak_gpu_bytes": 42345129472,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.5625249792833054,
+          "total_ratio": 1.549952766862835,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.929590289660073,
+          "total_ratio": 1.9148250418334312,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.8746423200322835,
+          "total_ratio": 1.8401113903039827,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.960732711577103,
+          "total_ratio": 1.9523445872038538,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "DFlash": {
+        "n": 8,
+        "seconds": 147.87480205809698,
+        "tokens": 3668,
+        "tps": 24.804766930872496,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.26462302129986387,
+        "truncated": 4,
+        "same_dflash": 8,
+        "calls": 1504,
+        "mean_ttft": 1.953067651600577,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.6420995378148443,
+          "total_ratio": 0.6451809509163554,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.2354543229556962,
+          "total_ratio": 1.2354086413285432,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.198968646113178,
+          "total_ratio": 1.1872048165883404,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.25550328143823,
+          "total_ratio": 1.2596155372885818,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BudgetTree": {
+        "n": 8,
+        "seconds": 119.69707602099515,
+        "tokens": 3668,
+        "tps": 30.64402341254037,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.26462302129986387,
+        "truncated": 4,
+        "same_dflash": 8,
+        "calls": 1170,
+        "mean_ttft": 1.9396611398842651,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5197314993521321,
+          "total_ratio": 0.5222409244462916,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.8097773684368714,
+          "total_ratio": 0.8094487658145343,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9706380536222592,
+          "total_ratio": 0.9609814735565027,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0164377610030255,
+          "total_ratio": 1.019594242059054,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BASTION": {
+        "n": 8,
+        "seconds": 124.55711094825529,
+        "tokens": 3668,
+        "tps": 29.448338774683013,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.26462302129986387,
+        "truncated": 4,
+        "same_dflash": 8,
+        "calls": 1041,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5366231449548997,
+          "total_ratio": 0.5434453616608514,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.8351881819818618,
+          "total_ratio": 0.8423146419450107,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0315802660092237,
+          "total_ratio": 1.040602787376424,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0488319357171305,
+          "total_ratio": 1.0609926102796041,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BufferedKV-ASD": {
+        "n": 8,
+        "seconds": 117.3967751909513,
+        "tokens": 3669,
+        "tps": 31.25298794649343,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.26462302129986387,
+        "truncated": 4,
+        "same_dflash": 7,
+        "calls": 1195,
+        "mean_ttft": 1.9607332326995675,
+        "peak_gpu_bytes": 44562498560,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5114954306331625,
+          "total_ratio": 0.5122046623092285,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.7970359054828989,
+          "total_ratio": 0.7938930335462328,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9844777107017935,
+          "total_ratio": 0.980782313933547,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9558944090543043,
+          "total_ratio": 0.9425136332820163,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 7
+      }
+    },
+    "longbench-gov_report": {
+      "AR": {
+        "n": 8,
+        "seconds": 307.8864669392351,
+        "tokens": 4036,
+        "tps": 13.108728162438366,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.34865793697911107,
+        "truncated": 5,
+        "same_dflash": 8,
+        "calls": 0,
+        "mean_ttft": 4.281491619796725,
+        "peak_gpu_bytes": 42345129472,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.615404931310103,
+          "total_ratio": 1.609226797721811,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.9451475711033273,
+          "total_ratio": 1.936622413781918,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.7796802433379473,
+          "total_ratio": 1.7724079060576698,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 2.0024775525429295,
+          "total_ratio": 1.9955337252529879,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "DFlash": {
+        "n": 8,
+        "seconds": 191.3257145450916,
+        "tokens": 4036,
+        "tps": 21.09491664304641,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.34865793697911107,
+        "truncated": 5,
+        "same_dflash": 8,
+        "calls": 1500,
+        "mean_ttft": 4.252595356898382,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.6211586064216242,
+          "total_ratio": 0.6214164475857002,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.2039193731014572,
+          "total_ratio": 1.2034490206872035,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.101737941929782,
+          "total_ratio": 1.1014034246551667,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.2401436535728179,
+          "total_ratio": 1.2400574785841705,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BudgetTree": {
+        "n": 8,
+        "seconds": 158.98115437896922,
+        "tokens": 4036,
+        "tps": 25.386656775552392,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.34865793697911107,
+        "truncated": 5,
+        "same_dflash": 8,
+        "calls": 1206,
+        "mean_ttft": 4.297471551515628,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5161371155351896,
+          "total_ratio": 0.5163629176671346,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.830773888099978,
+          "total_ratio": 0.8309450444597742,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9152157250156192,
+          "total_ratio": 0.915205717668235,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0300325492666373,
+          "total_ratio": 1.030419616674799,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BASTION": {
+        "n": 8,
+        "seconds": 173.71084042615257,
+        "tokens": 4036,
+        "tps": 23.23401343346659,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.34865793697911107,
+        "truncated": 5,
+        "same_dflash": 8,
+        "calls": 1075,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 44490884096,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5638491035891621,
+          "total_ratio": 0.5642042086261504,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9077764397386328,
+          "total_ratio": 0.9079325319086287,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0927952004365649,
+          "total_ratio": 1.0926505163754923,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.1256559157178503,
+          "total_ratio": 1.125888526243156,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 8
+      },
+      "BufferedKV-ASD": {
+        "n": 8,
+        "seconds": 154.28777927579358,
+        "tokens": 4036,
+        "tps": 26.158909143319384,
+        "correct": 0,
+        "scored": 0,
+        "score": 0.3461488305658765,
+        "truncated": 5,
+        "same_dflash": 7,
+        "calls": 1236,
+        "mean_ttft": 4.254309572599595,
+        "peak_gpu_bytes": 44562498560,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.5009294900622152,
+          "total_ratio": 0.5011190677186992,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.8067547128119641,
+          "total_ratio": 0.8064142326223016,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9710359822706739,
+          "total_ratio": 0.9704784185175315,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.8887381358847811,
+          "total_ratio": 0.8881873975008712,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 7
+      }
+    },
+    "aime25": {
+      "AR": {
+        "n": 30,
+        "seconds": 4554.935574337374,
+        "tokens": 80415,
+        "tps": 17.654475829045793,
+        "correct": 5,
+        "scored": 30,
+        "score": null,
+        "truncated": 11,
+        "same_dflash": 30,
+        "calls": 0,
+        "mean_ttft": 0.21660524818580598,
+        "peak_gpu_bytes": 38508379648,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 5.270115031497076,
+          "total_ratio": 5.319623719762376,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 5.491858120120435,
+          "total_ratio": 5.539910255457606,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 5.196448570869811,
+          "total_ratio": 5.208590735516156,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 5.946977998778415,
+          "total_ratio": 5.98201004222407,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 30
+      },
+      "DFlash": {
+        "n": 30,
+        "seconds": 856.2514595563989,
+        "tokens": 80415,
+        "tps": 93.91516838016355,
+        "correct": 5,
+        "scored": 30,
+        "score": null,
+        "truncated": 11,
+        "same_dflash": 30,
+        "calls": 10246,
+        "mean_ttft": 0.22081772417295725,
+        "peak_gpu_bytes": 38756944896,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.1994420398725705,
+          "total_ratio": 0.18798322074642326,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.047810716219018,
+          "total_ratio": 1.0414101724670612,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9963103077923499,
+          "total_ratio": 0.9791276620123086,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.1472678204326128,
+          "total_ratio": 1.1245175142747283,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 30
+      },
+      "BudgetTree": {
+        "n": 30,
+        "seconds": 822.2038560733199,
+        "tokens": 80415,
+        "tps": 97.80421170005921,
+        "correct": 5,
+        "scored": 30,
+        "score": null,
+        "truncated": 11,
+        "same_dflash": 30,
+        "calls": 9280,
+        "mean_ttft": 0.21863931318900237,
+        "peak_gpu_bytes": 38760424448,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.1894618838624517,
+          "total_ratio": 0.18050833928489304,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9553509843018009,
+          "total_ratio": 0.9602364432748317,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9502692868365773,
+          "total_ratio": 0.9401940636827009,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0954061525226528,
+          "total_ratio": 1.0798026983074198,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 30
+      },
+      "BASTION": {
+        "n": 30,
+        "seconds": 874.5044111986645,
+        "tokens": 80415,
+        "tps": 91.95493924356182,
+        "correct": 5,
+        "scored": 30,
+        "score": null,
+        "truncated": 11,
+        "same_dflash": 30,
+        "calls": 8878,
+        "mean_ttft": null,
+        "peak_gpu_bytes": 41756425216,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.1987177088360516,
+          "total_ratio": 0.191990511594861,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 1.0070224131658898,
+          "total_ratio": 1.021317279449336,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 1.053438495940241,
+          "total_ratio": 1.0636102041349227,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.1538051533432685,
+          "total_ratio": 1.1484891683721954,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 30
+      },
+      "BufferedKV-ASD": {
+        "n": 30,
+        "seconds": 761.4389715474099,
+        "tokens": 78039,
+        "tps": 102.48884403881739,
+        "correct": 5,
+        "scored": 30,
+        "score": null,
+        "truncated": 10,
+        "same_dflash": 7,
+        "calls": 8924,
+        "mean_ttft": 0.21892358891200275,
+        "peak_gpu_bytes": 39942268416,
+        "evaluation_errors": [],
+        "instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_instructions": {
+          "passed": 0,
+          "total": 0
+        },
+        "loose_correct": 0,
+        "AR": {
+          "paired_ratio": 0.1796544429377125,
+          "total_ratio": 0.16716789054874384,
+          "lost": [],
+          "gained": []
+        },
+        "DFlash": {
+          "paired_ratio": 0.9118879614439273,
+          "total_ratio": 0.8892702757457385,
+          "lost": [],
+          "gained": []
+        },
+        "BudgetTree": {
+          "paired_ratio": 0.9554192518351652,
+          "total_ratio": 0.9260951112342006,
+          "lost": [],
+          "gained": []
+        },
+        "BASTION": {
+          "paired_ratio": 0.9077990792907437,
+          "total_ratio": 0.8707091259879659,
+          "lost": [],
+          "gained": []
+        },
+        "BufferedKV-ASD": {
+          "paired_ratio": 1.0,
+          "total_ratio": 1.0,
+          "lost": [],
+          "gained": []
+        },
+        "same_ar": 7
+      }
+    }
+  },
+  "totals": {
+    "AR": {
+      "seconds": 7376.304820049088,
+      "tokens": 131275,
+      "same_dflash": 182
+    },
+    "DFlash": {
+      "seconds": 2271.9802027165424,
+      "tokens": 131275,
+      "same_dflash": 182
+    },
+    "BudgetTree": {
+      "seconds": 2005.145460948348,
+      "tokens": 131275,
+      "same_dflash": 182
+    },
+    "BASTION": {
+      "seconds": 2064.8985201509204,
+      "tokens": 131275,
+      "same_dflash": 182
+    },
+    "BufferedKV-ASD": {
+      "seconds": 1979.0657094873022,
+      "tokens": 131201,
+      "same_dflash": 146
+    }
+  },
+  "strict_identity_differences": [],
+  "previous_output_differences": []
+}

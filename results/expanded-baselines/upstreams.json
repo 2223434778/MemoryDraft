@@ -1,0 +1,39 @@
+{
+  "bastion": {
+    "commit": "1989b80b304f01710946d7fb68af330c03d97461",
+    "url": "https://github.com/kaist-ai-osi-lab/BASTION",
+    "license": "MIT",
+    "files": {
+      "LICENSE": "08a6dda4c9d088087c437a9e47233b643228f64097afa326b3beb9b5a2266584",
+      "README.md": "13c396ec4232409bb67b51b0fb5aedbaa59bc01cd58dcdd621f2b3272b8d6368",
+      "bastion/__init__.py": "49ff4181e16fb1317d180e546ebb8e9d3d8a1825484ec23e914774201849cc68",
+      "bastion/benchmark.py": "a0d70101336a10200538704199cd44bc8a5b3fc2579f5f9325f2a697724b3167",
+      "bastion/cost_model.py": "6a84b3fefe895616d03b02f198840a1d3bee81697d92d9b29cd122aad2461c83",
+      "bastion/tree_draft.py": "e3ee20566970aa6304f5b3a3f4d68d6299495f08def6aac2a71a6fc91c9135d9",
+      "dflash/__init__.py": "984b43cb81f4cdaea5acafc48ad026064897125084ff3beee5cb43cf103a0762",
+      "dflash/benchmark.py": "1d38da457d1c202aee63161c4f4ec59ac18f637efe018a0cb3d314421e4ff5ed",
+      "dflash/model.py": "8d6a239ea23fc291867fc9a1d6b5f84a835f57d05428178a367106722e3cca47",
+      "dflash/model_mlx.py": "1f8523ceb3acf2900aadb9e4b24728315f5fad2b50c7fd3a05ef38e0fff9010a",
+      "pyproject.toml": "09150815f276e997e84ec5d66cea85a89c0a37f1e116eda0c0b5ab1afec19a17"
+    }
+  },
+  "ddtree": {
+    "commit": "c96427a185677bf4133ed865dd1626a5041aef9b",
+    "url": "https://github.com/liranringel/ddtree",
+    "license": "MIT",
+    "files": {
+      "LICENSE": "d39ced5531817c1e3d9efe4d5e39d8ba445b9c1ed3885b225ffa25accfb5eeec",
+      "README.md": "229384adb05caa7ab9254e5be2ab7555903a085d9d4495a8158b858beb461893",
+      "benchmark.py": "22898576a8f0e8e6ccb08eb74a1d88af34b86cc7103c9f6bd5d66f45668ef8f2",
+      "ddtree.py": "7fcda777d196111d2a3f91f9eafd7ff7c5f7b894de5486f40452e03453b04675",
+      "dflash.py": "e50fd94ee14d00bc0736da8c67b2a234c7b7bb1f0cee661b968ec68ee2b1e96b",
+      "distributed.py": "70d920c4677275622e358575e95cf670b74c8e26917415eb1d6a102761c78500",
+      "make_latex_table.py": "1908155fde71bc029c3c6bb1aaa73ad0d90b13b055f785fb5e5a7c0191e37c69",
+      "model/__init__.py": "a74e21cbc81be3aa6bd851ceead2e3fdc81865f48253399101b715f39e5e3c76",
+      "model/dflash.py": "5987abf15430678b93afb58e3487e9e6e4287f7511de958d82d25660a2f136d4",
+      "model/utils.py": "793fc3200eb51bad8586c4eb6adcb88a175db946d4c32d0e618d6da7495c43c6",
+      "plot_results.py": "c657760f7e7c7f2635cb8395c22ed50ca9a14380ccd7b70ced6f85063521318b",
+      "requirements.txt": "748c812e24b92e346f036f10da8c12168754ad03e314707c5c0019838fa3ad3b"
+    }
+  }
+}

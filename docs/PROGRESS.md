@@ -1,10 +1,15 @@
-# 2026-10-31 — 新增数据关键基线补全实施中
+# 2026-10-31 — 新增数据关键基线补全：五组910生成完成
 
-- 用户授权补论文引用并在新增数据补AR/严格成本树/BASTION。固定原182请求，与DFlash/当前同批五组预定910次自然生成；沿用全部输入/输出上限和编辑v3掩码，同GPU冻结成本/BASTION校准复用，不改接受条件、不扫参。协议`EXPANDED_BASELINES_PROTOCOL.md`。
-- GPU实际生成源`42f6c8e772b3cfb5fae687fe20a7fab999c06276`，591文件SHA绑定，源码ZIP`c42a69a7a65769816bfc7f42294ab6d2fe55c6894fce703db172a7c961315604`；服务器31 passed/6.91s，全部182输入身份/限额匹配，UTC10:42:49开始自然生成，加载18.38s。独立finish任务等待生成/服务恢复后自动打包；不修改正在运行源码。
-- 文献八行已并入大矩阵和分表，24个引用方法格、8个AR参考格与来源一致；87个既有实测格和旧表保留。核对命令`artifacts/check-all-baselines-matrix.py`、`artifacts/check-complete-experiment-table.py`通过。GPU当前仍运行，不提前填成绩。
+- 用户授权补论文引用并在新增数据补AR/严格成本树/BASTION。固定原182请求，与DFlash/当前同批五组910次自然生成全部完成；沿用全部输入/输出上限和编辑v3掩码，同GPU冻结成本/BASTION校准复用，不改接受条件、不扫参。协议`EXPANDED_BASELINES_PROTOCOL.md`，完整`EXPANDED_BASELINES_FINDINGS/RESULTS.md`及`results/expanded-baselines`。
+- 总wall：AR7376.305s、DFlash2271.980s、严格成本树2005.145s、BASTION2064.899s、当前1979.066s。当前总wall较DFlash/严格成本树/BASTION少12.89%/1.30%/4.16%，AR/当前总wall3.727×；逐请求等权平均分别−10.22%/+0.81%/−0.17%，不混用统计。
+- 当前对BASTION逐题配对：IFEval+9.32%、LCB−2.03%、编辑−5.02%、Qasper−1.03%、MultiFieldQA−1.06%、MultiNews−4.41%、GovReport−11.13%、AIME−9.22%。正确数/集合在LCB8/24、编辑17/31、AIME5/30与严格方法相同；IFEval52/64但题目集合有交换，GovReport ROUGE-L34.87→34.61。截断与旧B批ASD质量取舍保留。
+- 三个严格方法546/546输出与本窗口AR一致；DFlash/当前364个输出逐项复现旧B批。当前AR一致146/182，三个严格方法各182/182；同输出146子集对BASTION配对仅−0.06%、总wall−1.83%，不拿事后子集替代全量主表。节点/长度分解保存comparison.json。
+- GPU实际生成源`42f6c8e772b3cfb5fae687fe20a7fab999c06276`，591文件前后SHA一致，源码ZIP`c42a69a7a65769816bfc7f42294ab6d2fe55c6894fce703db172a7c961315604`；服务器31 passed/6.91s，全部182输入身份/限额匹配，生成UTC10:42:49–15:05:48（北京时间18:42:49–23:05:48），加载18.38s。finally恢复两服务退出0，三聊天服务active、27B health正常；线上代码及infra冻结引用不变。
+- 文献八行已并入大矩阵和分表，24个引用方法格、8个AR参考格与来源一致；新增24个方法×任务实测缺口，另复测16格DFlash/当前锚点，总表87→111实测格、63→39未测格，B/D来源逐格标注，旧表保留。原B三组仍作ASD直接对照，不跨批推导新胜负。
+- 结果4358861B、11分片/19载荷SHA核验，ZIP`1fb76b5bc42c8d94f1e5d40f0708a96455aae727a9e50a12b909878d4b11cae2`；910行输出/时延/输入身份未变，编辑统一31/32可评分，公开压缩行独立重建字节一致，audit.json通过。原始长文/隐藏测试载荷不发布；LCB评分metadata剔除。
 - 新增runner/report及四项数据/工厂/身份分析检查；官方外树适配器仅增加可注入request_factory，旧调用默认行为不变。汇总函数允许显式五组、三组默认不变。命令`.venv\Scripts\python.exe -m pytest -q tests/test_expanded_baselines.py tests/test_external_trees.py tests/test_expanded_suite.py tests/test_tree_execution.py --basetemp artifacts/pytest-expanded-baselines --junitxml=artifacts/expanded-baselines-tests.xml --tb=short`：30 passed/1 skipped/30.87s；上游文件SHA核验通过。
-- 补齐BASTION v4 Table1的Qwen3-8B/T0八任务文献数值，原两行保留；它们仍是A100/BF16参考，不填作本轮A6000实测。服务器27B空闲、三聊天服务active，实验将在隔离expanded-baselines-v1执行，finally恢复GPU1服务。真实结果随后补充。
+- 离线汇总命令`.venv\Scripts\python.exe -m scripts.report_expanded_baselines --input results/expanded-baselines`，生成记录/公开重建核验`artifacts/audit-expanded-baselines.py`，矩阵核对`artifacts/check-all-baselines-matrix.py`和`artifacts/check-complete-experiment-table.py`。八任务论文数值仍单列A100/BF16参考，既有结果和main/infra冻结引用不移动。
+- 最终`artifacts/check-expanded-baselines-docs.py`核对两处16行任务汇总、208个相对链接和7个冻结引用通过；旧64个结果payload SHA保持。新结果25文件，压缩生成行1053123B，公开报告字节重建通过，`git diff --check`通过。所有成绩来自真实生成，原始长文/完整测试载荷保持研究缓存。
 
 # 2026-10-31 — 所有基线×所有数据集单一矩阵
 

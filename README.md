@@ -12,11 +12,13 @@
 
 **新场景扩展完成（2026-10-31）：**[182请求/546生成结论](docs/EXPANDED_SUITE_FINDINGS.md)与[全表](docs/EXPANDED_SUITE_RESULTS.md)新增IFEval、LiveCodeBench v6、CanItEdit、LongBench四子集及完整AIME25。当前混合总wall较DFlash/ASD省12.96%/12.16%，DFlash输出一致146/182对ASD31/182；指令/摘要提速，编辑通过17/31对ASD15/31，AIME5/30对ASD7/30仍有取舍。LongBench19/32输入首尾截取，其他任务多为固定子集；[已有论文基线直接引用](docs/EXPANDED_LITERATURE_BASELINES.md)，不混用硬件倍率排名。
 
+**新增任务关键基线补全（2026-10-31）：**[五组910生成结论](docs/EXPANDED_BASELINES_FINDINGS.md)补齐同窗AR/严格成本树/官方BASTION。当前总wall较DFlash/BASTION少12.89%/4.16%，AR/当前为3.727×；对BASTION请求等权平均只快0.17%。编辑/MultiNews/GovReport/AIME配对少5.02%/4.41%/11.13%/9.22%，IFEval慢9.32%；质量取舍保留。546严格输出等于本批AR，当前/旧B批输出复现；[五组全表](docs/EXPANDED_BASELINES_RESULTS.md)与完整大矩阵同步。
+
 **Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
-**完整实验总表（2026-10-31更新）：**[所有基线 × 所有数据集矩阵](docs/ASD_TREE_EXPERIMENT_SUMMARY.md#all-baselines)将15类任务和10种正式对比方法放在一张大表中，另列八行论文配置；实测格同时列速度和质量，缺测明确标注。总览还保留原组合530匹配输入的大样本表、历次消融及infra交付。按算法版本和实验批次区分，不混算跨轮收益。最新总表位于`codex/branch-drift`，历史总览位于`codex/chat-live-draft`；默认`main`保留旧版本。
+**完整实验总表（2026-10-31更新）：**[所有基线 × 所有数据集矩阵](docs/ASD_TREE_EXPERIMENT_SUMMARY.md#all-baselines)将15类任务和10种正式对比方法放在一张大表中，另列八行论文配置；111个同机实测格、39个缺测格，B/D来源逐格标注。总览还保留原组合530匹配输入的大样本表、历次消融及infra交付。按算法版本和实验批次区分，不混算跨轮收益。最新总表位于`codex/branch-drift`，历史总览位于`codex/chat-live-draft`；默认`main`保留旧版本。
 
 **分支漂移门控候选（2026-10-28）：**[七任务结论](docs/BRANCH_DRIFT_FINDINGS.md)与[完整实测表](docs/BRANCH_DRIFT_RESULTS.md)在`codex/branch-drift`。149匹配输入、1639新计时、192奖励评分完成，AR逐token一致输出60→106；MMLU格式合同恢复、MT自然时延/偏好有局部正结果，其他任务保留速度与质量取舍。单步JS仍会放过关键代码条件错误，原组合继续保留。
 

@@ -1,8 +1,10 @@
 # DFlash + 成本树 + ASD：实验总览
 
-> 直接查看：[所有基线 × 所有数据集大总表](#all-baselines)。另有[当前方案15类任务明细](#current-results)、[九组同机基线汇总](#baseline-results)。当前方案为`BufferedKV-ASD`：DFlash + 高保真反馈成本树 + ASD + 最小增量接受 + 分数/KV复用。历史`BudgetTree-ASD`结果与最新方案分别保留。
+> 直接查看：[所有基线 × 所有数据集大总表](#all-baselines)。另有[当前方案15类任务明细](#current-results)、[九组同机基线汇总](#baseline-results)、[新增八任务AR/BASTION直接对比](#expanded-baselines)。当前方案为`BufferedKV-ASD`：DFlash + 高保真反馈成本树 + ASD + 最小增量接受 + 分数/KV复用。历史`BudgetTree-ASD`结果与最新方案分别保留。
 
-更新于2026-10-31。这份文档汇总已经完成的实验，不新增GPU运行，也不重新挑选任务或参数。第4节历史大样本表及第5–7节原组合分析保留2026-10-28的结果；最新方案与新增数据见第4.1–4.2节。
+更新于2026-10-31。这份文档汇总已经完成的实验，表格整理不新增GPU运行，也不重新挑选任务或参数。第4节历史大样本表及第5–7节原组合分析保留2026-10-28的结果；最新方案与新增数据见第4.1–4.3节。
+
+**最新关键基线补全：182个复用请求、五组910次生成。** 当前总wall比DFlash/严格成本树/BASTION少12.89%/1.30%/4.16%，本批AR/当前总wall为3.727×。相对BASTION的逐请求等权平均只快0.17%，收益集中在编辑、摘要、AIME；IFEval慢9.32%。详见[结论](EXPANDED_BASELINES_FINDINGS.md)，不把混合总量解释成所有请求普遍提速。
 
 **最新方案的收益已覆盖指令遵循、代码编辑和摘要。** 新增182请求/546生成中，混合总耗时较DFlash/ASD降低12.96%/12.16%，DFlash输出一致146/182对ASD31/182；CanItEdit正确17/31对ASD15/31，AIME25为5/30对ASD7/30。长文短答案的收益很小，摘要有明显提速且保留ROUGE-L变化与截断，不能概括为所有任务质量或速度都提高。
 
@@ -18,7 +20,7 @@
 **行是数据集/协议，列是方法。** 本表覆盖当前正式比较的九组同机方法及已有引用的EAGLE-3，共10列方法、15行本机任务，另加8行论文配置。它同时展示已有结果和缺口；并非每个方法都已在每个数据集上运行。Joint、DSpark、Run/Utility等历史候选仍在对应历史报告，不冒充这两批匹配题上的新基线。
 
 - **实测格：第一行=相对同批DFlash的逐题平均耗时变化；第二行=质量。** 负数更快。质量通常为正确数/可评分数，Qasper/MultiFieldQA为F1×100，MultiNews/GovReport为ROUGE-L×100；“质量未评”只表示本批没有质量评分。
-- **A批**：原七任务66匹配开发输入，A6000/FP32/eager；九组594生成。**B批**：新增182请求，同机同底座三组546生成。B的AR/其他树方法没有匹配新结果，标“未测”；A的EAGLE-3也未实测。
+- **A批**：原七任务66匹配开发输入，九组594生成。**B批**：新增182请求，三组546生成。**D批**：同一182请求的AR/DFlash/严格成本树/BASTION/当前五组910生成。B/D行各格注明来源；只有ASD沿用B，其余已有格取D。每格百分比的DFlash锚点属于该格自己的批次，不能跨B/D相除推导胜负；含ASD的直接比较仍看第4.1节B表，新基线直接比较看D表。
 - **C批“文献”格：相对AR的per-token latency倍率及τ**，不是前两批的耗时变化。它来自A100/BF16/Qwen3-8B原文，单独配置行，禁止跨A/B/C直接排名。未录表示既有引用表没有收录该格，未伪造准确率。
 - A的MT/Alpaca质量未新增评测；MMLU为字母输出合同。B的CanItEdit32题计时、31题可评分，LongBench19/32输入首尾截取；除AIME25全30题外均为子集。截断、输出一致性、TPS、TTFT与各题明细见第4.1节和原报告。
 
@@ -31,14 +33,14 @@
 |MMLU（A；14）|+129.77%<br>5/14|+0.00%<br>5/14|+2.37%<br>1/14|-1.70%<br>5/14|+0.58%<br>2/14|-2.95%<br>5/14|-0.15%<br>5/14|+45.73%<br>5/14|-0.07%<br>5/14|未测|
 |MT-Bench（A；8）|+291.70%<br>质量未评|+0.00%<br>质量未评|-0.18%<br>质量未评|-12.01%<br>质量未评|-12.83%<br>质量未评|-14.11%<br>质量未评|-11.78%<br>质量未评|+45.63%<br>质量未评|-10.99%<br>质量未评|未测|
 |Alpaca（A；8）|+128.98%<br>质量未评|+0.00%<br>质量未评|-12.05%<br>质量未评|-17.36%<br>质量未评|-26.34%<br>质量未评|-16.65%<br>质量未评|-17.71%<br>质量未评|+38.73%<br>质量未评|-17.80%<br>质量未评|未测|
-|IFEval（B；64）|未测|+0.00%<br>52/64|+2.69%<br>53/64|未测|未测|-15.33%<br>52/64|未测|未测|未测|未测|
-|LiveCodeBench v6（B；24）|未测|+0.00%<br>8/24|+46.94%<br>9/24|未测|未测|-7.34%<br>8/24|未测|未测|未测|未测|
-|CanItEdit（B；32）|未测|+0.00%<br>17/31|-2.65%<br>15/31|未测|未测|-3.22%<br>17/31|未测|未测|未测|未测|
-|Qasper（B；8）|未测|+0.00%<br>43.14|-0.68%<br>45.38|未测|未测|-1.59%<br>43.14|未测|未测|未测|未测|
-|MultiFieldQA-en（B；8）|未测|+0.00%<br>55.60|-1.90%<br>56.00|未测|未测|-2.46%<br>55.60|未测|未测|未测|未测|
-|MultiNews（B；8）|未测|+0.00%<br>26.46|-6.88%<br>26.41|未测|未测|-20.43%<br>26.46|未测|未测|未测|未测|
-|GovReport（B；8）|未测|+0.00%<br>34.87|-3.69%<br>35.48|未测|未测|-19.48%<br>34.61|未测|未测|未测|未测|
-|AIME25（B；30）|未测|+0.00%<br>5/30|-2.61%<br>7/30|未测|未测|-8.78%<br>5/30|未测|未测|未测|未测|
+|IFEval（B/D；64）|D：+56.95%<br>52/64|D：+0.00%<br>52/64|B：+2.69%<br>53/64|D：-19.17%<br>52/64|未测|D：-15.22%<br>52/64|未测|未测|D：-22.35%<br>52/64|未测|
+|LiveCodeBench v6（B/D；24）|D：+296.06%<br>8/24|D：+0.00%<br>8/24|B：+46.94%<br>9/24|D：-7.87%<br>8/24|未测|D：-7.28%<br>8/24|未测|未测|D：-5.18%<br>8/24|未测|
+|CanItEdit（B/D；32）|D：+503.75%<br>17/31|D：+0.00%<br>17/31|B：-2.65%<br>15/31|D：-2.13%<br>17/31|未测|D：-3.09%<br>17/31|未测|未测|D：+2.18%<br>17/31|未测|
+|Qasper（B/D；8）|D：+8.01%<br>43.14|D：+0.00%<br>43.14|B：-0.68%<br>45.38|D：-1.97%<br>43.14|未测|D：-1.42%<br>43.14|未测|未测|D：-0.26%<br>43.14|未测|
+|MultiFieldQA-en（B/D；8）|D：+16.57%<br>55.60|D：+0.00%<br>55.60|B：-1.90%<br>56.00|D：-2.00%<br>55.60|未测|D：-2.45%<br>55.60|未测|未测|D：-1.39%<br>55.60|未测|
+|MultiNews（B/D；8）|D：+56.25%<br>26.46|D：+0.00%<br>26.46|B：-6.88%<br>26.41|D：-19.02%<br>26.46|未测|D：-20.30%<br>26.46|未测|未测|D：-16.48%<br>26.46|未测|
+|GovReport（B/D；8）|D：+61.54%<br>34.87|D：+0.00%<br>34.87|B：-3.69%<br>35.48|D：-16.92%<br>34.87|未测|D：-19.32%<br>34.61|未测|未测|D：-9.22%<br>34.87|未测|
+|AIME25（B/D；30）|D：+427.01%<br>5/30|D：+0.00%<br>5/30|B：-2.61%<br>7/30|D：-4.46%<br>5/30|未测|D：-8.81%<br>5/30|未测|未测|D：+0.70%<br>5/30|未测|
 |GSM8K（C；论文配置）|参考1.00×|文 4.96×<br>τ=6.51|未录|未录|未录|未录|未录|未录|文 6.92×<br>τ=8.85|文 3.10×<br>τ=2.74|
 |MATH-500（C；论文配置）|参考1.00×|文 6.06×<br>τ=8.25|未录|未录|未录|未录|未录|未录|文 8.02×<br>τ=10.53|文 2.78×<br>τ=2.51|
 |AIME25（C；论文配置）|参考1.00×|文 5.91×<br>τ=7.20|未录|未录|未录|未录|未录|未录|文 7.69×<br>τ=9.46|文 2.92×<br>τ=2.45|
@@ -48,9 +50,11 @@
 |MT-Bench（C；论文配置）|参考1.00×|文 2.81×<br>τ=4.46|未录|未录|未录|未录|未录|未录|文 4.31×<br>τ=6.28|文 2.68×<br>τ=2.24|
 |Alpaca（C；论文配置）|参考1.00×|文 2.28×<br>τ=3.15|未录|未录|未录|未录|未录|未录|文 3.54×<br>τ=4.68|文 2.10×<br>τ=1.77|
 
-**覆盖情况：87个本机实测格、63个本机未测格；C另收录24个论文方法格和8个AR参考格。** “未测”说明本轮匹配对照缺失，不代表该方法无效或项目历史中从未运行过。
+**覆盖情况：111个本机实测格、39个本机未测格；C另收录24个论文方法格和8个AR参考格。** D批填补24个“数据集×方法”缺口，另复测16格DFlash/当前锚点；B/D来源分别标注，不把三组旧计时伪装成五组新计时。“未测”说明本轮匹配对照缺失，不代表该方法无效或项目历史中从未运行过。
 
 A来源：[实测完整表](EXTERNAL_TREES_RESULTS.md) · [统计](../results/external-trees/analysis.json)；B来源：[实测完整表](EXPANDED_SUITE_RESULTS.md) · [统计](../results/expanded-suite/analysis.json)；C来源：[已有文献引用与适用条件](EXPANDED_LITERATURE_BASELINES.md)，原文[BASTION v4 Table 1](https://arxiv.org/html/2605.29727v4#S4.T1)。历史原组合大样本与其他候选仍按各自数据/模型设置保留，不用跨批数值补齐空格。
+
+D来源：[五组完整表](EXPANDED_BASELINES_RESULTS.md) · [统计](../results/expanded-baselines/analysis.json) · [结论](EXPANDED_BASELINES_FINDINGS.md)。
 <!-- ALL_BASELINES_MATRIX_END -->
 
 ## 1. 这套方法是什么
@@ -103,6 +107,7 @@ RMSNorm等工程改进在各对照间共享，其收益不重复计入树的算�
 |分数/KV执行复用|66个已观察匹配输入|198次计时，132对输出/路径/预算一致|[全表](TREE_EXECUTION_RESULTS.md) · [结果](../results/tree-execution/)|
 |官方外部树基线补全|既有62开发源题/66匹配输入，七任务九组|594次自然生成，含本窗口66次AR|[结论](EXTERNAL_TREES_FINDINGS.md) · [全表](EXTERNAL_TREES_RESULTS.md) · [结果](../results/external-trees/)|
 |新场景扩展|182个新请求，八个数据集/子集，三组|546次自然生成，编辑输出统一离线重评|[结论](EXPANDED_SUITE_FINDINGS.md) · [全表](EXPANDED_SUITE_RESULTS.md) · [结果](../results/expanded-suite/)|
+|新增场景关键基线补全|复用同一182请求，AR/DFlash/严格成本树/BASTION/当前五组|910次自然生成，546严格输出与本批AR一致，DFlash/当前364输出复现B批|[结论](EXPANDED_BASELINES_FINDINGS.md) · [全表](EXPANDED_BASELINES_RESULTS.md) · [结果](../results/expanded-baselines/)|
 |infra v0.5部署验收|七任务研究等价、真实CLI/SSE、可视化与取消恢复|本机1299测试通过，A6000专项145测试通过|[验收](INFRA_FIDELITY_VALIDATION.md) · [结果](../results/infra-fidelity-v05/)|
 
 这些批次有任务复用，不能把各行样本量直接相加后宣称独立问题总数。计时重复、质量评分也不是新增独立问题。最后一轮9540是原始计时行；将严格前／后控制合并后，`analysis.json.timed_generations`为8480，`raw_timed_generations`仍为9540。
@@ -206,6 +211,29 @@ A同输出56请求中，当前对DFlash/BASTION配对耗时少8.66%/0.64%；B同
 原文：[BASTION Table 1](https://arxiv.org/html/2605.29727v4#S4.T1)。其硬件、精度、prompt、样本和统计口径与A/B不同。B没有新跑AR/EAGLE-3/DDTree/BASTION，不填造这些方法的新题准确率；DFlash/ASD仅作为同输入同机质量与速度锚点重跑。IFEval/CanItEdit及本轮截取后的四个LongBench子集没有可直接填入的匹配文献数字，保留实际三组结果。
 <!-- CURRENT_EXPERIMENT_TABLE_END -->
 
+<a id="expanded-baselines"></a>
+
+## 4.3 新增八任务：AR、严格成本树、BASTION同批直接对比
+
+D批复用B的182输入/快照/上限，五组910自然生成已完成。下表比值直接取本批逐题配对均值，负数表示当前更快；AR/当前为任务总wall比，含输出长度变化。四种严格方法（含AR）输出相同，质量共用一列。ASD仍属于B批，原第4.1节三组直接比较保持。
+
+|任务/请求数|当前vs DFlash|当前vs 严格成本树|当前vs BASTION|AR/当前总wall|严格方法质量|当前质量|
+|---|---:|---:|---:|---:|---:|---:|
+|IFEval/64|−15.22%|+5.13%|+9.32%|1.803×|52/64|52/64|
+|LiveCodeBench v6/24|−7.28%|+0.76%|−2.03%|4.275×|8/24|8/24|
+|CanItEdit/32|−3.09%|−1.00%|−5.02%|6.546×|17/31|17/31|
+|Qasper/8|−1.42%|+0.63%|−1.03%|1.092×|43.14|43.14|
+|MultiFieldQA-en/8|−2.45%|−0.46%|−1.06%|1.150×|55.60|55.60|
+|MultiNews/8|−20.30%|−1.55%|−4.41%|1.952×|26.46|26.46|
+|GovReport/8|−19.32%|−2.90%|−11.13%|1.996×|34.87|34.61|
+|AIME25/30|−8.81%|−4.46%|−9.22%|5.982×|5/30|5/30|
+
+混合总wall：AR7376.305s、DFlash2271.980s、严格成本树2005.145s、BASTION2064.899s、当前1979.066s。当前总wall比三基线分别少12.89%/1.30%/4.16%；请求等权配对平均分别为−10.22%/+0.81%/−0.17%，统计口径分开。当前同AR输出146/182；DFlash/严格成本树/BASTION为546/546严格一致。
+
+质量指标和范围沿用B批：QA为F1×100，摘要为ROUGE-L×100；编辑31/32可评分，长文19/32首尾截取，除AIME25外均为固定子集。IFEval当前总通过数相同但题目集合有交换，GovReport当前ROUGE-L低0.25分，截断保留。代码编辑和AIME当前与AR正确题集合相同；不把逐token一致性当任务正确性。
+
+来源：[五组全表](EXPANDED_BASELINES_RESULTS.md) · [结论与机理](EXPANDED_BASELINES_FINDINGS.md) · [analysis.json](../results/expanded-baselines/analysis.json) · [同输出/节点分解](../results/expanded-baselines/comparison.json) · [公开重建审计](../results/expanded-baselines/audit.json)。本批代码/成本/数据冻结，不根据新增结果重新调参。
+
 ## 5. 为什么加速：更长实际接受前缀，更少验证轮
 
 最大扩样首个自然重复的轨迹如下。接受长度是**实际输出的Draft token数／验证轮数**，排除Target首token、纠正和bonus；裁去末轮没有真正输出的候选。
@@ -260,6 +288,7 @@ DSpark曾单独适配和优化。它在部分Alpaca场景保留正结果，但�
 |算法通俗解释|[ASD_TREE_ARCHITECTURE.md](ASD_TREE_ARCHITECTURE.md)|
 |当前方案七任务与九组同机基线|[结论](EXTERNAL_TREES_FINDINGS.md) · [全表](EXTERNAL_TREES_RESULTS.md) · [统计](../results/external-trees/analysis.json)|
 |当前方案新增八任务、逐题评分与论文引用|[结论](EXPANDED_SUITE_FINDINGS.md) · [全表](EXPANDED_SUITE_RESULTS.md) · [统计](../results/expanded-suite/analysis.json) · [文献](EXPANDED_LITERATURE_BASELINES.md)|
+|新增八任务同窗AR/严格成本树/BASTION补全|[结论](EXPANDED_BASELINES_FINDINGS.md) · [五组全表](EXPANDED_BASELINES_RESULTS.md) · [统计](../results/expanded-baselines/analysis.json) · [审计](../results/expanded-baselines/audit.json)|
 |最大扩样的主结论、全表和协议|[结论](ASD_PAPER_EXTENSION_FINDINGS.md) · [全表](ASD_PAPER_EXTENSION_RESULTS.md) · [协议](ASD_PAPER_EXTENSION_PROTOCOL.md)|
 |原始统计、来源和重建审计|[analysis.json](../results/asd-paper-extension/analysis.json) · [audit.json](../results/asd-paper-extension/audit.json)|
 |数学／代码／格式质量复核|[quality-audit.json](../results/asd-paper-extension/quality-audit.json)|

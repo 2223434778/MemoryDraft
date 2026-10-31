@@ -1,0 +1,10 @@
+{
+  "services": {
+    "memorydraft-chat-inference": "active",
+    "memorydraft-chat-large-model": "active",
+    "memorydraft-chat-large-adapter": "active"
+  },
+  "large_model_health": {
+    "status": "ok"
+  }
+}
