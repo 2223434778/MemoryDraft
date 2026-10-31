@@ -37,3 +37,16 @@ def test_stdio_and_regular_edit_code_supported():
 def test_aime_integer_equivalence():
     assert score(dict(benchmark='aime25',answer='7'),'The answer is \\boxed{007}.')['secondary_correct']
     assert not score(dict(benchmark='aime25',answer='7'),'\\boxed{8}')['correct']
+
+
+def test_official_scorer_smoke_when_dependencies_prepared():
+    from memorydraft.evaluation.expanded_suite import ROOT
+    if not (ROOT/'.deps/langdetect').exists():pytest.skip('server-only optional scoring dependencies')
+    record=dict(benchmark='ifeval',ifeval=dict(key=1,prompt='Say hello',instruction_id_list=['keywords:existence'],kwargs=[dict(keywords=['hello'])]))
+    assert score(record,'hello')['correct']
+    assert score(dict(benchmark='longbench-qasper',subset='qasper',answers=['hello world']),'hello world')['score']==1
+    assert score(dict(benchmark='longbench-multi_news',subset='multi_news',answers=['hello world']),'hello world')['score']==1
+    assert score(dict(benchmark='canitedit',tests='assert f(1)==2'),'def f(x):\n return x+1')['correct']
+    import json
+    io=json.dumps(dict(inputs=['1\n'],outputs=['2\n'],fn_name=None))
+    assert score(dict(benchmark='livecodebench',input_output=io),'print(int(input())+1)')['correct']
