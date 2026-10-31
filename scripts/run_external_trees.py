@@ -74,8 +74,8 @@ def collect_bastion(calibration, **kwargs):
     return calibration.collect_calibration_data(**kwargs)
 
 
-def external_execute(engine, record, arm, limit, dd, bastion, profile):
-    request = request_for(record, limit)
+def external_execute(engine, record, arm, limit, dd, bastion, profile, *, request_factory=request_for):
+    request = request_factory(record, limit)
     engine.synchronize()
     torch.cuda.reset_peak_memory_stats(engine.target.device)
     started = time.perf_counter()

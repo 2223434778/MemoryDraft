@@ -1,3 +1,9 @@
+# 2026-10-31 — 新增数据关键基线补全实施中
+
+- 用户授权补论文引用并在新增数据补AR/严格成本树/BASTION。固定原182请求，与DFlash/当前同批五组预定910次自然生成；沿用全部输入/输出上限和编辑v3掩码，同GPU冻结成本/BASTION校准复用，不改接受条件、不扫参。协议`EXPANDED_BASELINES_PROTOCOL.md`。
+- 新增runner/report及四项数据/工厂/身份分析检查；官方外树适配器仅增加可注入request_factory，旧调用默认行为不变。汇总函数允许显式五组、三组默认不变。命令`.venv\Scripts\python.exe -m pytest -q tests/test_expanded_baselines.py tests/test_external_trees.py tests/test_expanded_suite.py tests/test_tree_execution.py --basetemp artifacts/pytest-expanded-baselines --junitxml=artifacts/expanded-baselines-tests.xml --tb=short`：30 passed/1 skipped/30.87s；上游文件SHA核验通过。
+- 补齐BASTION v4 Table1的Qwen3-8B/T0八任务文献数值，原两行保留；它们仍是A100/BF16参考，不填作本轮A6000实测。服务器27B空闲、三聊天服务active，实验将在隔离expanded-baselines-v1执行，finally恢复GPU1服务。真实结果随后补充。
+
 # 2026-10-31 — 所有基线×所有数据集单一矩阵
 
 - 按用户进一步要求，在总览开头新增`#all-baselines`大矩阵：行是15类本机数据集/任务子集及2行独立论文配置，列是九组同机正式对比方法+EAGLE-3，共10种方法。每个实测格同时列同批DFlash配对耗时变化和质量；未测、质量未评、文献未录分别标明。

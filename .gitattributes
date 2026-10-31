@@ -515,6 +515,7 @@ results/external-trees/** -text
 memorydraft/evaluation/expanded_suite.py text eol=lf
 scripts/*expanded*.py text eol=lf
 tests/test_expanded_suite.py text eol=lf
+tests/test_expanded_baselines.py text eol=lf
 docs/EXPANDED_*.md text eol=lf
 data/research/expanded-suite/manifest.json -text
 results/expanded-suite/** -text
@@ -522,3 +523,8 @@ results/expanded-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,
 results/expanded-suite/LICENSE-* -whitespace
 results/expanded-suite/**/*.log -whitespace
 results/expanded-suite/**/*.xml -whitespace
+results/expanded-baselines/** -text
+results/expanded-baselines/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+results/expanded-baselines/LICENSE-* -whitespace
+results/expanded-baselines/**/*.log -whitespace
+results/expanded-baselines/**/*.xml -whitespace

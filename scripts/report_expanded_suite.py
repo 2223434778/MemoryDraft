@@ -13,13 +13,13 @@ ROOT=Path(__file__).resolve().parents[1]
 ARMS=('DFlash','ASD','BufferedKV-ASD')
 
 
-def summarize(rows):
+def summarize(rows, *, arms=ARMS):
     ids={r['request_id'] for r in rows}
     indexed={(r['request_id'],r['arm']):r for r in rows}
-    if len(indexed)!=len(rows) or set(indexed)!={(i,a) for i in ids for a in ARMS}:
+    if len(indexed)!=len(rows) or set(indexed)!={(i,a) for i in ids for a in arms}:
         raise ValueError('Incomplete expanded comparison')
     for identity in ids:
-        group=[indexed[identity,a] for a in ARMS]
+        group=[indexed[identity,a] for a in arms]
         if len({(r['prompt_sha256'],r['snapshot_id']) for r in group})!=1:raise ValueError('Changed inputs')
         for r in group:
             if not math.isfinite(r['latency_seconds']) or r['latency_seconds']<=0:raise ValueError('Invalid timing')
@@ -27,7 +27,7 @@ def summarize(rows):
     families={}
     for benchmark in dict.fromkeys(r['benchmark'] for r in rows):
         family={}
-        for arm in ARMS:
+        for arm in arms:
             selected=[r for r in rows if r['benchmark']==benchmark and r['arm']==arm]
             seconds=sum(r['latency_seconds'] for r in selected)
             tokens=sum(len(r['token_ids']) for r in selected)
@@ -48,7 +48,7 @@ def summarize(rows):
                 values=[v for q in quality for v in q.get(key,[])]
                 value[key]=dict(passed=sum(values),total=len(values))
             value['loose_correct']=sum(q.get('loose_correct') is True for q in quality)
-            for baseline in ARMS:
+            for baseline in arms:
                 pairs=[(r,indexed[r['request_id'],baseline]) for r in selected]
                 value[baseline]=dict(paired_ratio=statistics.mean(a['latency_seconds']/b['latency_seconds'] for a,b in pairs),
                     total_ratio=seconds/sum(b['latency_seconds'] for a,b in pairs),
@@ -57,7 +57,7 @@ def summarize(rows):
             family[arm]=value
         families[benchmark]=family
     totals={a:dict(seconds=sum(f[a]['seconds'] for f in families.values()),tokens=sum(f[a]['tokens'] for f in families.values()),
-        same_dflash=sum(f[a]['same_dflash'] for f in families.values())) for a in ARMS}
+        same_dflash=sum(f[a]['same_dflash'] for f in families.values())) for a in arms}
     return dict(generations=len(rows),requests=len(ids),families=families,totals=totals)
 
 
