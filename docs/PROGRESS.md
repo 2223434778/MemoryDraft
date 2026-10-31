@@ -1,3 +1,9 @@
+# 2026-10-31 — 所有基线×所有数据集单一矩阵
+
+- 按用户进一步要求，在总览开头新增`#all-baselines`大矩阵：行是15类本机数据集/任务子集及2行独立论文配置，列是九组同机正式对比方法+EAGLE-3，共10种方法。每个实测格同时列同批DFlash配对耗时变化和质量；未测、质量未评、文献未录分别标明。
+- 87个本机实测格逐项对照原报告通过，63个本机缺测格保留“未测”，6个论文方法格及2个AR参考格单列A100/BF16口径，不以文献冒充匹配题实测。原有所有章节、历史表和64个结果payload SHA保持不变；未增加GPU运行。
+- 检查命令`.venv\Scripts\python.exe artifacts\check-all-baselines-matrix.py`与`.venv\Scripts\python.exe artifacts\check-complete-experiment-table.py`通过：10方法列、17数据/配置行、全部已填单元格一致、181本地链接有效；`git diff --check`通过。仅更新总览、README入口和本记录。
+
 # 2026-10-31 — 完整实验总表合并
 
 - 按用户要求更新`ASD_TREE_EXPERIMENT_SUMMARY.md`：新增当前BufferedKV-ASD的15类任务完整表，覆盖既有七任务66匹配输入和新增八任务182请求；逐行列同批DFlash/ASD配对耗时、三组质量、当前参考一致性与截断。两批总wall各自列示，不跨批合成新独立实验。
