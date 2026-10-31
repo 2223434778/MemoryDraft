@@ -1,16 +1,18 @@
 # DFlash + 成本树 + ASD：实验总览
 
-> 后续研究：[分支漂移门控](BRANCH_DRIFT_FINDINGS.md)已在`codex/branch-drift`完成149匹配输入、1639计时和192奖励评分，比较AR保真度、完整时延与任务质量。它是独立候选，本文既有主线与原始数字保留。
+> 最新汇总：[当前方案15类任务总表](#current-results)、[九组同机基线](#baseline-results)已加入本文。当前方案为`BufferedKV-ASD`：DFlash + 高保真反馈成本树 + ASD + 最小增量接受 + 分数/KV复用。历史`BudgetTree-ASD`结果与最新方案分别保留。
 
-更新于2026-10-28。这份文档汇总已经完成的实验，不新增GPU运行，也不重新挑选任务或参数。
+更新于2026-10-31。这份文档汇总已经完成的实验，不新增GPU运行，也不重新挑选任务或参数。第4节历史大样本表及第5–7节原组合分析保留2026-10-28的结果；最新方案与新增数据见第4.1–4.2节。
 
-**目前最值得保留的成果是成本受控候选树，以及它与ASD在具体场景中的组合收益。** 七任务独立扩样中，组合相对普通ASD在GSM8K、MBPP、Alpaca的自然回答时延分别降低7.72%、10.21%、17.89%；MT-Bench按各方法自身历史进行真实双轮生成时降低12.93%。严格成本树也能独立改善DFlash的速度，且保留本轮DFlash输出。MATH、HumanEval和MMLU存在不同的速度或质量取舍，完整保留在下表中。
+**最新方案的收益已覆盖指令遵循、代码编辑和摘要。** 新增182请求/546生成中，混合总耗时较DFlash/ASD降低12.96%/12.16%，DFlash输出一致146/182对ASD31/182；CanItEdit正确17/31对ASD15/31，AIME25为5/30对ASD7/30。长文短答案的收益很小，摘要有明显提速且保留ROUGE-L变化与截断，不能概括为所有任务质量或速度都提高。
+
+2026-10-28的原组合也保留独立成果：七任务独立扩样中，组合相对普通ASD在GSM8K、MBPP、Alpaca的自然回答时延分别降低7.72%、10.21%、17.89%；MT-Bench按各方法自身历史进行真实双轮生成时降低12.93%。严格成本树也能独立改善DFlash的速度，且保留本轮DFlash输出。MATH、HumanEval和MMLU存在不同的速度或质量取舍，完整保留在下表中。
 
 分阶段报告、原始结果、代码和部署验收均已提交GitHub。原总览发布于 `codex/chat-live-draft`；分支漂移续研附注与新报告位于 `codex/branch-drift`。仓库默认 `main` 保留旧版本，直接查看默认首页不会看到这里的最新内容。
 
 ## 1. 这套方法是什么
 
-实验名称是 **BudgetTree-ASD**。底座为Qwen3-8B Target和与它配套的官方DFlash Draft，原生block=16：一个已确认锚点，最多15个候选位置。
+原组合的实验名称是 **BudgetTree-ASD**；后续高保真反馈门控与执行优化版本记作 **BufferedKV-ASD**。底座为Qwen3-8B Target和与它配套的官方DFlash Draft，原生block=16：一个已确认锚点，最多15个候选位置。
 
 ```text
 已确认前缀与Target特征
@@ -33,8 +35,9 @@
 |DFlash|DFlash线性草稿|严格最长一致前缀|
 |ASD|同一DFlash线性草稿 + ASD|允许预算内近似接受|
 |BudgetTree|DFlash + 成本受控树|严格沿树匹配|
-|BudgetTree-ASD|DFlash + 成本受控树 + ASD|允许预算内近似接受，当前组合主线|
+|BudgetTree-ASD|DFlash + 成本受控树 + ASD|允许预算内近似接受，原组合|
 |JointTree-ASD|进一步让剩余regret预算参与主干／树形分配|研究候选与消融|
+|BufferedKV-ASD|高保真反馈成本树 + ASD + 最小增量接受 + 分数/KV复用|当前方案；JS与当前token分歧约束、请求内反馈调宽，近似路径至少多推进2个token才接受|
 
 主要研究使用两张A6000，各卡独立运行组内对照；不是两卡并行加速一个请求。共享Target/Draft、输入、FP32、eager attention及RMSNorm工程底座；ASD主参数为 `B=8, gate=.25, cap=2`。模型加载、预热、离线校准和离线质量评分单列；在线构树、Top-K、传输、mask、选择、验证和KV整理均计入请求wall。
 
@@ -50,10 +53,18 @@ RMSNorm等工程改进在各对照间共享，其收益不重复计入树的算�
 |AR／接受长度／开放质量补全|复用上述249个输入|747次新固定长度计时、120条独立奖励评分|[结论](ASD_PAPER_METRICS_FINDINGS.md) · [结果](../results/asd-paper-metrics/)|
 |更大规模独立扩样|514个新源任务，530个匹配输入，七任务四组|9540条主计时、530条AR参考、640次预算控制、64次自身历史第二轮生成、320条奖励评分|[结论](ASD_PAPER_EXTENSION_FINDINGS.md) · [结果](../results/asd-paper-extension/)|
 |infra v0.4部署验收|6个已观察公开请求，五方法两重复|60次计时、12次研究／运行时对照；本机1144测试、服务器专项150测试通过|[验收](INFRA_TREE_VALIDATION.md) · [结果](../results/infra-tree-v04/)|
+|分支漂移门控|149个匹配输入|1639次计时、192次奖励评分|[结论](BRANCH_DRIFT_FINDINGS.md) · [结果](../results/branch-drift/)|
+|按需JS与节点分配|66个已观察匹配输入|924次计时，132对eager/lazy决策一致|[结论](BRANCH_DRIFT_OPTIMIZATION_FINDINGS.md) · [结果](../results/branch-drift-optimization/)|
+|反馈调宽|66个已观察匹配输入|792次计时|[结论](GATE_WIDTH_FINDINGS.md) · [结果](../results/gate-width/)|
+|最小增量接受|66个已观察匹配输入|198次计时|[全表](GATE_MIN_GAIN_RESULTS.md) · [结果](../results/gate-min-gain/)|
+|分数/KV执行复用|66个已观察匹配输入|198次计时，132对输出/路径/预算一致|[全表](TREE_EXECUTION_RESULTS.md) · [结果](../results/tree-execution/)|
+|官方外部树基线补全|既有62开发源题/66匹配输入，七任务九组|594次自然生成，含本窗口66次AR|[结论](EXTERNAL_TREES_FINDINGS.md) · [全表](EXTERNAL_TREES_RESULTS.md) · [结果](../results/external-trees/)|
+|新场景扩展|182个新请求，八个数据集/子集，三组|546次自然生成，编辑输出统一离线重评|[结论](EXPANDED_SUITE_FINDINGS.md) · [全表](EXPANDED_SUITE_RESULTS.md) · [结果](../results/expanded-suite/)|
+|infra v0.5部署验收|七任务研究等价、真实CLI/SSE、可视化与取消恢复|本机1299测试通过，A6000专项145测试通过|[验收](INFRA_FIDELITY_VALIDATION.md) · [结果](../results/infra-fidelity-v05/)|
 
 这些批次有任务复用，不能把各行样本量直接相加后宣称独立问题总数。计时重复、质量评分也不是新增独立问题。最后一轮9540是原始计时行；将严格前／后控制合并后，`analysis.json.timed_generations`为8480，`raw_timed_generations`仍为9540。
 
-## 4. 主表：最大一轮独立扩样
+## 4. 历史主表：原组合最大一轮独立扩样
 
 以下全部使用**自然停止的完整回答时延**。变化率为同题配对时延比的均值，负数更快、正数更慢。三列分别直接读取与对应基线的配对统计，不能将不同列的均值相除来推导另一个基线。
 
@@ -73,6 +84,78 @@ RMSNorm等工程改进在各对照间共享，其收益不重复计入树的算�
 - MT-Bench为16个源对话、32个匹配轮次。主表第二轮共享同题严格AR首轮历史；按对话合并两轮，组合相对ASD省10.12%。各方法使用自身真实历史另行生成时省12.93%，两种输入定义分别报告。
 - 严格成本树与DFlash在530个自然请求上输出token、文本、停止一致；包含其他阶段共1590组对照。它说明树本身存在计算收益。某题严格组与单token AR存在有限精度分歧，不能将这一结果扩大成全量逐字等同AR。
 - 组合在GSM8K／MBPP的正确数有净增加，也有具体题目的得失；这不是所有题都保持相同答案的保证。
+
+<!-- CURRENT_EXPERIMENT_TABLE_START -->
+<a id="current-results"></a>
+
+## 4.1 当前方案完整任务表（2026-10-31）
+
+统一列出当前`BufferedKV-ASD`的15类任务。A为官方外部树比较的既有66匹配开发输入，B为新增场景182请求；每行只与同批次、同题、同机器基线配对，不把A/B拼成新的独立实验。两批均为Qwen3-8B/DFlash、单A6000、FP32/eager/RMSNorm、greedy，成本表在各批合成校准；输出上限和评分按各自协议固定。
+
+耗时变化是逐题`当前/基线`比值的算术平均减1，负数更快。质量三列顺序为DFlash／ASD／当前：问答为F1×100、摘要为ROUGE-L×100，其余为正确数/可评分数；未评不表示质量相同。输出一致性单列，A参考本窗口AR，B参考DFlash，不把B的身份写成新验证的AR身份。
+
+|批次·任务|生成请求数|当前耗时vs DFlash|当前耗时vs ASD|质量：DFlash / ASD / 当前|当前输出一致|当前截断|
+|---|---:|---:|---:|---|---|---:|
+|A·GSM8K|8|-10.90%|+3.83%|8/8 / 8/8 / 8/8|AR 7/8|0|
+|A·MATH-500|12|-7.71%|-8.89%|8/12 / 8/12 / 9/12|AR 9/12|0|
+|A·HumanEval|8|-4.35%|-4.25%|7/8 / 7/8 / 7/8|AR 8/8|0|
+|A·MBPP|8|-16.50%|-3.93%|4/8 / 5/8 / 4/8|AR 8/8|0|
+|A·MMLU|14|-2.95%|-2.28%|5/14 / 1/14 / 5/14|AR 13/14|0|
+|A·MT-Bench|8|-14.11%|-13.20%|未评 / 未评 / 未评|AR 4/8|0|
+|A·Alpaca|8|-16.65%|-3.55%|未评 / 未评 / 未评|AR 7/8|0|
+|B·IFEval|64|-15.33%|-13.86%|52/64 / 53/64 / 52/64|DFlash 55/64|3|
+|B·LiveCodeBench v6|24|-7.34%|-13.63%|8/24 / 9/24 / 8/24|DFlash 23/24|0|
+|B·CanItEdit|32|-3.22%|+0.60%|17/31 / 15/31 / 17/31|DFlash 31/32|0|
+|B·Qasper|8|-1.59%|-0.86%|43.14 / 45.38 / 43.14|DFlash 8/8|0|
+|B·MultiFieldQA-en|8|-2.46%|-0.47%|55.60 / 56.00 / 55.60|DFlash 8/8|0|
+|B·MultiNews|8|-20.43%|-13.30%|26.46 / 26.41 / 26.46|DFlash 7/8|4|
+|B·GovReport|8|-19.48%|-16.24%|34.87 / 35.48 / 34.61|DFlash 7/8|5|
+|B·AIME25|30|-8.78%|+4.60%|5/30 / 7/30 / 5/30|DFlash 7/30|10|
+
+- A的MMLU为生成字母合同，格式错误计错；MT-Bench/Alpaca本批没有新增裁判评分。它们不能借用历史其他输出的奖励分。
+- B的IFEval主列为严格整请求通过数，严格指令DFlash/ASD/当前为85/86/85，分母97；宽松整请求为52/56/53，分母64。
+- B的CanItEdit32题全部计入速度，规范答案31/32可运行，统一v3评分；不可评分的`78_llm_inference`对三组使用相同掩码。原始评分、v2/v3及源码清单均保留。
+- B的LongBench四个子集各8题，其中19/32输入采用3840-token首尾截取；QA输出上限128、摘要512。除AIME25完整30题外，B均为固定子集，不是全量排行榜。MultiNews/GovReport当前截断4/8、5/8，不以ROUGE-L替代事实正确率。
+- B的AIME当前/DFlash正确集合均5/30，ASD7/30；输出上限4096，当前/DFlash/ASD截断10/11/11。更高输出一致性不保证超越普通ASD的任务正确率。
+
+两批混合总量分别列出；下表总耗时比与上表逐题配对均值不是同一统计，不跨批相除，也不将不同任务质量相加成总正确率。
+
+|批次|请求/实际生成|当前总秒|当前总wall vs DFlash|当前总wall vs ASD|总token：DFlash / ASD / 当前|当前/ASD参考一致数|
+|---|---:|---:|---:|---:|---|---|
+|A|66/594|253.650|-12.96%|-14.53%|24391 / 26416 / 23605|AR 56/66、14/66|
+|B|182/546|1972.739|-12.96%|-12.16%|131275 / 135321 / 131201|DFlash 146/182、31/182|
+
+A同输出56请求中，当前对DFlash/BASTION配对耗时少8.66%/0.64%；B同输出146请求中，对DFlash少10.77%。这些事后子集用于说明收益包含计算效率，不替代保留全部题目的主表。
+
+来源：A读取[analysis.json](../results/external-trees/analysis.json)的`families.<task>.<arm>.natural`与[totals.json](../results/external-trees/totals.json)；B读取[analysis.json](../results/expanded-suite/analysis.json)的`families.<task>.<arm>`与`totals`。A使用`<baseline>.ratio`，B使用`<baseline>.paired_ratio`；没有用两个均值相除推导新基线。逐题、截断、完整输出与来源SHA见[A全表](EXTERNAL_TREES_RESULTS.md)、[B全表](EXPANDED_SUITE_RESULTS.md)和[B结论](EXPANDED_SUITE_FINDINGS.md)。
+
+<a id="baseline-results"></a>
+
+## 4.2 九组同机基线与论文引用
+
+九组同机基线沿用A批594次生成，不新增GPU运行。下表是各方法66请求的混合总量；不同输出路径和长度也影响总wall，不能把全部差异解释成单步执行效率。完整逐任务九方法质量/耗时见[A全表](EXTERNAL_TREES_RESULTS.md)。
+
+|方法|总秒|实际token/s|总wall vs DFlash|总wall vs BASTION|AR输出一致/66|
+|---|---:|---:|---:|---:|---:|
+|AR|1257.316|19.40|+331.44%|+367.11%|66|
+|DFlash|291.423|83.70|+0.00%|+8.27%|66|
+|ASD|296.780|89.01|+1.84%|+10.26%|14|
+|BudgetTree|263.316|92.63|-9.64%|-2.17%|66|
+|BudgetTree-ASD|282.545|98.26|-3.05%|+4.97%|20|
+|BufferedKV-ASD|253.650|93.06|-12.96%|-5.76%|56|
+|DDTree-32|265.687|91.80|-8.83%|-1.29%|66|
+|DDTree-128|445.613|54.74|+52.91%|+65.55%|66|
+|BASTION|269.167|90.62|-7.64%|+0.00%|66|
+
+新增场景的外部基线优先沿用已核验的[文献引用表](EXPANDED_LITERATURE_BASELINES.md)。以下为BASTION v4 Table 1的Qwen3-8B、T=0、A100/BF16原文数值，倍率为相对AR的per-token latency比，τ含bonus；不是本机实测，也不据此计算本轮方法的速度排名。
+
+|任务|EAGLE-3相对AR倍率 / τ|DFlash相对AR倍率 / τ|BASTION相对AR倍率 / τ|
+|---|---:|---:|---:|
+|AIME25|2.92× / 2.45|5.91× / 7.20|7.69× / 9.46|
+|LiveCodeBench|2.29× / 1.91|5.90× / 7.64|7.64× / 9.91|
+
+原文：[BASTION Table 1](https://arxiv.org/html/2605.29727v4#S4.T1)。其硬件、精度、prompt、样本和统计口径与A/B不同。B没有新跑AR/EAGLE-3/DDTree/BASTION，不填造这些方法的新题准确率；DFlash/ASD仅作为同输入同机质量与速度锚点重跑。IFEval/CanItEdit及本轮截取后的四个LongBench子集没有可直接填入的匹配文献数字，保留实际三组结果。
+<!-- CURRENT_EXPERIMENT_TABLE_END -->
 
 ## 5. 为什么加速：更长实际接受前缀，更少验证轮
 
@@ -117,6 +200,8 @@ DSpark曾单独适配和优化。它在部分Alpaca场景保留正结果，但�
 
 成本树已进入统一runtime、CLI、JSON／SSE服务、benchmark及树过程可视化。支持严格BudgetTree与显式近似BudgetTree-ASD，成本表绑定模型／运行环境哈希，异设备需要重新校准。真实部署验收完成研究实现与运行时的输出、轮次、预算、停止及取消恢复对照，详见[infra v0.4验收](INFRA_TREE_VALIDATION.md)。
 
+最新高保真反馈树、最小增量接受与执行复用也已接入[infra v0.5](INFRA_FIDELITY_GUIDE.md)，独立冻结于`codex/infra-interview-v0.5`／`infra-v0.5-interview`；旧v0.3/v0.4保持。v0.5交付与线上网页是否切换分别记录，不把研究表格更新当作线上部署。
+
 研究成果与面试交付分别保留：当前聊天网页已有组合推理入口；面试版 `codex/infra-interview-v0.4`／`infra-v0.4-interview` 独立冻结，说明见[面试版位置](INFRA_TREE_INTERVIEW.md)。网页交互验收和少量部署计时不替代上述多任务研究评测。
 
 ## 9. 从哪里复核
@@ -124,6 +209,8 @@ DSpark曾单独适配和优化。它在部分Alpaca场景保留正结果，但�
 |内容|入口|
 |---|---|
 |算法通俗解释|[ASD_TREE_ARCHITECTURE.md](ASD_TREE_ARCHITECTURE.md)|
+|当前方案七任务与九组同机基线|[结论](EXTERNAL_TREES_FINDINGS.md) · [全表](EXTERNAL_TREES_RESULTS.md) · [统计](../results/external-trees/analysis.json)|
+|当前方案新增八任务、逐题评分与论文引用|[结论](EXPANDED_SUITE_FINDINGS.md) · [全表](EXPANDED_SUITE_RESULTS.md) · [统计](../results/expanded-suite/analysis.json) · [文献](EXPANDED_LITERATURE_BASELINES.md)|
 |最大扩样的主结论、全表和协议|[结论](ASD_PAPER_EXTENSION_FINDINGS.md) · [全表](ASD_PAPER_EXTENSION_RESULTS.md) · [协议](ASD_PAPER_EXTENSION_PROTOCOL.md)|
 |原始统计、来源和重建审计|[analysis.json](../results/asd-paper-extension/analysis.json) · [audit.json](../results/asd-paper-extension/audit.json)|
 |数学／代码／格式质量复核|[quality-audit.json](../results/asd-paper-extension/quality-audit.json)|

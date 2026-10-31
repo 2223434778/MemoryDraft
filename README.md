@@ -16,7 +16,7 @@
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
-**实验总览（2026-10-28）：**[DFlash + 成本树 + ASD完整总结](docs/ASD_TREE_EXPERIMENT_SUMMARY.md)汇总历次开发／独立扩样、七任务自然时延、直接ASD／DFlash对照、质量取舍、接受长度与验证轮数证据，以及infra交付和原始结果入口。原总览位于`codex/chat-live-draft`，下方分支漂移续研位于`codex/branch-drift`；默认`main`保留旧版本。
+**完整实验总表（2026-10-31更新）：**[DFlash + 成本树 + ASD完整总结](docs/ASD_TREE_EXPERIMENT_SUMMARY.md)已合并当前方案15类任务、九组同机基线与已有论文引用，并保留原组合530匹配输入的大样本表、历次消融及infra交付。按算法版本和实验批次区分，不混算跨轮收益。最新总表位于`codex/branch-drift`，历史总览位于`codex/chat-live-draft`；默认`main`保留旧版本。
 
 **分支漂移门控候选（2026-10-28）：**[七任务结论](docs/BRANCH_DRIFT_FINDINGS.md)与[完整实测表](docs/BRANCH_DRIFT_RESULTS.md)在`codex/branch-drift`。149匹配输入、1639新计时、192奖励评分完成，AR逐token一致输出60→106；MMLU格式合同恢复、MT自然时延/偏好有局部正结果，其他任务保留速度与质量取舍。单步JS仍会放过关键代码条件错误，原组合继续保留。
 

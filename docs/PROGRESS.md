@@ -1,3 +1,9 @@
+# 2026-10-31 — 完整实验总表合并
+
+- 按用户要求更新`ASD_TREE_EXPERIMENT_SUMMARY.md`：新增当前BufferedKV-ASD的15类任务完整表，覆盖既有七任务66匹配输入和新增八任务182请求；逐行列同批DFlash/ASD配对耗时、三组质量、当前参考一致性与截断。两批总wall各自列示，不跨批合成新独立实验。
+- 补齐九组594计时的同机基线总表及AIME25/LiveCodeBench两行已有论文引用；区分A6000/FP32实测与A100/BF16文献，不推导不匹配速度排名。旧530匹配输入大样本主表及原组合数字保留，明确原BudgetTree-ASD与当前BufferedKV-ASD版本，补续研/infra v0.5入口。
+- 本轮只改总览、README入口和本进度记录，未启动GPU、未修改生成/评分/统计载荷。检查命令`.venv\Scripts\python.exe artifacts\check-complete-experiment-table.py`：15任务行、9基线行、2文献行逐项对照原报告通过；旧大样本主表未变、175本地链接有效、64原结果payload SHA未变。`git diff --check`通过。
+
 # 2026-10-31 — 新场景扩展：182请求/546生成完成
 
 - 546/546真实生成已完成，当前混合总wall1972.739s，较DFlash2266.395s/ASD2245.920s少12.96%/12.16%；输出131201token对DFlash131275，DFlash一致146/182对ASD31/182。同输出146请求对DFlash配对少10.77%。完整`EXPANDED_SUITE_FINDINGS/RESULTS.md`及`results/expanded-suite`已生成。
