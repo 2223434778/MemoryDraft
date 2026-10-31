@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "rescored": 96,
+  "canonical_scored": 29,
+  "unavailable": [
+    "canitedit:25_sudoku_solver",
+    "canitedit:54_strategy",
+    "canitedit:78_llm_inference"
+  ],
+  "source": {
+    "memorydraft/evaluation/expanded_suite.py": "15c76e8b238e50257ff4a50db9aba9ffea3aa21bf027ae86655529bd5528d4ef",
+    "scripts/score_expanded_task.py": "f261adc408390668c1e42666f0c7a867c5f030037aecb8f0d38b51236cb9c1a9",
+    "scripts/rescore_expanded_suite.py": "b8ebd8c074ba30021f834bc577fd3c270b7ec2abdc538dcb94b01646f21ecb23"
+  },
+  "generation_rows_sha256": "341bae1be1ef6f5a2e1488ea8ce80ac084d7c9671ebe019ed97205de8a3de16b",
+  "rule": "Before examining generated code edits: allow ordinary object methods/identifiers and scientific imports; CPU only,8GiB AS. Same tests for all methods; no generation/timing changes."
+}

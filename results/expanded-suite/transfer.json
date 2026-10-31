@@ -1,0 +1,89 @@
+{
+  "archive_bytes": 3552370,
+  "archive_sha256": "b2244154fd3206c06d58820ed71673d2409dfef0fe01672bd218be757366a79d",
+  "parts": [
+    {
+      "name": "part-000.bin",
+      "bytes": 393216,
+      "sha256": "593e4fc3ecde8a4747b212b5113b156f0b75fbab70f8436cd8c7f2aa6ced4437"
+    },
+    {
+      "name": "part-001.bin",
+      "bytes": 393216,
+      "sha256": "9936b8126cc68fff8f029de39e4cea9a937393c088140edced7b7fa3d9aecb65"
+    },
+    {
+      "name": "part-002.bin",
+      "bytes": 393216,
+      "sha256": "4af613c1789b062018b5c2d343f017e8eb645d31ee99bee98038c5a856994c7c"
+    },
+    {
+      "name": "part-003.bin",
+      "bytes": 393216,
+      "sha256": "93be85f168dacf2c9b08a67a11c08099932bc465733c22c65a7be304a70d97dd"
+    },
+    {
+      "name": "part-004.bin",
+      "bytes": 393216,
+      "sha256": "80c3d063ffa7232d120334386089a9787f4f4005acec87cf4ae70af214396860"
+    },
+    {
+      "name": "part-005.bin",
+      "bytes": 393216,
+      "sha256": "37f01bf5c7f9573b947d5206804a7774d498f2285917c8b00a711c8d23a99e7c"
+    },
+    {
+      "name": "part-006.bin",
+      "bytes": 393216,
+      "sha256": "c04ec4743a5a9a8308c1db57bfb553d0af9b8feafe288e0a3bde24ff747f054a"
+    },
+    {
+      "name": "part-007.bin",
+      "bytes": 393216,
+      "sha256": "068b87d92dbdaa0b8721a05d075f97254f2d4e20633ce45a7b756ee47852193a"
+    },
+    {
+      "name": "part-008.bin",
+      "bytes": 393216,
+      "sha256": "587fa9083bf3faa1d6ba8b5fef6b3b15d5e35c10ea91381109a5129d75edf8b9"
+    },
+    {
+      "name": "part-009.bin",
+      "bytes": 13426,
+      "sha256": "573da988f018059d9e12e1b44cd7a2c1c1a7469de157ac8fe2d46715409df52d"
+    }
+  ],
+  "payloads": {
+    "calibration-generations.jsonl": "ebec582cbf77403f2909897852b0a34d55bec349ae5c91e7d365327c24bb2d4d",
+    "rows.jsonl": "341bae1be1ef6f5a2e1488ea8ce80ac084d7c9671ebe019ed97205de8a3de16b",
+    "admission.json": "6926b34b18df2dd81ab8024b61d07e852e9897f95d9dd7d22094d9c33a6499a8",
+    "provenance.json": "2095e3771035a273b967c839d7202d2ae4b02d9dff76ae76e7e034bd7efb448f",
+    "calibration.json": "76dac9a21b6ebda016927eaff5afd5a8b1ec361a35ff276d0c13aca0a54980d3",
+    "warmup.jsonl": "776215124a7f12230f4cac647924adf72e2da5a311f2d364b6dc04a3cb30385c",
+    "canonical-preflight.json": "96f3c0489b186e1251fd7b62a6ac52b51e22b7dc613393ee215f89639e88f217",
+    "tasks-metadata.json": "b83a4096279b0bee965808f313322f65ee42b4719633a7e3e32aa74925db86f8",
+    "quality-v2-manifest.json": "23711d5b5878c16db188f5616f9bc2f48ab681600eb582b77c829b50d6bdc76f",
+    "quality-v2-scores.jsonl": "a4654c482b9fc1e150a83e5ef691e25f0979614cb7817eb3f06be1eb498ce89a",
+    "quality-v2-canonical-preflight.json": "f70e3badba2269baac30b689f320da69ac9207fe8816673df2297a3ec9ad184c",
+    "quality-v3-manifest.json": "1cfaecb4a5678745c0f44e1158804f0cf588d2e4a5dd7f542ea9bd0b8268babd",
+    "quality-v3-scores.jsonl": "1afddcc612db94dadfe05fc514453146e0e2eca80036e13239492a9296a5a701",
+    "quality-v3-canonical-preflight.json": "c28165f9a55549841f871772d910cbef72012a709d4b5f298967d0d911761e61",
+    "execution.json": "f86f8c4094f4970c9e89d6caf6f4fb0192bceddc3a2399e0120c0ca146cb7896",
+    "source-manifest.json": "b6f38058aa067440e6b84c6f524a2a6789b6696f813e69b0f721c7981232877c",
+    "server-tests.xml": "01761815b260676a1ab0d72a16bcde725132d1c77f12620829b487b3b826be98",
+    "scoring-source-manifest.json": "d39d7aabf7468fb843844270811aa4662bf300eef85b0f9d4aae268bb0ee9a10",
+    "scoring-v3-source-manifest.json": "ef34f5336416ebcf68a2a0429820363907d2375e55d3cbf8212ca7577c92ba5f",
+    "scoring-v3-tests.xml": "dad810e93966213364c1a55878482b2bc81e84b6d4f1ab9faebb0c1689bec389",
+    "scoring-v3-failed-tests.xml": "2c02b85c0362ce0aafaa7ae7217b356ac988ae72b0109ced3fdb012726047869",
+    "failed-v1-execution.json": "1e9910801856159e0b58b9fb8a8becdb929d3a996f5c484c4de6544432aa58e8",
+    "failed-v1-server-tests.xml": "827e9e29dab7ffc79e787d4a8ffaf755ea5d33df57a671dc1a5efbd4830491f9",
+    "failed-v1-journal.log": "2217a623d7980af587ec5c566b4c165f5e96383de7cf05c641bed4a067ea4800",
+    "failed-v2-execution.json": "fa2dacbaff026478efb1a103b6d2c1b1b669bb8790b275d585fc4d878d0f2a8c",
+    "failed-v2-server-tests.xml": "00be449bebbf18537bf1812fb0fabd7a0bcef6a9744e86de6bc7076d6c9c0442",
+    "failed-v2-journal.log": "3cfd5fa2ec86b79ec42c9f334f96609c8349895b58834a72da729eadd46e817c",
+    "LICENSE-instruction_following_eval": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "LICENSE-lcb": "98b9c773a2c272476d91488006d096d3585e7b6b514a1975f84f6ba9d9335119",
+    "LICENSE-longbench": "daa110ebb8a90b4d89cb5110f774127c4628cdb3c953358e644bed723a129e7e",
+    "LICENSE-canitedit": "5f9bca5c91fed067438814248f77116e18da08394790af497bf6c3acba65dce9"
+  }
+}

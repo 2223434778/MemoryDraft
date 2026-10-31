@@ -1,0 +1,10 @@
+{
+  "commit": "1100870aafe2de9ff578886f00c6d9f483b41c01",
+  "files": {
+    "memorydraft/evaluation/expanded_suite.py": "15c76e8b238e50257ff4a50db9aba9ffea3aa21bf027ae86655529bd5528d4ef",
+    "scripts/score_expanded_task.py": "040be3ba1bf14ea90ab3cf0ac41c871e03314a013a62b247d7188d87f4d31ce7",
+    "scripts/rescore_expanded_suite.py": "5282bdb6a308a4cf258e91f201e3df9039384d8870313ef32f486136a66c96c5",
+    "scripts/report_expanded_suite.py": "ec498353449935968066810494a6df74a0c2e25885b9af0a1869e97213720026",
+    "tests/test_expanded_suite.py": "12c3b457ac8e76abe08988752e994c8bc6fe06723399aaaf2582766701b6b8ae"
+  }
+}

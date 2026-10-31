@@ -9,7 +9,7 @@
 - IFEval用官方strict/loose prompt与instruction两级指标，语言检测固定seed0；LongBench用官方answer F1/ROUGE-L，不把摘要相似度当事实正确率；LCB用全部公开+私有测试2s/test、全局70s；CanItEdit用官方hidden tests，独立Python3.11子进程，canonical/before预检。生成代码限制危险导入/文件和进程操作，CPU/内存/时间受限；这是任务专用执行限制，不称通用安全沙箱或官方Docker复现。
 - CanItEdit官方仓库为BSD-3-Clause加禁止模型训练条款，本次仅推理评测；IFEval Apache-2.0，LCB/LongBench代码MIT，许可原文随隔离快照保留。官方测试依赖不满足的编辑题在模型输出前标记，对全部方法统一标为不可评分，仍保留生成时延；评分器异常与模型错误分开，不把环境异常记作算法错答。
 - 上游评分代码、官方prompt、固定数据与全部答案只用于离线评分，不作为draft历史或Target提示答案。原始长文和完整测试载荷保留研究缓存，GitHub发布版本/ID/SHA与统计，不另行散发原始长文。
-- A6000独立expanded-suite-v1目录，确认27B空闲后释放GPU1，finally恢复原服务；GPU0聊天和infra冻结引用保持。完成后报告实测三组、逐题配对时延/实际TPS/长度/截断/质量、严格参考一致性及文献引用适用条件。
+- A6000独立expanded-suite-v3目录，确认27B空闲后释放GPU1，finally恢复原服务；GPU0聊天和infra冻结引用保持。v1/v2启动失败、尚未生成正式答案，源码/日志保留。完成后报告实测三组、逐题配对时延/实际TPS/长度/截断/质量、严格参考一致性及文献引用适用条件。
 
 命令：`CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_expanded_suite`。
 
@@ -22,3 +22,5 @@
 ## 离线评分修订
 
 正式生成前的规范答案预检发现9个编辑题被初版导入/对象方法检查拦下。在尚未查看这些题的模型输出时，冻结独立修订：允许正常局部双下划线变量、`super().__init__()`等对象方法，以及已安装的科学计算包；编辑子进程AS上限改8GiB，强制CPU、不准加载额外模型或访问文件/进程。生成结束后在独立评分目录统一重评全部32编辑题、三组输出，规范答案仍不能通过的题按相同掩码标不可评分。旧预检/旧评分保留，推理源码、输出token和计时均不改。
+
+v2规范答案29/32，日志进一步显示z3隔离导入路径和`inspect.getsource`源码文件缺失；v3只修复这两项执行环境问题，规范答案31/32通过，全部96输出统一重评，v2证据保留。独立评分目录`expanded-quality-v3`；命令`../.venv-dflash/bin/python -u -m scripts.rescore_expanded_suite ../expanded-suite-v3/results/raw/expanded-suite --revision 3`。实际生成源码与最终评分源码分别绑定，见[结论](EXPANDED_SUITE_FINDINGS.md)。

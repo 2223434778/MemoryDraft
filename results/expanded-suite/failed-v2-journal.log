@@ -1,0 +1,31 @@
+Starting /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python /media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/launch_branch_drift_optimization.py --root /media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2 --archive-sha 04cf388c408eefdffc7cf6a4b3c3258ae6c3b4136f35c4e6123aa0d2fdd1237e --study expanded-suite --owned...
+Started /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python /media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/launch_branch_drift_optimization.py --root /media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2 --archive-sha 04cf388c408eefdffc7cf6a4b3c3258ae6c3b4136f35c4e6123aa0d2fdd1237e --study expanded-suite --owned.
+................                                                         [100%]
+- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/server-tests.xml -
+16 passed in 6.39s
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/run_expanded_suite.py", line 100, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/run_expanded_suite.py", line 41, in main
+    if hashlib.sha256((ROOT/path).read_bytes()).hexdigest()!=digest:raise ValueError('Changed scorer: '+path)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/third_party\\expanded\\instruction_following_eval\\instructions.py'
+Traceback (most recent call last):
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/launch_branch_drift_optimization.py", line 118, in <module>
+    main()
+  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/expanded-suite-v2/scripts/launch_branch_drift_optimization.py", line 104, in main
+    subprocess.run(command, cwd=root, check=True)
+  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python', '-u', '-m', 'scripts.run_expanded_suite']' returned non-zero exit status 1.
+memorydraft-expanded-suite-v2.service: Main process exited, code=exited, status=1/FAILURE
+memorydraft-expanded-suite-v2.service: Failed with result 'exit-code'.

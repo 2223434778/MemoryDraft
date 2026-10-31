@@ -10,6 +10,8 @@
 
 **官方树基线补全（2026-10-31）：**[九组594计时结论](docs/EXTERNAL_TREES_FINDINGS.md)与[完整表](docs/EXTERNAL_TREES_RESULTS.md)补齐官方DDTree32/128、BASTION及同窗AR/DFlash/ASD。当前混合总wall较DFlash/BASTION省12.96%/5.76%，MATH正确9/12对严格基线8/12；同输出56请求对BASTION配对增量0.64%，MBPP/Alpaca仍有取舍。共享FP32/eager执行栈、既有66开发输入，不称原文快速后端复现；开放质量未新增盲评。
 
+**新场景扩展完成（2026-10-31）：**[182请求/546生成结论](docs/EXPANDED_SUITE_FINDINGS.md)与[全表](docs/EXPANDED_SUITE_RESULTS.md)新增IFEval、LiveCodeBench v6、CanItEdit、LongBench四子集及完整AIME25。当前混合总wall较DFlash/ASD省12.96%/12.16%，DFlash输出一致146/182对ASD31/182；指令/摘要提速，编辑通过17/31对ASD15/31，AIME5/30对ASD7/30仍有取舍。LongBench19/32输入首尾截取，其他任务多为固定子集；[已有论文基线直接引用](docs/EXPANDED_LITERATURE_BASELINES.md)，不混用硬件倍率排名。
+
 **Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
 
 **当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。

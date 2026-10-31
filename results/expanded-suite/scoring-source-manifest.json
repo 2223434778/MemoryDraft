@@ -1,0 +1,8 @@
+{
+  "commit": "b26fb38ec64b77bb87145cf9032b77075f5a4820",
+  "files": {
+    "memorydraft/evaluation/expanded_suite.py": "15c76e8b238e50257ff4a50db9aba9ffea3aa21bf027ae86655529bd5528d4ef",
+    "scripts/score_expanded_task.py": "f261adc408390668c1e42666f0c7a867c5f030037aecb8f0d38b51236cb9c1a9",
+    "scripts/rescore_expanded_suite.py": "b8ebd8c074ba30021f834bc577fd3c270b7ec2abdc538dcb94b01646f21ecb23"
+  }
+}

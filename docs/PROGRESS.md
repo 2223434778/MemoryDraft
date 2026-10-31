@@ -1,13 +1,17 @@
-# 2026-10-31 — 新场景扩展：IFEval/LCB/长文/编辑/AIME25实施中
+# 2026-10-31 — 新场景扩展：182请求/546生成完成
 
-- 546/546真实生成已完成，577源文件前后校验一致，三项聊天服务active、27B health正常。编辑评分v2预检29/32；核验canonical日志后追加v3环境修复：隔离子进程加入已冻结依赖目录、用临时源码文件支持inspect.getsource，不改测试/生成/计时，v2结果保留。最终报告随后追加。
+- 546/546真实生成已完成，当前混合总wall1972.739s，较DFlash2266.395s/ASD2245.920s少12.96%/12.16%；输出131201token对DFlash131275，DFlash一致146/182对ASD31/182。同输出146请求对DFlash配对少10.77%。完整`EXPANDED_SUITE_FINDINGS/RESULTS.md`及`results/expanded-suite`已生成。
+- 当前逐题配对wall对DFlash/ASD：IFEval−15.33%/−13.86%、LCB−7.34%/−13.63%、编辑−3.22%/+0.60%、Qasper−1.59%/−0.86%、MultiFieldQA−2.46%/−0.47%、MultiNews−20.43%/−13.30%、GovReport−19.48%/−16.24%、AIME−8.78%/+4.60%。IFEval严格52/64同DFlash、ASD53；LCB8/24同DFlash、ASD9；编辑17/31同DFlash、ASD15；AIME5/30同DFlash、ASD7。质量和速度取舍均保留，不称全面胜出。
+- 编辑评分v2规范预检29/32；v3只修复隔离z3路径/源码文件检查，规范31/32，全部96输出统一重评，v2结果保留、不改测试/生成/计时。最终评分源`1100870aafe2de9ff578886f00c6d9f483b41c01`，服务器17 passed/6.47s；先前遗漏汇总模块的评分快照16 passed/1 failed保留。最终本机16 passed/1 skipped/9.58s（官方依赖仅服务器），批次不相加。
+- 生成UTC04:01:06–05:51:31，加载20.54s、校准7.30s单列；577源文件前后校验一致，三项聊天服务active、27B health正常。结果ZIP3552370B、10分片/31载荷SHA核验，ZIP`b2244154fd3206c06d58820ed71673d2409dfef0fe01672bd218be757366a79d`。公开结果去除LCB私有测试错误载荷、原始长文，仅保留生成行/元数据/评分版本。
+- 公开压缩行独立重汇总字节完全一致；546行token/文本/时延/停止/输入身份与原始生成逐项一致，统一编辑评分掩码31/32，详见`results/expanded-suite/audit.json`。公开payload/report/reporter SHA均通过核验。
 
-- 正式运行于`expanded-suite-v3`，实际生成源码`80f06dc1b63b0d8ba42a8ca237e2fe44300d1ff5`、577文件SHA绑定，ZIP`ab56644549deaf3f4c4fcbd33a14cc34deeb7205db2b2cecb0bfb99306d04460`；服务器16 passed/6.40s，182/182输入准入，无超长剔除。v1仅ROUGE平滑项断言失败，v2清单反斜杠导致启动失败，均未生成正式答案且finally恢复服务；v3正常运行。
+- 正式运行于`expanded-suite-v3`，实际生成源码`80f06dc1b63b0d8ba42a8ca237e2fe44300d1ff5`、577文件SHA绑定，ZIP`ab56644549deaf3f4c4fcbd33a14cc34deeb7205db2b2cecb0bfb99306d04460`；服务器16 passed/6.40s，182/182输入准入，无超长剔除。LongBench19/32输入首尾截取；v1仅ROUGE平滑项断言失败，v2清单反斜杠导致启动失败，均未生成正式答案且finally恢复服务；记录保留。
 - 编辑规范预检23/32通过，其余主要是导入或正常对象方法误拦。独立离线评分修订已在这些题模型输出之前冻结为`b26fb38`，不修改正在运行的推理/计时；生成结束统一重评全部编辑题并保留初版评分。准备/汇总本机9 passed/1 skipped/7.12s；不计作新GPU结果。
 
-- 用户授权新增任务，要求有文献数据的基线优先引用。固定182请求/预定546生成，仅DFlash/ASD/当前方案三组实测；其他基线列原文报告，明确A100/BF16/全量样本与本次FP32/A6000不同。协议`EXPANDED_SUITE_PROTOCOL.md`。
+- 用户授权新增任务，要求有文献数据的基线优先引用。固定182请求/546生成，仅DFlash/ASD/当前方案三组实测；其他基线列原文报告，明确A100/BF16/全量样本与本次FP32/A6000不同。协议`EXPANDED_SUITE_PROTOCOL.md`。
 - IFEval64、LCB v6-only分难度24、CanItEdit descriptive32、LongBench四子集各8、完整AIME25共30。统一输入上限4096，长文3840首尾截取并记录，其他超长输入统一在回答前拒收。官方评分/许可/版本SHA核验，代码题环境问题与错答区分；无私有聊天参与。
-- 新增`expanded_suite.py`及准备/运行/评分worker；复用现有高保真执行路径，不改接受规则。快速检查15 passed/29.85s；命令见协议。GPU真实结果随后追加，不预报收益。
+- 新增`expanded_suite.py`及准备/运行/评分worker；复用现有高保真执行路径，不改接受规则。快速检查15 passed/29.85s；完整命令见协议，公开重建`.venv\Scripts\python.exe -m scripts.report_expanded_suite --input results/expanded-suite`。main与三个infra冻结引用保持。
 
 # 2026-10-31 — 官方DDTree/BASTION基线补全：九组594计时完成
 
