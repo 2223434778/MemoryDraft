@@ -43,10 +43,10 @@ def evaluate(record,text):
         return dict(correct=False,error=str(error),metric='test pass; source restrictions')
     if benchmark=='canitedit':
         import subprocess,tempfile
-        limits='import resource\nresource.setrlimit(resource.RLIMIT_CPU,(8,8))\nresource.setrlimit(resource.RLIMIT_AS,(2147483648,2147483648))\n'
+        limits='import resource\nresource.setrlimit(resource.RLIMIT_CPU,(8,8))\nresource.setrlimit(resource.RLIMIT_AS,(8589934592,8589934592))\n'
         with tempfile.TemporaryDirectory(prefix='canitedit-',dir=ROOT/'artifacts') as temp:
             p=subprocess.run([sys.executable,'-I','-c',limits+code+'\n'+record['tests']],cwd=temp,
-                env={'OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1'},capture_output=True,text=True,timeout=12)
+                env={'OPENBLAS_NUM_THREADS':'1','OMP_NUM_THREADS':'1','CUDA_VISIBLE_DEVICES':''},capture_output=True,text=True,timeout=12)
         return dict(correct=p.returncode==0,error=p.stderr[-400:] if p.returncode else None,
             metric='official hidden tests; isolated Python 3.11 execution')
     if benchmark=='livecodebench':

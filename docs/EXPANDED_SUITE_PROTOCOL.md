@@ -14,3 +14,11 @@
 命令：`CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=4 HF_HUB_OFFLINE=1 PYTHONPATH=. ../.venv-dflash/bin/python -u -m scripts.run_expanded_suite`。
 
 本机：`.venv\Scripts\python.exe -m pytest -q tests/test_expanded_suite.py tests/test_tree_execution.py --basetemp artifacts/pytest-expanded-local --junitxml=artifacts/expanded-tests.xml --tb=short`，15 passed/29.85s。
+
+## 独立复现准备
+
+先clone官方CanItEdit、LiveCodeBench、LongBench到`artifacts/upstream-canitedit`、`artifacts/upstream-lcb`、`artifacts/upstream-longbench`，分别checkout manifest中固定commit；执行`python -m scripts.fetch_expanded_data`及`python -m scripts.prepare_expanded_suite`。准备器在已有manifest时拒绝不同题目和源码，仅恢复已记录的LF/CRLF字节；原始数据缓存不提交Git。
+
+## 离线评分修订
+
+正式生成前的规范答案预检发现9个编辑题被初版导入/对象方法检查拦下。在尚未查看这些题的模型输出时，冻结独立修订：允许正常局部双下划线变量、`super().__init__()`等对象方法，以及已安装的科学计算包；编辑子进程AS上限改8GiB，强制CPU、不准加载额外模型或访问文件/进程。生成结束后在独立评分目录统一重评全部32编辑题、三组输出，规范答案仍不能通过的题按相同掩码标不可评分。旧预检/旧评分保留，推理源码、输出token和计时均不改。

@@ -25,7 +25,8 @@ def ordered(rows,key):
 
 def main():
     cache=ROOT/'artifacts/expanded-cache'
-    out=ROOT/'data/research/expanded-suite';out.mkdir(parents=True,exist_ok=False)
+    out=ROOT/'data/research/expanded-suite';out.mkdir(parents=True,exist_ok=True)
+    frozen=json.loads((out/'manifest.json').read_bytes()) if (out/'manifest.json').exists() else None
     records=[]
     examples=[json.loads(s) for s in (cache/'ifeval-data-input_data.jsonl').read_text(encoding='utf-8').splitlines()]
     for r in ordered(examples,'key')[:64]:
@@ -61,7 +62,11 @@ def main():
         records.append(dict(id='aime25:'+r['id'],benchmark='aime25',answer=r['answer'],limit=4096,
             prompt=r['problem']+'\nPlease reason step by step, and put your final answer within \\boxed{}.'))
     records.sort(key=lambda r:(list(['ifeval','livecodebench','canitedit','longbench-qasper','longbench-multifieldqa_en','longbench-multi_news','longbench-gov_report','aime25']).index(r['benchmark']),r['id']))
-    raw=gzip.compress(json.dumps(records,ensure_ascii=False,sort_keys=True).encode(),mtime=0)
+    raw=bytearray(gzip.compress(json.dumps(records,ensure_ascii=False,sort_keys=True).encode(),mtime=0))
+    raw[9]=255
+    raw=bytes(raw)
+    if frozen and hashlib.sha256(raw).hexdigest()!=frozen['tasks_sha256']:
+        raise ValueError('Prepared tasks differ from the frozen selection')
     (out/'tasks.json.gz').write_bytes(raw)
     third=ROOT/'third_party/expanded';third.mkdir(parents=True,exist_ok=True)
     upstream={}
@@ -73,7 +78,11 @@ def main():
         target=third/name;target.mkdir(exist_ok=True)
         digests={}
         for path in files:
-            dest=target/Path(path).name;shutil.copyfile(source/path,dest)
+            dest=target/Path(path).name
+            from scripts.prepare_external_trees import published_bytes
+            relative=dest.relative_to(ROOT).as_posix()
+            expected=frozen['upstream'][name]['files'].get(relative) if frozen else None
+            dest.write_bytes(published_bytes((source/path).read_bytes(),expected))
             digests[dest.relative_to(ROOT).as_posix()]=hashlib.sha256(dest.read_bytes()).hexdigest()
         upstream[name]=dict(commit=commit,license=license,files=digests)
     counts={b:sum(r['benchmark']==b for r in records) for b in dict.fromkeys(r['benchmark'] for r in records)}
@@ -81,7 +90,9 @@ def main():
         datasets={p.name:json.loads(p.read_bytes())['sha'] for p in cache.glob('*-info.json')},
         raw_sources={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in cache.iterdir() if p.is_file() and p.name!='longbench-data.zip'},
         selection='SHA order before model outputs; CanItEdit descriptive; LiveCodeBench v6-only 8 easy/medium/hard; LongBench8/subset with official middle clipping at3840 prompt tokens; full AIME25')
-    (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
+    if frozen:
+        if manifest['upstream']!=frozen['upstream']:raise ValueError('Scorer source differs from frozen source')
+    else:(out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(counts=counts,total=len(records)),indent=2))
 
 

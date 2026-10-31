@@ -36,6 +36,7 @@ def test_code_restrictions(code):
 def test_stdio_and_regular_edit_code_supported():
     validate_generated_code('import sys\nn=int(input())\nprint(n+1)')
     validate_generated_code('from dataclasses import dataclass\n@dataclass\nclass X:\n x:int')
+    validate_generated_code('class X:\n def __eq__(self,__value):\n  return isinstance(__value,X)\n def __init__(self):\n  super().__init__()')
 
 
 def test_aime_integer_equivalence():

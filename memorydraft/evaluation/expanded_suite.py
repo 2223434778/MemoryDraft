@@ -34,16 +34,17 @@ def request_for(record,limit):
 def validate_generated_code(code):
     allowed={'math','cmath','collections','itertools','functools','re','heapq','bisect','string','typing',
         'statistics','operator','decimal','fractions','copy','random','sys','numpy','dataclasses','json',
-        'enum','datetime','time','abc','unittest','pytest','numbers','array','queue','sortedcontainers'}
+        'enum','datetime','time','abc','unittest','pytest','numbers','array','queue','sortedcontainers',
+        'pandas','scipy','sklearn','torch','z3'}
     forbidden={'open','eval','exec','compile','globals','locals','vars','getattr','setattr','delattr','breakpoint','__import__'}
     for n in ast.walk(ast.parse(code)):
         if isinstance(n,ast.Import) and any(a.name.split('.')[0] not in allowed for a in n.names):
             raise ValueError('unsupported import')
         if isinstance(n,ast.ImportFrom) and (n.level or not n.module or n.module.split('.')[0] not in allowed):
             raise ValueError('unsupported import')
-        if isinstance(n,ast.Name) and (n.id in forbidden or (n.id.startswith('__') and n.id!='__name__')):
+        if isinstance(n,ast.Name) and (n.id in forbidden or n.id in ('__builtins__','__loader__','__spec__')):
             raise ValueError('unsupported builtin')
-        if isinstance(n,ast.Attribute) and (n.attr.startswith('__') or n.attr in ('modules','system','popen','load','save','fromfile','tofile')):
+        if isinstance(n,ast.Attribute) and ((n.attr.startswith('__') and n.attr not in ('__init__','__eq__','__hash__','__str__')) or n.attr in ('modules','system','popen','load','save','fromfile','tofile')):
             raise ValueError('unsupported attribute')
 
 
