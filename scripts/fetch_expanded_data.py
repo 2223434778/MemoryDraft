@@ -6,7 +6,7 @@ import requests
 
 def main():
     root=Path(__file__).resolve().parents[1]
-    cache=root/'artifacts/expanded-cache';cache.mkdir(exist_ok=True)
+    cache=root/'artifacts/expanded-cache';cache.mkdir(parents=True,exist_ok=True)
     session=requests.Session()
     def get(url):
         r=session.get(url,timeout=90);r.raise_for_status();return r
