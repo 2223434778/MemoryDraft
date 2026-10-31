@@ -1,6 +1,8 @@
 # 2026-10-31 — 新增数据关键基线补全实施中
 
 - 用户授权补论文引用并在新增数据补AR/严格成本树/BASTION。固定原182请求，与DFlash/当前同批五组预定910次自然生成；沿用全部输入/输出上限和编辑v3掩码，同GPU冻结成本/BASTION校准复用，不改接受条件、不扫参。协议`EXPANDED_BASELINES_PROTOCOL.md`。
+- GPU实际生成源`42f6c8e772b3cfb5fae687fe20a7fab999c06276`，591文件SHA绑定，源码ZIP`c42a69a7a65769816bfc7f42294ab6d2fe55c6894fce703db172a7c961315604`；服务器31 passed/6.91s，全部182输入身份/限额匹配，UTC10:42:49开始自然生成，加载18.38s。独立finish任务等待生成/服务恢复后自动打包；不修改正在运行源码。
+- 文献八行已并入大矩阵和分表，24个引用方法格、8个AR参考格与来源一致；87个既有实测格和旧表保留。核对命令`artifacts/check-all-baselines-matrix.py`、`artifacts/check-complete-experiment-table.py`通过。GPU当前仍运行，不提前填成绩。
 - 新增runner/report及四项数据/工厂/身份分析检查；官方外树适配器仅增加可注入request_factory，旧调用默认行为不变。汇总函数允许显式五组、三组默认不变。命令`.venv\Scripts\python.exe -m pytest -q tests/test_expanded_baselines.py tests/test_external_trees.py tests/test_expanded_suite.py tests/test_tree_execution.py --basetemp artifacts/pytest-expanded-baselines --junitxml=artifacts/expanded-baselines-tests.xml --tb=short`：30 passed/1 skipped/30.87s；上游文件SHA核验通过。
 - 补齐BASTION v4 Table1的Qwen3-8B/T0八任务文献数值，原两行保留；它们仍是A100/BF16参考，不填作本轮A6000实测。服务器27B空闲、三聊天服务active，实验将在隔离expanded-baselines-v1执行，finally恢复GPU1服务。真实结果随后补充。
 
