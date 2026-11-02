@@ -2,6 +2,8 @@
 
 网页产品名为「树流」，使用原创树与水流标识。底层 Python 包名及历史研究、infra 冻结版本继续保留 MemoryDraft 名称，兼容现有部署与数据。
 
+**先了解当前算法：**[DFlash + 高保真反馈成本树 + ASD：通俗流程说明](docs/CURRENT_ALGORITHM_GUIDE.md)用流程图和一个完整例子讲清楚：小模型怎样起草、树怎样分配候选、大模型怎样检查、“换一个 token 会带偏多少”怎样判断，以及为什么至少多接 2 个 token 才近似接受。对应当前研究版本 `BufferedKV-ASD` 与启用 `tree_policy` 的 infra v0.5，包含参数、速度与质量取舍及代码入口。
+
 **朋友聊天网页：**[双机部署说明](docs/CHAT_DEPLOYMENT.md)提供阿里云账号/SQLite历史、手机/电脑网页及A6000成本树ASD推理转发。无域名时先通过Tailscale访问，后续可接HTTPS入口；账号、数据库和部署凭据不进入仓库。
 
 **新版聊天界面：**[界面与真实解码过程](docs/CHAT_VISUALIZATION.md)提供 Gemini 风格布局、输入框模型／四模式选择，以及实际草稿接受、丢弃、ASD 预算和成本树路径展示。过程开关不改变模型输出规则；较大模型按真实后端能力开放模式。
@@ -16,7 +18,7 @@
 
 **Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
 
-**当前研究主线（2026-10-26）：DFlash + 成本树 + ASD。** 按用户决定停止DSpark的后续优化和扩样，后续工作在`codex/dflash-mainline`继续。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
+**研究主线：DFlash + 成本树 + ASD。** 2026-10-26按用户决定停止DSpark的后续优化和扩样；后续高保真门控、反馈与执行优化已在`codex/branch-drift`完成，当前算法见上方说明。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
 
 **完整实验总表（2026-10-31更新）：**[所有基线 × 所有数据集矩阵](docs/ASD_TREE_EXPERIMENT_SUMMARY.md#all-baselines)将15类任务和10种正式对比方法放在一张大表中，另列八行论文配置；111个同机实测格、39个缺测格，B/D来源逐格标注。总览还保留原组合530匹配输入的大样本表、历次消融及infra交付。按算法版本和实验批次区分，不混算跨轮收益。最新总表位于`codex/branch-drift`，历史总览位于`codex/chat-live-draft`；默认`main`保留旧版本。
 
@@ -34,7 +36,7 @@
 
 **保持输出的执行优化（2026-10-30）：**[198计时对比](docs/TREE_EXECUTION_RESULTS.md)。分数复用总wall省0.22%，加按块扩容KV后共省1.03%，峰allocated增加约0.38GiB。132对输出/停止/路径/反馈/预算全部相同，AR一致保持56/66。可选缓存与旧实现均保留。
 
-**算法架构说明：**[树 + ASD：怎样用一次验证推进更多 token](docs/ASD_TREE_ARCHITECTURE.md)。用示意例子、执行流程和实测验证轮次解释成本树与 ASD 的组合及性能收益。
+**算法架构说明：**先读[当前算法通俗说明](docs/CURRENT_ALGORITHM_GUIDE.md)；[早期树 + ASD 架构](docs/ASD_TREE_ARCHITECTURE.md)保留原组合的机制、验证轮次与历史收益，两个版本的结果分别归属各自报告。
 
 **DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。
 

@@ -1,3 +1,10 @@
+# 2026-11-02 — 当前算法通俗说明
+
+- 按用户要求新增 `CURRENT_ALGORITHM_GUIDE.md`：以当前 BufferedKV-ASD / infra v0.5 tree_policy 为范围，说明 AR→DFlash→成本树→ASD→高保真策略的关系，提供完整流程图、2/5 候选的示意例子、参数与代码入口。
+- 逐项对照 `branch_drift.py`、`budget_tree.py`、`gate_width.py`、`dflash_reuse.py`、`draft_tree.py`、`buffered_cache.py`、`tree_policy.py` 及基础配置。明确 JS 比较 Target 兄弟分支之后的一步分布、首选兄弟缺失拒绝近似、EOS 保护、请求预算、同树最小增量和最近4轮可恢复漏选反馈；保留近似与严格、AR身份与质量的区别。
+- README 增加首读入口，更新主线分支说明；原树架构添加阶段范围提示，ARCHITECTURE/CODEX_START 链接当前说明。早期架构、全部实验与 infra 冻结版本保留。
+- 本轮仅修改6份文档，没有修改算法、参数、数据或线上服务，没有新增 GPU 实验。检查命令 `.venv\Scripts\python.exe artifacts\check-current-algorithm-docs.py` 通过：136个本地链接、五方法总量、五个场景耗时变化、配置默认值一致；三份历史说明正文及7个冻结引用保持。`git diff --check`通过。
+
 # 2026-10-31 — 新增数据关键基线补全：五组910生成完成
 
 - 用户授权补论文引用并在新增数据补AR/严格成本树/BASTION。固定原182请求，与DFlash/当前同批五组910次自然生成全部完成；沿用全部输入/输出上限和编辑v3掩码，同GPU冻结成本/BASTION校准复用，不改接受条件、不扫参。协议`EXPANDED_BASELINES_PROTOCOL.md`，完整`EXPANDED_BASELINES_FINDINGS/RESULTS.md`及`results/expanded-baselines`。
