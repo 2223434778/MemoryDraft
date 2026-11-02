@@ -1,3 +1,12 @@
+# 2026-11-02 — 当前算法独立仓库 ShuLiu-Decode
+
+- 按用户要求创建私有独立仓库 `https://github.com/2223434778/ShuLiu-Decode`，沿用原仓库可见性；main 初始提交 `7c864a390db172c1c4b99b6fd5d9680532715031` 已推送。本机独立 Git 项目在 `artifacts/ShuLiu-Decode`，来源为本仓库 `857c9f1274647776ae8ee8f9d4e19460441e7c6f`，原历史不整体复制。
+- 收录当前 DFlash/成本树/ASD/JS门控/反馈/最小增量/分数与KV复用、CLI/服务和相关对照；15组实验证据包含当前比较、消融、诊断及早期组合扩样，正负结果与原SHA一起保留。重写首页、快速开始、实验总表、复现与迁移说明。仅提取 I/O 依赖、收窄旧检索入口和筛选相应测试，9个核心算法文件逐字节保持。
+- 新项目完整检查 `python -m pytest -q --basetemp .test-tmp-final --junitxml=artifacts/final-tests.xml --tb=short`：274 passed/2 skipped/13.54s；Windows沙箱HTTP/临时目录限制在原生环境验证完成。原始扩展182请求从既有公共缓存重建，任务包与原SHA一致，不进入Git。
+- `python -m scripts.verify_export` 核验798注册文件、9核心字节和167本地链接；`python -m scripts.verify_results` 核对448发布载荷、八组5801生成的独立重汇总，全部与原结果相同。独立来源清单与验收为新仓库 `provenance/EXPORT_MANIFEST.json`、`VALIDATION.json`，800文件通过白名单暂存及 `git diff --cached --check`。
+- 新发行包 `shuliu-decode==0.5.0` 离线 wheel 构建、隔离安装、源码目录外CLI演示及包来源核验完成；wheel SHA `2c5a30fd6f07c58dc0b3fdeffea24de4e06ef19e401d02b3928bee6159c95543`。旧包名 `memorydraft` 保留兼容。没有新增GPU成绩、模型权重/私聊/凭据未迁入，线上服务、旧实验、main与infra冻结引用不变。
+- 本仓库仅在README新增新项目入口并记录本阶段，后续当前算法以新仓库为清晰入口；旧研究仍可在本仓库查阅。
+
 # 2026-11-02 — 当前算法通俗说明
 
 - 按用户要求新增 `CURRENT_ALGORITHM_GUIDE.md`：以当前 BufferedKV-ASD / infra v0.5 tree_policy 为范围，说明 AR→DFlash→成本树→ASD→高保真策略的关系，提供完整流程图、2/5 候选的示意例子、参数与代码入口。
