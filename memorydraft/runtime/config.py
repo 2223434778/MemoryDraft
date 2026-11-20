@@ -4,8 +4,6 @@ from dataclasses import asdict, dataclass, field
 import json
 from pathlib import Path
 
-from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
-
 
 @dataclass(frozen=True)
 class RuntimeConfig:
@@ -31,8 +29,6 @@ class RuntimeConfig:
     asd: dict = field(default_factory=dict)
     draft_adapter: dict = field(default_factory=dict)
     prefix_cache: dict = field(default_factory=dict)
-    cost_tree: dict = field(default_factory=dict)
-    tree_policy: dict = field(default_factory=dict)
 
     def __post_init__(self):
         if self.backend not in {"transformers", "dflash", "demo"}:
@@ -41,16 +37,6 @@ class RuntimeConfig:
             raise ValueError("Unknown execution_profile")
         if self.execution_profile != "eager" and self.backend != "dflash":
             raise ValueError("RMSNorm execution requires the audited dflash backend")
-        if type(self.cost_tree) is not dict:
-            raise ValueError("cost_tree must be an object")
-        if self.cost_tree:
-            if self.backend != "dflash":
-                raise ValueError("Cost tree requires the audited dflash backend")
-            from memorydraft.runtime.cost_tree import CostTreeSpec
-            try:
-                CostTreeSpec(**self.cost_tree)
-            except TypeError as error:
-                raise ValueError("Invalid cost_tree fields") from error
         if type(self.asd) is not dict or type(self.draft_adapter) is not dict:
             raise ValueError("asd and draft_adapter must be objects")
         if self.asd:
@@ -70,20 +56,6 @@ class RuntimeConfig:
                 raise ValueError("Public prefix caching requires the audited dflash backend")
             from memorydraft.runtime.prefix_cache import PrefixCacheSpec
             PrefixCacheSpec(**self.prefix_cache)
-        if type(self.tree_policy) is not dict:
-            raise ValueError('tree_policy must be an object')
-        if self.tree_policy:
-            if self.backend != 'dflash' or not self.asd:
-                raise ValueError('tree_policy requires dflash and explicit ASD settings')
-            from memorydraft.runtime.tree_policy import TreePolicySpec
-            try:
-                policy = TreePolicySpec(**self.tree_policy)
-            except TypeError as error:
-                raise ValueError('Invalid tree_policy fields') from error
-            if policy.buffered_kv and self.prefix_cache:
-                raise ValueError('Buffered tree KV cannot adopt a public prefix cache')
-            if self.cost_tree and self.cost_tree.get('top_k', 4) < 2:
-                raise ValueError('High-fidelity tree requires top_k >= 2')
         if self.retrieval not in {"suffix", "ot", "edit", "ot-guided", "edit-guided",
                                   "edit-splice", "ot-splice", "ot-tail-splice",
                                   "ot-order-splice", "ot-plan-splice", "ot-all-splice",
@@ -109,7 +81,7 @@ class RuntimeConfig:
         if self.dtype != "float32" or self.attention != "eager":
             raise ValueError("The validated runtime profile requires float32/eager")
         if any(type(v) is not int or v < 1 for v in
-               (self.threads, self.max_input_tokens, self.max_new_tokens)) or self.max_new_tokens > MAX_OUTPUT_TOKENS:
+               (self.threads, self.max_input_tokens, self.max_new_tokens)) or self.max_new_tokens > 4096:
             raise ValueError("Invalid thread or token limits")
         if self.backend != "demo" and not self.target:
             raise ValueError("A local target model directory is required")
@@ -131,9 +103,6 @@ class RuntimeConfig:
         if isinstance(value.get("prefix_cache"), dict) and value["prefix_cache"].get("path"):
             candidate = Path(value["prefix_cache"]["path"]).expanduser()
             value["prefix_cache"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
-        if isinstance(value.get("cost_tree"), dict) and value["cost_tree"].get("path"):
-            candidate = Path(value["cost_tree"]["path"]).expanduser()
-            value["cost_tree"]["path"] = str(candidate if candidate.is_absolute() else path.parent/candidate)
         return cls(**value)
 
     def as_dict(self):

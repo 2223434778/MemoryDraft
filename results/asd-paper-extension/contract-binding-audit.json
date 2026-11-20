@@ -1,9 +1,0 @@
-{
-  "bound_property_cells": 136,
-  "rules": 34,
-  "manual_or_automatic_failure_reviews": 110,
-  "untouched_automatic_passes": 26,
-  "conversation_and_answer_hashes_verified": true,
-  "primary_scores_unchanged": true,
-  "scope": "Selected explicit properties, not full-answer accuracy; agent-assisted, not human expert judgment"
-}

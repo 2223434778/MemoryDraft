@@ -5,20 +5,15 @@ from contextlib import asynccontextmanager
 from dataclasses import asdict
 import json
 import queue
-import secrets
 import time
 from typing import Literal
 
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 
 from memorydraft.runtime import GenerationRequest, RequestCancelled
-from memorydraft.runtime.contracts import MAX_OUTPUT_TOKENS
 from memorydraft.serving.worker import InferenceWorker, QueueFull
-from memorydraft.serving.text import PrefixText
-from memorydraft.serving.inline import InlinePresentation
-from memorydraft import __version__
 
 
 class Message(BaseModel):
@@ -33,26 +28,13 @@ class GenerateBody(BaseModel):
     user_id: StrictStr = Field(min_length=1, max_length=128)
     order: StrictInt = Field(ge=0)
     messages: list[Message] = Field(min_length=1, max_length=128)
-    max_new_tokens: StrictInt = Field(default=128, ge=1, le=MAX_OUTPUT_TOKENS)
+    max_new_tokens: StrictInt = Field(default=128, ge=1, le=4096)
     method: StrictStr = "AR"
     stream: bool = False
-    text_stream: bool = False
-    visualize: bool = False
     timeout_seconds: float = Field(default=60.0, gt=0, le=3600)
 
 
-class TokenCountBody(BaseModel):
-    model_config = ConfigDict(extra="forbid")
-    messages: list[Message] = Field(min_length=1, max_length=128)
-    max_new_tokens: StrictInt = Field(default=1024, ge=1, le=MAX_OUTPUT_TOKENS)
-
-
-def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=None):
-    async def authorize(request: Request):
-        if api_key is not None and not secrets.compare_digest(
-                request.headers.get("authorization", "").encode(), ("Bearer " + api_key).encode()):
-            raise HTTPException(401, "Invalid inference credentials")
-
+def create_app(engine_factory, *, queue_capacity=8, event_capacity=32):
     @asynccontextmanager
     async def lifespan(app):
         engine = await asyncio.to_thread(engine_factory)
@@ -62,8 +44,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
         finally:
             await asyncio.to_thread(app.state.worker.close)
 
-    app = FastAPI(title="MemoryDraft", version=__version__, lifespan=lifespan,
-                  dependencies=[Depends(authorize)])
+    app = FastAPI(title="MemoryDraft", version="0.3.0", lifespan=lifespan)
 
     @app.get("/healthz")
     async def health(request: Request):
@@ -72,27 +53,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
         return {"status": "ready" if not worker.closing else "closing", "methods": list(worker.engine.methods),
                 "synthetic": description.get("synthetic", False),
                 "approximate_methods": description.get("approximate_methods", []),
-                "draft_adapter_sha256": (description.get("draft_adapter") or {}).get("sha256"),
-                "cost_tree": description.get("cost_tree"), "tree_policy": description.get("tree_policy"), "text_stream": True,
-                "speculation_events": description.get("speculation_events", False)}
-
-    @app.post("/v1/token-count")
-    async def token_count(body: TokenCountBody, request: Request):
-        engine = request.app.state.worker.engine
-        messages = [message.model_dump() for message in body.messages]
-        if hasattr(engine, "tokenizer"):
-            def count():
-                return len(engine.tokenizer.apply_chat_template(messages, add_generation_prompt=True,
-                           **engine.config.template_options))
-            tokens = await asyncio.to_thread(count)
-            limit = min(engine.config.max_input_tokens,
-                        getattr(engine.target.config, "max_position_embeddings", engine.config.max_input_tokens)
-                        - body.max_new_tokens)
-        elif engine.describe().get("backend") == "demo":
-            tokens, limit = sum(len(m["content"].encode()) for m in messages), 8192
-        else:
-            raise HTTPException(501, "Token counting requires the engine tokenizer")
-        return {"input_tokens": tokens, "input_limit": limit}
+                "draft_adapter_sha256": (description.get("draft_adapter") or {}).get("sha256")}
 
     @app.get("/metrics")
     async def metrics(request: Request):
@@ -121,12 +82,7 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
             generation = GenerationRequest(body.id, body.user_id, body.order,
                                            tuple(m.model_dump() for m in body.messages), body.max_new_tokens)
             worker = request.app.state.worker
-            if body.visualize and not body.stream:
-                raise ValueError("Visualization requires streaming")
-            if body.visualize and body.method != "AR" and not worker.engine.describe().get("speculation_events"):
-                raise ValueError("This engine does not provide speculation events")
-            job = worker.submit(generation, body.method, timeout_seconds=body.timeout_seconds,
-                                stream=body.stream, visualize=body.visualize)
+            job = worker.submit(generation, body.method, timeout_seconds=body.timeout_seconds, stream=body.stream)
         except ValueError as error:
             raise HTTPException(422, str(error)) from error
         except QueueFull as error:
@@ -156,14 +112,9 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                     worker.cancel(job)
 
         async def stream():
-            decoder = PrefixText(worker.engine) if body.text_stream else None
-            presentation = InlinePresentation(worker.engine) if body.visualize and body.text_stream and body.method != "AR" else None
-            heartbeat = time.perf_counter()
             try:
                 yield event("start", {"request_id": generation.id, "method": body.method,
-                    "approximate": body.method in worker.engine.describe().get("approximate_methods", []),
-                    "tree_policy": worker.engine.describe().get("tree_policy") if body.method == 'BudgetTree-ASD' else None,
-                    "queued": job.started is None})
+                    "approximate": body.method in worker.engine.describe().get("approximate_methods", [])})
                 while True:
                     if await request.is_disconnected():
                         return
@@ -171,16 +122,8 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                         tokens = job.events.get_nowait()
                     except queue.Empty:
                         tokens = None
-                    if isinstance(tokens, dict):
-                        value = tokens["speculation"]
-                        if presentation is not None:
-                            value = {**value, "inline": presentation.present(value, decoder.tokens)}
-                        yield event("speculation", value)
-                    elif tokens:
-                        value = {"token_ids": tokens}
-                        if decoder is not None:
-                            value["text"] = decoder.append(tokens)
-                        yield event("tokens", value)
+                    if tokens:
+                        yield event("tokens", {"token_ids": tokens})
                     elif job.done.is_set():
                         break
                     else:
@@ -188,9 +131,6 @@ def create_app(engine_factory, *, queue_capacity=8, event_capacity=32, api_key=N
                             worker.cancel(job)
                             yield event("error", {"code": 504, "message": "Request deadline exceeded"})
                             return
-                        if time.perf_counter() - heartbeat >= 10:
-                            yield event("waiting", {"queued": job.started is None})
-                            heartbeat = time.perf_counter()
                         await asyncio.sleep(0.01)
                 if job.error:
                     code, message = error_details(job)

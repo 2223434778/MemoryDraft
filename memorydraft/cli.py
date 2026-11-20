@@ -50,7 +50,7 @@ def main(argv=None):
             run.add_argument("--method", default="RHD")
             run.add_argument("--commit-order", type=int, help="Persist final turn only, at this later availability order")
     args = parser.parse_args(argv)
-    if args.command in {"infer", "benchmark", "profile", "serve", "load-test", "calibrate-tree"}:
+    if args.command in {"infer", "benchmark", "profile", "serve", "load-test"}:
         from memorydraft.runtime.cli import run
         run(args)
         return

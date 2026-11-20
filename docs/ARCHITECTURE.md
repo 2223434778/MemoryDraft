@@ -1,7 +1,5 @@
 # MemoryDraft：长期用户记忆增强的投机解码
 
-> 2026-11-02：当前算法说明已更新为 [DFlash + 高保真反馈成本树 + ASD](CURRENT_ALGORITHM_GUIDE.md)，对应研究版本 BufferedKV-ASD 和启用 tree_policy 的 infra v0.5。请先读该说明理解当前生成流程，再读 [infra 部署指南](INFRA_FIDELITY_GUIDE.md)。本文保留原始 R/H/D 研究架构与实验约束，相关模块已实现并评测；它与当前树解码主线的版本范围分别说明。
-
 > 2026-10-18：用户授权将项目转为推理 infra。当前工程入口见 [INFRA_GUIDE](INFRA_GUIDE.md)，提供独立运行时、服务队列、benchmark/profiler；下文保留为研究架构及实验约束。H 已实现并评测，继续保留研究接口，工程完成不以 H 获得正收益为前提。
 
 > 架构与分阶段实施任务书 · v0.2 · 2026-10-16  

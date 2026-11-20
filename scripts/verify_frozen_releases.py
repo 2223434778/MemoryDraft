@@ -31,8 +31,9 @@ def verify():
             named[reference]=None
         resolved[reference]=oid
     reports=[]
-    for study,reference in (('dspark-tree','codex/dspark-tree'),('dspark-tree-opt','codex/dspark-tree-opt'),
-                             ('asd-paper-extension','codex/asd-splice')):
+    # ASD paper-extension payloads now live in ShuLiu-Decode; the source remains
+    # available at codex/asd-splice, checked above without requiring local copies.
+    for study,reference in (('dspark-tree','codex/dspark-tree'),('dspark-tree-opt','codex/dspark-tree-opt')):
         out=ROOT/'results'/study;manifest=json.loads((out/'publication.json').read_bytes())
         for name,item in manifest['files'].items():
             path=out/name
@@ -43,8 +44,6 @@ def verify():
         for name,digest in manifest.get('reports',{}).items():
             if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:raise ValueError('Archived report changed: '+name)
         paths=['results/'+study,*manifest.get('reports',{})]
-        if study=='asd-paper-extension':
-            paths+=['docs/ASD_PAPER_EXTENSION_FINDINGS.md','docs/ASD_PAPER_EXTENSION_RESULTS.md']
         archived=[]
         for entry in subprocess.check_output(['git','ls-tree','-r','-z',resolved[reference],'--',*paths],cwd=ROOT).split(b'\0'):
             if entry:

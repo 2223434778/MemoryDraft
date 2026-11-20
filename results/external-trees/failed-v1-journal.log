@@ -1,89 +1,0 @@
-Starting /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python /media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/launch_branch_drift_optimization.py --root /media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1 --archive-sha 0411dcece26a3d8c1c6bd0d9b0acaf5f249bf5f6995bf0999059f5c2ce3bd99c --study external-trees --owned...
-Started /media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python /media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/launch_branch_drift_optimization.py --root /media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1 --archive-sha 0411dcece26a3d8c1c6bd0d9b0acaf5f249bf5f6995bf0999059f5c2ce3bd99c --study external-trees --owned.
-........................                                                 [100%]
-- generated xml file: /media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/server-tests.xml -
-24 passed in 4.87s
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards:  20%|██        | 1/5 [00:01<00:05,  1.49s/it]Loading checkpoint shards:  40%|████      | 2/5 [00:02<00:04,  1.49s/it]Loading checkpoint shards:  60%|██████    | 3/5 [00:04<00:02,  1.48s/it]Loading checkpoint shards:  80%|████████  | 4/5 [00:05<00:01,  1.36s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.06s/it]Loading checkpoint shards: 100%|██████████| 5/5 [00:06<00:00,  1.23s/it]
-calibration sequences:   0%|          | 0/32 [00:00<?, ?it/s]
-s=16:   0%|          | 0/6 [00:00<?, ?it/s][A
-s=16:  17%|█▋        | 1/6 [00:03<00:16,  3.39s/it][A
-s=16:  33%|███▎      | 2/6 [00:03<00:06,  1.72s/it][A
-s=16:  50%|█████     | 3/6 [00:04<00:03,  1.20s/it][A
-s=16:  67%|██████▋   | 4/6 [00:05<00:02,  1.00s/it][A
-                                                   [Acalibration sequences:   0%|          | 0/32 [00:05<?, ?it/s]
-Traceback (most recent call last):
-  File "<frozen runpy>", line 198, in _run_module_as_main
-  File "<frozen runpy>", line 88, in _run_code
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/run_external_trees.py", line 231, in <module>
-    main()
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/run_external_trees.py", line 169, in main
-    calibration.collect_calibration_data(target=engine.target,tokenizer=engine.tokenizer,
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/third_party/bastion/bastion/cost_model.py", line 705, in collect_calibration_data
-    _ = target(
-        ^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/utils/generic.py", line 918, in wrapper
-    output = func(self, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 480, in forward
-    outputs: BaseModelOutputWithPast = self.model(
-                                       ^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/utils/generic.py", line 1072, in wrapper
-    outputs = func(self, *args, **kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 410, in forward
-    hidden_states = decoder_layer(
-                    ^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/modeling_layers.py", line 94, in __call__
-    return super().__call__(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 260, in forward
-    hidden_states, _ = self.self_attn(
-                       ^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 216, in forward
-    attn_output, attn_weights = attention_interface(
-                                ^^^^^^^^^^^^^^^^^^^^
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/lib/python3.11/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 145, in eager_attention_forward
-    attn_weights = torch.matmul(query, key_states.transpose(2, 3)) * scaling
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 0 has a total capacity of 47.53 GiB of which 11.25 MiB is free. Including non-PyTorch memory, this process has 47.50 GiB memory in use. Of the allocated memory 46.82 GiB is allocated by PyTorch, and 377.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
-Traceback (most recent call last):
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/launch_branch_drift_optimization.py", line 114, in <module>
-    main()
-  File "/media/a6000/D/ZhaoBinHe/MemoryDraft/external-trees-v1/scripts/launch_branch_drift_optimization.py", line 100, in main
-    subprocess.run(command, cwd=root, check=True)
-  File "/home/a6000/anaconda3/envs/AI_Pytorch_Python3.11/lib/python3.11/subprocess.py", line 571, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['/media/a6000/D/ZhaoBinHe/MemoryDraft/.venv-dflash/bin/python', '-u', '-m', 'scripts.run_external_trees']' returned non-zero exit status 1.
-memorydraft-external-trees-v1.service: Main process exited, code=exited, status=1/FAILURE
-memorydraft-external-trees-v1.service: Failed with result 'exit-code'.

@@ -1,3 +1,12 @@
+# 2026-11-20 — 清理已迁出的树流副本
+
+- 用户明确授权从 MemoryDraft 删除已独立的树流文件。核对独立 `2223434778/ShuLiu-Decode` 的已跟踪网页及当前算法后，清理本分支的聊天网关/静态资源/部署模板、成本树/保真门控/反馈执行模块、专用配置/数据/实验报告与结果，以及依赖这些模块的脚本和测试。共享运行时、服务和 DFlash 循环恢复到接入成本树前的 `be78c0b` 接口，保留原检索、H/D/RHD、OT 和早期 ASD/适配/公共前缀研究。
+- README 恢复 MemoryDraft 名称并添加独立树流入口；新增 `docs/PROJECT_SPLIT.md`，更新启动说明、打包资源和失效的 Git attributes 规则。早期严格候选树与 DSpark 负结果作为历史研究保留，不是当前树流成本树入口。历史进度中的迁出路径请按清理前提交 `ce807c7` 或独立树流仓库查阅。
+- 快速检查：`.venv\Scripts\python.exe -m pytest -q tests/test_runtime.py tests/test_serving.py tests/test_dflash_reuse.py tests/test_runtime_asd.py tests/test_prefix_cache.py --basetemp .test-tmp-project-split-fast --junitxml=artifacts/project-split-fast.xml --tb=short`：129 passed、2 skipped。
+- 完整检查：`.venv\Scripts\python.exe -m pytest -q --basetemp .test-tmp-project-split --junitxml=artifacts/project-split-tests.xml --tb=short`：948 passed、7 skipped，174.24s；入口文档本地链接与 `git diff --check` 通过。
+- `.venv\Scripts\python.exe -m pip wheel --no-index --no-build-isolation --no-deps --wheel-dir artifacts/project-split-dist .` 离线构建成功；旧生成目录先保存在 `artifacts/project-split-previous-build`，避免旧 build 缓存混入。wheel 安装至 `artifacts/project-split-installed` 后，通过 `artifacts/check_memorydraft_split_wheel.py` 验证全部80文件不含被迁出模块，并在源码目录外完成 AR CPU demo；结果在 `artifacts/project-split-wheel-run/answer.json`。未生成新的 GPU 性能数据。
+- `.venv\Scripts\python.exe -m scripts.verify_frozen_releases` 通过；已迁出的 ASD paper-extension 不再要求本分支保留本地结果副本，其冻结来源引用仍核对。三个 infra 版本的冻结分支与标签保持 `27e3619` / `ea04290` / `012224a`；保留 Git 历史和旧实验分支，不执行强制推送或历史重写。未修改独立 ShuLiu 工作目录、服务器服务、聊天数据库或模型。
+
 # 2026-11-02 — 当前算法独立仓库 ShuLiu-Decode
 
 - 按用户要求创建私有独立仓库 `https://github.com/2223434778/ShuLiu-Decode`，沿用原仓库可见性；main 初始提交 `7c864a390db172c1c4b99b6fd5d9680532715031` 已推送。本机独立 Git 项目在 `artifacts/ShuLiu-Decode`，来源为本仓库 `857c9f1274647776ae8ee8f9d4e19460441e7c6f`，原历史不整体复制。

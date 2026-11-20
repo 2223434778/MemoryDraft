@@ -1,9 +1,0 @@
-{
-  "checked": true,
-  "animation": "check-settle",
-  "duration": "0.28s",
-  "pathTransition": "0.23s, 0.12s",
-  "width": "26px",
-  "height": "26px",
-  "hitWidth": 28
-}

@@ -1,8 +1,0 @@
-{
-  "pid": 2625729,
-  "start_utc": "2026-10-24T11:54:02.919422+00:00",
-  "outer_timeout_seconds": 22800,
-  "worker_timeout_seconds": 21600,
-  "source_commit": "6d89480c52e0d89714778668c25ef7027a9f0ac8",
-  "gpu_before": "0, 19, 0\n1, 19, 0\n"
-}

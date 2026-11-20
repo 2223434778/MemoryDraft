@@ -1,73 +1,21 @@
 # Preserve published artifact bytes across Windows/Linux checkouts for SHA-256 audits.
-results/gate-width/** -text
 results/gate-width/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/gate-width/**/*.xml -whitespace
-docs/GATE_WIDTH*.md text eol=lf
-scripts/report_gate_width.py text eol=lf
-scripts/check_gate_width.py text eol=lf
-results/branch-drift-gsm-diagnosis/** -text
-docs/BRANCH_DRIFT_GSM_DIAGNOSIS.md text eol=lf
-scripts/diagnose_branch_drift_gsm.py text eol=lf
-results/branch-drift-optimization/** -text
 results/branch-drift-optimization/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/branch-drift-optimization/**/*.xml -whitespace
-scripts/report_branch_drift_optimization.py text eol=lf
-docs/BRANCH_DRIFT_OPTIMIZATION*.md text eol=lf
-results/branch-drift-math-diagnosis/** -text
 results/branch-drift-math-diagnosis/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/branch-drift-math-diagnosis/**/*.xml -whitespace
-results/branch-drift/** -text
-results/branch-drift/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-results/branch-drift/**/*.xml -whitespace
-results/branch-drift/**/*.log -whitespace
 results/branch-drift/**/*.py whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-tests/chat_glass.test.cjs text eol=lf
-results/liquid-glass-history/** -text
 results/liquid-glass-history/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/liquid-glass-history/**/*.xml -whitespace
-results/chat-draft-repetition/** -text
 results/chat-draft-repetition/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-results/chat-route-recovery/** -text
 results/chat-route-recovery/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-tests/clash_preprocessor.test.cjs text eol=lf
-results/shuliu-glass-ui/** -text
 results/shuliu-glass-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-tests/chat_process_view.test.cjs text eol=lf
-tests/test_chat_package.py text eol=lf
-results/chat-inline-ui/** -text
 results/chat-inline-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-tests/test_inline_presentation.py text eol=lf
-tests/test_output_limits.py text eol=lf
-results/chat-long-output/** -text
 results/chat-long-output/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/chat-long-output/**/*.xml -whitespace
-results/chat-visualization/** -text
-results/chat-live-ui/** -text
 results/chat-live-ui/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-tests/chat_ui.test.cjs text eol=lf
 results/chat-visualization/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-deploy/chat/*.patch -whitespace
-memorydraft/serving/llama.py text eol=lf
-memorydraft/serving/speculation.py text eol=lf
-docs/CHAT_VISUALIZATION.md text eol=lf
-tests/test_speculation.py text eol=lf
-tests/test_llama_serving.py text eol=lf
-results/chat-deployment/** -text
-memorydraft/chat/** text eol=lf
-memorydraft/serving/text.py text eol=lf
-deploy/chat/** text eol=lf
-scripts/*chat*.py text eol=lf
-tests/test_chat.py text eol=lf
-docs/CHAT_DEPLOYMENT.md text eol=lf
-results/asd-budget-tree/** -text
-results/asd-budget-tree/**/*.log -whitespace
-results/asd-budget-tree/**/*.xml -whitespace
-scripts/*asd_tree*.py text eol=lf
-memorydraft/backends/budget_tree.py text eol=lf
-memorydraft/evaluation/asd_tree.py text eol=lf
-tests/test_budget_tree.py text eol=lf
-tests/test_asd_tree_report.py text eol=lf
-docs/ASD_TREE*.md text eol=lf
 results/asd-comparison/** -text
 results/asd-comparison-engineering/** -text
 results/asd-comparison-engineering/**/*.log -whitespace
@@ -390,39 +338,9 @@ results/asd-adaptation/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,
 results/asd-adaptation/**/*.log -whitespace
 results/asd-adaptation/**/*.xml -whitespace
 .gitattributes text eol=lf
-memorydraft/evaluation/asd_paper.py text eol=lf
-scripts/*asd_paper*.py text eol=lf
-tests/test_asd_paper.py text eol=lf
-docs/ASD_PAPER*.md text eol=lf
-data/research/asd-paper/** -text
-data/research/asd-paper/*README.md -whitespace
-results/asd-paper/** -text
-results/asd-paper-metrics/** -text
-results/asd-paper-metrics/**/*.log -whitespace
-results/asd-paper-metrics/**/*.xml -whitespace
-results/asd-paper-metrics/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-memorydraft/evaluation/asd_paper_metrics.py text eol=lf
-memorydraft/evaluation/asd_paper_extension.py text eol=lf
-memorydraft/evaluation/asd_extension_contracts.py text eol=lf
-tests/test_asd_extension_contracts.py text eol=lf
-tests/test_asd_paper_extension.py text eol=lf
-data/research/asd-paper-extension/** -text
-data/research/asd-paper-extension/*README.md -whitespace
-results/asd-paper-extension/** -text
-results/asd-paper-extension/**/*.log -whitespace
-results/asd-paper-extension/**/*.xml -whitespace
-results/asd-paper-extension/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-scripts/download_asd_reward.py text eol=lf
-scripts/run_asd_reward.py text eol=lf
-tests/test_asd_paper_metrics.py text eol=lf
 results/asd-paper/**/*.log -whitespace
-results/asd-paper/**/*.xml -whitespace
-memorydraft/backends/budget_tree.py text eol=lf
 memorydraft/backends/dflash_reuse.py text eol=lf
-memorydraft/evaluation/asd*tree.py text eol=lf
-scripts/*asd*tree*.py text eol=lf
 tests/test_*tree*.py text eol=lf
-docs/ASD_JOINT_TREE*.md text eol=lf
 results/asd-joint-tree/** -text
 results/asd-joint-tree/**/*.log -whitespace
 results/asd-joint-tree/**/*.xml -whitespace
@@ -478,53 +396,12 @@ results/dspark-tree/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-
 results/dspark-tree/**/*.log -whitespace
 results/dspark-tree/**/*.xml -whitespace
 docs/DSPARK*.md text eol=lf
-docs/INFRA_TREE*.md text eol=lf
-results/infra-tree-v04/** -text
-results/infra-tree-v04/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-results/infra-tree-v04/**/*.log -whitespace
-results/infra-tree-v04/**/*.xml -whitespace
 results/dspark-tree-opt/** -text
 results/dspark-tree-opt/**/*.json whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 results/dspark-tree-opt/**/*.log -whitespace
 results/dspark-tree-opt/**/*.xml -whitespace
 
-scripts/*gate_min_gain*.py text eol=lf
-tests/test_gate_min_gain.py text eol=lf
-docs/GATE_MIN_GAIN*.md text eol=lf
-results/gate-min-gain/** -text
-
-memorydraft/backends/buffered_cache.py text eol=lf
-scripts/*tree_execution*.py text eol=lf
-tests/test_tree_execution.py text eol=lf
-tests/test_buffered_cache.py text eol=lf
-docs/TREE_EXECUTION*.md text eol=lf
-results/tree-execution/** -text
-
-memorydraft/runtime/tree_policy.py text eol=lf
-scripts/*infra_fidelity*.py text eol=lf
-tests/test_runtime_tree_policy.py text eol=lf
-configs/runtime-dflash-fidelity-base.json text eol=lf
-docs/INFRA_FIDELITY*.md text eol=lf
-results/infra-fidelity-v05/** -text
-
-scripts/*external_trees*.py text eol=lf
-tests/test_external_trees.py text eol=lf
-docs/EXTERNAL_TREES*.md text eol=lf
-results/external-trees/** -text
-
-memorydraft/evaluation/expanded_suite.py text eol=lf
-scripts/*expanded*.py text eol=lf
-tests/test_expanded_suite.py text eol=lf
-tests/test_expanded_baselines.py text eol=lf
-docs/EXPANDED_*.md text eol=lf
-data/research/expanded-suite/manifest.json -text
-results/expanded-suite/** -text
-results/expanded-suite/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-results/expanded-suite/LICENSE-* -whitespace
 results/expanded-suite/**/*.log -whitespace
 results/expanded-suite/**/*.xml -whitespace
-results/expanded-baselines/** -text
-results/expanded-baselines/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
-results/expanded-baselines/LICENSE-* -whitespace
 results/expanded-baselines/**/*.log -whitespace
 results/expanded-baselines/**/*.xml -whitespace

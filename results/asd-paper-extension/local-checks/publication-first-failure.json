@@ -1,9 +1,0 @@
-{
-  "status": "failed",
-  "stage": "publication-only",
-  "attempt": 1,
-  "error": "AssertionError: suffix whitelist omitted .jsonl auxiliary hardware log",
-  "preserved_partial_directory": "artifacts/asd-extension-publication-attempt-1",
-  "raw_experiment_archives_unchanged": true,
-  "fix": "Explicitly permit .jsonl public metadata payloads"
-}

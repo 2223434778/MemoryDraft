@@ -36,7 +36,6 @@ class ReuseGeneration:
     rounds: list[dict] = field(default_factory=list)
     feature_peak_tokens: int = 0
     buffer_flushes: int = 0
-    cache_statistics: dict = field(default_factory=dict)
 
 
 def _features(output, layers):
@@ -57,9 +56,7 @@ def generate_reuse(target, draft, input_ids: torch.Tensor, *, max_new_tokens: in
                    verify_length: Callable[[int], int] | None = None,
                    incremental_stop: bool = False,
                    round_action: Callable[[int, int, tuple], str] | None = None,
-                   tree_config=None, prefill=None,
-                   on_event: Callable[[dict], None] | None = None,
-                   cache_factory: Callable[[], DynamicCache] | None = None) -> ReuseGeneration:
+                   tree_config=None, prefill=None) -> ReuseGeneration:
     """Single-request decoding; strict unless an experimental verifier is supplied.
 
 At each loop entrance target KV covers [0,start), and output[start] is the
@@ -71,18 +68,14 @@ guided R may replace a block after its draft forward has already run.
         raise ValueError("Expected one nonempty token sequence")
     if max_new_tokens < 0 or any(route not in {"R", "D"} for route in route_sequence):
         raise ValueError("Invalid generation budget or diagnostic route")
-    if cache_factory is not None and prefill is not None:
-        raise ValueError('Custom KV storage cannot adopt a prefix-cache prefill')
     if round_action is not None and (matcher is not None or route_sequence or verify_length is not None
                                      or draft_block_size is not None or not trace):
         raise ValueError("Round allocation requires traced, exclusive model drafting")
     if tree_config is not None:
         from memorydraft.backends.draft_tree import TreeConfig
-        from memorydraft.backends.budget_tree import BudgetTreeConfig, TreeASDVerifier
-        if (not isinstance(tree_config, (TreeConfig, BudgetTreeConfig)) or matcher is not None
-                or (verifier is not None and not isinstance(verifier, TreeASDVerifier))
+        if (not isinstance(tree_config, TreeConfig) or matcher is not None or verifier is not None
                 or round_action is not None or route_sequence or verify_length is not None or draft_block_size is not None):
-            raise ValueError("Draft tree requires exclusive native drafting and a tree-aware verifier")
+            raise ValueError("Draft tree requires exclusive strict native drafting")
         if target.config._attn_implementation != "eager":
             raise ValueError("Draft tree requires the audited eager attention backend")
     if max_new_tokens == 0:
@@ -101,8 +94,7 @@ guided R may replace a block after its draft forward has already run.
     ids = torch.full((1, limit + extra), draft.mask_token_id, device=input_ids.device, dtype=torch.long)
     ids[:, :prompt] = input_ids
     positions = torch.arange(ids.shape[1], device=ids.device).unsqueeze(0)
-    factory = DynamicCache if cache_factory is None else cache_factory
-    target_cache, draft_cache = factory(), factory()
+    target_cache, draft_cache = DynamicCache(), DynamicCache()
     def mark(name):
         return torch.profiler.record_function("memorydraft::" + name) if profile else nullcontext()
 
@@ -123,13 +115,6 @@ guided R may replace a block after its draft forward has already run.
     stops = set(stop_token_ids)
     published = prompt
 
-    def finish(end):
-        result.sequences = ids[:, :end].clone()
-        if cache_factory is not None:
-            result.cache_statistics = {name: cache.summary() for name, cache in
-                (('target', target_cache), ('draft', draft_cache)) if hasattr(cache, 'summary')}
-        return result
-
     def publish(end):
         nonlocal published
         if on_tokens and end > published:
@@ -142,7 +127,8 @@ guided R may replace a block after its draft forward has already run.
 
     publish(prompt + 1)
     if int(ids[0, prompt]) in stops:
-        return finish(prompt + 1)
+        result.sequences = ids[:, :prompt + 1].clone()
+        return result
     while start + 1 < limit:
         if should_stop and should_stop():
             from memorydraft.runtime.contracts import RequestCancelled
@@ -227,44 +213,20 @@ guided R may replace a block after its draft forward has already run.
         if tree_config is not None:
             from memorydraft.backends.draft_tree import build_tree, commit_tree_cache
             with mark("build_tree"):
-                if isinstance(tree_config, BudgetTreeConfig):
-                    from memorydraft.backends.budget_tree import build_budget_tree
-                    from memorydraft.backends.branch_drift import FeedbackTreeConfig, PairedTreeConfig, build_paired_tree
-                    snapshot = None
-                    if tree_config.spine_mode != "none" or isinstance(tree_config, FeedbackTreeConfig):
-                        if not isinstance(verifier, TreeASDVerifier):
-                            raise ValueError("Budget-dependent tree construction requires a tree ASD verifier")
-                        snapshot = verifier.construction_budget()
-                    builder = build_paired_tree if isinstance(tree_config, PairedTreeConfig) else build_budget_tree
-                    tree = builder(block, logits, tree_config, start,
-                        stop_token_ids=stop_token_ids, regret_budget=snapshot)
-                else:
-                    tree = build_tree(block, logits, tree_config)
+                tree = build_tree(block, logits, tree_config)
                 verify_block = tree.tokens
                 verify_positions = block.new_tensor([tree.depths])+start
                 verify_kwargs["attention_mask"] = tree.mask(start, target.dtype)
         else:
             verify_positions = positions[:, start:start + block.shape[1]]
-        if on_event is not None:
-            on_event(dict(phase="draft", round=step + 1, offset=start - prompt + 1,
-                proposal_ids=block[0, 1:].tolist(), tree=None if tree is None else dict(
-                    token_ids=tree.tokens[0].tolist(), parents=list(tree.parents), depths=list(tree.depths))))
         with mark("target_verify"):
             output = target(verify_block, position_ids=verify_positions,
                             past_key_values=target_cache, use_cache=True, output_hidden_states=True, **verify_kwargs)
         with mark("accept_decision"):
-            reuse_scores = tree is not None and verifier is not None and verifier.reuse_scores
-            posterior = None if reuse_scores else output.logits.argmax(dim=-1)
+            posterior = output.logits.argmax(dim=-1)
             decision = None
             if tree is not None:
-                if verifier is None:
-                    path, recovery, native_accepted = tree.select(posterior)
-                else:
-                    path, recovery, decision = verifier.decide_tree(tree, output.logits[0],
-                        horizon=block.shape[1]-1, stop_token_ids=stop_token_ids)
-                    native_accepted = None
-                if isinstance(tree_config, BudgetTreeConfig):
-                    native_accepted = None
+                path, recovery, native_accepted = tree.select(posterior)
                 accepted = len(path)-1
             elif allocation == "target":
                 accepted = 0
@@ -313,32 +275,9 @@ guided R may replace a block after its draft forward has already run.
                 result.rounds[-1]["allocation"] = allocation
             if tree is not None:
                 result.rounds[-1].update(tree_nodes=len(tree.parents), native_accepted=native_accepted,
-                                         tree_path=path, tree_gain=accepted-native_accepted if native_accepted is not None else None)
-                if hasattr(tree, "budget_metadata"):
-                    result.rounds[-1]["tree_budget"] = tree.budget_metadata
+                                         tree_path=path, tree_gain=accepted-native_accepted)
         step += 1
         available = min(start + 1, limit)
-        if on_event is not None:
-            # Observe the actual published suffix, including EOS/output limits.
-            # The anchor was already published and is never counted twice.
-            committed = ids[0, old_start + 1:available].tolist()
-            ended = next((i for i, token in enumerate(committed) if token in stops), None)
-            if ended is not None:
-                committed = committed[:ended + 1]
-            visible = min(accepted, len(committed))
-            selected_path = path[:visible + 1] if tree is not None else None
-            predictions = verifier.current_scores['predictions'] if reuse_scores else posterior[0].tolist()
-            if tree is None:
-                relaxed = [i for i, token in enumerate(committed[:visible]) if token != predictions[i]]
-            else:
-                relaxed = [node for parent, node in zip(selected_path, selected_path[1:])
-                           if int(tree.tokens[0, node]) != predictions[parent]]
-            on_event(dict(phase="verified", round=step, accepted=visible,
-                committed_ids=committed, correction_ids=committed[visible:],
-                selected_path=selected_path, relaxed=relaxed, stopped=ended is not None,
-                strict_accepted=decision.strict_accepted if decision is not None else accepted,
-                asd=None if verifier is None else dict(relaxed=len(relaxed), regret=decision.regret,
-                    spent=verifier.spent, budget=verifier.config.budget)))
         with mark("publish_stop"):
             publish(available)
             if stops:
@@ -348,5 +287,7 @@ guided R may replace a block after its draft forward has already run.
                 generated = ids[0, checked_from:available].tolist()
                 ended = next((i for i, token in enumerate(generated) if token in stops), None)
                 if ended is not None:
-                    return finish(checked_from + ended + 1)
-    return finish(min(start + 1, limit))
+                    result.sequences = ids[:, :checked_from + ended + 1].clone()
+                    return result
+    result.sequences = ids[:, :min(start + 1, limit)].clone()
+    return result

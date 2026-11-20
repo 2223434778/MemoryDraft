@@ -1,67 +1,6 @@
-# 树流
+# MemoryDraft
 
-**当前树解码主线已独立成仓库：[ShuLiu-Decode（树流解码）](https://github.com/2223434778/ShuLiu-Decode)。** DFlash + 成本树 + ASD + 保真门控 + 反馈调宽的完整实现、快速开始、15类任务总表和15组相关实验材料已迁入新仓库，默认分支为 `main`，沿用本仓库的私有可见性。本仓库继续保留研究历史、已有网页部署和 infra 冻结版本。
-
-网页产品名为「树流」，使用原创树与水流标识。底层 Python 包名及历史研究、infra 冻结版本继续保留 MemoryDraft 名称，兼容现有部署与数据。
-
-**先了解当前算法：**[DFlash + 高保真反馈成本树 + ASD：通俗流程说明](docs/CURRENT_ALGORITHM_GUIDE.md)用流程图和一个完整例子讲清楚：小模型怎样起草、树怎样分配候选、大模型怎样检查、“换一个 token 会带偏多少”怎样判断，以及为什么至少多接 2 个 token 才近似接受。对应当前研究版本 `BufferedKV-ASD` 与启用 `tree_policy` 的 infra v0.5，包含参数、速度与质量取舍及代码入口。
-
-**朋友聊天网页：**[双机部署说明](docs/CHAT_DEPLOYMENT.md)提供阿里云账号/SQLite历史、手机/电脑网页及A6000成本树ASD推理转发。无域名时先通过Tailscale访问，后续可接HTTPS入口；账号、数据库和部署凭据不进入仓库。
-
-**新版聊天界面：**[界面与真实解码过程](docs/CHAT_VISUALIZATION.md)提供 Gemini 风格布局、输入框模型／四模式选择，以及实际草稿接受、丢弃、ASD 预算和成本树路径展示。过程开关不改变模型输出规则；较大模型按真实后端能力开放模式。
-
-**Infra v0.5已接入：**[高保真反馈树与执行优化](docs/INFRA_FIDELITY_GUIDE.md)将JS/当前token约束、反馈调宽、最小增量接受及KV/分数复用接入正式配置、CLI、JSON/SSE；旧方法保留。完整1299测试通过，A6000专项145项及七任务研究等价/真实CLI/可视化/取消恢复验收通过，见[报告](docs/INFRA_FIDELITY_VALIDATION.md)。独立分支`codex/infra-interview-v0.5`、标签`infra-v0.5-interview`与本机完整副本保留，旧v0.3/v0.4不移动。
-
-**官方树基线补全（2026-10-31）：**[九组594计时结论](docs/EXTERNAL_TREES_FINDINGS.md)与[完整表](docs/EXTERNAL_TREES_RESULTS.md)补齐官方DDTree32/128、BASTION及同窗AR/DFlash/ASD。当前混合总wall较DFlash/BASTION省12.96%/5.76%，MATH正确9/12对严格基线8/12；同输出56请求对BASTION配对增量0.64%，MBPP/Alpaca仍有取舍。共享FP32/eager执行栈、既有66开发输入，不称原文快速后端复现；开放质量未新增盲评。
-
-**新场景扩展完成（2026-10-31）：**[182请求/546生成结论](docs/EXPANDED_SUITE_FINDINGS.md)与[全表](docs/EXPANDED_SUITE_RESULTS.md)新增IFEval、LiveCodeBench v6、CanItEdit、LongBench四子集及完整AIME25。当前混合总wall较DFlash/ASD省12.96%/12.16%，DFlash输出一致146/182对ASD31/182；指令/摘要提速，编辑通过17/31对ASD15/31，AIME5/30对ASD7/30仍有取舍。LongBench19/32输入首尾截取，其他任务多为固定子集；[已有论文基线直接引用](docs/EXPANDED_LITERATURE_BASELINES.md)，不混用硬件倍率排名。
-
-**新增任务关键基线补全（2026-10-31）：**[五组910生成结论](docs/EXPANDED_BASELINES_FINDINGS.md)补齐同窗AR/严格成本树/官方BASTION。当前总wall较DFlash/BASTION少12.89%/4.16%，AR/当前为3.727×；对BASTION请求等权平均只快0.17%。编辑/MultiNews/GovReport/AIME配对少5.02%/4.41%/11.13%/9.22%，IFEval慢9.32%；质量取舍保留。546严格输出等于本批AR，当前/旧B批输出复现；[五组全表](docs/EXPANDED_BASELINES_RESULTS.md)与完整大矩阵同步。
-
-**Infra v0.4已交付：**[DFlash + 成本树 + ASD部署入口](docs/INFRA_TREE_GUIDE.md)提供成本表校准与哈希绑定、严格/近似可选方法、JSON/SSE元数据及显式近似benchmark。本机1144测试通过，A6000专项150通过、60计时及12研究实现对照全部完成，详见[验收报告](docs/INFRA_TREE_VALIDATION.md)和[独立面试版](docs/INFRA_TREE_INTERVIEW.md)。旧v0.3面试版保留。
-
-**研究主线：DFlash + 成本树 + ASD。** 2026-10-26按用户决定停止DSpark的后续优化和扩样；后续高保真门控、反馈与执行优化已在`codex/branch-drift`完成，当前算法见上方说明。既有DFlash实现、权重与评测规则沿用；CLI/服务的默认严格验证保持现状，近似ASD仍须显式启用。
-
-**完整实验总表（2026-10-31更新）：**[所有基线 × 所有数据集矩阵](docs/ASD_TREE_EXPERIMENT_SUMMARY.md#all-baselines)将15类任务和10种正式对比方法放在一张大表中，另列八行论文配置；111个同机实测格、39个缺测格，B/D来源逐格标注。总览还保留原组合530匹配输入的大样本表、历次消融及infra交付。按算法版本和实验批次区分，不混算跨轮收益。最新总表位于`codex/branch-drift`，历史总览位于`codex/chat-live-draft`；默认`main`保留旧版本。
-
-**分支漂移门控候选（2026-10-28）：**[七任务结论](docs/BRANCH_DRIFT_FINDINGS.md)与[完整实测表](docs/BRANCH_DRIFT_RESULTS.md)在`codex/branch-drift`。149匹配输入、1639新计时、192奖励评分完成，AR逐token一致输出60→106；MMLU格式合同恢复、MT自然时延/偏好有局部正结果，其他任务保留速度与质量取舍。单步JS仍会放过关键代码条件错误，原组合继续保留。
-
-**MATH-500耗时诊断：**[逐题归因](docs/BRANCH_DRIFT_MATH_DIAGNOSIS.md)定位到372题的249-token周期循环，贡献本批净新增耗时75.29%；其余11题配对平均慢4.14%。原12题成绩保留，未重跑GPU或删除坏题。
-
-**按需验证与节点分配（2026-10-29）：**[结论](docs/BRANCH_DRIFT_OPTIMIZATION_FINDINGS.md)与[924计时全表](docs/BRANCH_DRIFT_OPTIMIZATION_RESULTS.md)。66匹配输入的132个eager/lazy决策对完全一致，JS比较减少87.40%，自然总wall仅省0.13%；节点分配+独立分歧上限将AR一致14→50/66，较ASD六类自然回答更快，GSM仍慢、MBPP正确5→4，新增MATH101截断保留。旧方案及infra冻结版本继续保留。
-
-**GSM8K耗时诊断（2026-10-30）：**[逐题与树分配归因](docs/BRANCH_DRIFT_GSM_DIAGNOSIS.md)说明组合多输出7.21%、TPS基本不变，750题贡献净新增wall的77.56%；另有树变窄后验证轮数增加的优化空间。未重跑GPU、未删除慢题或放宽验证。
-
-**宽度对照与反馈调宽（2026-10-30）：**[结论](docs/GATE_WIDTH_FINDINGS.md)与[792计时全表](docs/GATE_WIDTH_RESULTS.md)。门控不变，反馈GSM验证337→323轮、较旧组合快1.44%，仍慢ASD5.38%；MATH较ASD快10.83%、正确8→9/12且无截断。全66输入AR一致ASD14→反馈49，旧组合50；保留各任务取舍与原方案。
-
-**最小增量接受（2026-10-30）：**[198计时直接对比](docs/GATE_MIN_GAIN_RESULTS.md)。只在近似路径至少多推进2token时接受近似，AR一致49→56/66，总wall较原反馈增加2.88%，仍较ASD少13.67%；数学/代码正确集合保持，MATH仍9/12。作为更高保真档保留，原反馈及线上默认继续保留。
-
-**保持输出的执行优化（2026-10-30）：**[198计时对比](docs/TREE_EXECUTION_RESULTS.md)。分数复用总wall省0.22%，加按块扩容KV后共省1.03%，峰allocated增加约0.38GiB。132对输出/停止/路径/反馈/预算全部相同，AR一致保持56/66。可选缓存与旧实现均保留。
-
-**算法架构说明：**先读[当前算法通俗说明](docs/CURRENT_ALGORITHM_GUIDE.md)；[早期树 + ASD 架构](docs/ASD_TREE_ARCHITECTURE.md)保留原组合的机制、验证轮次与历史收益，两个版本的结果分别归属各自报告。
-
-**DSpark实验归档：**[七类任务底座比较](docs/DSPARK_TREE_FINDINGS.md)与[冷缓存、安全停搜优化](docs/DSPARK_TREE_OPT_FINDINGS.md)已完成，代码和正负结果全部保留在`codex/dspark-tree`、`codex/dspark-tree-opt`及本分支。停止继续投入不改变已报告的Alpaca场景收益；[原八组表](docs/DSPARK_TREE_RESULTS.md)、[优化复测表](docs/DSPARK_TREE_OPT_RESULTS.md)可独立复核。
-
-> [七任务独立扩样完成](docs/ASD_PAPER_EXTENSION_FINDINGS.md)：514新源任务/530匹配输入，四组9540主计时、640预算控制、320奖励评分及136局部性质检查完成。
-> 严格成本树在530自然请求上保留DFlash输出，在GSM/MATH/HumanEval/MBPP/MT/Alpaca自然时延分别省10.25%/6.19%/2.64%/14.87%/13.92%/17.15%。
-> 树+ASD较ASD在新GSM/MBPP/Alpaca省7.72%/10.21%/17.89%，MT自身历史双轮省12.93%；MATH慢5.50%、HumanEval正确53→52，MMLU格式合同损失保留。
-> 独立奖励偏好MT50%、Alpaca46.09%，不宣称全面质量保持；[完整表](docs/ASD_PAPER_EXTENSION_RESULTS.md)、[匿名判定](results/asd-paper-extension/open-contract-audit.json)与[审计](results/asd-paper-extension/audit.json)公开。与单token AR的一题数值分歧及续跑修订单列，不称论文原配置精确复现。
-
-> [七任务剩余指标补全](docs/ASD_PAPER_METRICS_FINDINGS.md)：747新固定计时、120独立奖励评分完成。
-> GSM严格DFlash/AR直接测得3.845×，组合/AR跨会话锚点估计4.709×；实际Draft接受长度ASD5.351→组合6.792。
-> 数学组合收益保持；开放奖励偏好MT为62.5%、Alpaca为25%，任务合同检查另列。完整[补充表](docs/ASD_PAPER_METRICS_RESULTS.md)与[文献基线](docs/ASD_LITERATURE_REFERENCE.md)区分实测、估计和原文报告值。
-
-> [ASD论文七任务扩样本](docs/ASD_PAPER_FINDINGS.md)：241新源任务/249匹配输入、五组4980计时+249 AR完成。
-> BudgetTree-ASD在GSM64题较ASD完整省9.86%、等128省11.64%，正确集合保持63/64；MATH32题省11.42%/4.70%、正确26→28。
-> Joint未显示对第一组合的稳定增量。代码有实际失败/截断，MMLU有输出格式变化，开放裁判未通过换序控制；全部正负结果见[主表](docs/ASD_PAPER_RESULTS.md)及[质量复核](results/asd-paper/quality-audit.json)。
-
-> [成本受控树 + ASD](docs/ASD_TREE_FINDINGS.md)：六类各8道已观察开发题，960计时+48 AR完成。
-> GSM8K组合较线性ASD完整请求省7.89%、等128省10.95%，答案均8/8；同等128较严格树再省9.87%。
-> MBPP完整省5.96%、质量保持；MATH/HumanEval有质量取舍，全部正负结果及复现见报告。既有工程成果继续保留。
-
-> [第二阶段：剩余regret联合构树](docs/ASD_JOINT_TREE_FINDINGS.md)：六组1440计时+48 AR完成，旧四组960轨迹重现。
-> Joint在GSM较第一阶段完整再省1.17%、等128再省2.48%，答案均8/8；同896 token验证126→122轮。
-> MATH前缀省5.36%但完整慢4.97%；其他任务无新增收益。固定主干消融及质量取舍全部保留，Joint作为GSM研究候选。
+> **项目已分离：** [ShuLiu-Decode（树流）](https://github.com/2223434778/ShuLiu-Decode) 独立维护成本树 + ASD + 保真门控 + 反馈调宽及聊天网页。本仓库已清理相应副本，继续保留 MemoryDraft 原 infra 与历史研究。详见 [项目分工与历史版本](docs/PROJECT_SPLIT.md)。
 
 > [ASD候选统一比较](docs/ASD_COMPARISON_FINDINGS.md)：原reserve96已用于24题14组初筛及72题确认，
 > 完成2448计时+96 AR，全部执行一致性检查通过。位置适配在新GSM等128时延省1.42%，完整请求慢0.79%；
