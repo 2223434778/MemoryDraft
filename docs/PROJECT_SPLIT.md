@@ -14,3 +14,25 @@
 这次清理不重写 Git 历史，不移动 `infra-v0.3-interview`、`infra-v0.4-interview`、`infra-v0.5-interview` 标签及对应冻结分支，也不修改线上部署、聊天数据库、模型或独立 ShuLiu 工作目录。旧实验分支与历史提交仍可用于追溯。
 
 `PROGRESS.md` 的旧条目是当时的运行记录，其中某些相对路径已迁出。需要完整还原旧环境时，请查看 [清理前的 MemoryDraft](https://github.com/2223434778/MemoryDraft/tree/ce807c7fe275514bc019517ba0d13e9d8e734413)，或检出对应冻结版本；不要在当前 MemoryDraft 重新接回树流模块。
+
+## GitHub 分支入口
+
+| 需要找什么 | 入口 |
+| --- | --- |
+| MemoryDraft 原 infra | [MemoryDraft `main`](https://github.com/2223434778/MemoryDraft/tree/main) |
+| 清理后的 MemoryDraft 研究代码 | [MemoryDraft `codex/branch-drift`](https://github.com/2223434778/MemoryDraft/tree/codex/branch-drift) |
+| 树流的实现、网页与部署 | [ShuLiu-Decode `main`](https://github.com/2223434778/ShuLiu-Decode/tree/main) |
+| 迁出前的网页和推理版本 | MemoryDraft 的 `codex/chat-*` 历史分支、infra 冻结标签 |
+
+## 服务器目录
+
+A6000 的项目根目录为 `/media/a6000/D/ZhaoBinHe`。从这里进入各项目：
+
+| 路径 | 用途 |
+| --- | --- |
+| `MemoryDraft/` | MemoryDraft 原研究、模型资产和实验 |
+| `ShuLiu/ShuLiu-Decode/` | 树流 Git 工作区入口，指向原 `ShuLiu-Decode/` checkout |
+| `ShuLiu/archive/memorydraft-era/` | 从 MemoryDraft 归档的树流实验、脚本和传输包。`MOVE_MANIFEST.json` 记录原路径和归档路径 |
+| `ShuLiu/chat-service/` | 旧树流推理部署及其发布目录。`MemoryDraft/chat-service` 是旧 systemd 配置使用的兼容链接 |
+
+阿里云的树流网关入口是 `/home/admin/ShuLiu-chat`。它指向当前服务及聊天数据库使用的 `/home/admin/MemoryDraft-chat`。

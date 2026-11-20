@@ -1,3 +1,9 @@
+# 2026-11-20 — 服务器目录归档
+
+- A6000 在已有的 `MemoryDraft/` 和 `ShuLiu/` 之间迁移 108 个树流项目条目，其中 107 个归档到 `ShuLiu/archive/memorydraft-era/`，旧推理部署迁至 `ShuLiu/chat-service/`。迁移清单为归档目录中的 `MOVE_MANIFEST.json`。迁移前用 `systemctl --user show` 检查三个旧推理单元均未运行，迁移后用 `realpath` 和存在性检查确认兼容路径及发布目录可解析。
+- 保留 `ShuLiu-Decode/` 的物理位置以兼容已有环境，从 `ShuLiu/ShuLiu-Decode/` 可进入同一个 checkout。阿里云 `/home/admin/ShuLiu-chat` 指向现有网关部署。用 `systemctl is-active memorydraft-chat.service` 和 `curl` 验证网关运行、首页 HTTP 200。
+- GitHub 的项目入口与只读历史索引记录在 [项目分工](PROJECT_SPLIT.md)。本轮未启动模型推理或重跑实验。
+
 # 2026-11-20 — 清理已迁出的树流副本
 
 - 用户明确授权从 MemoryDraft 删除已独立的树流文件。核对独立 `2223434778/ShuLiu-Decode` 的已跟踪网页及当前算法后，清理本分支的聊天网关/静态资源/部署模板、成本树/保真门控/反馈执行模块、专用配置/数据/实验报告与结果，以及依赖这些模块的脚本和测试。共享运行时、服务和 DFlash 循环恢复到接入成本树前的 `be78c0b` 接口，保留原检索、H/D/RHD、OT 和早期 ASD/适配/公共前缀研究。
