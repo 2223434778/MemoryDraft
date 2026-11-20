@@ -1,5 +1,7 @@
 # MemoryDraft
 
+> **项目分工：** 树流的成本树 + ASD + 保真门控 + 反馈调宽、聊天网页与部署模板已迁至独立仓库 [ShuLiu-Decode](https://github.com/2223434778/ShuLiu-Decode)。MemoryDraft 保留原 infra 与历史研究；当前研究分支已清理对应副本，详见[分仓说明](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/PROJECT_SPLIT.md)。旧提交、历史分支和 infra 冻结标签仍可追溯。
+
 **固定 Target 的推理优化、服务与正确性评测工具链。**
 
 MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
