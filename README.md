@@ -1,90 +1,60 @@
 # MemoryDraft
 
-> **项目分工：** 树流的成本树 + ASD + 保真门控 + 反馈调宽、聊天网页与部署模板已迁至独立仓库 [ShuLiu-Decode](https://github.com/2223434778/ShuLiu-Decode)。MemoryDraft 保留原 infra 与历史研究；当前研究分支已清理对应副本，详见[分仓说明](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/PROJECT_SPLIT.md)。旧提交、历史分支和 infra 冻结标签仍可追溯。
+**从历史文本起草，用目标模型验证。**
 
-**固定 Target 的推理优化、服务与正确性评测工具链。**
+MemoryDraft 是一个单 GPU 大模型推理项目。它用历史片段或 DFlash 提供候选 token，由同一个目标模型严格验证，再通过 HTTP/SSE 输出已确认的结果。项目提供可安装的运行时、可复现的评测，以及跨会话历史在什么负载下有用的实验记录。
 
-MemoryDraft v0.3 将原投机解码研究原型整理为可安装的单 GPU infra：统一 AR / DFlash / R+DFlash 运行入口，带有界队列和取消机制的 HTTP/SSE 服务，配对 benchmark、CPU/GPU profiler 与回归测试。复用成熟 Transformers、DFlash 和后缀索引，不重新实现 attention 或推理引擎。
+[快速运行](#快速运行) · [架构与运维](docs/INFRA_GUIDE.md) · [实测报告](docs/RUNTIME_MIGRATION_RESULTS.md) · [研究索引](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/RESEARCH_INDEX.md) · [冻结演示版 v0.3](https://github.com/2223434778/MemoryDraft/tree/infra-v0.3-interview)
 
-当前支持 batch=1、greedy、FP32/eager，一个模型 worker 串行执行。HTTP 可并发排队；连续批处理、分布式推理和随机采样尚未支持。研究模块 H/D/RHD 与全部实验结果继续保留。
+## 它怎么工作
 
-## 三分钟运行 CPU demo
+```mermaid
+flowchart LR
+    A["已确认的输出"] --> B{"后缀检索命中？"}
+    H["按用户和时间隔离的历史"] --> B
+    B -->|命中| R["复制后续 token"]
+    B -->|未命中| D["DFlash 起草"]
+    R --> V["Target 批量验证"]
+    D --> V
+    V --> S["提交连续匹配项与 Target 接续"]
+    S --> A
+```
 
-建议 Python 3.11。以下 demo 只演示 CLI 与服务链路，不加载模型，所有报告标记 `synthetic=true`。
+**严格解码。** R 命中时可以跳过一次 Draft 前向。Target 只接受从首位开始连续匹配的草稿 token，首次分歧处用自己的预测接续。连续复用后切回 DFlash 时，使用已确认的 Target 特征补齐 Draft KV。
+
+**服务与评测。** CLI 和 FastAPI 共用推理引擎。HTTP 接收并发请求，由有界队列交给一个 GPU worker。支持 SSE、超时、断连取消与背压，并提供 AR 逐 token 对照、性能回归、HTTP 压测和 CPU/CUDA profiler。
+
+## 实测结果
+
+同一张 RTX A6000，Qwen3-8B + DFlash b16，FP32/eager，greedy。下表为 **8 个受控多轮 JSON 配置修订请求**在新运行时各重复三次的总推理时间。
+
+| 方法 | 总推理耗时 | 输出 |
+| --- | ---: | --- |
+| DFlash，同一适配器关闭历史复用 | 42.06 s | 与 AR 逐 token 一致 |
+| **R+DFlash** | **33.88 s（降低 19.4%）** | 与 AR 逐 token 一致 |
+
+另一批两个短请求的工程验收中，R+DFlash 慢了 10.6%，因为格式差异导致复用候选大多被拒绝。离线归因还发现，展开当前请求已有事实即可覆盖正例中的绝大部分复用机会。19.4% 的结论限于上述负载和引擎计时。 [迁移实测](docs/RUNTIME_MIGRATION_RESULTS.md) · [短请求验收](docs/INFRA_VALIDATION.md) · [收益归因](docs/REUSE_ATTRIBUTION_RESULTS.md)
+
+## 快速运行
+
+在仓库根目录的 Python 3.11 虚拟环境中执行。CPU demo 使用合成引擎，无需权重。
 
 ```bash
-python -m venv .venv-infra
-# Linux: source .venv-infra/bin/activate
-# Windows: .venv-infra\Scripts\Activate.ps1
 python -m pip install -e ".[serve,client]"
 python -m memorydraft infer --config configs/runtime-demo.json --request examples/request.json --method AR --output artifacts/demo-answer.json
 python -m memorydraft serve --config configs/runtime-demo.json --port 8000
 ```
 
-另开终端，激活同一环境：
+启动后可在 [本机 API 文档](http://127.0.0.1:8000/docs) 查看接口。真实推理环境、固定模型版本和 GPU 验收命令见 [Infra 使用指南](docs/INFRA_GUIDE.md)。当前交付范围是单 GPU、batch=1、greedy 和 FP32/eager。
 
-```bash
-python -m memorydraft load-test --url http://127.0.0.1:8000 --request examples/request.json --method AR --count 20 --concurrency 2 --output artifacts/demo-load
-```
+## 从哪里继续读
 
-也提供 CPU demo Dockerfile：`docker build -t memorydraft-demo .`，然后 `docker run --rm -p 127.0.0.1:8000:8000 memorydraft-demo`。容器不含模型、历史或 GPU 推理环境。
+| 想了解 | 入口 |
+| --- | --- |
+| 总体设计与源码入口 | [快速交接](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/MEMORYDRAFT_HANDOFF.md) |
+| R/H/D 研究、OT 对照、早期 ASD 与缓存实验 | [研究索引](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/RESEARCH_INDEX.md) |
+| 安装、API、性能指标与故障排查 | [Infra 使用指南](docs/INFRA_GUIDE.md) |
+| 复现报告与原始快照 | [面试版归档与复现](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/INFRA_INTERVIEW.md) |
+| 独立的树流项目 | [ShuLiu-Decode](https://github.com/2223434778/ShuLiu-Decode) · [分仓说明](https://github.com/2223434778/MemoryDraft/blob/codex/branch-drift/docs/PROJECT_SPLIT.md) |
 
-## 真实 GPU 推理
-
-DFlash 与旧研究后端分别绑定 Transformers 4.57.3 / 4.52.2，使用独立环境。先安装适合硬件的 PyTorch，再安装对应 profile；运行时只读取已准备的本地模型，不自动下载。
-
-```bash
-python -m pip install -e ".[dflash,serve,client,test]"
-python -m memorydraft infer --config configs/runtime-dflash.json --request examples/request.json --method R+DFlash --output artifacts/answer.json
-python -m memorydraft benchmark --config configs/runtime-dflash.json --requests examples/requests.jsonl --methods AR DFlash R+DFlash --repeats 3 --output artifacts/benchmark-01
-python -m memorydraft profile --config configs/runtime-dflash.json --request examples/request.json --method R+DFlash --output artifacts/profile-01
-python -m memorydraft serve --config configs/runtime-dflash.json --port 8000 --queue-capacity 8
-```
-
-配置内路径相对于配置文件解析。默认 Qwen3-8B + DFlash FP32 profile 使用 A6000 48GB；RTX3090 可使用较小 Target 运行 AR，或运行测试。模型准备、API schema、SSE 示例、计时口径、故障排查与边界见 [完整使用指南](docs/INFRA_GUIDE.md)。
-
-## 工程结构
-
-| 模块 | 职责 |
-|---|---|
-| `memorydraft/runtime/` | 请求/结果协议、配置与模型加载、统一生成、benchmark 与 profiler |
-| `memorydraft/serving/` | 单模型 worker、有界队列、背压、deadline/断连取消、HTTP 压测 |
-| `memorydraft/backends/` | 成熟推理实现适配、严格验证、KV 回滚与补齐 |
-| `memorydraft/memory/` | SQLite 不可变事件、按用户与可用时间选取快照 |
-| `memorydraft/retrieval/` | token 后缀检索、记录边界与独立的历史辅助检索 |
-| `memorydraft/drafters/`、`routing/` | 原 H/D/RHD 研究模块与路由 |
-| `tests/`、`.github/workflows/` | CPU 正确性回归、两个依赖 profile 的 CI 定义 |
-
-服务的 `GET /healthz`、`GET /metrics`、`POST /v1/generate` 可通过 `/docs` 查看。SSE 仅发送已由 Target 确认的 token IDs，最终返回完整文本。队列满返回 429，deadline 包含排队时间，取消在解码边界生效。默认仅绑定本机，可信调用者提供 user_id；身份认证和外部部署由接入环境负责。
-
-## 验证与结果
-
-```bash
-# 旧研究 profile：完整 CPU/小模型回归
-python -m pip install -e ".[research,serve,test]"
-python -m pytest -q --basetemp .test-tmp
-
-# 独立 DFlash profile：工程与解码检查
-python -m pytest -q tests/test_runtime.py tests/test_serving.py tests/test_dflash_reuse.py
-
-# A6000 上的真实模型验收，输出目录必须尚不存在
-python -m scripts.validate_infra --config configs/runtime-dflash.json --output artifacts/acceptance-01
-```
-
-benchmark 对 token、Target 输入哈希与快照哈希逐项检查，遇到首个分歧即停止；报告包含全部在线成本。profiler 结果独立标记，不能当作未插桩性能。小样本不输出 P95/P99。生成物默认保存在 Git 忽略的 `artifacts/`。
-
-本版[工程验收报告](docs/INFRA_VALIDATION.md)：本机146项通过/3项跳过、服务器相关54项通过；真实A6000的12次配对计时与三种方法流式输出通过严格检查，6个HTTP请求完成。该小样本中R+DFlash慢于DFlash，不能据此宣称检索通用加速。
-
-后续[同负载迁移验证](docs/RUNTIME_MIGRATION_RESULTS.md)已完成：原8个配置修订请求、五组交错、120次计时全部正确；新版D42.061s、R+D33.882s，保留约19.4%延迟收益。候选对齐后与旧循环计数相同，未发现明显迁移退化；此前两个短样例的负结果属于不同工作负载。完整回归现为156项通过/3项跳过。
-
-原研究的 19.4% 延迟降低仅来自特定受控 JSON 工作负载；后续归因表明当前请求事实展开即可覆盖几乎全部复用机会，不能作为长期记忆独特价值或通用生产加速的证明。见 [归因报告](docs/REUSE_ATTRIBUTION_RESULTS.md)。
-
-## 项目记录
-
-- [infra 使用与运维](docs/INFRA_GUIDE.md)
-- [进度与实际运行记录](docs/PROGRESS.md)
-- [保留的研究 README 与实验入口](docs/RESEARCH_README.md)
-- [原研究架构](docs/ARCHITECTURE.md)、[审阅交接](docs/REVIEW_HANDOFF.md)
-- [第三方来源与 DFlash MIT notice](docs/third_party/DFLASH_LICENSE.txt)
-
-当前未授予整个项目统一开源许可。第三方代码保留各自许可与固定来源。权重、私有对话、凭据、数据库和大型 trace 不进入 Git。
+第三方代码保留各自的许可与固定来源。模型权重、私有历史、数据库和大型性能 trace 不随仓库分发。
