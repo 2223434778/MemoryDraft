@@ -1,3 +1,15 @@
+# 2026-11-26 — 整理项目文件与 GitHub 入口
+
+- 重写项目首页，保留算法流程、严格验证、真实正反对照和免权重 demo。研究入口集中在 [研究索引](RESEARCH_INDEX.md)，原详细首页可从索引查看固定 Git 快照。当前工作区未找到上次的交接文件，重新整理出 [交接说明](MEMORYDRAFT_HANDOFF.md)，以源码和发表的实验报告为证据。GitHub 默认分支使用同一首页，详细研究文档在研究分支。
+- 本机执行盘点后运行 `.venv\Scripts\python.exe artifacts/tidy_memorydraft_20261126.py --apply`，清理 293 个可重建旧测试、缓存和构建目录，文件大小合计 2,472,366,326 字节。归档 372 个条目，含 301 份 pytest XML 和 71 个历史传输包，清单为 `artifacts/archive/2026-11-26/MANIFEST.json`。保留源码仍直接引用的压缩包。
+- A6000 在 `/media/a6000/D/ZhaoBinHe/MemoryDraft/` 内按用途归档 140 个历史传输包。清单位于 `archive/2026-11-26/MANIFEST.json`。两次检查合计清理 28 个旧测试或缓存目录。第二次只额外允许 pytest 生成且解析到同一测试目录的 `*current` 软链接，输出 `archive/2026-11-26/CACHE_CLEANUP_PHASE2.json`。研究运行目录、模型、依赖环境、数据库、冻结交付与树流各自保持原路径。
+- 校验 README、研究索引、交接说明中的 66 个本地路径，并核对首页的相对链接也存在于 `main`。运行 `git diff --check` 和 `.venv\Scripts\python.exe -m memorydraft infer --config configs/runtime-demo.json --request examples/request.json --method AR --output artifacts/tidy-20261126-demo.json` 均通过。本轮未运行新 GPU benchmark。
+
+# 2026-11-23 — MemoryDraft 单文件交接
+
+- 新增 [项目全量交接](MEMORYDRAFT_HANDOFF.md)，按当前研究快照和冻结 infra v0.3 两条入口，整理历史快照、R/H/D/Target 与 KV、运行时和服务、实验及失败归因、证据索引和复现命令。内容以 `34b1b81` 的源码树和历史发布材料为基线，树流只记录分仓边界。
+- 检查交接文件的本地链接均指向受 Git 跟踪的文件或目录，Markdown 代码块成对，`git diff --check` 通过。`.venv\Scripts\python.exe -m memorydraft infer --config configs/runtime-demo.json --request examples/request.json --method AR --output artifacts/handoff-doc-demo-20261123.json` 执行成功，返回合成 demo 文本。此交付为文档整理，未重做 GPU 实验。
+
 # 2026-11-20 — 服务器目录归档
 
 - A6000 在已有的 `MemoryDraft/` 和 `ShuLiu/` 之间迁移 108 个树流项目条目，其中 107 个归档到 `ShuLiu/archive/memorydraft-era/`，旧推理部署迁至 `ShuLiu/chat-service/`。迁移清单为归档目录中的 `MOVE_MANIFEST.json`。迁移前用 `systemctl --user show` 检查三个旧推理单元均未运行，迁移后用 `realpath` 和存在性检查确认兼容路径及发布目录可解析。
